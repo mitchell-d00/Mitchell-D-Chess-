@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Free chess in your browser: 18 computer levels from beginner to grandmaster, a 38-lesson tutorial, and custom board and piece colours.">
+<meta name="description" content="Free chess in your browser: 35 computer levels from beginner to grandmaster, a 38-lesson tutorial, and custom board and piece colours. Works offline.">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <title>Mitchell D Chess</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,7 +124,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .lvlname{font-weight:700}
 .lvlabout{font-size:.82rem;color:var(--muted)}
 .tierpill{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.08rem .45rem;border-radius:99px;background:var(--well);color:var(--ink);margin-left:6px;vertical-align:1px}
-.ladder{display:grid;grid-template-columns:repeat(18,1fr);gap:2px;margin-top:4px}
+.ladder{display:grid;grid-template-columns:repeat(35,1fr);gap:2px;margin-top:4px}
 .ladder i{height:6px;border-radius:2px;background:var(--line)}
 .ladder i.on{background:var(--accent)}
 .status{display:flex;align-items:center;gap:10px;font-weight:700}
@@ -237,7 +237,7 @@ html[data-motion="off"] .pc{transition:none}
             <div class="seg" id="colorSeg"><button data-c="w" class="on">White</button><button data-c="b">Black</button><button data-c="r">Random</button></div>
           </div>
           <div class="field"><label for="lvl">Computer level</label>
-            <div class="lvlrow"><span class="lvlnum" id="lvlNum">5</span><input type="range" id="lvl" min="1" max="18" value="5"></div>
+            <div class="lvlrow"><span class="lvlnum" id="lvlNum">8</span><input type="range" id="lvl" min="1" max="35" value="8"></div>
             <div><span class="lvlname" id="lvlName"></span><span class="tierpill" id="lvlTier"></span></div>
             <div class="lvlabout" id="lvlAbout"></div>
             <div class="ladder" id="ladder" aria-hidden="true"></div>
@@ -623,9 +623,62 @@ var ENGINE = (function () {
   };
   C.pieceAt = function (name) { var p = this.b[sqParse(name)]; if (!p) return null; return { type: CHARS[p & 7], color: p & BLACK ? 'b' : 'w' }; };
 
+  // ---------- Static exchange evaluation ----------
+  var SEEB = new Int8Array(128);
+  var SEE_VAL = [0, 100, 320, 330, 500, 900, 10000];
+  function leastAttacker(bb, sq, side) {
+    var s, i, p, best = -1, bestV = 99;
+    if (side === WHITE) {
+      s = sq - 15; if (!(s & 0x88) && bb[s] === P) return s;
+      s = sq - 17; if (!(s & 0x88) && bb[s] === P) return s;
+    } else {
+      s = sq + 15; if (!(s & 0x88) && bb[s] === (P | BLACK)) return s;
+      s = sq + 17; if (!(s & 0x88) && bb[s] === (P | BLACK)) return s;
+    }
+    for (i = 0; i < 8; i++) { s = sq + N_D[i]; if (!(s & 0x88) && bb[s] === (N | side)) return s; }
+    for (i = 0; i < 4; i++) {
+      s = sq + B_D[i];
+      while (!(s & 0x88)) { p = bb[s]; if (p) { if ((p & BLACK) === side && ((p & 7) === B || (p & 7) === Q)) { var v = (p & 7) === B ? 3 : 5; if (v < bestV) { bestV = v; best = s; } } break; } s += B_D[i]; }
+      s = sq + R_D[i];
+      while (!(s & 0x88)) { p = bb[s]; if (p) { if ((p & BLACK) === side && ((p & 7) === R || (p & 7) === Q)) { var v2 = (p & 7) === R ? 4 : 5; if (v2 < bestV) { bestV = v2; best = s; } } break; } s += R_D[i]; }
+    }
+    if (best >= 0) return best;
+    for (i = 0; i < 8; i++) { s = sq + K_D[i]; if (!(s & 0x88) && bb[s] === (K | side)) return s; }
+    return -1;
+  }
+  // Material balance of the capture sequence on the target square, for the side making move m
+  C.see = function (m) {
+    var b = this.b, from = m & 127, to = (m >> 7) & 127, fl = (m >> 17) & 15, pr = (m >> 14) & 7;
+    SEEB.set(b);
+    var gain = [], d = 0, side = b[from] & BLACK;
+    var target = (fl & 2) ? P : (b[to] & 7);
+    gain[0] = target ? SEE_VAL[target] : 0;
+    var attacker = b[from] & 7;
+    if (pr) { gain[0] += SEE_VAL[pr] - SEE_VAL[P]; attacker = pr; }
+    SEEB[from] = 0;
+    if (fl & 2) SEEB[side ? to + 16 : to - 16] = 0;
+    side ^= BLACK;
+    while (true) {
+      var s = leastAttacker(SEEB, to, side);
+      if (s < 0) break;
+      d++;
+      gain[d] = SEE_VAL[attacker] - gain[d - 1];
+      attacker = SEEB[s] & 7;
+      if (attacker === K && leastAttacker(SEEB, to, side ^ BLACK) >= 0) { d--; break; }
+      SEEB[s] = 0; side ^= BLACK;
+    }
+    while (d > 0) { gain[d - 1] = -Math.max(-gain[d - 1], gain[d]); d--; }
+    return gain[0];
+  };
+
   // ---------- Evaluation ----------
+  var ZONE = new Int8Array(128);
+  var SAFETY = []; for (i = 0; i < 100; i++) SAFETY.push(Math.min(450, Math.round(i * i * 0.16)));
+  var ATK_W = [0, 0, 2, 2, 3, 5, 0];
+  var MOB_MG = [0, 0, 4, 4, 2, 1, 0], MOB_EG = [0, 0, 4, 5, 4, 2, 0];
+  var MOB_BASE = [0, 0, 4, 6, 6, 12, 0];
   function evaluate(pos, mode) {
-    var b = pos.b, s, p, ty, white, idx, mg = 0, eg = 0, phase = 0, mat = [0, 0];
+    var b = pos.b, s, p, ty, white, idx, mg = 0, eg = 0, phase = 0, mat = [0, 0], pawnCount = [0, 0];
     if (mode === 'mat') {
       for (s = 0; s < 128; s++) { if (s & 0x88) { s += 7; continue; } p = b[s]; if (p && (p & 7) !== K) mg += (p & BLACK ? -1 : 1) * VAL[p & 7]; }
       return pos.side ? -mg : mg;
@@ -634,7 +687,7 @@ var ENGINE = (function () {
     var pawnsW = new Int8Array(8), pawnsB = new Int8Array(8), bishops = [0, 0];
     var minRankW = new Int8Array(8).fill(8), maxRankB = new Int8Array(8).fill(-1);
     var maxRankW = new Int8Array(8).fill(-1), minRankB = new Int8Array(8).fill(8);
-    var rooks = [];
+    var pieces = [];
     for (s = 0; s < 128; s++) {
       if (s & 0x88) { s += 7; continue; }
       p = b[s]; if (!p) continue;
@@ -646,52 +699,105 @@ var ENGINE = (function () {
       if (ty === K) { mg += sign * KMG[idx]; eg += sign * KEG[idx]; continue; }
       mat[white ? 0 : 1] += VAL[ty];
       var v = VAL[ty] + PST[ty][idx];
-      mg += sign * v; eg += sign * (ty === P ? VAL[ty] + (white ? r : 7 - r) * 6 : v);
       if (ty === P) {
+        pawnCount[white ? 0 : 1]++;
+        mg += sign * v; eg += sign * (VAL[P] + 10 + (white ? r : 7 - r) * 7);
         if (white) { pawnsW[f]++; if (r < minRankW[f]) minRankW[f] = r; if (r > maxRankW[f]) maxRankW[f] = r; }
         else { pawnsB[f]++; if (r > maxRankB[f]) maxRankB[f] = r; if (r < minRankB[f]) minRankB[f] = r; }
-      } else if (ty === B) bishops[white ? 0 : 1]++;
-      else if (ty === R) rooks.push(s, white ? 1 : 0);
-      if (full && (ty === N || ty === B || ty === R || ty === Q)) {
-        // light mobility
-        var mob = 0, dirs = ty === N ? N_D : ty === B ? B_D : ty === R ? R_D : K_D, slide = ty !== N;
-        for (var di = 0; di < dirs.length; di++) {
-          var t = s + dirs[di];
-          while (!(t & 0x88)) { var q = b[t]; if (!q) mob++; else { if ((q & BLACK) !== (p & BLACK)) mob++; break; } if (!slide) break; t += dirs[di]; }
-        }
-        var mw = ty === N ? 4 : ty === B ? 4 : ty === R ? 2 : 1;
-        mg += sign * mob * mw; eg += sign * mob * mw;
+      } else {
+        mg += sign * v;
+        eg += sign * (ty === R ? VAL[R] + 10 : ty === Q ? VAL[Q] + 10 + PST[Q][idx] : v);
+        if (ty === B) bishops[white ? 0 : 1]++;
+        if (full) pieces.push(s);
       }
     }
-    if (bishops[0] >= 2) { mg += 30; eg += 45; }
-    if (bishops[1] >= 2) { mg -= 30; eg -= 45; }
+    if (bishops[0] >= 2) { mg += 30; eg += 50; }
+    if (bishops[1] >= 2) { mg -= 30; eg -= 50; }
     if (full) {
+      var kW = pos.kingSq[0], kB = pos.kingSq[1];
+      // pawn structure
       for (var fi = 0; fi < 8; fi++) {
         var lw = fi > 0 ? pawnsW[fi - 1] : 0, rw = fi < 7 ? pawnsW[fi + 1] : 0;
         var lb = fi > 0 ? pawnsB[fi - 1] : 0, rb = fi < 7 ? pawnsB[fi + 1] : 0;
-        if (pawnsW[fi] > 1) { mg -= 12 * (pawnsW[fi] - 1); eg -= 20 * (pawnsW[fi] - 1); }
-        if (pawnsB[fi] > 1) { mg += 12 * (pawnsB[fi] - 1); eg += 20 * (pawnsB[fi] - 1); }
-        if (pawnsW[fi] && !lw && !rw) { mg -= 14; eg -= 18; }
-        if (pawnsB[fi] && !lb && !rb) { mg += 14; eg += 18; }
-        // passed pawns
+        if (pawnsW[fi] > 1) { mg -= 11 * (pawnsW[fi] - 1); eg -= 22 * (pawnsW[fi] - 1); }
+        if (pawnsB[fi] > 1) { mg += 11 * (pawnsB[fi] - 1); eg += 22 * (pawnsB[fi] - 1); }
+        if (pawnsW[fi] && !lw && !rw) { mg -= 12; eg -= 16; }
+        if (pawnsB[fi] && !lb && !rb) { mg += 12; eg += 16; }
         if (pawnsW[fi]) {
           var rr = maxRankW[fi], passed = true;
           for (var ff = Math.max(0, fi - 1); ff <= Math.min(7, fi + 1); ff++) if (pawnsB[ff] && maxRankB[ff] > rr) { passed = false; break; }
-          if (passed) { mg += PASSED[rr]; eg += PASSED[rr] * 2; }
+          if (passed) {
+            var ps = (rr << 4) | fi, front = ps + 16, prom = 0x70 | fi;
+            var bonusMg = PASSED[rr], bonusEg = PASSED[rr] * 2;
+            var dOwn = Math.max(Math.abs((kW & 7) - fi), Math.abs((kW >> 4) - 7)), dOpp = Math.max(Math.abs((kB & 7) - fi), Math.abs((kB >> 4) - 7));
+            bonusEg += (dOpp * 5 - dOwn * 2) * (rr >= 3 ? rr - 2 : 1);
+            if (!(front & 0x88) && b[front]) { bonusMg >>= 1; bonusEg >>= 1; }
+            if (pawnsW[fi] && (b[ps - 15] === P || b[ps - 17] === P)) bonusEg += 10;
+            mg += bonusMg; eg += bonusEg;
+          }
         }
         if (pawnsB[fi]) {
           var rb2 = minRankB[fi], passedB = true;
           for (var fb = Math.max(0, fi - 1); fb <= Math.min(7, fi + 1); fb++) if (pawnsW[fb] && minRankW[fb] < rb2) { passedB = false; break; }
-          if (passedB) { mg -= PASSED[7 - rb2]; eg -= PASSED[7 - rb2] * 2; }
+          if (passedB) {
+            var psb = (rb2 << 4) | fi, frontB = psb - 16, rel = 7 - rb2;
+            var bMg = PASSED[rel], bEg = PASSED[rel] * 2;
+            var dOwnB = Math.max(Math.abs((kB & 7) - fi), kB >> 4), dOppB = Math.max(Math.abs((kW & 7) - fi), kW >> 4);
+            bEg += (dOppB * 5 - dOwnB * 2) * (rel >= 3 ? rel - 2 : 1);
+            if (!(frontB & 0x88) && b[frontB]) { bMg >>= 1; bEg >>= 1; }
+            if (!((psb + 15) & 0x88) && b[psb + 15] === (P | BLACK) || !((psb + 17) & 0x88) && b[psb + 17] === (P | BLACK)) bEg += 10;
+            mg -= bMg; eg -= bEg;
+          }
         }
       }
-      for (var ri = 0; ri < rooks.length; ri += 2) {
-        var rs = rooks[ri], wr = rooks[ri + 1], rf2 = rs & 7, sg = wr ? 1 : -1;
-        var own = wr ? pawnsW[rf2] : pawnsB[rf2], opp = wr ? pawnsB[rf2] : pawnsW[rf2];
-        if (!own && !opp) { mg += sg * 22; eg += sg * 10; } else if (!own) { mg += sg * 11; eg += sg * 6; }
-        if ((wr && (rs >> 4) === 6) || (!wr && (rs >> 4) === 1)) { mg += sg * 12; eg += sg * 18; }
+      // supported / phalanx pawns
+      for (s = 0; s < 128; s++) {
+        if (s & 0x88) { s += 7; continue; }
+        p = b[s];
+        if (p === P) { if ((!((s - 15) & 0x88) && b[s - 15] === P) || (!((s - 17) & 0x88) && b[s - 17] === P)) { mg += 7; eg += 5; } if (!((s + 1) & 0x88) && b[s + 1] === P) { mg += 5; eg += 3; } }
+        else if (p === (P | BLACK)) { if ((!((s + 15) & 0x88) && b[s + 15] === (P | BLACK)) || (!((s + 17) & 0x88) && b[s + 17] === (P | BLACK))) { mg -= 7; eg -= 5; } if (!((s + 1) & 0x88) && b[s + 1] === (P | BLACK)) { mg -= 5; eg -= 3; } }
       }
-      // king shelter (middlegame)
+      // king zones
+      ZONE.fill(0);
+      var kz = [kW, kB];
+      for (var zs = 0; zs < 2; zs++) {
+        var kq = kz[zs], bit = zs ? 2 : 1, fwd = zs ? -16 : 16;
+        ZONE[kq] |= bit;
+        for (var zi = 0; zi < 8; zi++) { var z = kq + K_D[zi]; if (!(z & 0x88)) { ZONE[z] |= bit; var z2 = z + fwd; if (!(z2 & 0x88)) ZONE[z2] |= bit; } }
+      }
+      var atkUnits = [0, 0], atkers = [0, 0];
+      // pieces: mobility, king attack, outposts, rook files
+      for (var pi = 0; pi < pieces.length; pi++) {
+        s = pieces[pi]; p = b[s]; ty = p & 7; var wh = !(p & BLACK), sg = wh ? 1 : -1, ci = wh ? 0 : 1, enemyBit = wh ? 2 : 1;
+        var mob = 0, hits = 0, dirs = ty === N ? N_D : ty === B ? B_D : ty === R ? R_D : K_D, slide = ty !== N;
+        for (var di = 0; di < dirs.length; di++) {
+          var t = s + dirs[di];
+          while (!(t & 0x88)) {
+            var q = b[t];
+            if (ZONE[t] & enemyBit) hits++;
+            if (!q) mob++;
+            else { if ((q & BLACK) !== (p & BLACK)) mob++; break; }
+            if (!slide) break;
+            t += dirs[di];
+          }
+        }
+        mg += sg * (mob - MOB_BASE[ty]) * MOB_MG[ty]; eg += sg * (mob - MOB_BASE[ty]) * MOB_EG[ty];
+        if (hits) { atkUnits[ci] += ATK_W[ty] * hits; atkers[ci]++; }
+        var r2 = s >> 4, f2 = s & 7, relR = wh ? r2 : 7 - r2;
+        if ((ty === N || ty === B) && relR >= 3 && relR <= 5) {
+          var sup = wh ? ((!((s - 15) & 0x88) && b[s - 15] === P) || (!((s - 17) & 0x88) && b[s - 17] === P)) : ((!((s + 15) & 0x88) && b[s + 15] === (P | BLACK)) || (!((s + 17) & 0x88) && b[s + 17] === (P | BLACK)));
+          var safe = true;
+          for (var af = f2 - 1; af <= f2 + 1; af += 2) { if (af < 0 || af > 7) continue; if (wh ? (pawnsB[af] && maxRankB[af] > r2) : (pawnsW[af] && minRankW[af] < r2)) safe = false; }
+          if (sup && safe) { mg += sg * (ty === N ? 28 : 14); eg += sg * (ty === N ? 16 : 8); }
+        }
+        if (ty === R) {
+          var own = wh ? pawnsW[f2] : pawnsB[f2], opp = wh ? pawnsB[f2] : pawnsW[f2];
+          if (!own && !opp) { mg += sg * 24; eg += sg * 10; } else if (!own) { mg += sg * 12; eg += sg * 6; }
+          if (relR === 6) { mg += sg * 14; eg += sg * 22; }
+        }
+        if (ty === Q && relR >= 1 && pos.full <= 8) { var homeN = wh ? (b[1] === N) + (b[6] === N) + (b[2] === B) + (b[5] === B) : (b[113] === (N | BLACK)) + (b[118] === (N | BLACK)) + (b[114] === (B | BLACK)) + (b[117] === (B | BLACK)); mg -= sg * homeN * 6; }
+      }
+      // king shelter and attack
       for (var side = 0; side < 2; side++) {
         var ks = pos.kingSq[side], kf = ks & 7, kr = ks >> 4, shelter = 0, sg2 = side ? -1 : 1;
         if ((side === 0 && kr <= 1) || (side === 1 && kr >= 6)) {
@@ -699,63 +805,82 @@ var ENGINE = (function () {
             var sf = kf + df; if (sf < 0 || sf > 7) continue;
             var s1 = (side === 0 ? (kr + 1) << 4 : (kr - 1) << 4) | sf, s2 = (side === 0 ? (kr + 2) << 4 : (kr - 2) << 4) | sf;
             var own2 = P | (side ? BLACK : 0);
-            if (!(s1 & 0x88) && b[s1] === own2) shelter += 12; else if (!(s2 & 0x88) && b[s2] === own2) shelter += 6; else shelter -= 10;
+            if (!(s1 & 0x88) && b[s1] === own2) shelter += 12; else if (!(s2 & 0x88) && b[s2] === own2) shelter += 6; else shelter -= 12;
+            if (!(side ? pawnsW[sf] : pawnsB[sf]) && !(side ? pawnsB[sf] : pawnsW[sf])) shelter -= 10;
           }
-        }
+        } else if (phase > 14) shelter -= 25;
         mg += sg2 * shelter;
+        var enemy = 1 - side;
+        if (atkers[enemy] >= 2) { var pen = SAFETY[Math.min(99, atkUnits[enemy])]; mg -= sg2 * pen; }
       }
     }
     if (phase > 24) phase = 24;
     var score = (((mg * phase) + (eg * (24 - phase))) / 24) | 0;
-    // Mop-up: help the stronger side drive a lone king to the edge
     var diff = mat[0] - mat[1];
+    // drawish: a minor piece up with no pawns cannot win
+    if (diff > 0 && pawnCount[0] === 0 && diff < 400) score = score >> 3;
+    else if (diff < 0 && pawnCount[1] === 0 && -diff < 400) score = score >> 3;
+    // mop-up: drive a lone king to the edge
     if (phase <= 8 && Math.abs(diff) >= 300) {
       var strong = diff > 0 ? 0 : 1, weak = 1 - strong;
       var wk = pos.kingSq[weak], sk = pos.kingSq[strong];
       var wf = wk & 7, wr2 = wk >> 4;
       var centerDist = Math.max(3 - wf, wf - 4) + Math.max(3 - wr2, wr2 - 4);
       var kd = Math.abs((wk & 7) - (sk & 7)) + Math.abs((wk >> 4) - (sk >> 4));
-      var mop = centerDist * 10 + (14 - kd) * 4;
+      var mop = centerDist * 12 + (14 - kd) * 5;
       score += strong === 0 ? mop : -mop;
     }
-    score += pos.side ? -10 : 10; // tempo
+    score += pos.side ? -12 : 12;
     return pos.side ? -score : score;
   }
 
   // ---------- Search ----------
-  var TT_BITS = 20, TT_SIZE = 1 << TT_BITS, TT_MASK = TT_SIZE - 1;
+  var TT_BITS = 21, TT_SIZE = 1 << TT_BITS, TT_MASK = TT_SIZE - 1;
   var ttLo = new Int32Array(TT_SIZE), ttHi = new Int32Array(TT_SIZE), ttMove = new Int32Array(TT_SIZE), ttScore = new Int32Array(TT_SIZE);
   var ttDepth = new Int8Array(TT_SIZE), ttFlag = new Int8Array(TT_SIZE);
   var STOP = { stop: true };
+  var LMR = [];
+  for (var dd = 0; dd < 64; dd++) { LMR.push(new Int8Array(64)); for (var mm = 0; mm < 64; mm++) LMR[dd][mm] = dd && mm ? Math.floor(0.7 + Math.log(dd) * Math.log(mm) / 2.3) : 0; }
+  var MAXPLY = 96;
 
   function Searcher(pos, opt) {
     this.pos = pos; this.opt = opt; this.nodes = 0;
     this.deadline = opt.time ? Date.now() + opt.time : Infinity;
-    this.killers = []; for (var i = 0; i < 128; i++) this.killers.push([0, 0]);
+    this.killers = []; for (var i = 0; i < MAXPLY + 2; i++) this.killers.push([0, 0]);
     this.hist = new Int32Array(16 * 128);
+    this.counter = new Int32Array(16 * 128);
+    this.evalStack = new Int32Array(MAXPLY + 2);
     this.mode = opt.eval || 'full';
     this.q = opt.q !== false;
     this.useNull = opt.nullMove !== false;
+    this.adv = !!opt.adv;
     this.rootSide = pos.side; this.contempt = opt.contempt || 0;
+    this.seldepth = 0;
   }
   var S = Searcher.prototype;
-  S.score = function (m, ttm, ply) {
-    if (m === ttm) return 1e7;
-    var b = this.pos.b, fl = (m >> 17) & 15, pr = (m >> 14) & 7;
-    if (fl & 1) { var victim = (fl & 2) ? P : (b[(m >> 7) & 127] & 7); return 1e6 + VAL[victim] * 10 - VAL[b[m & 127] & 7] / 10; }
-    if (pr) return 9e5 + VAL[pr];
-    var k = this.killers[ply];
-    if (k && k[0] === m) return 8e5; if (k && k[1] === m) return 7e5;
-    return this.hist[b[m & 127] * 128 + ((m >> 7) & 127)];
-  };
-  S.order = function (ms, ttm, ply) {
-    var sc = new Array(ms.length);
-    for (var i = 0; i < ms.length; i++) sc[i] = this.score(ms[i], ttm, ply);
-    // insertion sort descending
+  S.order = function (ms, ttm, ply, prevKey) {
+    var b = this.pos.b, sc = new Array(ms.length), k = this.killers[ply], cm = prevKey ? this.counter[prevKey] : 0;
+    for (var i = 0; i < ms.length; i++) {
+      var m = ms[i], fl = (m >> 17) & 15, pr = (m >> 14) & 7, v;
+      if (m === ttm) v = 1e8;
+      else if (fl & 1) {
+        var victim = (fl & 2) ? P : (b[(m >> 7) & 127] & 7), att = b[m & 127] & 7;
+        var mvv = VAL[victim] * 10 - VAL[att] / 10;
+        if (!this.adv || VAL[victim] >= VAL[att]) v = 5e7 + mvv;
+        else v = this.pos.see(m) >= 0 ? 5e7 + mvv : -5e7 + mvv;
+        if (pr) v += VAL[pr];
+      }
+      else if (pr) v = pr === Q ? 4.5e7 : -6e7;
+      else if (m === k[0]) v = 4e7;
+      else if (m === k[1]) v = 3.9e7;
+      else if (m === cm) v = 3.8e7;
+      else v = this.hist[b[m & 127] * 128 + ((m >> 7) & 127)];
+      sc[i] = v;
+    }
     for (i = 1; i < ms.length; i++) {
-      var m = ms[i], s = sc[i], j = i - 1;
-      while (j >= 0 && sc[j] < s) { ms[j + 1] = ms[j]; sc[j + 1] = sc[j]; j--; }
-      ms[j + 1] = m; sc[j + 1] = s;
+      var mv0 = ms[i], s0 = sc[i], j = i - 1;
+      while (j >= 0 && sc[j] < s0) { ms[j + 1] = ms[j]; sc[j + 1] = sc[j]; j--; }
+      ms[j + 1] = mv0; sc[j + 1] = s0;
     }
     return ms;
   };
@@ -767,16 +892,27 @@ var ENGINE = (function () {
     for (var i = L - 2; i >= 0 && i >= L - pos.half; i -= 2) if (pos.hLo[i] === lo && pos.hHi[i] === hi) return true;
     return false;
   };
+  S.drawScore = function () { return this.pos.side === this.rootSide ? -this.contempt : this.contempt; };
+  S.histUpdate = function (key, bonus) {
+    var h = this.hist[key];
+    this.hist[key] = h + bonus - ((h * Math.abs(bonus)) / 16384 | 0);
+  };
   S.qs = function (alpha, beta, ply, qd) {
     this.checkTime();
+    if (ply > this.seldepth) this.seldepth = ply;
     var pos = this.pos, stand = evaluate(pos, this.mode);
     if (stand >= beta) return stand;
     if (stand > alpha) alpha = stand;
-    if (qd > 10) return stand;
-    var ms = this.order(pos.gen(true), 0, ply), us = pos.side;
+    if (qd > 12 || ply >= MAXPLY) return stand;
+    var ms = this.order(pos.gen(true), 0, ply, 0), us = pos.side;
     for (var i = 0; i < ms.length; i++) {
-      var m = ms[i], fl = (m >> 17) & 15;
-      if (!(fl & 2) && !((m >> 14) & 7)) { var vic = VAL[pos.b[(m >> 7) & 127] & 7]; if (stand + vic + 200 < alpha) continue; }
+      var m = ms[i], fl = (m >> 17) & 15, pr = (m >> 14) & 7;
+      if (pr && pr !== Q) continue;
+      if (!(fl & 2) && !pr) {
+        var vic = VAL[pos.b[(m >> 7) & 127] & 7];
+        if (stand + vic + 200 < alpha) continue;
+        if (this.adv && VAL[pos.b[m & 127] & 7] > vic && pos.see(m) < 0) continue;
+      }
       pos.make(m);
       if (pos.attacked(pos.kingSq[us >> 3], us ^ BLACK)) { pos.unmake(); continue; }
       var sc = -this.qs(-beta, -alpha, ply + 1, qd + 1);
@@ -791,22 +927,22 @@ var ENGINE = (function () {
     for (var s = 0; s < 128; s++) { if (s & 0x88) { s += 7; continue; } var p = b[s]; if (p && (p & BLACK) === side && (p & 7) !== P && (p & 7) !== K) return true; }
     return false;
   };
-  S.negamax = function (depth, alpha, beta, ply, allowNull) {
+  S.negamax = function (depth, alpha, beta, ply, allowNull, prevKey) {
     this.checkTime();
     var pos = this.pos;
-    if (ply > 0 && this.isDraw()) return pos.side === this.rootSide ? -this.contempt : this.contempt;
+    if (ply > 0 && this.isDraw()) return this.drawScore();
     var us = pos.side, inCheck = pos.attacked(pos.kingSq[us >> 3], us ^ BLACK);
-    if (inCheck && ply < 60) depth++;
+    if (inCheck && ply < 2 * (this.rootDepth || 8) + 6) depth++;
     if (depth <= 0) return this.q ? this.qs(alpha, beta, ply, 0) : evaluate(pos, this.mode);
-    if (ply >= 100) return evaluate(pos, this.mode);
-    // mate distance pruning
+    if (ply >= MAXPLY) return evaluate(pos, this.mode);
+    if (ply > this.seldepth) this.seldepth = ply;
     var mAlpha = Math.max(alpha, -MATE + ply), mBeta = Math.min(beta, MATE - ply - 1);
     if (ply > 0 && mAlpha >= mBeta) return mAlpha;
 
-    var h = pos.lo & TT_MASK, ttm = 0, alpha0 = alpha;
+    var h = pos.lo & TT_MASK, ttm = 0, alpha0 = alpha, pv = beta - alpha > 1;
     if (ttLo[h] === pos.lo && ttHi[h] === pos.hi) {
       ttm = ttMove[h];
-      if (ply > 0 && ttDepth[h] >= depth) {
+      if (ply > 0 && ttDepth[h] >= depth && !pv) {
         var ts = ttScore[h];
         if (ts > MATE - 1000) ts -= ply; else if (ts < -MATE + 1000) ts += ply;
         var tf = ttFlag[h];
@@ -815,61 +951,103 @@ var ENGINE = (function () {
         if (tf === 2 && ts <= alpha) return ts;
       }
     }
-    var pv = beta - alpha > 1;
-    if (this.useNull && allowNull && !inCheck && !pv && depth >= 3 && ply > 0 && this.hasPieces(us)) {
-      var se = evaluate(pos, this.mode);
-      if (se >= beta) {
+    var staticEval = inCheck ? -INF : evaluate(pos, this.mode);
+    this.evalStack[ply] = staticEval;
+    var improving = !inCheck && ply >= 2 && staticEval > this.evalStack[ply - 2];
+
+    if (!pv && !inCheck && ply > 0) {
+      if (this.adv) {
+        // reverse futility
+        if (depth <= 7 && Math.abs(beta) < MATE - 1000 && staticEval - (85 * depth - (improving ? 45 : 0)) >= beta) return staticEval;
+        // razoring
+        if (depth <= 2 && staticEval + 260 * depth < alpha) { var rz = this.qs(alpha, beta, ply, 0); if (rz < alpha) return rz; }
+      }
+      if (this.useNull && allowNull && depth >= 3 && staticEval >= beta && this.hasPieces(us)) {
+        var R = 3 + (depth >= 7 ? 1 : 0) + (this.adv ? Math.min(2, ((staticEval - beta) / 220) | 0) : 0);
         pos.makeNull();
-        var ns = -this.negamax(depth - 3, -beta, -beta + 1, ply + 1, false);
+        var ns = -this.negamax(depth - 1 - R, -beta, -beta + 1, ply + 1, false, 0);
         pos.unmakeNull();
-        if (ns >= beta && ns < MATE - 1000) return beta;
+        if (ns >= beta) return ns >= MATE - 1000 ? beta : ns;
       }
     }
-    var ms = this.order(pos.gen(false), ttm, ply), legal = 0, best = -INF, bestM = 0;
+    // internal iterative deepening
+    if (this.adv && !ttm && pv && depth >= 6) {
+      this.negamax(depth - 3, alpha, beta, ply, true, prevKey);
+      if (ttLo[h] === pos.lo && ttHi[h] === pos.hi) ttm = ttMove[h];
+    }
+
+    var ms = this.order(pos.gen(false), ttm, ply, prevKey), legal = 0, best = -INF, bestM = 0, quietsTried = [], k = this.killers[ply];
+    var b = pos.b;
     for (var i = 0; i < ms.length; i++) {
-      var m = ms[i];
+      var m = ms[i], fl = (m >> 17) & 15, pr = (m >> 14) & 7, quiet = !(fl & 1) && !pr;
+      var to = (m >> 7) & 127, key = b[m & 127] * 128 + to;
+      if (this.adv && ply > 0 && !inCheck && legal > 0 && best > -MATE + 1000) {
+        if (quiet && m !== k[0] && m !== k[1]) {
+          if (depth <= 5 && quietsTried.length >= (improving ? 4 + depth * depth : 2 + (depth * depth >> 1))) continue;
+          if (depth <= 4 && staticEval + 110 + 95 * depth <= alpha) continue;
+          if (depth <= 3 && this.hist[key] < -3000 * depth) continue;
+        } else if ((fl & 1) && !pv && depth <= 5 && m !== ttm && pos.see(m) < -90 * depth) continue;
+      }
       pos.make(m);
       if (pos.attacked(pos.kingSq[us >> 3], us ^ BLACK)) { pos.unmake(); continue; }
       legal++;
-      var fl = (m >> 17) & 15, quiet = !(fl & 1) && !((m >> 14) & 7), sc;
-      if (legal === 1) sc = -this.negamax(depth - 1, -beta, -alpha, ply + 1, true);
+      var givesCheck = pos.attacked(pos.kingSq[(us ^ BLACK) >> 3], us);
+      var childKey = b[to] * 128 + to, sc;
+      if (legal === 1) sc = -this.negamax(depth - 1, -beta, -alpha, ply + 1, true, childKey);
       else {
         var red = 0;
-        if (quiet && !inCheck && depth >= 3 && legal > 3) red = legal > 8 && depth >= 5 ? 2 : 1;
-        sc = -this.negamax(depth - 1 - red, -alpha - 1, -alpha, ply + 1, true);
-        if (sc > alpha && (red || sc < beta)) sc = -this.negamax(depth - 1, -beta, -alpha, ply + 1, true);
+        if (depth >= 3 && quiet && !inCheck && !givesCheck && legal > (pv ? 3 : 2)) {
+          if (this.adv) {
+            red = LMR[Math.min(depth, 63)][Math.min(legal, 63)];
+            if (pv) red--;
+            if (m === k[0] || m === k[1]) red--;
+            if (!improving) red++;
+            if (this.hist[key] > 4000) red--;
+            if (red > depth - 2) red = depth - 2;
+            if (red < 0) red = 0;
+          } else red = legal > 8 && depth >= 5 ? 2 : 1;
+        }
+        sc = -this.negamax(depth - 1 - red, -alpha - 1, -alpha, ply + 1, true, childKey);
+        if (sc > alpha && red) sc = -this.negamax(depth - 1, -alpha - 1, -alpha, ply + 1, true, childKey);
+        if (sc > alpha && sc < beta) sc = -this.negamax(depth - 1, -beta, -alpha, ply + 1, true, childKey);
       }
       pos.unmake();
       if (sc > best) {
         best = sc; bestM = m;
-        if (ply === 0) this.rootBest = m;
         if (sc > alpha) {
           alpha = sc;
+          if (ply === 0) { this.rootBest = m; this.rootScore = sc; }
           if (alpha >= beta) {
             if (quiet) {
-              var k = this.killers[ply]; if (k[0] !== m) { k[1] = k[0]; k[0] = m; }
-              this.hist[pos.b[m & 127] * 128 + ((m >> 7) & 127)] += depth * depth;
+              if (k[0] !== m) { k[1] = k[0]; k[0] = m; }
+              var bonus = Math.min(depth * depth * 8, 1600);
+              this.histUpdate(key, bonus);
+              for (var qi = 0; qi < quietsTried.length; qi++) this.histUpdate(quietsTried[qi], -bonus);
+              if (prevKey) this.counter[prevKey] = m;
             }
             break;
           }
         }
       }
+      if (quiet) quietsTried.push(key);
     }
     if (!legal) return inCheck ? -MATE + ply : 0;
     var store = best;
     if (store > MATE - 1000) store += ply; else if (store < -MATE + 1000) store -= ply;
-    ttLo[h] = pos.lo; ttHi[h] = pos.hi; ttMove[h] = bestM; ttScore[h] = store; ttDepth[h] = depth;
-    ttFlag[h] = best >= beta ? 1 : best <= alpha0 ? 2 : 0;
+    if (ttLo[h] !== pos.lo || ttHi[h] !== pos.hi || depth >= ttDepth[h] - 2 || ttFlag[h] !== 0) {
+      ttLo[h] = pos.lo; ttHi[h] = pos.hi; ttMove[h] = bestM; ttScore[h] = store; ttDepth[h] = depth;
+      ttFlag[h] = best >= beta ? 1 : best <= alpha0 ? 2 : 0;
+    }
     return best;
   };
 
-  // Score every root move (used by the weaker levels, which then pick with noise)
+  // Score every root move (weaker levels pick among these with noise)
   function rootScores(pos, opt) {
     var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: 0 });
     var ms = pos.legalMoves(), out = [];
     for (var i = 0; i < ms.length; i++) {
       pos.make(ms[i]);
-      var sc = opt.depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(opt.depth - 1, -INF, INF, 1, false);
+      var sc = opt.depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(opt.depth - 1, -INF, INF, 1, false, 0);
       if (pos.inCheck() && !pos.legalMoves().length) sc = MATE - 1;
       pos.unmake();
       out.push({ m: ms[i], s: sc });
@@ -879,28 +1057,69 @@ var ENGINE = (function () {
   }
   function gauss() { var u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
 
-  // ---------- Opening book (UCI lines) ----------
+  // ---------- Opening book (UCI lines from main theory) ----------
   var BOOK = [
-    'e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 g8f6 e1g1 f8e7',
-    'e2e4 e7e5 g1f3 b8c6 f1c4 f8c5 c2c3 g8f6 d2d3 d7d6',
-    'e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 g8f6 b1c3 f8b4',
-    'e2e4 e7e5 g1f3 g8f6 f3e5 d7d6 e5f3 f6e4 d2d4 d6d5',
-    'e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6 b1c3 a7a6',
-    'e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 g8f6 b1c3 e7e5',
-    'e2e4 c7c5 b1c3 b8c6 g2g3 g7g6 f1g2 f8g7 d2d3 d7d6',
-    'e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 c1g5 f8e7 e4e5 f6d7',
-    'e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 c8f5 e4g3 f5g6',
-    'e2e4 d7d5 e4d5 d8d5 b1c3 d5a5 d2d4 g8f6 g1f3 c8f5',
-    'd2d4 d7d5 c2c4 e7e6 b1c3 g8f6 c1g5 f8e7 e2e3 e8g8',
-    'd2d4 d7d5 c2c4 c7c6 g1f3 g8f6 b1c3 d5c4 a2a4 c8f5',
-    'd2d4 g8f6 c2c4 e7e6 b1c3 f8b4 e2e3 e8g8 f1d3 d7d5',
-    'd2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6 g1f3 e8g8',
-    'd2d4 g8f6 c2c4 e7e6 g1f3 b7b6 g2g3 c8b7 f1g2 f8e7',
-    'd2d4 d7d5 g1f3 g8f6 c1f4 e7e6 e2e3 c7c5 c2c3 b8c6',
-    'c2c4 e7e5 b1c3 g8f6 g1f3 b8c6 g2g3 d7d5 c4d5 f6d5',
-    'c2c4 g8f6 b1c3 e7e6 e2e4 d7d5 e4e5 d5d4 e5f6 d4c3',
-    'g1f3 d7d5 g2g3 g8f6 f1g2 c7c6 e1g1 c8g4 d2d3 b8d7',
-    'g1f3 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6 d2d4 e8g8'
+    // Ruy Lopez
+    'e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5a4 g8f6 e1g1 f8e7 f1e1 b7b5 a4b3 d7d6 c2c3 e8g8 h2h3',
+    'e2e4 e7e5 g1f3 b8c6 f1b5 g8f6 e1g1 f6e4 d2d4 e4d6 b5c6 d7c6 d4e5 d6f5 d1d8 e8d8',
+    'e2e4 e7e5 g1f3 b8c6 f1b5 a7a6 b5c6 d7c6 e1g1 f7f6 d2d4 e5d4 f3d4 c6c5',
+    // Italian
+    'e2e4 e7e5 g1f3 b8c6 f1c4 f8c5 c2c3 g8f6 d2d3 d7d6 e1g1 e8g8 f1e1 a7a6 a2a4',
+    'e2e4 e7e5 g1f3 b8c6 f1c4 g8f6 d2d3 f8e7 e1g1 e8g8 f1e1 d7d6 c2c3',
+    // Scotch, Four Knights, Petroff
+    'e2e4 e7e5 g1f3 b8c6 d2d4 e5d4 f3d4 g8f6 d4c6 b7c6 e4e5 d8e7 d1e2 f6d5 c2c4',
+    'e2e4 e7e5 g1f3 b8c6 b1c3 g8f6 f1b5 f8b4 e1g1 e8g8 d2d3 d7d6',
+    'e2e4 e7e5 g1f3 g8f6 f3e5 d7d6 e5f3 f6e4 d2d4 d6d5 f1d3 b8c6 e1g1 f8e7',
+    // Sicilian
+    'e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6 b1c3 a7a6 c1e3 e7e5 d4b3 c8e6 f2f3',
+    'e2e4 c7c5 g1f3 d7d6 d2d4 c5d4 f3d4 g8f6 b1c3 g7g6 c1e3 f8g7 f2f3 e8g8 d1d2 b8c6',
+    'e2e4 c7c5 g1f3 b8c6 d2d4 c5d4 f3d4 g8f6 b1c3 e7e5 d4b5 d7d6 c1g5 a7a6 b5a3 b7b5',
+    'e2e4 c7c5 g1f3 e7e6 d2d4 c5d4 f3d4 b8c6 b1c3 d8c7 c1e3 a7a6 f1d3 g8f6',
+    'e2e4 c7c5 g1f3 b8c6 f1b5 g7g6 e1g1 f8g7 f1e1 e7e5 b5c6 d7c6 d2d3',
+    'e2e4 c7c5 c2c3 g8f6 e4e5 f6d5 d2d4 c5d4 g1f3 b8c6 c3d4 d7d6',
+    'e2e4 c7c5 b1c3 b8c6 g2g3 g7g6 f1g2 f8g7 d2d3 d7d6 c1e3 e7e5',
+    // French, Caro-Kann, Scandinavian, Pirc, Alekhine
+    'e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 c1g5 f8e7 e4e5 f6d7 g5e7 d8e7 f2f4 e8g8 g1f3 c7c5',
+    'e2e4 e7e6 d2d4 d7d5 b1c3 f8b4 e4e5 c7c5 a2a3 b4c3 b2c3 g8e7 d1g4',
+    'e2e4 e7e6 d2d4 d7d5 b1d2 g8f6 e4e5 f6d7 f1d3 c7c5 c2c3 b8c6 g1e2',
+    'e2e4 e7e6 d2d4 d7d5 e4e5 c7c5 c2c3 b8c6 g1f3 d8b6 a2a3 c5c4',
+    'e2e4 c7c6 d2d4 d7d5 b1c3 d5e4 c3e4 c8f5 e4g3 f5g6 h2h4 h7h6 g1f3 b8d7 h4h5 g6h7',
+    'e2e4 c7c6 d2d4 d7d5 e4e5 c8f5 g1f3 e7e6 f1e2 c6c5 c1e3',
+    'e2e4 c7c6 d2d4 d7d5 e4d5 c6d5 c2c4 g8f6 b1c3 e7e6 g1f3 f8b4',
+    'e2e4 d7d5 e4d5 d8d5 b1c3 d5a5 d2d4 g8f6 g1f3 c8f5 f1c4 e7e6 c1d2 c7c6',
+    'e2e4 d7d6 d2d4 g8f6 b1c3 g7g6 g1f3 f8g7 f1e2 e8g8 e1g1 c7c6',
+    'e2e4 g8f6 e4e5 f6d5 d2d4 d7d6 g1f3 c8g4 f1e2 e7e6 e1g1 f8e7',
+    // Queen's Gambit
+    'd2d4 d7d5 c2c4 e7e6 b1c3 g8f6 c1g5 f8e7 e2e3 e8g8 g1f3 h7h6 g5h4 b7b6',
+    'd2d4 d7d5 c2c4 e7e6 b1c3 g8f6 c4d5 e6d5 c1g5 c7c6 e2e3 f8e7 f1d3',
+    'd2d4 d7d5 c2c4 c7c6 g1f3 g8f6 b1c3 d5c4 a2a4 c8f5 e2e3 e7e6 f1c4 f8b4 e1g1',
+    'd2d4 d7d5 c2c4 c7c6 g1f3 g8f6 b1c3 e7e6 e2e3 b8d7 f1d3 d5c4 d3c4 b7b5',
+    'd2d4 d7d5 c2c4 d5c4 g1f3 g8f6 e2e3 e7e6 f1c4 c7c5 e1g1 a7a6',
+    'd2d4 d7d5 c2c4 b8c6 g1f3 c8g4 c4d5 g4f3 g2f3 d8d5 e2e3',
+    // Indian defences
+    'd2d4 g8f6 c2c4 e7e6 b1c3 f8b4 e2e3 e8g8 f1d3 d7d5 g1f3 c7c5 e1g1',
+    'd2d4 g8f6 c2c4 e7e6 b1c3 f8b4 d1c2 e8g8 a2a3 b4c3 c2c3 b7b6 c1g5',
+    'd2d4 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6 g1f3 e8g8 f1e2 e7e5 e1g1 b8c6 d4d5 c6e7',
+    'd2d4 g8f6 c2c4 g7g6 b1c3 d7d5 c4d5 f6d5 e2e4 d5c3 b2c3 f8g7 g1f3 c7c5',
+    'd2d4 g8f6 c2c4 e7e6 g1f3 b7b6 g2g3 c8a6 b2b3 f8b4 c1d2 b4e7',
+    'd2d4 g8f6 c2c4 e7e6 g1f3 d7d5 b1c3 f8e7 c1f4 e8g8 e2e3 c7c5',
+    'd2d4 g8f6 c2c4 c7c5 d4d5 e7e6 b1c3 e6d5 c4d5 d7d6 e2e4 g7g6 g1f3 f8g7',
+    'd2d4 g8f6 c2c4 c7c5 d4d5 b7b5 c4b5 a7a6 b5a6 c8a6 b1c3 d7d6',
+    'd2d4 f7f5 g2g3 g8f6 f1g2 g7g6 g1f3 f8g7 e1g1 e8g8 c2c4 d7d6',
+    // London, Colle, Catalan
+    'd2d4 d7d5 g1f3 g8f6 c1f4 e7e6 e2e3 c7c5 c2c3 b8c6 b1d2 f8d6 f4g3',
+    'd2d4 g8f6 c1f4 e7e6 e2e3 c7c5 c2c3 b8c6 b1d2 d7d5 g1f3 f8d6',
+    'd2d4 d7d5 g1f3 g8f6 e2e3 e7e6 f1d3 c7c5 c2c3 b8c6 b1d2 f8d6 e1g1 e8g8',
+    'd2d4 g8f6 c2c4 e7e6 g2g3 d7d5 f1g2 f8e7 g1f3 e8g8 e1g1 d5c4 d1c2 a7a6',
+    // English, Reti, others
+    'c2c4 e7e5 b1c3 g8f6 g1f3 b8c6 g2g3 d7d5 c4d5 f6d5 f1g2 d5b6 e1g1 f8e7',
+    'c2c4 g8f6 b1c3 e7e6 e2e4 d7d5 e4e5 d5d4 e5f6 d4c3 b2c3 d8f6',
+    'c2c4 c7c5 g1f3 g8f6 b1c3 b8c6 g2g3 g7g6 f1g2 f8g7 e1g1 e8g8',
+    'c2c4 e7e6 b1c3 d7d5 d2d4 g8f6 c4d5 e6d5 c1g5 f8e7',
+    'g1f3 d7d5 g2g3 g8f6 f1g2 c7c6 e1g1 c8g4 d2d3 b8d7 b1d2 e7e5',
+    'g1f3 g8f6 c2c4 g7g6 b1c3 f8g7 e2e4 d7d6 d2d4 e8g8 f1e2 e7e5',
+    'g1f3 d7d5 c2c4 e7e6 g2g3 g8f6 f1g2 f8e7 e1g1 e8g8 b2b3 c7c5',
+    'b2b3 e7e5 c1b2 b8c6 e2e3 g8f6 f1b5 d7d6'
   ].map(function (l) { return l.split(' '); });
   function bookMove(played) {
     var cands = [];
@@ -913,29 +1132,47 @@ var ENGINE = (function () {
   }
 
   // ---------- Levels ----------
-  // d depth, t time budget ms, ev evaluation, q quiescence, noise (centipawn sd), bl chance to pick a weaker move, book
+  // d max depth, t time budget ms, ev evaluation, q quiescence, noise (centipawn sd), bl chance of a deliberate weaker move,
+  // adv advanced pruning (SEE, futility, late-move reductions), book opening book
   var LEVELS = [
-    { name: 'Pawn Pusher', tier: 'Beginner', random: true, about: 'Plays random legal moves and loves to grab pieces.' },
-    { name: 'First Steps', tier: 'Beginner', d: 1, ev: 'mat', q: false, noise: 220, bl: 0.35, about: 'Counts material one move ahead and often misses threats.' },
-    { name: 'Curious Cat', tier: 'Beginner', d: 1, ev: 'mat', q: true, noise: 140, bl: 0.25, about: 'Sees simple captures but still drops pieces.' },
-    { name: 'Weekend Player', tier: 'Novice', d: 2, ev: 'pst', q: false, noise: 110, bl: 0.18, about: 'Thinks two moves ahead and likes central squares.' },
-    { name: 'Park Bench', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 80, bl: 0.12, about: 'Develops pieces and spots one-move tactics.' },
-    { name: 'Coffeehouse', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 55, bl: 0.08, about: 'Rarely hangs a piece, still loose in the endgame.' },
-    { name: 'Club Rookie', tier: 'Club', d: 3, ev: 'pst', q: true, noise: 45, bl: 0.06, book: true, about: 'Knows a few openings and looks three moves deep.' },
-    { name: 'Club Regular', tier: 'Club', d: 3, ev: 'full', q: true, noise: 32, bl: 0.04, book: true, about: 'Understands pawn structure and open files.' },
-    { name: 'Club Captain', tier: 'Club', d: 3, ev: 'full', q: true, noise: 20, bl: 0.02, book: true, about: 'Solid and patient, punishes loose pieces.' },
-    { name: 'Tactician', tier: 'Intermediate', d: 4, ev: 'full', q: true, noise: 14, bl: 0.015, book: true, about: 'Finds forks, pins and short combinations.' },
-    { name: 'Strategist', tier: 'Intermediate', d: 4, ev: 'full', q: true, noise: 8, bl: 0.008, book: true, about: 'Plans around weak squares and passed pawns.' },
-    { name: 'Tournament Player', tier: 'Intermediate', d: 5, t: 700, ev: 'full', q: true, noise: 0, book: true, about: 'Full search with no deliberate mistakes.' },
-    { name: 'Sharp Expert', tier: 'Expert', d: 6, t: 1000, ev: 'full', q: true, book: true, about: 'Calculates deeper lines and attacks the king.' },
-    { name: 'Positional Expert', tier: 'Expert', d: 7, t: 1500, ev: 'full', q: true, book: true, about: 'Squeezes small advantages over many moves.' },
-    { name: 'Endgame Expert', tier: 'Expert', d: 8, t: 2000, ev: 'full', q: true, book: true, about: 'Converts won endgames with technique.' },
-    { name: 'Master', tier: 'Master', d: 10, t: 2800, ev: 'full', q: true, book: true, about: 'Deep, accurate search. Mistakes get punished.' },
-    { name: 'Senior Master', tier: 'Master', d: 14, t: 4000, ev: 'full', q: true, book: true, about: 'Thinks longer and sees further.' },
-    { name: 'Grandmaster', tier: 'Master', d: 64, t: 6000, ev: 'full', q: true, book: true, about: 'Strongest setting. Uses its full thinking time.' }
+    { name: 'Pawn Pusher', tier: 'Beginner', random: true, about: 'Plays random legal moves and loves grabbing pieces.' },
+    { name: 'First Steps', tier: 'Beginner', d: 1, ev: 'mat', q: false, noise: 260, bl: 0.4, about: 'Counts pieces one move ahead and misses most threats.' },
+    { name: 'Curious Cat', tier: 'Beginner', d: 1, ev: 'mat', q: true, noise: 200, bl: 0.3, about: 'Sees simple captures but still drops pieces.' },
+    { name: 'Kitchen Table', tier: 'Beginner', d: 1, ev: 'pst', q: true, noise: 160, bl: 0.25, about: 'Starts to like the centre. Often leaves pieces loose.' },
+    { name: 'Rookie', tier: 'Beginner', d: 2, ev: 'mat', q: true, noise: 140, bl: 0.2, about: 'Looks two moves ahead, but only at material.' },
+    { name: 'Weekend Player', tier: 'Novice', d: 2, ev: 'pst', q: false, noise: 120, bl: 0.16, about: 'Develops pieces and sometimes sees your threats.' },
+    { name: 'Park Bench', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 95, bl: 0.13, about: 'Spots one-move tactics and protects its pieces.' },
+    { name: 'Coffeehouse', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 75, bl: 0.1, about: 'Rarely hangs a piece, still loose in the endgame.' },
+    { name: 'Library Club', tier: 'Novice', d: 3, ev: 'pst', q: true, noise: 65, bl: 0.08, about: 'Thinks three moves deep, plays by simple principles.' },
+    { name: 'School Champion', tier: 'Novice', d: 3, ev: 'pst', q: true, noise: 55, bl: 0.06, book: true, about: 'Knows a few openings and punishes obvious blunders.' },
+    { name: 'Club Rookie', tier: 'Club', d: 3, ev: 'full', q: true, noise: 45, bl: 0.05, book: true, about: 'Understands pawn structure, open files and king safety.' },
+    { name: 'Club Regular', tier: 'Club', d: 3, ev: 'full', q: true, noise: 35, bl: 0.04, book: true, about: 'Solid and patient. Likes outposts for its knights.' },
+    { name: 'Club Captain', tier: 'Club', d: 3, ev: 'full', q: true, noise: 25, bl: 0.03, book: true, about: 'Punishes loose pieces and weak pawns.' },
+    { name: 'County Player', tier: 'Club', d: 4, ev: 'full', q: true, noise: 20, bl: 0.02, book: true, about: 'Four moves deep. Finds forks and pins.' },
+    { name: 'League Anchor', tier: 'Club', d: 4, ev: 'full', q: true, noise: 14, bl: 0.015, book: true, about: 'Rarely errs in simple positions.' },
+    { name: 'Tactician', tier: 'Intermediate', d: 4, ev: 'full', q: true, noise: 9, bl: 0.01, book: true, about: 'Sharp at short combinations, a small mistake now and then.' },
+    { name: 'Strategist', tier: 'Intermediate', d: 5, t: 400, ev: 'full', q: true, book: true, about: 'Full search with no deliberate mistakes.' },
+    { name: 'Tournament Player', tier: 'Intermediate', d: 6, t: 600, ev: 'full', q: true, book: true, about: 'Plans around weak squares and passed pawns.' },
+    { name: 'Open Section', tier: 'Intermediate', d: 6, t: 800, ev: 'full', q: true, adv: true, book: true, about: 'Prunes bad lines so it can look further.' },
+    { name: 'Regional Contender', tier: 'Intermediate', d: 7, t: 1000, ev: 'full', q: true, adv: true, book: true, about: 'Steady, accurate and hard to trick.' },
+    { name: 'Sharp Expert', tier: 'Expert', d: 8, t: 1200, ev: 'full', q: true, adv: true, book: true, about: 'Calculates attacks on your king.' },
+    { name: 'Positional Expert', tier: 'Expert', d: 9, t: 1500, ev: 'full', q: true, adv: true, book: true, about: 'Squeezes small advantages over many moves.' },
+    { name: 'Endgame Expert', tier: 'Expert', d: 10, t: 1800, ev: 'full', q: true, adv: true, book: true, about: 'Converts won endings with technique.' },
+    { name: 'Attacking Expert', tier: 'Expert', d: 11, t: 2200, ev: 'full', q: true, adv: true, book: true, about: 'Goes for the king when the position allows.' },
+    { name: 'Expert Analyst', tier: 'Expert', d: 12, t: 2600, ev: 'full', q: true, adv: true, book: true, about: 'Deep, careful calculation.' },
+    { name: 'Candidate Master', tier: 'Master', d: 14, t: 3000, ev: 'full', q: true, adv: true, book: true, about: 'Sees combinations most club players miss.' },
+    { name: 'Master', tier: 'Master', d: 16, t: 3600, ev: 'full', q: true, adv: true, book: true, about: 'Mistakes get punished quickly.' },
+    { name: 'Senior Master', tier: 'Master', d: 18, t: 4200, ev: 'full', q: true, adv: true, book: true, about: 'Thinks longer and sees further.' },
+    { name: 'Theory Master', tier: 'Master', d: 20, t: 5000, ev: 'full', q: true, adv: true, book: true, about: 'Deep opening book and long calculation.' },
+    { name: 'Deep Master', tier: 'Master', d: 24, t: 6000, ev: 'full', q: true, adv: true, book: true, about: 'Very little gets past it.' },
+    { name: 'Grandmaster', tier: 'Grandmaster', d: 64, t: 7500, ev: 'full', q: true, adv: true, book: true, about: 'Thinks up to 7.5 seconds a move.' },
+    { name: 'Super Grandmaster', tier: 'Grandmaster', d: 64, t: 9000, ev: 'full', q: true, adv: true, book: true, about: 'Thinks up to 9 seconds a move.' },
+    { name: 'Elite Grandmaster', tier: 'Grandmaster', d: 64, t: 11000, ev: 'full', q: true, adv: true, book: true, about: 'Thinks up to 11 seconds a move.' },
+    { name: 'World Contender', tier: 'Grandmaster', d: 64, t: 13000, ev: 'full', q: true, adv: true, book: true, about: 'Thinks up to 13 seconds a move.' },
+    { name: 'Final Boss', tier: 'Grandmaster', d: 64, t: 16000, ev: 'full', q: true, adv: true, book: true, about: 'Everything it has: up to 16 seconds a move.' }
   ];
 
-  // Choose a move. moves: UCI list from the start position, startFen optional.
+  // Choose a move. moves: UCI list from the start position (startFen optional).
   function think(startFen, moves, levelIdx, extra) {
     var L = LEVELS[levelIdx], pos = new Chess(startFen);
     for (var i = 0; i < moves.length; i++) { var m = pos.findUci(moves[i]); if (!m) break; pos.make(m); }
@@ -948,14 +1185,13 @@ var ENGINE = (function () {
       res.move = pos.uci(pick[Math.floor(Math.random() * pick.length)]);
       return res;
     }
-    if (L.book && !startFen && moves.length < 10) {
+    if (L.book && !startFen && !(extra && extra.noBook)) {
       var bm = bookMove(moves);
       if (bm && pos.findUci(bm)) { res.move = bm; res.book = true; return res; }
     }
     if (legal.length === 1) { res.move = pos.uci(legal[0]); return res; }
     if (L.noise || L.bl) {
       var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q });
-      // a mate in one is always played
       if (sc[0].s >= MATE - 2 && levelIdx >= 2) { res.move = pos.uci(sc[0].m); res.score = sc[0].s; return res; }
       var noisy = sc.map(function (x) { return { m: x.m, s: x.s + gauss() * (L.noise || 0) }; });
       noisy.sort(function (a, b) { return b.s - a.s; });
@@ -967,21 +1203,33 @@ var ENGINE = (function () {
       return res;
     }
     var time = (extra && extra.time) || L.t || 1000;
-    var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20 });
-    var best = legal[0], bestScore = 0, depthDone = 0, t0 = Date.now();
+    var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
+    var best = legal[0], bestScore = 0, depthDone = 0, t0 = Date.now(), prev = 0;
     for (var d = 1; d <= L.d; d++) {
-      s.rootBest = 0;
+      s.rootBest = 0; s.rootDepth = d;
       try {
-        var v = s.negamax(d, -INF, INF, 0, false);
-        if (s.rootBest) { best = s.rootBest; bestScore = v; depthDone = d; }
+        var v;
+        if (L.adv && d >= 5 && Math.abs(prev) < MATE - 1000) {
+          var w = 30, a = prev - w, bta = prev + w;
+          while (true) {
+            s.rootBest = 0;
+            v = s.negamax(d, a, bta, 0, false, 0);
+            if (v <= a) { a = Math.max(-INF, a - w * 3); w *= 3; }
+            else if (v >= bta) { if (s.rootBest) { best = s.rootBest; } bta = Math.min(INF, bta + w * 3); w *= 3; }
+            else break;
+            if (w > 900) { a = -INF; bta = INF; }
+          }
+        } else v = s.negamax(d, -INF, INF, 0, false, 0);
+        if (s.rootBest) { best = s.rootBest; bestScore = v; depthDone = d; prev = v; }
       } catch (e) {
         if (e !== STOP) throw e;
+        if (s.rootBest && d > 1) { best = s.rootBest; bestScore = s.rootScore; }
         break;
       }
-      if (Math.abs(bestScore) > MATE - 1000) break;
-      if (Date.now() - t0 > time * 0.55) break;
+      if (Math.abs(bestScore) > MATE - 1000 && d >= 4) break;
+      if (Date.now() - t0 > time * 0.5) break;
     }
-    res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes;
+    res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes; res.seldepth = s.seldepth;
     return res;
   }
 
@@ -1093,16 +1341,16 @@ var LESSONS = [
     done: 'Tip: in your own games, a pawn move like h3 gives your king air.' },
 
   // ---------------- Expert: endgames and strategy ----------------
-  { tier: 'Expert', title: 'Mate with queen and king', type: 'play', fen: '8/8/8/4k3/8/8/8/3QK3 w - - 0 1', goal: 'mate', level: 17,
-    text: 'Use the queen to shrink the king\'s box, a knight\'s move away, and bring your own king to help. Be careful not to stalemate.', task: 'Checkmate the lone king. The computer defends at full strength.', hint: 'Keep the queen a knight\'s move from the king, then march your king up.',
+  { tier: 'Expert', title: 'Mate with queen and king', type: 'play', fen: '8/8/8/4k3/8/8/8/3QK3 w - - 0 1', goal: 'mate', level: 24,
+    text: 'Use the queen to shrink the king\'s box, a knight\'s move away, and bring your own king to help. Be careful not to stalemate.', task: 'Checkmate the lone king. The computer defends at expert strength.', hint: 'Keep the queen a knight\'s move from the king, then march your king up.',
     done: 'A fundamental technique. Every player must know it.' },
-  { tier: 'Expert', title: 'The rook roller', type: 'play', fen: '8/8/3k4/8/8/8/8/R3K2R w - - 0 1', goal: 'mate', level: 17,
+  { tier: 'Expert', title: 'The rook roller', type: 'play', fen: '8/8/3k4/8/8/8/8/R3K2R w - - 0 1', goal: 'mate', level: 24,
     text: 'Two rooks mate on their own. One rook cuts off a rank and the other gives check, then they leapfrog toward the edge.', task: 'Checkmate with your two rooks.', hint: 'Keep your rooks far from the king so it cannot attack them.',
     done: 'The ladder mate. It works with queen and rook too.' },
-  { tier: 'Expert', title: 'Mate with rook and king', type: 'play', fen: '8/8/8/4k3/8/8/8/R3K3 w - - 0 1', goal: 'mate', level: 17,
+  { tier: 'Expert', title: 'Mate with rook and king', type: 'play', fen: '8/8/8/4k3/8/8/8/R3K3 w - - 0 1', goal: 'mate', level: 24,
     text: 'With one rook you need your king. Use the rook to fence in the enemy king, then bring your king face to face with it and check along the edge.', task: 'Checkmate with king and rook.', hint: 'Cut the king off, then waste a rook move when you need the opposition.',
     done: 'Patience and geometry. That is endgame technique.' },
-  { tier: 'Expert', title: 'King and pawn: the opposition', type: 'play', fen: '4k3/8/8/4K3/4P3/8/8/8 w - - 0 1', goal: 'promote', level: 17,
+  { tier: 'Expert', title: 'King and pawn: the opposition', type: 'play', fen: '4k3/8/8/4K3/4P3/8/8/8 w - - 0 1', goal: 'promote', level: 24,
     text: 'When kings face each other with one square between them, the side <b>not</b> to move has the <b>opposition</b>. With it, your king can escort the pawn.', task: 'Promote the pawn.', hint: 'Lead with your king, not the pawn. Ke6 takes the opposition.',
     done: 'King in front of the pawn, opposition won: the pawn walks home.' },
   { tier: 'Expert', title: 'Rooks belong on open files', type: 'move', fen: 'r4rk1/ppp2ppp/2n5/8/8/2N5/PPP2PPP/R4RK1 w - - 0 1', accept: ['a1d1', 'f1d1', 'a1e1', 'f1e1'], marks: ['d1', 'e1', 'd8', 'e8'],
@@ -1120,12 +1368,12 @@ var LESSONS = [
     text: '<b>Prophylaxis</b> means stopping your opponent\'s plan before it starts. Here, a3 keeps Black\'s knight or bishop off b4 and prepares to grab queenside space with b4. Before every move, ask: <i>what does my opponent want to do?</i>' },
   { tier: 'Master', title: 'Trade when ahead', type: 'info', fen: '2rr2k1/5ppp/8/8/8/5N2/5PPP/2RR2K1 w - - 0 1', marks: ['c1', 'c8', 'd1', 'd8'],
     text: 'When you are ahead in material, <b>trade pieces, not pawns</b>. White is a knight up, so swap the rooks: Rxc8 Rxc8, then Rc1 offers the second trade. With the rooks gone, king, knight and pawns against king and pawns is an easy win.' },
-  { tier: 'Master', title: 'Convert the advantage', type: 'play', fen: '6k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1', goal: 'mate', level: 17,
+  { tier: 'Master', title: 'Convert the advantage', type: 'play', fen: '6k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1', goal: 'mate', level: 24,
     text: 'You are a whole rook up. Masters convert with care: give the king air, activate the king, use the rook behind passed pawns, and never allow counterplay.', task: 'Win the game with checkmate.', hint: 'First make luft with h3 or g3 so you never get back-rank mated, then create a passed pawn.',
     done: 'Clean technique. Winning a won position is a skill of its own.' },
-  { tier: 'Master', title: 'Final exam', type: 'play', fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', goal: 'mate', level: 11,
-    text: 'Use everything: take the centre, develop, castle, look for tactics, and convert in the endgame. Your opponent is level 12, a tournament player.', task: 'Beat level 12 from the starting position.', hint: 'Checks, captures, threats. Every move.',
-    done: 'You beat a tournament-strength opponent. Try the higher levels in Play mode!' }
+  { tier: 'Master', title: 'Final exam', type: 'play', fen: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1', goal: 'mate', level: 17,
+    text: 'Use everything: take the centre, develop, castle, look for tactics, and convert in the endgame. Your opponent is level 18 of 35, a tournament player.', task: 'Beat level 18 from the starting position.', hint: 'Checks, captures, threats. Every move.',
+    done: 'You beat a tournament-strength opponent. There are 17 more levels waiting in Play mode!' }
 ];
 if (typeof module !== 'undefined') module.exports = LESSONS;
 
@@ -1364,9 +1612,10 @@ function kingInCheckSq(chess) {
 }
 
 // ================= Play mode =================
-const L18 = E.LEVELS;
+const L18 = E.LEVELS; // all 35 levels
 let G = null;
-let setup = Object.assign({ mode: 'pvc', color: 'w', level: 5, lvlW: 12, lvlB: 8 }, store.get('setup', {}));
+let setup = Object.assign({ mode: 'pvc', color: 'w', level: 8, lvlW: 25, lvlB: 18 }, store.get('setup', {}));
+['level', 'lvlW', 'lvlB'].forEach(k => { setup[k] = Math.min(L18.length, Math.max(1, +setup[k] || 1)); });
 const saveSetup = () => store.set('setup', setup);
 function playerLabel(side) {
   const p = G.players[side];
@@ -1550,7 +1799,7 @@ $('#hintBtn').onclick = () => {
   if (!humanToMove()) return;
   const tok = G.token, ply = G.moves.length;
   $('#hintBtn').disabled = true; $('#hintBtn').textContent = 'Thinking…';
-  think(null, G.moves.slice(), 13, { time: 1200 }).then(r => {
+  think(null, G.moves.slice(), 24, { time: 1500 }).then(r => {
     $('#hintBtn').textContent = 'Hint';
     if (!G || G.token !== tok || G.moves.length !== ply || !r || !r.move) { renderButtons(); return; }
     BV.arrows = [[r.move.slice(0, 2), r.move.slice(2, 4)]]; renderBoard(); renderButtons();
