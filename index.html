@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Free chess in your browser: 35 computer levels from beginner to grandmaster, a 38-lesson tutorial, and custom board and piece colours. Works offline.">
+<meta name="description" content="Free chess in your browser: 35 computer levels, chess clocks, official FIDE rules mode, a 38-lesson tutorial, and custom colours. Works offline.">
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <title>Mitchell D Chess</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,6 +142,18 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .navrow{display:flex;gap:6px;flex-wrap:wrap}
 .navrow .grow{flex:1}
 .ctlgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tcgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tcgrid label{display:grid;gap:4px;font-size:.78rem;font-weight:700;color:var(--muted)}
+input[type=number]{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:.4rem .55rem;width:100%;min-width:0;font-variant-numeric:tabular-nums}
+.rulesnote{font-size:.8rem;color:var(--muted)}
+.clock{margin-left:8px;flex:none;font-family:var(--mono);font-size:1.08rem;font-weight:600;padding:.18rem .6rem;border-radius:8px;background:var(--well);color:var(--ink);min-width:4.9em;text-align:right;font-variant-numeric:tabular-nums;border:1px solid var(--line)}
+.clock.run{background:var(--ink);color:var(--panel);border-color:var(--ink)}
+.clock.low{color:var(--bad)}
+.clock.run.low{background:var(--bad);color:#fff;border-color:var(--bad)}
+.clock.out{background:var(--bad);color:#fff;border-color:var(--bad)}
+.drawbox{display:grid;gap:8px;padding:.6rem .7rem;border-radius:10px;background:var(--well);font-size:.9rem}
+.drawbox .row{display:flex;gap:6px;flex-wrap:wrap}
+.official-tag{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.08rem .45rem;border-radius:99px;background:var(--accent);color:var(--accent-ink);margin-left:6px;vertical-align:2px}
 
 /* Learn */
 .lesson{padding:16px;display:grid;gap:10px}
@@ -248,11 +260,33 @@ html[data-motion="off"] .pc{transition:none}
           <div class="field"><label for="lvlB">Black computer</label><select id="lvlB"></select></div>
           <div class="field"><span class="lab">Move speed</span><div class="seg" id="speedSeg"><button data-sp="slow">Slow</button><button data-sp="normal" class="on">Normal</button><button data-sp="fast">Fast</button></div></div>
         </div>
+        <div class="field"><label for="tcSel">Clock</label>
+          <select id="tcSel">
+            <option value="none">No clock</option>
+            <optgroup label="Bullet"><option value="1+0">1 min</option><option value="1+1">1 min + 1 sec</option><option value="2+1">2 min + 1 sec</option></optgroup>
+            <optgroup label="Blitz"><option value="3+0">3 min</option><option value="3+2">3 min + 2 sec</option><option value="5+0">5 min</option><option value="5+3">5 min + 3 sec</option></optgroup>
+            <optgroup label="Rapid"><option value="10+0">10 min</option><option value="10+5">10 min + 5 sec</option><option value="15+10">15 min + 10 sec</option><option value="25+10">25 min + 10 sec</option></optgroup>
+            <optgroup label="Classical"><option value="30+0">30 min</option><option value="30+20">30 min + 20 sec</option><option value="60+30">60 min + 30 sec</option><option value="90+30">90 min + 30 sec</option></optgroup>
+            <optgroup label="Per move"><option value="m10">10 sec per move</option><option value="m30">30 sec per move</option><option value="m60">1 min per move</option></optgroup>
+            <option value="custom">Custom…</option>
+          </select>
+        </div>
+        <div class="tcgrid" id="tcCustom" hidden>
+          <label for="tcWm">White minutes <input type="number" id="tcWm" min="0.25" max="600" step="0.25" value="10"></label>
+          <label for="tcBm">Black minutes <input type="number" id="tcBm" min="0.25" max="600" step="0.25" value="10"></label>
+          <label for="tcBonus">Bonus seconds <input type="number" id="tcBonus" min="0" max="300" step="1" value="5"></label>
+          <label for="tcType">Bonus type <select id="tcType"><option value="inc">Increment</option><option value="delay">Delay</option></select></label>
+        </div>
+        <div class="field"><span class="lab">Rules</span>
+          <div class="seg" id="rulesSeg"><button data-r="casual" class="on">Casual</button><button data-r="official">Official (FIDE)</button></div>
+          <p class="rulesnote" id="rulesNote"></p>
+        </div>
         <button class="btn primary" id="newBtn">New game</button>
       </div>
 
       <div class="card panel">
         <div class="status" id="status"><span class="ic"></span><span>White to move</span></div>
+        <div class="drawbox" id="drawBox" hidden></div>
         <div id="evalBox" hidden>
           <div class="evalbar"><i id="evalFill" style="width:50%"></i></div>
           <div class="evaltxt"><span id="evalTxt">0.0</span><span id="evalDepth"></span></div>
@@ -263,13 +297,14 @@ html[data-motion="off"] .pc{transition:none}
           <button class="btn icon small" id="navPrev" aria-label="Previous move">◀</button>
           <button class="btn icon small" id="navNext" aria-label="Next move">▶</button>
           <button class="btn icon small" id="navLast" aria-label="Latest position">⏭</button>
+          <button class="btn small" id="flipBtn">⇅ Flip</button>
           <span class="grow"></span>
           <button class="btn small" id="pauseBtn" hidden>Pause</button>
         </div>
         <div class="ctlgrid">
           <button class="btn small" id="undoBtn">Take back</button>
           <button class="btn small" id="hintBtn">Hint</button>
-          <button class="btn small" id="flipBtn">Flip board</button>
+          <button class="btn small" id="drawBtn">Offer draw</button>
           <button class="btn small" id="resignBtn">Resign</button>
           <button class="btn small" id="pgnBtn">Copy PGN</button>
           <button class="btn small" id="fenBtn">Copy FEN</button>
@@ -609,17 +644,43 @@ var ENGINE = (function () {
     if (minors === bishops.length && bishops.every(function (x) { return x === bishops[0]; })) return true;
     return false;
   };
-  // Returns null or {result:'1-0'|'0-1'|'1/2-1/2', reason}
-  C.status = function () {
+  // Returns null or {result:'1-0'|'0-1'|'1/2-1/2', reason}.
+  // Casual: threefold repetition and the fifty-move rule end the game automatically.
+  // Official (FIDE Laws 9.6): only fivefold repetition and the 75-move rule are automatic; 9.2/9.3 draws must be claimed.
+  C.status = function (official) {
     var ms = this.legalMoves();
     if (!ms.length) {
       if (this.inCheck()) return { result: this.side ? '1-0' : '0-1', reason: 'checkmate' };
       return { result: '1/2-1/2', reason: 'stalemate' };
     }
+    if (this.insufficient()) return { result: '1/2-1/2', reason: official ? 'dead position' : 'insufficient material' };
+    if (official) {
+      if (this.repetitions() >= 5) return { result: '1/2-1/2', reason: 'fivefold repetition' };
+      if (this.half >= 150) return { result: '1/2-1/2', reason: '75-move rule' };
+      return null;
+    }
     if (this.half >= 100) return { result: '1/2-1/2', reason: 'fifty-move rule' };
     if (this.repetitions() >= 3) return { result: '1/2-1/2', reason: 'threefold repetition' };
-    if (this.insufficient()) return { result: '1/2-1/2', reason: 'insufficient material' };
     return null;
+  };
+  // A draw the player to move may claim under official rules, or null
+  C.claimable = function () {
+    if (this.repetitions() >= 3) return 'threefold repetition';
+    if (this.half >= 100) return 'fifty-move rule';
+    return null;
+  };
+  // Could this colour ('w' or 'b') checkmate by any series of legal moves? (FIDE 6.9: flag-fall is a draw if not)
+  C.canMate = function (color) {
+    var b = this.b, me = color === 'b' ? BLACK : WHITE, minors = 0, oppMaterial = 0, s, p;
+    for (s = 0; s < 128; s++) {
+      if (s & 0x88) { s += 7; continue; }
+      p = b[s]; if (!p || (p & 7) === K) continue;
+      if ((p & BLACK) === me) { var t = p & 7; if (t === P || t === R || t === Q) return true; minors++; }
+      else oppMaterial++;
+    }
+    if (minors >= 2) return true;
+    if (minors === 1) return oppMaterial > 0;
+    return false;
   };
   C.pieceAt = function (name) { var p = this.b[sqParse(name)]; if (!p) return null; return { type: CHARS[p & 7], color: p & BLACK ? 'b' : 'w' }; };
 
@@ -1553,7 +1614,7 @@ function tryMove(from, to) {
   const ms = BV.legal().filter(m => m.from === from && m.to === to);
   if (!ms.length) return false;
   if (ms.length > 1 || ms[0].promo) { // promotion
-    if (S.autoQueen) { BV.onMove(from + to + 'q'); return true; }
+    if (S.autoQueen && !(tab === 'play' && G && G.official)) { BV.onMove(from + to + 'q'); return true; }
     showPromo(from, to); return true;
   }
   BV.onMove(ms[0].uci); return true;
@@ -1575,7 +1636,10 @@ $('#boardwrap').addEventListener('pointerdown', e => {
   const sq = pointToSq(e); if (!sq) return;
   Snd.c();
   if (BV.sel && BV.sel !== sq && BV.targets.some(t => t.sq === sq)) { const from = BV.sel; BV.sel = null; BV.targets = []; tryMove(from, sq); return; }
+  const lock = BV.lock ? BV.lock() : null;
+  if (lock && sq !== lock) { toast('Touch-move rule: you must move the piece you touched.'); return; }
   if (selectSq(sq)) {
+    if (BV.onTouch) BV.onTouch(sq);
     renderBoard();
     const el = $(`.pc[data-sq="${sq}"]`);
     if (el) { drag = { sq, el, x: e.clientX, y: e.clientY, moved: false, id: e.pointerId }; $('#boardwrap').setPointerCapture(e.pointerId); }
@@ -1614,7 +1678,7 @@ function kingInCheckSq(chess) {
 // ================= Play mode =================
 const L18 = E.LEVELS; // all 35 levels
 let G = null;
-let setup = Object.assign({ mode: 'pvc', color: 'w', level: 8, lvlW: 25, lvlB: 18 }, store.get('setup', {}));
+let setup = Object.assign({ mode: 'pvc', color: 'w', level: 8, lvlW: 25, lvlB: 18, tc: 'none', rules: 'casual', cw: 10, cb: 10, bonus: 5, btype: 'inc' }, store.get('setup', {}));
 ['level', 'lvlW', 'lvlB'].forEach(k => { setup[k] = Math.min(L18.length, Math.max(1, +setup[k] || 1)); });
 const saveSetup = () => store.set('setup', setup);
 function playerLabel(side) {
@@ -1633,7 +1697,9 @@ function newGame() {
     BV.flipped = c === 'b';
   } else if (mode === 'pvp') { players = { w: { type: 'human' }, b: { type: 'human' } }; BV.flipped = false; }
   else { players = { w: { type: 'ai', level: setup.lvlW }, b: { type: 'ai', level: setup.lvlB } }; BV.flipped = false; }
-  G = { mode, players, chess: new E.Chess(START), moves: [], sans: [], fens: [START], lastFromTo: [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random() };
+  G = { mode, players, chess: new E.Chess(START), moves: [], sans: [], fens: [START], lastFromTo: [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random(),
+    official: setup.rules === 'official', clock: makeClock(), clockHist: [], touched: null, drawOffer: null, tabPaused: false };
+  if (G.clock) startClock('w');
   BV.sel = null; BV.targets = []; BV.arrows = []; BV.marks = [];
   $('#boardmsg').hidden = true;
   syncPlay(); afterChange();
@@ -1642,20 +1708,28 @@ function curFen() { return G.view == null ? G.chess.fen() : G.fens[G.view]; }
 function sideToMove() { return G.chess.side ? 'b' : 'w'; }
 function humanToMove() { return !G.over && G.view == null && G.players[sideToMove()].type === 'human' && !G.thinking; }
 function playMove(uci, fromAI) {
+  if (G.over) return false;
   const m = G.chess.findUci(uci); if (!m) return false;
   const san = G.chess.san(m), cap = !!(E.mFlags(m) & 1);
   const from = E.sqName(E.mFrom(m)), to = E.sqName(E.mTo(m));
+  const mover = sideToMove();
+  if (G.clock) { tickClock(); if (G.over) return false; G.clockHist.push({ w: G.clock.w, b: G.clock.b }); }
+  G.touched = null;
+  if (G.drawOffer && G.drawOffer.by !== mover) { if (G.mode === 'pvp') toast('Draw offer declined by playing on.'); G.drawOffer = null; }
   G.chess.make(m);
+  if (G.clock) { const c = G.clock; if (c.per) c[mover] = c.per; else c[mover] += c.inc; startClock(mover === 'w' ? 'b' : 'w'); }
   G.moves.push(uci); G.sans.push(san); G.fens.push(G.chess.fen()); G.lastFromTo.push([from, to]);
   BV.animFrom = [from, to]; BV.arrows = [];
   if (G.chess.inCheck()) Snd.check(); else if (cap) Snd.capture(); else Snd.move();
-  const st = G.chess.status();
+  const st = G.chess.status(G.official);
   if (st) endGame(st);
   afterChange();
   return true;
 }
 function endGame(st) {
   G.over = st; Snd.end();
+  if (G.clock) G.clock.running = null;
+  G.drawOffer = null; G.touched = null;
   cancelThinking(); G.thinking = false;
   const res = st.result, why = st.reason;
   let title = res === '1/2-1/2' ? 'Draw' : (res === '1-0' ? 'White wins' : 'Black wins');
@@ -1676,6 +1750,8 @@ function afterChange() {
   BV.legal = () => humanToMove() ? legalFor(G.chess) : [];
   BV.interactive = () => tab === 'play' && humanToMove();
   BV.onMove = uci => { playMove(uci); };
+  BV.lock = () => (tab === 'play' && G && G.official && humanToMove()) ? G.touched : null;
+  BV.onTouch = sq => { if (tab === 'play' && G && G.official && humanToMove() && !G.touched) { G.touched = sq; renderStatus(); } };
   renderBoard(); renderBars(); renderStatus(); renderMoves(); renderButtons();
   maybeAI();
 }
@@ -1683,11 +1759,23 @@ function maybeAI() {
   if (!G || G.over || G.view != null || G.paused || G.thinking) return;
   const side = sideToMove(), p = G.players[side];
   if (p.type !== 'ai') return;
+  if (G.official) {
+    const claim = G.chess.claimable();
+    if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
+  }
   G.thinking = true; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
-  const minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
-  think(null, G.moves.slice(), p.level - 1).then(r => {
+  let minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
+  let extra;
+  if (G.clock) {
+    const c = G.clock, rem = c[side], L = L18[p.level - 1];
+    let budget = c.per ? c.per * 0.55 : rem / 32 + c.inc * 0.8 + c.delay * 0.8;
+    budget = Math.max(60, Math.min(budget, rem * 0.4));
+    if (L.t) extra = { time: Math.min(L.t, budget) };
+    minDelay = Math.min(minDelay, 150);
+  }
+  think(null, G.moves.slice(), p.level - 1, extra).then(r => {
     const wait = Math.max(0, minDelay - (Date.now() - t0));
     setTimeout(() => {
       if (!G || G.token !== tok || G.moves.length !== ply) return;
@@ -1714,9 +1802,10 @@ function renderBars() {
     const lab = playerLabel(side), took = side === 'w' ? cap.byW : cap.byB, other = side === 'w' ? 'b' : 'w';
     const adv = side === 'w' ? cap.diff : -cap.diff;
     const thinking = G.thinking && sideToMove() === side;
-    return `<span class="who"><span class="dot" style="background:var(--p${side})"></span><span>${esc(lab.name)}</span>${lab.lvl ? `<span class="lvl">${esc(lab.lvl)}</span>` : ''}${thinking ? '<span class="thinking">thinking…</span>' : ''}</span><span class="caps">${took.map(t => pieceSVG(t, other)).join('')}${adv > 0 ? `<b>+${adv}</b>` : ''}</span>`;
+    return `<span class="who"><span class="dot" style="background:var(--p${side})"></span><span>${esc(lab.name)}</span>${lab.lvl ? `<span class="lvl">${esc(lab.lvl)}</span>` : ''}${thinking ? '<span class="thinking">thinking…</span>' : ''}</span><span class="caps">${took.map(t => pieceSVG(t, other)).join('')}${adv > 0 ? `<b>+${adv}</b>` : ''}</span>${G.clock ? `<span class="clock" data-clock="${side}" role="timer" aria-label="${side === 'w' ? 'White' : 'Black'} clock"></span>` : ''}`;
   };
   $('#barTop').innerHTML = bar(top); $('#barBot').innerHTML = bar(bot);
+  renderClocks();
   const turn = G.over ? null : sideToMove();
   $('#barTop').classList.toggle('turn', turn === top); $('#barBot').classList.toggle('turn', turn === bot);
 }
@@ -1736,9 +1825,11 @@ function renderStatus() {
     if (G.players[side].type === 'ai') txt = G.paused ? 'Paused' : `${who} (${side === 'w' ? 'White' : 'Black'}) is thinking`;
     else txt = G.mode === 'pvc' ? 'Your move' : `${side === 'w' ? 'White' : 'Black'} to move`;
     if (inC) { txt = 'Check! ' + txt; el.classList.add('check'); }
+    if (G.touched && humanToMove()) txt += ` · touch-move: move the piece on ${G.touched}`;
   }
-  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}</span>`;
-  const showEval = G.mode !== 'pvp' && G.evalW != null;
+  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}</span>`;
+  renderDrawBox();
+  const showEval = G.mode !== 'pvp' && G.evalW != null && (!G.official || G.mode === 'cvc');
   $('#evalBox').hidden = !showEval;
   if (showEval) {
     const w = G.evalW, pct = Math.abs(w) > E.MATE - 1000 ? (w > 0 ? 100 : 0) : 50 + 50 * (2 / (1 + Math.exp(-w / 300)) - 1);
@@ -1771,32 +1862,39 @@ $('#navNext').onclick = () => { if (G.view != null) setView(G.view + 1); };
 $('#navLast').onclick = () => setView(G.fens.length - 1);
 function renderButtons() {
   const cvc = G.mode === 'cvc';
-  $('#pauseBtn').hidden = !cvc;
+  $('#pauseBtn').hidden = !(cvc || (G.clock && !G.official)) || !!G.over;
   $('#pauseBtn').textContent = G.paused ? 'Resume' : 'Pause';
-  $('#undoBtn').disabled = cvc || !G.moves.length || (G.mode === 'pvc' && !G.moves.some((_, i) => G.players[i % 2 ? 'b' : 'w'].type === 'human'));
-  $('#hintBtn').disabled = !humanToMove();
+  $('#undoBtn').disabled = cvc || G.official || !G.moves.length || (G.mode === 'pvc' && !G.moves.some((_, i) => G.players[i % 2 ? 'b' : 'w'].type === 'human'));
+  $('#undoBtn').title = G.official ? 'Take backs are not allowed under official rules' : '';
+  $('#hintBtn').disabled = !humanToMove() || G.official;
+  $('#hintBtn').title = G.official ? 'Hints are not allowed under official rules' : '';
+  $('#drawBtn').disabled = cvc || !!G.over || !humanToMove() || !!G.drawOffer || G.moves.length < 2;
   $('#resignBtn').disabled = !!G.over || cvc || !G.moves.length && G.mode === 'pvc' && G.players.w.type === 'ai';
   $('#navFirst').disabled = $('#navPrev').disabled = (G.view === 0) || G.fens.length < 2;
   $('#navNext').disabled = $('#navLast').disabled = G.view == null;
 }
 $('#pauseBtn').onclick = () => {
   G.paused = !G.paused;
+  if (G.clock && !G.paused) G.clock.last = performance.now();
+  renderClocks();
   if (!G.paused && G.pendingAI) { const m = G.pendingAI; G.pendingAI = null; playMove(m, true); }
   else if (!G.paused) { afterChange(); }
   renderButtons(); renderStatus();
 };
 $('#undoBtn').onclick = () => {
-  if (!G.moves.length) return;
+  if (!G.moves.length || G.official) return;
   cancelThinking(); G.thinking = false; G.over = null; G.view = null; $('#boardmsg').hidden = true; G.token = Math.random();
-  const pop = () => { G.chess.unmake(); G.moves.pop(); G.sans.pop(); G.fens.pop(); G.lastFromTo.pop(); };
+  const pop = () => { G.chess.unmake(); G.moves.pop(); G.sans.pop(); G.fens.pop(); G.lastFromTo.pop(); const h = G.clockHist.pop(); if (G.clock && h) { G.clock.w = h.w; G.clock.b = h.b; } };
   pop();
   if (G.mode === 'pvc') { while (G.moves.length && G.players[sideToMove()].type === 'ai') pop(); }
   BV.sel = null; BV.targets = []; BV.arrows = [];
   G.paused = G.mode === 'pvc' ? false : G.paused;
+  G.drawOffer = null; G.touched = null;
+  if (G.clock) startClock(sideToMove());
   afterChange();
 };
 $('#hintBtn').onclick = () => {
-  if (!humanToMove()) return;
+  if (!humanToMove() || G.official) return;
   const tok = G.token, ply = G.moves.length;
   $('#hintBtn').disabled = true; $('#hintBtn').textContent = 'Thinking…';
   think(null, G.moves.slice(), 24, { time: 1500 }).then(r => {
@@ -1826,7 +1924,9 @@ function pgn() {
   const res = G.over ? G.over.result : '*';
   let body = '';
   G.sans.forEach((s, i) => { if (i % 2 === 0) body += (i / 2 + 1) + '. '; body += s + ' '; });
-  return `[Event "Mitchell D Chess game"]\n[Site "Mitchell D Chess"]\n[Date "${date}"]\n[White "${nm('w')}"]\n[Black "${nm('b')}"]\n[Result "${res}"]\n\n${body}${res}\n`;
+  const tcTag = G.clock ? G.clock.pgn : '-';
+  const term = !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal';
+  return `[Event "Mitchell D Chess game${G.official ? ' (official rules)' : ''}"]\n[Site "Mitchell D Chess"]\n[Date "${date}"]\n[White "${nm('w')}"]\n[Black "${nm('b')}"]\n[Result "${res}"]\n[TimeControl "${tcTag}"]\n[Termination "${term}"]\n\n${body}${res}\n`;
 }
 function copyText(text, label) {
   const done = () => toast(label + ' copied.');
@@ -1845,6 +1945,12 @@ function syncPlay() {
   $$('#speedSeg button').forEach(b => b.classList.toggle('on', b.dataset.sp === (setup.speed || 'normal')));
   $('#lvl').value = setup.level; showLevel();
   $('#lvlW').value = setup.lvlW; $('#lvlB').value = setup.lvlB;
+  $('#tcSel').value = setup.tc; $('#tcCustom').hidden = setup.tc !== 'custom';
+  $('#tcWm').value = setup.cw; $('#tcBm').value = setup.cb; $('#tcBonus').value = setup.bonus; $('#tcType').value = setup.btype;
+  $$('#rulesSeg button').forEach(b => b.classList.toggle('on', b.dataset.r === setup.rules));
+  $('#rulesNote').textContent = setup.rules === 'official'
+    ? 'FIDE Laws of Chess: touch-move, no take backs or hints, repetition and fifty-move draws must be claimed (automatic at fivefold repetition or 75 moves), and running out of time is a draw if the opponent cannot checkmate.'
+    : 'Relaxed: take backs and hints allowed. Repetition and the fifty-move rule end the game automatically.';
 }
 function showLevel() {
   const n = +$('#lvl').value, L = L18[n - 1];
@@ -1860,6 +1966,105 @@ $('#lvl').oninput = () => { setup.level = +$('#lvl').value; saveSetup(); showLev
 $('#lvlW').onchange = () => { setup.lvlW = +$('#lvlW').value; saveSetup(); };
 $('#lvlB').onchange = () => { setup.lvlB = +$('#lvlB').value; saveSetup(); };
 $('#newBtn').onclick = () => newGame();
+const setupChanged = () => { saveSetup(); syncPlay(); if (G && !G.moves.length) newGame(); };
+$('#tcSel').onchange = () => { setup.tc = $('#tcSel').value; setupChanged(); };
+['tcWm', 'tcBm', 'tcBonus'].forEach(id => $('#' + id).onchange = () => {
+  setup.cw = Math.min(600, Math.max(0.25, +$('#tcWm').value || 10)); setup.cb = Math.min(600, Math.max(0.25, +$('#tcBm').value || 10));
+  setup.bonus = Math.min(300, Math.max(0, Math.round(+$('#tcBonus').value || 0))); setupChanged();
+});
+$('#tcType').onchange = () => { setup.btype = $('#tcType').value; setupChanged(); };
+$('#rulesSeg').onclick = e => { const b = e.target.closest('[data-r]'); if (!b) return; setup.rules = b.dataset.r; setupChanged(); };
+
+// ================= Clocks =================
+function makeClock() {
+  const tc = setup.tc;
+  if (!tc || tc === 'none') return null;
+  let c;
+  if (tc[0] === 'm') { const per = +tc.slice(1) * 1000; c = { w: per, b: per, inc: 0, delay: 0, per, pgn: `1/${per / 1000}` }; }
+  else if (tc === 'custom') {
+    const inc = setup.btype === 'inc' ? setup.bonus * 1000 : 0, delay = setup.btype === 'delay' ? setup.bonus * 1000 : 0;
+    c = { w: setup.cw * 60000, b: setup.cb * 60000, inc, delay, per: 0, pgn: setup.cw === setup.cb ? `${setup.cw * 60}${inc ? '+' + inc / 1000 : ''}` : '?' };
+  } else { const [m, i] = tc.split('+').map(Number); c = { w: m * 60000, b: m * 60000, inc: i * 1000, delay: 0, per: 0, pgn: `${m * 60}+${i}` }; }
+  c.start = { w: c.w, b: c.b }; c.running = null; c.last = 0; c.delayLeft = 0;
+  return c;
+}
+function startClock(side) {
+  const c = G.clock; if (!c) return;
+  if (c.per) c[side] = c.per;
+  c.running = side; c.last = performance.now(); c.delayLeft = c.delay;
+  renderClocks();
+}
+function tickClock() {
+  if (!G || !G.clock || !G.clock.running || G.over) return;
+  const c = G.clock, now = performance.now();
+  if (G.paused || G.tabPaused) { c.last = now; return; }
+  let dt = now - c.last; c.last = now;
+  if (c.delayLeft > 0) { const use = Math.min(dt, c.delayLeft); c.delayLeft -= use; dt -= use; }
+  const side = c.running;
+  c[side] -= dt;
+  if (c[side] <= 0) { c[side] = 0; renderClocks(); flagFall(side); return; }
+  renderClocks();
+}
+function flagFall(side) {
+  const opp = side === 'w' ? 'b' : 'w', name = side === 'w' ? 'White' : 'Black';
+  cancelThinking(); G.thinking = false; G.token = Math.random();
+  if (!G.chess.canMate(opp)) endGame({ result: '1/2-1/2', reason: `${name} ran out of time, but ${opp === 'w' ? 'White' : 'Black'} cannot checkmate` });
+  else endGame({ result: opp === 'w' ? '1-0' : '0-1', reason: `${name} lost on time` });
+  afterChange();
+}
+function fmtClock(ms) {
+  ms = Math.max(0, ms);
+  if (ms < 20000) return (Math.floor(ms / 100) / 10).toFixed(1);
+  const t = Math.ceil(ms / 1000), h = Math.floor(t / 3600), m = Math.floor(t % 3600 / 60), s2 = t % 60;
+  return h ? `${h}:${String(m).padStart(2, '0')}:${String(s2).padStart(2, '0')}` : `${m}:${String(s2).padStart(2, '0')}`;
+}
+function renderClocks() {
+  if (!G || !G.clock) return;
+  const c = G.clock;
+  $$('.clock[data-clock]').forEach(el => {
+    const side = el.dataset.clock, ms = c[side], run = c.running === side && !G.over;
+    el.textContent = fmtClock(ms);
+    el.classList.toggle('run', run && !G.paused && !G.tabPaused);
+    el.classList.toggle('low', ms < Math.min(20000, c.start[side] * 0.15 + 5000) && ms > 0);
+    el.classList.toggle('out', ms <= 0);
+  });
+}
+setInterval(tickClock, 100);
+
+// ================= Draw offers and claims =================
+function aiScore(side) {
+  // the computer's last evaluation from its own point of view (0 when it has no opinion yet)
+  if (G.evalW == null) return 0;
+  return side === 'w' ? G.evalW : -G.evalW;
+}
+function renderDrawBox() {
+  const box = $('#drawBox');
+  if (!G || G.over || G.view != null) { box.hidden = true; return; }
+  const side = sideToMove(), human = G.players[side].type === 'human';
+  let h = '';
+  if (G.official && human) {
+    const claim = G.chess.claimable();
+    if (claim) h += `<div>You may claim a draw by <b>${claim}</b>.</div><div class="row"><button class="btn small primary" id="claimBtn">Claim draw</button></div>`;
+  }
+  if (G.drawOffer && G.mode === 'pvp') {
+    if (G.drawOffer.by !== side) h += `<div><b>${G.drawOffer.by === 'w' ? 'White' : 'Black'} offers a draw.</b> Accept, decline, or make a move to decline.</div><div class="row"><button class="btn small primary" id="acceptDraw">Accept draw</button><button class="btn small" id="declineDraw">Decline</button></div>`;
+    else h += `<div>Draw offered. ${side === 'w' ? 'Black' : 'White'} will see it after your move.</div>`;
+  }
+  box.innerHTML = h; box.hidden = !h;
+  if ($('#claimBtn')) $('#claimBtn').onclick = () => { const claim = G.chess.claimable(); if (!claim) return; endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${G.mode === 'pvc' ? 'you' : (side === 'w' ? 'White' : 'Black')}` }); afterChange(); };
+  if ($('#acceptDraw')) $('#acceptDraw').onclick = () => { endGame({ result: '1/2-1/2', reason: 'agreement' }); afterChange(); };
+  if ($('#declineDraw')) $('#declineDraw').onclick = () => { G.drawOffer = null; renderStatus(); renderButtons(); };
+}
+$('#drawBtn').onclick = () => {
+  if (!G || G.over || !humanToMove()) return;
+  const side = sideToMove();
+  if (G.mode === 'pvp') { G.drawOffer = { by: side }; renderStatus(); renderButtons(); toast('Draw offered. Now make your move.'); return; }
+  // vs computer: it accepts when it is clearly worse, or when the game is level and long
+  const ai = side === 'w' ? 'b' : 'w', sc = aiScore(ai), level = G.players[ai].level;
+  const accept = G.evalW != null && (sc <= -60 || (Math.abs(sc) <= 20 && G.moves.length >= 60) || (level <= 5 && Math.random() < .3));
+  if (accept) { endGame({ result: '1/2-1/2', reason: 'agreement' }); afterChange(); }
+  else toast(`${playerLabel(ai).name} declines the draw.`);
+};
 
 // ================= Learn mode =================
 let LS = { idx: 0, chess: null, state: 'idle', moves: [], done: new Set(store.get('lessonsDone', [])), busy: false, token: 0 };
@@ -1995,10 +2200,10 @@ function setTab(t) {
   $('#railPlay').hidden = t !== 'play'; $('#railLearn').hidden = t !== 'learn';
   $('#boardmsg').hidden = true;
   if (t === 'learn') {
-    if (G) { G.paused = G.mode === 'cvc' ? true : G.paused; }
+    if (G) { G.paused = G.mode === 'cvc' ? true : G.paused; G.token = Math.random(); G.thinking = false; cancelThinking(); G.tabPaused = true; }
     loadLesson(LS.idx);
   } else {
-    LS.token = Math.random(); cancelThinking(); if (G) G.thinking = false;
+    LS.token = Math.random(); cancelThinking(); if (G) { G.thinking = false; G.tabPaused = false; if (G.clock) G.clock.last = performance.now(); }
     BV.flipped = G.mode === 'pvc' ? G.players.b.type === 'human' : false;
     BV.marks = []; BV.arrows = [];
     afterChange();
@@ -2016,7 +2221,7 @@ function openModal(html, after) {
 function closeModal() { $('#ov').hidden = true; $('#ovBox').innerHTML = ''; }
 $('#ov').addEventListener('click', e => { if (e.target.id === 'ov') closeModal(); });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { if (!$('#ov').hidden) closeModal(); else if ($('.promo')) { $('.promo').remove(); } else if (BV.sel) { BV.sel = null; BV.targets = []; renderBoard(); } }
+  if (e.key === 'Escape') { if (!$('#ov').hidden) closeModal(); else if ($('.promo')) { if (!(BV.lock && BV.lock())) $('.promo').remove(); } else if (BV.sel && !(BV.lock && BV.lock())) { BV.sel = null; BV.targets = []; renderBoard(); } }
   if (e.target.matches('input,select,textarea') || !$('#ov').hidden) return;
   if (tab === 'play' && G) { if (e.key === 'ArrowLeft') { $('#navPrev').click(); e.preventDefault(); } if (e.key === 'ArrowRight') { $('#navNext').click(); e.preventDefault(); } }
 });

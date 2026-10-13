@@ -40,6 +40,26 @@ Settings, setup choices and tutorial progress are saved in the browser.
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
   and pause.
+- **Chess clocks.** Bullet (1+0, 1+1, 2+1), blitz (3+0, 3+2, 5+0, 5+3),
+  rapid (10+0, 10+5, 15+10, 25+10) and classical (30+0, 30+20, 60+30, 90+30),
+  a per-move timer (10, 30 or 60 seconds a move), or a custom control with
+  separate minutes for each side and a bonus as increment or delay. The
+  computer manages its own clock.
+- **Official rules mode (FIDE Laws of Chess).**
+  - Touch-move: once you pick up a piece that can move, you must move it.
+  - No take backs, hints or evaluation bar.
+  - Draws by threefold repetition or the fifty-move rule must be claimed by
+    the player to move. They become automatic at fivefold repetition or after
+    75 moves.
+  - Stalemate and dead positions are automatic draws.
+  - Running out of time loses, unless the opponent cannot possibly checkmate,
+    which makes it a draw.
+  - Draw offers and resignation. The computer claims draws and accepts or
+    declines offers based on its own evaluation.
+  - Promotion always asks which piece you want.
+
+  Casual mode keeps take backs and hints, and ends repeated or fifty-move
+  positions automatically.
 - **Tutorial.** 38 lessons: how each piece moves; check, checkmate and special
   moves; opening principles; tactics like forks, pins, skewers and smothered
   mate; endgames you play out against the computer; and master ideas like
@@ -47,8 +67,9 @@ Settings, setup choices and tutorial progress are saved in the browser.
   beating level 18 from the start.
 - **Your colours.** Light, dark or automatic theme. 8 board colour sets and
   6 piece colour sets, plus colour pickers for any custom colours.
-- **Tools.** Take back, hint arrow, flip board, resign, step through earlier
-  moves, an evaluation bar, and copy the game as PGN or the position as FEN.
+- **Tools.** Take back, hint arrow, flip board, draw offers, resign, step
+  through earlier moves, an evaluation bar, and copy the game as PGN (with
+  time control) or the position as FEN.
 
 ## Controls
 
