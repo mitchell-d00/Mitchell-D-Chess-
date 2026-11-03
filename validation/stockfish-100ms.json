@@ -1,0 +1,227 @@
+{
+  "engineSha256": "9e51201c660b3be54df8f6b63c5ca4f3a5e012c24b1855ae6991e7ebcd38b2cb",
+  "node": "v24.22.1",
+  "uciIdentity": [
+    "id name Stockfish 19",
+    "id author the Stockfish developers (see AUTHORS file)"
+  ],
+  "ms": 100,
+  "games": 2,
+  "maxPly": 200,
+  "opponent": "/tmp/stockfish-native/stockfish/stockfish-linux-x86-64-universal",
+  "results": [
+    {
+      "game": 1,
+      "newColor": "white",
+      "result": "0-1",
+      "score": 0,
+      "reason": "checkmate",
+      "plies": 70,
+      "times": [
+        2843.0041260000007,
+        3329.014059000002
+      ],
+      "nodes": [
+        367340,
+        0
+      ],
+      "fen": "r1bqkb1r/1ppp1ppp/p1n2n2/4p3/B3P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 5",
+      "moves": [
+        "b1c3",
+        "b7b5",
+        "a4b3",
+        "f8c5",
+        "e1g1",
+        "e8g8",
+        "d2d3",
+        "h7h6",
+        "d1e2",
+        "d7d6",
+        "c1e3",
+        "c5e3",
+        "e2e3",
+        "c8d7",
+        "d3d4",
+        "e5d4",
+        "f3d4",
+        "c6d4",
+        "e3d4",
+        "c7c5",
+        "d4d6",
+        "c5c4",
+        "b3c4",
+        "b5c4",
+        "e4e5",
+        "f6e8",
+        "d6d5",
+        "d7e6",
+        "d5e4",
+        "a8b8",
+        "a1b1",
+        "e8c7",
+        "e4f4",
+        "c7d5",
+        "f4c4",
+        "b8c8",
+        "c4a6",
+        "d5c3",
+        "b2c3",
+        "e6c4",
+        "a6a3",
+        "c4f1",
+        "b1f1",
+        "d8d2",
+        "a3d6",
+        "d2c2",
+        "f1d1",
+        "c2c3",
+        "e5e6",
+        "f7e6",
+        "d6e6",
+        "g8h8",
+        "e6d7",
+        "c8e8",
+        "d1f1",
+        "e8e1",
+        "d7b5",
+        "c3d4",
+        "g1h1",
+        "d4f2",
+        "h2h3",
+        "e1f1",
+        "b5f1",
+        "f2f1",
+        "h1h2",
+        "f8f2",
+        "h2g3",
+        "f1g2",
+        "g3h4",
+        "g2g5"
+      ]
+    },
+    {
+      "game": 2,
+      "newColor": "black",
+      "result": "1-0",
+      "score": 0,
+      "reason": "checkmate",
+      "plies": 33,
+      "times": [
+        1336.5196739999983,
+        1526.8618390000001
+      ],
+      "nodes": [
+        230752,
+        0
+      ],
+      "fen": "r1bqkb1r/1ppp1ppp/p1n2n2/4p3/B3P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 5",
+      "moves": [
+        "e1g1",
+        "b7b5",
+        "a4b3",
+        "f6e4",
+        "f1e1",
+        "e4c5",
+        "b3d5",
+        "f8d6",
+        "d2d4",
+        "c5e6",
+        "d4e5",
+        "d6b4",
+        "c2c3",
+        "b4c5",
+        "b1d2",
+        "e8g8",
+        "d2e4",
+        "c5b6",
+        "c1g5",
+        "d8e8",
+        "e4f6",
+        "g7f6",
+        "g5f6",
+        "d7d6",
+        "d1d2",
+        "e8d7",
+        "d2h6",
+        "d6e5",
+        "d5e4",
+        "b6f2",
+        "g1h1",
+        "f2e1",
+        "e4h7"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "fen": "r1bq1rk1/2p2pp1/p1np1n1p/1p2p3/4P3/1BNPbN2/PPP1QPPP/R4RK1 w - - 0 11",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "r2q1rk1/2pb1pp1/p2p1n1p/1p6/3nP3/1BN1Q3/PPP2PPP/R4RK1 w - - 0 14",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "r2q1rk1/3b1pp1/p2Q1n1p/8/2p1P3/2N5/PPP2PPP/R4RK1 w - - 0 17",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "1r1qnrk1/5pp1/p3b2p/4P3/2p1Q3/2N5/PPP2PPP/R4RK1 w - - 5 20",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "2rq1rk1/5pp1/p3b2p/3nP3/2Q5/2N5/PPP2PPP/1R3RK1 w - - 1 23",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "2rq1rk1/5pp1/7p/4P3/8/Q1P5/P1P2PPP/1R3bK1 w - - 0 26",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "2r2rk1/5pp1/3Q3p/4P3/8/2q5/P4PPP/3R2K1 w - - 0 29",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "4rr1k/3Q2p1/7p/8/8/2q5/P4PPP/3R2K1 w - - 3 32",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "5r1k/6p1/7p/1Q6/8/8/P4qPP/4rR1K w - - 0 35",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "7k/6p1/7p/8/8/7P/P4rPK/5q2 w - - 2 38",
+      "game": 1,
+      "result": 0
+    },
+    {
+      "fen": "r1bqk2r/2pp1ppp/p1n1n3/1p1BP3/1b6/5N2/PPP2PPP/RNBQR1K1 w kq - 1 11",
+      "game": 2,
+      "result": 1
+    },
+    {
+      "fen": "r1bq1rk1/2pp1ppp/pbn1n3/1p1BP3/4N3/2P2N2/PP3PPP/R1BQR1K1 w - - 5 14",
+      "game": 2,
+      "result": 1
+    },
+    {
+      "fen": "r1b1qrk1/2p2p1p/pbnpnB2/1p1BP3/8/2P2N2/PP3PPP/R2QR1K1 w - - 0 17",
+      "game": 2,
+      "result": 1
+    },
+    {
+      "fen": "r1b2rk1/2pq1p1p/p1n1nB1Q/1p2p3/4B3/2P2N2/PP3bPP/R3R1K1 w - - 0 20",
+      "game": 2,
+      "result": 1
+    }
+  ]
+}

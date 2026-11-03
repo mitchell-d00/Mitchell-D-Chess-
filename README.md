@@ -2,7 +2,7 @@
 
 # Mitchell D Chess
 
-A complete chess game in a single HTML file. Play the computer at 35 levels
+A complete chess game in a single HTML file. Play the computer at 50 levels
 from beginner to grandmaster, play a friend on the same screen, or watch two
 computers play each other. A 38-lesson tutorial takes you from how the pieces
 move to master-level strategy.
@@ -24,8 +24,7 @@ Settings, setup choices and tutorial progress are saved in the browser.
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,
   threefold repetition, the fifty-move rule and insufficient material.
-- **35 computer levels in 7 tiers.** Each level beat the level below it in
-  testing.
+- **50 computer levels in 8 tiers.** Levels are accessibility presets, not verified Elo ratings.
 
   | Tier | Levels | How it plays |
   | --- | --- | --- |
@@ -35,7 +34,8 @@ Settings, setup choices and tutorial progress are saved in the browser.
   | Intermediate | 16–20 | No deliberate mistakes from level 17; deeper search from level 19 |
   | Expert | 21–25 | 1.2 to 2.6 seconds a move with advanced pruning |
   | Master | 26–30 | 3 to 6 seconds a move |
-  | Grandmaster | 31–35 | 7.5 to 16 seconds a move; level 35 is the strongest |
+  | Grandmaster (legacy names) | 31–35 | 7.5 to 16 seconds a move |
+  | Analysis | 36–50 | 20 to 60 seconds a move; no deliberate mistakes, unrated |
 
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
@@ -82,8 +82,10 @@ Click a piece and then a square, or drag the piece. Dots show legal moves.
 
 ## How the computer thinks
 
-The engine is written from scratch in JavaScript and runs in a background
-worker, so the page stays responsive while it thinks.
+The custom engine is written in JavaScript and runs in a background
+worker, so the page stays responsive while it thinks. The downloaded HTML
+contains everything, including the favicon and endgame bitbase. No fonts,
+engines, models or other resources are fetched at runtime.
 
 - **Search:** alpha-beta with iterative deepening and aspiration windows,
   principal variation search, a 2-million-entry transposition table,
@@ -97,20 +99,89 @@ worker, so the page stays responsive while it thinks.
   king distance in the endgame), knight and bishop outposts, rooks on open
   files and the 7th rank, the bishop pair, drawish-endgame detection and
   mop-up technique for mating a lone king.
-- **Openings:** a book of over 50 main lines from the Ruy Lopez and Sicilian
+- **Openings:** a position-indexed book of 454 legally validated main lines and sidelines from the Ruy Lopez and Sicilian
   to the Queen's Gambit, King's Indian and English.
 - **Levels:** lower levels search shallower and choose moves with controlled
   noise and occasional deliberate mistakes; higher levels use the full search
   with more thinking time.
 
-In testing at equal thinking time, this engine scored 19 out of 24 against the
-previous version of the game's top level.
+### Engine upgrade (November 2026)
+
+Levels 1–35 retain their existing names, depth limits and beginner noise/blunder
+settings. Levels 36–50 use the full custom engine with budgets increasing from
+20 to 60 seconds. Clock games cap those budgets to available time, reserving
+some time for worker messages and rendering. Stable best moves can finish early;
+unstable searches use more of the budget.
+
+- Corrected quiescence: no stand-pat in check, all legal evasions and all
+  underpromotions retained, with mate taking priority over a fifty-move claim.
+- Added capture history, continuation history, singular extensions with excluded
+  move searches, and verification of deep null-move cutoffs. Forward pruning
+  avoids principal-variation nodes. Timeout recovery retains completed iterations.
+- Extended classical evaluation with pawn-safe mobility, pawn attacks on pieces,
+  backward pawns, bishop/pawn colour complexes and connected rooks. KBNK guidance
+  steers the defending king toward the bishop's mating corners. KQK/KRK retain
+  the existing material, king proximity and edge guidance.
+- Added an original **24,576-byte KPK bitbase**, embedded as base64. The offline
+  retrograde generator covers 165,676 legal canonical positions, with 111,282
+  wins. Both pawn colours and all files are supported. These are exact theoretical
+  win/draw results without the fifty-move counter; search separately handles draw
+  claims. Winning evaluations still use search and positional guidance to convert.
+- Reduced evaluation allocation, cached static evaluations by position and move
+  number, and separated transposition-table contexts for different evaluation
+  modes. Worker errors/cancellations settle pending requests; searches never fall
+  back onto the UI thread.
+- Expanded the opening book from 52 to 454 lines using public-domain **CC0**
+  opening data from [lichess-org/chess-openings](https://github.com/lichess-org/chess-openings),
+  revision `3fd6ce992679e4d991a6bb4dade71f2b826c568a`. Entries are indexed by
+  position, so known transpositions can rejoin the book. CC0 requires no attribution;
+  this link records provenance. All lines are checked for legality.
+
+**Strength and performance limits:** this remains a classical engine, without
+NNUE or imported engine code/model weights. There is no verified 2500+ Elo rating,
+and no claim that every successive level wins an equal-time match. Short paired
+matches against the original are regression evidence, not a human Elo calibration.
+The requested 2–5× NPS increase has not been demonstrated; throughput varies with
+position, depth and search changes. See `validation/README.md` for measured runs.
+The original MIT licence remains; no GPL components are distributed.
+
+### Reproduce checks and run matches
+
+Only `index.html` is needed to play. Development tools require Node.js:
+
+```sh
+node scripts/test.cjs
+node scripts/bench.cjs index.html 9
+# Save the original locally for paired equal-budget matches:
+git show f3617994503541daa41ba44f5d0499df94767fe4:index.html > /tmp/original.html
+node scripts/match.cjs --baseline /tmp/original.html --games 24 --ms 1000 --out results.json
+# An independently installed UCI opponent is used only for testing:
+node scripts/match.cjs --uci /path/to/stockfish --games 12 --ms 1000 --out external-results.json
+node scripts/tune.cjs results.json > candidate-weights.json
+```
+
+The match runner alternates colours with paired opening positions, checks every
+move, disables books, records actual elapsed time and nodes, and marks unfinished
+games `*` rather than calling them draws. Equal budgets are hard maxima; engines
+may use different amounts. The Texel-style tuner fits six added feature weights
+to completed game outcomes, splits whole games into training/holdout sets, and
+reports both losses. It never changes the HTML automatically. A small initial
+trial worsened held-out loss, so its weights were rejected. Use many diverse games
+and fresh matches before promoting candidate weights.
+
+`node scripts/build-kpk.cjs` deterministically regenerates the embedded KPK data.
+`scripts/import-book.cjs /path/to/chess-openings` imports the CC0 supplement into
+an unsupplemented version (not needed for the checked-in HTML). The optional
+`node scripts/browser-test.cjs` needs Playwright plus Chromium; it tests offline
+play, worker responsiveness/cancellation and computer-vs-computer.
 
 ## Files
 
 - `index.html`: the whole game: markup, styles, engine, lessons and interface
 - `logo.svg`: repository logo and page icon
-- `LICENSE`: MIT licence
+- `LICENSE`: existing MIT licence
+- `scripts/`: optional tests, benchmark, match runner, tuning and data generators
+- `validation/`: measured results and limitations
 
 ## License
 

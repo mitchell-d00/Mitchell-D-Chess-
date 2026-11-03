@@ -1,0 +1,25 @@
+{
+  "positions": 320,
+  "defaults": {
+    "safeMobility": 3,
+    "pawnThreat": 18,
+    "backward": 9,
+    "connectedRooks": 12,
+    "bishopPawn": 3,
+    "kingPasser": 4
+  },
+  "candidate": {
+    "safeMobility": 0,
+    "pawnThreat": 63,
+    "backward": 0,
+    "connectedRooks": 34,
+    "bishopPawn": 0,
+    "kingPasser": 15
+  },
+  "trainBefore": 0.10486490931142893,
+  "trainAfter": 0.09907522714353979,
+  "holdoutBefore": 0.07564811169688353,
+  "holdoutAfter": 0.09754863338270668,
+  "recommended": false,
+  "note": "Experimental candidate only. Apply after larger held-out matches; this script does not change index.html."
+}
