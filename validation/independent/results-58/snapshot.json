@@ -1,0 +1,28 @@
+{
+  "snapshotUtc": "2026-11-03T18:57:38.238197+00:00",
+  "sourceRun": "/workspace/chess-benchmark-200-fixed",
+  "engineRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "completedGames": 58,
+  "plannedGames": 200,
+  "campaignStatus": "paused",
+  "files": {
+    "campaign.json": "4b721c0ac4481b505743eb18c592ac9fb5974b9bff8f47c1b51e4d9f532427d2",
+    "summary.json": "de6bca27002cdbfa2f474b02e4cb9d70d998d401d53064d67e30a1078c466e90",
+    "status.json": "132132cf0bf720b367ca03690a571603a6c23f46dfa6ae3902e1458e3c5b6f1a",
+    "01-Fruit2.1.pgn": "5e2093bffe09bb56b0816680eb900b467c0d3d7b19ef3df7056069b4aebe2dd5",
+    "02-MinimalChess0.6.pgn": "d6dc0aaac65f14880054bb95186cc9cad850987b2f1ac5f4a1a49a1af0c9f851",
+    "03-Fruit2.1.pgn": "ad627d3b8b9bf8b1e5bd44ea0525665b5b3b1447daf8c1465d788f65db3830e4",
+    "04-MinimalChess0.6.pgn": "bfc52b57be1870de76dd4efd5a95b624aaac098139c7b5d341b7eefa9f31492a",
+    "04-MinimalChess0.6.log": "8311855ed194973e53d5838cc68eac1eecd08e15146fb547be724ffd3dc46dcd"
+  },
+  "fault": {
+    "opponent": "MinimalChess 0.6",
+    "reportedMove": "a7a8Q",
+    "normalizedMove": "a7a8q",
+    "normalizedMoveIsLegal": true,
+    "finalFen": "8/P4pk1/6p1/3Bn3/4P3/4q2P/2p4P/Q6K w - - 0 35",
+    "classification": "UCI-format forfeit; uppercase promotion suffix",
+    "recordedResultPreserved": true
+  },
+  "ratingStatus": "Unrated; no absolute rating is inferred from this snapshot."
+}

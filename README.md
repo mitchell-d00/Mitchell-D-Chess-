@@ -20,6 +20,9 @@ deploy from the `main` branch, root folder). The game will be served at
 
 Settings, setup choices and tutorial progress are saved in the browser.
 
+See [tests](tests) for published results, raw game records, correctness checks,
+and portable commands to repeat the experiments. The engine remains unrated.
+
 ## What is in it
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,
@@ -182,9 +185,11 @@ is needed before making an absolute strength claim. In particular, 2500+ play at
 10–30 seconds per move has not been established.
 
 A separate [200-game independent-engine campaign](validation/independent-campaign.md)
-is restarting from zero at **1 second per move**, against Fruit 2.1 and MinimalChess 0.6 using the external Fastchess referee. That report documents the
-protocol, reference ratings, live local progress files and recovery command.
-Results are pending; no absolute Elo claim is made.
+was paused at **58/200 games at 1 second per move**, after an opponent UCI-format
+forfeit. The archived snapshot contains 52 normal-play wins, 5 draws and no
+normal-play losses, plus one separately reported forfeit win. See [tests](tests)
+for the raw evidence, limitations and reproduction commands. No absolute Elo
+claim is made.
 
 ### Reproduce checks and run matches
 
@@ -245,6 +250,7 @@ upstream MIT notice.
 - `index.html`: the whole game: markup, styles, engine, lessons and interface
 - `logo.svg`: repository logo and page icon
 - `LICENSE`: existing MIT licence
+- `tests`: results, evidence links and reproducible experiment instructions
 - `scripts/`: optional tests, benchmark, match runner, tuning and data generators
 - `engine/`: original inference source and SIMD kernel, embedded into the HTML
 - `third-party/`: MIT network licence and provenance

@@ -3,6 +3,7 @@
 import hashlib,importlib.util,json,os,subprocess,sys,tempfile,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+sys.dont_write_bytecode=True
 spec=importlib.util.spec_from_file_location('campaign',ROOT/'scripts/independent-campaign.py');campaign=importlib.util.module_from_spec(spec);spec.loader.exec_module(campaign)
 class CampaignTests(unittest.TestCase):
  def test_pair_and_forfeit_accounting(self):
@@ -30,6 +31,15 @@ class CampaignTests(unittest.TestCase):
 ''')
    r=campaign.summarize({'timeControl':{},'batches':[{'id':'one','opponent':'Other','games':200}]},root)
    self.assertEqual(r['completedGames'],3);o=r['opponents']['Other'];self.assertEqual(o['completedNormalPairs'],1);self.assertEqual(o['forfeitResults']['losses'],1);self.assertEqual(o['normalResults'],{'wins':1,'draws':1,'losses':0})
+ def test_published_snapshot_hashes_and_summary(self):
+  root=ROOT/'validation/independent/results-58';snapshot=json.loads((root/'snapshot.json').read_text())
+  for name,digest in snapshot['files'].items():self.assertEqual(hashlib.sha256((root/name).read_bytes()).hexdigest(),digest,name)
+  p=subprocess.run([sys.executable,str(ROOT/'scripts/independent-campaign.py'),str(root/'campaign.json'),'--summary-only'],capture_output=True,text=True,timeout=10)
+  self.assertEqual(p.returncode,0,p.stderr);actual=json.loads(p.stdout);recorded=json.loads((root/'summary.json').read_text())
+  for field in ['plannedGames','completedGames','timeControl','opponents']:self.assertEqual(actual[field],recorded[field],field)
+  self.assertEqual(actual['completedGames'],58)
+  self.assertEqual(sum(v['normalResults']['wins'] for v in actual['opponents'].values()),52)
+  self.assertEqual(sum(v['forfeitResults']['wins'] for v in actual['opponents'].values()),1)
  def test_fault_pauses_without_filling_campaign(self):
   with tempfile.TemporaryDirectory() as td:
    root=Path(td);fake=root/'fake-manager';fake.write_text('''#!/usr/bin/env python3

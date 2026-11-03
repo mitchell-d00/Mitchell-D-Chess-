@@ -6,9 +6,19 @@ games, including six illegal-move forfeits. Its raw data remains in
 engine starts from zero in `/workspace/chess-benchmark-200-fixed/`. See
 [hash-move-fix.md](hash-move-fix.md) for the cause, regression cases and validation.
 
-The unsupported absolute Elo estimate has been withdrawn. This campaign tests the
-unchanged neural engine from `e87c93e` against independently released opponents.
+The unsupported absolute Elo estimate has been withdrawn. The failed initial run tested `e87c93e`; the repaired-engine run tested
+`bdb5873406a2b3336523f3a19f16c4a1bc9ebd46` against independently released opponents.
 It is a benchmark at its stated control, not a calibrated human FIDE rating.
+
+## Published partial results
+
+The repaired run paused at **58/200 completed games**: 53 wins, 5 draws and no
+losses, including one opponent forfeit win. Normal-play results alone are
+**52 wins, 5 draws, no losses** in 57 games. MinimalChess emitted `a7a8Q`; the
+lowercase move is legal, but the uppercase suffix violates UCI format. No
+Mitchell fault was recorded in this repaired run. The snapshot and all PGNs are
+published under [results-58/](independent/results-58/). See [tests](../tests) for
+a portable reproduction guide and the limits of any rating inference.
 
 ## Preregistered design
 

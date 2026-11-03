@@ -1,0 +1,307 @@
+Started game 1 of 20 (Mitchell65 vs MinimalChess0.6)
+Warning; PV continues after threefold repetition - move f6g8 from MinimalChess0.6
+Info; info depth 13 score cp -404 nodes 695378 nps 741341 time 938 pv f6g8 e3f3 g8f6 f3e3 f6g8 e3f3 g8f6 f3e3 f6g8 e3f3 g8f6 f3e3 f6g8
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 e1g1 f5d3 f1e1 f8e7 e1e3 d3g6 d2d4 e5e4 d4d5 e4f3 d5c6 b7b5 a4b3 f3g2 a2a4 b5a4 b3e6 g8f6 b1d2 a4a3 d2f3 a3b2 c1b2 a8b8 b2a3 b8b6 d1a4 d8a8 f3d4 e8f8 e6c4 g6f7 c4f7 f8f7 a4c4 f7e8 a1e1
+Finished game 1 (Mitchell65 vs MinimalChess0.6): 1-0 {White mates}
+Started game 2 of 20 (MinimalChess0.6 vs Mitchell65)
+Warning; PV continues after threefold repetition - move d2c1 from MinimalChess0.6
+Info; info depth 11 score cp -857 nodes 26378 nps 659450 time 40 pv e2d2 c4a2 d2c1 a2a4 c1d2 a4a2 d2c1 a2a4 c1d2 a4a2 d2c1
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 15 score cp -904 nodes 313213 nps 740456 time 423 pv e2d2 c4a2 d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 16 score cp -904 nodes 477575 nps 730237 time 654 pv e2d2 c4a2 d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 17 score cp -904 nodes 693789 nps 732617 time 947 pv e2d2 c4a2 d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 11 score cp -904 nodes 11 nps 11000 time 0 pv d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 12 score cp -904 nodes 12 nps 12000 time 0 pv d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 13 score cp -904 nodes 13 nps 13000 time 0 pv d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 14 score cp -904 nodes 2790 nps 697500 time 4 pv d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2
+Warning; PV continues after threefold repetition - move c2d2 from MinimalChess0.6
+Info; info depth 15 score cp -904 nodes 7396 nps 821777 time 9 pv d2c2 a2a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2 a4a1 d2c2 a1a4 c2d2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2
+Warning; PV continues after threefold repetition - move b2c1 from MinimalChess0.6
+Info; info depth 17 score cp -925 nodes 190026 nps 633420 time 300 pv c2b2 e4e2 b2c1 e2d3 c1b2 d3e2 b2c1 e2d3 c1b2 d3e2 b2c1 e2d3 c1b2 d3e2 b2c1 e2d3 c1b2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4
+Warning; PV continues after threefold repetition - move c2c1 from MinimalChess0.6
+Info; info depth 15 score cp -997 nodes 131288 nps 525152 time 250 pv c1c2 f1g2 f3d2 g2g6 c2c1 g6g1 c1c2 g1g6 c2c1 g6g1 c1c2 g1g6 c2c1 g6g1 c1c2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1
+Warning; PV continues after threefold repetition - move c2c1 from MinimalChess0.6
+Info; info depth 16 score cp -997 nodes 176612 nps 524071 time 337 pv c1c2 f1g2 f3d2 g2g6 c2c1 g6g1 c1c2 g1g6 c2c1 g6g1 c1c2 g1g6 c2c1 g6g1 c1c2 g1g6
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1
+Warning; PV continues after threefold repetition - move e1e2 from MinimalChess0.6
+Info; info depth 13 score cp -1315 nodes 21739 nps 572078 time 38 pv d1e1 h4h3 d2f1 d3c3 e1e2 c3b2 e2e1 b2c3 e1e2 c3b2 e2e1 b2c3 e1e2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4
+Warning; PV continues after threefold repetition - move e2e1 from MinimalChess0.6
+Info; info depth 11 score cp -1341 nodes 20827 nps 650843 time 32 pv e2e1 f4h4 e1e2 h4f4 e2e1 f4h4 e1e2 h4f4 e2e1 f4h4 e1e2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4 d1e1 d3e3 e1d1 h4h3 d2f1 e3f3 d1e1 f3c3 e1e2 c3c4 e2f2 c4f4 f2e2 d6d5
+Warning; PV continues after threefold repetition - move e2e1 from MinimalChess0.6
+Info; info depth 12 score cp -1341 nodes 29323 nps 637456 time 46 pv e2e1 f4h4 e1e2 h4f4 e2e1 f4h4 e1e2 h4f4 e2e1 f4h4 e1e2 h4f4
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4 d1e1 d3e3 e1d1 h4h3 d2f1 e3f3 d1e1 f3c3 e1e2 c3c4 e2f2 c4f4 f2e2 d6d5
+Warning; PV continues after threefold repetition - move e2e1 from MinimalChess0.6
+Info; info depth 13 score cp -1341 nodes 38778 nps 625451 time 62 pv e2e1 f4h4 e1e2 h4f4 e2e1 f4h4 e1e2 h4f4 e2e1 f4h4 e1e2 h4f4 e2e1
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4 d1e1 d3e3 e1d1 h4h3 d2f1 e3f3 d1e1 f3c3 e1e2 c3c4 e2f2 c4f4 f2e2 d6d5
+Warning; PV continues after threefold repetition - move d1e1 from MinimalChess0.6
+Info; info depth 15 score cp -1432 nodes 96504 nps 482520 time 200 pv e2e1 h3h2 f1h2 f4h2 e1d1 c5c4 d1e1 h2g2 e1d1 g2h2 d1e1 h2g2 e1d1 g2h2 d1e1
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4 d1e1 d3e3 e1d1 h4h3 d2f1 e3f3 d1e1 f3c3 e1e2 c3c4 e2f2 c4f4 f2e2 d6d5
+Warning; PV continues after threefold repetition - move d1e1 from MinimalChess0.6
+Info; info depth 16 score cp -1432 nodes 154498 nps 446526 time 346 pv e2e1 h3h2 f1h2 f4h2 e1d1 c5c4 d1e1 h2g2 e1d1 g2h2 d1e1 h2g2 e1d1 g2h2 d1e1 h2g2
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4 d1e1 d3e3 e1d1 h4h3 d2f1 e3f3 d1e1 f3c3 e1e2 c3c4 e2f2 c4f4 f2e2 d6d5
+Warning; PV continues after threefold repetition - move d1e1 from MinimalChess0.6
+Info; info depth 17 score cp -1432 nodes 209399 nps 442704 time 473 pv e2e1 h3h2 f1h2 f4h2 e1d1 c5c4 d1e1 h2g2 e1d1 g2h2 d1e1 h2g2 e1d1 g2h2 d1e1 h2g2 e1d1
+Position; fen r1bqkbnr/1pp3pp/p1np4/4pp2/B3P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 0 1
+Moves; e4f5 c8f5 d2d4 e5e4 c1g5 f8e7 f3h4 f5e6 g5e7 d8e7 d4d5 e7h4 d5e6 g8f6 a4c6 b7c6 d1a4 e8g8 e6e7 f8f7 a4c6 a8e8 e1g1 e8e7 h2h3 f6h5 c6a6 h5f4 b1a3 e4e3 f2e3 e7e3 a6a8 f7f8 a8f8 g8f8 f1f4 h4f4 h3h4 f4h4 a1f1 f8g8 a3b5 e3e1 b5d4 e1f1 g1f1 h4f4 f1e2 c7c5 d4f3 f4c4 e2d2 c4a2 d2c2 a2d5 b2b3 d5e4 c2b2 e4e2 b2c1 e2f1 c1c2 f1g2 f3d2 g2g6 c2d1 g6d3 b3b4 h7h5 b4b5 d3b5 d1e1 b5d3 e1d1 h5h4 d1e1 d3e3 e1d1 h4h3 d2f1 e3f3 d1e1 f3c3 e1e2 c3c4 e2f2 c4f4 f2e2 d6d5
+Finished game 2 (MinimalChess0.6 vs Mitchell65): 0-1 {Black mates}
+Started game 3 of 20 (Mitchell65 vs MinimalChess0.6)
+Warning; PV continues after threefold repetition - move f6e4 from MinimalChess0.6
+Info; info depth 11 score cp -8 nodes 663377 nps 979877 time 677 pv f6e4 f1d3 e4f6 d3f1 f6e4 f1d3 e4f6 d3f1 f6e4 f1d3 e4f6
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; c1e3 e7e5 d4b3 b8c6 f2f3 c8e6 d1d3 a8c8 e1c1 a7a6 d3d2 c6b4 c1b1 h7h5 a2a3 b4c6 h2h4 c6b8 c3d5 e6d5 e4d5 f8g7 b3a5 d8c7 a5c4 b8d7 d2b4 g7f8 a3a4 f8e7 a4a5 e8g8 h1g1 f8e8 g2g4 h5g4 f3g4
+Finished game 3 (Mitchell65 vs MinimalChess0.6): 1-0 {White mates}
+Started game 4 of 20 (MinimalChess0.6 vs Mitchell65)
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 19 score cp -775 nodes 101731 nps 448154 time 227 pv h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 20 score cp -775 nodes 168618 nps 437968 time 385 pv h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 21 score cp -775 nodes 256374 nps 445093 time 576 pv h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 15 score cp -775 nodes 15 nps 15000 time 0 pv e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 16 score cp -775 nodes 16 nps 16000 time 0 pv e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 17 score cp -775 nodes 18 nps 18000 time 0 pv e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 18 score cp -775 nodes 20 nps 20000 time 0 pv e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 19 score cp -775 nodes 1735 nps 289166 time 6 pv e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2
+Warning; PV continues after threefold repetition - move c5d4 from MinimalChess0.6
+Info; info depth 20 score cp -775 nodes 1737 nps 289500 time 6 pv e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3 d4c5 f3b3 c5d4 b3f3
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2
+Warning; PV continues after threefold repetition - move c3c4 from MinimalChess0.6
+Info; info depth 21 score cp -853 nodes 4381 nps 175240 time 25 pv e4d5 h3a3 d5c5 a3b3 c5d4 b5b4 d4c4 b3b2 c4d3 b4b3 d3c3 b2b1 c3c4 g2g3 c4c3 g3g2 c3c4 g2g3 c4c3 g3g2 c3c4
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3
+Warning; PV continues after threefold repetition - move c3c4 from MinimalChess0.6
+Info; info depth 22 score cp -853 nodes 4383 nps 168576 time 26 pv e4d5 h3a3 d5c5 a3b3 c5d4 b5b4 d4c4 b3b2 c4d3 b4b3 d3c3 b2b1 c3c4 g2g3 c4c3 g3g2 c3c4 g2g3 c4c3 g3g2 c3c4 g2g3
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3
+Warning; PV continues after threefold repetition - move c3c4 from MinimalChess0.6
+Info; info depth 23 score cp -853 nodes 108004 nps 335416 time 322 pv e4d5 h3a3 d5c5 a3b3 c5d4 b5b4 d4c4 b3b2 c4d3 b4b3 d3c3 b2b1 c3c4 g2g3 c4c3 g3g2 c3c4 g2g3 c4c3 g3g2 c3c4 g2g3 c4c3
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 13 score cp -1631 nodes 15554 nps 536344 time 29 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 14 score cp -1631 nodes 19361 nps 509500 time 38 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 15 score cp -1631 nodes 23489 nps 479367 time 49 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 16 score cp -1631 nodes 32414 nps 438027 time 74 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 17 score cp -1631 nodes 40494 nps 413204 time 98 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 18 score cp -1631 nodes 59140 nps 391655 time 151 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Warning; PV continues after threefold repetition - move d5e4 from MinimalChess0.6
+Info; info depth 19 score cp -1631 nodes 76297 nps 377707 time 202 pv d4e5 g5g4 e5d5 g4g3 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5 f1g2 d5e4 g2f1 e4d5
+Position; fen rnbqkb1r/pp2pp1p/3p1np1/8/3NP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 0 1
+Moves; f1b5 c8d7 e1g1 d7b5 d4b5 a7a6 b5d4 f8g7 c1e3 e8g8 d1e2 b8d7 a1d1 d8c7 d4f3 b7b5 a2a3 a8c8 f1e1 c7b7 e3g5 f8e8 h2h3 h7h6 g5f4 f6h5 f4d2 c8c7 f3h2 d7e5 h2g4 e5g4 h3g4 h5f6 d1c1 e8c8 g1h1 h6h5 g4g5 f6g4 f2f3 g4e5 e2f2 e7e6 e1d1 e5c4 c1b1 c7c6 d2f4 b7d7 f4d2 d7e7 f3f4 c4b2 b1b2 g7c3 b2b1 c6c4 f2b6 c3d2 d1d2 c8c6 b6b8 g8g7 b1b4 c4c2 d2c2 c6c2 b4d4 c2c6 b8a8 c6c1 h1h2 e6e5 d4d5 e5f4 a8a6 c1c2 a6d6 e7d6 d5d6 f4f3 d6d3 c2g2 h2h3 g2g5 d3f3 g5e5 f3e3 f7f5 h3g3 f5e4 g3f4 g7f6 e3c3 h5h4 f4e3 f6f5 c3c8 h4h3 c8g8 f5g5 g8f8 g5g4 f8f1 h3h2 f1h1 g4g3 h1a1 e5h5 a1h1 g3g2 h1h2 h5h2 e3e4 h2h3 e4d5 h3a3 d5c5 a3b3 c5d4 g6g5
+Finished game 4 (MinimalChess0.6 vs Mitchell65): 0-1 {Black mates}
+Started game 5 of 20 (Mitchell65 vs MinimalChess0.6)
+Warning; PV continues after threefold repetition - move g7f8 from MinimalChess0.6
+Info; info depth 13 score cp -976 nodes 84279 nps 739289 time 114 pv b7e7 d8d6 g7f8 e5f5 f8g7 f5e5 g7f8 e5f5 f8g7 f5e5 g7f8 e5f5 f8g7
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7
+Warning; PV continues after threefold repetition - move g6g7 from MinimalChess0.6
+Info; info depth 15 score cp -1203 nodes 36530 nps 553484 time 66 pv b7e7 e5a5 g6g7 a5g5 g7f6 g5f5 f6g6 f5a5 g6g7 a5g5 g7f6 g5f5 f6g6 f5a5 g6g7
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7 b7e7 d8d6 g7f6 e5f5 f6g6 f5f3 e7e8 d6b6 e8e7 b6c6 g6g7 a2a4 g7g6 f3f5 h6h5 f5h5 g6f6 h5f5 f6g6 f5c5 e7b7 c5e5
+Warning; PV continues after threefold repetition - move g6g7 from MinimalChess0.6
+Info; info depth 13 score cp -1203 nodes 1116 nps 558000 time 2 pv g6g7 a5g5 g7f6 g5f5 f6g6 f5a5 g6g7 a5g5 g7f6 g5f5 f6g6 f5a5 g6g7
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7 b7e7 d8d6 g7f6 e5f5 f6g6 f5f3 e7e8 d6b6 e8e7 b6c6 g6g7 a2a4 g7g6 f3f5 h6h5 f5h5 g6f6 h5f5 f6g6 f5c5 e7b7 c5e5 b7e7 e5a5
+Warning; PV continues after threefold repetition - move g6g7 from MinimalChess0.6
+Info; info depth 14 score cp -1203 nodes 1997 nps 665666 time 3 pv g6g7 a5g5 g7f6 g5f5 f6g6 f5a5 g6g7 a5g5 g7f6 g5f5 f6g6 f5a5 g6g7 a5g5
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7 b7e7 d8d6 g7f6 e5f5 f6g6 f5f3 e7e8 d6b6 e8e7 b6c6 g6g7 a2a4 g7g6 f3f5 h6h5 f5h5 g6f6 h5f5 f6g6 f5c5 e7b7 c5e5 b7e7 e5a5
+Warning; PV continues after threefold repetition - move e8h8 from MinimalChess0.6
+Info; info depth 17 score cp -1403 nodes 391494 nps 491826 time 796 pv g6g7 c6d6 e7e8 d6d7 g7g6 e6e7 g6g7 a4a5 e8h8 h2g3 h8e8 g3h2 e8h8 h2g3 h8e8 g3h2 e8h8
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7 b7e7 d8d6 g7f6 e5f5 f6g6 f5f3 e7e8 d6b6 e8e7 b6c6 g6g7 a2a4 g7g6 f3f5 h6h5 f5h5 g6f6 h5f5 f6g6 f5c5 e7b7 c5e5 b7e7 e5a5 g6g7 a5g5 g7f6 g5f5 f6g6 b3b4
+Warning; PV continues after threefold repetition - move e8h8 from MinimalChess0.6
+Info; info depth 11 score cp -1990 nodes 21433 nps 549564 time 39 pv e8h8 h2g1 h8e8 g1h2 e8h8 h2g1 h8e8 g1h2 e8h8 h2g1 h8e8
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7 b7e7 d8d6 g7f6 e5f5 f6g6 f5f3 e7e8 d6b6 e8e7 b6c6 g6g7 a2a4 g7g6 f3f5 h6h5 f5h5 g6f6 h5f5 f6g6 f5c5 e7b7 c5e5 b7e7 e5a5 g6g7 a5g5 g7f6 g5f5 f6g6 b3b4 g6g7 c4c5 e7b7 b4b5 g7h7 c6d6 b7b8 e6e7 b8e8 c5c6 h7g7 c6c7
+Warning; PV continues after threefold repetition - move e8h8 from MinimalChess0.6
+Info; info depth 13 score cp -2522 nodes 66800 nps 428205 time 156 pv e8h8 h2g1 h8e8 g1h2 e8h8 h2g1 h8e8 g1h2 e8h8 h2g1 h8e8 g1h2 e8h8
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 b8d7 f1e2 e8g8 g1h3 b7b6 e1g1 c8b7 c1e3 f8e8 d1d2 d7e5 a1d1 d8d7 h3f2 b7a6 b2b3 a8d8 e3h6 a6b7 h6g7 g8g7 d2e3 h7h6 f3f4 e5g4 f2g4 f6g4 e3g3 b7c8 e4e5 d7f5 e2d3 f5h5 h2h3 g4e5 f4e5 d6e5 c3e4 f7f6 d1d2 g6g5 g3e1 e8f8 e4g3 h5h4 d3f5 g7h8 f5c8 d8c8 d2e2 h4d4 g1h2 e7e6 e2d2 d4h4 d5e6 c8e8 d2d6 g5g4 e1e4 h4g5 e4g4 g5g4 h3g4 f8g8 g3e4 e8e7 e4f6 g8f8 f1f5 f8b8 f5e5 b8b7 d6d8 h8g7 f6d5 a7a5 d5e7 b7e7 d8d6 g7f6 e5f5 f6g6 f5f3 e7e8 d6b6 e8e7 b6c6 g6g7 a2a4 g7g6 f3f5 h6h5 f5h5 g6f6 h5f5 f6g6 f5c5 e7b7 c5e5 b7e7 e5a5 g6g7 a5g5 g7f6 g5f5 f6g6 b3b4 g6g7 c4c5 e7b7 b4b5 g7h7 c6d6 b7b8 e6e7 b8e8 c5c6 h7g7 c6c7
+Finished game 5 (Mitchell65 vs MinimalChess0.6): 1-0 {White mates}
+Started game 6 of 20 (MinimalChess0.6 vs Mitchell65)
+Warning; PV continues after threefold repetition - move g2h1 from MinimalChess0.6
+Info; info depth 13 score cp 48 nodes 112572 nps 611804 time 184 pv f2f1 c1d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1
+Warning; PV continues after threefold repetition - move g2h1 from MinimalChess0.6
+Info; info depth 14 score cp 48 nodes 208187 nps 608733 time 342 pv f2f1 c1d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1
+Warning; PV continues after threefold repetition - move g2h1 from MinimalChess0.6
+Info; info depth 15 score cp 48 nodes 420955 nps 606563 time 694 pv f2f1 c1d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 11 score cp 48 nodes 60 nps 60000 time 0 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 12 score cp 48 nodes 5996 nps 599600 time 10 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 13 score cp 48 nodes 7298 nps 608166 time 12 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 14 score cp 48 nodes 41297 nps 645265 time 64 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 15 score cp 48 nodes 93238 nps 621586 time 150 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 16 score cp 48 nodes 258751 nps 638891 time 405 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move h1g2 from MinimalChess0.6
+Info; info depth 17 score cp 48 nodes 497370 nps 632786 time 786 pv g2h1 g5f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1 d2f4 h1g2 f4d2 g2h1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5
+Warning; PV continues after threefold repetition - move f3h4 from MinimalChess0.6
+Info; info depth 13 score cp 19 nodes 208907 nps 629237 time 332 pv a4a5 e3f4 h1g2 f3h4 g2g1 h4f3 g1g2 f3h4 g2g1 h4f3 g1g2 f3h4 g2g1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3
+Warning; PV continues after threefold repetition - move f3h4 from MinimalChess0.6
+Info; info depth 14 score cp 19 nodes 284825 nps 608600 time 468 pv a4a5 e3f4 h1g2 f3h4 g2g1 h4f3 g1g2 f3h4 g2g1 h4f3 g1g2 f3h4 g2g1 h4f3
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3
+Warning; PV continues after threefold repetition - move f3h4 from MinimalChess0.6
+Info; info depth 15 score cp 19 nodes 450285 nps 598783 time 752 pv a4a5 e3f4 h1g2 f3h4 g2g1 h4f3 g1g2 f3h4 g2g1 h4f3 g1g2 f3h4 g2g1 h4f3 g1g2
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 15 score cp 59 nodes 325552 nps 637088 time 511 pv a5a6 c5c4 f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 16 score cp 59 nodes 515707 nps 606714 time 850 pv a5a6 c5c4 f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 11 score cp 59 nodes 14 nps 14000 time 0 pv f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 12 score cp 59 nodes 16 nps 16000 time 0 pv f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 13 score cp 59 nodes 18 nps 18000 time 0 pv f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 14 score cp 59 nodes 20 nps 20000 time 0 pv f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 15 score cp 59 nodes 139935 nps 689334 time 203 pv f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4
+Warning; PV continues after threefold repetition - move h1g1 from MinimalChess0.6
+Info; info depth 16 score cp 59 nodes 339051 nps 632557 time 536 pv f1a1 e3f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6 g1h1 f6f3 h1g1 f3f6
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4
+Warning; PV continues after threefold repetition - move e3f3 from MinimalChess0.6
+Info; info depth 10 score cp 103 nodes 14970 nps 650869 time 23 pv a6a7 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1 f3e3 g1h1 e3f3
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4 f1a1 c4c3
+Warning; PV continues after threefold repetition - move e3f3 from MinimalChess0.6
+Info; info depth 11 score cp 103 nodes 23871 nps 612076 time 39 pv a6a7 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4 f1a1 c4c3
+Warning; PV continues after threefold repetition - move e3f3 from MinimalChess0.6
+Info; info depth 12 score cp 103 nodes 45887 nps 559597 time 82 pv a6a7 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1 f3e3
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4 f1a1 c4c3
+Warning; PV continues after threefold repetition - move e3f3 from MinimalChess0.6
+Info; info depth 13 score cp 103 nodes 71148 nps 547292 time 130 pv a6a7 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1 f3e3 g1h1 e3f3 h1g1 f3e3 g1h1
+Position; fen rnbqk2r/pp2ppbp/3p1np1/2pP4/2P1P3/5P2/PP4PP/RNBQKBNR w KQkq - 0 1
+Moves; b1c3 e8g8 g1e2 b8d7 e2g3 a7a6 f1e2 f6e8 e1g1 h7h5 c1e3 b7b5 c4b5 h5h4 g3h1 a6b5 e2b5 e8c7 b5e2 h4h3 g2h3 e7e6 d5e6 c7e6 d1d6 e6d4 e3d4 g7d4 h1f2 d8g5 d6g3 g5d2 e2c4 d7e5 c4d5 d2b2 d5a8 b2c3 a8d5 c8a6 g1g2 d4f2 g3f2 a6f1 a1f1 f8b8 f2g3 b8b2 f1f2 g8g7 f2b2 c3b2 g3f2 b2c1 f2f1 c1g5 g2h1 g5e3 a2a4 e5f3 a4a5 f3e5 a5a6 c5c4 f1a1 c4c3
+Warning; Move does not match uci move format, lowercase and 4/5 chars. Move a7a8Q played by MinimalChess0.6
+Warning; Illegal move a7a8Q played by MinimalChess0.6
+Finished game 6 (MinimalChess0.6 vs Mitchell65): 0-1 {White makes an illegal move}
+Started game 7 of 20 (Mitchell65 vs MinimalChess0.6)
+Tournament was interrupted. To resume the tournament, run: /tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess -config file=/workspace/chess-benchmark-200-fixed/04-MinimalChess0.6.state.json
+Finished match
+Total Time: 00:07:27 (hours:minutes:seconds)
+

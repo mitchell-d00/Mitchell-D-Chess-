@@ -1,0 +1,189 @@
+# Tests, results and reproduction
+
+The engine is UNRATED. No absolute Elo estimate is established by these tests.
+This file records what was actually tested, links the evidence, and explains how
+to repeat it. The game itself still needs only index.html; testing tools are optional.
+
+## Latest independent results: partial, paused
+
+Snapshot: November 3, 2026, 18:46 UTC. 58 of 200 planned games completed.
+Engine: Level 65, revision bdb5873406a2b3336523f3a19f16c4a1bc9ebd46.
+Engine HTML SHA-256:
+79e3126ca6cd3537ac9f958f4680790a7d11bfcbee1f352bd4c9fb41c9bbe09a
+
+Recorded results, including the separately identified opponent forfeit:
+
+| Opponent          | Games | Mitchell wins | Draws | Mitchell losses | Forfeit wins |
+|-------------------|-------|---------------|-------|-----------------|--------------|
+| Fruit 2.1         | 32    | 28            | 4     | 0               | 0            |
+| MinimalChess 0.6  | 26    | 25            | 1     | 0               | 1            |
+| Total             | 58    | 53            | 5     | 0               | 1            |
+
+Excluding the forfeit: 52 wins, 5 draws, 0 losses in 57 normal games.
+No Mitchell illegal-move, disconnect or time-forfeit result was recorded in this run.
+
+The automatic pause was triggered by MinimalChess returning a7a8Q: uppercase Q
+violates the UCI move format. The lowercase board move a7a8q is legal in the
+recorded final position. This was a protocol-format forfeit, not evidence that
+Mitchell won that game by ordinary play. Its official result is preserved and
+kept separate from normal-play results. The campaign has NOT completed 200 games.
+
+Evidence committed to this repository:
+
+- validation/independent/results-58/summary.json: recorded counts and paired-score intervals.
+- validation/independent/results-58/status.json: paused state and completed batches.
+- validation/independent/results-58/*.pgn: all recorded games, engine identities,
+  starting FENs, move times, nodes and termination reasons. Interrupted games
+  marked * are not counted as completed.
+- validation/independent/results-58/04-MinimalChess0.6.log: the referee's format warning.
+- validation/independent/results-58/snapshot.json: SHA-256 hashes of the raw evidence
+  and the promotion-format diagnosis.
+- validation/independent/results-58/campaign.json: exact frozen configuration.
+
+The snapshot is static and preserves the paused run. It is not a live scoreboard.
+Raw PGN/log whitespace is preserved. The tests below verify the snapshot hashes
+and recompute its game counts from the PGNs.
+
+## What the results mean
+
+These are promising, very one-sided results at THIS control. They are insufficient
+for an absolute rating or a human/FIDE claim. The reference CCRL 40/15 ratings
+identify opponents; our time control, host, runtime, build and hash settings differ.
+Do not add a score-derived Elo difference to a published CCRL rating and call that
+Mitchell's established rating.
+
+The old unrated Level 35/50 matches and pre-hash-fix speed figures are historical.
+They must not be pooled with this repaired-engine run. The earlier faulty campaign
+is separately archived under validation/regressions/failed-campaign/.
+
+## Fastest defensible route to a rating estimate
+
+1. Choose the scale first: a local computer-engine rating under stated conditions,
+   a CCRL-comparable estimate, and a human FIDE rating are different claims.
+2. Run short colour-paired pilots against stronger, independent opponents. Seek
+   opponents giving about 35-65% score at the intended final control. The current
+   opponents are too one-sided to narrow an upper rating efficiently. Choose
+   final opponents before collecting the final rating sample; publish pilot games
+   separately instead of selectively mixing favourable pilot results into it.
+3. Freeze the engine, versions, openings, control, hash/thread settings, referee,
+   runtime and host details. Use the SAME control for the final pool and reference
+   matches. For a CCRL-comparable claim, follow the relevant list's published
+   control/hardware methodology; one second per move is not CCRL 40/15.
+4. Concentrate roughly 200-400 final games against 2-4 competitive opponents,
+   with balanced colours, varied openings, and no pondering. Run games in parallel
+   only within available CPU and memory limits; never oversubscribe to gain speed.
+5. Fit the pool with an established estimator such as Ordo or BayesElo. Publish
+   raw PGNs, anchored references and uncertainty. Include opponent calibration
+   uncertainty and differences in test conditions, not just game-sampling error.
+
+Around a 50% score, an idealized independent decisive-game model gives about
++/-48 Elo sampling error at 95% for 200 games, or +/-34 for 400. These are planning
+figures, NOT this engine's Elo, NOT a guarantee, and NOT an overall confidence
+interval: draws, opening pairs, anchors and systematic differences change it.
+SPRT can efficiently decide whether a version improved; it does not by itself
+establish an absolute Elo rating. A computer pool alone cannot establish FIDE Elo.
+
+## Repeat correctness and evidence checks
+
+From the repository root, with Node.js 24 and Python 3.10+:
+
+    node scripts/test.cjs
+    node scripts/test-neural.cjs
+    node scripts/test-hash-moves.cjs
+    python scripts/test-campaign.py
+
+Coverage includes standard perft, special moves, mate/check evasions,
+underpromotion, KPK, short timeouts, all book lines, independent neural-reference
+scores, scalar/SIMD agreement, incremental accumulators, the real historical hash
+collision, six formerly failing game positions, invalid TT-entry injection,
+strict history replay, automatic campaign pause, and archived-result verification.
+
+Recompute the archived counts without installing any external chess engine:
+
+    python scripts/independent-campaign.py validation/independent/results-58/campaign.json --summary-only
+
+Only the generated update timestamp differs from the saved summary. The paired
+bootstrap uses complete normal-result colour pairs; it does not include a
+forfeit or half of an interrupted pair. Small/degenerate samples have no interval.
+
+Optional browser checks require separately installed Playwright and Chromium:
+
+    node scripts/browser-test.cjs
+
+Set CHROMIUM_PATH if Chromium is not at /usr/bin/chromium. This checks offline
+loading, responsive worker search, all 65 levels, 38 lessons, cancellation and MIT
+notices. This environment blocks direct file:// navigation, so the test serves
+the HTML from memory and then disables network access.
+
+## Repeat the recorded 200-game protocol on another machine
+
+External programs are test-only; no third-party engine, referee or compatibility
+library is distributed with the MIT game. Install independently:
+
+- Fastchess 1.8.2-alpha (the recorded build reports f618e34, July 26, 2026).
+- Fruit 2.1, built from the source revision in campaign.json using its supplied
+  Makefile. Our x86-64 build can differ from the historical CCRL executable.
+- MinimalChess 0.6, the official Linux release. Its older .NET runtime may require
+  a separately installed compatibility libssl1.1 and invariant-globalization
+  setting on modern Linux; resolve runtime setup before collecting games.
+- Node.js v24.22.1 for the closest match to the recorded runtime, and Python.
+
+Opponent sources and reference citations are recorded in:
+
+    validation/independent/results-58/campaign.json
+    validation/independent-campaign.md
+
+Prepare a NEW, empty output directory with local executable paths:
+
+    python scripts/prepare-benchmark.py \
+      --out /tmp/mitchell-repeat \
+      --fastchess /absolute/path/to/fastchess \
+      --fruit /absolute/path/to/fruit \
+      --minimal /absolute/path/to/MinimalChessEngine \
+      --node /absolute/path/to/node \
+      --revision bdb5873406a2b3336523f3a19f16c4a1bc9ebd46
+
+This extracts the tested HTML, UCI adapter, loader and opening file from Git,
+freezes them in the new directory, hashes the supplied binaries and records local
+runtime versions. It refuses to overwrite an existing run. Environment variables
+are inherited from your terminal but are not copied into the manifest; record any
+explicit compatibility-library setup you use when publishing your own results.
+The runner verifies the frozen engine, adapter, openings and opponent hashes.
+Time-limited play need not produce identical moves or outcomes on another machine;
+this reproduces the protocol and inputs, not a predetermined score.
+
+Then run the command printed by the preparer, normally:
+
+    python scripts/independent-campaign.py /tmp/mitchell-repeat/campaign.json
+
+Protocol: 100 games per opponent, paired colours across the same 50 openings,
+1 second per move, equal 250 ms scheduling grace, no books or pondering, no
+score-based resignation/draw adjudication, and no move-limit draws. Fruit and
+MinimalChess use 32 MB hash; Mitchell retains approximately 36 MB. Two games
+run concurrently, in twenty-game batches. Actual move times remain in PGN;
+equal time limits do not imply equal time actually used. A full run takes hours.
+
+The runner saves PGNs, logs, configuration, per-game checkpoints, status.json and
+summary.json. It pauses on abnormal termination. For an ordinary interruption,
+with unchanged frozen inputs and no unresolved fault:
+
+    python scripts/independent-campaign.py /tmp/mitchell-repeat/campaign.json --resume
+
+An unresolved recorded forfeit will trigger the safety pause again. Do not edit
+or delete games merely to bypass it. Review the cause and publish a new protocol
+if changing an adapter, opponent, adjudication or clock policy. In particular,
+normalizing MinimalChess's uppercase promotion output would be a separately
+labelled adapter experiment, not an unmodified repeat of the recorded one.
+
+## Keep result sets separate
+
+- Archived 58-game snapshot: repaired hash, independent Fastchess referee,
+  incomplete and paused on the opponent's UCI-format fault.
+- Original 12-game failed campaign: pre-fix hash defect and six Mitchell forfeits.
+- Fourteen clean referee regression/preflight games: deliberately selected checks,
+  not a rating sample; see validation/hash-move-fix.md.
+- Original self-play and pre-fix speed runs: historical development evidence only.
+
+When publishing new results, include the exact revision and HTML hash, complete
+PGNs, counts of abnormal/incomplete games, full configuration and an honest
+statement of which rating scale, if any, the evidence supports.

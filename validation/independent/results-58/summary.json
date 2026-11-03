@@ -1,0 +1,66 @@
+{
+  "updatedUtc": "2026-11-03T18:46:03.642650+00:00",
+  "plannedGames": 200,
+  "completedGames": 58,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Fruit2.1": {
+      "planned": 100,
+      "wins": 28,
+      "draws": 4,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 32,
+      "normalResults": {
+        "wins": 28,
+        "draws": 4,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.9375,
+      "completedNormalPairs": 16,
+      "pairedScoreBootstrap95": [
+        0.875,
+        0.984375
+      ]
+    },
+    "MinimalChess0.6": {
+      "planned": 100,
+      "wins": 25,
+      "draws": 1,
+      "losses": 0,
+      "forfeits": 1,
+      "completed": 26,
+      "normalResults": {
+        "wins": 24,
+        "draws": 1,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 1,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.9807692307692307,
+      "completedNormalPairs": 12,
+      "pairedScoreBootstrap95": [
+        0.9375,
+        1.0
+      ]
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

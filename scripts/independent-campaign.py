@@ -46,8 +46,10 @@ def summarize(config, root):
     return {'updatedUtc':utc(),'plannedGames':sum(b['games'] for b in config['batches']), 'completedGames':sum(x['completed'] for x in by.values()),'timeControl':config['timeControl'],'opponents':by,'ratingStatus':'Unrated. CCRL reference ratings and this different time control cannot be transferred directly.','notes':['PGNs are the authoritative game records. Forfeits are reported separately.','Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples.']}
 
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument('config'); parser.add_argument('--resume',action='store_true'); args=parser.parse_args()
+    parser=argparse.ArgumentParser(); parser.add_argument('config'); parser.add_argument('--resume',action='store_true'); parser.add_argument('--summary-only',action='store_true'); args=parser.parse_args()
     source=Path(args.config).resolve(); config=json.loads(source.read_text());root=source.parent
+    if args.summary_only:
+        print(json.dumps(summarize(config,root),indent=2));return
     if sum(b['games'] for b in config['batches'])!=200:raise ValueError('Campaign must contain exactly 200 planned games')
     if any(b['games']%2 for b in config['batches']):raise ValueError('All batches must contain colour pairs')
     if not 1<=config.get('concurrency',1)<=2:raise ValueError('At most two simultaneous games on this host')

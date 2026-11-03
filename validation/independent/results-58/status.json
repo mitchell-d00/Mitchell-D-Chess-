@@ -1,0 +1,19 @@
+{
+  "updatedUtc": "2026-11-03T18:46:03.643062+00:00",
+  "status": "paused",
+  "reason": "Abnormal game termination detected; review PGNs before continuing",
+  "completedGames": 58,
+  "plannedGames": 200,
+  "batches": {
+    "01-Fruit2.1": "completed",
+    "02-MinimalChess0.6": "completed",
+    "03-Fruit2.1": "failed",
+    "04-MinimalChess0.6": "failed",
+    "05-Fruit2.1": "queued",
+    "06-MinimalChess0.6": "queued",
+    "07-Fruit2.1": "queued",
+    "08-MinimalChess0.6": "queued",
+    "09-Fruit2.1": "queued",
+    "10-MinimalChess0.6": "queued"
+  }
+}
