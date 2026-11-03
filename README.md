@@ -174,14 +174,17 @@ budgets. Repeated Chromium worker benchmarks measured **1.84–2.00× higher NPS
 The full results, methods and limitations are in
 [the validation report](validation/neural-upgrade.md).
 
-**Provisional Level 65 estimate:** around **2600 Elo**, with a broad,
-low-confidence **2300–2800** range on a modern desktop using the full 60-second
-budget. This is an informal engineering guess, not a measured rating or a
-statistical confidence interval. The baseline was itself unrated, and our short
-matches cannot establish an absolute human FIDE rating. **2500+ strength at
-10–30 seconds per move remains unverified.** The UI continues to label the neural
-levels unrated; there is no assumption that every preset beats every lower
-preset at the same time allocation.
+**Strength is unrated.** No absolute Elo estimate is supported by the current
+evidence. Wins against our own unrated previous version demonstrate a relative
+improvement only; the two-game losses to Stockfish cannot calibrate a rating.
+A larger benchmark against independent, rated engines at documented time controls
+is needed before making an absolute strength claim. In particular, 2500+ play at
+10–30 seconds per move has not been established.
+
+A separate [200-game independent-engine campaign](validation/independent-campaign.md)
+has been started locally at **1 second per move**, against Fruit 2.1 and MinimalChess 0.6 using the external Fastchess referee. That report documents the
+protocol, reference ratings, live local progress files and recovery command.
+Results are pending; no absolute Elo claim is made.
 
 ### Reproduce checks and run matches
 

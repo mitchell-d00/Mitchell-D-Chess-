@@ -43,19 +43,18 @@ establish a human FIDE rating or a 2500+ rating at 10–30 seconds per move. No 
 of Leorik's full native engine is transferred to this integration. Absolute GM
 strength remains unverified and the UI labels the neural levels unrated.
 
-## Provisional strength estimate
+## Absolute strength is unestablished
 
-The informal working estimate for Level 65 is **approximately 2600 Elo**, with
-a broad **2300–2800** range at its full 60-second budget on a modern desktop.
-Confidence is low. This is an engineering guess based on the observed relative
-gain and the trained evaluator, not a measured rating, a calibrated FIDE rating,
-or a statistical confidence interval. The previous Level 50 has no established
-absolute rating, so wins against it cannot anchor an absolute Elo estimate.
+The previous numerical estimate has been withdrawn. It was not supported by a
+calibrated benchmark. Our previous Level 50 is unrated, and two losses to
+Stockfish provide no useful absolute rating anchor. Ratings of Leorik's native
+engine or a test opponent do not automatically transfer to this integration.
 
-Verification of 2500+ play at 10–30 seconds per move still requires larger,
-independent matches against suitably calibrated opponents under those controls.
-Neither the full native Leorik rating nor Stockfish's rating transfers to this
-integration. Keep the measured results above separate from this estimate.
+Further testing must use independent opponents with identified versions,
+documented source ratings and fixed time controls. Report all completed and
+unfinished games, opening selection, actual timing and statistical uncertainty.
+Fast screening results must not be presented as a human FIDE rating or evidence
+of 2500+ strength at 10–30 seconds per move.
 
 ## Whole-search performance
 
