@@ -1,4 +1,11 @@
-# MIT neural upgrade validation
+# Historical MIT neural upgrade validation
+
+**Superseded by the hash correctness fix.** A later independent-referee campaign
+found repeated illegal moves caused by a 32-bit-equivalent position hash and
+unchecked transposition moves. The search/match/throughput results below predate
+that fix and must not be used to validate the fixed revision. Tensor inference
+checks remain useful, but did not establish search correctness. See
+[hash-move-fix.md](hash-move-fix.md) for the reproducer and restart details.
 
 Baseline: release `e7fd21ab8ff72b8be960a8c9c590ad843b702fca`, Level 50.
 Candidate: Level 65, original Mitchell search with the MIT Leorik 128-neuron

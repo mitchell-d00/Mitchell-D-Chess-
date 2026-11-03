@@ -400,15 +400,28 @@ var ENGINE = (function () {
   function sqParse(n) { return (n.charCodeAt(0) - 97) + ((n.charCodeAt(1) - 49) << 4); }
 
   // ---------- Zobrist ----------
-  var seed = 0x2545F491;
-  function rnd32() { seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5; return seed | 0; }
-  var ZL = new Int32Array(16 * 128), ZH = new Int32Array(16 * 128);
-  for (var i = 0; i < 16 * 128; i++) { ZL[i] = rnd32(); ZH[i] = rnd32(); }
-  var ZSL = rnd32(), ZSH = rnd32();
-  var ZCL = new Int32Array(16), ZCH = new Int32Array(16);
-  for (i = 0; i < 16; i++) { ZCL[i] = rnd32(); ZCH[i] = rnd32(); }
-  var ZEL = new Int32Array(8), ZEH = new Int32Array(8);
-  for (i = 0; i < 8; i++) { ZEL[i] = rnd32(); ZEH[i] = rnd32(); }
+  // Generate whole 64-bit keys with SplitMix64. Consecutive linear xorshift32
+  // outputs must not be used as low/high halves: XOR preserves their dependence.
+  // BigInt is used only during initialization; search still uses two int32 halves.
+  var hashSeed = 0x2545F4919E3779B9n, HASH64_MASK = (1n << 64n) - 1n;
+  function nextHashKey() {
+    hashSeed = (hashSeed + 0x9E3779B97F4A7C15n) & HASH64_MASK;
+    var z = hashSeed;
+    z = ((z ^ (z >> 30n)) * 0xBF58476D1CE4E5B9n) & HASH64_MASK;
+    z = ((z ^ (z >> 27n)) * 0x94D049BB133111EBn) & HASH64_MASK;
+    return z ^ (z >> 31n);
+  }
+  function fillHashKeys(lo, hi) {
+    for (var k = 0; k < lo.length; k++) {
+      var key = nextHashKey();
+      lo[k] = Number(key & 0xFFFFFFFFn) | 0; hi[k] = Number(key >> 32n) | 0;
+    }
+  }
+  var i, ZL = new Int32Array(16 * 128), ZH = new Int32Array(16 * 128);
+  fillHashKeys(ZL, ZH);
+  var sideHash = nextHashKey(), ZSL = Number(sideHash & 0xFFFFFFFFn) | 0, ZSH = Number(sideHash >> 32n) | 0;
+  var ZCL = new Int32Array(16), ZCH = new Int32Array(16); fillHashKeys(ZCL, ZCH);
+  var ZEL = new Int32Array(8), ZEH = new Int32Array(8); fillHashKeys(ZEL, ZEH);
 
   var CR_MASK = new Int32Array(128);
   for (i = 0; i < 128; i++) CR_MASK[i] = 15;
@@ -1281,10 +1294,16 @@ var ENGINE = (function () {
     var mAlpha = Math.max(alpha, -MATE + ply), mBeta = Math.min(beta, MATE - ply - 1);
     if (ply > 0 && mAlpha >= mBeta) return mAlpha;
 
-    var h = pos.lo & TT_MASK, ttm = 0, alpha0 = alpha, pv = beta - alpha > 1;
+    var h = pos.lo & TT_MASK, ttm = 0, alpha0 = alpha, pv = beta - alpha > 1, generated = null;
     if (ttFlag[h] >= 0 && ttLo[h] === pos.lo && ttHi[h] === pos.hi) {
       ttm = ttMove[h];
-      if (!excluded && ply > 0 && ttDepth[h] >= depth && !pv) {
+      if (ttm) {
+        generated = pos.gen(false);
+        // A signature match is not a licence to make an unchecked cached move.
+        // Discard both move and score if the entry is inconsistent with the board.
+        if (generated.indexOf(ttm) < 0) ttm = 0;
+      }
+      if (ttm && !excluded && ply > 0 && ttDepth[h] >= depth && !pv) {
         var ts = ttScore[h];
         if (ts > MATE - 1000) ts -= ply; else if (ts < -MATE + 1000) ts += ply;
         var tf = ttFlag[h];
@@ -1320,7 +1339,10 @@ var ENGINE = (function () {
     // internal iterative deepening
     if (!excluded && this.adv && !ttm && pv && depth >= 6) {
       this.negamax(depth - 3, alpha, beta, ply, true, prevKey);
-      if (ttLo[h] === pos.lo && ttHi[h] === pos.hi) ttm = ttMove[h];
+      if (ttLo[h] === pos.lo && ttHi[h] === pos.hi) {
+        if (!generated) generated = pos.gen(false);
+        ttm = generated.indexOf(ttMove[h]) >= 0 ? ttMove[h] : 0;
+      }
     }
 
     var singularMove = 0;
@@ -1329,15 +1351,15 @@ var ENGINE = (function () {
       var alternatives = this.negamax((depth - 1) >> 1, singularBeta - 1, singularBeta, ply, false, prevKey, ttm);
       if (alternatives < singularBeta) singularMove = ttm;
     }
-    // Try a trusted hash move before generating/scoring the rest at neural levels.
-    // Most cut nodes can finish here without paying for unused move ordering.
+    // Generate to validate cached moves, but defer ordering until it is needed.
+    if (!generated) generated = pos.gen(false);
     var staged = this.mode === 'nnue' && ttm && !excluded;
-    var ms = staged ? [ttm] : this.order(pos.gen(false), ttm, ply, prevKey), legal = 0, best = -INF, bestM = 0, quietsTried = [], k = this.killers[ply];
+    var ms = staged ? [ttm] : this.order(generated, ttm, ply, prevKey), legal = 0, best = -INF, bestM = 0, quietsTried = [], k = this.killers[ply];
     var b = pos.b;
     for (var i = 0; i < ms.length || staged; i++) {
       if (i === ms.length && staged) {
         staged = false;
-        ms = this.order(pos.gen(false), ttm, ply, prevKey);
+        ms = this.order(generated, ttm, ply, prevKey);
         var hashIndex = ms.indexOf(ttm); if (hashIndex >= 0) ms.splice(hashIndex, 1);
         i = 0; if (!ms.length) break;
       }
@@ -1981,7 +2003,7 @@ var ENGINE = (function () {
     var L = LEVELS[levelIdx];
     if (!L) throw new Error('Invalid engine level');
     var pos = new Chess(startFen);
-    for (var i = 0; i < moves.length; i++) { var m = pos.findUci(moves[i]); if (!m) break; pos.make(m); }
+    for (var i = 0; i < moves.length; i++) { var m = pos.findUci(moves[i]); if (!m) throw new Error('Invalid move history at ply ' + (i + 1) + ': ' + moves[i]); pos.make(m); }
     var legal = pos.legalMoves();
     if (!legal.length) return null;
     var res = { move: null, score: 0, depth: 0, nodes: 0, book: false };
@@ -2044,6 +2066,7 @@ var ENGINE = (function () {
       var soft = stability >= 3 ? 0.55 : 0.85;
       if (Date.now() - t0 > time * soft) break;
     }
+    if (legal.indexOf(best) < 0) throw new Error('Search selected an illegal root move');
     res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes; res.seldepth = s.seldepth;
     return res;
   }

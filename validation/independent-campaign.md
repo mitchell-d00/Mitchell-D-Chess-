@@ -1,5 +1,11 @@
 # Independent 200-game campaign
 
+**Restart after a correctness fix:** the first run was paused after 12 completed
+games, including six illegal-move forfeits. Its raw data remains in
+`/workspace/chess-benchmark-200/` and is not mixed with new results. The repaired
+engine starts from zero in `/workspace/chess-benchmark-200-fixed/`. See
+[hash-move-fix.md](hash-move-fix.md) for the cause, regression cases and validation.
+
 The unsupported absolute Elo estimate has been withdrawn. This campaign tests the
 unchanged neural engine from `e87c93e` against independently released opponents.
 It is a benchmark at its stated control, not a calibrated human FIDE rating.
@@ -25,6 +31,8 @@ It is a benchmark at its stated control, not a calibrated human FIDE rating.
 - Engine HTML, adapter, opening file and opponent binaries/scripts are frozen or
   hashed in the configuration. The Node runtime and Fastchess build are recorded.
 - Each completed game is saved as PGN. Batches checkpoint after every game.
+  The run automatically pauses on the first abnormal termination; it does not
+  silently continue after illegal moves, disconnects or forfeits.
   Forfeits/crashes are counted and also flagged separately; they will not be
   silently presented as normal playing-strength wins.
 
@@ -46,8 +54,8 @@ simply add a score-derived Elo difference to these reference numbers.
 
 ## Running and resuming
 
-The campaign started on **November 3, 2026 at 17:27 UTC**. The active local run
-directory is `/workspace/chess-benchmark-200/`:
+The first, now-paused campaign started on **November 3, 2026 at 17:27 UTC**.
+The repaired-engine restart uses `/workspace/chess-benchmark-200-fixed/`:
 
 - `campaign.json`: exact configuration, hashes, opponent provenance and batches.
 - `status.json`: live campaign/batch status.
@@ -57,9 +65,9 @@ directory is `/workspace/chess-benchmark-200/`:
 - `*.log`: manager output, warnings and faults.
 
 ```sh
-python scripts/independent-campaign.py /workspace/chess-benchmark-200/campaign.json
+python scripts/independent-campaign.py /workspace/chess-benchmark-200-fixed/campaign.json
 # After an interruption, with the same frozen engines and dependencies:
-python scripts/independent-campaign.py /workspace/chess-benchmark-200/campaign.json --resume
+python scripts/independent-campaign.py /workspace/chess-benchmark-200-fixed/campaign.json --resume
 ```
 
 `validation/independent/campaign-config.json` records the initial plan, and

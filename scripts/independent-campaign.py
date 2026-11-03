@@ -52,16 +52,24 @@ def main():
     if any(b['games']%2 for b in config['batches']):raise ValueError('All batches must contain colour pairs')
     if not 1<=config.get('concurrency',1)<=2:raise ValueError('At most two simultaneous games on this host')
     if hashlib.sha256(Path(config['html']).read_bytes()).hexdigest()!=config['htmlSha256']:raise ValueError('Frozen engine hash changed')
+    if hashlib.sha256(Path(config['adapter']).read_bytes()).hexdigest()!=config['adapterSha256']:raise ValueError('Frozen adapter hash changed')
+    if hashlib.sha256(Path(config['openings']).read_bytes()).hexdigest()!=config['openingsSha256']:raise ValueError('Frozen opening file changed')
+    for opponent in config['opponents'].values():
+        if hashlib.sha256(Path(opponent['command']).read_bytes()).hexdigest()!=opponent['sha256']:raise ValueError('Opponent binary changed: '+opponent['command'])
     lock=root/'campaign.pid'
     if lock.exists():
         try:os.kill(int(lock.read_text()),0)
         except (ProcessLookupError,ValueError):pass
         else:raise RuntimeError('Campaign already running: '+lock.read_text())
-    lock.write_text(str(os.getpid())); active={}; statuses={b['id']:'queued' for b in config['batches']};queued=list(config['batches']);stopping=False
-    def stop(signum,frame):
-        nonlocal stopping
-        stopping=True
-        for process,_,_ in active.values():process.send_signal(signal.SIGINT)
+    lock.write_text(str(os.getpid())); active={}; statuses={b['id']:'queued' for b in config['batches']};queued=list(config['batches']);stopping=False;stop_reason=None
+    def request_stop(reason):
+        nonlocal stopping,stop_reason
+        if stopping:return
+        stopping=True;stop_reason=reason
+        for process,_,_ in active.values():
+            try:process.send_signal(signal.SIGINT)
+            except ProcessLookupError:pass
+    def stop(signum,frame):request_stop('Interrupted by signal '+str(signum))
     signal.signal(signal.SIGTERM,stop);signal.signal(signal.SIGINT,stop)
     env={**os.environ,**config.get('environment',{}),'MITCHELL_HTML':config['html']}
     try:
@@ -83,12 +91,16 @@ def main():
                 log.close();actual=len(games(root/(name+'.pgn')));success=code==0 and actual==batch['games'];statuses[name]='completed' if success else 'failed'
                 if success:save(root/(name+'.done.json'),{'finishedUtc':utc(),'games':actual,'exitCode':code})
                 del active[name]
-                if not success:stopping=True
-            report=summarize(config,root);save(root/'summary.json',report);save(root/'status.json',{'updatedUtc':utc(),'pid':os.getpid(),'status':'stopping' if stopping else 'running' if active or queued else 'completed','batches':statuses,'completedGames':report['completedGames'],'plannedGames':200})
+                if not success:request_stop('Batch '+name+' stopped: exit '+str(code)+', completed '+str(actual)+'/'+str(batch['games']))
+            report=summarize(config,root)
+            if config.get('stopOnForfeit',True) and any(x['forfeits'] for x in report['opponents'].values()):request_stop('Abnormal game termination detected; review PGNs before continuing')
+            save(root/'summary.json',report);save(root/'status.json',{'updatedUtc':utc(),'pid':os.getpid(),'reason':stop_reason,'status':'stopping' if stopping else 'running' if active or queued else 'completed','batches':statuses,'completedGames':report['completedGames'],'plannedGames':200})
             if stopping and not active:break
             if active:time.sleep(5)
         final=summarize(config,root);save(root/'summary.json',final)
-        if final['completedGames']!=200:raise RuntimeError('Campaign stopped before 200 completed games; inspect logs and resume')
+        if final['completedGames']!=200:
+            save(root/'status.json',{'updatedUtc':utc(),'status':'paused','reason':stop_reason or 'Incomplete campaign','completedGames':final['completedGames'],'plannedGames':200,'batches':statuses})
+            raise RuntimeError('Campaign paused before 200 completed games: '+str(stop_reason))
         save(root/'status.json',{'updatedUtc':utc(),'status':'completed','completedGames':200,'plannedGames':200,'batches':statuses});print(json.dumps(final),flush=True)
     finally:lock.unlink(missing_ok=True)
 if __name__=='__main__':main()

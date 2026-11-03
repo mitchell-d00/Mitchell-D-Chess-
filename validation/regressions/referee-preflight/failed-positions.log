@@ -1,0 +1,33 @@
+Started game 1 of 12 (Mitchell65 vs Fruit2.1)
+Started game 2 of 12 (Fruit2.1 vs Mitchell65)
+Finished game 1 (Mitchell65 vs Fruit2.1): 0-1 {Black mates}
+Started game 3 of 12 (Mitchell65 vs Fruit2.1)
+Finished game 3 (Mitchell65 vs Fruit2.1): 0-1 {Black mates}
+Started game 4 of 12 (Fruit2.1 vs Mitchell65)
+Finished game 4 (Fruit2.1 vs Mitchell65): 0-1 {Black mates}
+Started game 5 of 12 (Mitchell65 vs Fruit2.1)
+Finished game 5 (Mitchell65 vs Fruit2.1): 0-1 {Black mates}
+Started game 6 of 12 (Fruit2.1 vs Mitchell65)
+Finished game 6 (Fruit2.1 vs Mitchell65): 1/2-1/2 {Draw by insufficient mating material}
+Started game 7 of 12 (Mitchell65 vs Fruit2.1)
+Finished game 7 (Mitchell65 vs Fruit2.1): 0-1 {Black mates}
+Started game 8 of 12 (Fruit2.1 vs Mitchell65)
+Finished game 2 (Fruit2.1 vs Mitchell65): 0-1 {Black mates}
+Started game 9 of 12 (Mitchell65 vs Fruit2.1)
+Finished game 9 (Mitchell65 vs Fruit2.1): 1-0 {White mates}
+Started game 10 of 12 (Fruit2.1 vs Mitchell65)
+Finished game 10 (Fruit2.1 vs Mitchell65): 1-0 {White mates}
+Started game 11 of 12 (Mitchell65 vs Fruit2.1)
+Finished game 8 (Fruit2.1 vs Mitchell65): 0-1 {Black mates}
+Started game 12 of 12 (Fruit2.1 vs Mitchell65)
+Finished game 11 (Mitchell65 vs Fruit2.1): 1/2-1/2 {Draw by insufficient mating material}
+Finished game 12 (Fruit2.1 vs Mitchell65): 0-1 {Black mates}
+--------------------------------------------------
+Results of Mitchell65 vs Fruit2.1 (0.1/move, 1t - NULL, NULL - 32MB, failed-positions.epd):
+Elo: -0.00 +/- 81.73, nElo: 0.00 +/- 196.58
+LOS: 50.00 %, DrawRatio: 66.67 %, PairsRatio: 1.00
+Games: 12, Wins: 5, Losses: 5, Draws: 2, Points: 6.0 (50.00 %)
+Ptnml(0-2): [0, 1, 4, 1, 0], WL/DD Ratio: inf
+--------------------------------------------------
+Finished match
+Total Time: 00:00:25 (hours:minutes:seconds)

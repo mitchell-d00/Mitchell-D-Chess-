@@ -1,0 +1,452 @@
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "1"]
+[White "Mitchell65"]
+[Black "Fruit2.1"]
+[Result "0-1"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Fruit 2.1"]
+[EngineBlackAuthor "Fabien Letouzey"]
+[SetUp "1"]
+[FEN "8/6pk/7p/5q2/1P6/6P1/7P/4N1K1 b - - 0 1"]
+[GameDuration "00:00:01"]
+[GameStartTime "2026-11-03T17:42:46 +0000"]
+[GameEndTime "2026-11-03T17:42:48 +0000"]
+[PlyCount "13"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Kg6 {+7.04/8 0.102s} 2. h4 {-30.21/7 0.083s} Qe4 {+7.05/9 0.102s}
+3. Ng2 {-30.89/8 0.082s} Kf5 {+7.35/9 0.101s} 4. b5 {-31.45/9 0.076s}
+Kg4 {+8.23/8 0.101s} 5. Kh2 {-33.59/9 0.077s} Qc2 {+M7/37 0.101s}
+6. b6 {-32.72/10 0.072s} Kf3 {+M3/36 0.099s} 7. Kg1 {-M2/4 0.002s}
+Qxg2# {+M1/34 0.100s, Black mates} 0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "2"]
+[White "Mitchell65"]
+[Black "Fruit2.1"]
+[Result "0-1"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Fruit 2.1"]
+[EngineBlackAuthor "Fabien Letouzey"]
+[SetUp "1"]
+[FEN "8/8/6r1/8/1p6/1k1rN2P/4KP2/7q b - - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-03T17:42:48 +0000"]
+[GameEndTime "2026-11-03T17:42:48 +0000"]
+[PlyCount "5"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Rgd6 {+M5/36 0.099s} 2. Nf1 {-M4/4 0.002s} Qf3+ {+M3/34 0.101s}
+3. Ke1 {0.00/0 0.000s} Qd1# {+M1/34 0.101s, Black mates} 0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "2"]
+[White "Fruit2.1"]
+[Black "Mitchell65"]
+[Result "0-1"]
+[EngineWhiteName "Fruit 2.1"]
+[EngineWhiteAuthor "Fabien Letouzey"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "8/8/6r1/8/1p6/1k1rN2P/4KP2/7q b - - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-03T17:42:48 +0000"]
+[GameEndTime "2026-11-03T17:42:48 +0000"]
+[PlyCount "9"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Qe4 {+70.82/8 0.048s} 2. h4 {-M6/38 0.100s} Rgd6 {+M7/4 0.005s}
+3. f3 {-M6/36 0.100s} Rd2+ {+M5/4 0.006s} 4. Ke1 {-M4/35 0.100s}
+Qb1+ {+M3/4 0.002s} 5. Nd1 {-M2/4 0.000s} Qxd1# {+M1/4 0.000s, Black mates} 0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "3"]
+[White "Mitchell65"]
+[Black "Fruit2.1"]
+[Result "0-1"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Fruit 2.1"]
+[EngineBlackAuthor "Fabien Letouzey"]
+[SetUp "1"]
+[FEN "6K1/6p1/8/1k4rP/5p2/p7/5R2/8 b - - 0 1"]
+[GameDuration "00:00:03"]
+[GameStartTime "2026-11-03T17:42:48 +0000"]
+[GameEndTime "2026-11-03T17:42:52 +0000"]
+[PlyCount "45"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Rg1 {+3.37/10 0.101s} 2. Kf7 {-12.70/8 0.080s} f3 {+3.13/9 0.100s}
+3. Rxf3 {-7.17/10 0.067s} Kb4 {+2.95/10 0.101s} 4. Rf4+ {-7.21/9 0.082s}
+Kb3 {+3.92/10 0.102s} 5. Rf3+ {-7.31/9 0.051s} Kb2 {+3.77/12 0.101s}
+6. Rf2+ {-7.11/9 0.081s} Kb1 {+3.95/12 0.102s} 7. Rf5 {-6.63/9 0.081s}
+a2 {+3.92/12 0.100s} 8. Rb5+ {-6.60/9 0.046s} Kc2 {+3.92/13 0.103s}
+9. Ra5 {-7.10/10 0.050s} Kb3 {+4.07/9 0.100s} 10. Kf8 {-7.18/9 0.080s}
+Rg4 {+5.78/11 0.101s} 11. h6 {-7.76/9 0.063s} gxh6 {+8.17/9 0.101s}
+12. Rxa2 {-7.58/9 0.080s} Kxa2 {+14.76/10 0.100s} 13. Ke7 {-9.38/10 0.055s}
+h5 {+10.92/8 0.100s} 14. Ke6 {-9.88/10 0.060s} h4 {+15.76/11 0.101s}
+15. Kf5 {-10.09/10 0.083s} Rc4 {+16.13/11 0.100s} 16. Ke6 {-9.93/8 0.080s}
+Kb3 {+16.23/10 0.102s} 17. Kf5 {-9.74/8 0.077s} h3 {+M15/10 0.102s}
+18. Kg5 {-15.29/8 0.080s} h2 {+M11/9 0.100s} 19. Kg6 {-16.35/8 0.080s}
+h1=Q {+M9/11 0.100s} 20. Kf6 {-M10/7 0.054s} Qd5 {+M7/18 0.101s}
+21. Kg6 {-M8/7 0.020s} Rc6+ {+M5/34 0.104s} 22. Kh7 {-M6/5 0.029s}
+Qd7+ {+M3/34 0.103s} 23. Kg8 {-M2/4 0.001s} Rc8# {+M1/33 0.101s, Black mates}
+0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "3"]
+[White "Fruit2.1"]
+[Black "Mitchell65"]
+[Result "1/2-1/2"]
+[EngineWhiteName "Fruit 2.1"]
+[EngineWhiteAuthor "Fabien Letouzey"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "6K1/6p1/8/1k4rP/5p2/p7/5R2/8 b - - 0 1"]
+[GameDuration "00:00:04"]
+[GameStartTime "2026-11-03T17:42:52 +0000"]
+[GameEndTime "2026-11-03T17:42:57 +0000"]
+[PlyCount "56"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Rg4 {+13.87/8 0.050s} 2. Kf7 {-3.37/9 0.116s} Kb4 {+13.87/7 0.083s}
+3. Ke6 {-3.22/10 0.105s} Rh4 {+9.69/8 0.084s} 4. Kf7 {-3.02/10 0.100s}
+Kb3 {+9.63/8 0.090s} 5. Rf3+ {-2.92/11 0.100s} Ka4 {+8.84/7 0.082s}
+6. Rf2 {-3.04/11 0.102s} Rg4 {+9.40/9 0.058s} 7. Ke7 {-3.38/11 0.101s}
+Kb3 {+13.26/9 0.067s} 8. Rf3+ {-3.10/11 0.106s} Kb4 {+12.53/9 0.055s}
+9. Rf2 {-3.25/11 0.100s} Kc3 {+12.36/8 0.081s} 10. Rf3+ {-2.44/11 0.102s}
+Kb2 {+12.27/8 0.080s} 11. Rf2+ {-2.39/11 0.100s} Kc1 {+11.36/8 0.080s}
+12. Rf1+ {-2.63/11 0.101s} Kd2 {+10.90/8 0.080s} 13. Ke6 {-2.69/10 0.102s}
+Rh4 {+10.65/8 0.079s} 14. Rf3 {-2.64/10 0.101s} a2 {+8.89/9 0.080s}
+15. Rf2+ {-3.26/11 0.101s} Ke3 {+9.19/8 0.080s} 16. Rxa2 {-3.29/12 0.101s}
+Rxh5 {+9.02/10 0.082s} 17. Ra3+ {-2.72/10 0.101s} Kf2 {+8.97/7 0.054s}
+18. Ra7 {-3.27/11 0.100s} g5 {+10.59/10 0.084s} 19. Kf5 {-2.94/12 0.100s}
+Kg3 {+6.79/10 0.065s} 20. Kg6 {-2.94/11 0.103s} Kg4 {+7.49/9 0.080s}
+21. Ra5 {-2.27/13 0.102s} Kh4 {+7.50/9 0.080s} 22. Ra1 {0.00/16 0.103s}
+f3 {-0.42/11 0.079s} 23. Rh1+ {0.00/15 0.103s} Kg3 {-0.20/12 0.063s}
+24. Kxh5 {0.00/17 0.101s} Kg2 {-0.20/14 0.083s} 25. Rc1 {0.00/18 0.100s}
+f2 {-0.20/15 0.060s} 26. Rc2 {0.00/19 0.102s} Kg1 {-0.20/13 0.063s}
+27. Rc1+ {0.00/21 0.102s} f1=Q {-0.20/15 0.050s} 28. Rxf1+ {0.00/25 0.101s}
+Kxf1 {-0.20/18 0.051s}
+29. Kxg5 {0.00/63 0.035s, Draw by insufficient mating material} 1/2-1/2
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "4"]
+[White "Mitchell65"]
+[Black "Fruit2.1"]
+[Result "0-1"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Fruit 2.1"]
+[EngineBlackAuthor "Fabien Letouzey"]
+[SetUp "1"]
+[FEN "6k1/3B1p2/3p4/p2P4/4KP2/6P1/8/3q4 b - - 0 1"]
+[GameDuration "00:00:01"]
+[GameStartTime "2026-11-03T17:42:57 +0000"]
+[GameEndTime "2026-11-03T17:42:58 +0000"]
+[PlyCount "15"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Qh1+ {+7.81/7 0.101s} 2. Kd4 {-35.68/6 0.080s} a4 {+8.53/8 0.103s}
+3. Bc6 {-35.52/7 0.080s} a3 {+16.34/6 0.101s} 4. Kc4 {-40.52/8 0.081s}
+a2 {+M11/8 0.101s} 5. Bb7 {-56.27/7 0.080s} a1=Q {+M7/33 0.100s}
+6. Kb5 {-56.23/7 0.080s} Qhc1 {+M5/36 0.100s} 7. Kb4 {-M4/4 0.003s}
+Qcb2+ {+M3/34 0.100s} 8. Kc4 {0.00/0 0.000s} Qf1# {+M1/34 0.100s, Black mates}
+0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "1"]
+[White "Fruit2.1"]
+[Black "Mitchell65"]
+[Result "0-1"]
+[EngineWhiteName "Fruit 2.1"]
+[EngineWhiteAuthor "Fabien Letouzey"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "8/6pk/7p/5q2/1P6/6P1/7P/4N1K1 b - - 0 1"]
+[GameDuration "00:00:12"]
+[GameStartTime "2026-11-03T17:42:46 +0000"]
+[GameEndTime "2026-11-03T17:42:59 +0000"]
+[PlyCount "143"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Qe4 {+28.67/8 0.073s} 2. Kf2 {-7.04/9 0.100s} Qd4+ {+30.88/8 0.064s}
+3. Kf1 {-7.12/10 0.101s} Qxb4 {+30.51/8 0.081s} 4. Nf3 {-7.16/11 0.100s}
+Qe4 {+31.15/8 0.080s} 5. Kf2 {-7.36/10 0.102s} Kg8 {+30.32/8 0.080s}
+6. h4 {-7.08/10 0.105s} Kf8 {+30.81/9 0.064s} 7. Ne1 {-7.54/9 0.098s}
+Qd4+ {+31.68/7 0.081s} 8. Ke2 {-7.97/12 0.101s} Qd6 {+34.73/9 0.071s}
+9. Nf3 {-8.48/12 0.100s} Qxg3 {+34.98/10 0.070s} 10. Ke3 {-8.66/11 0.102s}
+Qg4 {+34.97/9 0.080s} 11. Ke2 {-8.12/11 0.100s} Kg8 {+35.37/8 0.080s}
+12. Ke3 {-8.06/10 0.101s} Kh7 {+35.89/8 0.083s} 13. Kf2 {-8.17/13 0.102s}
+Qg6 {+35.12/9 0.084s} 14. Ke3 {-7.92/8 0.101s} Qf5 {+35.63/8 0.080s}
+15. Kf2 {-8.45/10 0.103s} Kg6 {+37.63/10 0.057s} 16. Ke3 {-8.70/11 0.102s}
+Kh5 {+39.56/9 0.046s} 17. Nd2 {-8.96/9 0.102s} Kxh4 {+41.07/8 0.079s}
+18. Kd4 {-9.03/8 0.100s} g5 {+42.95/8 0.054s} 19. Nc4 {-10.75/9 0.100s}
+h5 {+43.80/8 0.064s} 20. Ne3 {-9.81/9 0.102s} Qf4+ {+45.59/9 0.080s}
+21. Kd3 {-9.74/9 0.100s} Kg3 {+45.15/8 0.080s} 22. Nd5 {-11.92/9 0.100s}
+Qf5+ {+46.34/7 0.080s} 23. Kd4 {-15.58/11 0.102s} Kf3 {+46.41/8 0.080s}
+24. Nb4 {-12.47/8 0.103s} Qe4+ {+48.70/8 0.050s} 25. Kc3 {-21.58/12 0.101s}
+h4 {+50.25/9 0.081s} 26. Na2 {-18.50/8 0.103s} g4 {+55.51/8 0.046s}
+27. Nb4 {-21.61/10 0.101s} g3 {+55.58/8 0.082s} 28. Na2 {-21.58/8 0.102s}
+Qe3+ {+56.93/7 0.080s} 29. Kb2 {-21.56/7 0.103s} h3 {+55.15/7 0.080s}
+30. Nb4 {-22.15/7 0.102s} Qe5+ {+56.37/8 0.089s} 31. Kb3 {-22.15/7 0.104s}
+Qb5 {+58.24/8 0.089s} 32. Kc3 {-22.18/7 0.101s} Qc5+ {+57.43/8 0.077s}
+33. Kb3 {-21.83/7 0.101s} Qf5 {+56.12/8 0.080s} 34. Ka4 {-25.71/7 0.103s}
+Kg4 {+57.68/7 0.080s} 35. Nc6 {-25.98/6 0.101s} Qc5 {+59.29/7 0.081s}
+36. Na5 {-29.47/8 0.102s} Kf3 {+57.56/8 0.075s} 37. Nb3 {-21.83/8 0.102s}
+Qc4+ {+58.87/9 0.077s} 38. Ka3 {-22.22/9 0.101s} Qd3 {+58.18/9 0.070s}
+39. Kb4 {-22.11/7 0.100s} Kg2 {+56.18/8 0.081s} 40. Nc5 {-21.58/9 0.100s}
+Qd4+ {+57.15/7 0.082s} 41. Kb5 {-26.03/9 0.106s} Kf3 {+58.93/8 0.080s}
+42. Nb3 {-22.15/7 0.101s} Qc3 {+56.90/8 0.080s} 43. Nc5 {-22.15/7 0.101s}
+Qe5 {+55.40/8 0.074s} 44. Kb4 {-22.15/7 0.103s} Qd5 {+57.27/9 0.081s}
+45. Na4 {-30.59/8 0.101s} Qd4+ {+58.53/8 0.080s} 46. Kb3 {-M10/8 0.104s}
+Qd1+ {+58.49/7 0.080s} 47. Ka3 {-28.99/8 0.101s} Qd7 {+58.64/8 0.080s}
+48. Nc5 {-22.15/7 0.101s} Qd2 {+56.31/9 0.075s} 49. Nb3 {-22.15/8 0.101s}
+Qc3 {+57.87/9 0.080s} 50. Ka2 {-M12/9 0.101s} Qe3 {+57.05/9 0.081s}
+51. Kb2 {-M12/8 0.103s} Kf2 {+56.84/9 0.081s} 52. Kc2 {-21.70/7 0.100s}
+Qe2+ {+57.72/7 0.083s} 53. Kc3 {-21.68/8 0.101s} Qe5+ {+57.33/7 0.081s}
+54. Kc4 {-21.76/7 0.102s} Ke3 {+58.97/8 0.080s} 55. Nc5 {-29.49/7 0.102s}
+Qd4+ {+58.98/8 0.080s} 56. Kb5 {-27.61/7 0.100s} Qd5 {+56.94/9 0.055s}
+57. Kb6 {-26.35/7 0.100s} Kf3 {+57.48/10 0.082s} 58. Na4 {-29.36/7 0.101s}
+Qb3+ {+59.21/8 0.081s} 59. Kc7 {-31.45/7 0.100s} Qxa4 {+62.81/8 0.059s}
+60. Kd6 {-M10/10 0.101s} Qe4 {+62.61/8 0.072s} 61. Kc5 {-M8/34 0.101s}
+Qd3 {+63.40/7 0.080s} 62. Kc6 {-M10/11 0.101s} Qd4 {+62.76/9 0.070s}
+63. Kb5 {-M10/12 0.100s} Qd5+ {+62.14/8 0.047s} 64. Kb4 {-M8/36 0.100s}
+Qa8 {+61.18/8 0.080s} 65. Kc5 {-M10/12 0.100s} Qf8+ {+60.97/8 0.055s}
+66. Kc4 {-M10/12 0.100s} Qf4+ {+61.09/8 0.080s} 67. Kd5 {-M10/14 0.100s}
+Qf5+ {+60.84/8 0.057s} 68. Kc4 {-M10/13 0.101s} g2 {+61.04/8 0.081s}
+69. Kc3 {-M8/34 0.101s} g1=Q {+M7/8 0.030s} 70. Kb3 {-M6/37 0.101s}
+Qgb1+ {+M5/4 0.001s} 71. Kc4 {-M4/35 0.101s} Qbc2+ {+M3/4 0.002s}
+72. Kb4 {-M2/35 0.101s} Qfc5# {+M1/4 0.001s, Black mates} 0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "5"]
+[White "Mitchell65"]
+[Black "Fruit2.1"]
+[Result "1-0"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Fruit 2.1"]
+[EngineBlackAuthor "Fabien Letouzey"]
+[SetUp "1"]
+[FEN "4q3/4rk2/1PP4p/P3R1p1/8/3Q2BP/5PPK/1r6 w - - 0 1"]
+[GameDuration "00:00:01"]
+[GameStartTime "2026-11-03T17:42:59 +0000"]
+[GameEndTime "2026-11-03T17:43:01 +0000"]
+[PlyCount "27"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1. Qh7+ {+61.04/7 0.080s} Kf6 {-13.73/7 0.102s} 2. Qxh6+ {+62.87/8 0.079s}
+Qg6 {-16.80/8 0.100s} 3. Qxg6+ {+64.35/9 0.077s} Kxg6 {-14.00/4 0.000s}
+4. Rxe7 {+64.75/9 0.079s} Kf6 {-19.22/8 0.102s} 5. Re3 {+67.91/9 0.080s}
+Rc1 {-23.40/6 0.100s} 6. c7 {+69.29/9 0.052s} g4 {-24.02/6 0.104s}
+7. b7 {+71.87/8 0.080s} Kg6 {-M10/6 0.100s} 8. b8=Q {+77.85/7 0.080s}
+Rh1+ {-M8/37 0.101s} 9. Kxh1 {0.00/0 0.000s} gxh3 {-M6/36 0.100s}
+10. Qg8+ {+M9/6 0.039s} Kh5 {-M4/35 0.101s} 11. Qf7+ {+M7/4 0.002s}
+Kg5 {-M4/36 0.101s} 12. Bf4+ {+M5/4 0.000s} Kg4 {-M4/35 0.100s}
+13. Rg3+ {+M3/4 0.000s} Kh4 {-M2/4 0.000s} 14. Bg5# {+M1/4 0.000s, White mates}
+1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "5"]
+[White "Fruit2.1"]
+[Black "Mitchell65"]
+[Result "1-0"]
+[EngineWhiteName "Fruit 2.1"]
+[EngineWhiteAuthor "Fabien Letouzey"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "4q3/4rk2/1PP4p/P3R1p1/8/3Q2BP/5PPK/1r6 w - - 0 1"]
+[GameDuration "00:00:01"]
+[GameStartTime "2026-11-03T17:43:01 +0000"]
+[GameEndTime "2026-11-03T17:43:02 +0000"]
+[PlyCount "13"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1. Rxe7+ {+17.49/6 0.102s} Kxe7 {-47.16/7 0.079s} 2. Qxb1 {+17.49/6 0.104s}
+Qxc6 {-48.05/7 0.079s} 3. b7 {+23.08/6 0.102s} Qc3 {-58.37/7 0.080s}
+4. b8=Q {+M9/7 0.100s} Qc5 {-69.51/7 0.078s} 5. Qh7+ {+M5/34 0.100s}
+Kf6 {-M4/6 0.033s} 6. Qd8+ {+M3/34 0.100s} Qe7 {-M2/4 0.000s}
+7. Qdxe7# {+M1/34 0.102s, White mates} 1-0
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "4"]
+[White "Fruit2.1"]
+[Black "Mitchell65"]
+[Result "0-1"]
+[EngineWhiteName "Fruit 2.1"]
+[EngineWhiteAuthor "Fabien Letouzey"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "6k1/3B1p2/3p4/p2P4/4KP2/6P1/8/3q4 b - - 0 1"]
+[GameDuration "00:00:06"]
+[GameStartTime "2026-11-03T17:42:58 +0000"]
+[GameEndTime "2026-11-03T17:43:05 +0000"]
+[PlyCount "101"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Qc2+ {+37.43/7 0.080s} 2. Ke3 {-7.96/8 0.100s} Qc5+ {+39.00/7 0.079s}
+3. Ke4 {-7.91/8 0.100s} a4 {+39.59/8 0.080s} 4. Bxa4 {-9.91/9 0.103s}
+Qc4+ {+42.52/9 0.080s} 5. Ke3 {-9.88/9 0.100s} Qxa4 {+43.00/8 0.079s}
+6. g4 {-10.28/8 0.100s} Qb3+ {+42.95/8 0.077s} 7. Kf2 {-10.53/8 0.101s}
+Qd3 {+44.29/9 0.079s} 8. f5 {-10.87/8 0.101s} Kg7 {+47.23/9 0.074s}
+9. Kg2 {-11.92/8 0.101s} Kf6 {+49.57/9 0.080s} 10. Kf2 {-12.07/8 0.102s}
+Kg5 {+50.56/10 0.052s} 11. f6 {-M8/38 0.100s} Kxg4 {+49.93/8 0.062s}
+12. Ke1 {-M6/39 0.100s} Qe3+ {+50.98/8 0.081s} 13. Kd1 {-12.22/8 0.101s}
+Kf4 {+50.73/9 0.080s} 14. Kc2 {-11.47/4 0.001s} Kf3 {+51.74/9 0.069s}
+15. Kb2 {-M12/8 0.101s} Ke4 {+53.06/9 0.080s} 16. Kc2 {-M10/13 0.100s}
+Qd3+ {+51.88/9 0.056s} 17. Kb2 {-M8/24 0.100s} Ke3 {+52.79/10 0.068s}
+18. Ka2 {-M8/38 0.101s} Qb5 {+53.28/9 0.080s} 19. Ka3 {-M6/40 0.101s}
+Ke4 {+52.99/9 0.079s} 20. Ka2 {-12.08/4 0.001s} Qc4+ {+53.28/9 0.080s}
+21. Kb2 {-M8/38 0.101s} Ke5 {+52.79/9 0.080s} 22. Ka3 {-M8/37 0.100s}
+Qb5 {+52.89/9 0.080s} 23. Ka2 {-12.27/4 0.001s} Qb4 {+51.79/9 0.062s}
+24. Ka1 {-12.33/4 0.003s} Qc3+ {+53.18/9 0.060s} 25. Kb1 {-M8/38 0.112s}
+Qd2 {+51.81/9 0.080s} 26. Ka1 {-12.30/4 0.003s} Qc1+ {+53.08/10 0.075s}
+27. Ka2 {-12.19/4 0.005s} Qc2+ {+53.06/9 0.047s} 28. Ka3 {-M8/39 0.101s}
+Qc4 {+53.50/9 0.080s} 29. Kb2 {-12.27/4 0.001s} Qd3 {+52.01/10 0.077s}
+30. Kc1 {-M8/38 0.100s} Kf5 {+51.77/9 0.080s} 31. Kb2 {-12.12/4 0.002s}
+Ke4 {+52.89/10 0.080s} 32. Kc1 {-M8/39 0.100s} Kd4 {+53.28/10 0.076s}
+33. Kb2 {-12.36/4 0.001s} Qc3+ {+52.75/9 0.080s} 34. Kb1 {-M6/39 0.101s}
+Ke5 {+52.80/9 0.080s} 35. Ka2 {-12.33/4 0.001s} Kf5 {+52.08/9 0.079s}
+36. Kb1 {-12.12/4 0.005s} Ke4 {+52.82/8 0.080s} 37. Ka2 {-12.33/4 0.002s}
+Kf4 {+52.05/9 0.053s} 38. Kb1 {-11.92/4 0.002s} Qd2 {+53.50/9 0.081s}
+39. Ka1 {-11.92/4 0.002s} Qd4+ {+52.82/8 0.080s} 40. Ka2 {-12.27/6 0.102s}
+Qb4 {+52.82/10 0.078s} 41. Ka1 {-11.92/4 0.002s} Ke4 {+52.82/9 0.080s}
+42. Ka2 {-12.33/4 0.001s} Qb5 {+52.79/9 0.079s} 43. Ka3 {-M6/39 0.101s}
+Kf5 {+51.49/9 0.080s} 44. Ka2 {-12.29/4 0.001s} Qb4 {+52.23/9 0.080s}
+45. Ka1 {-12.12/4 0.004s} Kf4 {+51.79/9 0.055s} 46. Ka2 {-11.86/4 0.001s}
+Ke4 {+51.15/9 0.080s} 47. Ka1 {-12.08/4 0.004s} Kf3 {+51.15/9 0.058s}
+48. Ka2 {-11.86/4 0.001s} Ke3 {+51.79/9 0.081s} 49. Ka1 {-11.95/4 0.002s}
+Kd4 {+M5/6 0.006s} 50. Ka2 {-M4/4 0.000s} Kc3 {+M3/6 0.006s}
+51. Ka1 {-M2/4 0.000s} Qb2# {+M1/4 0.002s, Black mates} 0-1
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "6"]
+[White "Mitchell65"]
+[Black "Fruit2.1"]
+[Result "1/2-1/2"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Fruit 2.1"]
+[EngineBlackAuthor "Fabien Letouzey"]
+[SetUp "1"]
+[FEN "2k4r/1pp5/p5nr/2BR4/P1N1Pp1p/1P3Pb1/2P5/3R2K1 b - - 0 1"]
+[GameDuration "00:00:06"]
+[GameStartTime "2026-11-03T17:43:02 +0000"]
+[GameEndTime "2026-11-03T17:43:08 +0000"]
+[PlyCount "72"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... Rh5 {-0.69/7 0.103s} 2. a5 {-0.75/8 0.080s} Rxd5 {-0.04/9 0.102s}
+3. Rxd5 {-1.71/9 0.081s} h3 {-0.21/9 0.103s} 4. Kh1 {-0.86/9 0.080s}
+Rd8 {+0.26/10 0.100s} 5. c3 {-0.93/9 0.080s} Rxd5 {+0.57/11 0.100s}
+6. exd5 {-0.78/10 0.080s} Kd8 {+0.71/12 0.100s} 7. b4 {-1.42/10 0.069s}
+Ne7 {+0.98/11 0.100s} 8. d6 {-1.15/9 0.081s} Nc6 {+0.98/10 0.101s}
+9. Kg1 {-1.53/9 0.060s} cxd6 {+1.12/11 0.101s} 10. Nxd6 {-2.01/9 0.081s}
+Ne5 {+1.16/10 0.103s} 11. Nxb7+ {-2.97/9 0.062s} Kc8 {+0.35/10 0.100s}
+12. Nd6+ {-0.63/8 0.061s} Kb8 {+0.33/11 0.103s} 13. Ne4 {-0.47/10 0.072s}
+Nxf3+ {+0.11/11 0.103s} 14. Kh1 {-0.33/9 0.081s} Kb7 {+0.16/12 0.105s}
+15. Bf2 {-0.83/10 0.064s} Kc6 {+0.10/12 0.103s} 16. Bxg3 {-0.20/11 0.072s}
+fxg3 {0.00/13 0.102s} 17. Nxg3 {-0.20/12 0.084s} Kd5 {0.00/14 0.100s}
+18. Nf1 {+0.44/10 0.080s} Kc4 {0.00/13 0.100s} 19. Ne3+ {+0.50/11 0.064s}
+Kb5 {0.00/13 0.103s} 20. Nd5 {+0.46/11 0.080s} Kc4 {-0.34/13 0.100s}
+21. Nc7 {+1.22/11 0.078s} Kxc3 {-0.29/13 0.101s} 22. b5 {+1.67/11 0.071s}
+Ne5 {-0.05/13 0.101s} 23. bxa6 {+1.79/9 0.080s} Nc6 {0.00/16 0.101s}
+24. Kh2 {+1.07/10 0.072s} Kb4 {0.00/18 0.100s} 25. Kg3 {+0.52/11 0.057s}
+Kxa5 {0.00/19 0.102s} 26. a7 {+0.58/10 0.080s} Nxa7 {0.00/17 0.102s}
+27. Kh2 {+0.15/10 0.054s} Nc6 {0.00/24 0.101s} 28. Nd5 {+0.05/9 0.080s}
+Kb5 {0.00/24 0.101s} 29. Nf6 {+0.16/9 0.080s} Kc4 {0.00/25 0.101s}
+30. Kxh3 {-0.20/11 0.079s} Kb4 {0.00/27 0.100s} 31. Kg4 {-0.18/11 0.055s}
+Kb5 {0.00/26 0.100s} 32. Kf4 {-0.02/10 0.081s} Kc4 {0.00/25 0.101s}
+33. Ke4 {+0.02/11 0.080s} Kb5 {0.00/26 0.098s} 34. Ng4 {+0.02/10 0.080s}
+Kb6 {0.00/24 0.100s} 35. Kd5 {+0.31/9 0.081s} Kb5 {0.00/26 0.101s}
+36. Kd6 {+0.15/11 0.080s} Kc4 {0.00/24 0.098s}
+37. Kxc6 {+1.24/12 0.058s, Draw by insufficient mating material} 1/2-1/2
+
+[Event "Fastchess Tournament"]
+[Site "?"]
+[Date "2026.11.03"]
+[Round "6"]
+[White "Fruit2.1"]
+[Black "Mitchell65"]
+[Result "0-1"]
+[EngineWhiteName "Fruit 2.1"]
+[EngineWhiteAuthor "Fabien Letouzey"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "2k4r/1pp5/p5nr/2BR4/P1N1Pp1p/1P3Pb1/2P5/3R2K1 b - - 0 1"]
+[GameDuration "00:00:06"]
+[GameStartTime "2026-11-03T17:43:05 +0000"]
+[GameEndTime "2026-11-03T17:43:11 +0000"]
+[PlyCount "81"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+
+1... b6 {+1.73/8 0.082s} 2. Bd4 {+0.94/8 0.103s} Rg8 {+0.29/8 0.080s}
+3. Rg5 {+0.85/7 0.103s} Rd8 {+2.31/7 0.071s} 4. Kf1 {+0.50/7 0.102s}
+h3 {+7.69/9 0.058s} 5. Rd5 {-1.28/7 0.100s} Rxd5 {+7.84/9 0.055s}
+6. exd5 {-1.31/9 0.101s} Nh4 {+9.19/10 0.055s} 7. Ke2 {-0.60/8 0.101s}
+b5 {+6.50/9 0.079s} 8. axb5 {-0.39/8 0.100s} axb5 {+4.51/9 0.059s}
+9. Na3 {-0.40/9 0.101s} b4 {+5.48/9 0.047s} 10. Nc4 {-0.48/8 0.103s}
+h2 {+4.95/9 0.054s} 11. Rh1 {-0.91/9 0.103s} Rh5 {+4.52/9 0.067s}
+12. Bf6 {-0.58/8 0.100s} Nf5 {+4.73/10 0.070s} 13. Bb2 {-0.81/9 0.102s}
+Kd7 {+5.82/8 0.080s} 14. Ne5+ {-0.95/8 0.101s} Kd6 {+6.75/8 0.073s}
+15. Nd3 {-1.10/8 0.103s} Rh7 {+7.43/9 0.070s} 16. Kd2 {-1.31/8 0.100s}
+Re7 {+8.73/9 0.058s} 17. Bf6 {-1.54/9 0.103s} Re3 {+11.16/9 0.051s}
+18. Bg5 {-1.92/8 0.103s} Rxf3 {+11.91/8 0.073s} 19. Bf6 {-2.68/8 0.103s}
+Kxd5 {+13.99/9 0.046s} 20. Nxb4+ {-3.04/8 0.104s} Ke6 {+13.66/7 0.080s}
+21. Bg5 {-4.35/8 0.100s} Nd6 {+17.64/8 0.080s} 22. Kc1 {-4.53/9 0.100s}
+Ne4 {+17.34/10 0.081s} 23. Bh6 {-4.94/9 0.102s} Nf2 {+21.61/9 0.065s}
+24. Nc6 {-5.30/9 0.102s} Kd5 {+23.48/9 0.079s} 25. Ne7+ {-5.71/9 0.102s}
+Ke4 {+25.63/8 0.079s} 26. Rf1 {-5.70/9 0.103s} Ng4 {+30.39/10 0.080s}
+27. Rh1 {-7.35/10 0.101s} Nxh6 {+31.77/10 0.060s} 28. Kd2 {-8.27/9 0.101s}
+Ng4 {+34.63/9 0.058s} 29. Ng8 {-8.43/8 0.103s} Rf2+ {+37.99/8 0.080s}
+30. Kc3 {-9.69/10 0.101s} f3 {+37.49/8 0.080s} 31. b4 {-10.27/8 0.102s}
+Re2 {+42.61/8 0.080s} 32. Ne7 {-12.81/7 0.102s} Re1 {+46.98/10 0.070s}
+33. Rxh2 {-18.11/7 0.101s} Bxh2 {+46.98/9 0.080s} 34. Nc6 {-19.61/8 0.101s}
+Be5+ {+51.75/9 0.056s} 35. Nxe5 {-M12/8 0.101s} Nxe5 {+50.90/9 0.046s}
+36. Kb3 {-M10/13 0.100s} Re3+ {+59.35/8 0.076s} 37. c3 {-M10/15 0.100s}
+f2 {+60.68/9 0.080s} 38. Kb2 {-M8/40 0.101s} f1=Q {+M9/7 0.013s}
+39. Kc2 {-M6/36 0.100s} Re2+ {+M5/4 0.001s} 40. Kb3 {-M4/4 0.000s}
+Qd1+ {+M3/4 0.000s} 41. Ka3 {-M2/4 0.000s} Nc4# {+M1/4 0.000s, Black mates} 0-1

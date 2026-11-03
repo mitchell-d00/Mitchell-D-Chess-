@@ -152,8 +152,8 @@ code. Piece-square feature deltas are recorded by make/unmake and materialized
 only when evaluation needs them. Two perspective accumulators handle captures,
 castling, en passant, promotions and null moves. The kernel accelerates their
 updates and output evaluation. Neural search also tries the transposition-table
-move before generating and scoring the remaining moves, avoiding that work when
-the first move already causes a cutoff. A numerically equivalent JavaScript fallback works
+move after validating it against generated moves, deferring ordering of the
+remaining moves until it is needed. A numerically equivalent JavaScript fallback works
 without WASM or SIMD. Sparse endings retain the classical guidance and exact KPK
 bitbase. Levels 1–50 keep their existing evaluation modes and budgets.
 
@@ -167,12 +167,12 @@ the HTML**, together with Thomas Jahn's MIT notice. `LICENSE` is unchanged and
 libraries, binaries or weights are distributed. The independently written kernel
 has no imports or runtime toolchain dependency.
 
-**Measured results:** the final neural version scored 10 wins, one draw and one
-unfinished game against the previous Level 50 at equal 100 ms budgets. Before
-the final move-ordering optimization, it won all four games at equal 1-second
-budgets. Repeated Chromium worker benchmarks measured **1.84–2.00× higher NPS**.
-The full results, methods and limitations are in
-[the validation report](validation/neural-upgrade.md).
+**Correctness update:** an independent referee found illegal moves caused by
+colliding position hashes and unchecked cached moves. The hash generator now
+creates full 64-bit keys, cached moves are validated before use, and invalid
+move histories fail explicitly. Earlier match and throughput figures predate
+this bug fix and do not validate the fixed revision's strength or performance.
+See [the hash-move regression report](validation/hash-move-fix.md).
 
 **Strength is unrated.** No absolute Elo estimate is supported by the current
 evidence. Wins against our own unrated previous version demonstrate a relative
@@ -182,7 +182,7 @@ is needed before making an absolute strength claim. In particular, 2500+ play at
 10–30 seconds per move has not been established.
 
 A separate [200-game independent-engine campaign](validation/independent-campaign.md)
-has been started locally at **1 second per move**, against Fruit 2.1 and MinimalChess 0.6 using the external Fastchess referee. That report documents the
+is restarting from zero at **1 second per move**, against Fruit 2.1 and MinimalChess 0.6 using the external Fastchess referee. That report documents the
 protocol, reference ratings, live local progress files and recovery command.
 Results are pending; no absolute Elo claim is made.
 
