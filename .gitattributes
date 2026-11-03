@@ -1,3 +1,5 @@
 # Raw referee evidence: preserve original whitespace.
 validation/independent/results-58/*.pgn -whitespace
 validation/independent/results-58/*.log -whitespace
+validation/opponent-tests/**/*.pgn -whitespace
+validation/opponent-tests/**/uci-handshake.txt -whitespace

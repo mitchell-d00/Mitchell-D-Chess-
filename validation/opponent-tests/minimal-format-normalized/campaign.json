@@ -1,0 +1,64 @@
+{
+  "createdUtc": "2026-11-03T19:12:25.504040+00:00",
+  "testedRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "html": "/workspace/chess-opponent-tests/minimal-format-diagnostic/engine-under-test.html",
+  "htmlSha256": "79e3126ca6cd3537ac9f958f4680790a7d11bfcbee1f352bd4c9fb41c9bbe09a",
+  "adapter": "/workspace/chess-opponent-tests/minimal-format-diagnostic/adapter/uci.cjs",
+  "adapterSha256": "2c0e333b4e76a8946792b6192ff73041298f6519cdf0d2bddbc44b7b69cd6ef9",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 1,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/chess-opponent-tests/minimal-format-diagnostic/openings.epd",
+  "openingsSha256": "ca0c515f82f50515484c1b253eab1e6e748c1676575de5a25d62d6247d1eda07",
+  "ccrlReferenceDate": "2026-10-30",
+  "opponents": {
+    "MinimalChess0.6-normalized": {
+      "command": "/workspace/chess-opponent-tests/minimal-format-diagnostic/minimal-normalized.sh",
+      "sha256": "c058454d2450cc42784c994b76b3de2688d99e6379e9c925c7327a271daac1e3",
+      "options": [
+        "option.Hash=32"
+      ],
+      "underlyingVersion": "MinimalChess 0.6 official Linux; promotion suffix case normalized by separate adapter",
+      "additionalInputs": {
+        "/tmp/chess-benchmark-minimalchess/MinimalChess 0.6 Linux/MinimalChessEngine": "8e1b8c85b6318f980e0520d0ad45e9b0ed91c85a5dba9e10a4db4944d836165e",
+        "/workspace/chess-opponent-tests/minimal-format-diagnostic/adapter/uci-normalize.cjs": "b0c216fb1dcbf7c63a75e3e7fd3b8b89e92113af04a28ceb23170254cfc262fe"
+      }
+    }
+  },
+  "batches": [
+    {
+      "id": "01-Minimal-normalized",
+      "opponent": "MinimalChess0.6-normalized",
+      "games": 2,
+      "openingStart": 1
+    }
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/chess-benchmark-libs/usr/lib/x86_64-linux-gnu",
+    "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "1",
+    "DOTNET_BUNDLE_EXTRACT_BASE_DIR": "/tmp/minimalchess-bundle"
+  },
+  "excludedPreflightOpponents": [
+    {
+      "name": "Lozza3.0",
+      "reason": "Timeout forfeits at 100 ms and 1 second per move; excluded before campaign"
+    },
+    {
+      "name": "Lozza9",
+      "reason": "Timeout forfeits at 1 second per move; excluded before campaign"
+    }
+  ],
+  "runnerSourceRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "stopOnForfeit": true,
+  "purpose": "UCI promotion-format diagnostic, not a rating sample",
+  "expectedGames": 2,
+  "event": "Mitchell MinimalChess promotion-case diagnostic"
+}

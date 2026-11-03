@@ -1,0 +1,30 @@
+{
+  "snapshotUtc": "2026-11-03T19:27:22.237104+00:00",
+  "sourceRun": "/workspace/chess-opponent-tests/texel106-pilot",
+  "engineRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "completedGames": 4,
+  "campaignStatus": "completed",
+  "files": {
+    "01-opponent.command.json": "3470da1ba2791a77d6505a8787d21e1ca0638754d7c2b4708868df6ab2905b65",
+    "01-opponent.done.json": "90904cff6f1c54ccc37cf536e5eac5fc00b6ec1a4065a366c4b30cb696abc5c3",
+    "01-opponent.log.gz": "6e67e0f26c723dae9e35d6656ff84d99edbb16c27d2895b27bb80924bea0f07f",
+    "01-opponent.pgn": "009480c1b4b9f9f41388b85ab4b4def02f368360741d5d95e7c02cac77ae4733",
+    "01-opponent.state.json": "1cb2a6297451db1f18c077e33ec4964e3f1dbcd0bb0e5ba9684387178dc8635f",
+    "build-commands.json": "99fe86f0d794e59057f920d335ae82e3d261445575f71cd943c82857bc9e009d",
+    "campaign.json": "b89dbe246070198a13ca9c2b49174fe8f2bbabe0e8960eb2c30518ea243c10e7",
+    "campaign.log.gz": "af5350f18693402248af6125b64e7f38061de491acb3d994ff8080912c18d73f",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "aca76fd79389b7c3e2527f1eee6333dce93b21a55920747e623eb9cae676dbcb",
+    "summary.json": "5d37fe6fcabc79428121241dee56f8a9c69425e64b762c6b135bba164a252581",
+    "uci-handshake.txt": "df10d2fb49798f3c137384507f55d0196786ab3b27904e62fc7325e0d8241874"
+  },
+  "uncompressedLogs": {
+    "01-opponent.log": "d389e60c0a16a0f19066b4ef94002f7d35f67ffef5e90fb7ef4b3096fc09502a",
+    "campaign.log": "c7e6a5913f79d1bf5855e81a530998ad3fff67d1974d687b8fe18e05af87447d"
+  },
+  "runnerSource": {
+    "path": "validation/opponent-tests/runner.py",
+    "sha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb"
+  },
+  "ratingStatus": "Unrated; selection pilots and selected-position diagnostic are not a rating sample."
+}

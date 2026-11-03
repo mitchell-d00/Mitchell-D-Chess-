@@ -4,7 +4,31 @@ The engine is UNRATED. No absolute Elo estimate is established by these tests.
 This file records what was actually tested, links the evidence, and explains how
 to repeat it. The game itself still needs only index.html; testing tools are optional.
 
-## Latest independent results: partial, paused
+## New opponent pilots and UCI-format diagnostic
+
+November 3, 2026. Same frozen Level 65 engine as below, nominal 1 second per
+move. Four-game colour-paired pilots against Stockfish 5 and Texel 1.06 are
+archived separately under validation/opponent-tests/. These small pilots select
+competitive opponents; they do not establish an Elo rating.
+
+| Opponent | Games | Mitchell wins | Draws | Mitchell losses | Forfeits | Score |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Stockfish 5 | 4 | 0 | 3 | 1 | 0 | 37.5% |
+| Texel 1.06 | 4 | 1 | 2 | 1 | 0 | 50.0% |
+
+The separate MinimalChess promotion-format diagnostic finished 1 win, 1 draw,
+0 losses in two normal games, with no forfeits. A labelled external-engine
+wrapper normalized 13 uppercase promotion tokens/lines, including one bestmove.
+It starts from the saved fault position and is NOT a rating sample. The original
+58-game campaign and its opponent forfeit remain unchanged.
+
+Read validation/opponent-tests/README.md for build provenance and full conditions.
+The archive includes PGN game records, JSON settings/summaries/checkpoints,
+compressed raw referee logs, EPD positions and SHA-256 manifests. The format
+variant additionally includes a JSONL adjustment audit. Tests recompute the
+counts and verify archive hashes. No external engine executable is distributed.
+
+## Earlier independent campaign: partial, paused
 
 Snapshot: November 3, 2026, 18:46 UTC. 58 of 200 planned games completed.
 Engine: Level 65, revision bdb5873406a2b3336523f3a19f16c4a1bc9ebd46.
@@ -61,8 +85,8 @@ is separately archived under validation/regressions/failed-campaign/.
 1. Choose the scale first: a local computer-engine rating under stated conditions,
    a CCRL-comparable estimate, and a human FIDE rating are different claims.
 2. Run short colour-paired pilots against stronger, independent opponents. Seek
-   opponents giving about 35-65% score at the intended final control. The current
-   opponents are too one-sided to narrow an upper rating efficiently. Choose
+   opponents giving about 35-65% score at the intended final control. The earlier Fruit/MinimalChess
+   opponents were too one-sided to narrow an upper rating efficiently. Choose
    final opponents before collecting the final rating sample; publish pilot games
    separately instead of selectively mixing favourable pilot results into it.
 3. Freeze the engine, versions, openings, control, hash/thread settings, referee,
@@ -91,6 +115,8 @@ From the repository root, with Node.js 24 and Python 3.10+:
     node scripts/test-neural.cjs
     node scripts/test-hash-moves.cjs
     python scripts/test-campaign.py
+    node scripts/test-uci-normalize.cjs
+    python scripts/test-uci-normalize.py
 
 Coverage includes standard perft, special moves, mate/check evasions,
 underpromotion, KPK, short timeouts, all book lines, independent neural-reference
@@ -175,8 +201,71 @@ if changing an adapter, opponent, adjudication or clock policy. In particular,
 normalizing MinimalChess's uppercase promotion output would be a separately
 labelled adapter experiment, not an unmodified repeat of the recorded one.
 
+## Repeat the new opponent pilots or a larger match
+
+Install the external engines independently. For the recorded Stockfish 5 and
+Texel 1.06 source revisions/build details, see validation/opponent-tests/README.md.
+Copy validation/opponent-tests/opponents.example.json outside the repository
+and replace both command paths with your local binaries. Named opponents accept
+command, options (a list of Fastchess option.Name=value strings), and optional
+arguments (a list of Fastchess engine argument fields, e.g. args=...). Metadata
+such as sourceRevision can also be recorded in that JSON.
+
+    python scripts/prepare-benchmark.py \
+      --out /tmp/mitchell-pilots \
+      --fastchess /absolute/path/to/fastchess \
+      --opponents /absolute/path/to/opponents.json \
+      --games-per-opponent 4 --concurrency 1 \
+      --move-seconds 1 --margin-ms 250 \
+      --revision bdb5873406a2b3336523f3a19f16c4a1bc9ebd46
+    python scripts/independent-campaign.py /tmp/mitchell-pilots/campaign.json
+
+The two opponents then play sequentially in one campaign. Our recorded pilots
+were separate campaigns and overlapped; concurrency differences must be reported.
+For a NEW 200-game final sample, use --games-per-opponent 100 with these two
+opponents, a new output directory, and freeze the chosen protocol before starting.
+That plays 50 opening pairs per opponent. Keep pilot results separate. Changing
+--move-seconds changes the experiment; the equal scheduling grace is separate.
+The runner pauses on any abnormal game termination and supports --resume for
+ordinary interruptions with unchanged inputs.
+
+Summarize any archived pilot without the external programs:
+
+    python scripts/independent-campaign.py validation/opponent-tests/stockfish5/campaign.json --summary-only
+    python scripts/independent-campaign.py validation/opponent-tests/texel106/campaign.json --summary-only
+    python scripts/independent-campaign.py validation/opponent-tests/minimal-format-normalized/campaign.json --summary-only
+
+## Repeat the promotion-format variant
+
+This is explicitly a changed opponent adapter, not an unmodified MinimalChess
+repeat. Use the same native MinimalChess 0.6 release and runtime setup as above.
+Create an executable shell shim, replacing the three absolute paths:
+
+    #!/bin/sh
+    exec /absolute/path/to/node /absolute/path/to/repo/scripts/uci-normalize.cjs --log /tmp/promotion-adjustments.jsonl -- '/absolute/path/to/MinimalChessEngine'
+
+Set the shim as command in an opponents JSON with a single name
+MinimalChess0.6-normalized and options ["option.Hash=32"]. Save this EPD line:
+
+    8/P4pk1/6p1/3Bn3/4P3/4q2P/2p4P/Q6K w - -
+
+Prepare a new run with --opponents pointing to that JSON, --games-per-opponent 2,
+--concurrency 1 and --openings pointing to that EPD file, alongside the same
+--fastchess and --revision flags used above; then run the printed command.
+Use a fresh JSONL audit path for each run. Record SHA-256s of the native binary,
+wrapper and shim, and preserve all adjustments and referee warnings. To enforce
+those extra hashes automatically, add an additionalInputs object to that
+opponent in campaign.json, mapping each absolute input path to its SHA-256.
+The recorded diagnostic contains these hashes and its exact shim/wrapper.
+For other engines, do not apply this workaround unless a specific format fault
+has been diagnosed. Native-pipe integration and token-level checks run via the
+two test-uci-normalize commands above.
+
 ## Keep result sets separate
 
+- Four-game Stockfish 5 and Texel 1.06 opponent-selection pilots: independent
+  but too small for a rating; separate from the final sample.
+- Two-game normalized-promotion diagnostic: selected fault position, not strength.
 - Archived 58-game snapshot: repaired hash, independent Fastchess referee,
   incomplete and paused on the opponent's UCI-format fault.
 - Original 12-game failed campaign: pre-fix hash defect and six Mitchell forfeits.

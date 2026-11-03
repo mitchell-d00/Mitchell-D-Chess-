@@ -191,6 +191,13 @@ normal-play losses, plus one separately reported forfeit win. See [tests](tests)
 for the raw evidence, limitations and reproduction commands. No absolute Elo
 claim is made.
 
+New [opponent-selection pilots](validation/opponent-tests/README.md) at the same
+control completed four games each: Stockfish 5 **0W–3D–1L**, Texel 1.06
+**1W–2D–1L**, from Mitchell's side, with no forfeits. A separate two-game
+promotion-format diagnostic completed normally using a labelled external-engine
+adapter. Raw PGNs, configuration, logs, audit and repeat commands are published;
+these small samples do not establish Elo.
+
 ### Reproduce checks and run matches
 
 Only `index.html` is needed to play. Development tools require Node.js:
@@ -200,6 +207,8 @@ node scripts/test.cjs
 node scripts/test-neural.cjs
 node scripts/test-hash-moves.cjs
 python scripts/test-campaign.py
+node scripts/test-uci-normalize.cjs
+python scripts/test-uci-normalize.py
 node scripts/bench.cjs index.html 9 nnue
 # Save the original locally for paired equal-budget matches:
 git show f3617994503541daa41ba44f5d0499df94767fe4:index.html > /tmp/original.html

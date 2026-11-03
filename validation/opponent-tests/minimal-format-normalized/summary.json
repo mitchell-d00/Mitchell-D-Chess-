@@ -1,0 +1,39 @@
+{
+  "updatedUtc": "2026-11-03T19:14:40.626117+00:00",
+  "plannedGames": 2,
+  "completedGames": 2,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "MinimalChess0.6-normalized": {
+      "planned": 2,
+      "wins": 1,
+      "draws": 1,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 2,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 1,
+      "pairedScoreBootstrap95": null
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

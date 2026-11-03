@@ -1,0 +1,29 @@
+{
+  "snapshotUtc": "2026-11-03T19:27:22.234375+00:00",
+  "sourceRun": "/workspace/chess-opponent-tests/stockfish5-pilot",
+  "engineRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "completedGames": 4,
+  "campaignStatus": "completed",
+  "files": {
+    "01-Stockfish5.command.json": "e0d8e757515c31de5a2742cc3cdefb088aeabb66795aa88275d060e7abd967f0",
+    "01-Stockfish5.done.json": "162b5a97e387c643a0edfa886bde7b94447b88ffd4bc4a47874ee8b3a59019f4",
+    "01-Stockfish5.log.gz": "6d448b3173017b79be3fec1c521d0080ac34c0364160ffa09d3c4a742cf6a672",
+    "01-Stockfish5.pgn": "9d53b9289b439854312f57389b3f49034dba533189b0b5eb4a8ec39f2a556dc5",
+    "01-Stockfish5.state.json": "ea55e77df1b31f6a2c5ed142da6f6e387804c764f930e55adfd62fa4d3d23ebe",
+    "campaign.json": "7e2604d4b40408d9150f6007896294bfecd6748f47dded2247b889664ccfc09a",
+    "campaign.log.gz": "3632078d4805090467c6304901b2d6bbaa9b343f36cf88ccf61e5ea329fd3587",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "c85f9768d34a4e67b0aaab3ee9ba00dd7e7944abc7c26dbecfea6bb88b3caac8",
+    "summary.json": "a40d154f7e12781dd4cccfe36dbb2568f77fb190cb5cf82e95b57128f3170d9a",
+    "uci-handshake.txt": "32a476db42544f28a6730055d7f882e5903322659723e9de17b73c88c12a70ff"
+  },
+  "uncompressedLogs": {
+    "campaign.log": "fd08eeec86015e9381db7a60b180d9b0e112da8ff6d7c65febfb367d658d6022",
+    "01-Stockfish5.log": "abeb97f52ffd2eaf2328731882604c47adaea1a48da56810db4cc6d6f21cb749"
+  },
+  "runnerSource": {
+    "path": "validation/opponent-tests/runner.py",
+    "sha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb"
+  },
+  "ratingStatus": "Unrated; selection pilots and selected-position diagnostic are not a rating sample."
+}

@@ -1,0 +1,9 @@
+{
+  "updatedUtc": "2026-11-03T19:14:40.626333+00:00",
+  "status": "completed",
+  "completedGames": 2,
+  "plannedGames": 2,
+  "batches": {
+    "01-Minimal-normalized": "completed"
+  }
+}

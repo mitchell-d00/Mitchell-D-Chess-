@@ -1,0 +1,61 @@
+{
+  "createdUtc": "2026-11-03T19:14:57.321222+00:00",
+  "testedRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "html": "/workspace/chess-opponent-tests/texel106-pilot/engine-under-test.html",
+  "htmlSha256": "79e3126ca6cd3537ac9f958f4680790a7d11bfcbee1f352bd4c9fb41c9bbe09a",
+  "adapter": "/workspace/chess-opponent-tests/texel106-pilot/adapter/uci.cjs",
+  "adapterSha256": "2c0e333b4e76a8946792b6192ff73041298f6519cdf0d2bddbc44b7b69cd6ef9",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 1,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/chess-opponent-tests/texel106-pilot/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "ccrlReferenceDate": "2026-10-30",
+  "opponents": {
+    "Texel1.06": {
+      "command": "/tmp/chess-opponent-texel106/local-build/texel106",
+      "options": [
+        "option.Threads=1",
+        "option.Hash=32",
+        "option.Ponder=false",
+        "option.OwnBook=false",
+        "option.Strength=1000"
+      ],
+      "source": "https://github.com/peterosterlund2/texel/tree/1.06",
+      "sourceRevision": "b913f4a7454a6a2689e9e9130fe2e62a63944c88",
+      "ccrlUrl": "https://computerchess.org.uk/ccrl/4040/cgi/engine_details.cgi?eng=Texel%201.06%2064-bit",
+      "ccrlReferenceRating": 3073,
+      "ccrlReferenceDate": "2026-10-30",
+      "build": "Local GCC 14 x86-64 C++11 build; -O3 -msse4.2 -pthread HAS_CTZ/HAS_PREFETCH/HAS_POPCNT/HAS_RT; -include limits compiler compatibility; NUMA not enabled; source unchanged; no external tablebase files",
+      "sha256": "eb423dfe6fb663b54db93de231b4fbb4a5dfaa97626b0736a0607dd503bcff10"
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Texel1.06",
+      "games": 4,
+      "openingStart": 1
+    }
+  ],
+  "environment": {},
+  "runnerSourceRevision": "b9921225bde5a381c5f75b69de3cab160d7a77f8",
+  "stopOnForfeit": true,
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14"
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 4,
+  "purpose": "Independent competitive-opponent pilot",
+  "event": "Mitchell competitive-opponent pilot"
+}

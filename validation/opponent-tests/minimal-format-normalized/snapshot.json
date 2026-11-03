@@ -1,0 +1,31 @@
+{
+  "snapshotUtc": "2026-11-03T19:27:22.242603+00:00",
+  "sourceRun": "/workspace/chess-opponent-tests/minimal-format-diagnostic",
+  "engineRevision": "bdb5873406a2b3336523f3a19f16c4a1bc9ebd46",
+  "completedGames": 2,
+  "campaignStatus": "completed",
+  "files": {
+    "01-Minimal-normalized.command.json": "4707394f76cc7b5218ca7f14a55537785283964f5b6fef2b54b82f80e9ba3438",
+    "01-Minimal-normalized.done.json": "ed7c587302993ac2202b9857bfd6d3768cfebf02630b7a94cc7154bfc78b2ecd",
+    "01-Minimal-normalized.log.gz": "cb0d109e2fd7d99e7d5f6a03eef4b9ebc7afa98a82133b3e7c86838201f48e24",
+    "01-Minimal-normalized.pgn": "e5273c42e8e71ef34bd20f4c885725f4722088094fc3837402ce06d6c246247a",
+    "01-Minimal-normalized.state.json": "6f03bb01b4707847274735ef0f4ed37865c3795d6aeaf37624c1567d31431760",
+    "campaign.json": "f42c517fec7fbf5146580155ba1fbebd53bf7541010e856f22e7defef6f3a30f",
+    "campaign.log.gz": "2f165a22b1fb6e31cc22aa9546421208e82f43079eb1b8f5938cd9d54d7b2e59",
+    "minimal-normalized.sh": "c058454d2450cc42784c994b76b3de2688d99e6379e9c925c7327a271daac1e3",
+    "normalizations.jsonl": "6af4600f793d6dd0b7923796fb0a220ece4bed8d4731663b99bb16ace8805984",
+    "openings.epd": "ca0c515f82f50515484c1b253eab1e6e748c1676575de5a25d62d6247d1eda07",
+    "status.json": "a8ff9313986fd6806dbea66f1e06b8139c9d438a1288c6108e015ac360f7b403",
+    "summary.json": "6cab0e3be951af006b89be22aab347810334ec00db805500c2d69a7398a193a5",
+    "uci-normalize.cjs": "b0c216fb1dcbf7c63a75e3e7fd3b8b89e92113af04a28ceb23170254cfc262fe"
+  },
+  "uncompressedLogs": {
+    "campaign.log": "b6b9b9a457eda2b36884937d6f510257c4124d621f4304c33b4f9cce7ddab5f9",
+    "01-Minimal-normalized.log": "9eebfa950f8a4b6b18c585db60d8c87fc0bcc6d325b42d7a5d5b021b1c5e33c8"
+  },
+  "runnerSource": {
+    "path": "validation/opponent-tests/runner.py",
+    "sha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb"
+  },
+  "ratingStatus": "Unrated; selection pilots and selected-position diagnostic are not a rating sample."
+}

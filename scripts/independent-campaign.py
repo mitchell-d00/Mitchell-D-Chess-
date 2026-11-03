@@ -50,7 +50,12 @@ def main():
     source=Path(args.config).resolve(); config=json.loads(source.read_text());root=source.parent
     if args.summary_only:
         print(json.dumps(summarize(config,root),indent=2));return
-    if sum(b['games'] for b in config['batches'])!=200:raise ValueError('Campaign must contain exactly 200 planned games')
+    planned=sum(b['games'] for b in config['batches'])
+    if planned<=0 or any(b['games']<=0 for b in config['batches']):raise ValueError('Game counts must be positive')
+    if config.get('expectedGames',planned)!=planned:raise ValueError('Planned game count differs from expectedGames')
+    seconds=config['timeControl']['movetimeSeconds'];margin=config['timeControl'].get('equalTimeMarginMs',250)
+    if not isinstance(seconds,(int,float)) or not math.isfinite(seconds) or seconds<=0:raise ValueError('Move time must be positive and finite')
+    if not isinstance(margin,(int,float)) or not math.isfinite(margin) or margin<0:raise ValueError('Time margin must be nonnegative and finite')
     if any(b['games']%2 for b in config['batches']):raise ValueError('All batches must contain colour pairs')
     if not 1<=config.get('concurrency',1)<=2:raise ValueError('At most two simultaneous games on this host')
     if hashlib.sha256(Path(config['html']).read_bytes()).hexdigest()!=config['htmlSha256']:raise ValueError('Frozen engine hash changed')
@@ -58,6 +63,8 @@ def main():
     if hashlib.sha256(Path(config['openings']).read_bytes()).hexdigest()!=config['openingsSha256']:raise ValueError('Frozen opening file changed')
     for opponent in config['opponents'].values():
         if hashlib.sha256(Path(opponent['command']).read_bytes()).hexdigest()!=opponent['sha256']:raise ValueError('Opponent binary changed: '+opponent['command'])
+        for path,digest in opponent.get('additionalInputs',{}).items():
+            if hashlib.sha256(Path(path).read_bytes()).hexdigest()!=digest:raise ValueError('Opponent adapter/input changed: '+path)
     lock=root/'campaign.pid'
     if lock.exists():
         try:os.kill(int(lock.read_text()),0)
@@ -84,7 +91,7 @@ def main():
                 else:
                     opponent=config['opponents'][batch['opponent']]
                     command=[config['fastchess'],'-engine','cmd='+config['node'],'args='+config['adapter'],'name=Mitchell65','option.Level=65','option.MoveOverhead=20','-engine','cmd='+opponent['command']]+opponent.get('arguments',[])+['name='+batch['opponent']]+opponent.get('options',[])
-                    command+=['-each','proto=uci','st=1','timemargin=250','-rounds',str(batch['games']//2),'-games','2','-concurrency','1','-openings','file='+config['openings'],'format=epd','order=sequential','start='+str(batch['openingStart']),'-pgnout','file='+str(root/(name+'.pgn')),'nodes=true','nps=true','timeleft=true','-config','outname='+str(state),'-autosaveinterval','1','-recover','-event','Mitchell independent 200-game benchmark','-site','local shared Linux host']
+                    command+=['-each','proto=uci','st='+str(seconds),'timemargin='+str(margin),'-rounds',str(batch['games']//2),'-games','2','-concurrency','1','-openings','file='+config['openings'],'format=epd','order=sequential','start='+str(batch['openingStart']),'-pgnout','file='+str(root/(name+'.pgn')),'nodes=true','nps=true','timeleft=true','-config','outname='+str(state),'-autosaveinterval','1','-recover','-event',config.get('event','Mitchell independent benchmark'),'-site','local shared Linux host']
                 log=open(root/(name+'.log'),'a' if args.resume else 'w');process=subprocess.Popen(command,env=env,stdout=log,stderr=subprocess.STDOUT,cwd=root)
                 active[name]=(process,log,batch);statuses[name]='running';save(root/(name+'.command.json'),{'startedUtc':utc(),'argv':command,'pid':process.pid})
             for name,(process,log,batch) in list(active.items()):
@@ -96,13 +103,13 @@ def main():
                 if not success:request_stop('Batch '+name+' stopped: exit '+str(code)+', completed '+str(actual)+'/'+str(batch['games']))
             report=summarize(config,root)
             if config.get('stopOnForfeit',True) and any(x['forfeits'] for x in report['opponents'].values()):request_stop('Abnormal game termination detected; review PGNs before continuing')
-            save(root/'summary.json',report);save(root/'status.json',{'updatedUtc':utc(),'pid':os.getpid(),'reason':stop_reason,'status':'stopping' if stopping else 'running' if active or queued else 'completed','batches':statuses,'completedGames':report['completedGames'],'plannedGames':200})
+            save(root/'summary.json',report);save(root/'status.json',{'updatedUtc':utc(),'pid':os.getpid(),'reason':stop_reason,'status':'stopping' if stopping else 'running' if active or queued else 'completed','batches':statuses,'completedGames':report['completedGames'],'plannedGames':planned})
             if stopping and not active:break
             if active:time.sleep(5)
         final=summarize(config,root);save(root/'summary.json',final)
-        if final['completedGames']!=200:
-            save(root/'status.json',{'updatedUtc':utc(),'status':'paused','reason':stop_reason or 'Incomplete campaign','completedGames':final['completedGames'],'plannedGames':200,'batches':statuses})
-            raise RuntimeError('Campaign paused before 200 completed games: '+str(stop_reason))
-        save(root/'status.json',{'updatedUtc':utc(),'status':'completed','completedGames':200,'plannedGames':200,'batches':statuses});print(json.dumps(final),flush=True)
+        if final['completedGames']!=planned:
+            save(root/'status.json',{'updatedUtc':utc(),'status':'paused','reason':stop_reason or 'Incomplete campaign','completedGames':final['completedGames'],'plannedGames':planned,'batches':statuses})
+            raise RuntimeError('Campaign paused before planned games completed: '+str(stop_reason))
+        save(root/'status.json',{'updatedUtc':utc(),'status':'completed','completedGames':planned,'plannedGames':planned,'batches':statuses});print(json.dumps(final),flush=True)
     finally:lock.unlink(missing_ok=True)
 if __name__=='__main__':main()

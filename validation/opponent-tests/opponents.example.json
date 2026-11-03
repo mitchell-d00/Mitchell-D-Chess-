@@ -1,0 +1,21 @@
+{
+  "Stockfish5": {
+    "command": "/absolute/path/to/stockfish5",
+    "options": [
+      "option.Threads=1",
+      "option.Hash=32",
+      "option.Ponder=false",
+      "option.OwnBook=false"
+    ]
+  },
+  "Texel1.06": {
+    "command": "/absolute/path/to/texel106",
+    "options": [
+      "option.Threads=1",
+      "option.Hash=32",
+      "option.Ponder=false",
+      "option.OwnBook=false",
+      "option.Strength=1000"
+    ]
+  }
+}

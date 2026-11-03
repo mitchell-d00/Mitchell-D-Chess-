@@ -1,0 +1,39 @@
+{
+  "updatedUtc": "2026-11-03T19:26:32.640042+00:00",
+  "plannedGames": 4,
+  "completedGames": 4,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Texel1.06": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}
