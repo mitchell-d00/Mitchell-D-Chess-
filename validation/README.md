@@ -1,4 +1,7 @@
-# Validation record
+# Historical classical validation record
+
+This records the previous classical release (`e7fd21a`). For the current
+neural upgrade, see [neural-upgrade.md](neural-upgrade.md).
 
 Original opponent: repository commit `f3617994503541daa41ba44f5d0499df94767fe4`.
 Node.js v24.22.1, Linux cloud execution environment. These are short regression
@@ -61,6 +64,7 @@ Direct `file://` navigation was blocked by the environment's administrator polic
 so file-origin behaviour was not verified here. No external runtime requests
 occurred. Browser checks require Playwright/Chromium only as development tools.
 
-There is no calibrated absolute Elo, no verified 2500+ result at 10–30 seconds per
-move, no trained NNUE, and no multiworker/WASM acceleration in this deliverable.
+At the time of these classical runs there was no calibrated absolute Elo, no
+verified 2500+ result at 10–30 seconds per move, no trained NNUE, and no
+multiworker/WASM acceleration in that release.
 The evidence supports improvement over the original under these short budgets.

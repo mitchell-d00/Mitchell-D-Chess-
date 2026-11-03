@@ -2,8 +2,8 @@
 
 # Mitchell D Chess
 
-A complete chess game in a single HTML file. Play the computer at 50 levels
-from beginner to grandmaster, play a friend on the same screen, or watch two
+A complete chess game in a single HTML file. Play the computer at 65 levels
+from beginner through neural analysis, play a friend on the same screen, or watch two
 computers play each other. A 38-lesson tutorial takes you from how the pieces
 move to master-level strategy.
 
@@ -24,7 +24,7 @@ Settings, setup choices and tutorial progress are saved in the browser.
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,
   threefold repetition, the fifty-move rule and insufficient material.
-- **50 computer levels in 8 tiers.** Levels are accessibility presets, not verified Elo ratings.
+- **65 computer levels in 9 tiers.** Levels are accessibility presets, not verified Elo ratings.
 
   | Tier | Levels | How it plays |
   | --- | --- | --- |
@@ -35,7 +35,8 @@ Settings, setup choices and tutorial progress are saved in the browser.
   | Expert | 21–25 | 1.2 to 2.6 seconds a move with advanced pruning |
   | Master | 26–30 | 3 to 6 seconds a move |
   | Grandmaster (legacy names) | 31–35 | 7.5 to 16 seconds a move |
-  | Analysis | 36–50 | 20 to 60 seconds a move; no deliberate mistakes, unrated |
+  | Analysis | 36–50 | Original classical evaluation, 20 to 60 seconds a move |
+  | Neural | 51–65 | Trained MIT NNUE evaluation, 10 to 60 seconds a move; unrated |
 
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
@@ -137,13 +138,50 @@ unstable searches use more of the budget.
   position, so known transpositions can rejoin the book. CC0 requires no attribution;
   this link records provenance. All lines are checked for legality.
 
-**Strength and performance limits:** this remains a classical engine, without
-NNUE or imported engine code/model weights. There is no verified 2500+ Elo rating,
-and no claim that every successive level wins an equal-time match. Short paired
-matches against the original are regression evidence, not a human Elo calibration.
-The requested 2–5× NPS increase has not been demonstrated; throughput varies with
-position, depth and search changes. See `validation/README.md` for measured runs.
-The original MIT licence remains; no GPL components are distributed.
+### MIT neural evaluation upgrade
+
+Levels **51–65** use an incrementally updated **768 → 128 × 2 → 1 NNUE** with
+squared clipped ReLU. The trained weights are Thomas Jahn's
+`128HL-S-5732M-Tmix-Q5-v19.nnue`, from the MIT-licensed Leorik repository. The
+network is embedded in the HTML; it is never downloaded during play. We do not
+claim to have trained these weights. Full provenance, the pinned source revision,
+and SHA-256 are in `third-party/README.md`.
+
+The JavaScript inference integration and **405-byte WASM SIMD kernel** are new
+code. Piece-square feature deltas are recorded by make/unmake and materialized
+only when evaluation needs them. Two perspective accumulators handle captures,
+castling, en passant, promotions and null moves. The kernel accelerates their
+updates and output evaluation. Neural search also tries the transposition-table
+move before generating and scoring the remaining moves, avoiding that work when
+the first move already causes a cutoff. A numerically equivalent JavaScript fallback works
+without WASM or SIMD. Sparse endings retain the classical guidance and exact KPK
+bitbase. Levels 1–50 keep their existing evaluation modes and budgets.
+
+Level 51 allows 10 seconds per move; budgets increase to 60 seconds at Level 65.
+Clock controls cap these budgets. Level names are presets, not calibrated Elo.
+The original UI, 38 lessons, rules, clocks and computer-vs-computer remain.
+
+The **original MIT copyright and full licence text are retained visibly inside
+the HTML**, together with Thomas Jahn's MIT notice. `LICENSE` is unchanged and
+`third-party/LEORIK-LICENSE.txt` records the network's licence. No GPL code,
+libraries, binaries or weights are distributed. The independently written kernel
+has no imports or runtime toolchain dependency.
+
+**Measured results:** the final neural version scored 10 wins, one draw and one
+unfinished game against the previous Level 50 at equal 100 ms budgets. Before
+the final move-ordering optimization, it won all four games at equal 1-second
+budgets. Repeated Chromium worker benchmarks measured **1.84–2.00× higher NPS**.
+The full results, methods and limitations are in
+[the validation report](validation/neural-upgrade.md).
+
+**Provisional Level 65 estimate:** around **2600 Elo**, with a broad,
+low-confidence **2300–2800** range on a modern desktop using the full 60-second
+budget. This is an informal engineering guess, not a measured rating or a
+statistical confidence interval. The baseline was itself unrated, and our short
+matches cannot establish an absolute human FIDE rating. **2500+ strength at
+10–30 seconds per move remains unverified.** The UI continues to label the neural
+levels unrated; there is no assumption that every preset beats every lower
+preset at the same time allocation.
 
 ### Reproduce checks and run matches
 
@@ -151,10 +189,11 @@ Only `index.html` is needed to play. Development tools require Node.js:
 
 ```sh
 node scripts/test.cjs
-node scripts/bench.cjs index.html 9
+node scripts/test-neural.cjs
+node scripts/bench.cjs index.html 9 nnue
 # Save the original locally for paired equal-budget matches:
 git show f3617994503541daa41ba44f5d0499df94767fe4:index.html > /tmp/original.html
-node scripts/match.cjs --baseline /tmp/original.html --games 24 --ms 1000 --out results.json
+node scripts/match.cjs --baseline /tmp/original.html --level 65 --baseline-level 35 --games 24 --ms 1000 --out results.json
 # An independently installed UCI opponent is used only for testing:
 node scripts/match.cjs --uci /path/to/stockfish --games 12 --ms 1000 --out external-results.json
 node scripts/tune.cjs results.json > candidate-weights.json
@@ -169,11 +208,32 @@ reports both losses. It never changes the HTML automatically. A small initial
 trial worsened held-out loss, so its weights were rejected. Use many diverse games
 and fresh matches before promoting candidate weights.
 
+The match runner defaults to new Level 65 versus baseline Level 50. For a local
+snapshot of the previous release, use `git show e7fd21a:index.html > /tmp/level50.html`
+and pass `--baseline /tmp/level50.html --level 65 --baseline-level 50`.
+
 `node scripts/build-kpk.cjs` deterministically regenerates the embedded KPK data.
 `scripts/import-book.cjs /path/to/chess-openings` imports the CC0 supplement into
 an unsupplemented version (not needed for the checked-in HTML). The optional
 `node scripts/browser-test.cjs` needs Playwright plus Chromium; it tests offline
 play, worker responsiveness/cancellation and computer-vs-computer.
+
+### Rebuild the neural payload
+
+There is no build step to play the checked-in HTML. For development, clone the
+pinned Leorik revision in `third-party/README.md` and run:
+
+```sh
+node scripts/embed-neural.cjs '/path/to/Leorik/Resources/Leorik 3.1 Networks/128HL-S-5732M-Tmix-Q5-v19.nnue'
+```
+
+This embeds `engine/nnue.js`, the supplied network and the checked-in
+`engine/nnue-kernel.wasm`. If modifying the kernel, compile its original WAT source
+with WABT (`npm install --prefix /tmp/mit-neural-tools wabt@1.0.39`, then
+`node scripts/build-neural-kernel.cjs`) before embedding. WABT is a development
+compiler, not a browser dependency or linked library. New inference code and the
+kernel are MIT-licensed under this project's `LICENSE`; the model retains its
+upstream MIT notice.
 
 ## Files
 
@@ -181,6 +241,8 @@ play, worker responsiveness/cancellation and computer-vs-computer.
 - `logo.svg`: repository logo and page icon
 - `LICENSE`: existing MIT licence
 - `scripts/`: optional tests, benchmark, match runner, tuning and data generators
+- `engine/`: original inference source and SIMD kernel, embedded into the HTML
+- `third-party/`: MIT network licence and provenance
 - `validation/`: measured results and limitations
 
 ## License

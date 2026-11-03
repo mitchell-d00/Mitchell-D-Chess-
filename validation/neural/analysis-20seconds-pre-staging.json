@@ -1,0 +1,32 @@
+[
+  {
+    "name": "neural",
+    "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+    "budgetMs": 20000,
+    "elapsedMs": 13528.661483,
+    "result": {
+      "move": "e2a6",
+      "score": -266,
+      "depth": 16,
+      "nodes": 4592973,
+      "book": false,
+      "seldepth": 35
+    },
+    "nps": 339499
+  },
+  {
+    "name": "previous-level50",
+    "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+    "budgetMs": 20000,
+    "elapsedMs": 17345.3372,
+    "result": {
+      "move": "e2a6",
+      "score": -94,
+      "depth": 13,
+      "nodes": 2395670,
+      "book": false,
+      "seldepth": 33
+    },
+    "nps": 138116
+  }
+]

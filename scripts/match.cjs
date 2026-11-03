@@ -5,7 +5,7 @@
 const fs=require('node:fs'), {spawn}=require('node:child_process');
 const args=process.argv.slice(2), get=(k,d)=>args.includes(k)?args[args.indexOf(k)+1]:d;
 const E=require('./engine.cjs')(), B=get('--baseline')?require('./engine.cjs')(get('--baseline')):E;
-const ms=+get('--ms',100),games=+get('--games',12),maxPly=+get('--plies',240);
+const ms=+get('--ms',100),games=+get('--games',12),maxPly=+get('--plies',240),level=+get('--level',65),baselineLevel=+get('--baseline-level',50);
 let child,waiters=[],uciLines=[];
 function failWaiters(error){const jobs=waiters;waiters=[];for(const job of jobs)job.fail(error);}
 function send(s){child.stdin.write(s+'\n');}
@@ -29,7 +29,7 @@ async function main(){
  'd2d4 d7d5 c2c4 e7e6 b1c3 g8f6 c1g5 f8e7',
  'c2c4 e7e5 b1c3 g8f6 g2g3 d7d5 c4d5 f6d5',
  'e2e4 e7e6 d2d4 d7d5 b1c3 g8f6 c1g5 f8e7'];
- const report={engineSha256:require('node:crypto').createHash('sha256').update(fs.readFileSync('index.html')).digest('hex'),node:process.version,uciIdentity:uciLines.filter(x=>x.startsWith('id ')),ms,games,maxPly,opponent:get('--uci')||get('--baseline')||'self',results:[],samples:[]};
+ const report={engineSha256:require('node:crypto').createHash('sha256').update(fs.readFileSync('index.html')).digest('hex'),node:process.version,uciIdentity:uciLines.filter(x=>x.startsWith('id ')),ms,games,maxPly,level,baselineLevel,opponent:get('--uci')||get('--baseline')||'self',results:[],samples:[]};
  for(let g=0;g<games;g++){
   const opening= new E.Chess();for(const u of openings[(g>>1)%openings.length].split(' '))opening.make(opening.findUci(u));
   const fen=opening.fen(),p=new E.Chess(fen),moves=[],samples=[];let status,times=[0,0],nodes=[0,0];const newSide=g%2?8:0;
@@ -38,7 +38,7 @@ async function main(){
    status=p.status();if(status)break;
    const mine=p.side===newSide,idx=mine?0:1,t=performance.now();let u;
    if(!mine&&child){const best=wait('bestmove ');send('position fen '+fen+(moves.length?' moves '+moves.join(' '):''));send('go movetime '+ms);u=(await best).split(/\s+/)[1];}
-   else {const r=(mine?E:B).think(fen,moves,34,{time:ms,noBook:true});u=r.move;nodes[idx]+=r.nodes||0;}
+   else {const r=(mine?E:B).think(fen,moves,(mine?level:baselineLevel)-1,{time:ms,noBook:true});u=r.move;nodes[idx]+=r.nodes||0;}
    times[idx]+=performance.now()-t;
    const m=p.findUci(u);if(!m)throw Error('Illegal move '+u+' at '+p.fen());
    if(ply>=12&&ply%6===0)samples.push({fen:p.fen(),game:g+1});p.make(m);moves.push(u);

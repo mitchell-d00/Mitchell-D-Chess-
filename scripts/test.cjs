@@ -26,6 +26,6 @@ for(const [fen,win] of [
 assert.equal(E.probeKPK(new E.Chess()),null);
 {const fen='6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1',p=new E.Chess(fen);const r=E.think(fen,[],34,{time:100,noBook:true});p.make(p.findUci(r.move));assert.equal(p.status().reason,'checkmate');}
 assert(E.think(null,['c2c4','g8f6','d2d4','e7e6'],34).book,'Book transposition');
-assert.equal(E.LEVELS.length,50);
+assert.equal(E.LEVELS.length,65);
 for(const m of fs.readFileSync('index.html','utf8').matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g))new vm.Script(m[1]);
-console.log('PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all '+E.bookLines.length+' book lines, 50 levels, script syntax');
+console.log('PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all '+E.bookLines.length+' book lines, 65 levels, script syntax');
