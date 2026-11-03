@@ -193,6 +193,8 @@ Only `index.html` is needed to play. Development tools require Node.js:
 ```sh
 node scripts/test.cjs
 node scripts/test-neural.cjs
+node scripts/test-hash-moves.cjs
+python scripts/test-campaign.py
 node scripts/bench.cjs index.html 9 nnue
 # Save the original locally for paired equal-budget matches:
 git show f3617994503541daa41ba44f5d0499df94767fe4:index.html > /tmp/original.html

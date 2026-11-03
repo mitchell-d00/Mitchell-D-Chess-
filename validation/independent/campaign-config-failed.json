@@ -1,0 +1,123 @@
+{
+  "createdUtc": "2026-11-03T17:20:36.466097+00:00",
+  "testedRevision": "e87c93eab18785a9d3bbb259389ab3b5fd7299fc",
+  "html": "/workspace/chess-benchmark-200/engine-under-test.html",
+  "htmlSha256": "ab375f2e5896d511031f246c227d4ff9e6a2c0642f1e24b1da079edf980ae870",
+  "adapter": "/workspace/chess-benchmark-200/adapter/uci.cjs",
+  "adapterSha256": "2c0e333b4e76a8946792b6192ff73041298f6519cdf0d2bddbc44b7b69cd6ef9",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 2,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/chess-benchmark-200/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "ccrlReferenceDate": "2026-10-30",
+  "opponents": {
+    "Fruit2.1": {
+      "command": "/tmp/chess-benchmark-fruit/src/fruit",
+      "options": [
+        "option.OwnBook=false",
+        "option.Hash=32"
+      ],
+      "ccrl40_15": 2694,
+      "source": "https://github.com/Warpten/Fruit-2.1",
+      "sourceRevision": "09627df3835f205c92ece013219c7a99ac4a023a",
+      "ccrlUrl": "https://computerchess.org.uk/ccrl/4040/cgi/engine_details.cgi?eng=Fruit%202.1",
+      "sha256": "4a648184627e8220477b564c2009bd85d08861cb9eda7e839caecca03ee6402e"
+    },
+    "MinimalChess0.6": {
+      "command": "/tmp/chess-benchmark-minimalchess/MinimalChess 0.6 Linux/MinimalChessEngine",
+      "options": [
+        "option.Hash=32"
+      ],
+      "ccrl40_15": 2416,
+      "source": "https://github.com/lithander/MinimalChessEngine/releases/tag/v0.6",
+      "ccrlUrl": "https://computerchess.org.uk/ccrl/4040/cgi/engine_details.cgi?eng=MinimalChess%200.6%2064-bit",
+      "sha256": "8e1b8c85b6318f980e0520d0ad45e9b0ed91c85a5dba9e10a4db4944d836165e"
+    }
+  },
+  "batches": [
+    {
+      "id": "01-Fruit2.1",
+      "opponent": "Fruit2.1",
+      "games": 20,
+      "openingStart": 1
+    },
+    {
+      "id": "02-MinimalChess0.6",
+      "opponent": "MinimalChess0.6",
+      "games": 20,
+      "openingStart": 1
+    },
+    {
+      "id": "03-Fruit2.1",
+      "opponent": "Fruit2.1",
+      "games": 20,
+      "openingStart": 11
+    },
+    {
+      "id": "04-MinimalChess0.6",
+      "opponent": "MinimalChess0.6",
+      "games": 20,
+      "openingStart": 11
+    },
+    {
+      "id": "05-Fruit2.1",
+      "opponent": "Fruit2.1",
+      "games": 20,
+      "openingStart": 21
+    },
+    {
+      "id": "06-MinimalChess0.6",
+      "opponent": "MinimalChess0.6",
+      "games": 20,
+      "openingStart": 21
+    },
+    {
+      "id": "07-Fruit2.1",
+      "opponent": "Fruit2.1",
+      "games": 20,
+      "openingStart": 31
+    },
+    {
+      "id": "08-MinimalChess0.6",
+      "opponent": "MinimalChess0.6",
+      "games": 20,
+      "openingStart": 31
+    },
+    {
+      "id": "09-Fruit2.1",
+      "opponent": "Fruit2.1",
+      "games": 20,
+      "openingStart": 41
+    },
+    {
+      "id": "10-MinimalChess0.6",
+      "opponent": "MinimalChess0.6",
+      "games": 20,
+      "openingStart": 41
+    }
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/chess-benchmark-libs/usr/lib/x86_64-linux-gnu",
+    "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "1",
+    "DOTNET_BUNDLE_EXTRACT_BASE_DIR": "/tmp/minimalchess-bundle"
+  },
+  "excludedPreflightOpponents": [
+    {
+      "name": "Lozza3.0",
+      "reason": "Timeout forfeits at 100 ms and 1 second per move; excluded before campaign"
+    },
+    {
+      "name": "Lozza9",
+      "reason": "Timeout forfeits at 1 second per move; excluded before campaign"
+    }
+  ]
+}

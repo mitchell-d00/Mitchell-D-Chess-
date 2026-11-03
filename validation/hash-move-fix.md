@@ -67,6 +67,15 @@ the remaining games.
 
 ## New campaign
 
+Two further full games from the original opening, at the actual one-second
+control with colours reversed, also completed normally with no illegal moves,
+disconnects or clock forfeits. Both were wins, but this tiny preflight is not a
+rating test. Records are under `regressions/referee-preflight/`.
+
+The repaired engine is published as `bdb5873406a2b3336523f3a19f16c4a1bc9ebd46`.
+Its HTML SHA-256 is
+`79e3126ca6cd3537ac9f958f4680790a7d11bfcbee1f352bd4c9fb41c9bbe09a`.
+
 The failed run is preserved and remains paused. The repaired revision starts a
 **fresh 200-game run** with the same 100 games per opponent, one-second move
 budget, paired openings and documented scheduling grace. It uses a new directory

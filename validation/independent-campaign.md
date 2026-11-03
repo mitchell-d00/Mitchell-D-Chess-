@@ -70,7 +70,8 @@ python scripts/independent-campaign.py /workspace/chess-benchmark-200-fixed/camp
 python scripts/independent-campaign.py /workspace/chess-benchmark-200-fixed/campaign.json --resume
 ```
 
-`validation/independent/campaign-config.json` records the initial plan, and
+`validation/independent/campaign-config.json` records the repaired-engine restart;
+`campaign-config-failed.json` preserves the original failed plan, and
 `validation/independent/openings.epd` records the openings. Paths in the config
 are local and must be adjusted on another host. The runner requires independently
 installed Fastchess and opponent programs. **No external engine, model, match
