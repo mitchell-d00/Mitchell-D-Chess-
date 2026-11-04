@@ -7,7 +7,7 @@
   var MCE_FILES = [new Uint16Array(8), new Uint16Array(8)];
   var MCE_FEATURES = new Float64Array(5);
   var MCE_VALUE = [0, 1, 3, 3, 5, 9, 0];
-  function mceFeatures(pos) {
+  function mceFeatures(pos, evaluationOnly) {
     var board = pos.b, maps = MCE_ATTACK, files = MCE_FILES, features = MCE_FEATURES;
     maps[0].fill(0); maps[1].fill(0); files[0].fill(0); files[1].fill(0); features.fill(0);
     var square, piece, type, colour, target, j, dirs, slide;
@@ -57,7 +57,7 @@
       }
       for (j = 0; j < K_D.length; j++) {
         target = king + K_D[j]; if (target & 0x88) continue;
-        if (maps[enemy][target]) features[1] -= sign * Math.min(3, maps[enemy][target]);
+        if ((!evaluationOnly || MCE_WEIGHTS.kingRing) && maps[enemy][target]) features[1] -= sign * Math.min(3, maps[enemy][target]);
         // Pseudo-safe empty exits are evaluation hints, not legal king moves.
         if (!board[target] && !maps[enemy][target]) features[2] += sign;
       }
@@ -68,7 +68,7 @@
       colour = (piece & 8) >> 3; type = piece & 7;
       var sg = colour ? -1 : 1;
       if (type !== K && maps[1 - colour][square] && !maps[colour][square]) features[4] -= sg * MCE_VALUE[type];
-      if (type === P || type === K) continue;
+      if (type === P || type === K || (evaluationOnly && !MCE_WEIGHTS.entropy)) continue;
       dirs = type === N ? N_D : type === B ? B_D : type === R ? R_D : K_D;
       slide = type !== N;
       for (j = 0; j < dirs.length; j++) {
@@ -83,7 +83,7 @@
     }
     // Shannon entropy of safe destination-file counts. This measures diversity;
     // it is not a recursive search, a proof of constraint, or a hard legality gate.
-    for (colour = 0; colour < 2; colour++) {
+    for (colour = 0; colour < 2 && (!evaluationOnly || MCE_WEIGHTS.entropy); colour++) {
       var total = 0, entropy = 0;
       for (j = 0; j < 8; j++) total += files[colour][j];
       if (total) for (j = 0; j < 8; j++) if (files[colour][j]) {
@@ -100,7 +100,7 @@
     var count = 0;
     for (var sq = 0; sq < 128; sq++) { if (sq & 0x88) { sq += 7; continue; } if (pos.b[sq]) count++; }
     if (count <= 4) return base;
-    var features = mceFeatures(pos), adjustment = 0;
+    var features = mceFeatures(pos, true), adjustment = 0;
     for (var k = 0; k < MCE_KEYS.length; k++) adjustment += features[k] * MCE_WEIGHTS[MCE_KEYS[k]];
     return base + (pos.side ? -1 : 1) * Math.round(adjustment);
   }

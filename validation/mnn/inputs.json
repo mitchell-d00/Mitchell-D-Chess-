@@ -1,0 +1,31 @@
+{
+  "files": {
+    "bench-fens.json": "f943592643b71c896e417314f8936738fcccaf074f2f52a10ae3834131483a2f",
+    "candidate.html.gz": "777293001c449259668c576041fd16dd6ce8afb341b751de8d9bb16b8aeb6993",
+    "checks.json": "76644b1152b26871e81f522f23214ecd3e38758e808e430d291c8bb23da83fe8",
+    "decision.json": "f03feb52105b2eadb2f1e0c1ac581b6fb7a33cc8951d1d83d8fda1bccd5c81de",
+    "generator-used.cjs": "99bd17804fb9b5175774a17b933eb555060df196a71188ef2bda15f030d6b7d8",
+    "leorik-uci.txt": "8c967f7b51f9f157bbae842d3e98b7b745de973890dfb59c6d563c8b022bf84c",
+    "performance.json": "888cd3a12fb0ada985c951c1d3a0b04ec2331def4e08e4975a020eba22af4f17",
+    "prototype-audit.json": "9d5ab283c76cb4d1b19b2228ce0cf95a640575cae4425997f73d8d2cea3d2b61",
+    "reference.json": "f850aca149c01a1859289007f25abe6771f744135dd6449c547b110487edb24d",
+    "selfplay.jsonl.gz": "dc0a3cf82447768e0b1038a96b3e515e60a4e88140ff6d464b57584d80c32bd1",
+    "selfplay.manifest.json": "38bd71c77aa53682d34d1aeadf576778551d7b9b5eff4894b5e0cf067cec5660",
+    "submitted-v1.1.js": "a1cd870a580f02e210e70fdc2a4f5657f37b510d657b937d11780ea69161a8b7",
+    "submitted-v1.1.zip": "c53347f3ba26fc1426ec7236beed17957347b57e0f57288310e5d919ecd5bb3d",
+    "teacher.html.gz": "8fdb4a87a3ca5b36c676b4e18f2530bdcf503098608e54a5be67c6555f378e1c",
+    "trainer-used.py": "ca2341f5b9a953a09ca68453ce58b21136f808ca78f32f6a8a4a0d346d9b5e3b",
+    "training.json": "65175136dd3981d558ca82ba32b1bcc842200496741f0668fa7e8585bdeaf5ff"
+  },
+  "engineFiles": {
+    "engine/mitchell.mnn": "3dd72fef28e46b15fb261f386e314db326bd9ca28f7eb7638b000e75c77d3f01",
+    "engine/mnn-kernel.wat": "f30ce2f9b65b9cab7feb2cd090a348a113cf9cd9562380f49ec4c1fb33f06206",
+    "engine/mnn-kernel.wasm": "a466b69c57466492f5b67d45a0c26ddb5525309347da3ac7fe0b8a700b5f4cf1",
+    "engine/mnn.js": "1bf19fc6ccf84a1db5a067cadb2937ae29383c0dedd2a8bc0ae00df6779c95e9",
+    "engine/mce.js": "bc1698e6be575392a84200c72f7074f884176efcc93a928b8485cd058c06718c"
+  },
+  "candidateHtmlSha256": "62399b5fda23b4917e8b1c37a4e7c0d44d2bdd152a0c4775d3392d2e357785a6",
+  "runnerSourcePath": "validation/opponent-tests/runner.py",
+  "runnerSourceSha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb",
+  "mainUnchangedAt": "09d136d2105eed46b18f0683fc0412ee14ea2479"
+}

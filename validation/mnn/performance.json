@@ -1,0 +1,101 @@
+{
+  "note": "Same fixed parent positions and child moves. Includes make/evaluate/unmake, excludes parent initialization. Shared host; microbenchmark does not predict search speed or Elo.",
+  "runs": [
+    {
+      "repeat": 0,
+      "mode": "full",
+      "evaluations": 3200,
+      "ms": 42.316731999999995,
+      "perSecond": 75620.20621063083,
+      "checksum": 41400
+    },
+    {
+      "repeat": 0,
+      "mode": "mce",
+      "evaluations": 3200,
+      "ms": 37.940349,
+      "perSecond": 84342.92473166234,
+      "checksum": 128400
+    },
+    {
+      "repeat": 0,
+      "mode": "mnn-js",
+      "evaluations": 3200,
+      "ms": 103.23664000000002,
+      "perSecond": 30996.74689141374,
+      "checksum": 55930
+    },
+    {
+      "repeat": 0,
+      "mode": "mnn-simd",
+      "evaluations": 3200,
+      "ms": 49.49433499999998,
+      "perSecond": 64653.86392200241,
+      "checksum": 55930
+    },
+    {
+      "repeat": 1,
+      "mode": "full",
+      "evaluations": 3200,
+      "ms": 40.962962000000005,
+      "perSecond": 78119.35084186538,
+      "checksum": 41400
+    },
+    {
+      "repeat": 1,
+      "mode": "mce",
+      "evaluations": 3200,
+      "ms": 37.527806999999996,
+      "perSecond": 85270.10384592951,
+      "checksum": 128400
+    },
+    {
+      "repeat": 1,
+      "mode": "mnn-js",
+      "evaluations": 3200,
+      "ms": 103.45165400000002,
+      "perSecond": 30932.323228007543,
+      "checksum": 55930
+    },
+    {
+      "repeat": 1,
+      "mode": "mnn-simd",
+      "evaluations": 3200,
+      "ms": 33.40847199999996,
+      "perSecond": 95784.087341678,
+      "checksum": 55930
+    },
+    {
+      "repeat": 2,
+      "mode": "full",
+      "evaluations": 3200,
+      "ms": 33.589583999999945,
+      "perSecond": 95267.62820283827,
+      "checksum": 41400
+    },
+    {
+      "repeat": 2,
+      "mode": "mce",
+      "evaluations": 3200,
+      "ms": 35.54244600000004,
+      "perSecond": 90033.19580199957,
+      "checksum": 128400
+    },
+    {
+      "repeat": 2,
+      "mode": "mnn-js",
+      "evaluations": 3200,
+      "ms": 110.80287399999997,
+      "perSecond": 28880.11731536856,
+      "checksum": 55930
+    },
+    {
+      "repeat": 2,
+      "mode": "mnn-simd",
+      "evaluations": 3200,
+      "ms": 49.05120299999999,
+      "perSecond": 65237.95145248529,
+      "checksum": 55930
+    }
+  ]
+}

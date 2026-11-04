@@ -3,7 +3,7 @@
 # Mitchell D Chess
 
 A complete chess game in a single HTML file. Play the computer at 65 levels
-from beginner through Mitchell constraint analysis, play a friend on the same screen, or watch two
+from beginner through Mitchell neural analysis, play a friend on the same screen, or watch two
 computers play each other. A 38-lesson tutorial takes you from how the pieces
 move to master-level strategy.
 
@@ -40,7 +40,7 @@ replacement; the 3000+ strength requirement has not been met.
   | Master | 26–30 | 3 to 6 seconds a move |
   | Grandmaster (legacy names) | 31–35 | 7.5 to 16 seconds a move |
   | Analysis | 36–50 | Original classical evaluation, 20 to 60 seconds a move |
-  | Mitchell | 51–65 | Original constraint evaluation, 10 to 60 seconds a move; experimental and unrated |
+  | Mitchell | 51–65 | Original Mitchell-trained neural correction, 10 to 60 seconds a move; experimental and unrated |
 
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
@@ -142,41 +142,39 @@ unstable searches use more of the budget.
   position, so known transpositions can rejoin the book. CC0 requires no attribution;
   this link records provenance. All lines are checked for legality.
 
-### Mitchell Constraint Engine candidate (November 2026)
+### Original Mitchell neural candidate (November 2026)
 
-This experimental branch removes the imported neural network from the playable
-HTML. Levels **51–65** instead use Mitchell's existing classical evaluation plus
-five original deterministic constraint features: absolute pins, enemy attacks on
-the king ring, pseudo-safe empty king exits, Shannon entropy of safe destination
-files, and attacked undefended material. Levels 1–50 keep their existing modes.
-The existing legal move generator, worker search, KPK bitbase, opening book,
-clocks, tutorial and 65 level budgets remain.
+This branch contains an original **49 KB MNN1 model**, trained from a seeded
+random initialization using Mitchell's own classical search. No third-party
+engine, pretrained network, initialization or labelled engine data is used in
+the training or playable HTML. The 768-input shared 32-neuron evaluator has two
+incremental colour-perspective accumulators and predicts a correction bounded
+to +/-150 centipawns to the original classical score. Sparse endgames retain
+classical guidance and exact KPK draws. A new **349-byte original WASM SIMD
+kernel** accelerates inference; an equivalent scalar JS fallback works without
+WASM. All resources are embedded for offline worker execution.
 
-The submitted Mitchell Constraint Engine ZIP was a prototype: its search used no
-moves, pin detection contained randomness, FEN handling omitted state, and its
-material gate could reject legitimate winning positions. Those placeholders are
-not used by the game. The candidate implements the ideas inside the tested
-0x88 engine; all new constraints are soft evaluation terms, never hard pruning
-rules that discard legal sacrifices. The source and submission provenance are
-recorded under [validation/mce](validation/mce/README.md).
+The original MCE feature mode remains available for ablation. Zero-weight
+features are skipped without changing scores. Advanced modes share validated
+staged TT ordering. The UI, 65 budgets, beginner presets, clocks, FIDE mode,
+38 lessons, book and computer-vs-computer remain. The original MIT licence
+is visible and unchanged; first-party model/code are MIT. Historical attribution
+is preserved for earlier releases, which are separate evidence.
 
-`engine/mce.js` is embedded verbatim by `node scripts/embed-mce.cjs`. No external
-engine, imported weights, WASM or model download is needed. Original copyright
-and the full project MIT licence remain visible in the HTML. Historical upstream
-licensing and benchmark records remain in the repository to identify old releases;
-they are not evidence about this new candidate.
+**3000+ is not established; main stays unchanged.** The first training cycle
+used 100 original self-play games (98 terminal, two unfinished), with 6,476
+sampled positions and 3,834 / 1,035 / 501 unique training / validation / final-test
+positions after filtering. Quantized prediction error fell about 2.1% on
+validation and 4.0% on the final test. Those are residual-fit metrics, not Elo.
+Fresh games then scored **2W–3D–3L against the same classical engine at 250 ms**,
+and **0W–0D–4L against native Leorik 3.1.3 at 1 second**; all ended normally.
+There is no demonstrated strength gain or basis for a production promotion.
 
-**Strength is unproven; 3000+ has not been demonstrated.** This candidate must
-remain on a branch until it qualifies, as requested by the project owner.
-The 24-game original self-play fit reduced held-out prediction error by about
-3.2%, but the fitted candidate then lost 0–4 to native Leorik 3.1.3 at one second
-per move and scored 1–3 against its hand-set weights at 100 ms. There were no
-forfeits. These fitted weights are rejected for promotion; this branch preserves
-the tested experiment. The previous borrowed-network version also lost 0–2
-to native Leorik. These are small smoke tests, not rating measurements.
-See [tests](tests) and the [MCE report](validation/mce/README.md) for current
-training, correctness and opponent results. The earlier Level 65 results used
-imported neural weights and do not transfer to this candidate.
+See the [original neural report](validation/mnn/README.md) and [tests](tests)
+for source/model provenance, full data, raw PGNs, checks, performance limits and
+repeat commands. The [earlier MCE trial](validation/mce/README.md) preserves the
+rejected five-weight experiment. Neither this candidate nor its small matches
+has an established absolute rating.
 
 ### Reproduce checks and run matches
 
@@ -185,12 +183,15 @@ Only `index.html` is needed to play. Development tools require Node.js:
 ```sh
 node scripts/test.cjs
 node scripts/test-mce.cjs
+node scripts/test-mnn.cjs
+node scripts/test-mnn-data.cjs
+python scripts/test-mnn-training.py
 node scripts/test-mce-training.cjs
 node scripts/test-hash-moves.cjs
 python scripts/test-campaign.py
 node scripts/test-uci-normalize.cjs
 python scripts/test-uci-normalize.py
-node scripts/bench.cjs index.html 5 mce
+node scripts/bench.cjs index.html 6 mnn
 # Save the original locally for paired equal-budget matches:
 git show f3617994503541daa41ba44f5d0499df94767fe4:index.html > /tmp/original.html
 node scripts/match.cjs --baseline /tmp/original.html --level 65 --baseline-level 35 --games 24 --ms 1000 --out results.json
@@ -218,28 +219,31 @@ an unsupplemented version (not needed for the checked-in HTML). The optional
 `node scripts/browser-test.cjs` needs Playwright plus Chromium; it tests offline
 play, worker responsiveness/cancellation and computer-vs-computer.
 
-### Rebuild and train the Mitchell evaluator
+### Rebuild and train original Mitchell evaluators
 
-The checked-in HTML is ready to play. To embed a changed original evaluator:
+The checked-in HTML needs no build step. Development rebuild:
 
 ```sh
 node scripts/embed-mce.cjs
-node scripts/test-mce.cjs
+node scripts/embed-mnn.cjs engine/mitchell.mnn
+node scripts/test-mnn.cjs
 ```
 
-Generate training games using only Mitchell's classical search, then fit the
-constraint weights with whole opening pairs reserved for holdout:
+The neural pipeline uses Node, Python and separately installed NumPy 2.3.5:
 
 ```sh
-node scripts/selfplay-mce.cjs --out /tmp/mce-selfplay.jsonl --games 24 --ms 20 --concurrency 2
-node scripts/train-mce.cjs /tmp/mce-selfplay.jsonl /tmp/mce-candidate.json
+node scripts/selfplay-mce.cjs --out /tmp/mitchell-selfplay.jsonl --games 100 --ms 40 --sample-every 2 --concurrency 2
+OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 python scripts/train-mnn.py /tmp/mitchell-selfplay.jsonl --out /tmp/mitchell-fit
 ```
 
-The tuner excludes unfinished games, reports held-out loss, and never changes
-the engine automatically. If held-out loss does not improve, reject the weights.
-Even an improvement requires fresh paired matches before promotion. This is
-classical feature tuning; it is not neural-network training and does not prove
-an Elo gain. Larger datasets and a calibrated independent pool are still needed.
+The generator explicitly uses classical search, even when the HTML defaults to
+the neural mode. The trainer uses separate opening groups for training,
+validation and final testing, removes duplicate positions, and never embeds or
+promotes a model automatically. Larger and deeper datasets, fresh final sets,
+and independent match validation remain necessary. The original five-feature
+MCE fitter is still available as `scripts/train-mce.cjs`; its earlier fitted
+weights were rejected for promotion. Full repeat/rebuild instructions, including
+the original SIMD kernel and frozen archives, are in the neural report.
 
 ## Files
 
@@ -248,7 +252,7 @@ an Elo gain. Larger datasets and a calibrated independent pool are still needed.
 - `LICENSE`: existing MIT licence
 - `tests`: results, evidence links and reproducible experiment instructions
 - `scripts/`: optional tests, benchmark, match runner, tuning and data generators
-- `engine/`: original Mitchell constraint evaluator, embedded into the HTML
+- `engine/`: original Mitchell constraint/neural evaluators, trained model and SIMD kernel, embedded into the HTML
 - `third-party/`: historical network licence and provenance for earlier releases
 - `validation/`: measured results and limitations
 

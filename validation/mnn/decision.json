@@ -1,0 +1,23 @@
+{
+  "status": "research candidate; not approved for main",
+  "target3000Established": false,
+  "mainRevision": "09d136d2105eed46b18f0683fc0412ee14ea2479",
+  "sourceBaseRevision": "3989a92c1fada4e12102c82fe7c8394accb4fa24",
+  "candidateHtmlSha256": "62399b5fda23b4917e8b1c37a4e7c0d44d2bdd152a0c4775d3392d2e357785a6",
+  "modelSha256": "3dd72fef28e46b15fb261f386e314db326bd9ca28f7eb7638b000e75c77d3f01",
+  "validationFitPassed": true,
+  "strengthImprovementDemonstrated": false,
+  "vsClassical": {
+    "wins": 2,
+    "draws": 3,
+    "losses": 3,
+    "nominalSeconds": 0.25
+  },
+  "vsLeorik": {
+    "wins": 0,
+    "draws": 0,
+    "losses": 4,
+    "nominalSeconds": 1
+  },
+  "note": "Small smoke tests are not a statistical proof of regression or a rating. Keep original first-party model/pipeline for further work, with no production promotion."
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "mitchell-neural-training-v1",
+  "createdUtc": "2026-11-04T14:06:36.471940+00:00",
+  "numpy": "2.3.5",
+  "seed": 7181,
+  "hidden": 32,
+  "architecture": "768 shared sparse features -> 32 clipped activations per colour -> antisymmetric scalar residual",
+  "inputScale": 256,
+  "outputScale": 256,
+  "correctionLimitCp": 150,
+  "initialization": "Seeded random normal; no pretrained weights",
+  "teacher": "Mitchell classical search only; clipped search-score minus static-evaluation residual; no external-engine labels",
+  "objective": "Huber loss on normalized residual; original NumPy Adam implementation; validation-selected epoch; final-test metrics computed only after freeze",
+  "splitRule": "Opening indices 0..34 train,35..44 validation,45..49 final test; exact duplicate child positions removed across and within splits",
+  "dataSha256": "fbefe22e151c1d582fb069f08eaadbaad7705612e3fc5a20c094fc60732f3b68",
+  "sourceManifestSha256": "38bd71c77aa53682d34d1aeadf576778551d7b9b5eff4894b5e0cf067cec5660",
+  "teacherHtmlSha256": "c2dce58f00b59dd6a4ea1a7603ed1e69b939e12bd774e7309323f9277fdb3a5e",
+  "teacherMoveMs": 40,
+  "teacherSampleEvery": 2,
+  "trainerSha256": "ca2341f5b9a953a09ca68453ce58b21136f808ca78f32f6a8a4a0d346d9b5e3b",
+  "modelSha256": "3dd72fef28e46b15fb261f386e314db326bd9ca28f7eb7638b000e75c77d3f01",
+  "modelBytes": 49296,
+  "games": 100,
+  "completedGames": 98,
+  "positionCounts": {
+    "train": {
+      "eligible": 4081,
+      "unique": 3834
+    },
+    "validation": {
+      "eligible": 1057,
+      "unique": 1035
+    },
+    "test": {
+      "eligible": 574,
+      "unique": 501
+    }
+  },
+  "metrics": {
+    "train": {
+      "positions": 3834,
+      "baselineMseCp2": 6420.8779342723,
+      "quantizedMseCp2": 5686.745435576421,
+      "maeCp": 55.502869066249346
+    },
+    "validation": {
+      "positions": 1035,
+      "baselineMseCp2": 6521.794202898551,
+      "quantizedMseCp2": 6385.224154589372,
+      "maeCp": 60.56908212560386
+    },
+    "test": {
+      "positions": 501,
+      "baselineMseCp2": 6652.2654690618765,
+      "quantizedMseCp2": 6385.8882235528945,
+      "maeCp": 58.662674650698605
+    }
+  },
+  "bestEpoch": 1,
+  "history": [
+    {
+      "epoch": 1,
+      "trainMseCp2": 5684.826672077179,
+      "validationMseCp2": 6382.142677903175
+    },
+    {
+      "epoch": 2,
+      "trainMseCp2": 4834.527522325516,
+      "validationMseCp2": 6698.609814047813
+    },
+    {
+      "epoch": 3,
+      "trainMseCp2": 4365.798756480217,
+      "validationMseCp2": 6862.656399607658
+    },
+    {
+      "epoch": 4,
+      "trainMseCp2": 3974.892273545265,
+      "validationMseCp2": 7211.55010163784
+    },
+    {
+      "epoch": 5,
+      "trainMseCp2": 3563.9768466353416,
+      "validationMseCp2": 7509.232386946678
+    },
+    {
+      "epoch": 6,
+      "trainMseCp2": 3204.2983174324036,
+      "validationMseCp2": 7783.991172909737
+    },
+    {
+      "epoch": 7,
+      "trainMseCp2": 2867.889627814293,
+      "validationMseCp2": 7884.443253278732
+    },
+    {
+      "epoch": 8,
+      "trainMseCp2": 2526.5346094965935,
+      "validationMseCp2": 8356.519415974617
+    },
+    {
+      "epoch": 9,
+      "trainMseCp2": 2238.569799810648,
+      "validationMseCp2": 8468.548581004143
+    },
+    {
+      "epoch": 10,
+      "trainMseCp2": 1978.499125689268,
+      "validationMseCp2": 8499.589785933495
+    },
+    {
+      "epoch": 11,
+      "trainMseCp2": 1813.183519989252,
+      "validationMseCp2": 8760.631084442139
+    },
+    {
+      "epoch": 12,
+      "trainMseCp2": 1609.5852479338646,
+      "validationMseCp2": 8549.28508400917
+    },
+    {
+      "epoch": 13,
+      "trainMseCp2": 1430.2643202245235,
+      "validationMseCp2": 8652.184680104256
+    }
+  ],
+  "fitGatePassed": true,
+  "promotionStatus": "Not approved: fresh matches, final-test assessment, calibration and correctness checks remain necessary; no Elo claim."
+}

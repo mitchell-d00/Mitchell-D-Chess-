@@ -1,0 +1,123 @@
+[
+  {
+    "argv": [
+      "node",
+      "scripts/test.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:36.555422+00:00",
+    "finishedUtc": "2026-11-04T14:06:36.916925+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all 454 book lines, 65 levels, script syntax\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-mce.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:36.917502+00:00",
+    "finishedUtc": "2026-11-04T14:06:37.352277+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: Mitchell-only payload, embedded source, pins, 160 deterministic symmetric positions, unchanged boards/hashes, exact KPK draws and legal timed search\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-mnn.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:37.352593+00:00",
+    "finishedUtc": "2026-11-04T14:06:37.949160+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: 1339 independent accumulator/rebuild checks, special moves, null moves, growing stacks, endgame fallback, SIMD/scalar and no-WASM agreement, model rejection, reference scores and legal neural timeouts\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-mnn-data.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:37.949461+00:00",
+    "finishedUtc": "2026-11-04T14:06:38.245111+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: 100 original self-play games, 98 completed/2 unfinished, 6476 replayed samples, original static labels and unchanged constraint features\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "scripts/test-mnn-training.py"
+    ],
+    "startedUtc": "2026-11-04T14:06:38.245628+00:00",
+    "finishedUtc": "2026-11-04T14:06:39.158119+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: original model/data/trainer provenance and exact training repetition with separate opening splits\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-mce-training.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:39.158721+00:00",
+    "finishedUtc": "2026-11-04T14:06:39.425550+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: 24 completed original self-play games, 484 legal replayed samples, disjoint holdout pairs, archived inputs and exactly reproducible training\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-hash-moves.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:39.425868+00:00",
+    "finishedUtc": "2026-11-04T14:06:44.078142+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: historical hash collision, six failed-game positions, TT corruption injection, strict history, incremental hash restoration\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "scripts/test-campaign.py"
+    ],
+    "startedUtc": "2026-11-04T14:06:44.078698+00:00",
+    "finishedUtc": "2026-11-04T14:06:59.410325+00:00",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 15.247s\n\nOK\n"
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-uci-normalize.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:59.410814+00:00",
+    "finishedUtc": "2026-11-04T14:06:59.477658+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: promotion spelling, ponder/PV fields, untouched identifiers/strings, invalid tokens and saved forfeit position\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "scripts/test-uci-normalize.py"
+    ],
+    "startedUtc": "2026-11-04T14:06:59.478310+00:00",
+    "finishedUtc": "2026-11-04T14:06:59.645151+00:00",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.073s\n\nOK\n"
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/browser-test.cjs"
+    ],
+    "startedUtc": "2026-11-04T14:06:59.645567+00:00",
+    "finishedUtc": "2026-11-04T14:07:01.756003+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: offline standalone HTML, 65 levels, 38 lessons, legal worker move, responsive UI, cancellation, book, computer-vs-computer, worker failure\n",
+    "stderr": ""
+  }
+]

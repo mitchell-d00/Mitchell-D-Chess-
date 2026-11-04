@@ -1,0 +1,16 @@
+{
+  "schema": "mitchell-selfplay-v2",
+  "createdUtc": "2026-11-04T13:38:17.410Z",
+  "node": "v24.22.1",
+  "htmlSha256": "c2dce58f00b59dd6a4ea1a7603ed1e69b939e12bd774e7309323f9277fdb3a5e",
+  "teacher": "Mitchell classical full evaluation + existing search; no imported neural weights",
+  "games": 100,
+  "ms": 40,
+  "maxPlies": 400,
+  "concurrency": 2,
+  "sampleEvery": 2,
+  "teacherContempt": 20,
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "holdoutRule": "Whole opening identity: opening % 4 === 0; repeated openings share split",
+  "note": "Timed games need not reproduce identical moves. Unfinished games are not labelled as draws."
+}

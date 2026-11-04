@@ -5,3 +5,5 @@ validation/opponent-tests/**/*.pgn -whitespace
 validation/opponent-tests/**/uci-handshake.txt -whitespace
 validation/mce/**/*.pgn -whitespace
 validation/mce/leorik-uci.txt -whitespace
+validation/mnn/**/*.pgn -whitespace
+validation/mnn/leorik-uci.txt -whitespace

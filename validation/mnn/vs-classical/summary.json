@@ -1,0 +1,39 @@
+{
+  "updatedUtc": "2026-11-04T13:51:41.995982+00:00",
+  "plannedGames": 8,
+  "completedGames": 8,
+  "timeControl": {
+    "movetimeSeconds": 0.25,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "MitchellFull": {
+      "planned": 8,
+      "wins": 2,
+      "draws": 3,
+      "losses": 3,
+      "forfeits": 0,
+      "completed": 8,
+      "normalResults": {
+        "wins": 2,
+        "draws": 3,
+        "losses": 3
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.4375,
+      "completedNormalPairs": 4,
+      "pairedScoreBootstrap95": null
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

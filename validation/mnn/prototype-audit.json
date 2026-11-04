@@ -1,0 +1,24 @@
+{
+  "prototype": "MCE-1.1",
+  "eligibleForMatch": false,
+  "kingsOnly": {
+    "generated": 0,
+    "legalExpected": 5
+  },
+  "pinnedKnight": {
+    "illegalMoves": [
+      "e2f4",
+      "e2d4",
+      "e2g3",
+      "e2g1",
+      "e2c3",
+      "e2c1"
+    ]
+  },
+  "kingPressure": {
+    "near": -258.2294196882304,
+    "far": -283.2294196882304,
+    "rewardsEnemyNearOwnKing": true
+  },
+  "decision": "Use existing legal Mitchell engine; prototype is input evidence only and is not loaded by the game."
+}

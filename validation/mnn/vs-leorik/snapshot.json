@@ -1,0 +1,21 @@
+{
+  "snapshotUtc": "2026-11-04T13:57:08.337595+00:00",
+  "sourceRun": "/workspace/mnn-vs-leorik",
+  "files": {
+    "01-opponent.command.json": "51ed2f00ad4f2c7722f2fc065db7bf220820e4038f1584e5ea12e04605706c13",
+    "01-opponent.done.json": "3e439cb1112d3f08d7ed0d5a2e132a51c72208f07640012140475c34a895ac60",
+    "01-opponent.log.gz": "6009e6b67903daa7d21a0b4d61aa4fadf9fc521f1b33ed42a983527a4aa105f1",
+    "01-opponent.pgn": "6d052b36cc98019ff49cc8428271365eae64c8732babc6a8f2fe6bae0f9cb1c7",
+    "01-opponent.state.json": "630e2d462081d0d9b913cd3947cc40d185b573c02724c9e3b23178c8fa0e691e",
+    "campaign.json": "13835c573fb51a62f42be866e11d8e16612898e93c7e83dd3b05ed4b6aef5e6b",
+    "campaign.log.gz": "0ff73730ae63fe8c603bfdcdd372753eacf00d95ebb5527284596fdaee59a199",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "f1fa5c91769ba8f27dc82b592de196d982438d39c5764b40b455a71f4ce6368f",
+    "summary.json": "623cdb881fc722d0f0b2ddea1f91d5a1e67b877bb59b14c6c195b089be7c6c0f"
+  },
+  "uncompressedLogs": {
+    "01-opponent.log": "66ab3b76e404b7f43982606b08527237f91efa1681a48d18d645b6c444417f50",
+    "campaign.log": "17c3768d861235cf6452f7a2edd78140edc5ad5f87f53014df7290d6c8ccad3b"
+  },
+  "completedGames": 4
+}

@@ -12,7 +12,7 @@ try{
  await page.context().setOffline(true);
  assert.equal(await page.locator('#lvl').getAttribute('max'),'65');
  assert(!(await page.content()).includes('NNUE_MODEL'));
- assert.equal(await page.evaluate(()=>E.LEVELS[64].ev),'mce');
+ assert.equal(await page.evaluate(()=>E.LEVELS[64].ev),'mnn');
  assert.equal(await page.locator('#lvlW option').count(),65);
  assert.equal(await page.evaluate(()=>LESSONS.length),38);
  assert((await page.locator('#licenses').textContent()).includes('Copyright (c) 2026 Mitchell D. McPhetridge'));

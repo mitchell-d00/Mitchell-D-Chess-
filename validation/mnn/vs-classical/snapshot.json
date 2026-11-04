@@ -1,0 +1,21 @@
+{
+  "snapshotUtc": "2026-11-04T13:57:08.335569+00:00",
+  "sourceRun": "/workspace/mnn-vs-classical",
+  "files": {
+    "01-opponent.command.json": "f235032a534dae1ceab3cc87961773c58fc57103e5ee35623005979adcebc0e1",
+    "01-opponent.done.json": "289bcf63d88a9d021ac06cf86277ec8c603123f56197ecb7084cc723be20a781",
+    "01-opponent.log.gz": "2444ee7c982c97dc31dabd901f16d72afaf67e0eff7366bef51acce7a7bba42d",
+    "01-opponent.pgn": "2e1230f49b2f7ff9a47091084d39c3fc11a762a3811c51ce915ad9229fee4966",
+    "01-opponent.state.json": "01afa54ca92575863ffd508567c5985972d9a61676a47df4b26124cbf72c386a",
+    "campaign.json": "c8783df5330c1f1a3b05a52c6ab29bc2db0159e89b02d6925da44c43b4e6acb1",
+    "campaign.log.gz": "2cd8e24516ede697292fe4550663e017e7678ce60cbe2022816f30b824b6cd98",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "6139fe59cd28ba6f30548209d7b012d8ccb7c3841dcf29262cbbed8609d2375f",
+    "summary.json": "c36e2580887c0a834bde63effb76b4e777fdbd26f9fcf0c747ca1bc237496faa"
+  },
+  "uncompressedLogs": {
+    "01-opponent.log": "0e525ad30a682d216629807206f4db678efd6b6667bbe66268584049b99cf9f7",
+    "campaign.log": "d5a7095234ef345f2caf3a22dec6c4d8160a8c3463b6f81f7e9c2d583ba4f198"
+  },
+  "completedGames": 8
+}

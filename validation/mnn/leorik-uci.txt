@@ -1,0 +1,9 @@
+Leorik 3.1.3 PEXT
+Loading NNUE weights from 640HL-S-5288M-Tmix-Q5-v19.nnue!
+id name Leorik 3.1.3
+id author Thomas Jahn
+option name Hash type spin default 50 min 1 max 2047
+option name Threads type spin default 1 min 1 max 8
+option name Temperature type spin default 0 min 0 max 1000
+uciok
+readyok

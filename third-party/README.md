@@ -2,8 +2,8 @@
 
 This record and the upstream licence are retained for historical releases and
 archived test evidence. The Mitchell Constraint candidate contains no imported
-neural weights, inference payload or external engine. Its current evaluator is
-engine/mce.js. Do not apply the old network-engine results to this candidate.
+neural weights, inference payload or external engine. Its current evaluators are engine/mce.js and engine/mnn.js; engine/mitchell.mnn
+is a new first-party model trained from original self-play. See validation/mnn/. Do not apply the old network-engine results to this candidate.
 
 # Neural network provenance
 

@@ -1,0 +1,61 @@
+{
+  "createdUtc": "2026-11-04T13:48:11.639054+00:00",
+  "testedRevision": null,
+  "html": "/workspace/mnn-vs-leorik/engine-under-test.html",
+  "htmlSha256": "62399b5fda23b4917e8b1c37a4e7c0d44d2bdd152a0c4775d3392d2e357785a6",
+  "adapter": "/workspace/mnn-vs-leorik/adapter/uci.cjs",
+  "adapterSha256": "f57980cc8ef301b29ff6d4b6697340bf184ea83e2891c2cae5f5eee5c0d16f39",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 1,
+  "timeControl": {
+    "movetimeSeconds": 1.0,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/mnn-vs-leorik/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "ccrlReferenceDate": "2026-10-30",
+  "opponents": {
+    "Leorik3.1.3": {
+      "command": "/tmp/leorik31-native/Leorik 3.1 Linux/Leorik-3.1.3",
+      "options": [
+        "option.Hash=32",
+        "option.Threads=1",
+        "option.Temperature=0"
+      ],
+      "source": "https://github.com/lithander/Leorik/releases/tag/3.1",
+      "releaseAssetSha256": "3233e7675a571fb0a8751047b5ddde402f2d7774b5bbf0bf2748ccffe7a424f8",
+      "additionalInputs": {
+        "/tmp/leorik31-native/Leorik 3.1 Linux/640HL-S-5288M-Tmix-Q5-v19.nnue": "01540ad378a157b47c1c29b6f2602f7ae10073ccdd538801395082d375e20d61"
+      },
+      "sha256": "2d368f275ab19cc86708acb87b8e8cc9ee214273097bfbd3231ac8684402c807"
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Leorik3.1.3",
+      "games": 4,
+      "openingStart": 46
+    }
+  ],
+  "environment": {},
+  "runnerSourceRevision": "3989a92c1fada4e12102c82fe7c8394accb4fa24",
+  "stopOnForfeit": true,
+  "sourceBaseRevision": "3989a92c1fada4e12102c82fe7c8394accb4fa24",
+  "workingTreeInputs": true,
+  "runnerSourceSha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb",
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14"
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 4,
+  "purpose": "Original Mitchell neural correction vs native Leorik; preliminary screening, not a rating sample",
+  "event": "Original Mitchell neural correction vs native Leorik"
+}

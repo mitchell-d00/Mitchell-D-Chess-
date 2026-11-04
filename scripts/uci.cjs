@@ -5,17 +5,17 @@ const readline=require('node:readline');
 if(!isMainThread){
  const E=require('./engine.cjs')(workerData.html);
  // Initialize the evaluator and TT before reporting ready to the manager.
- new E.Searcher(new E.Chess(),{eval:'mce',adv:true});
+ new E.Searcher(new E.Chess(),{eval:E.LEVELS[64].ev,adv:true});
  parentPort.postMessage({ready:true});
  parentPort.on('message',d=>{
   if(d.reset){const p=new E.Chess();new E.Searcher(p,{eval:'mat'});return;}
-  try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true});parentPort.postMessage({id:d.id,result:r});}
+  try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true,evaluation:d.evaluation});parentPort.postMessage({id:d.id,result:r});}
   catch(e){parentPort.postMessage({id:d.id,error:String(e.stack||e)});}
  });
 }else{
  const path=require('node:path'),fs=require('node:fs');
  const html=process.env.MITCHELL_HTML||path.resolve(__dirname,'../index.html');
- let worker,ready=false,pendingReady=0,active=null,id=0,fen=null,moves=[],level=65,overhead=20;
+ let worker,ready=false,pendingReady=0,active=null,id=0,fen=null,moves=[],level=65,overhead=20,evaluation='auto';
  const out=line=>process.stdout.write(line+'\n');
  function start(){
   ready=false;worker=new Worker(__filename,{workerData:{html}});
@@ -34,10 +34,11 @@ if(!isMainThread){
   const parts=line.trim().split(/\s+/),command=parts[0];
   if(command==='uci'){
    out('id name Mitchell D Chess Level 65');out('id author Mitchell D. McPhetridge');
-   out('option name Level type spin default 65 min 1 max 65');out('option name MoveOverhead type spin default 20 min 0 max 1000');out('option name Threads type spin default 1 min 1 max 1');out('uciok');
+   out('option name Level type spin default 65 min 1 max 65');out('option name MoveOverhead type spin default 20 min 0 max 1000');out('option name Threads type spin default 1 min 1 max 1');out('option name Evaluation type combo default auto var auto var full var mce var mnn');out('uciok');
   }else if(command==='isready'){if(ready)out('readyok');else pendingReady++;}
   else if(command==='setoption'){
    const v=parts.indexOf('value'),name=parts.slice(2,v).join(' ').toLowerCase(),value=+parts[v+1];
+   if(name==='evaluation'&&['auto','full','mce','mnn'].includes(parts[v+1]))evaluation=parts[v+1];
    if(name==='level'&&Number.isInteger(value)&&value>=1&&value<=65)level=value;
    if(name==='moveoverhead'&&Number.isFinite(value))overhead=Math.max(0,Math.min(1000,value));
   }else if(command==='ucinewgame'){worker.postMessage({reset:true});fen=null;moves=[];}
@@ -53,7 +54,7 @@ if(!isMainThread){
     if(!Number.isFinite(remaining)){process.stderr.write('A finite time control is required\n');process.exit(1);}
     budget=Math.max(1,Math.min(remaining*.35,remaining-overhead,remaining/(args.movestogo||30)+increment*.8));
    }
-   budget=Math.min(60000,budget);active={id:++id,started:Date.now()};worker.postMessage({id,fen,moves,level,time:budget});
+   budget=Math.min(60000,budget);active={id:++id,started:Date.now()};worker.postMessage({id,fen,moves,level,time:budget,evaluation:evaluation==='auto'?undefined:evaluation});
   }else if(command==='stop'){
    // This adapter runs finite searches. Return the legal completed search when it finishes.
    // Match managers here use finite per-move limits, not pondering/infinite search.

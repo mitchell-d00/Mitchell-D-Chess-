@@ -1,3 +1,7 @@
+Historical experiment at revision 3989a92. For the subsequent original neural
+pipeline, see [../mnn/README.md](../mnn/README.md). These old results do not
+rate the new model.
+
 # Mitchell-only evaluator: rejected promotion experiment
 
 **3000+ has not been established. Main remains unchanged.** This branch preserves
