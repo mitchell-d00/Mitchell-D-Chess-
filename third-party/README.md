@@ -1,6 +1,13 @@
+# Historical network provenance — no longer embedded in this candidate
+
+This record and the upstream licence are retained for historical releases and
+archived test evidence. The Mitchell Constraint candidate contains no imported
+neural weights, inference payload or external engine. Its current evaluator is
+engine/mce.js. Do not apply the old network-engine results to this candidate.
+
 # Neural network provenance
 
-The distributed model is **128HL-S-5732M-Tmix-Q5-v19.nnue**, published in the
+The model distributed in earlier releases was **128HL-S-5732M-Tmix-Q5-v19.nnue**, published in the
 MIT-licensed [Leorik repository](https://github.com/lithander/Leorik), by Thomas Jahn.
 It was obtained from commit `7c936b1494ee0140ec8d2d5ae67ea61c9c33cefe`, path
 `Resources/Leorik 3.1 Networks/128HL-S-5732M-Tmix-Q5-v19.nnue`.
@@ -16,9 +23,9 @@ It was obtained from commit `7c936b1494ee0140ec8d2d5ae67ea61c9c33cefe`, path
   `LEORIK-LICENSE.txt` and inside the standalone HTML. No separate restrictive
   notice was present for these networks in the inspected revision.
 
-Only the permissive network weights are imported. The JavaScript accumulator
-implementation, binary decoder and 405-byte WASM SIMD kernel are new code in
-this project. The serialized tensor layout, perspective transform and numerical
+Only the permissive network weights were imported in those releases. The JavaScript accumulator
+implementation, binary decoder and 405-byte WASM SIMD kernel were original
+integration code in those releases and are removed from this candidate. The serialized tensor layout, perspective transform and numerical
 scaling follow the model's documented inference format. Leorik is credited for
 its network and format; it is not presented as original training by Mitchell.
 

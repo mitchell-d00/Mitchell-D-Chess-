@@ -1,0 +1,22 @@
+{
+  "snapshotUtc": "2026-11-04T13:25:36.706474+00:00",
+  "sourceRun": "/workspace/mce-fit-vs-hand",
+  "files": {
+    "01-opponent.command.json": "0afa31a703ac1ca4bf7eebdf0ac7ef8c5636c95dae504d121b536f52bada54d9",
+    "01-opponent.done.json": "8fdfdd1d9215305524cf8ea1bca45bdc51f10beb76678a62016f433aa22ada5c",
+    "01-opponent.log.gz": "d671d3b7fe73eb2d1f647af1009a4469735a43b1a0d8da3c6cabd8032e2ad758",
+    "01-opponent.pgn": "9321412c25e15553c31a4e4c7442185890b08efe5cfbca0a191001e21b16782e",
+    "01-opponent.state.json": "af964789bafa4c0084052abdfcda9dd7d53f8382330ffaf02b4957913ac631ab",
+    "campaign.json": "1f8c03a56707e9136d5cbf0e334409391db06e6c0f3d312a270ea442480f9ab9",
+    "campaign.log.gz": "27b19d96e5f008f931ad426788ae3b165cf6cb81fb7bd508361fc91cd067469e",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "918a3088d29fa4ddd12e06657f534e581a7c7c2784e09e0085145050abd193c1",
+    "summary.json": "3321bf8f487a439150bccde9f4fa5a655514fac7242ffd58048e66a542ce7813"
+  },
+  "uncompressedLogs": {
+    "01-opponent.log": "aef37da35540cb1c403519d233893a78fed8f6821748c5603f04dc33ea82827a",
+    "campaign.log": "e74bb7b4a322419453ee86fbe11af531c1344ba3f09802de3a10bb416b5c27d1"
+  },
+  "completedGames": 4,
+  "note": "Static complete evidence; independent runs and evaluator variants must not be pooled into an absolute rating."
+}

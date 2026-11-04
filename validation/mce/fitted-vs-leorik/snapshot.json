@@ -1,0 +1,22 @@
+{
+  "snapshotUtc": "2026-11-04T13:25:36.701695+00:00",
+  "sourceRun": "/workspace/mce-vs-leorik",
+  "files": {
+    "01-opponent.command.json": "87eaa6acc67916a7236d0d1430bc3fec7e127d62953dd5094f3a6188ce5b1e36",
+    "01-opponent.done.json": "f8764348eb7d0d1f59112f025042b893e46c4baa51c757af4f347f0fa4b477b8",
+    "01-opponent.log.gz": "a64faa749bd5575e3ffdcbbdeae52fc11e664f0fadff12be8cf11746fe7347eb",
+    "01-opponent.pgn": "046f4d91d4c5d151b87031f11b4e89a437dcccbab14c47aa33ef62abb9c90764",
+    "01-opponent.state.json": "f98d56065a00dc0ff1d3e143ad6b994a7e01b23a909b6dffe5fbab4541d79fc8",
+    "campaign.json": "780cc416eaaba1f3ef909e86b267692277a6bd61ea0158da3fcbfe81cacce25c",
+    "campaign.log.gz": "2e843c7b1be10dc90287192290022a3fa7bfac8e6620c47ba927284ebee38a47",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "5f063d387a308fe00d49d6776d119ec2e8cde66b06201b90a85112b046a07d18",
+    "summary.json": "0b4433980fb0cf88cf3abce85d60d680deb5f717d063fa4346888b7ac094df0f"
+  },
+  "uncompressedLogs": {
+    "01-opponent.log": "787ecd14226af1db661ea4101e1430f3e7acb51605e512ebab678cdd0aac7a1a",
+    "campaign.log": "c6fd76c1c6af89a48196e96c8721d133a2324422cd8db24a094f625010c93c68"
+  },
+  "completedGames": 4,
+  "note": "Static complete evidence; independent runs and evaluator variants must not be pooled into an absolute rating."
+}

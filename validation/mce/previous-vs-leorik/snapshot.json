@@ -1,0 +1,22 @@
+{
+  "snapshotUtc": "2026-11-04T13:25:36.704403+00:00",
+  "sourceRun": "/workspace/old-neural-vs-leorik",
+  "files": {
+    "01-opponent.command.json": "a1ff09be44a9b886d2851194d40eeeaeda985c68192dee4ea9b5b49193fda3cf",
+    "01-opponent.done.json": "e34b037e888386b5a1fdd90e31a0d26bc8852dcec228f238a6dc5bdc5dc6106d",
+    "01-opponent.log.gz": "a3ef2e2687effab6badc695d02b573495241a43ef251de367ee53b8b6fd47cc8",
+    "01-opponent.pgn": "708b507913f5497a9b68d153f1e1ad11d5d12910caea095b01a00cbad4ca0bba",
+    "01-opponent.state.json": "a01c932ab1b4ac84678c171efdcd38007f67b341b4dc960ded41d10504285481",
+    "campaign.json": "c9664e986621c6e7c6705b28c18bbbf954e692a06ce789e80a7c88496876ea91",
+    "campaign.log.gz": "92255a277c502f471416dc538c2b2be3c3b1fd750efefcf8985d104b6ca656e8",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "status.json": "07395079ab7bf9f220806f5540e3ae1f2a1f6a4f28acc2ef431c316e8fffa77d",
+    "summary.json": "b13e35a1fe6d61eaa2670d3618600e94b2aab4e167cd43c92214d4f7d469a4f3"
+  },
+  "uncompressedLogs": {
+    "01-opponent.log": "cc411735085638f0f5cdee24ff7e6058184432afc91bbe19100990438d347b08",
+    "campaign.log": "b6cafaa26e5d09ca52669a9614fe964bf62125bd3e7553f5c399ba994ef69799"
+  },
+  "completedGames": 2,
+  "note": "Static complete evidence; independent runs and evaluator variants must not be pooled into an absolute rating."
+}

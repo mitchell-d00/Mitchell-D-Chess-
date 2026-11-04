@@ -1,4 +1,4 @@
-// node scripts/bench.cjs [index.html] [depth=5] [full|nnue]
+// node scripts/bench.cjs [index.html] [depth=5] [full|mce]
 const E=require('./engine.cjs')(process.argv[2]||'index.html');
 const depth=+(process.argv[3]||5),mode=process.argv[4]||'full';
 const fens=[

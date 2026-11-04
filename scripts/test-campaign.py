@@ -51,6 +51,15 @@ class CampaignTests(unittest.TestCase):
    opponent=next(iter(actual['opponents'].values()));self.assertEqual(tuple(opponent[x] for x in ['wins','draws','losses']),counts);self.assertEqual(opponent['forfeits'],0)
    self.assertEqual(json.loads((root/'status.json').read_text())['status'],'completed')
   root=ROOT/'validation/opponent-tests/minimal-format-normalized';audit=[json.loads(x) for x in (root/'normalizations.jsonl').read_text().splitlines()];self.assertEqual(len(audit),13);self.assertEqual(sum(x['raw'].startswith('bestmove ') for x in audit),1)
+ def test_mce_match_archives(self):
+  for name,counts in [('fitted-vs-leorik',(0,0,4)),('previous-vs-leorik',(0,0,2)),('fitted-vs-hand',(1,0,3))]:
+   root=ROOT/'validation/mce'/name;snapshot=json.loads((root/'snapshot.json').read_text())
+   for filename,digest in snapshot['files'].items():self.assertEqual(hashlib.sha256((root/filename).read_bytes()).hexdigest(),digest,filename)
+   for filename,digest in snapshot['uncompressedLogs'].items():self.assertEqual(hashlib.sha256(gzip.decompress((root/(filename+'.gz')).read_bytes())).hexdigest(),digest,filename)
+   actual=campaign.summarize(json.loads((root/'campaign.json').read_text()),root);recorded=json.loads((root/'summary.json').read_text())
+   for field in ['plannedGames','completedGames','timeControl','opponents']:self.assertEqual(actual[field],recorded[field],field)
+   opponent=next(iter(actual['opponents'].values()));self.assertEqual(tuple(opponent[x] for x in ['wins','draws','losses']),counts);self.assertEqual(opponent['forfeits'],0)
+   self.assertEqual(actual['completedGames'],snapshot['completedGames']);self.assertEqual(json.loads((root/'status.json').read_text())['status'],'completed')
  def test_small_pilot_completes_at_declared_count(self):
   with tempfile.TemporaryDirectory() as td:
    root=Path(td);fake=root/'fake-manager';fake.write_text("#!/usr/bin/env python3\nimport sys\nfrom pathlib import Path\np=Path(sys.argv[sys.argv.index('-pgnout')+1].split('=',1)[1])\np.write_text('[Event \"pilot\"]\\n[Round \"1\"]\\n[White \"Mitchell65\"]\\n[Black \"Other\"]\\n[Result \"1-0\"]\\n[Termination \"normal\"]\\n[Event \"pilot\"]\\n[Round \"1\"]\\n[White \"Other\"]\\n[Black \"Mitchell65\"]\\n[Result \"0-1\"]\\n[Termination \"normal\"]\\n')\n");fake.chmod(0o700)

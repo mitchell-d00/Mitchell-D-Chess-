@@ -20,10 +20,10 @@ for(let i=0;i<250;i++){
 }
 // Inject an inconsistent entry without exposing TT internals in production.
 let source=fs.readFileSync('index.html','utf8').match(/<script id="engine-src">([\s\S]*?)<\/script>/)[1];
-source=source.replace('NNUE_CONFIG: NNUE_CONFIG,','__tt: {lo:ttLo,hi:ttHi,move:ttMove,score:ttScore,depth:ttDepth,flag:ttFlag}, NNUE_CONFIG: NNUE_CONFIG,');
+source=source.replace('MCE_WEIGHTS: MCE_WEIGHTS,','__tt: {lo:ttLo,hi:ttHi,move:ttMove,score:ttScore,depth:ttDepth,flag:ttFlag}, MCE_WEIGHTS: MCE_WEIGHTS,');
 const context={module:{exports:{}}};vm.runInNewContext(source,context);const D=context.module.exports;
 for(const ply of [0,1]){
- const q=new D.Chess(collision.positions[1]),s=new D.Searcher(q,{eval:'nnue',adv:true,time:5000}),tt=D.__tt,h=q.lo&(tt.lo.length-1),before=q.fen(),legal=q.legalMoves();s.rootDepth=2;
+ const q=new D.Chess(collision.positions[1]),s=new D.Searcher(q,{eval:'mce',adv:true,time:5000}),tt=D.__tt,h=q.lo&(tt.lo.length-1),before=q.fen(),legal=q.legalMoves();s.rootDepth=2;
  const wrong=D.sqParse('a7')|(D.sqParse('a8')<<7)|(5<<14);assert(!q.gen(false).includes(wrong));
  tt.lo[h]=q.lo;tt.hi[h]=q.hi;tt.move[h]=wrong;tt.score[h]=99999;tt.depth[h]=99;tt.flag[h]=1;
  const score=s.negamax(2,ply?-50:-1e6,ply?-49:1e6,ply,false,0);

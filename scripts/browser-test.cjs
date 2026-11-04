@@ -11,12 +11,12 @@ try{
  await page.goto('http://localhost:8765/');
  await page.context().setOffline(true);
  assert.equal(await page.locator('#lvl').getAttribute('max'),'65');
+ assert(!(await page.content()).includes('NNUE_MODEL'));
+ assert.equal(await page.evaluate(()=>E.LEVELS[64].ev),'mce');
  assert.equal(await page.locator('#lvlW option').count(),65);
  assert.equal(await page.evaluate(()=>LESSONS.length),38);
  assert((await page.locator('#licenses').textContent()).includes('Copyright (c) 2026 Mitchell D. McPhetridge'));
- assert((await page.locator('#licenses').textContent()).includes('Copyright (c) 2023 Thomas Jahn'));
  assert((await page.locator('#licenses').textContent()).includes(require('node:fs').readFileSync('LICENSE','utf8').trim()));
- assert((await page.locator('#licenses').textContent()).includes(require('node:fs').readFileSync('third-party/LEORIK-LICENSE.txt','utf8').trim()));
  const r=await page.evaluate(async()=>{
    let ticks=0;const timer=setInterval(()=>ticks++,10);
    const result=await think(null,['e2e4','c7c5','g1f3'],64,{time:350,noBook:true});clearInterval(timer);

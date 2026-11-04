@@ -1,7 +1,9 @@
 # Historical classical validation record
 
-This records the previous classical release (`e7fd21a`). For the current
-neural upgrade, see [neural-upgrade.md](neural-upgrade.md).
+This records the previous classical release (`e7fd21a`). For the historical
+neural upgrade, see [neural-upgrade.md](neural-upgrade.md). The experimental
+Mitchell-only replacement is documented in [mce/README.md](mce/README.md);
+these earlier results do not validate it.
 
 Original opponent: repository commit `f3617994503541daa41ba44f5d0499df94767fe4`.
 Node.js v24.22.1, Linux cloud execution environment. These are short regression

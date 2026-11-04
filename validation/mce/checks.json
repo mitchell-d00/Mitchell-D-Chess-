@@ -1,0 +1,90 @@
+[
+  {
+    "argv": [
+      "node",
+      "scripts/test.cjs"
+    ],
+    "startedUtc": "2026-11-04T13:28:16.565279+00:00",
+    "finishedUtc": "2026-11-04T13:28:16.966931+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all 454 book lines, 65 levels, script syntax\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-mce.cjs"
+    ],
+    "startedUtc": "2026-11-04T13:28:16.967239+00:00",
+    "finishedUtc": "2026-11-04T13:28:17.397657+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: Mitchell-only payload, embedded source, pins, 160 deterministic symmetric positions, unchanged boards/hashes, exact KPK draws and legal timed search\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-mce-training.cjs"
+    ],
+    "startedUtc": "2026-11-04T13:28:17.398167+00:00",
+    "finishedUtc": "2026-11-04T13:28:17.638818+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: 24 completed original self-play games, 484 legal replayed samples, disjoint holdout pairs, archived inputs and exactly reproducible training\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-hash-moves.cjs"
+    ],
+    "startedUtc": "2026-11-04T13:28:17.639081+00:00",
+    "finishedUtc": "2026-11-04T13:28:21.849682+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: historical hash collision, six failed-game positions, TT corruption injection, strict history, incremental hash restoration\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "scripts/test-campaign.py"
+    ],
+    "startedUtc": "2026-11-04T13:28:21.850084+00:00",
+    "finishedUtc": "2026-11-04T13:28:37.117684+00:00",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 15.176s\n\nOK\n"
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/test-uci-normalize.cjs"
+    ],
+    "startedUtc": "2026-11-04T13:28:37.118000+00:00",
+    "finishedUtc": "2026-11-04T13:28:37.169304+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: promotion spelling, ponder/PV fields, untouched identifiers/strings, invalid tokens and saved forfeit position\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "scripts/test-uci-normalize.py"
+    ],
+    "startedUtc": "2026-11-04T13:28:37.169818+00:00",
+    "finishedUtc": "2026-11-04T13:28:37.302492+00:00",
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.053s\n\nOK\n"
+  },
+  {
+    "argv": [
+      "node",
+      "scripts/browser-test.cjs"
+    ],
+    "startedUtc": "2026-11-04T13:28:37.302910+00:00",
+    "finishedUtc": "2026-11-04T13:28:39.194556+00:00",
+    "exitCode": 0,
+    "stdout": "PASS: offline standalone HTML, 65 levels, 38 lessons, legal worker move, responsive UI, cancellation, book, computer-vs-computer, worker failure\n",
+    "stderr": ""
+  }
+]

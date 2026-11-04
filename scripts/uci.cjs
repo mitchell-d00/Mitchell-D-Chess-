@@ -4,8 +4,8 @@ const {Worker,isMainThread,parentPort,workerData}=require('node:worker_threads')
 const readline=require('node:readline');
 if(!isMainThread){
  const E=require('./engine.cjs')(workerData.html);
- // Initialize the neural payload and TT before reporting ready to the manager.
- new E.Searcher(new E.Chess(),{eval:'nnue',adv:true});
+ // Initialize the evaluator and TT before reporting ready to the manager.
+ new E.Searcher(new E.Chess(),{eval:'mce',adv:true});
  parentPort.postMessage({ready:true});
  parentPort.on('message',d=>{
   if(d.reset){const p=new E.Chess();new E.Searcher(p,{eval:'mat'});return;}
@@ -33,7 +33,7 @@ if(!isMainThread){
  readline.createInterface({input:process.stdin}).on('line',line=>{
   const parts=line.trim().split(/\s+/),command=parts[0];
   if(command==='uci'){
-   out('id name Mitchell D Chess Level 65');out('id author Mitchell D. McPhetridge; NNUE weights Thomas Jahn');
+   out('id name Mitchell D Chess Level 65');out('id author Mitchell D. McPhetridge');
    out('option name Level type spin default 65 min 1 max 65');out('option name MoveOverhead type spin default 20 min 0 max 1000');out('option name Threads type spin default 1 min 1 max 1');out('uciok');
   }else if(command==='isready'){if(ready)out('readyok');else pendingReady++;}
   else if(command==='setoption'){

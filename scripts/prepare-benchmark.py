@@ -23,11 +23,11 @@ def prepare(args):
  if not math.isfinite(args.move_seconds) or args.move_seconds<=0 or args.margin_ms<0:raise ValueError('Invalid time control')
  keys=['fastchess','node']+([] if custom is not None else ['fruit','minimal'])
  binaries={k:executable(getattr(args,k)) for k in keys}
- payload={name:git('show',revision+':'+name) for name in ['index.html','scripts/uci.cjs','scripts/engine.cjs','validation/independent/openings.epd']}
+ payload={name:((ROOT/name).read_bytes() if args.working_tree else git('show',revision+':'+name)) for name in ['index.html','scripts/uci.cjs','scripts/engine.cjs','validation/independent/openings.epd']}
  if args.openings:payload['validation/independent/openings.epd']=Path(args.openings).read_bytes()
  if not payload['validation/independent/openings.epd'].strip():raise ValueError('Opening file is empty')
  c=json.loads((ROOT/'validation/independent/campaign-config.json').read_text())
- c['createdUtc']=datetime.datetime.now(datetime.timezone.utc).isoformat();c['testedRevision']=revision;c['runnerSourceRevision']=git('rev-parse','HEAD').decode().strip()
+ c['createdUtc']=datetime.datetime.now(datetime.timezone.utc).isoformat();c['testedRevision']=None if args.working_tree else revision;c['sourceBaseRevision']=git('rev-parse','HEAD').decode().strip() if args.working_tree else revision;c['workingTreeInputs']=args.working_tree;c['runnerSourceSha256']=sha(ROOT/'scripts/independent-campaign.py');c['runnerSourceRevision']=git('rev-parse','HEAD').decode().strip()
  c['node']=binaries['node'];c['nodeVersion']=subprocess.check_output([c['node'],'--version'],text=True,timeout=10).strip()
  c['fastchess']=binaries['fastchess'];c['fastchessVersion']=subprocess.check_output([c['fastchess'],'-version'],text=True,timeout=10).strip()
  c['environment']={};c['host']={'platform':platform.platform(),'logicalCpus':os.cpu_count(),'pythonVersion':platform.python_version()};c['concurrency']=args.concurrency;c['stopOnForfeit']=True
@@ -55,7 +55,7 @@ def prepare(args):
  path=out/'campaign.json';path.write_text(json.dumps(c,indent=2)+'\n');return path
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',required=True);p.add_argument('--fastchess',required=True);p.add_argument('--fruit');p.add_argument('--minimal');p.add_argument('--openings',help='Optional local EPD file, copied and hashed');p.add_argument('--opponents',help='JSON object of named external engines');p.add_argument('--games-per-opponent',type=int);p.add_argument('--move-seconds',type=float,default=1);p.add_argument('--margin-ms',type=int,default=250);p.add_argument('--node',default=shutil.which('node'));p.add_argument('--revision',default='bdb5873406a2b3336523f3a19f16c4a1bc9ebd46');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);args=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--out',required=True);p.add_argument('--fastchess',required=True);p.add_argument('--fruit');p.add_argument('--minimal');p.add_argument('--working-tree',action='store_true',help='Freeze current local HTML/adapter instead of Git; manifest marks revision as uncommitted');p.add_argument('--openings',help='Optional local EPD file, copied and hashed');p.add_argument('--opponents',help='JSON object of named external engines');p.add_argument('--games-per-opponent',type=int);p.add_argument('--move-seconds',type=float,default=1);p.add_argument('--margin-ms',type=int,default=250);p.add_argument('--node',default=shutil.which('node'));p.add_argument('--revision',default='bdb5873406a2b3336523f3a19f16c4a1bc9ebd46');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);args=p.parse_args()
  if not args.node:p.error('Node.js is required; provide --node')
  path=prepare(args);print('Prepared:',path);print('Run:',shlex.join([sys.executable,str(ROOT/'scripts/independent-campaign.py'),str(path)]));print('External runtime compatibility libraries, if needed, must be supplied by the caller environment.')
 if __name__=='__main__':main()

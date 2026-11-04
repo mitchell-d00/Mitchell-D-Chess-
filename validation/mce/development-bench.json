@@ -1,0 +1,68 @@
+{
+  "note": "Single shared-host development run captured from scripts/bench.cjs console output. Case timings and totals were rounded separately. Trees differ; NPS is not strength and this is not an isolated speed comparison.",
+  "depth": 6,
+  "candidateMode": "mce",
+  "baselineMode": "nnue",
+  "candidate": {
+    "nodes": 29680,
+    "ms": 869,
+    "nps": 34170,
+    "cases": [
+      {
+        "score": 12,
+        "nodes": 1589,
+        "ms": 96,
+        "nps": 16511
+      },
+      {
+        "score": 22,
+        "nodes": 6976,
+        "ms": 203,
+        "nps": 34389
+      },
+      {
+        "score": -20,
+        "nodes": 17119,
+        "ms": 479,
+        "nps": 35723
+      },
+      {
+        "score": 15,
+        "nodes": 3996,
+        "ms": 90,
+        "nps": 44259
+      }
+    ]
+  },
+  "previous": {
+    "nodes": 21759,
+    "ms": 150,
+    "nps": 144585,
+    "cases": [
+      {
+        "score": 60,
+        "nodes": 2659,
+        "ms": 26,
+        "nps": 100496
+      },
+      {
+        "score": 43,
+        "nodes": 14870,
+        "ms": 86,
+        "nps": 172448
+      },
+      {
+        "score": -152,
+        "nodes": 3061,
+        "ms": 33,
+        "nps": 93498
+      },
+      {
+        "score": 488,
+        "nodes": 1169,
+        "ms": 5,
+        "nps": 230754
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "files": {
+    "submitted-prototype.zip": "aa962ba50938838519dbe7ef5e57a951707f4a24d4743ac5221a60402f2e6718",
+    "selfplay.jsonl.gz": "4d525e0800e7fc91a3876b02bfdb4b0c96bae1471f6c90f438792bc6be9d4c38",
+    "selfplay.manifest.json": "1586577e08af0a0269a84c7224cf468ec234f0ad4ba0ebcc7f7f2d56b85ac0bc",
+    "training.json": "d2ed85f90d1c4b6cb3613bd006e2fca7557cf2a6d8988dd0ba3a08c515ccd2b1",
+    "untrained.html.gz": "67af17ed4f6a0dd697d15212bb5a06b10e98f166571c83012f5b2bba7209512c",
+    "fitted.html.gz": "8fdb4a87a3ca5b36c676b4e18f2530bdcf503098608e54a5be67c6555f378e1c",
+    "leorik-uci.txt": "8c967f7b51f9f157bbae842d3e98b7b745de973890dfb59c6d563c8b022bf84c",
+    "hand-opponent.sh": "05236c943effa18adfd54ef813d1ba4a037a4fa6ca1e852b3c42d094cac69f47",
+    "decision.json": "398e6656b4bc9d7c867cdfe3f50c5d8b51909401181b0b0d52d5ff892442d865",
+    "checks.json": "7652a68adf03b7fee5f129f8ec4147b1f01599bde2c5dd95f34aa44363adbd56",
+    "development-bench.json": "de48e823b87f3b5e96736e4d4f938f57c799597a48fe123df9a1134371bf601f"
+  },
+  "frozenRunnerPath": "validation/opponent-tests/runner.py",
+  "frozenRunnerSha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb",
+  "candidateHtmlSha256": "c2dce58f00b59dd6a4ea1a7603ed1e69b939e12bd774e7309323f9277fdb3a5e"
+}

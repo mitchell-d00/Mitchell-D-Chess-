@@ -1,0 +1,47 @@
+{
+  "schema": "mitchell-constraint-training-v1",
+  "createdUtc": "2026-11-04T13:17:18.724Z",
+  "dataSha256": "9769af1d66d3d975bdcd2f1ecca335d95d7e9dbdca923ffbb50f1a2aab5a8e63",
+  "engineSha256": "e38f179f4f9f7bafcf90767476f3b18cdaf5b5106e4bac970e4d9b55202fb4ee",
+  "games": 24,
+  "completedGames": 24,
+  "unfinishedGames": 0,
+  "trainingPositions": 338,
+  "holdoutPositions": 96,
+  "trainingPairs": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11
+  ],
+  "holdoutPairs": [
+    0,
+    4,
+    8
+  ],
+  "defaults": {
+    "pin": 10,
+    "kingRing": 3,
+    "escape": 2,
+    "entropy": 3,
+    "loose": 10
+  },
+  "candidate": {
+    "pin": 33,
+    "kingRing": 0,
+    "escape": 10,
+    "entropy": 0,
+    "loose": 36
+  },
+  "trainBefore": 0.11799205170989407,
+  "trainAfter": 0.11477673654557086,
+  "holdoutBefore": 0.08397233497811546,
+  "holdoutAfter": 0.08128998742727057,
+  "recommended": true,
+  "policy": "Held-out prediction improvement is required but insufficient: fresh paired matches must also pass. Never promote automatically or infer Elo from training loss."
+}

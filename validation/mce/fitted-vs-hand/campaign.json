@@ -1,0 +1,60 @@
+{
+  "createdUtc": "2026-11-04T13:23:30.014540+00:00",
+  "testedRevision": null,
+  "html": "/workspace/mce-fit-vs-hand/engine-under-test.html",
+  "htmlSha256": "c2dce58f00b59dd6a4ea1a7603ed1e69b939e12bd774e7309323f9277fdb3a5e",
+  "adapter": "/workspace/mce-fit-vs-hand/adapter/uci.cjs",
+  "adapterSha256": "b6c01ec29968919afc5146ceec74205b1edf63527ac3f1e2c7577a9861a085a6",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 1,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/mce-fit-vs-hand/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "ccrlReferenceDate": "2026-10-30",
+  "opponents": {
+    "Mitchell-hand": {
+      "command": "/workspace/mce-untrained.sh",
+      "options": [
+        "option.Level=65",
+        "option.MoveOverhead=20"
+      ],
+      "additionalInputs": {
+        "/workspace/mce-untrained.html": "e38f179f4f9f7bafcf90767476f3b18cdaf5b5106e4bac970e4d9b55202fb4ee",
+        "/workspace/mce-vs-leorik/adapter/uci.cjs": "b6c01ec29968919afc5146ceec74205b1edf63527ac3f1e2c7577a9861a085a6",
+        "/workspace/mce-vs-leorik/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      },
+      "sha256": "05236c943effa18adfd54ef813d1ba4a037a4fa6ca1e852b3c42d094cac69f47"
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Mitchell-hand",
+      "games": 4,
+      "openingStart": 41
+    }
+  ],
+  "environment": {},
+  "runnerSourceRevision": "09d136d2105eed46b18f0683fc0412ee14ea2479",
+  "stopOnForfeit": true,
+  "sourceBaseRevision": "09d136d2105eed46b18f0683fc0412ee14ea2479",
+  "workingTreeInputs": true,
+  "runnerSourceSha256": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb",
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14"
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 4,
+  "purpose": "Fresh holdout-strength smoke test of fitted vs hand-set MCE weights; not a rating sample",
+  "event": "Fitted Mitchell vs hand-set Mitchell"
+}

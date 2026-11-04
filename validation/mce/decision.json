@@ -1,0 +1,18 @@
+{
+  "decision": "reject fitted weights for promotion; keep main unchanged",
+  "mainRevision": "09d136d2105eed46b18f0683fc0412ee14ea2479",
+  "candidateHtmlSha256": "c2dce58f00b59dd6a4ea1a7603ed1e69b939e12bd774e7309323f9277fdb3a5e",
+  "fitOnlyHoldoutImprovementPercent": 3.1943229297410225,
+  "nativeLeorikResult": {
+    "wins": 0,
+    "draws": 0,
+    "losses": 4
+  },
+  "freshHandWeightResult": {
+    "wins": 1,
+    "draws": 0,
+    "losses": 3
+  },
+  "target3000Established": false,
+  "note": "Four-game smoke tests are not a rating measurement or statistical proof of regression. There is no basis to promote the fit or claim the requested target. The branch preserves the exact tested rejected candidate for review."
+}

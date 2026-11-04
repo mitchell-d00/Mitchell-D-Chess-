@@ -3,7 +3,7 @@
 # Mitchell D Chess
 
 A complete chess game in a single HTML file. Play the computer at 65 levels
-from beginner through neural analysis, play a friend on the same screen, or watch two
+from beginner through Mitchell constraint analysis, play a friend on the same screen, or watch two
 computers play each other. A 38-lesson tutorial takes you from how the pieces
 move to master-level strategy.
 
@@ -21,7 +21,8 @@ deploy from the `main` branch, root folder). The game will be served at
 Settings, setup choices and tutorial progress are saved in the browser.
 
 See [tests](tests) for published results, raw game records, correctness checks,
-and portable commands to repeat the experiments. The engine remains unrated.
+and portable commands to repeat the experiments. The engine remains unrated. This branch is an experimental Mitchell-only
+replacement; the 3000+ strength requirement has not been met.
 
 ## What is in it
 
@@ -39,7 +40,7 @@ and portable commands to repeat the experiments. The engine remains unrated.
   | Master | 26–30 | 3 to 6 seconds a move |
   | Grandmaster (legacy names) | 31–35 | 7.5 to 16 seconds a move |
   | Analysis | 36–50 | Original classical evaluation, 20 to 60 seconds a move |
-  | Neural | 51–65 | Trained MIT NNUE evaluation, 10 to 60 seconds a move; unrated |
+  | Mitchell | 51–65 | Original constraint evaluation, 10 to 60 seconds a move; experimental and unrated |
 
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
@@ -141,62 +142,41 @@ unstable searches use more of the budget.
   position, so known transpositions can rejoin the book. CC0 requires no attribution;
   this link records provenance. All lines are checked for legality.
 
-### MIT neural evaluation upgrade
+### Mitchell Constraint Engine candidate (November 2026)
 
-Levels **51–65** use an incrementally updated **768 → 128 × 2 → 1 NNUE** with
-squared clipped ReLU. The trained weights are Thomas Jahn's
-`128HL-S-5732M-Tmix-Q5-v19.nnue`, from the MIT-licensed Leorik repository. The
-network is embedded in the HTML; it is never downloaded during play. We do not
-claim to have trained these weights. Full provenance, the pinned source revision,
-and SHA-256 are in `third-party/README.md`.
+This experimental branch removes the imported neural network from the playable
+HTML. Levels **51–65** instead use Mitchell's existing classical evaluation plus
+five original deterministic constraint features: absolute pins, enemy attacks on
+the king ring, pseudo-safe empty king exits, Shannon entropy of safe destination
+files, and attacked undefended material. Levels 1–50 keep their existing modes.
+The existing legal move generator, worker search, KPK bitbase, opening book,
+clocks, tutorial and 65 level budgets remain.
 
-The JavaScript inference integration and **405-byte WASM SIMD kernel** are new
-code. Piece-square feature deltas are recorded by make/unmake and materialized
-only when evaluation needs them. Two perspective accumulators handle captures,
-castling, en passant, promotions and null moves. The kernel accelerates their
-updates and output evaluation. Neural search also tries the transposition-table
-move after validating it against generated moves, deferring ordering of the
-remaining moves until it is needed. A numerically equivalent JavaScript fallback works
-without WASM or SIMD. Sparse endings retain the classical guidance and exact KPK
-bitbase. Levels 1–50 keep their existing evaluation modes and budgets.
+The submitted Mitchell Constraint Engine ZIP was a prototype: its search used no
+moves, pin detection contained randomness, FEN handling omitted state, and its
+material gate could reject legitimate winning positions. Those placeholders are
+not used by the game. The candidate implements the ideas inside the tested
+0x88 engine; all new constraints are soft evaluation terms, never hard pruning
+rules that discard legal sacrifices. The source and submission provenance are
+recorded under [validation/mce](validation/mce/README.md).
 
-Level 51 allows 10 seconds per move; budgets increase to 60 seconds at Level 65.
-Clock controls cap these budgets. Level names are presets, not calibrated Elo.
-The original UI, 38 lessons, rules, clocks and computer-vs-computer remain.
+`engine/mce.js` is embedded verbatim by `node scripts/embed-mce.cjs`. No external
+engine, imported weights, WASM or model download is needed. Original copyright
+and the full project MIT licence remain visible in the HTML. Historical upstream
+licensing and benchmark records remain in the repository to identify old releases;
+they are not evidence about this new candidate.
 
-The **original MIT copyright and full licence text are retained visibly inside
-the HTML**, together with Thomas Jahn's MIT notice. `LICENSE` is unchanged and
-`third-party/LEORIK-LICENSE.txt` records the network's licence. No GPL code,
-libraries, binaries or weights are distributed. The independently written kernel
-has no imports or runtime toolchain dependency.
-
-**Correctness update:** an independent referee found illegal moves caused by
-colliding position hashes and unchecked cached moves. The hash generator now
-creates full 64-bit keys, cached moves are validated before use, and invalid
-move histories fail explicitly. Earlier match and throughput figures predate
-this bug fix and do not validate the fixed revision's strength or performance.
-See [the hash-move regression report](validation/hash-move-fix.md).
-
-**Strength is unrated.** No absolute Elo estimate is supported by the current
-evidence. Wins against our own unrated previous version demonstrate a relative
-improvement only; the two-game losses to Stockfish cannot calibrate a rating.
-A larger benchmark against independent, rated engines at documented time controls
-is needed before making an absolute strength claim. In particular, 2500+ play at
-10–30 seconds per move has not been established.
-
-A separate [200-game independent-engine campaign](validation/independent-campaign.md)
-was paused at **58/200 games at 1 second per move**, after an opponent UCI-format
-forfeit. The archived snapshot contains 52 normal-play wins, 5 draws and no
-normal-play losses, plus one separately reported forfeit win. See [tests](tests)
-for the raw evidence, limitations and reproduction commands. No absolute Elo
-claim is made.
-
-New [opponent-selection pilots](validation/opponent-tests/README.md) at the same
-control completed four games each: Stockfish 5 **0W–3D–1L**, Texel 1.06
-**1W–2D–1L**, from Mitchell's side, with no forfeits. A separate two-game
-promotion-format diagnostic completed normally using a labelled external-engine
-adapter. Raw PGNs, configuration, logs, audit and repeat commands are published;
-these small samples do not establish Elo.
+**Strength is unproven; 3000+ has not been demonstrated.** This candidate must
+remain on a branch until it qualifies, as requested by the project owner.
+The 24-game original self-play fit reduced held-out prediction error by about
+3.2%, but the fitted candidate then lost 0–4 to native Leorik 3.1.3 at one second
+per move and scored 1–3 against its hand-set weights at 100 ms. There were no
+forfeits. These fitted weights are rejected for promotion; this branch preserves
+the tested experiment. The previous borrowed-network version also lost 0–2
+to native Leorik. These are small smoke tests, not rating measurements.
+See [tests](tests) and the [MCE report](validation/mce/README.md) for current
+training, correctness and opponent results. The earlier Level 65 results used
+imported neural weights and do not transfer to this candidate.
 
 ### Reproduce checks and run matches
 
@@ -204,12 +184,13 @@ Only `index.html` is needed to play. Development tools require Node.js:
 
 ```sh
 node scripts/test.cjs
-node scripts/test-neural.cjs
+node scripts/test-mce.cjs
+node scripts/test-mce-training.cjs
 node scripts/test-hash-moves.cjs
 python scripts/test-campaign.py
 node scripts/test-uci-normalize.cjs
 python scripts/test-uci-normalize.py
-node scripts/bench.cjs index.html 9 nnue
+node scripts/bench.cjs index.html 5 mce
 # Save the original locally for paired equal-budget matches:
 git show f3617994503541daa41ba44f5d0499df94767fe4:index.html > /tmp/original.html
 node scripts/match.cjs --baseline /tmp/original.html --level 65 --baseline-level 35 --games 24 --ms 1000 --out results.json
@@ -237,22 +218,28 @@ an unsupplemented version (not needed for the checked-in HTML). The optional
 `node scripts/browser-test.cjs` needs Playwright plus Chromium; it tests offline
 play, worker responsiveness/cancellation and computer-vs-computer.
 
-### Rebuild the neural payload
+### Rebuild and train the Mitchell evaluator
 
-There is no build step to play the checked-in HTML. For development, clone the
-pinned Leorik revision in `third-party/README.md` and run:
+The checked-in HTML is ready to play. To embed a changed original evaluator:
 
 ```sh
-node scripts/embed-neural.cjs '/path/to/Leorik/Resources/Leorik 3.1 Networks/128HL-S-5732M-Tmix-Q5-v19.nnue'
+node scripts/embed-mce.cjs
+node scripts/test-mce.cjs
 ```
 
-This embeds `engine/nnue.js`, the supplied network and the checked-in
-`engine/nnue-kernel.wasm`. If modifying the kernel, compile its original WAT source
-with WABT (`npm install --prefix /tmp/mit-neural-tools wabt@1.0.39`, then
-`node scripts/build-neural-kernel.cjs`) before embedding. WABT is a development
-compiler, not a browser dependency or linked library. New inference code and the
-kernel are MIT-licensed under this project's `LICENSE`; the model retains its
-upstream MIT notice.
+Generate training games using only Mitchell's classical search, then fit the
+constraint weights with whole opening pairs reserved for holdout:
+
+```sh
+node scripts/selfplay-mce.cjs --out /tmp/mce-selfplay.jsonl --games 24 --ms 20 --concurrency 2
+node scripts/train-mce.cjs /tmp/mce-selfplay.jsonl /tmp/mce-candidate.json
+```
+
+The tuner excludes unfinished games, reports held-out loss, and never changes
+the engine automatically. If held-out loss does not improve, reject the weights.
+Even an improvement requires fresh paired matches before promotion. This is
+classical feature tuning; it is not neural-network training and does not prove
+an Elo gain. Larger datasets and a calibrated independent pool are still needed.
 
 ## Files
 
@@ -261,8 +248,8 @@ upstream MIT notice.
 - `LICENSE`: existing MIT licence
 - `tests`: results, evidence links and reproducible experiment instructions
 - `scripts/`: optional tests, benchmark, match runner, tuning and data generators
-- `engine/`: original inference source and SIMD kernel, embedded into the HTML
-- `third-party/`: MIT network licence and provenance
+- `engine/`: original Mitchell constraint evaluator, embedded into the HTML
+- `third-party/`: historical network licence and provenance for earlier releases
 - `validation/`: measured results and limitations
 
 ## License

@@ -1,3 +1,31 @@
+# Mitchell-only candidate: not qualified for main
+
+The fitted original Mitchell Constraint candidate is preserved on this branch
+for review. Its weights are REJECTED FOR PROMOTION. Main remains unchanged.
+3000+ has not been established.
+
+Fresh referee results (all normal, zero forfeits):
+
+| Mitchell variant | Opponent | Move time | Wins | Draws | Losses |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Fitted original MCE | Native Leorik 3.1.3 | 1 s | 0 | 0 | 4 |
+| Previous borrowed-network release | Native Leorik 3.1.3 | 1 s | 0 | 0 | 2 |
+| Fitted original MCE | Hand-set original MCE | 0.1 s | 1 | 0 | 3 |
+
+24 completed original classical self-play games supplied the fitting data:
+338 training / 96 held-out eligible positions, split by whole opening pairs.
+Held-out prediction loss improved about 3.2%, but that did not translate to a
+fresh-game gain in this small test. No Elo gain or absolute rating is supported.
+
+See validation/mce/README.md for raw PGNs, complete conditions, rejected-weight
+decision, original ZIP diagnosis, archived self-play, checksums and exact fit/
+match reproduction. Run node scripts/test.cjs, node scripts/test-mce.cjs,
+node scripts/test-mce-training.cjs, node scripts/test-hash-moves.cjs,
+python scripts/test-campaign.py and node scripts/browser-test.cjs.
+
+The records below belong to the HISTORICAL borrowed-network engine at revision
+bdb5873. They do not rate this Mitchell-only candidate. Keep all variants separate.
+
 # Tests, results and reproduction
 
 The engine is UNRATED. No absolute Elo estimate is established by these tests.
@@ -112,15 +140,16 @@ establish an absolute Elo rating. A computer pool alone cannot establish FIDE El
 From the repository root, with Node.js 24 and Python 3.10+:
 
     node scripts/test.cjs
-    node scripts/test-neural.cjs
+    node scripts/test-mce.cjs
+    node scripts/test-mce-training.cjs
     node scripts/test-hash-moves.cjs
     python scripts/test-campaign.py
     node scripts/test-uci-normalize.cjs
     python scripts/test-uci-normalize.py
 
 Coverage includes standard perft, special moves, mate/check evasions,
-underpromotion, KPK, short timeouts, all book lines, independent neural-reference
-scores, scalar/SIMD agreement, incremental accumulators, the real historical hash
+underpromotion, KPK, short timeouts, all book lines, deterministic constraint evaluation, colour symmetry, archived
+self-play and repeatable fitting, the real historical hash
 collision, six formerly failing game positions, invalid TT-entry injection,
 strict history replay, automatic campaign pause, and archived-result verification.
 
