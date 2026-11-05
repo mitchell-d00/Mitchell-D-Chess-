@@ -26,6 +26,10 @@ function build(options = {}) {
   }
   if (/@@[A-Z_]+@@/.test(html)) throw Error('Unresolved build placeholder');
   if(options.wasm)html=html.replace('<title>Mitchell D Chess</title>','<title>Mitchell D Chess · WASM candidate</title>').replace('65 levels · 38 lessons · Free &amp; offline','WASM candidate · Unrated · Free &amp; offline');
+  if(options.wasm){
+    const sizes={raw:Buffer.byteLength(html),gzip:require('node:zlib').gzipSync(html,{level:9}).length};
+    for(const kind of ['raw','gzip'])if(sizes[kind]>config.candidateSizeBudget[kind])throw Error('Candidate '+kind+' size exceeds budget: '+sizes[kind]);
+  }
   return html;
 }
 if (require.main === module) {

@@ -28,3 +28,37 @@ The optional sparse-endgame experiment recognizes actual stalemate/dead position
 before leaf evaluation. It defaults off and requires separate regression and
 match evidence. Browser/fallback, resource and equal-time match gates must pass
 before a public backend change. No Elo or GM claim is made.
+
+## SIMD evolution candidate
+
+The next candidate uses original 128-bit SIMD memory clearing/copying and fused
+NNUE transitions: the previous accumulator and all move feature deltas are read
+in one pass and the new accumulator is written once. Search rules, evaluation,
+network and default memory budget are unchanged. The scalar JavaScript fallback
+and all MIT notices remain intact.
+
+Run `npm run test:wasm` after building. In addition to 5,476 differential checks,
+524 scalar-reference checks use full-range synthetic weights at hidden widths
+16/24/128/256, including dirty frame chains and special moves. Thirteen sparse
+endgame fixtures cover stalemate, dead positions and mate precedence; that
+endgame experiment remains disabled by default.
+
+Explicit browser acceptance, including unsupported/failed WASM compilation:
+
+    MITCHELL_TEST_HTML=/tmp/mitchell-candidate.html node scripts/browser-wasm-test.cjs
+    MITCHELL_TEST_HTML=/tmp/mitchell-candidate.html npm run test:browser
+
+Compare two locally built cores/artifacts; both versions must be preserved:
+
+    node scripts/compare-wasm.cjs /tmp/baseline.wasm engine/wasm/mitchell.wasm 7 11
+    MITCHELL_TEST_HTML=/tmp/mitchell-candidate.html node scripts/browser-wasm-performance.cjs /tmp/baseline.html 5 11
+
+Both benchmarks alternate warmed engines with identical TT capacity and require
+identical nodes, moves and scores. The candidate build enforces the 768 KiB raw /
+320 KiB gzip size budget. CI compiles and tests the candidate separately and
+uploads the single HTML as an artifact; it does not deploy the candidate.
+
+The first WASM version completed 40 paired games against the frozen JS engine:
+**20 wins, 19 draws, 1 loss**, zero forfeits at 0.1 seconds/move. See
+[the archived referee records](../../validation/wasm-port/v1-vs-js-40/).
+This is relative short-control evidence, not an absolute rating.

@@ -1,0 +1,42 @@
+{
+  "updatedUtc": "2026-11-05T20:38:57.252307+00:00",
+  "plannedGames": 40,
+  "completedGames": 40,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Mitchell-JS-8788622": {
+      "planned": 40,
+      "wins": 20,
+      "draws": 19,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 40,
+      "normalResults": {
+        "wins": 20,
+        "draws": 19,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.7375,
+      "completedNormalPairs": 20,
+      "pairedScoreBootstrap95": [
+        0.65,
+        0.825
+      ]
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

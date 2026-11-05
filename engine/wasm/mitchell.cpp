@@ -2,6 +2,7 @@
 // copyright. Neural weights are supplied separately with Thomas Jahn's MIT
 // attribution. Freestanding: no linked chess engine, C/C++ runtime, account or
 // network service.
+#include <wasm_simd128.h>
 using i8 = signed char;
 using u8 = unsigned char;
 using i16 = short;
@@ -11,16 +12,23 @@ using u32 = unsigned int;
 using u64 = unsigned long long;
 using i64 = long long;
 extern "C" void *memcpy(void *d, const void *s, u32 n) {
-  volatile u8 *a = (u8 *)d;
+  u8 *a = (u8 *)d;
   const u8 *b = (const u8 *)s;
-  for (u32 i = 0; i < n; i++)
-    a[i] = b[i];
+  u32 i = 0;
+  for (; n - i >= 16; i += 16)
+    wasm_v128_store(a + i, wasm_v128_load(b + i));
+  for (; i < n; i++)
+    ((volatile u8 *)a)[i] = b[i];
   return d;
 }
 extern "C" void *memset(void *d, int v, u32 n) {
-  volatile u8 *a = (u8 *)d;
-  for (u32 i = 0; i < n; i++)
-    a[i] = (u8)v;
+  u8 *a = (u8 *)d;
+  u32 i = 0;
+  v128_t fill = wasm_i8x16_splat((i8)v);
+  for (; n - i >= 16; i += 16)
+    wasm_v128_store(a + i, fill);
+  for (; i < n; i++)
+    ((volatile u8 *)a)[i] = (u8)v;
   return d;
 }
 extern "C" __attribute__((import_module("env"), import_name("clock"))) double
@@ -369,33 +377,60 @@ struct Position {
     as[d] = cs;
     count[d] = count[d - 1] - (c ? 1 : 0);
   }
+  static int featureOffset(int piece, int sq, int perspective) {
+    int s = (sq >> 4) * 8 + (sq & 7), ty = (piece & 7) - 1,
+        c = (piece & BLACK) ? 1 : 0;
+    return ((c ^ perspective) * 384 + ty * 64 +
+            (s ^ (perspective ? 56 : 0))) * hidden;
+  }
+  template <bool Capture, bool Castle> void updateAccumulator(int d) {
+    int m = am[d], f = mfrom(m), t = mto(m), h = hidden;
+    for (int side = 0; side < 2; side++) {
+      const i16 *remove = weights + featureOffset(ap[d], f, side),
+                *add = weights + featureOffset(an[d], t, side);
+      const i16 *captured = nullptr, *rookFrom = nullptr, *rookTo = nullptr;
+      if constexpr (Capture)
+        captured = weights + featureOffset(ac[d], as[d], side);
+      if constexpr (Castle) {
+        int rf = t == 6 ? 7 : t == 2 ? 0 : t == 118 ? 119 : 112,
+            rt = t == 6 ? 5 : t == 2 ? 3 : t == 118 ? 117 : 115,
+            rook = R | (ap[d] & BLACK);
+        rookFrom = weights + featureOffset(rook, rf, side);
+        rookTo = weights + featureOffset(rook, rt, side);
+      }
+      const i16 *source = av[d - 1] + side * h;
+      i16 *target = av[d] + side * h;
+      // All accepted hidden widths are multiples of eight. Wrapping i16 SIMD
+      // addition matches the original typed accumulator exactly, including
+      // capture, en passant, promotion and castling feature removal.
+      for (int i = 0; i < h; i += 8) {
+        v128_t v = wasm_i16x8_sub(wasm_v128_load(source + i),
+                                 wasm_v128_load(remove + i));
+        v = wasm_i16x8_add(v, wasm_v128_load(add + i));
+        if constexpr (Capture)
+          v = wasm_i16x8_sub(v, wasm_v128_load(captured + i));
+        if constexpr (Castle) {
+          v = wasm_i16x8_sub(v, wasm_v128_load(rookFrom + i));
+          v = wasm_i16x8_add(v, wasm_v128_load(rookTo + i));
+        }
+        wasm_v128_store(target + i, v);
+      }
+    }
+  }
   i16 *ensure() {
     int first = np;
     while (!valid[first])
       first--;
     for (int d = first + 1; d <= np; d++) {
-      for (int i = 0; i < hidden * 2; i++)
-        av[d][i] = av[d - 1][i];
       int m = am[d];
-      if (m) {
-        int f = mfrom(m), t = mto(m);
-        addFeature(av[d], ap[d], f, -1);
-        addFeature(av[d], an[d], t, 1);
-        if (ac[d])
-          addFeature(av[d], ac[d], as[d], -1);
-        if (flags(m) & 4) {
-          int rf = t == 6     ? 7
-                   : t == 2   ? 0
-                   : t == 118 ? 119
-                              : 112,
-              rt = t == 6     ? 5
-                   : t == 2   ? 3
-                   : t == 118 ? 117
-                              : 115;
-          addFeature(av[d], R | (ap[d] & BLACK), rf, -1);
-          addFeature(av[d], R | (ap[d] & BLACK), rt, 1);
-        }
-      }
+      if (!m)
+        memcpy(av[d], av[d - 1], hidden * 2 * sizeof(i16));
+      else if (flags(m) & 4)
+        updateAccumulator<false, true>(d);
+      else if (ac[d])
+        updateAccumulator<true, false>(d);
+      else
+        updateAccumulator<false, false>(d);
       valid[d] = 1;
     }
     return av[np];

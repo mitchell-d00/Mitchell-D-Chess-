@@ -1,0 +1,108 @@
+diff --git a/engine/wasm/mitchell.cpp b/engine/wasm/mitchell.cpp
+index 816c386..612e4d1 100644
+--- a/engine/wasm/mitchell.cpp
++++ b/engine/wasm/mitchell.cpp
+@@ -239,11 +239,15 @@ struct Position {
+     return false;
+   }
+   bool inCheck() const { return attacked(kingSq[side >> 3], side ^ BLACK); }
+-  Moves gen(bool captures = false) const {
++  // A hash move only needs its own source piece generated. Defer the complete
++  // list until that move fails to cut off; keep one canonical rules generator.
++  Moves gen(bool captures = false, int onlyFrom = -1) const {
+     Moves out;
+     int us = side, them = us ^ BLACK, fwd = us ? -16 : 16, start = us ? 6 : 1,
+         last = us ? 0 : 7;
+-    for (int s = 0; s < 128; s++) {
++    int begin = onlyFrom < 0 ? 0 : onlyFrom,
++        end = onlyFrom < 0 ? 128 : onlyFrom + 1;
++    for (int s = begin; s < end; s++) {
+       if (s & 0x88) {
+         s += 7;
+         continue;
+@@ -308,7 +312,7 @@ struct Position {
+         }
+       }
+     }
+-    if (!captures) {
++    if (!captures && (onlyFrom < 0 || onlyFrom == (us ? 116 : 4))) {
+       if (!us) {
+         if ((castle & 1) && !b[5] && !b[6] && b[7] == R &&
+             !attacked(4, BLACK) && !attacked(5, BLACK) && !attacked(6, BLACK))
+@@ -328,6 +332,13 @@ struct Position {
+     }
+     return out;
+   }
++  bool pseudoLegal(int m) const {
++    // Reject noncanonical upper bits too; the membership check covers flags,
++    // promotion, rook/path checks, ownership and en passant just like gen().
++    if (m <= 0 || (m & ~((1 << 21) - 1)) || (mfrom(m) & 0x88))
++      return false;
++    return gen(false, mfrom(m)).indexOf(m) >= 0;
++  }
+   void addFeature(i16 *a, int piece, int sq, int sign) {
+     if (!piece)
+       return;
+@@ -713,6 +724,7 @@ API("legal") int legal_moves() {
+   return m.length;
+ }
+ API("moves_ptr") int moves_ptr() { return (int)outMoves; }
++API("pseudo_legal") int pseudo_legal(int m) { return pos.pseudoLegal(m); }
+ API("play") int play(int m) {
+   Moves legal = pos.legal();
+   if (legal.indexOf(m) < 0)
+@@ -1115,12 +1127,8 @@ struct Searcher {
+     Moves generated;
+     if (ttFlag[h] >= 0 && ttLo[h] == lo && ttHi[h] == hi) {
+       ttm = ttMove[h];
+-      if (ttm) {
+-        generated = p->gen();
+-        hasGenerated = true;
+-        if (generated.indexOf(ttm) < 0)
+-          ttm = 0;
+-      }
++      if (ttm && !p->pseudoLegal(ttm))
++        ttm = 0;
+       if (ttm && !excluded && ply > 0 && ttDepth[h] >= depth && !pv) {
+         int ts = ttScore[h];
+         if (ts > MATE - 1000)
+@@ -1179,11 +1187,7 @@ struct Searcher {
+       if (aborted)
+         return 0;
+       if (ttLo[h] == lo && ttHi[h] == hi) {
+-        if (!hasGenerated) {
+-          generated = p->gen();
+-          hasGenerated = true;
+-        }
+-        ttm = generated.indexOf(ttMove[h]) >= 0 ? ttMove[h] : 0;
++        ttm = p->pseudoLegal(ttMove[h]) ? ttMove[h] : 0;
+       }
+     }
+     int singularMove = 0;
+@@ -1198,20 +1202,23 @@ struct Searcher {
+       if (alternatives < singularBeta)
+         singularMove = ttm;
+     }
+-    if (!hasGenerated)
+-      generated = p->gen();
+     bool staged = mode == 3 && ttm && !excluded;
+     Moves ms;
+     if (staged)
+       ms.push(ttm);
+-    else
++    else {
++      generated = p->gen();
++      hasGenerated = true;
+       ms = order(generated, ttm, ply, prevKey);
++    }
+     int legal = 0, best = -INF, bestM = 0, *k = killers[ply];
+     Moves quietsTried;
+     auto *b = p->b;
+     for (int i = 0; i < ms.length || staged; i++) {
+       if (i == ms.length && staged) {
+         staged = false;
++        if (!hasGenerated)
++          generated = p->gen();
+         ms = order(generated, ttm, ply, prevKey);
+         int hashIndex = ms.indexOf(ttm);
+         if (hashIndex >= 0)
