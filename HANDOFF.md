@@ -1,0 +1,144 @@
+# UI improvements handoff
+
+## Scope and constraints
+
+User authorized all three bundles in order on November 5, 2026:
+
+1. FEN/PGN import and shareable position links.
+2. Onboarding, mobile usability and keyboard accessibility.
+3. Named local saves and post-game analysis.
+
+Worktree: `/workspace/Mitchell-D-Chess-ui`, branch `ui/offline-tools`, based on
+public `main` revision `09d136d2105eed46b18f0683fc0412ee14ea2479`.
+The independent engine research branch is NOT part of this work. The original
+`engine-src` script, neural weights, MIT notices and Leorik credit must remain
+byte-identical. Preserve the single HTML / offline / Web Worker design, all
+65 levels, 38 lessons, clocks, FIDE rules and computer-vs-computer.
+
+## Progress
+
+- [x] Audit current UI: clickable SAN moves, resign confirmation, promotion
+  palette, lesson progress and thinking indicators already exist.
+- [x] Pass 1: validated FEN/PGN import and shareable positions.
+- [x] Pass 2: onboarding, responsive/touch polish and keyboard board access.
+- [x] Pass 3: local named saves and post-game worker analysis.
+- [x] Final regression checks and documentation.
+- [ ] Publication (tracked below).
+
+## Decisions
+
+- Build imports transactionally: invalid input must not destroy the current game.
+- Imported positions/games open for review without starting clocks or AI.
+- Keep parsing outside the immutable chess engine source.
+- No server, account, external runtime library or service worker dependency.
+- Save records must be versioned, bounded and validated before restoration.
+- Analysis is an estimate from this unrated engine, with explicit time budgets;
+  never present score differences as a calibrated accuracy or Elo measurement.
+
+## Handoff convention
+
+The pass entries below are chronological checkpoints; their “Next” notes describe
+the next action at that checkpoint. The latest status is at the end of this file.
+
+For each pass, append changed files, checks run/results, design constraints,
+known limitations and the exact next step. Do not mark unfinished checks passed.
+
+## Pass 1 completed
+
+Files: `ui/position-tools.js`, its embedded `position-tools-src` script and UI
+integration in `index.html`, `scripts/embed-ui.cjs`, parser/browser tools tests.
+
+Implemented strict FEN validation, annotated PGN main-line import from paste/file,
+transactional error handling, disposable import workers, review without clock/AI,
+position sharing via URL hash, and playing a new game from a displayed position.
+Custom-FEN searches and hints now use the actual starting FEN. PGN exports and
+SAN move rows preserve Black-to-move starts and original full-move numbers.
+
+Verified: `node scripts/test-position-tools.cjs`, `node scripts/test.cjs`, and
+`node scripts/browser-tools-test.cjs` (Chromium with network/socket sandbox
+permission, page offline). Includes malformed inputs, castling/en passant/
+underpromotion, main-line variations, paste/file, inert header text, shared links,
+custom starts and export round trips. Engine SHA remains
+`61d257391bf643dedc2bf4d561a9e7c34d1d9ce6d52f822dd70431b8c1143bea`.
+
+Limits: one standard-chess PGN, 256 KB, 1,024 half-moves; variations/comments are
+not retained. Shared links contain positions, not entire PGNs. A shared file://
+position uses the public game URL; importing FEN works entirely offline.
+Fresh-page links load for review; hash changes in an existing game request import
+confirmation rather than silently discarding it.
+
+Next: pass 2. Add keyboard board navigation with shared touch-move logic, square
+ARIA labels, modal focus handling, quick guide/credits visibility, contrast and
+mobile targets/layout. Keep the engine script unchanged.
+
+## Pass 2 completed
+
+Files: `index.html`, `scripts/browser-accessibility-test.cjs`.
+
+Added dismissible first-visit tips and a reusable guide; visible source/credits
+links; compact mobile header; collapsible setup; labelled 8x8 keyboard grid with
+roving focus; arrows/Home/End/Enter/Space/Escape and touch-move enforcement;
+keyboard promotion; labelled tabs with arrow navigation; modal focus trap/return;
+44px mobile controls; short-landscape layout; high-contrast/blue-sand palettes;
+reduced-motion support and live status announcements. Existing pointer and
+keyboard paths share the same legal moves and official touch locks.
+
+Verified: `node scripts/browser-accessibility-test.cjs`, rerun after inspecting
+portrait/landscape screenshots; `node scripts/browser-tools-test.cjs`; parser and
+engine regression checks remain passing. Browser tests cover 64 labels, roving
+focus, keyboard e2-e4, FIDE lock/Escape, flipped arrows, knight underpromotion,
+modal containment/restoration, persistent tips, contrast, tab keys, viewport
+width and target size. Screenshots: `/tmp/chess-mobile-ui.png`,
+`/tmp/chess-landscape-ui.png`. Engine source remains byte-identical.
+
+Next: pass 3. Implement versioned bounded local saves with explicit failure
+reporting and safe paused restoration; new-game replacement confirmation;
+post-game/review analysis using the existing worker, cancellable progress,
+move alternatives and a clickable evaluation graph. No server or Elo/accuracy
+claims. Finish all regressions, README/tests documentation and publication.
+
+## Pass 3 completed
+
+Files: `ui/game-library.js` (embedded via `scripts/embed-ui.cjs`), `index.html`,
+`scripts/test-game-library.cjs`, `scripts/browser-library-analysis-test.cjs`, and
+updated browser/tools/accessibility checks. README, tests and
+`validation/ui-update.md` describe the user-facing behavior and limits.
+
+Added 20-slot versioned local library, named new saves/explicit updates/deletes,
+quota/error feedback, legal replay before replacement, paused restoration of
+clocks/player settings/rules/history/view/touch locks/draw offers, and explicit
+Resume. Added accessible New Game and resignation confirmations. Restored games
+cannot move or charge elapsed closed time before Resume. Saved analyses are
+intentionally omitted; rerun review after loading.
+
+Post-game/import review runs finite 100/250/500ms searches in the existing worker,
+with progress, cancellation, stale-token isolation, alternatives, heuristic
+"possible" labels, graph and move navigation. History is replayed for repetition
+status. Mate and insufficient/shallow searches are treated separately; graph gaps
+mean no completed evaluation. No accuracy/Elo claim is made. Analysis is disabled
+during active games, including FIDE games. Hints/lesson searches now handle worker
+cancellation without unhandled rejections.
+
+Verified during implementation: storage unit tests, parser tests, original browser
+regressions, offline save/analysis integration including actual worker searches,
+paused official clocks and persistent touch lock, reload persistence, corrupt
+saved-move rejection and cancellation/stale results. Accessibility additionally
+checks real touchscreen e2-e4. Final full-suite output will be recorded in
+`validation/ui-checks.json`; do not infer it passed until that file is complete.
+
+Next: final full regression run and engine/licence byte comparisons, mark final
+status, then publish the UI-only commits. The research branch must stay separate.
+
+## Final verification completed
+
+All 10 final commands passed; exact commands, UTC timestamps, outputs and exit
+codes are committed in `validation/ui-checks.json`. The suite covers the original
+engine/neural/hash/campaign/browser checks and all new offline UI checks. Exact
+engine-script and licence-disclosure comparisons against base main passed.
+Portrait, landscape and game-review screenshots were inspected.
+
+Implementation checkpoints: `b846480` (position tools), `edc17d3` (accessibility),
+`16e11f6` (saves/review). The UI does not incorporate the engine research branch.
+
+Next: publish `ui/offline-tools`, merge the reviewed/tested UI changes to main,
+and record the publication link/status here. No engine strength claim is added.

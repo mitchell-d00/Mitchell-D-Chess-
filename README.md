@@ -75,14 +75,50 @@ and portable commands to repeat the experiments. The engine remains unrated.
   through earlier moves, an evaluation bar, and copy the game as PGN (with
   time control) or the position as FEN.
 
+## Positions, saved games and review
+
+- **Import FEN / PGN** accepts pasted text or a local file. It validates the whole
+  position/main line before replacing the game and opens for review without a
+  clock or computer moves. One standard-chess game, up to 256 KB / 1,024 half-moves;
+  comments and variations are skipped. Custom starts and Black-to-move numbering
+  are preserved when exporting PGN.
+- **Share position** copies a link to the displayed FEN. Opening it loads a review
+  position. A hash change in an existing game asks before replacement. From a
+  saved local HTML, the link points to the public game; FEN import itself works
+  entirely offline.
+- **Saved games** keeps up to 20 named games in this browser, with explicit update
+  and delete controls. A load is validated first and always starts paused, keeping
+  clocks, player levels, rules, move history, touch-move locks and draw offers.
+  Resume starts at the latest position without charging time spent closed.
+  Storage failures are reported; export PGN for a portable backup. Browser/site
+  data is local and can be cleared. Analysis results are not stored in saves.
+- **Game review** is available after a game or for imported review records. Choose
+  0.1, 0.25 or 0.5 seconds per position; cancel at any time. The worker supplies
+  estimated evaluations, alternatives and a clickable graph/move list. Labels
+  such as “possible mistake” use heuristic score-change thresholds, not calibrated
+  accuracy or Elo. Mate and shallow-search cases are distinguished. Graph gaps
+  mean no completed evaluation. The engine remains unrated.
+
+The quick guide explains play/learn, levels, clocks, colours and keyboard controls.
+First-visit tips can be dismissed. Source and full MIT/Leorik credits are visible
+from the header. Setup can be collapsed; high-contrast palettes, larger mobile
+controls and a compact landscape layout are available.
+
+The public engine source and model are unchanged by this UI update. See
+[HANDOFF.md](HANDOFF.md) for the three implementation passes and
+[UI verification](validation/ui-update.md) for checks and limits.
+
 ## Controls
 
 Click a piece and then a square, or drag the piece. Dots show legal moves.
 
 | Action | Key |
 | --- | --- |
-| Step back or forward through moves | ← → |
-| Cancel a selection or close a window | Escape |
+| Explore board squares (board focused) | Arrow keys; Home / End |
+| Select a piece or play a destination | Enter / Space |
+| Step back or forward outside the board | ← / → or move buttons |
+| Switch Play / Learn tabs (tab focused) | ← / → |
+| Cancel a selection or close a dialog | Escape; FIDE touch-move still applies |
 
 ## How the computer thinks
 
@@ -200,7 +236,9 @@ these small samples do not establish Elo.
 
 ### Reproduce checks and run matches
 
-Only `index.html` is needed to play. Development tools require Node.js:
+Only `index.html` is needed to play. `node scripts/embed-ui.cjs` rebuilds the
+embedded UI modules after development edits; it leaves the engine unchanged.
+Development tools require Node.js:
 
 ```sh
 node scripts/test.cjs
@@ -260,6 +298,8 @@ upstream MIT notice.
 - `logo.svg`: repository logo and page icon
 - `LICENSE`: existing MIT licence
 - `tests`: results, evidence links and reproducible experiment instructions
+- `ui/`: original development modules embedded into the standalone HTML
+- `HANDOFF.md`: implementation passes, checks and continuation notes
 - `scripts/`: optional tests, benchmark, match runner, tuning and data generators
 - `engine/`: original inference source and SIMD kernel, embedded into the HTML
 - `third-party/`: MIT network licence and provenance

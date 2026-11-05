@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
+const E=require('./engine.cjs')(),T=require('../ui/position-tools.js')(E);
+assert.equal(crypto.createHash('sha256').update(fs.readFileSync('index.html','utf8').match(/<script id="engine-src">([\s\S]*?)<\/script>/)[1]).digest('hex'),'61d257391bf643dedc2bf4d561a9e7c34d1d9ce6d52f822dd70431b8c1143bea','Public engine source must remain unchanged');
+assert.equal(T.validateFen(T.START),T.START);
+for(const fen of ['8/8/8/8/8/8/8/8 w - - 0 1','4k3/8/8/8/8/8/4K3/8 x - - 0 1','4k3/8/8/8/8/8/4K3/4K3 w - - 0 1','4k3/8/8/8/8/8/8/4K3 w K - 0 1','4k3/8/8/8/8/8/8/4K3 w - e6 0 1','4k3/8/8/8/8/8/4K3/8 w - - -1 1','4k3/8/8/8/8/8/4K3/8 w - - 0 0','4k3/8/8/8/8/8/4K3/4P3 w - - 0 1','8/8/8/8/8/8/4k3/4K3 w - - 0 1'])assert.throws(()=>T.validateFen(fen),/./,fen);
+assert.equal(T.validateFen('4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1').split(' ')[3],'d6');
+const game=T.parsePgn('[Event "A \\"quoted\\" game"]\n[Result "*"]\n1.e4 {comment} e5 2.Nf3 (2.Bc4 (2... Nf6) Nc6) Nc6 $1 3.Bb5 a6 4.Ba4 Nf6 5.0-0 Be7 *');
+assert.equal(game.moves.length,10);assert.equal(game.moves.at(-2),'e1g1');assert(game.notice);assert.equal(game.tags.Event,'A "quoted" game');
+const round=T.parsePgn(T.exportPgn(game));assert.deepEqual(round.moves,game.moves);assert.equal(round.startFen,T.START);
+const black=T.parsePgn('[SetUp "1"]\n[FEN "8/8/4k3/8/8/8/8/4K3 b - - 0 42"]\n42... Kf6 43. Kf2 *');assert.equal(black.sans[0],'Kf6');assert(T.exportPgn(black).includes('42... Kf6 43. Kf2'));
+const ep=T.parsePgn('[FEN "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1"]\n1. exd6 *');assert.equal(ep.moves[0],'e5d6');
+const under=T.parsePgn('[FEN "8/P7/4k3/8/8/8/8/4K3 w - - 0 1"]\n1. a8=N *');assert.equal(under.moves[0],'a7a8n');
+for(const text of ['1. e5 *','1. e4 (1. d4','1. e4 {bad','1. e4 * 1... e5','[Result "1-0"] 1. e4 0-1','[Variant "Chess960"] *','[SetUp "1"] *','1. e4 *\n[Event "second"] 1. d4 *'])assert.throws(()=>T.parsePgn(text),/./,text);
+assert.equal(T.hashFen('#fen='+encodeURIComponent(T.START)),T.START);assert.equal(T.hashFen('#licenses'),null);assert.throws(()=>T.hashFen('#fen=%ZZ'));
+console.log('PASS: immutable public engine, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes');
