@@ -65,6 +65,9 @@ def main():
         if hashlib.sha256(Path(opponent['command']).read_bytes()).hexdigest()!=opponent['sha256']:raise ValueError('Opponent binary changed: '+opponent['command'])
         for path,digest in opponent.get('additionalInputs',{}).items():
             if hashlib.sha256(Path(path).read_bytes()).hexdigest()!=digest:raise ValueError('Opponent adapter/input changed: '+path)
+    for field in ('helper','runner','node','fastchess'):
+        digest=config.get(field+'Sha256')
+        if digest and hashlib.sha256(Path(config[field]).read_bytes()).hexdigest()!=digest:raise ValueError('Pinned input changed: '+field)
     lock=root/'campaign.pid'
     if lock.exists():
         try:os.kill(int(lock.read_text()),0)

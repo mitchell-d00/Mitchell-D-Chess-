@@ -238,3 +238,50 @@ Next maintainer: keep Pause and restored-game Resume using the shared guarded
 transitions, preserve remaining clock delay, and invalidate worker callbacks when
 pausing. Suggested next comfort work: recovery slot, focus layout, then granular
 audio/clock alerts. These remain proposals, not unfinished authorized work.
+
+## Measured build / SIMD upgrade
+
+Latest request explicitly authorizes engine-performance changes, modular source
+output and renewed strength measurement. This supersedes earlier UI-only byte
+identity requirements for engine code; it does not authorize losing features,
+changing model provenance or inventing ratings. Branch: `engine/measured-build-simd`,
+based on main `762c8ae`. This is separate from the unqualified Mitchell-only engine
+research branch and keeps the credited Leorik network.
+
+- First extracted the old artifact into ordered sources and verified byte-for-byte
+  reproduction before any functional change. `src/build.json` orders engine/app
+  fragments; template/styles/lessons and UI helpers are separate. `scripts/build.cjs`
+  has no external build dependencies and packages one offline HTML. The exact MIT
+  network is pinned locally; no rebuild download. Legacy embedders/generators now
+  update canonical sources and rebuild rather than leaving the artifact stale.
+- Expanded original WAT/WASM 405→1,206 bytes: bounded 256-frame cache, fused move
+  transitions and direct frame scoring. JS fallback, special moves, cache eviction,
+  backend switching, reference scores and memory growth are checked. Model hash
+  remains `794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704`.
+- Repeated final benchmarks have identical scores/node counts. Browser medians:
+  ~20% faster evaluator and ~3% higher search NPS; Node search flat. Raw output and
+  limitations in validation/performance/. No claim of a large NPS or Elo gain.
+- Browser clock budgets retain scheduling reserve and actual remaining delay,
+  with a shorter planning horizon later in play. UCI one-second protocol unchanged.
+  Added book/search/custom-position indicator and a reviewed CC0 replacement tool.
+  Opening/endgame data remain unchanged. Removed unsupported tournament-strength
+  wording from the final lesson.
+- Audited the old paused 58/200 run. A separate frozen baseline screening vs native
+  Stockfish 19 completed 12 games: 0W/0D/12L, zero forfeits. Archived every PGN/log
+  and replayed all 1,048 half-moves. README and the in-app guide report it honestly.
+- Preparation now pins manager/runtime/helper/runner and opponent model inputs.
+  The clean modern 200-game campaign will use Stockfish 19 and native Leorik 3.1.3,
+  100 paired games each, one second/move, at most two simultaneous games. Do not
+  report planned/running games as complete; preserve old and new evidence separately.
+- Added pinned development dependencies, CI, CONTRIBUTING.md and 600KiB raw /
+  256KiB gzip budgets. The public game still requires no build or dependencies.
+
+Current engine source SHA-256: `f8eeff4baa9e9d719228f4e1d311e79db87110bfa74ed91564899c8c206bbdec`.
+Full original/Leorik licence disclosure remains verbatim. Full local suite passed
+23 checks, followed by the added focused book-import check; final results are in
+validation/upgrade-checks.json. CI and campaign publication remain to be verified.
+
+Next: freeze this candidate commit, cleanly restart/checkpoint the modern 200-game
+run, verify push/PR CI, then publish and record exact status. Multiworker search,
+more bitbases, multi-PV, puzzles and networking are deferred explicitly in
+validation/implementation-scope.md, not silently claimed as implemented.

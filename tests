@@ -1,3 +1,31 @@
+# Measured build / SIMD upgrade (November 2026)
+
+A completed modern screening of the previous public engine at 1 second per move
+against native Stockfish 19 scored 0W–0D–12L, zero forfeits. All raw games/logs and
+hashes are in validation/modern/stockfish19-pilot. This is not an Elo estimate.
+The old 58/200 campaign remains archived separately. The new modern 200-game
+candidate campaign is a clean restart; see validation/modern/README.md for its
+explicit completion status and reproducible preparation/resume commands.
+
+    node scripts/build.cjs
+    node scripts/build.cjs --check
+    node scripts/check-size.cjs
+    npm ci
+    npm run build:kernel
+    npm run build
+    npm run test:all
+
+Sources now live in src/, ui/ and engine/. Players still need only index.html.
+CONTRIBUTING.md explains the dependency-free build and browser setup. Push/PR CI
+checks compiled-kernel reproducibility, sources/artifact agreement, original
+notices, pinned model, size budgets and core/offline browser behavior.
+
+The 1,206-byte original SIMD kernel retains exact tested scores. Repeated browser
+measurements found about 20% higher NNUE evaluation throughput and 3% higher
+fixed-depth search NPS on this host; Node whole-search throughput was flat.
+Raw alternating samples and limits are in validation/performance/. These do not
+support an Elo or 2–5x whole-engine performance claim. The network is unchanged.
+
 # Visible pause/resume checks (November 2026)
 
     node scripts/browser-pause-test.cjs

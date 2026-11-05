@@ -1,0 +1,30 @@
+{
+  "createdUtc": "2026-11-05T17:46:20.763646+00:00",
+  "complete": true,
+  "completedGames": 12,
+  "plannedGames": 12,
+  "testedRevision": "762c8aea24806a1fbfd582177637a107dd701862",
+  "htmlSha256": "48cc07e851a2f1b6da6f80bcdbd4759dfa0d3a554c5058a2d5be5e690e1e862b",
+  "uncompressedLogs": {
+    "01-opponent.log": "019d7a9b7f01bcfc3139cea0e15c0292b51f836570095d9c6e612072c45e2d10"
+  },
+  "files": {
+    "01-opponent.command.json": "ea94bcb220ccc014fa813553f64eaafc2d30a684a9833c8a56aa277a49b34d64",
+    "01-opponent.done.json": "95ee9097165c88fbf929f91536bdb142260d5276659f733f4020151b485be810",
+    "01-opponent.log.gz": "de9666183bd1451beb98ea3f971f722cd23579be30eb89d63940802c03054ac9",
+    "01-opponent.pgn": "12c56c1f11bb27b418f110fd8a0fc3d6126f477da0b56f23f3f261e455e38b91",
+    "01-opponent.state.json": "c49cba88fa949702fdc3d514beb2883c2b704058385bd74b7a0829126798e1d4",
+    "adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "adapter/uci.cjs": "2c0e333b4e76a8946792b6192ff73041298f6519cdf0d2bddbc44b7b69cd6ef9",
+    "campaign.json": "25459df4bcf272ff890b753e4853155e43ed1b4b703cda27ffd78b41a8101994",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "runner.py": "3f3cdbaf202adb17fcca70aa245a3d4bbefcd1eccc67c78572e84392510aa4cb",
+    "status.json": "2ca7d845f443b339f0741488a71d247d6a358545825352c9a737d3457ad84dfa",
+    "summary.json": "c9c1a28cff141fbec2618cefa058fd1748b56d7301a68d846d9e64a710bcde36"
+  },
+  "notes": [
+    "Static evidence snapshot, not live progress.",
+    "Third-party executables, libraries and models are intentionally not archived.",
+    "Reconstruct frozen HTML from testedRevision and verify htmlSha256."
+  ]
+}

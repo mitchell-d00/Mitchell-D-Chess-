@@ -1,0 +1,12 @@
+const assert = require('node:assert/strict'), fs = require('node:fs'), crypto = require('node:crypto');
+const build = require('./build.cjs'), html = fs.readFileSync('index.html','utf8');
+assert.equal(build(),html);assert.equal(build(),build(),'Build must be deterministic');
+assert(!/@@[A-Z_]+@@/.test(html));
+const network = fs.readFileSync('third-party/leorik-128.nnue');
+assert.equal(crypto.createHash('sha256').update(network).digest('hex'),'794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704');
+const disclosure=html.match(/<details id="licenses"[\s\S]*?<\/details>/)[0];
+const decode=x=>x.replaceAll('&quot;','"').replaceAll('&amp;','&').replaceAll('&lt;','<').replaceAll('&gt;','>');
+assert(decode(disclosure).includes(fs.readFileSync('LICENSE','utf8').trim()));
+assert(decode(disclosure).includes(fs.readFileSync('third-party/LEORIK-LICENSE.txt','utf8').trim()));
+assert.equal((html.match(/id="engine-src"/g)||[]).length,1);
+console.log('PASS: deterministic modular build, pinned network, original MIT and Leorik notices, single inline engine');

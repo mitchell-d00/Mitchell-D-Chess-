@@ -1,0 +1,53 @@
+# Contributing
+
+Players only need `index.html`. Opening or saving that file requires no package
+installation, network, server or build step.
+
+## Edit and build
+
+Use Node.js 22+ and Python 3. The ordinary build has no third-party dependencies:
+
+```sh
+node scripts/build.cjs
+node scripts/build.cjs --check
+node scripts/check-size.cjs
+```
+
+Edit `src/index.template.html`, `src/styles.css`, the ordered engine/app modules
+listed in `src/build.json`, the helpers in `ui/`, or `src/lessons.js`. The build
+concatenates the private engine scope and application scope in their existing
+order; it does not load modules in the browser. Commit sources and regenerated
+`index.html` together. Do not edit the release artifact directly.
+
+The pinned MIT network is in `third-party/leorik-128.nnue`; its hash and full
+Leorik attribution are retained. Kernel source is `engine/nnue.wat`; inference is
+`engine/nnue.js`. To change/recompile the kernel or run browser checks:
+
+```sh
+npm ci
+npm run build:kernel
+npm run build
+npm run test:all
+```
+
+Install Chromium with `npx playwright install --with-deps chromium` and set
+`CHROMIUM_PATH` to `node -p 'require("playwright").chromium.executablePath()'`.
+The browser tests serve the checked-in HTML from memory and disable page network
+access. Playwright and WABT are development tools, not game runtime dependencies.
+
+## Tests and evidence
+
+Use a focused `scripts/test-*.cjs` for engine/data invariants and a
+`scripts/browser-*-test.cjs` for a player flow. Add it to `scripts/checks.cjs`.
+Test actual behavior, including cancellation and failure cases where relevant.
+Run the applicable suite and `git diff --check` before submitting. CI checks
+build reproducibility, the compiled kernel, attribution and raw/gzip size budgets
+on pushes and pull requests.
+
+External opponents and match managers must be installed separately. Never add
+their executables, code or weights to the HTML or this repository. Freeze inputs,
+time controls and hashes before a strength run; retain all games, identify
+forfeits, and separate incomplete runs from completed evidence. Do not infer Elo
+from a few wins or copy an opponent's published rating onto Mitchell.
+
+Describe changes, checks, limitations and the next action in `HANDOFF.md`.

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Free chess in your browser: 65 computer levels, chess clocks, official FIDE rules mode, a 38-lesson tutorial, and custom colours. Works offline.">
+<meta property="og:title" content="Mitchell D Chess">
+<meta property="og:description" content="65 computer levels, 38 lessons, clocks and offline chess in one free HTML file. No accounts or ads.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NSA0NSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJNaXRjaGVsbCBEIENoZXNzIGxvZ28iPgogIDxyZWN0IHdpZHRoPSI0NSIgaGVpZ2h0PSI0NSIgcng9IjEwIiBmaWxsPSIjMmQ2YTUyIi8+CiAgPHBhdGggZD0iTTE0IDM1aDE4Yy4zLTYuNS0xLjYtMTEuNS0zLjYtMTUuNSAxLjYtMi42IDEtNi0xLjgtNy44bC0uOC0zLjItMi4yIDIuNmMtNS4yLjgtOS40IDQuNy0xMS4xIDEwLjJsLS45IDMuMmMtLjQgMS45IDEuNiAzIDMgMS43bDItMS44YzEuNi4xIDMtLjUgMy45LTEuNi4yIDQuNC02LjggNi4zLTYuNSAxMi4yeiIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjE4LjIiIGN5PSIxNS42IiByPSIxLjIiIGZpbGw9IiMyZDZhNTIiLz4KPC9zdmc+Cg==">
+<title>Mitchell D Chess</title>
+<style>@@STYLES@@</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg viewBox="0 0 45 45" aria-hidden="true"><rect width="45" height="45" rx="10" fill="var(--accent)"/><path d="M14 35h18c.3-6.5-1.6-11.5-3.6-15.5 1.6-2.6 1-6-1.8-7.8l-.8-3.2-2.2 2.6c-5.2.8-9.4 4.7-11.1 10.2l-.9 3.2c-.4 1.9 1.6 3 3 1.7l2-1.8c1.6.1 3-.5 3.9-1.6.2 4.4-6.8 6.3-6.5 12.2z" fill="var(--accent-ink)"/><circle cx="18.2" cy="15.6" r="1.2" fill="var(--accent)"/></svg>
+      <div><h1>Mitchell D Chess</h1><p class="featureline">65 levels · 38 lessons · Free &amp; offline</p></div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Play or learn">
+      <button class="on" data-tab="play" id="playTab" role="tab" aria-controls="railPlay" tabindex="0" aria-selected="true">Play</button>
+      <button data-tab="learn" id="learnTab" role="tab" aria-controls="railLearn" tabindex="-1" aria-selected="false">Learn</button>
+    </div>
+    <div class="right">
+      <button class="btn small" id="helpBtn"><span class="wide-label">Quick guide</span><span class="narrow-label">Guide</span></button>
+      <a class="btn small" href="https://github.com/mitchell-d00/Mitchell-D-Chess-" target="_blank" rel="noopener noreferrer">Source</a>
+      <a class="btn small" id="creditsLink" href="#licenses">Credits</a>
+      <button class="btn small" id="themeBtn" aria-label="Switch light or dark mode"></button>
+      <button class="btn small" id="setBtn"><span class="wide-label">Colours &amp; settings</span><span class="narrow-label">Settings</span></button>
+    </div>
+  </header>
+
+  <main class="game">
+    <div class="boardcol">
+      <div class="panel session-controls" id="sessionControls" hidden>
+        <div class="session-state" role="status" aria-live="polite"><strong id="sessionTitle">Game in progress</strong><small id="sessionDetail"></small></div>
+        <div class="session-actions"><button class="btn primary" id="pauseBtn" type="button" aria-describedby="sessionDetail"><span id="pauseIcon" aria-hidden="true">⏸</span><span id="pauseLabel">Pause game</span></button><button class="btn" id="savePausedBtn" type="button" hidden>Save for later</button></div>
+      </div>
+      <div class="playerbar" id="barTop"></div>
+      <div class="boardwrap" id="boardwrap">
+        <div class="board" id="board" role="grid" aria-label="Chessboard" aria-describedby="boardHelp" aria-rowcount="8" aria-colcount="8"></div>
+        <span class="sr-only" id="boardHelp">Arrow keys explore squares. Enter or Space selects a piece or plays a legal destination. Escape cancels selection, except when touch-move applies.</span>
+        <span class="sr-only" id="boardAnnouncement" role="status" aria-live="polite"></span>
+        <div class="pieces" id="pieces"></div>
+        <svg class="arrows" id="arrows" viewBox="0 0 800 800" preserveAspectRatio="none"></svg>
+        <div class="boardmsg" id="boardmsg" hidden></div>
+      </div>
+      <div class="playerbar" id="barBot"></div>
+      <div class="position-cue panel" id="moveCue" hidden><strong id="moveCueTitle"></strong><p id="moveCueText"></p><small>Position cues, not the engine’s reasoning or proof of the best move.</small></div>
+    </div>
+
+    <aside class="rail" id="railPlay" role="tabpanel" aria-labelledby="playTab">
+      <div class="card panel welcome" id="welcomeTip"><div class="card-heading"><strong>Start here</strong><button class="btn small" id="dismissWelcome" aria-label="Dismiss getting-started tips">Dismiss</button></div><p>Choose a computer level and clock, or switch to Learn for 38 guided lessons. Colours, legal-move dots and sound are in settings.</p><button class="btn small" id="welcomeGuide">Open quick guide</button></div>
+      <div class="card panel">
+        <div class="card-heading"><strong>Game setup</strong><button class="btn small" id="setupToggle" aria-expanded="true" aria-controls="setupFields">Hide setup</button></div><div id="setupFields" class="field" style="gap:10px">
+        <div class="seg" id="modeSeg">
+          <button data-mode="pvc" class="on">You vs computer</button>
+          <button data-mode="pvp">Two players</button>
+          <button data-mode="cvc">Computer vs computer</button>
+        </div>
+        <div id="setupPvc" class="field" style="gap:10px">
+          <div class="field"><span class="lab">Play as</span>
+            <div class="seg" id="colorSeg"><button data-c="w" class="on">White</button><button data-c="b">Black</button><button data-c="r">Random</button></div>
+          </div>
+          <div class="field"><label for="lvl">Computer level</label>
+            <div class="lvlrow"><span class="lvlnum" id="lvlNum">8</span><input type="range" id="lvl" min="1" max="65" value="8"></div>
+            <div><span class="lvlname" id="lvlName"></span><span class="tierpill" id="lvlTier"></span></div>
+            <div class="lvlabout" id="lvlAbout"></div>
+            <div class="ladder" id="ladder" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div id="setupCvc" class="field" hidden style="gap:10px">
+          <div class="field"><label for="lvlW">White computer</label><select id="lvlW"></select></div>
+          <div class="field"><label for="lvlB">Black computer</label><select id="lvlB"></select></div>
+          <div class="field"><span class="lab">Move speed</span><div class="seg" id="speedSeg"><button data-sp="slow">Slow</button><button data-sp="normal" class="on">Normal</button><button data-sp="fast">Fast</button></div></div>
+        </div>
+        <div class="field"><label for="tcSel">Clock</label>
+          <select id="tcSel">
+            <option value="none">No clock</option>
+            <optgroup label="Bullet"><option value="1+0">1 min</option><option value="1+1">1 min + 1 sec</option><option value="2+1">2 min + 1 sec</option></optgroup>
+            <optgroup label="Blitz"><option value="3+0">3 min</option><option value="3+2">3 min + 2 sec</option><option value="5+0">5 min</option><option value="5+3">5 min + 3 sec</option></optgroup>
+            <optgroup label="Rapid"><option value="10+0">10 min</option><option value="10+5">10 min + 5 sec</option><option value="15+10">15 min + 10 sec</option><option value="25+10">25 min + 10 sec</option></optgroup>
+            <optgroup label="Classical"><option value="30+0">30 min</option><option value="30+20">30 min + 20 sec</option><option value="60+30">60 min + 30 sec</option><option value="90+30">90 min + 30 sec</option></optgroup>
+            <optgroup label="Per move"><option value="m10">10 sec per move</option><option value="m30">30 sec per move</option><option value="m60">1 min per move</option></optgroup>
+            <option value="custom">Custom…</option>
+          </select>
+        </div>
+        <div class="tcgrid" id="tcCustom" hidden>
+          <label for="tcWm">White minutes <input type="number" id="tcWm" min="0.25" max="600" step="0.25" value="10"></label>
+          <label for="tcBm">Black minutes <input type="number" id="tcBm" min="0.25" max="600" step="0.25" value="10"></label>
+          <label for="tcBonus">Bonus seconds <input type="number" id="tcBonus" min="0" max="300" step="1" value="5"></label>
+          <label for="tcType">Bonus type <select id="tcType"><option value="inc">Increment</option><option value="delay">Delay</option></select></label>
+        </div>
+        <div class="field"><span class="lab">Rules</span>
+          <div class="seg" id="rulesSeg"><button data-r="casual" class="on">Casual</button><button data-r="official">Official (FIDE)</button></div>
+          <p class="rulesnote" id="rulesNote"></p>
+        </div>
+        <button class="btn primary" id="newBtn">New game</button>
+        </div>
+      </div>
+
+      <div class="card panel">
+        <div class="drawbox" id="recordBox" hidden><strong id="recordTitle">Imported game · review</strong><span class="muted">Use the move list to explore. To play, start a new game from the displayed position.</span><button class="btn small" id="continueBtn">Play from this position</button><button class="btn small" id="resumeSavedBtn" hidden>Resume saved game</button></div>
+        <div class="status" id="status" role="status" aria-live="polite"><span class="ic"></span><span>White to move</span></div>
+        <small id="engineSource" class="muted" hidden></small>
+        <div class="drawbox" id="drawBox" hidden></div>
+        <div id="evalBox" hidden>
+          <div class="evalbar"><i id="evalFill" style="width:50%"></i></div>
+          <div class="evaltxt"><span id="evalTxt">0.0</span><span id="evalDepth"></span></div>
+        </div>
+        <div class="moves" id="moves" aria-label="Moves"></div>
+        <div class="navrow">
+          <button class="btn icon small" id="navFirst" aria-label="First position">⏮</button>
+          <button class="btn icon small" id="navPrev" aria-label="Previous move">◀</button>
+          <button class="btn icon small" id="navNext" aria-label="Next move">▶</button>
+          <button class="btn icon small" id="navLast" aria-label="Latest position">⏭</button>
+          <button class="btn small" id="flipBtn">⇅ Flip</button>
+          <span class="grow"></span>
+        </div>
+        <div class="ctlgrid">
+          <button class="btn small" id="undoBtn">Take back</button>
+          <button class="btn small" id="hintBtn">Hint</button>
+          <button class="btn small" id="whyBtn" hidden>Why this move?</button>
+          <button class="btn small" id="drawBtn">Offer draw</button>
+          <button class="btn small" id="resignBtn">Resign</button>
+          <button class="btn small" id="pgnBtn">Copy PGN</button>
+          <button class="btn small" id="fenBtn">Copy FEN</button>
+          <button class="btn small" id="importBtn">Import FEN / PGN</button>
+          <button class="btn small" id="shareBtn">Share position</button>
+          <button class="btn small" id="gamesBtn">Saved games</button>
+        </div>
+      </div>
+      <div class="card panel" id="analysisCard"><h3>Game review</h3><p class="muted">Short local searches from this unrated engine. Labels are estimates; longer searches may disagree. Positive evaluations favour White. Gaps mean no completed evaluation.</p><label class="field">Search per position<select id="analysisBudget"><option value="100">Fast · 0.1 second</option><option value="250" selected>Standard · 0.25 second</option><option value="500">Deeper · 0.5 second</option></select></label><div class="navrow"><button class="btn small primary" id="analyseBtn">Review game</button><button class="btn small" id="cancelAnalysisBtn" hidden>Cancel review</button></div><p id="analysisProgress" class="muted" role="status" aria-live="polite"></p><div id="analysisOutput" hidden><div class="analysis-chart"><span class="graph-axis top" aria-hidden="true">+8</span><span class="graph-axis zero" aria-hidden="true">0</span><span class="graph-axis bottom" aria-hidden="true">−8</span><svg id="analysisGraph" class="analysis-graph" viewBox="0 0 600 160" preserveAspectRatio="none" role="slider" tabindex="0" aria-label="Review position. Left and Right step through evaluations; Home and End go to the ends." aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></svg><div class="graph-ends" aria-hidden="true"><span>Start</span><span id="analysisEnd"></span></div></div><div class="review-summary"><strong id="analysisScore" role="status"></strong><span id="analysisBest"></span><label class="check-control"><input type="checkbox" id="analysisArrows" checked>Show suggested-move arrow on the board</label><small class="muted">Scores in pawns, from White’s view; plot capped at ±8. Tap the graph or use its arrow keys to select a position.</small></div><div id="analysisMoves" class="analysis-list"></div></div></div>
+    </aside>
+
+    <aside class="rail" id="railLearn" role="tabpanel" aria-labelledby="learnTab" hidden>
+      <div class="lesson panel" id="lessonCard"></div>
+      <div class="card panel">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>Lessons</h3><span class="muted" id="learnProg" style="font-size:.85rem"></span></div>
+        <div class="progress"><i id="learnBar" style="width:0"></i></div>
+        <div class="lessonlist" id="lessonList"></div>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<details id="licenses" style="max-width:1100px;margin:1rem auto;padding:0 1rem;font-size:.8rem">
+<summary>MIT licence &amp; credits</summary>
+<p>Original game: Mitchell D. McPhetridge. Neural network weights: Thomas Jahn (Leorik). The JavaScript inference and embedded SIMD kernel are new integrations; the trained weights are credited to their author.</p>
+<pre style="white-space:pre-wrap">MIT License
+
+Copyright (c) 2026 Mitchell D. McPhetridge
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+Leorik neural network weights
+
+MIT License
+
+Copyright (c) 2023 Thomas Jahn
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</pre>
+</details>
+
+<div class="overlay" id="ov" hidden><div class="modal" id="ovBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+@@ENGINE@@
+@@LESSONS@@
+@@POSITION_TOOLS@@
+@@GAME_LIBRARY@@
+@@MOVE_EXPLANATIONS@@
+@@APP@@
+
+</body>
+</html>

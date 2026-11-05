@@ -1,0 +1,80 @@
+{
+  "engine": [
+    "src/engine/position.js",
+    "src/engine/kpk.js",
+    {
+      "neural": true,
+      "suffix": "\n"
+    },
+    "src/engine/evaluation.js",
+    "src/engine/search.js",
+    "src/engine/book.js",
+    "src/engine/levels.js",
+    "src/engine/think.js"
+  ],
+  "app": [
+    "src/app/prelude.js",
+    "src/app/settings.js",
+    "src/app/pieces.js",
+    "src/app/sound.js",
+    "src/app/engine-worker.js",
+    "src/app/board-view.js",
+    "src/app/time-management.js",
+    "src/app/play-mode.js",
+    "src/app/clocks.js",
+    "src/app/draw-offers-and-claims.js",
+    "src/app/learn-mode.js",
+    "src/app/local-named-games.js",
+    "src/app/post-game-worker-review.js",
+    "src/app/tabs.js",
+    "src/app/settings-modal.js",
+    "src/app/boot.js"
+  ],
+  "scripts": {
+    "LESSONS": "src/lessons.js",
+    "POSITION_TOOLS": "ui/position-tools.js",
+    "GAME_LIBRARY": "ui/game-library.js",
+    "MOVE_EXPLANATIONS": "ui/move-explanations.js"
+  },
+  "model": {
+    "path": "third-party/leorik-128.nnue",
+    "hidden": 128,
+    "sha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704"
+  },
+  "sizeBudget": {
+    "raw": 614400,
+    "gzip": 262144
+  },
+  "wrappers": {
+    "ENGINE": {
+      "open": "<script id=\"engine-src\">",
+      "leading": "",
+      "trailing": ""
+    },
+    "LESSONS": {
+      "open": "<script>",
+      "leading": "",
+      "trailing": ""
+    },
+    "POSITION_TOOLS": {
+      "open": "<script id=\"position-tools-src\">",
+      "leading": "\n",
+      "trailing": ""
+    },
+    "GAME_LIBRARY": {
+      "open": "<script id=\"game-library-src\">",
+      "leading": "\n",
+      "trailing": ""
+    },
+    "MOVE_EXPLANATIONS": {
+      "open": "<script id=\"move-explanations-src\">",
+      "leading": "\n",
+      "trailing": ""
+    },
+    "APP": {
+      "open": "<script>",
+      "leading": "",
+      "trailing": ""
+    }
+  }
+}
