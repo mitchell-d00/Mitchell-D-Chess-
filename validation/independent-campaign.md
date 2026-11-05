@@ -1,5 +1,9 @@
 # Independent 200-game campaign
 
+This is the archived historical partial run. A separate modern-opponent restart
+and completed Stockfish 19 screening are documented in [modern/README.md](modern/README.md).
+Their games are never combined with this snapshot.
+
 **Restart after a correctness fix:** the first run was paused after 12 completed
 games, including six illegal-move forfeits. Its raw data remains in
 `/workspace/chess-benchmark-200/` and is not mixed with new results. The repaired

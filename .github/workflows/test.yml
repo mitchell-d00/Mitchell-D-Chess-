@@ -1,0 +1,26 @@
+name: Single-file build and tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm run build:kernel && npm run build:check
+      - run: git diff --exit-code -- engine/nnue-kernel.wasm index.html
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - name: Offline browser checks
+        run: |
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          npm run test:browser

@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),crypto=require('node:crypto');
 const E=require('./engine.cjs')(),T=require('../ui/position-tools.js')(E);
-assert.equal(crypto.createHash('sha256').update(fs.readFileSync('index.html','utf8').match(/<script id="engine-src">([\s\S]*?)<\/script>/)[1]).digest('hex'),'61d257391bf643dedc2bf4d561a9e7c34d1d9ce6d52f822dd70431b8c1143bea','Public engine source must remain unchanged');
+assert.equal(fs.readFileSync('index.html','utf8'),require('./build.cjs')(),'Public artifact must match modular sources');
 assert.equal(T.validateFen(T.START),T.START);
 for(const fen of ['8/8/8/8/8/8/8/8 w - - 0 1','4k3/8/8/8/8/8/4K3/8 x - - 0 1','4k3/8/8/8/8/8/4K3/4K3 w - - 0 1','4k3/8/8/8/8/8/8/4K3 w K - 0 1','4k3/8/8/8/8/8/8/4K3 w - e6 0 1','4k3/8/8/8/8/8/4K3/8 w - - -1 1','4k3/8/8/8/8/8/4K3/8 w - - 0 0','4k3/8/8/8/8/8/4K3/4P3 w - - 0 1','8/8/8/8/8/8/4k3/4K3 w - - 0 1'])assert.throws(()=>T.validateFen(fen),/./,fen);
 assert.equal(T.validateFen('4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1').split(' ')[3],'d6');
@@ -12,4 +12,4 @@ const ep=T.parsePgn('[FEN "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1"]\n1. exd6 *');asse
 const under=T.parsePgn('[FEN "8/P7/4k3/8/8/8/8/4K3 w - - 0 1"]\n1. a8=N *');assert.equal(under.moves[0],'a7a8n');
 for(const text of ['1. e5 *','1. e4 (1. d4','1. e4 {bad','1. e4 * 1... e5','[Result "1-0"] 1. e4 0-1','[Variant "Chess960"] *','[SetUp "1"] *','1. e4 *\n[Event "second"] 1. d4 *'])assert.throws(()=>T.parsePgn(text),/./,text);
 assert.equal(T.hashFen('#fen='+encodeURIComponent(T.START)),T.START);assert.equal(T.hashFen('#licenses'),null);assert.throws(()=>T.hashFen('#fen=%ZZ'));
-console.log('PASS: immutable public engine, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes');
+console.log('PASS: reproducible standalone build, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes');

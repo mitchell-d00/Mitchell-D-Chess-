@@ -21,7 +21,10 @@ deploy from the `main` branch, root folder). The game will be served at
 Settings, setup choices and tutorial progress are saved in the browser.
 
 See [tests](tests) for published results, raw game records, correctness checks,
-and portable commands to repeat the experiments. The engine remains unrated.
+and portable commands to repeat the experiments. The engine remains unrated. A completed **12-game screening at 1 second per move
+against Stockfish 19 scored 0W–0D–12L**, with no forfeits, using the previous
+public engine. The older 58/200 snapshot and small mid-tier pilots do not establish
+an absolute Elo. See [modern benchmark evidence](validation/modern/README.md).
 
 ## What is in it
 
@@ -210,18 +213,28 @@ network is embedded in the HTML; it is never downloaded during play. We do not
 claim to have trained these weights. Full provenance, the pinned source revision,
 and SHA-256 are in `third-party/README.md`.
 
-The JavaScript inference integration and **405-byte WASM SIMD kernel** are new
+The JavaScript inference integration and **1,206-byte WASM SIMD kernel** are new
 code. Piece-square feature deltas are recorded by make/unmake and materialized
 only when evaluation needs them. Two perspective accumulators handle captures,
 castling, en passant, promotions and null moves. The kernel accelerates their
-updates and output evaluation. Neural search also tries the transposition-table
+updates and output evaluation. The expanded kernel keeps a bounded ply-frame
+cache, fuses ordinary move deltas with parent copying, and evaluates directly
+from the resident frame. JavaScript copies keep backend/position switching safe.
+Repeated browser measurements on one shared host showed approximately 20% faster
+NNUE evaluation and 3% higher fixed-depth whole-search NPS; Node whole-search NPS
+was essentially flat. These are limited performance observations, not strength
+gains or a 2–5× claim. [Raw runs and method](validation/performance/README.md).
+Neural search also tries the transposition-table
 move after validating it against generated moves, deferring ordering of the
 remaining moves until it is needed. A numerically equivalent JavaScript fallback works
 without WASM or SIMD. Sparse endings retain the classical guidance and exact KPK
 bitbase. Levels 1–50 keep their existing evaluation modes and budgets.
 
 Level 51 allows 10 seconds per move; budgets increase to 60 seconds at Level 65.
-Clock controls cap these budgets. Level names are presets, not calibrated Elo.
+Clock controls cap these budgets. Clock allocation retains a scheduling reserve,
+uses the remaining delay rather than refilling it after resume, and shortens its
+planning horizon later in the game. The move-time benchmark adapter keeps its
+explicit 1-second control and 20ms reserve. Level names are presets, not calibrated Elo.
 The original UI, 38 lessons, rules, clocks and computer-vs-computer remain.
 
 The **original MIT copyright and full licence text are retained visibly inside
@@ -260,9 +273,26 @@ these small samples do not establish Elo.
 
 ### Reproduce checks and run matches
 
-Only `index.html` is needed to play. `node scripts/embed-ui.cjs` rebuilds the
-embedded UI modules after development edits; it leaves the engine unchanged.
-Development tools require Node.js:
+Only `index.html` is needed to play. For development, Node.js 22+ assembles the
+ordered modules in `src/`, `ui/` and `engine/` into the release file with no build
+dependencies. Do not edit the generated HTML directly:
+
+```sh
+node scripts/build.cjs
+node scripts/build.cjs --check
+node scripts/check-size.cjs
+# Optional development dependencies for kernel compilation and browser testing:
+npm ci
+npm run build:kernel
+npm run build
+npm run test:all
+```
+
+GitHub Actions run build, kernel, core and offline browser checks on push/PR. The
+size budget is 600 KiB raw / 256 KiB gzip. Legacy `embed-ui.cjs` rebuilds the whole
+artifact; `embed-neural.cjs` validates the pinned network before doing the same.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for source layout and adding tests.
+Individual commands remain available:
 
 ```sh
 node scripts/test.cjs
@@ -294,27 +324,26 @@ snapshot of the previous release, use `git show e7fd21a:index.html > /tmp/level5
 and pass `--baseline /tmp/level50.html --level 65 --baseline-level 50`.
 
 `node scripts/build-kpk.cjs` deterministically regenerates the embedded KPK data.
-`scripts/import-book.cjs /path/to/chess-openings` imports the CC0 supplement into
-an unsupplemented version (not needed for the checked-in HTML). The optional
+`node scripts/import-book.cjs /path/to/chess-openings --replace-supplement`
+legally validates and replaces the CC0 supplement in `src/engine/book.js`, then
+rebuilds the HTML. Use a reviewed CC0 checkout; the pinned 454 lines stay unchanged
+in this update. A small label now distinguishes book moves from searched moves;
+custom starts and disabled books are labelled separately. The optional
 `node scripts/browser-test.cjs` needs Playwright plus Chromium; it tests offline
 play, worker responsiveness/cancellation and computer-vs-computer.
 
 ### Rebuild the neural payload
 
-There is no build step to play the checked-in HTML. For development, clone the
-pinned Leorik revision in `third-party/README.md` and run:
+There is no build step to play the checked-in HTML. The already-credited MIT
+network is checked in at `third-party/leorik-128.nnue` and pinned by SHA-256 in
+`src/build.json`; no download is needed to rebuild. `node scripts/build.cjs`
+embeds it with `engine/nnue.js` and `engine/nnue-kernel.wasm`.
 
-```sh
-node scripts/embed-neural.cjs '/path/to/Leorik/Resources/Leorik 3.1 Networks/128HL-S-5732M-Tmix-Q5-v19.nnue'
-```
-
-This embeds `engine/nnue.js`, the supplied network and the checked-in
-`engine/nnue-kernel.wasm`. If modifying the kernel, compile its original WAT source
-with WABT (`npm install --prefix /tmp/mit-neural-tools wabt@1.0.39`, then
-`node scripts/build-neural-kernel.cjs`) before embedding. WABT is a development
-compiler, not a browser dependency or linked library. New inference code and the
-kernel are MIT-licensed under this project's `LICENSE`; the model retains its
-upstream MIT notice.
+To modify the original kernel, use `npm ci`, `npm run build:kernel`, then
+`npm run build`. WABT is a development compiler, not a browser dependency or linked
+library. Preserve the original and Leorik MIT notices when editing the template.
+Changing the model requires deliberately reviewing provenance, the pinned hash
+and attribution; the compatibility importer rejects silent replacements.
 
 ## Files
 
@@ -322,7 +351,10 @@ upstream MIT notice.
 - `logo.svg`: repository logo and page icon
 - `LICENSE`: existing MIT licence
 - `tests`: results, evidence links and reproducible experiment instructions
-- `ui/`: original development modules embedded into the standalone HTML
+- `src/`: template, styles, lessons and ordered engine/application modules
+- `ui/`: reusable development helpers embedded into the standalone HTML
+- `engine/`: original NNUE JavaScript and WAT/WASM kernels
+- `CONTRIBUTING.md`: dependency-free build and test instructions
 - `HANDOFF.md`: implementation passes, checks and continuation notes
 - `scripts/`: optional tests, benchmark, match runner, tuning and data generators
 - `engine/`: original inference source and SIMD kernel, embedded into the HTML

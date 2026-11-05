@@ -1,0 +1,35 @@
+{
+  "createdUtc": "2026-11-05T17:59:07.996898+00:00",
+  "complete": false,
+  "completedGames": 2,
+  "plannedGames": 200,
+  "testedRevision": "eec0d23da885fad1944cefc232348978d514f16d",
+  "htmlSha256": "bea05d037e5e29be4bebfdbd0a2cc1e6c9ef7f79e0e6c96f0312dca60b6a208a",
+  "uncompressedLogs": {
+    "01-opponent.log": "836cbe3da1c13da68f58b8d4523ca3bad2e0f2f8e5f187092d5a413ead5852fd",
+    "02-opponent.log": "db8441ee28bf47689751707ca2e570899a2307ceab286fd4819aa5878154a697",
+    "campaign.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "files": {
+    "01-opponent.command.json": "09df7774a1c3c8b40e00585733f5d8458a54ced28c7b4aa85e7e96ef715efc66",
+    "01-opponent.log.gz": "23e85d18022ebd58022ef97ba63d7e6dc8933c9345a376b312a1d5ca6b0c7963",
+    "01-opponent.pgn": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02-opponent.command.json": "55f1f389a2172bbbe01ce0904104346b440b9e4697a1dccd8f314dcbfcfe704c",
+    "02-opponent.log.gz": "266696dd9289a7b1849cb06146eb334614d704c32d3a4fc872f04747a00b3c1f",
+    "02-opponent.pgn": "2d542cf910523bea8df8209eba6895f0ed19ec360a6b1093d2571a1d4aba6d77",
+    "02-opponent.state.json": "8e4e50be5e32f40532337918f600a82565dff1ea18849389b69c9e39d20fb688",
+    "adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "adapter/uci.cjs": "2c0e333b4e76a8946792b6192ff73041298f6519cdf0d2bddbc44b7b69cd6ef9",
+    "campaign.json": "b48fa4e56dce7b917a4489475034f3d8961d1d3a5dc165d1a9ea37f5a0e7d0a8",
+    "campaign.log.gz": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "runner.py": "5b85b658dd3e41f8cd8bbc661becce20393c13532c7546af0392afc97f3b8722",
+    "status.json": "a839f3319c7acfee5086e0cf3391d486d8331b532f037cb4e0fa15508d826aaf",
+    "summary.json": "14b9554e645d007e020f4af85f0f8047200ba422cf678f4300a694326aa94c3c"
+  },
+  "notes": [
+    "Static evidence snapshot, not live progress.",
+    "Third-party executables, libraries and models are intentionally not archived.",
+    "Reconstruct frozen HTML from testedRevision and verify htmlSha256."
+  ]
+}

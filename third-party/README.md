@@ -17,7 +17,7 @@ It was obtained from commit `7c936b1494ee0140ec8d2d5ae67ea61c9c33cefe`, path
   notice was present for these networks in the inspected revision.
 
 Only the permissive network weights are imported. The JavaScript accumulator
-implementation, binary decoder and 405-byte WASM SIMD kernel are new code in
+implementation, binary decoder and 1,206-byte WASM SIMD kernel are new code in
 this project. The serialized tensor layout, perspective transform and numerical
 scaling follow the model's documented inference format. Leorik is credited for
 its network and format; it is not presented as original training by Mitchell.
@@ -25,3 +25,7 @@ its network and format; it is not presented as original training by Mitchell.
 No Stockfish or Leela code, libraries or neural weights are included. Such
 engines may be installed independently as test opponents; they are never runtime
 dependencies. The existing CC0 opening data remains unchanged.
+
+The exact pinned network is also checked in as `third-party/leorik-128.nnue` so
+contributors can rebuild offline without fetching a model. The build verifies
+the SHA-256 above. Players still need only the generated `index.html`.

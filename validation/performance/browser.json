@@ -1,0 +1,603 @@
+{
+  "createdUtc": "2026-11-05T17:45:21.181Z",
+  "depth": 12,
+  "repeats": 7,
+  "hashes": {
+    "baseline": "48cc07e851a2f1b6da6f80bcdbd4759dfa0d3a554c5058a2d5be5e690e1e862b",
+    "candidate": "26d0d3c578cad0446473f35d5c73b1631308073375f3b8dd0d60af425b4fee24"
+  },
+  "runs": [
+    {
+      "name": "baseline",
+      "repeat": 0,
+      "microSimd": {
+        "ms": 510.90000000037253,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 172.2999999988824,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 961.7000000011176,
+        "nps": 542224.1863360653,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 214.59999999962747
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 279.6000000014901
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 400.5
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 67
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 0,
+      "microSimd": {
+        "ms": 390.7999999988824,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 155.7000000011176,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 904.4999999981374,
+        "nps": 576514.0961869252,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 207.09999999962747
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 268
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 369.2999999988824
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 60.09999999962747
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 1,
+      "microSimd": {
+        "ms": 399.40000000037253,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 157.80000000074506,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 841.2999999988824,
+        "nps": 619822.89314239,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 180.59999999962747
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 252
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 352.30000000074506
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 56.399999998509884
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline",
+      "repeat": 1,
+      "microSimd": {
+        "ms": 455.7000000011176,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 155.2999999988824,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 911.8999999985099,
+        "nps": 571835.7276026452,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 184.69999999925494
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 270.09999999962747
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 390.5
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 66.59999999962747
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline",
+      "repeat": 2,
+      "microSimd": {
+        "ms": 474.5,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 160.2000000011176,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 899.5999999996275,
+        "nps": 579654.2907961493,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 195.5
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 267.90000000037253
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 362.09999999962747
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 74.09999999962747
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 2,
+      "microSimd": {
+        "ms": 401.8999999985099,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 160,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 803.5999999996275,
+        "nps": 648901.194624492,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 168.7000000011176
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 240.09999999962747
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 327.19999999925494
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 67.59999999962747
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 3,
+      "microSimd": {
+        "ms": 422.7000000011176,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 176.69999999925494,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 899.7000000011176,
+        "nps": 579589.8632870426,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 195.10000000149012
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 255.69999999925494
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 373.69999999925494
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 75.20000000111759
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline",
+      "repeat": 3,
+      "microSimd": {
+        "ms": 504.7000000011176,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 169,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 887.7000000029802,
+        "nps": 587424.8056756216,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 197.90000000037253
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 260.59999999962747
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 365.6000000014901
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 63.600000001490116
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline",
+      "repeat": 4,
+      "microSimd": {
+        "ms": 476.19999999925494,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 163,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 892.1999999992549,
+        "nps": 584462.0040354579,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 170.39999999850988
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 270.09999999962747
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 383.30000000074506
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 68.40000000037253
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 4,
+      "microSimd": {
+        "ms": 383.6000000014901,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 155.39999999850988,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 867.3999999966472,
+        "nps": 601172.4694512516,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 197.2999999988824
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 265.3999999985099
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 340.40000000037253
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 64.29999999888241
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 5,
+      "microSimd": {
+        "ms": 392.30000000074506,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 155.7999999988824,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 865.1000000014901,
+        "nps": 602770.777943708,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 196.59999999962747
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 265.90000000037253
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 331.7000000011176
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 70.90000000037253
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline",
+      "repeat": 5,
+      "microSimd": {
+        "ms": 466.90000000037253,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 162.60000000149012,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 812.3999999985099,
+        "nps": 641872.2304295377,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 162.2999999988824
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 239.5
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 350.09999999962747
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 60.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "baseline",
+      "repeat": 6,
+      "microSimd": {
+        "ms": 480.59999999962747,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 162,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 887.6000000014901,
+        "nps": 587490.9869300637,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 192
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 253.09999999962747
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 377.1000000014901
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 65.40000000037253
+          }
+        ]
+      }
+    },
+    {
+      "name": "candidate",
+      "repeat": 6,
+      "microSimd": {
+        "ms": 398.19999999925494,
+        "evaluations": 1920000,
+        "checksum": -72840000
+      },
+      "microJs": {
+        "ms": 160.5,
+        "evaluations": 128000,
+        "checksum": -4856000
+      },
+      "search": {
+        "nodes": 521457,
+        "ms": 839.6999999973923,
+        "nps": 621003.9299769195,
+        "cases": [
+          {
+            "score": 74,
+            "nodes": 80259,
+            "ms": 161.19999999925494
+          },
+          {
+            "score": 75,
+            "nodes": 187422,
+            "ms": 268.40000000037253
+          },
+          {
+            "score": -441,
+            "nodes": 201778,
+            "ms": 353.7999999988824
+          },
+          {
+            "score": 349,
+            "nodes": 51998,
+            "ms": 56.29999999888241
+          }
+        ]
+      }
+    }
+  ],
+  "browser": "155.0.8059.79",
+  "medians": {
+    "baseline": {
+      "simdEvaluationsPerSecond": 4031919.361619076,
+      "jsEvaluationsPerSecond": 787207.8720715066,
+      "searchNps": 584462.0040354579
+    },
+    "candidate": {
+      "simdEvaluationsPerSecond": 4821697.639386219,
+      "jsEvaluationsPerSecond": 811153.3586780459,
+      "searchNps": 602770.777943708
+    }
+  },
+  "ratios": {
+    "simdEvaluationsPerSecond": 1.195881466600065,
+    "jsEvaluationsPerSecond": 1.0304182509551483,
+    "searchNps": 1.0313258582796416
+  }
+}

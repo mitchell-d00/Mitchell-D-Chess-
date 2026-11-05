@@ -1,0 +1,12 @@
+{
+  "updatedUtc": "2026-11-05T17:59:06.535353+00:00",
+  "pid": 17500,
+  "reason": null,
+  "status": "running",
+  "batches": {
+    "01-opponent": "running",
+    "02-opponent": "running"
+  },
+  "completedGames": 2,
+  "plannedGames": 200
+}

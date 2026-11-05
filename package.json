@@ -1,0 +1,19 @@
+{
+  "name": "mitchell-d-chess",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "build:check": "node scripts/build.cjs --check && node scripts/check-size.cjs",
+    "build:kernel": "node scripts/build-neural-kernel.cjs",
+    "test": "node scripts/checks.cjs core",
+    "test:browser": "node scripts/checks.cjs browser",
+    "test:all": "node scripts/checks.cjs all"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "wabt": "1.0.39"
+  }
+}

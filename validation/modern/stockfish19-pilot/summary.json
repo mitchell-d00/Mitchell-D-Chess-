@@ -1,0 +1,39 @@
+{
+  "updatedUtc": "2026-11-05T17:46:20.763420+00:00",
+  "plannedGames": 12,
+  "completedGames": 12,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Stockfish19": {
+      "planned": 12,
+      "wins": 0,
+      "draws": 0,
+      "losses": 12,
+      "forfeits": 0,
+      "completed": 12,
+      "normalResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 12
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.0,
+      "completedNormalPairs": 6,
+      "pairedScoreBootstrap95": null
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}
