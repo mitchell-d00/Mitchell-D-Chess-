@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Free chess in your browser: 65 computer levels, chess clocks, official FIDE rules mode, a 38-lesson tutorial, and custom colours. Works offline.">
+<meta property="og:title" content="Mitchell D Chess">
+<meta property="og:description" content="65 computer levels, 38 lessons, clocks and offline chess in one free HTML file. No accounts or ads.">
+<meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NSA0NSIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJNaXRjaGVsbCBEIENoZXNzIGxvZ28iPgogIDxyZWN0IHdpZHRoPSI0NSIgaGVpZ2h0PSI0NSIgcng9IjEwIiBmaWxsPSIjMmQ2YTUyIi8+CiAgPHBhdGggZD0iTTE0IDM1aDE4Yy4zLTYuNS0xLjYtMTEuNS0zLjYtMTUuNSAxLjYtMi42IDEtNi0xLjgtNy44bC0uOC0zLjItMi4yIDIuNmMtNS4yLjgtOS40IDQuNy0xMS4xIDEwLjJsLS45IDMuMmMtLjQgMS45IDEuNiAzIDMgMS43bDItMS44YzEuNi4xIDMtLjUgMy45LTEuNi4yIDQuNC02LjggNi4zLTYuNSAxMi4yeiIgZmlsbD0iI2ZmZmZmZiIvPgogIDxjaXJjbGUgY3g9IjE4LjIiIGN5PSIxNS42IiByPSIxLjIiIGZpbGw9IiMyZDZhNTIiLz4KPC9zdmc+Cg==">
 <title>Mitchell D Chess</title>
 <style>
@@ -39,6 +42,15 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line
 h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15;text-wrap:balance;font-weight:700}
 p{margin:0}
 button,select,input{font:inherit;color:inherit}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.top a{color:inherit;text-decoration:none}
+.featureline{font-size:.78rem;color:var(--muted)}
+.narrow-label{display:none}
+.card-heading{display:flex;gap:8px;justify-content:space-between;align-items:center}
+.welcome{border-color:var(--accent)}
+.board-row{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));min-height:0}
+.sq:focus-visible{outline:3px solid var(--accent);outline-offset:-4px;z-index:3}
+.sq.sel{box-shadow:inset 0 0 0 3px var(--accent)}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .muted{color:var(--muted)}
@@ -80,7 +92,7 @@ header.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-
 :root{--bsize:min(640px,calc(100vw - 32px),calc(100vh - 190px))}
 @media (max-width:980px){:root{--bsize:min(640px,calc(100vw - 32px))}}
 .boardwrap{position:relative;width:var(--bsize);max-width:100%;aspect-ratio:1;border-radius:6px;box-shadow:var(--shadow);touch-action:none;user-select:none;-webkit-user-select:none}
-.board{position:absolute;inset:0;display:grid;grid-template:repeat(8,1fr)/repeat(8,1fr);border-radius:6px;overflow:hidden}
+.board{position:absolute;inset:0;display:grid;grid-template:repeat(8,1fr)/1fr;border-radius:6px;overflow:hidden}
 .sq{position:relative;background:var(--sq-light)}
 .sq.d{background:var(--sq-dark)}
 .sq .co{position:absolute;font-size:clamp(8px,1.6vw,12px);font-weight:700;font-family:var(--body);line-height:1;pointer-events:none}
@@ -201,7 +213,24 @@ textarea{width:100%;min-height:140px;font-family:var(--mono);font-size:.82rem;ba
   .rail{max-width:680px;width:100%;margin:0 auto}
 }
 html[data-motion="off"] .pc{transition:none}
-@media (prefers-reduced-motion:reduce){.thinking{animation:none}}
+@media (prefers-reduced-motion:reduce){.thinking{animation:none}.pc{transition:none!important}}
+@media (max-width:600px),(pointer:coarse){
+  .btn,.btn.small,.seg button,.tabs button,select,.moves button,.litem{min-height:44px}
+  input,select,textarea{font-size:16px}
+  .top .right{flex-wrap:wrap;justify-content:flex-end}.ctlgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .modal{padding:16px}.promo button{min-height:38px}
+}
+@media (max-width:600px){
+  header.top{gap:10px 8px}.brand h1{font-size:1.15rem}.featureline{font-size:.67rem}.tabs button{padding:.42rem .65rem}
+  .top .right{width:100%;margin-left:0;gap:4px;flex-wrap:nowrap;justify-content:space-between}.top .right .btn{font-size:.78rem;padding:.35rem .45rem}
+  .wide-label{display:none}.narrow-label{display:inline}
+}
+@media (orientation:landscape) and (max-height:600px) and (min-width:700px){
+  :root{--bsize:min(640px,calc(100vw - 370px),calc(100vh - 150px))}
+  .game{grid-template-columns:minmax(0,1fr) 310px;gap:12px}.rail{max-height:calc(100vh - 85px);overflow:auto;overscroll-behavior:contain}
+  header.top{padding-block:6px;margin-bottom:8px}.playerbar{min-height:26px}
+  .brand h1{font-size:1.1rem}.featureline{display:none}.top .right{gap:4px}.top .right .btn{font-size:.78rem;min-height:36px;padding:.3rem .45rem}.tabs button{min-height:36px;padding:.35rem .7rem}
+}
 </style>
 
 </head>
@@ -210,15 +239,18 @@ html[data-motion="off"] .pc{transition:none}
   <header class="top">
     <div class="brand">
       <svg viewBox="0 0 45 45" aria-hidden="true"><rect width="45" height="45" rx="10" fill="var(--accent)"/><path d="M14 35h18c.3-6.5-1.6-11.5-3.6-15.5 1.6-2.6 1-6-1.8-7.8l-.8-3.2-2.2 2.6c-5.2.8-9.4 4.7-11.1 10.2l-.9 3.2c-.4 1.9 1.6 3 3 1.7l2-1.8c1.6.1 3-.5 3.9-1.6.2 4.4-6.8 6.3-6.5 12.2z" fill="var(--accent-ink)"/><circle cx="18.2" cy="15.6" r="1.2" fill="var(--accent)"/></svg>
-      <h1>Mitchell D Chess</h1>
+      <div><h1>Mitchell D Chess</h1><p class="featureline">65 levels · 38 lessons · Free &amp; offline</p></div>
     </div>
-    <div class="tabs" role="tablist">
-      <button class="on" data-tab="play" role="tab" aria-selected="true">Play</button>
-      <button data-tab="learn" role="tab" aria-selected="false">Learn</button>
+    <div class="tabs" role="tablist" aria-label="Play or learn">
+      <button class="on" data-tab="play" id="playTab" role="tab" aria-controls="railPlay" tabindex="0" aria-selected="true">Play</button>
+      <button data-tab="learn" id="learnTab" role="tab" aria-controls="railLearn" tabindex="-1" aria-selected="false">Learn</button>
     </div>
     <div class="right">
+      <button class="btn small" id="helpBtn"><span class="wide-label">Quick guide</span><span class="narrow-label">Guide</span></button>
+      <a class="btn small" href="https://github.com/mitchell-d00/Mitchell-D-Chess-" target="_blank" rel="noopener noreferrer">Source</a>
+      <a class="btn small" id="creditsLink" href="#licenses">Credits</a>
       <button class="btn small" id="themeBtn" aria-label="Switch light or dark mode"></button>
-      <button class="btn small" id="setBtn">Colours &amp; settings</button>
+      <button class="btn small" id="setBtn"><span class="wide-label">Colours &amp; settings</span><span class="narrow-label">Settings</span></button>
     </div>
   </header>
 
@@ -226,7 +258,9 @@ html[data-motion="off"] .pc{transition:none}
     <div class="boardcol">
       <div class="playerbar" id="barTop"></div>
       <div class="boardwrap" id="boardwrap">
-        <div class="board" id="board"></div>
+        <div class="board" id="board" role="grid" aria-label="Chessboard" aria-describedby="boardHelp" aria-rowcount="8" aria-colcount="8"></div>
+        <span class="sr-only" id="boardHelp">Arrow keys explore squares. Enter or Space selects a piece or plays a legal destination. Escape cancels selection, except when touch-move applies.</span>
+        <span class="sr-only" id="boardAnnouncement" role="status" aria-live="polite"></span>
         <div class="pieces" id="pieces"></div>
         <svg class="arrows" id="arrows" viewBox="0 0 800 800" preserveAspectRatio="none"></svg>
         <div class="boardmsg" id="boardmsg" hidden></div>
@@ -234,8 +268,10 @@ html[data-motion="off"] .pc{transition:none}
       <div class="playerbar" id="barBot"></div>
     </div>
 
-    <aside class="rail" id="railPlay">
+    <aside class="rail" id="railPlay" role="tabpanel" aria-labelledby="playTab">
+      <div class="card panel welcome" id="welcomeTip"><div class="card-heading"><strong>Start here</strong><button class="btn small" id="dismissWelcome" aria-label="Dismiss getting-started tips">Dismiss</button></div><p>Choose a computer level and clock, or switch to Learn for 38 guided lessons. Colours, legal-move dots and sound are in settings.</p><button class="btn small" id="welcomeGuide">Open quick guide</button></div>
       <div class="card panel">
+        <div class="card-heading"><strong>Game setup</strong><button class="btn small" id="setupToggle" aria-expanded="true" aria-controls="setupFields">Hide setup</button></div><div id="setupFields" class="field" style="gap:10px">
         <div class="seg" id="modeSeg">
           <button data-mode="pvc" class="on">You vs computer</button>
           <button data-mode="pvp">Two players</button>
@@ -279,11 +315,12 @@ html[data-motion="off"] .pc{transition:none}
           <p class="rulesnote" id="rulesNote"></p>
         </div>
         <button class="btn primary" id="newBtn">New game</button>
+        </div>
       </div>
 
       <div class="card panel">
         <div class="drawbox" id="recordBox" hidden><strong id="recordTitle">Imported game · review</strong><span class="muted">Use the move list to explore. To play, start a new game from the displayed position.</span><button class="btn small" id="continueBtn">Play from this position</button></div>
-        <div class="status" id="status"><span class="ic"></span><span>White to move</span></div>
+        <div class="status" id="status" role="status" aria-live="polite"><span class="ic"></span><span>White to move</span></div>
         <div class="drawbox" id="drawBox" hidden></div>
         <div id="evalBox" hidden>
           <div class="evalbar"><i id="evalFill" style="width:50%"></i></div>
@@ -312,7 +349,7 @@ html[data-motion="off"] .pc{transition:none}
       </div>
     </aside>
 
-    <aside class="rail" id="railLearn" hidden>
+    <aside class="rail" id="railLearn" role="tabpanel" aria-labelledby="learnTab" hidden>
       <div class="lesson panel" id="lessonCard"></div>
       <div class="card panel">
         <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><h3>Lessons</h3><span class="muted" id="learnProg" style="font-size:.85rem"></span></div>
@@ -375,8 +412,8 @@ SOFTWARE.
 </pre>
 </details>
 
-<div class="overlay" id="ov" hidden><div class="modal" id="ovBox" role="dialog" aria-modal="true"></div></div>
-<div class="toast" id="toast" hidden></div>
+<div class="overlay" id="ov" hidden><div class="modal" id="ovBox" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1"></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 
 <script id="engine-src">
 var ENGINE = (function () {
@@ -2369,11 +2406,12 @@ const START = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 const BOARD_THEMES = [
   ['Tournament', '#eeeed2', '#769656'], ['Walnut', '#f0d9b5', '#b58863'], ['Ocean', '#dee3e6', '#8ca2ad'],
   ['Slate', '#d7dbe1', '#5f6d7c'], ['Coral', '#f6e3d8', '#d27d63'], ['Violet', '#e7e0f0', '#8a6fb0'],
-  ['Midnight', '#9aa4b1', '#3c4655'], ['Mint', '#e6f2ea', '#5aa77b']
+  ['Midnight', '#9aa4b1', '#3c4655'], ['Mint', '#e6f2ea', '#5aa77b'],
+  ['High contrast', '#ffffff', '#626b78'], ['Blue & sand', '#fff3c4', '#4f6e94']
 ];
 const PIECE_THEMES = [
   ['Classic', '#fbfaf5', '#262321'], ['Ivory & ebony', '#f2e6cc', '#3b2b1f'], ['Ice & fire', '#dcf0ff', '#c2382a'],
-  ['Gold & silver', '#e8c35a', '#9aa4ae'], ['Mint & plum', '#c8f0da', '#5b2d6e'], ['Sky & ink', '#9fd2ff', '#1f2c4d']
+  ['Gold & silver', '#e8c35a', '#9aa4ae'], ['Mint & plum', '#c8f0da', '#5b2d6e'], ['Sky & ink', '#9fd2ff', '#1f2c4d'], ['High contrast', '#ffffff', '#000000']
 ];
 const DEF = { theme: 'system', light: '#eeeed2', dark: '#769656', pw: '#fbfaf5', pb: '#262321', coords: true, legal: true, lastmove: true, anim: 'normal', sound: true, autoQueen: false, speed: 'normal' };
 let S = Object.assign({}, DEF, store.get('settings', {}));
@@ -2463,27 +2501,61 @@ function cancelThinking() {
 
 // ================= Board view =================
 const BV = {
-  flipped: false, fen: START, sel: null, targets: [], last: null, check: null, marks: [], arrows: [], interactive: () => false,
+  flipped: false, focus: 'e2', fen: START, sel: null, targets: [], last: null, check: null, marks: [], arrows: [], interactive: () => false,
   onMove: null, legal: () => [], animFrom: null,
 };
 function sqXY(name) { const f = name.charCodeAt(0) - 97, r = +name[1] - 1; return BV.flipped ? [7 - f, r] : [f, 7 - r]; }
 function xyToSq(col, row) { const f = BV.flipped ? 7 - col : col, r = BV.flipped ? row : 7 - row; return 'abcdefgh'[f] + (r + 1); }
 function buildBoard() {
-  let h = '';
-  for (let row = 0; row < 8; row++) for (let col = 0; col < 8; col++) {
-    const name = xyToSq(col, row), dark = (col + row) % 2 === 1;
-    h += `<div class="sq ${dark ? 'd' : 'l'}" data-sq="${name}">`;
-    if (S.coords) { if (row === 7) h += `<span class="co f">${name[0]}</span>`; if (col === 0) h += `<span class="co r">${name[1]}</span>`; }
+  let h = ''; const occupied = new Map(parseFenBoard(BV.fen).map(p => [p.sq, p]));
+  $('#board').setAttribute('aria-readonly', String(!BV.interactive()));
+  for (let row = 0; row < 8; row++) {
+    h += `<div class="board-row" role="row" aria-rowindex="${row + 1}">`;
+    for (let col = 0; col < 8; col++) {
+      const name = xyToSq(col, row), dark = (col + row) % 2 === 1, p = occupied.get(name);
+      let label = name + ', ' + (p ? (p.color === 'w' ? 'White ' : 'Black ') + NAMES[p.type] : 'empty');
+      if (BV.check === name) label += ', check'; if (BV.targets.some(t => t.sq === name)) label += ', legal destination';
+      h += `<div class="sq ${dark ? 'd' : 'l'}" data-sq="${name}" role="gridcell" aria-colindex="${col + 1}" aria-label="${esc(label)}" aria-selected="${BV.sel === name}" tabindex="${BV.focus === name ? 0 : -1}">`;
+      if (S.coords) { if (row === 7) h += `<span class="co f" aria-hidden="true">${name[0]}</span>`; if (col === 0) h += `<span class="co r" aria-hidden="true">${name[1]}</span>`; }
+      h += '</div>';
+    }
     h += '</div>';
   }
   $('#board').innerHTML = h;
 }
+function focusSquare(square = BV.focus) {
+  BV.focus = square;
+  $$('#board .sq').forEach(el => el.tabIndex = el.dataset.sq === square ? 0 : -1);
+  $(`#board .sq[data-sq="${square}"]`)?.focus({preventScroll:true});
+}
+function activateSquare(square) {
+  if (!BV.interactive() || $('.promo')) return;
+  BV.focus = square;
+  if (BV.sel && BV.sel !== square && BV.targets.some(t => t.sq === square)) { const from = BV.sel; BV.sel = null; BV.targets = []; tryMove(from, square); return; }
+  const lock = BV.lock ? BV.lock() : null;
+  if (lock && square !== lock) { toast('Touch-move rule: move the piece you touched.'); return; }
+  if (selectSq(square)) { if (BV.onTouch) BV.onTouch(square); $('#boardAnnouncement').textContent = square + ' selected. ' + BV.targets.length + ' legal destinations.'; }
+  else { BV.sel = null; BV.targets = []; }
+  renderBoard(); focusSquare(square);
+}
+$('#board').addEventListener('keydown', e => {
+  const cell = e.target.closest('[data-sq]'); if (!cell) return;
+  if (['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key)) {
+    e.preventDefault(); e.stopPropagation(); let [x,y] = sqXY(cell.dataset.sq);
+    if (e.key === 'ArrowLeft') x--; if (e.key === 'ArrowRight') x++; if (e.key === 'ArrowUp') y--; if (e.key === 'ArrowDown') y++;
+    if (e.key === 'Home') { x = 0; if (e.ctrlKey) y = 0; } if (e.key === 'End') { x = 7; if (e.ctrlKey) y = 7; }
+    focusSquare(xyToSq(Math.max(0,Math.min(7,x)),Math.max(0,Math.min(7,y))));
+  } else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); activateSquare(cell.dataset.sq); }
+  else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); if (BV.lock && BV.lock()) toast('Touch-move rule: move the piece you touched.'); else { BV.sel = null; BV.targets = []; renderBoard(); focusSquare(); } }
+});
+$('#board').addEventListener('click', e => { if (e.detail === 0) { const cell = e.target.closest('[data-sq]'); if (cell) activateSquare(cell.dataset.sq); } });
 function parseFenBoard(fen) {
   const out = []; const rows = fen.split(' ')[0].split('/');
   rows.forEach((row, ri) => { let f = 0; for (const ch of row) { if (/\d/.test(ch)) { f += +ch; continue; } out.push({ sq: 'abcdefgh'[f] + (8 - ri), type: ch.toLowerCase(), color: ch === ch.toLowerCase() ? 'b' : 'w' }); f++; } });
   return out;
 }
 function renderBoard() {
+  const restoreFocus = $('#board').contains(document.activeElement);
   buildBoard();
   const sqEl = n => $(`.sq[data-sq="${n}"]`);
   if (S.lastmove && BV.last) { sqEl(BV.last[0])?.classList.add('last'); sqEl(BV.last[1])?.classList.add('last'); }
@@ -2507,6 +2579,7 @@ function renderBoard() {
   if (a) { a.getBoundingClientRect(); requestAnimationFrame(() => { a.style.transform = a.dataset.to; }); }
   BV.animFrom = null;
   renderArrows();
+  if (restoreFocus) focusSquare();
 }
 function renderArrows() {
   const svg = $('#arrows');
@@ -2539,6 +2612,7 @@ function selectSq(sq) {
 function tryMove(from, to) {
   const ms = BV.legal().filter(m => m.from === from && m.to === to);
   if (!ms.length) return false;
+  BV.focus = to;
   if (ms.length > 1 || ms[0].promo) { // promotion
     if (S.autoQueen && !(tab === 'play' && G && G.official)) { BV.onMove(from + to + 'q'); return true; }
     showPromo(from, to); return true;
@@ -2552,7 +2626,8 @@ function showPromo(from, to) {
   box.style.left = (x * 12.5) + '%';
   if (down) box.style.top = '0'; else box.style.bottom = '0';
   ['q', 'r', 'b', 'n'].forEach(p => box.insertAdjacentHTML('beforeend', `<button data-p="${p}" aria-label="Promote to ${NAMES[p]}">${pieceSVG(p, color)}</button>`));
-  box.onclick = e => { const b = e.target.closest('[data-p]'); if (!b) return; box.remove(); BV.onMove(from + to + b.dataset.p); };
+  box.onclick = e => { const b = e.target.closest('[data-p]'); if (!b) return; box.remove(); BV.onMove(from + to + b.dataset.p); focusSquare(to); };
+  box.querySelector('button').focus();
   $('#boardwrap').appendChild(box);
   box.querySelector('button').focus();
 }
@@ -2560,6 +2635,7 @@ $('#boardwrap').addEventListener('pointerdown', e => {
   if (e.button > 0 || !BV.interactive()) return;
   if ($('.promo')) return;
   const sq = pointToSq(e); if (!sq) return;
+  BV.focus = sq;
   Snd.c();
   if (BV.sel && BV.sel !== sq && BV.targets.some(t => t.sq === sq)) { const from = BV.sel; BV.sel = null; BV.targets = []; tryMove(from, sq); return; }
   const lock = BV.lock ? BV.lock() : null;
@@ -2798,6 +2874,7 @@ $('#navPrev').onclick = () => setView((G.view == null ? G.fens.length - 1 : G.vi
 $('#navNext').onclick = () => { if (G.view != null) setView(G.view + 1); };
 $('#navLast').onclick = () => setView(G.fens.length - 1);
 function renderButtons() {
+  $('#board').setAttribute('aria-readonly', String(!BV.interactive()));
   const cvc = G.mode === 'cvc';
   $('#pauseBtn').hidden = !(cvc || (G.clock && !G.official)) || !!G.over;
   $('#pauseBtn').textContent = G.paused ? 'Resume' : 'Pause';
@@ -3185,7 +3262,7 @@ let tab = 'play';
 function setTab(t) {
   if (t === tab) return;
   tab = t;
-  $$('.tabs button').forEach(b => { b.classList.toggle('on', b.dataset.tab === t); b.setAttribute('aria-selected', b.dataset.tab === t); });
+  $$('.tabs button').forEach(b => { b.classList.toggle('on', b.dataset.tab === t); b.setAttribute('aria-selected', b.dataset.tab === t); b.tabIndex = b.dataset.tab === t ? 0 : -1; });
   $('#railPlay').hidden = t !== 'play'; $('#railLearn').hidden = t !== 'learn';
   $('#boardmsg').hidden = true;
   if (t === 'learn') {
@@ -3200,19 +3277,29 @@ function setTab(t) {
   }
 }
 $$('.tabs button').forEach(b => b.onclick = () => setTab(b.dataset.tab));
+$('.tabs').addEventListener('keydown', e => { if (!['ArrowLeft','ArrowRight','Home','End'].includes(e.key)) return; e.preventDefault(); e.stopPropagation(); const next = e.key === 'Home' ? 'play' : e.key === 'End' ? 'learn' : tab === 'play' ? 'learn' : 'play'; setTab(next); $(`.tabs [data-tab="${next}"]`).focus(); });
 
 // ================= Settings modal =================
-let modalCleanup = null;
+let modalCleanup = null, modalReturnFocus = null;
 function openModal(html, after) {
   if (modalCleanup) { const cleanup = modalCleanup; modalCleanup = null; cleanup(); }
+  if ($('#ov').hidden) modalReturnFocus = document.activeElement;
   $('#ovBox').innerHTML = html; $('#ov').hidden = false;
+  const title = $('#ovBox').querySelector('h2,h3'); if (title) title.id = 'modalTitle';
   $('#ovBox').querySelectorAll('[data-close]').forEach(b => b.onclick = closeModal);
-  if (after) after(); else $('#ovBox button')?.focus();
+  if (after) after(); else ($('#ovBox button') || $('#ovBox')).focus();
 }
-function closeModal() { if (modalCleanup) { const cleanup = modalCleanup; modalCleanup = null; cleanup(); } $('#ov').hidden = true; $('#ovBox').innerHTML = ''; }
+function closeModal() { if (modalCleanup) { const cleanup = modalCleanup; modalCleanup = null; cleanup(); } $('#ov').hidden = true; $('#ovBox').innerHTML = ''; if (modalReturnFocus && modalReturnFocus.isConnected) modalReturnFocus.focus({preventScroll:true}); modalReturnFocus = null; }
 $('#ov').addEventListener('click', e => { if (e.target.id === 'ov') closeModal(); });
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { if (!$('#ov').hidden) closeModal(); else if ($('.promo')) { if (!(BV.lock && BV.lock())) $('.promo').remove(); } else if (BV.sel && !(BV.lock && BV.lock())) { BV.sel = null; BV.targets = []; renderBoard(); } }
+  if (!$('#ov').hidden && e.key === 'Tab') {
+    const controls = $$('button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),a[href],[tabindex="0"]', $('#ovBox')).filter(el => el.getClientRects().length);
+    if (!controls.length) { e.preventDefault(); $('#ovBox').focus(); }
+    else if (e.shiftKey && (document.activeElement === controls[0] || !$('#ovBox').contains(document.activeElement))) { e.preventDefault(); controls.at(-1).focus(); }
+    else if (!e.shiftKey && document.activeElement === controls.at(-1)) { e.preventDefault(); controls[0].focus(); }
+    return;
+  }
+  if (e.key === 'Escape') { if (!$('#ov').hidden) closeModal(); else if ($('.promo')) { if (!(BV.lock && BV.lock())) { $('.promo').remove(); focusSquare(); } } else if (BV.sel && !(BV.lock && BV.lock())) { BV.sel = null; BV.targets = []; renderBoard(); } }
   if (e.target.matches('input,select,textarea') || !$('#ov').hidden) return;
   if (tab === 'play' && G) { if (e.key === 'ArrowLeft') { $('#navPrev').click(); e.preventDefault(); } if (e.key === 'ArrowRight') { $('#navNext').click(); e.preventDefault(); } }
 });
@@ -3256,6 +3343,21 @@ function openSettings() {
   $('#pkB').oninput = e => { S.pb = e.target.value; saveS(); $$('#pieceSw .swatch').forEach(x => x.classList.remove('on')); refresh(); };
 }
 $('#setBtn').onclick = openSettings;
+function openGuide() {
+  openModal(`<div class="modal-head"><h2>Getting started</h2><button class="btn small" data-close>Done</button></div>
+    <div class="setsec"><h3>Play or learn</h3><p>Play the computer, share a screen with a friend, or watch two computers. Learn offers 38 lessons from piece moves to strategy.</p></div>
+    <div class="setsec"><h3>Choose your pace</h3><p>Use the level slider for 65 presets and choose a clock. Levels are difficulty settings, not verified Elo ratings. The highest levels can think for up to a minute.</p></div>
+    <div class="setsec"><h3>Make it yours</h3><p>Colours &amp; settings controls board and piece colours, contrast, legal-move dots, animation and sound. Hide game setup when you want more room.</p></div>
+    <div class="setsec"><h3>Explore games and positions</h3><p>Import FEN or PGN, click a SAN move to step through a game, or share the displayed position. Everything runs locally once this HTML is saved.</p></div>
+    <div class="setsec"><h3>Keyboard play</h3><p>Tab to the board, use arrows to explore, and Enter or Space to select a piece and play a destination. Home/End go to the row edges. Escape cancels a selection unless official touch-move applies. Outside the board, Left/Right step through moves.</p></div>
+    <p class="muted">Free, MIT-licensed, no ads or accounts. Source and credits are available in the header. Engine strength remains unrated.</p>`);
+}
+$('#helpBtn').onclick = openGuide; $('#welcomeGuide').onclick = openGuide;
+$('#welcomeTip').hidden = !!store.get('welcomeDismissed', false);
+$('#dismissWelcome').onclick = () => { store.set('welcomeDismissed', true); $('#welcomeTip').hidden = true; $('#helpBtn').focus(); };
+$('#creditsLink').onclick = () => { $('#licenses').open = true; };
+$('#setupToggle').onclick = () => { const hidden = !$('#setupFields').hidden; $('#setupFields').hidden = hidden; $('#setupToggle').setAttribute('aria-expanded', String(!hidden)); $('#setupToggle').textContent = hidden ? 'Show setup' : 'Hide setup'; };
+
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => t.hidden = true, 2200); }
 
 // ================= Boot =================

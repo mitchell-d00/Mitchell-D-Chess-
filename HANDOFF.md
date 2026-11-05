@@ -20,7 +20,7 @@ byte-identical. Preserve the single HTML / offline / Web Worker design, all
 - [x] Audit current UI: clickable SAN moves, resign confirmation, promotion
   palette, lesson progress and thinking indicators already exist.
 - [x] Pass 1: validated FEN/PGN import and shareable positions.
-- [ ] Pass 2: onboarding, responsive/touch polish and keyboard board access.
+- [x] Pass 2: onboarding, responsive/touch polish and keyboard board access.
 - [ ] Pass 3: local named saves and post-game worker analysis.
 - [ ] Final regression checks, documentation and publication.
 
@@ -69,3 +69,29 @@ confirmation rather than silently discarding it.
 Next: pass 2. Add keyboard board navigation with shared touch-move logic, square
 ARIA labels, modal focus handling, quick guide/credits visibility, contrast and
 mobile targets/layout. Keep the engine script unchanged.
+
+## Pass 2 completed
+
+Files: `index.html`, `scripts/browser-accessibility-test.cjs`.
+
+Added dismissible first-visit tips and a reusable guide; visible source/credits
+links; compact mobile header; collapsible setup; labelled 8x8 keyboard grid with
+roving focus; arrows/Home/End/Enter/Space/Escape and touch-move enforcement;
+keyboard promotion; labelled tabs with arrow navigation; modal focus trap/return;
+44px mobile controls; short-landscape layout; high-contrast/blue-sand palettes;
+reduced-motion support and live status announcements. Existing pointer and
+keyboard paths share the same legal moves and official touch locks.
+
+Verified: `node scripts/browser-accessibility-test.cjs`, rerun after inspecting
+portrait/landscape screenshots; `node scripts/browser-tools-test.cjs`; parser and
+engine regression checks remain passing. Browser tests cover 64 labels, roving
+focus, keyboard e2-e4, FIDE lock/Escape, flipped arrows, knight underpromotion,
+modal containment/restoration, persistent tips, contrast, tab keys, viewport
+width and target size. Screenshots: `/tmp/chess-mobile-ui.png`,
+`/tmp/chess-landscape-ui.png`. Engine source remains byte-identical.
+
+Next: pass 3. Implement versioned bounded local saves with explicit failure
+reporting and safe paused restoration; new-game replacement confirmation;
+post-game/review analysis using the existing worker, cancellable progress,
+move alternatives and a clickable evaluation graph. No server or Elo/accuracy
+claims. Finish all regressions, README/tests documentation and publication.
