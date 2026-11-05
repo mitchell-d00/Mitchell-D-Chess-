@@ -1,3 +1,21 @@
+# Teaching and reproducible strength reports (November 2026)
+
+    node scripts/test-review-teaching.cjs
+    node scripts/browser-review-teaching-test.cjs
+    node scripts/test-strength-report.cjs
+    python3 scripts/test-prepare-benchmark.py
+
+Review teaching uses legal position facts for played moves, alternatives,
+captures and immediate mates, with estimated score changes labelled separately.
+It covers both sides, null/shallow scores, ranked key moments, before/after
+navigation, keyboard focus, side selection and mobile targets. No player rating
+or accuracy score is manufactured.
+
+Strength preparation freezes native backend/core/network identities and external
+runtime variables. Reporting verifies hash manifests, replays PGNs, recounts
+scores, separates incomplete samples and forfeits, and rejects misleading stored
+summaries. See validation/strength/PROTOCOL.md for repeatable commands.
+
 # WASM release rollout (November 2026)
 
 The user authorized publishing the tested SIMD evolution before absolute rating.

@@ -1,0 +1,105 @@
+{
+  "createdUtc": "2026-11-05T21:35:14.377505+00:00",
+  "testedRevision": "4bfcb94597d5cd4abb5d84159c84b85092e82327",
+  "html": "/workspace/mitchell-performance/wasm-release-independent-12/engine-under-test.html",
+  "htmlSha256": "b661acb96abb62d41d5493aabd67c2d4c9199b39f6ef68001fc799049cc740cf",
+  "adapter": "/workspace/mitchell-performance/wasm-release-independent-12/adapter/uci.cjs",
+  "adapterSha256": "c9a11e49507c42930a55ab52bad9c487cf2364c3fe672100e43d28a1c9b6118b",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 2,
+  "timeControl": {
+    "movetimeSeconds": 1.0,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/mitchell-performance/wasm-release-independent-12/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "opponents": {
+    "Leorik3.1.3": {
+      "command": "/tmp/leorik31-native/Leorik 3.1 Linux/Leorik-3.1.3",
+      "options": [
+        "option.Threads=1",
+        "option.Hash=32"
+      ],
+      "source": "https://github.com/lithander/Leorik/releases",
+      "additionalInputs": {
+        "/tmp/leorik31-native/Leorik 3.1 Linux/640HL-S-5288M-Tmix-Q5-v19.nnue": "01540ad378a157b47c1c29b6f2602f7ae10073ccdd538801395082d375e20d61"
+      },
+      "note": "Native 3.1.3 binary and its 640-hidden network; independently installed opponent, not bundled in the HTML",
+      "sha256": "2d368f275ab19cc86708acb87b8e8cc9ee214273097bfbd3231ac8684402c807"
+    },
+    "Texel1.06": {
+      "command": "/tmp/chess-opponent-texel106/local-build/texel106",
+      "options": [
+        "option.Threads=1",
+        "option.Hash=32",
+        "option.Ponder=false",
+        "option.OwnBook=false",
+        "option.Strength=1000"
+      ],
+      "source": "https://github.com/peterosterlund2/texel/tree/1.06",
+      "sourceRevision": "b913f4a7454a6a2689e9e9130fe2e62a63944c88",
+      "ccrlUrl": "https://computerchess.org.uk/ccrl/4040/cgi/engine_details.cgi?eng=Texel%201.06%2064-bit",
+      "ccrlReferenceRating": 3073,
+      "ccrlReferenceDate": "2026-10-30",
+      "build": "Local GCC 14 x86-64 C++11 build; -O3 -msse4.2 -pthread HAS_CTZ/HAS_PREFETCH/HAS_POPCNT/HAS_RT; -include limits compiler compatibility; NUMA not enabled; source unchanged; no external tablebase files",
+      "sha256": "eb423dfe6fb663b54db93de231b4fbb4a5dfaa97626b0736a0607dd503bcff10"
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Leorik3.1.3",
+      "games": 6,
+      "openingStart": 1
+    },
+    {
+      "id": "02-opponent",
+      "opponent": "Texel1.06",
+      "games": 6,
+      "openingStart": 1
+    }
+  ],
+  "environment": {
+    "LD_LIBRARY_PATH": "/tmp/chess-benchmark-libs/usr/lib/x86_64-linux-gnu",
+    "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT": "1",
+    "DOTNET_BUNDLE_EXTRACT_BASE_DIR": "/tmp/mitchell-modern-dotnet",
+    "MITCHELL_REQUIRE_WASM": "1",
+    "MITCHELL_WASM_MEMORY": "32",
+    "MITCHELL_EXACT_ENDGAMES": "0"
+  },
+  "runnerSourceRevision": "54828398530428cbba81b681441a970aaa4cee0e",
+  "stopOnForfeit": true,
+  "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+  "fastchessSha256": "3d0a8f3c8b837a96366ac838f3ddf6fe87b813abb4ad2852284c0ce409132566",
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14",
+    "cpuQuota": "400000 100000",
+    "memoryLimit": "17179869184"
+  },
+  "engineIdentity": {
+    "level": 65,
+    "backend": "wasm-required",
+    "wasmMemoryMiB": 32,
+    "wasmSha256": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+    "modelSha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704",
+    "hidden": 128
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 12,
+  "purpose": "Released Mitchell WASM independent-opponent reproducibility pilot",
+  "event": "Released Mitchell WASM independent-opponent reproducibility pilot",
+  "helper": "/workspace/mitchell-performance/wasm-release-independent-12/adapter/engine.cjs",
+  "helperSha256": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+  "engineSourceSha256": "799af9c1f28cd7084eb0e2a9e099143f7f4e02f55ea2680dc01a8fcd5d6f7942",
+  "runner": "/workspace/mitchell-performance/wasm-release-independent-12/runner.py",
+  "runnerSha256": "5b85b658dd3e41f8cd8bbc661becce20393c13532c7546af0392afc97f3b8722",
+  "preparer": "/workspace/mitchell-performance/wasm-release-independent-12/prepare-benchmark.py",
+  "preparerSha256": "f902d0da49c8290318fdf42ce9c871c7aaf74036f0138d432d5724f323923368"
+}

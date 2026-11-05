@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-11-05T21:50:20.968Z",
+  "ratingStatus": "Unrated; these experiments do not establish an absolute Elo or FIDE rating.",
+  "absoluteRating": null,
+  "method": "Archive hashes and legal PGNs verified; W/D/L and paired intervals recomputed by the repository runner. Forfeits excluded from normal score percentages.",
+  "experiments": [
+    {
+      "archive": "/workspace/Mitchell-D-Chess-ui/validation/strength/release-pilot-12",
+      "purpose": "Released Mitchell WASM independent-opponent reproducibility pilot",
+      "status": "complete",
+      "testedRevision": "4bfcb94597d5cd4abb5d84159c84b85092e82327",
+      "htmlSha256": "b661acb96abb62d41d5493aabd67c2d4c9199b39f6ef68001fc799049cc740cf",
+      "engineSourceSha256": "799af9c1f28cd7084eb0e2a9e099143f7f4e02f55ea2680dc01a8fcd5d6f7942",
+      "identity": {
+        "level": 65,
+        "backend": "wasm-required",
+        "wasmMemoryMiB": 32,
+        "wasmSha256": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+        "modelSha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704",
+        "hidden": 128
+      },
+      "timeControl": {
+        "movetimeSeconds": 1,
+        "equalTimeMarginMs": 250,
+        "candidateMoveOverheadMs": 20,
+        "noPonder": true
+      },
+      "concurrency": 2,
+      "host": {
+        "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+        "logicalCpus": 5,
+        "pythonVersion": "3.12.14",
+        "cpuQuota": "400000 100000",
+        "memoryLimit": "17179869184"
+      },
+      "completedGames": 12,
+      "plannedGames": 12,
+      "opponents": [
+        {
+          "name": "Leorik3.1.3",
+          "completed": 6,
+          "planned": 6,
+          "normal": {
+            "wins": 0,
+            "draws": 5,
+            "losses": 1
+          },
+          "forfeitResults": {
+            "wins": 0,
+            "draws": 0,
+            "losses": 0
+          },
+          "forfeits": 0,
+          "normalScoreRate": 0.4166666666666667,
+          "completedPairs": 3,
+          "pairedScoreBootstrap95": null,
+          "binarySha256": "2d368f275ab19cc86708acb87b8e8cc9ee214273097bfbd3231ac8684402c807",
+          "source": "https://github.com/lithander/Leorik/releases",
+          "options": [
+            "option.Threads=1",
+            "option.Hash=32"
+          ]
+        },
+        {
+          "name": "Texel1.06",
+          "completed": 6,
+          "planned": 6,
+          "normal": {
+            "wins": 3,
+            "draws": 2,
+            "losses": 1
+          },
+          "forfeitResults": {
+            "wins": 0,
+            "draws": 0,
+            "losses": 0
+          },
+          "forfeits": 0,
+          "normalScoreRate": 0.6666666666666666,
+          "completedPairs": 3,
+          "pairedScoreBootstrap95": null,
+          "binarySha256": "eb423dfe6fb663b54db93de231b4fbb4a5dfaa97626b0736a0607dd503bcff10",
+          "source": "https://github.com/peterosterlund2/texel/tree/1.06",
+          "options": [
+            "option.Threads=1",
+            "option.Hash=32",
+            "option.Ponder=false",
+            "option.OwnBook=false",
+            "option.Strength=1000"
+          ]
+        }
+      ]
+    }
+  ]
+}

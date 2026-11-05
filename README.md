@@ -31,6 +31,12 @@ Levels **51–65 now use the improved full Mitchell WASM engine**, with automati
 JavaScript fallback. The release remains one offline HTML file and is still
 unrated. See [the rollout and validation record](validation/wasm-release.md).
 
+A completed **12-game independent pilot of the WASM release at 1 second/move**
+scored **0W–5D–1L against native Leorik 3.1.3** and **3W–2D–1L against Texel
+1.06**, with zero forfeits. Six games per opponent is a protocol screening,
+not an absolute rating. [Verified results](validation/strength/RESULTS.md) and
+[repeat commands](validation/strength/PROTOCOL.md) include every game and setting.
+
 ## What is in it
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,
@@ -130,6 +136,13 @@ are unavailable during official play. Casual lower-level hints also show cues.
   such as “possible mistake” use heuristic score-change thresholds, not calibrated
   accuracy or Elo. Mate and shallow-search cases are distinguished. Graph gaps
   mean no completed evaluation. The engine remains unrated.
+  **What to work on** highlights up to three key moments, with a White/Black
+  focus selector and practical takeaways. Select a moment to revisit the position
+  before the move, compare it with the played move, inspect the opponent's reply,
+  and read factual descriptions of the suggested alternative. Immediate mate
+  and stalemate facts are distinguished from estimated score losses; shallow
+  searches do not receive confident mistake labels. This review does not assign
+  a player rating or an accuracy percentage.
 
 The quick guide explains play/learn, levels, clocks, colours and keyboard controls.
 First-visit tips can be dismissed. Source and full MIT/Leorik credits are visible
