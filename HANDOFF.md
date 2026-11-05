@@ -230,5 +230,11 @@ are committed in validation/pause-checks.json. Engine/licence comparisons and
 touch pause/resume, an in-flight long search, a delayed book move, cancelled hints,
 paused takebacks and an official saved-game touch lock are covered.
 
-Next: publish this verified UI-only change and record its merge. Suggested next comfort work: recovery slot, focus
-layout, then granular audio/clock alerts. These remain proposals.
+Published through [PR #3](https://github.com/mitchell-d00/Mitchell-D-Chess-/pull/3),
+merged as `ed2a73f30748accf48d9e99501784c80dbc00ff4`. All 13 results and the
+comfort brainstorm are included.
+
+Next maintainer: keep Pause and restored-game Resume using the shared guarded
+transitions, preserve remaining clock delay, and invalidate worker callbacks when
+pausing. Suggested next comfort work: recovery slot, focus layout, then granular
+audio/clock alerts. These remain proposals, not unfinished authorized work.
