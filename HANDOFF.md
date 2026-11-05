@@ -353,3 +353,13 @@ on engine/wasm-parity-roadmap. It has initial 5,476 parity checks and preliminar
 Its first existing offline browser check passed after the interrupted tool call;
 remaining browser and matched-game gates are pending. Do not replace the public
 engine based on this report. This report-only branch changes no engine source.
+
+## Completed benchmark publication
+
+Merged through PR #5 (74f016fd95cbeb649316eef8a8519a4438006803). The complete
+200-game archive and honest README/in-app strength note are now on main; the
+public engine code and licences remain unchanged. The full-WASM prototype is
+now committed separately on engine/wasm-parity-roadmap (77ae2ae), with 5,476
+parity checks, an initial offline-browser pass and a strict 40-game comparison
+running. It has not been promoted. Remaining browser/network/endgame experiments
+are pending and must not be described as finished.
