@@ -190,5 +190,11 @@ re-enabling lesson explanations after a wrong attempt resets. Cues are tied to
 the game token, displayed position and ply to prevent stale explanations. Exact
 engine/licence comparisons and `git diff --check` passed.
 
-Next: publish and record the merge. Do not turn UI review estimates into strength
-claims.
+Published through [PR #2](https://github.com/mitchell-d00/Mitchell-D-Chess-/pull/2),
+merged as `74c975823bfb050dfe037d7154c4f90270f424da`. All 12 check results are
+included. No engine replacement or new strength claim is part of this change.
+
+Next maintainer: update `ui/move-explanations.js` and re-embed before committing
+`index.html` when changing teaching cues. Keep observed features separate from
+claims about move quality. Reproduce the UI checks listed in `tests`; the separate
+engine candidate remains subject to its existing qualification requirement.
