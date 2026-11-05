@@ -28,6 +28,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   assert((await page.locator('#helpBtn').boundingBox()).height>=44);
   await page.screenshot({path:'/tmp/chess-mobile-ui.png',fullPage:true});
   await page.setViewportSize({width:844,height:390});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:'/tmp/chess-landscape-ui.png',fullPage:true});
-  assert.deepEqual(errors,[]);console.log('PASS: accessible board/roving focus, keyboard and touch-move legality, flipped navigation, underpromotion, modal trap/return, guide persistence, tabs, contrast, portrait/landscape and 44px targets');
+  const touchContext=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),touch=await touchContext.newPage();await touch.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync('index.html','utf8')}));await touch.goto('http://localhost:8765/');await touchContext.setOffline(true);await touch.evaluate(()=>{setup.mode='pvp';setup.rules='casual';setup.tc='none';newGame();});for(const sq of ['e2','e4']){const box=await touch.locator('.sq[data-sq="'+sq+'"]').boundingBox();await touch.touchscreen.tap(box.x+box.width/2,box.y+box.height/2);}assert.equal(await touch.evaluate(()=>G.moves[0]),'e2e4');await touchContext.close();
+  assert.deepEqual(errors,[]);console.log('PASS: accessible board/roving focus, keyboard and touch-move legality, flipped navigation, underpromotion, modal trap/return, guide persistence, tabs, contrast, portrait/landscape, real touch taps and 44px targets');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -22,7 +22,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   await page.click('#shareBtn');const url=await page.evaluate(()=>window.copied),fen=await page.evaluate(()=>curFen());assert(url.includes('#fen='));
   await page.goto(url);await page.locator('#importLoad').waitFor();await page.click('#importLoad');await page.locator('#ov').waitFor({state:'hidden'});assert.equal(await page.evaluate(()=>G.chess.fen()),fen);
   await page.goto('about:blank');await page.goto(url);assert.equal(await page.evaluate(()=>G.chess.fen()),fen);assert(await page.evaluate(()=>G.review));
-  await page.click('#continueBtn');assert.equal(await page.evaluate(()=>G.startFen),fen);assert.equal(await page.evaluate(()=>G.review),false);
+  await page.click('#continueBtn');await page.click('#confirmNew');assert.equal(await page.evaluate(()=>G.startFen),fen);assert.equal(await page.evaluate(()=>G.review),false);
   await page.evaluate(()=>openImport('8/8/4k3/8/8/8/8/4K3 b - - 0 42'));await page.click('#importLoad');await page.locator('#ov').waitFor({state:'hidden'});
   assert.equal(await page.evaluate(()=>G.chess.side),8);
   await page.evaluate(()=>{setup.mode='pvp';newGame({startFen:'8/8/4k3/8/8/8/4P3/4K3 b - - 0 42'});playMove('e6f6');});

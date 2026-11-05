@@ -21,7 +21,7 @@ byte-identical. Preserve the single HTML / offline / Web Worker design, all
   palette, lesson progress and thinking indicators already exist.
 - [x] Pass 1: validated FEN/PGN import and shareable positions.
 - [x] Pass 2: onboarding, responsive/touch polish and keyboard board access.
-- [ ] Pass 3: local named saves and post-game worker analysis.
+- [x] Pass 3: local named saves and post-game worker analysis.
 - [ ] Final regression checks, documentation and publication.
 
 ## Decisions
@@ -95,3 +95,35 @@ reporting and safe paused restoration; new-game replacement confirmation;
 post-game/review analysis using the existing worker, cancellable progress,
 move alternatives and a clickable evaluation graph. No server or Elo/accuracy
 claims. Finish all regressions, README/tests documentation and publication.
+
+## Pass 3 completed
+
+Files: `ui/game-library.js` (embedded via `scripts/embed-ui.cjs`), `index.html`,
+`scripts/test-game-library.cjs`, `scripts/browser-library-analysis-test.cjs`, and
+updated browser/tools/accessibility checks. README, tests and
+`validation/ui-update.md` describe the user-facing behavior and limits.
+
+Added 20-slot versioned local library, named new saves/explicit updates/deletes,
+quota/error feedback, legal replay before replacement, paused restoration of
+clocks/player settings/rules/history/view/touch locks/draw offers, and explicit
+Resume. Added accessible New Game and resignation confirmations. Restored games
+cannot move or charge elapsed closed time before Resume. Saved analyses are
+intentionally omitted; rerun review after loading.
+
+Post-game/import review runs finite 100/250/500ms searches in the existing worker,
+with progress, cancellation, stale-token isolation, alternatives, heuristic
+"possible" labels, graph and move navigation. History is replayed for repetition
+status. Mate and insufficient/shallow searches are treated separately; graph gaps
+mean no completed evaluation. No accuracy/Elo claim is made. Analysis is disabled
+during active games, including FIDE games. Hints/lesson searches now handle worker
+cancellation without unhandled rejections.
+
+Verified during implementation: storage unit tests, parser tests, original browser
+regressions, offline save/analysis integration including actual worker searches,
+paused official clocks and persistent touch lock, reload persistence, corrupt
+saved-move rejection and cancellation/stale results. Accessibility additionally
+checks real touchscreen e2-e4. Final full-suite output will be recorded in
+`validation/ui-checks.json`; do not infer it passed until that file is complete.
+
+Next: final full regression run and engine/licence byte comparisons, mark final
+status, then publish the UI-only commits. The research branch must stay separate.

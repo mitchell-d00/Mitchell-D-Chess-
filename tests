@@ -1,3 +1,27 @@
+# UI update checks (November 2026)
+
+Three offline UI passes add position/game import and sharing; onboarding/mobile/
+keyboard access; and named local saves with post-game worker review. See
+HANDOFF.md and validation/ui-update.md for decisions and limits.
+
+The public engine script and MIT/Leorik notices are unchanged. This UI work does
+not merge the experimental Mitchell-only engine or change its strength status.
+Engine script SHA-256:
+61d257391bf643dedc2bf4d561a9e7c34d1d9ce6d52f822dd70431b8c1143bea
+
+    node scripts/test-position-tools.cjs
+    node scripts/test-game-library.cjs
+    node scripts/browser-tools-test.cjs
+    node scripts/browser-accessibility-test.cjs
+    node scripts/browser-library-analysis-test.cjs
+    node scripts/browser-test.cjs
+
+Browser scripts require separately installed Playwright and Chromium; all page
+checks then run offline. Core engine/inference/hash tests below remain applicable.
+Development modules are repackaged with node scripts/embed-ui.cjs; the game itself
+still needs only the HTML. Import limits, save limits and analysis uncertainty
+are documented in README.md. Existing strength evidence below is unchanged.
+
 # Tests, results and reproduction
 
 The engine is UNRATED. No absolute Elo estimate is established by these tests.

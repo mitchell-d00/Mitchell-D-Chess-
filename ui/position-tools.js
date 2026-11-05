@@ -53,7 +53,7 @@
       canonical.push(p.uci(m)); sans.push(p.san(m)); lastFromTo.push([E.sqName(E.mFrom(m)), E.sqName(E.mTo(m))]); p.make(m); fens.push(p.fen());
     }
     if (!RESULTS.includes(result || '*')) fail('Invalid game result.');
-    return { version: 1, startFen, moves: canonical, sans, fens, lastFromTo, tags: tags || {}, result: result || '*' };
+    return { version: 1, startFen, moves: canonical, sans, fens, lastFromTo, tags: tags || {}, result: result || '*', terminalCasual:p.status(false), terminalOfficial:p.status(true) };
   }
   function fromFen(text) { return fromMoves(validateFen(text), [], {}, '*'); }
   function sanMove(p, input) {
