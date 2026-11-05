@@ -1,3 +1,17 @@
+# Share, review and teaching polish (November 2026)
+
+    node scripts/test-move-explanations.cjs
+    node scripts/browser-polish-test.cjs
+
+See validation/ui-polish-checks.json for exact final command output, timestamps
+and exit codes. The existing UI and engine regressions were rerun as recorded
+there. The browser check covers visible shared URLs, clipboard success/failure,
+lesson and lower-level cues with official-mode exclusion, actual worker review,
+position-specific arrows with toggle/flip, keyboard graph navigation, terminal
+positions, six viewports (320/360/390/667/768/844 pixels wide), and edge-file
+underpromotion via touch. Position cues are observations, not engine intent.
+The public engine and licence text are still unchanged.
+
 # UI update checks (November 2026)
 
 Three offline UI passes add position/game import and sharing; onboarding/mobile/

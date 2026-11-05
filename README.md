@@ -77,15 +77,32 @@ and portable commands to repeat the experiments. The engine remains unrated.
 
 ## Positions, saved games and review
 
+**Why this move?** is available in interactive lessons and casual human-versus-
+computer games at levels 1–20. In play it explains the last displayed move; in a
+lesson it can reveal the target move or discuss the last move with the lesson's
+hint. Cues describe verified board features such as check, captures, promotion,
+castling, development and forks. They are short teaching observations, not the
+engine's internal reasoning, a guarantee of a good move, or another search. They
+are unavailable during official play. Casual lower-level hints also show cues.
+
+
 - **Import FEN / PGN** accepts pasted text or a local file. It validates the whole
   position/main line before replacing the game and opens for review without a
   clock or computer moves. One standard-chess game, up to 256 KB / 1,024 half-moves;
   comments and variations are skipped. Custom starts and Black-to-move numbering
   are preserved when exporting PGN.
-- **Share position** copies a link to the displayed FEN. Opening it loads a review
+- **Share position** copies a link to the displayed FEN and keeps a visible URL
+  dialog open, with Copy again and a manual-copy fallback when clipboard access
+  is unavailable. Opening it loads a review
   position. A hash change in an existing game asks before replacement. From a
   saved local HTML, the link points to the public game; FEN import itself works
   entirely offline.
+- **Review navigation** shows labelled White-perspective pawn scores, a current-
+  position marker and a suggested move with SAN, coordinates and a board arrow.
+  Toggle arrows off, flip the board, tap the graph or use its Left/Right/Home/End
+  keys. The recommendation always belongs to the displayed position. Scores are
+  capped at ±8 in the plot; the text retains the score or identifies mate/no
+  completed evaluation. Terminal positions have no suggested move.
 - **Saved games** keeps up to 20 named games in this browser, with explicit update
   and delete controls. A load is validated first and always starts paused, keeping
   clocks, player levels, rules, move history, touch-move locks and draw offers.

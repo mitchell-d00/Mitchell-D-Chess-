@@ -154,3 +154,41 @@ For future changes, edit the UI modules and run `node scripts/embed-ui.cjs` befo
 committing the standalone `index.html`; rerun the applicable documented checks.
 The separate engine candidate still has no approval to replace the public engine.
 Do not reinterpret these UI results as an engine-strength benchmark.
+
+## Follow-up: visible sharing, clearer review and teaching cues
+
+User requested visible copied links, richer review, mobile stress checks and short
+“why this move?” explanations. Branch `ui/share-review-explanations` starts from
+public main `3c47e42`; no engine research is included.
+
+- Share opens a persistent URL dialog, selects the URL, reports copy success or
+  failure, and supports repeat/manual copy without losing the link. Closed-dialog
+  clipboard callbacks cannot overwrite a later dialog.
+- Review adds labelled axes and score text, a current-position guide, keyboard
+  graph navigation, SAN/coordinates and toggleable board arrows. Recommendations
+  are derived from the displayed position, including when flipped. Terminal
+  positions have no arrow. The original review uncertainty/gap handling remains.
+- Original MIT `ui/move-explanations.js` is embedded by `scripts/embed-ui.cjs`. It
+  describes verified move features without search: mate/check, captures, en passant,
+  promotion, castling, direct multi-piece attacks, development, central pawns and
+  open files. Other moves get a factual from/to description. No claim of engine
+  intent or winning material. Lessons can reveal their accepted target move and
+  existing hint; casual levels 1–20 explain the last displayed move or hint. No
+  coaching during official play. Cues are not stored in named saves.
+- Stress checks exposed tablet buttons below 44px and edge-file promotion overflow.
+  Tablet/coarse-pointer controls now retain 44px targets; promotion buttons do too,
+  with the palette constrained inside the board. Portrait/landscape screenshots
+  were inspected, and graph labels use HTML so they remain readable at narrow widths.
+
+Changed files: `index.html`, `ui/move-explanations.js`, `scripts/embed-ui.cjs`,
+`scripts/test-move-explanations.cjs`, `scripts/browser-polish-test.cjs`, README and
+`tests`. Final commands/results are recorded in `validation/ui-polish-checks.json`.
+
+Verification complete: all 12 commands passed. New browser cases also cover a
+late clipboard callback after a dialog closes, graph selection via touch, and
+re-enabling lesson explanations after a wrong attempt resets. Cues are tied to
+the game token, displayed position and ply to prevent stale explanations. Exact
+engine/licence comparisons and `git diff --check` passed.
+
+Next: publish and record the merge. Do not turn UI review estimates into strength
+claims.

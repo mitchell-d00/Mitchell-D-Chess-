@@ -47,8 +47,11 @@ button,select,input{font:inherit;color:inherit}
 .featureline{font-size:.78rem;color:var(--muted)}
 .narrow-label{display:none}
 .save-list{display:grid;gap:10px}.save-entry{display:grid;gap:8px;padding:12px;border:1px solid var(--line);border-radius:10px;overflow-wrap:anywhere}
-.analysis-graph{width:100%;height:130px;display:block;cursor:crosshair;background:var(--well);border-radius:8px}
+.analysis-chart{position:relative}.graph-axis{position:absolute;left:2px;font-size:.8rem;color:var(--muted);pointer-events:none}.graph-axis.top{top:8px}.graph-axis.zero{top:62px}.graph-axis.bottom{top:116px}.graph-ends{position:absolute;bottom:2px;left:8%;right:2%;display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);pointer-events:none}
+.analysis-graph{width:100%;height:160px;touch-action:pan-y;display:block;cursor:crosshair;background:var(--well);border-radius:8px}
 .analysis-list{display:grid;gap:6px;max-height:300px;overflow:auto}.analysis-row{display:grid;text-align:left;gap:3px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font:inherit}.analysis-row small{color:var(--muted)}.analysis-list .cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.position-cue{width:100%;max-width:var(--bsize);padding:10px 12px;display:grid;gap:5px;overflow-wrap:anywhere}.position-cue p{font-size:.9rem}.position-cue small{color:var(--muted)}
+.share-url{width:100%;min-width:0;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-family:var(--mono);font-size:16px}.check-control{display:flex;align-items:center;gap:10px;min-height:44px}.check-control input{width:22px;height:22px;flex:none}.review-summary{display:grid;gap:6px;padding-block:10px}.analysis-graph text{fill:var(--muted);font:14px system-ui,sans-serif}
 .card-heading{display:flex;gap:8px;justify-content:space-between;align-items:center}
 .welcome{border-color:var(--accent)}
 .board-row{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));min-height:0}
@@ -217,11 +220,11 @@ textarea{width:100%;min-height:140px;font-family:var(--mono);font-size:.82rem;ba
 }
 html[data-motion="off"] .pc{transition:none}
 @media (prefers-reduced-motion:reduce){.thinking{animation:none}.pc{transition:none!important}}
-@media (max-width:600px),(pointer:coarse){
+@media (max-width:980px),(any-pointer:coarse){
   .btn,.btn.small,.seg button,.tabs button,select,.moves button,.litem{min-height:44px}
   input,select,textarea{font-size:16px}
   .top .right{flex-wrap:wrap;justify-content:flex-end}.ctlgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .modal{padding:16px}.promo button{min-height:38px}
+  .modal{padding:16px}.promo{width:max(12.5%,46px)}.promo button{min-width:44px;min-height:44px}.analysis-row{min-height:60px}.navrow .btn.icon{min-width:44px}.litem{padding-block:8px}.top .right .btn{min-width:44px}
 }
 @media (max-width:600px){
   header.top{gap:10px 8px}.brand h1{font-size:1.15rem}.featureline{font-size:.67rem}.tabs button{padding:.42rem .65rem}
@@ -232,7 +235,7 @@ html[data-motion="off"] .pc{transition:none}
   :root{--bsize:min(640px,calc(100vw - 370px),calc(100vh - 150px))}
   .game{grid-template-columns:minmax(0,1fr) 310px;gap:12px}.rail{max-height:calc(100vh - 85px);overflow:auto;overscroll-behavior:contain}
   header.top{padding-block:6px;margin-bottom:8px}.playerbar{min-height:26px}
-  .brand h1{font-size:1.1rem}.featureline{display:none}.top .right{gap:4px}.top .right .btn{font-size:.78rem;min-height:36px;padding:.3rem .45rem}.tabs button{min-height:36px;padding:.35rem .7rem}
+  .brand h1{font-size:1.1rem}.featureline{display:none}.top .right{gap:4px}.top .right .btn{font-size:.78rem;min-height:44px;padding:.3rem .45rem}.tabs button{min-height:44px;padding:.35rem .7rem}
 }
 </style>
 
@@ -269,6 +272,7 @@ html[data-motion="off"] .pc{transition:none}
         <div class="boardmsg" id="boardmsg" hidden></div>
       </div>
       <div class="playerbar" id="barBot"></div>
+      <div class="position-cue panel" id="moveCue" hidden><strong id="moveCueTitle"></strong><p id="moveCueText"></p><small>Position cues, not the engine’s reasoning or proof of the best move.</small></div>
     </div>
 
     <aside class="rail" id="railPlay" role="tabpanel" aria-labelledby="playTab">
@@ -342,6 +346,7 @@ html[data-motion="off"] .pc{transition:none}
         <div class="ctlgrid">
           <button class="btn small" id="undoBtn">Take back</button>
           <button class="btn small" id="hintBtn">Hint</button>
+          <button class="btn small" id="whyBtn" hidden>Why this move?</button>
           <button class="btn small" id="drawBtn">Offer draw</button>
           <button class="btn small" id="resignBtn">Resign</button>
           <button class="btn small" id="pgnBtn">Copy PGN</button>
@@ -351,7 +356,7 @@ html[data-motion="off"] .pc{transition:none}
           <button class="btn small" id="gamesBtn">Saved games</button>
         </div>
       </div>
-      <div class="card panel" id="analysisCard"><h3>Game review</h3><p class="muted">Short local searches from this unrated engine. Labels are estimates; longer searches may disagree. Positive evaluations favour White. Gaps mean no completed evaluation.</p><label class="field">Search per position<select id="analysisBudget"><option value="100">Fast · 0.1 second</option><option value="250" selected>Standard · 0.25 second</option><option value="500">Deeper · 0.5 second</option></select></label><div class="navrow"><button class="btn small primary" id="analyseBtn">Review game</button><button class="btn small" id="cancelAnalysisBtn" hidden>Cancel review</button></div><p id="analysisProgress" class="muted" role="status" aria-live="polite"></p><div id="analysisOutput" hidden><svg id="analysisGraph" class="analysis-graph" viewBox="0 0 600 130" role="img" aria-label="Estimated White evaluation by half-move. Use the move buttons below for keyboard access."></svg><div id="analysisMoves" class="analysis-list"></div></div></div>
+      <div class="card panel" id="analysisCard"><h3>Game review</h3><p class="muted">Short local searches from this unrated engine. Labels are estimates; longer searches may disagree. Positive evaluations favour White. Gaps mean no completed evaluation.</p><label class="field">Search per position<select id="analysisBudget"><option value="100">Fast · 0.1 second</option><option value="250" selected>Standard · 0.25 second</option><option value="500">Deeper · 0.5 second</option></select></label><div class="navrow"><button class="btn small primary" id="analyseBtn">Review game</button><button class="btn small" id="cancelAnalysisBtn" hidden>Cancel review</button></div><p id="analysisProgress" class="muted" role="status" aria-live="polite"></p><div id="analysisOutput" hidden><div class="analysis-chart"><span class="graph-axis top" aria-hidden="true">+8</span><span class="graph-axis zero" aria-hidden="true">0</span><span class="graph-axis bottom" aria-hidden="true">−8</span><svg id="analysisGraph" class="analysis-graph" viewBox="0 0 600 160" preserveAspectRatio="none" role="slider" tabindex="0" aria-label="Review position. Left and Right step through evaluations; Home and End go to the ends." aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></svg><div class="graph-ends" aria-hidden="true"><span>Start</span><span id="analysisEnd"></span></div></div><div class="review-summary"><strong id="analysisScore" role="status"></strong><span id="analysisBest"></span><label class="check-control"><input type="checkbox" id="analysisArrows" checked>Show suggested-move arrow on the board</label><small class="muted">Scores in pawns, from White’s view; plot capped at ±8. Tap the graph or use its arrow keys to select a position.</small></div><div id="analysisMoves" class="analysis-list"></div></div></div>
     </aside>
 
     <aside class="rail" id="railLearn" role="tabpanel" aria-labelledby="learnTab" hidden>
@@ -2462,6 +2467,51 @@ if (typeof module !== 'undefined') module.exports = LESSONS;
   return {KEY,LIMIT,MAX_GAME,validate,create};
 });
 </script>
+<script id="move-explanations-src">
+// Original MIT: factual position cues, independent of search/evaluation intent.
+(function(root,factory){
+  if(typeof module==='object'&&module.exports)module.exports=factory;
+  else root.MoveExplanations=factory(root.ENGINE);
+})(typeof globalThis!=='undefined'?globalThis:this,function(E){
+  'use strict';
+  const names={p:'pawn',n:'knight',b:'bishop',r:'rook',q:'queen',k:'king'};
+  function board(fen){
+    const out=new Map();fen.split(' ')[0].split('/').forEach((row,r)=>{let f=0;for(const c of row){if(/[1-8]/.test(c))f+=+c;else{out.set('abcdefgh'[f++]+(8-r),{type:c.toLowerCase(),side:c===c.toUpperCase()?'w':'b'});}}});return out;
+  }
+  const xy=s=>[s.charCodeAt(0)-97,+s[1]-1];
+  function attacks(p,from,to,pieces){
+    const [x,y]=xy(from),[tx,ty]=xy(to),dx=tx-x,dy=ty-y,ax=Math.abs(dx),ay=Math.abs(dy);
+    if(!ax&&!ay)return false;
+    if(p.type==='p')return ax===1&&dy===(p.side==='w'?1:-1);
+    if(p.type==='n')return ax*ay===2;
+    if(p.type==='k')return Math.max(ax,ay)===1;
+    if(!((p.type==='b'||p.type==='q')&&ax===ay||(p.type==='r'||p.type==='q')&&(!ax||!ay)))return false;
+    for(let a=x+Math.sign(dx),b=y+Math.sign(dy);a!==tx||b!==ty;a+=Math.sign(dx),b+=Math.sign(dy))if(pieces.has('abcdefgh'[a]+(b+1)))return false;
+    return true;
+  }
+  function describe(fen,uci){
+    const chess=new E.Chess(fen),move=chess.findUci(uci);if(!move)return null;
+    const from=E.sqName(E.mFrom(move)),to=E.sqName(E.mTo(move)),before=board(fen),piece=before.get(from),captured=before.get(to),san=chess.san(move),reasons=[];
+    chess.make(move);const after=board(chess.fen()),moved=after.get(to),status=chess.status(true);
+    if(status&&status.reason==='checkmate')reasons.push('delivers checkmate: the king has no legal escape');
+    else{
+      if(uci.length===5)reasons.push('promotes the pawn to a '+names[uci[4]]);
+      if(piece.type==='k'&&Math.abs(xy(from)[0]-xy(to)[0])===2)reasons.push('castles, moving the king and bringing the rook into play');
+      if(captured)reasons.push('captures the '+names[captured.type]+' on '+to);
+      else if(piece.type==='p'&&from[0]!==to[0])reasons.push('captures a pawn en passant');
+      if(chess.inCheck())reasons.push('gives check, so the opponent must answer the threat to the king');
+      const targets=[...after].filter(([sq,p])=>p.side!==piece.side&&p.type!=='p'&&attacks(moved,to,sq,after));
+      if(targets.length>=2)reasons.push('attacks the '+targets.slice(0,2).map(([sq,p])=>names[p.type]+' on '+sq).join(' and '));
+      if(!reasons.length&&['n','b'].includes(piece.type)&&from[1]===(piece.side==='w'?'1':'8'))reasons.push('develops the '+names[piece.type]+' from its home rank'+('cdef'.includes(to[0])?' toward the centre':''));
+      if(!reasons.length&&piece.type==='p'&&['d4','e4','d5','e5'].includes(to))reasons.push('places a pawn in the centre');
+      if(!reasons.length&&piece.type==='r'&&![...after].some(([sq,p])=>sq[0]===to[0]&&p.type==='p'))reasons.push('places the rook on an open file with no pawns');
+    }
+    if(!reasons.length)reasons.push('moves the '+names[piece.type]+' from '+from+' to '+to);
+    return {san,from,to,text:san+': '+reasons.slice(0,2).join('; ')+'.'};
+  }
+  return {describe};
+});
+</script>
 <script>
 'use strict';
 const E = ENGINE;
@@ -2655,11 +2705,13 @@ function renderBoard() {
 function renderArrows() {
   const svg = $('#arrows');
   let h = '<defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="rgba(45,140,255,.85)"/></marker></defs>';
-  for (const [a, b] of BV.arrows) {
+  const recommendation = currentRecommendation();
+  const arrows = recommendation && $('#analysisArrows').checked ? [[recommendation.from,recommendation.to]] : BV.arrows;
+  for (const [a, b] of arrows) {
     const [x1, y1] = sqXY(a), [x2, y2] = sqXY(b);
     const cx1 = x1 * 100 + 50, cy1 = y1 * 100 + 50, cx2 = x2 * 100 + 50, cy2 = y2 * 100 + 50;
     const dx = cx2 - cx1, dy = cy2 - cy1, len = Math.hypot(dx, dy), ex = cx2 - dx / len * 26, ey = cy2 - dy / len * 26;
-    h += `<line x1="${cx1}" y1="${cy1}" x2="${ex}" y2="${ey}" stroke="rgba(45,140,255,.85)" stroke-width="16" stroke-linecap="round" marker-end="url(#ah)"/>`;
+    h += `<line x1="${cx1}" y1="${cy1}" x2="${ex}" y2="${ey}" stroke="rgba(45,140,255,.85)" stroke-width="20" stroke-linecap="round" marker-end="url(#ah)" data-suggestion="true"/>`;
   }
   svg.innerHTML = h;
 }
@@ -2694,7 +2746,7 @@ function showPromo(from, to) {
   const [x, y] = sqXY(to), color = to[1] === '8' ? 'w' : 'b';
   const box = document.createElement('div'); box.className = 'promo';
   const down = y === 0;
-  box.style.left = (x * 12.5) + '%';
+  box.style.left = `clamp(0px, ${x*12.5}%, calc(100% - max(12.5%, 46px)))`;
   if (down) box.style.top = '0'; else box.style.bottom = '0';
   ['q', 'r', 'b', 'n'].forEach(p => box.insertAdjacentHTML('beforeend', `<button data-p="${p}" aria-label="Promote to ${NAMES[p]}">${pieceSVG(p, color)}</button>`));
   box.onclick = e => { const b = e.target.closest('[data-p]'); if (!b) return; box.remove(); BV.onMove(from + to + b.dataset.p); focusSquare(to); };
@@ -2836,7 +2888,7 @@ function afterChange() {
   $('#continueBtn').hidden = !G.review; $('#resumeSavedBtn').hidden = !G.restored || G.review || !!G.over;
   if (G.restored&&!G.review) $('#recordTitle').textContent = 'Saved game · paused';
   if (G.review) $('#recordTitle').textContent = (G.moves.length ? 'Imported game' : 'Imported position') + ' · review';
-  renderBoard(); renderBars(); renderStatus(); renderMoves(); renderButtons(); renderAnalysis();
+  renderBoard(); renderBars(); renderStatus(); renderMoves(); renderButtons(); renderAnalysis(); renderMoveCue();
   maybeAI();
 }
 function maybeAI() {
@@ -2959,6 +3011,8 @@ function renderButtons() {
   $('#undoBtn').title = G.official ? 'Take backs are not allowed under official rules' : '';
   $('#hintBtn').disabled = !humanToMove() || G.official || !!G.hinting;
   $('#hintBtn').title = G.official ? 'Hints are not allowed under official rules' : '';
+  $('#whyBtn').hidden = !allowsMoveCues();
+  $('#whyBtn').disabled = G.official || !(G.view==null?G.moves.length:G.view);
   $('#drawBtn').disabled = cvc || !!G.over || !humanToMove() || !!G.drawOffer || G.moves.length < 2;
   $('#resignBtn').disabled = G.review || !!G.over || cvc || !G.moves.length && G.mode === 'pvc' && G.players.w.type === 'ai';
   $('#navFirst').disabled = $('#navPrev').disabled = (G.view === 0) || G.fens.length < 2;
@@ -2993,6 +3047,7 @@ $('#hintBtn').onclick = () => {
     if (G && G.token === tok) { G.hinting = false; $('#hintBtn').textContent = 'Hint'; }
     if (!G || G.token !== tok || G.moves.length !== ply || !r || !r.move) { renderButtons(); return; }
     BV.arrows = [[r.move.slice(0, 2), r.move.slice(2, 4)]]; renderBoard(); renderButtons();
+    G.moveCue = {fen:curFen(),ply:G.view==null?G.moves.length:G.view,token:G.token,title:'Suggested move',detail:MoveExplanations.describe(curFen(),r.move)}; renderMoveCue();
     toast('Suggested move shown with the arrow.');
   }).catch(() => { if (G && G.token === tok) { G.hinting = false; $('#hintBtn').textContent = 'Hint'; renderButtons(); } });
 };
@@ -3061,7 +3116,11 @@ $('#importBtn').onclick = () => openImport();
 $('#shareBtn').onclick = () => {
   const fen = tab === 'play' ? curFen() : LS.chess.fen();
   const url = new URL(location.protocol === 'file:' ? 'https://mitchell-d00.github.io/Mitchell-D-Chess-/' : location.href);
-  url.hash = 'fen=' + encodeURIComponent(fen); copyText(url.href, 'Position link');
+  url.hash = 'fen=' + encodeURIComponent(fen);
+  openModal(`<div class="modal-head"><h2>Share this position</h2><button class="btn small" data-close>Close</button></div><p>The link opens the displayed position for review, without a running clock.</p><label class="field">Position URL<input id="shareUrl" class="share-url" type="text" readonly></label><p id="shareStatus" role="status" aria-live="polite">Copying position link…</p><button class="btn primary" id="copyShareBtn">Copy link again</button>`,()=>{$('#shareUrl').value=url.href;$('#shareUrl').focus();$('#shareUrl').select();});
+  const status=$('#shareStatus'),input=$('#shareUrl'); input.onclick=()=>input.select();
+  const copy=async()=>{try{await navigator.clipboard.writeText(url.href);if(status.isConnected)status.textContent='Copied. The URL stays here so you can check or copy it again.';}catch(error){if(status.isConnected){status.textContent='Clipboard unavailable. Select the URL above and copy it manually.';input.focus();input.select();}}};
+  $('#copyShareBtn').onclick=copy;copy();
 };
 $('#continueBtn').onclick = () => { const fen = curFen(); requestNewGame(()=>{newGame({startFen:fen});toast('New game from the displayed position; fresh clocks and your selected setup.');}); };
 window.addEventListener('hashchange', () => { try { const fen = PositionTools.hashFen(location.hash); if (fen) openImport(fen); } catch (e) { toast(e.message); } });
@@ -3211,7 +3270,7 @@ function loadLesson(i) {
   cancelThinking();
   LS.idx = i; store.set('lessonIdx', i);
   const l = LESSONS[i];
-  LS.chess = new E.Chess(l.fen); LS.state = 'idle'; LS.moves = []; LS.busy = false; LS.token = Math.random(); LS.human = lessonSide(); LS.feedback = null;
+  LS.chess = new E.Chess(l.fen); LS.state = 'idle'; LS.moves = []; LS.busy = false; LS.token = Math.random(); LS.human = lessonSide(); LS.feedback = null; LS.why = null; LS.lastExplanation = null;
   BV.flipped = LS.human === 'b'; BV.sel = null; BV.targets = []; BV.arrows = []; BV.marks = l.marks || []; BV.last = null;
   $('#boardmsg').hidden = true;
   renderLearn(); learnBoard();
@@ -3236,6 +3295,7 @@ function renderLearnBars() {
 function lessonApply(uci) {
   const m = LS.chess.findUci(uci); if (!m) return null;
   const cap = !!(E.mFlags(m) & 1), from = E.sqName(E.mFrom(m)), to = E.sqName(E.mTo(m)), promo = E.mPromo(m);
+  LS.lastExplanation = MoveExplanations.describe(LS.chess.fen(),uci); LS.why = null;
   LS.chess.make(m); LS.moves.push(uci);
   BV.animFrom = [from, to]; BV.last = [from, to]; BV.marks = []; BV.arrows = [];
   if (LS.chess.inCheck()) Snd.check(); else if (cap) Snd.capture(); else Snd.move();
@@ -3256,7 +3316,7 @@ function lessonMove(uci) {
     LS.state = 'wrong'; LS.feedback = { cls: 'bad', text: 'Not quite. ' + (l.hint || 'Try again.') };
     LS.busy = true;
     const tok = LS.token;
-    setTimeout(() => { if (LS.token !== tok) return; LS.chess.unmake(); LS.moves.pop(); LS.busy = false; LS.state = 'idle'; BV.last = null; BV.marks = l.marks || []; learnBoard(); }, 1100);
+    setTimeout(() => { if (LS.token !== tok) return; LS.chess.unmake(); LS.moves.pop(); LS.lastExplanation=null; LS.why=null; LS.busy = false; LS.state = 'idle'; BV.last = null; BV.marks = l.marks || []; renderLearn(); learnBoard(); }, 1100);
   }
   renderLearn(); learnBoard();
 }
@@ -3302,9 +3362,10 @@ function renderLearn() {
     <p class="txt">${l.text}</p>
     ${l.task ? `<div class="task"><span aria-hidden="true">♟</span><span>${esc(l.task)}</span></div>` : ''}
     ${fb}
+    ${LS.why ? `<div class="feedback info" role="status"><strong>Why this move?</strong> ${esc(LS.why)}<p class="muted">Position cues, not the engine’s reasoning.</p></div>` : ''}
     <div class="navrow">
       <button class="btn small" id="lPrev" ${LS.idx === 0 ? 'disabled' : ''}>Previous</button>
-      ${l.type !== 'info' ? `<button class="btn small" id="lHint" ${solved ? 'disabled' : ''}>Hint</button><button class="btn small" id="lReset">${LS.state === 'failed' ? 'Try again' : 'Reset'}</button>` : ''}
+      ${l.type !== 'info' ? `<button class="btn small" id="lWhy" ${LS.busy ? 'disabled' : ''}>Why this move?</button><button class="btn small" id="lHint" ${solved ? 'disabled' : ''}>Hint</button><button class="btn small" id="lReset">${LS.state === 'failed' ? 'Try again' : 'Reset'}</button>` : ''}
       <span class="grow"></span>
       <button class="btn small ${solved ? 'primary' : ''}" id="lNext" ${last ? 'disabled' : ''}>${solved ? 'Next lesson' : 'Skip'}</button>
     </div>`;
@@ -3314,6 +3375,12 @@ function renderLearn() {
     LS.showHint = true; LS.feedback = null;
     if (l.type === 'move' && l.accept) BV.arrows = [[l.accept[0].slice(0, 2), l.accept[0].slice(2, 4)]];
     renderLearn(); renderBoard();
+  };
+  if ($('#lWhy')) $('#lWhy').onclick=()=>{
+    if(LS.busy)return;
+    let detail=LS.lastExplanation;
+    if(!detail&&l.type==='move'&&l.accept){detail=MoveExplanations.describe(LS.chess.fen(),l.accept[0]);if(detail)BV.arrows=[[detail.from,detail.to]];}
+    LS.why=[detail&&detail.text,l.hint].filter(Boolean).join(' ')||'Try the lesson hint and look at checks, captures and threats.';renderLearn();renderBoard();
   };
   if ($('#lReset')) $('#lReset').onclick = () => { LS.showHint = false; loadLesson(LS.idx); };
   // list
@@ -3386,6 +3453,27 @@ function requestNewGame(action) {
   $('#saveBeforeNew').onclick=openGames;$('#confirmNew').onclick=()=>{closeModal();action();};
 }
 
+function allowsMoveCues() {
+  return !!G && !G.official && G.mode==='pvc' && Object.values(G.players).some(p=>p.type==='ai'&&p.level<=20);
+}
+function currentRecommendation() {
+  if(typeof tab==='undefined'||tab!=='play'||!G||(!G.over&&!G.review)||!G.analysis)return null;
+  const index=G.view==null?G.moves.length:G.view,position=G.analysis.positions[index];
+  return position&&position.best?MoveExplanations.describe(G.fens[index],position.best):null;
+}
+function renderMoveCue() {
+  const review=currentRecommendation(),cue=G&&G.moveCue;
+  const visible=tab==='play'&&(review||allowsMoveCues()&&cue&&cue.fen===curFen()&&cue.ply===(G.view==null?G.moves.length:G.view)&&cue.token===G.token&&cue.detail);
+  $('#moveCue').hidden=!visible;if(!visible)return;
+  $('#moveCueTitle').textContent=review?'Suggested for this position':'Why this move? · '+cue.title;
+  $('#moveCueText').textContent=(review||cue.detail).text;
+}
+$('#whyBtn').onclick=()=>{
+  if(!allowsMoveCues())return;
+  const ply=G.view==null?G.moves.length:G.view;if(!ply)return;
+  G.moveCue={fen:curFen(),ply,token:G.token,title:'Last played move',detail:MoveExplanations.describe(G.fens[ply-1],G.moves[ply-1])};renderMoveCue();
+};
+
 // ================= Post-game worker review =================
 let analysisJob=null,analysisSerial=0;
 function cancelAnalysis() {
@@ -3445,20 +3533,32 @@ function renderAnalysis() {
     list.insertAdjacentHTML('beforeend',`<button class="analysis-row" data-analysis-ply="${row.ply}"><strong>${esc(number+' '+row.san)}</strong><span>${esc(row.label)}</span><small>${esc([alternative,loss].filter(Boolean).join(' · '))}</small></button>`);
   }
   const current=G.view==null?G.moves.length:G.view;$$('[data-analysis-ply]',list).forEach(b=>b.classList.toggle('cur',+b.dataset.analysisPly===current));
-  const positions=data.positions,span=Math.max(1,data.total-1),points=positions.map((r,i)=>r.white==null?null:[10+580*i/span,65-Math.max(-800,Math.min(800,r.white))*55/800]);
+  const positions=data.positions,span=Math.max(1,data.total-1),points=positions.map((r,i)=>r.white==null?null:[48+538*i/span,70-Math.max(-800,Math.min(800,r.white))*54/800]);
   let connected=false;const path=points.map(point=>{if(!point){connected=false;return '';}const [x,y]=point,command=connected?'L':'M';connected=true;return command+x.toFixed(2)+' '+y.toFixed(2);}).join(' ');
-  $('#analysisGraph').innerHTML=`<line x1="10" y1="65" x2="590" y2="65" stroke="var(--muted)" stroke-dasharray="4 4"/><path d="${path}" fill="none" stroke="var(--accent)" stroke-width="3"/>`+points.map((point,i)=>point?`<circle cx="${point[0]}" cy="${point[1]}" r="${i===current?5:3}" fill="var(--accent)"/>`:'').join('');
+  const score=positions[current],recommendation=currentRecommendation(),graph=$('#analysisGraph');
+  const scoreText=!score||score.white==null?'No completed evaluation':Math.abs(score.white)>=E.MATE-1000?(score.white>0?'White':'Black')+' has a mating score':(score.white>=0?'+':'')+(score.white/100).toFixed(2)+' pawns';
+  $('#analysisScore').textContent='Position '+current+' · '+scoreText;
+  $('#analysisBest').textContent=recommendation?'Suggested: '+recommendation.san+' ('+recommendation.from+' → '+recommendation.to+').':score&&score.terminal?'Terminal position; no move to suggest.':'No suggestion available for this position yet.';
+  graph.setAttribute('aria-valuemax',data.total-1);graph.setAttribute('aria-valuenow',current);graph.setAttribute('aria-valuetext','Position '+current+', '+scoreText);
+  $('#analysisEnd').textContent=(data.total-1)+' plies';
+  graph.innerHTML=`<line x1="48" y1="70" x2="586" y2="70" stroke="var(--muted)" stroke-dasharray="4 4"/><path d="${path}" fill="none" stroke="var(--accent)" stroke-width="3"/>`+points.map((point,i)=>point?`<circle cx="${point[0]}" cy="${point[1]}" r="${i===current?6:3}" fill="var(--accent)"/>`:'').join('')+(current<positions.length?`<line x1="${48+538*current/span}" x2="${48+538*current/span}" y1="8" y2="133" stroke="var(--accent)" stroke-dasharray="3 3"/>`:'');
+  renderArrows();renderMoveCue();
 
 }
 $('#analyseBtn').onclick=startAnalysis;$('#cancelAnalysisBtn').onclick=cancelAnalysis;
 $('#analysisMoves').onclick=e=>{const b=e.target.closest('[data-analysis-ply]');if(b)setView(+b.dataset.analysisPly);};
-$('#analysisGraph').onclick=e=>{const data=G.analysis;if(!data||!data.positions.length)return;const box=e.currentTarget.getBoundingClientRect(),fraction=Math.max(0,Math.min(1,(e.clientX-box.left)/box.width));setView(Math.min(data.positions.length-1,Math.round(fraction*(data.total-1))));};
+$('#analysisGraph').onclick=e=>{const data=G.analysis;if(!data||!data.positions.length)return;const box=e.currentTarget.getBoundingClientRect(),fraction=Math.max(0,Math.min(1,((e.clientX-box.left)/box.width*600-48)/538));setView(Math.round(fraction*(data.total-1)));};
 
+$('#analysisArrows').onchange=()=>renderArrows();
+$('#analysisGraph').onkeydown=e=>{const data=G.analysis;if(!data||!data.positions.length)return;const max=data.total-1,current=G.view==null?G.moves.length:G.view;let target;
+  if(e.key==='ArrowLeft')target=current-1;else if(e.key==='ArrowRight')target=current+1;else if(e.key==='Home')target=0;else if(e.key==='End')target=max;else return;
+  e.preventDefault();e.stopPropagation();setView(Math.max(0,Math.min(max,target)));
+};
 // ================= Tabs =================
 let tab = 'play';
 function setTab(t) {
   if (t === tab) return;
-  tab = t;
+  tab = t; $('#moveCue').hidden=true;
   $$('.tabs button').forEach(b => { b.classList.toggle('on', b.dataset.tab === t); b.setAttribute('aria-selected', b.dataset.tab === t); b.tabIndex = b.dataset.tab === t ? 0 : -1; });
   $('#railPlay').hidden = t !== 'play'; $('#railLearn').hidden = t !== 'learn';
   $('#boardmsg').hidden = true;

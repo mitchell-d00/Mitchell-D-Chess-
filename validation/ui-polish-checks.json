@@ -1,0 +1,138 @@
+{
+  "baseMain": "3c47e422c4073a3610e3bd1932bbda3d689c8498",
+  "engineAndLicenceUnchanged": true,
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "scripts/test.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:30:37.480840+00:00",
+      "finishedUtc": "2026-11-05T15:30:37.825760+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all 454 book lines, 65 levels, script syntax\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-neural.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:43.083794+00:00",
+      "finishedUtc": "2026-11-05T15:29:43.710740+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: 2777 incremental rebuild, special-move, null-move, unmake, JS/SIMD and independent-reference checks\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-hash-moves.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:43.711045+00:00",
+      "finishedUtc": "2026-11-05T15:29:48.383469+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: historical hash collision, six failed-game positions, TT corruption injection, strict history, incremental hash restoration\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-position-tools.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:48.383917+00:00",
+      "finishedUtc": "2026-11-05T15:29:48.445545+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: immutable public engine, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-game-library.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:48.445909+00:00",
+      "finishedUtc": "2026-11-05T15:29:48.509607+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: versioned local records, player/clock validation, bounded library, explicit overwrite/delete and atomic quota failures\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-move-explanations.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:48.510028+00:00",
+      "finishedUtc": "2026-11-05T15:29:48.568263+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: factual development, centre, castling, en passant, underpromotion, mate, fork, capture and blocked-ray cues; illegal moves rejected\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:48.568577+00:00",
+      "finishedUtc": "2026-11-05T15:29:50.337678+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: offline standalone HTML, 65 levels, 38 lessons, legal worker move, responsive UI, cancellation, book, computer-vs-computer, worker failure\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-tools-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:50.338014+00:00",
+      "finishedUtc": "2026-11-05T15:29:52.160310+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: offline paste/file import, transactional errors, inert headers, review/navigation, shared-position reload, custom-FEN play and black-start PGN export\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-accessibility-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:30:37.826141+00:00",
+      "finishedUtc": "2026-11-05T15:30:39.831968+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: accessible board/roving focus, keyboard and touch-move legality, flipped navigation, underpromotion, modal trap/return, guide persistence, tabs, contrast, portrait/landscape, real touch taps and 44px targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-library-analysis-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:29:54.098440+00:00",
+      "finishedUtc": "2026-11-05T15:29:57.217944+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: offline named saves, new-game confirmation, paused official-clock restoration, transactional corrupt-save rejection, real worker review/alternatives/graph, cancellation and stale-result isolation\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-polish-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T15:30:39.832269+00:00",
+      "finishedUtc": "2026-11-05T15:30:43.726074+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: persistent share URL and denied clipboard fallback; lesson/low-level cues and official exclusion; real review arrows, flip/toggle/terminal/keyboard graph; six mobile/tablet viewports and edge underpromotion targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python",
+        "scripts/test-campaign.py"
+      ],
+      "startedUtc": "2026-11-05T15:29:59.870109+00:00",
+      "finishedUtc": "2026-11-05T15:30:15.094271+00:00",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 15.145s\n\nOK\n"
+    }
+  ]
+}
