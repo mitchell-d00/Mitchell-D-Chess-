@@ -31,6 +31,13 @@ class PrepareTests(unittest.TestCase):
    with patch.object(prepare,'git',side_effect=legacy):
     with self.assertRaisesRegex(ValueError,'cannot enforce WASM'):prepare.prepare(args)
    self.assertFalse((root/'legacy-adapter').exists())
+   args.native_adapter_required=True;args.out=str(root/'legacy-alternate')
+   def old_alternate(*argv):
+    if argv[0]=='show' and argv[1].endswith(':index.html'):return b'<script id="engine-src">var oldJavascript=true;</script>'
+    return legacy(*argv)
+   with patch.object(prepare,'git',side_effect=old_alternate):
+    with self.assertRaisesRegex(ValueError,'cannot enforce WASM'):prepare.prepare(args)
+   self.assertFalse((root/'legacy-alternate').exists())
    Path(config['helper']).write_text('modified helper')
    result=subprocess.run([sys.executable,config['runner'],str(path)],capture_output=True,text=True,timeout=10)
    self.assertNotEqual(result.returncode,0);self.assertIn('Pinned input changed: helper',result.stderr)

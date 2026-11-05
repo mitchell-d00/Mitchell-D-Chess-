@@ -33,7 +33,7 @@ def prepare(args):
   if any(k.startswith('MITCHELL_') for k in runtime):raise ValueError('Benchmark backend settings are pinned automatically; runtime environment cannot override MITCHELL_ variables')
  html=payload['index.html'];core=re.search(rb"var WASM_CORE_DATA = '([^']+)'",html)
  model=re.search(rb"var NNUE_MODEL = \{ hidden: (\d+), data: '([^']+)' \}",html)
- if core and b'MITCHELL_REQUIRE_WASM' not in payload['scripts/uci.cjs']:raise ValueError('The frozen adapter cannot enforce WASM; choose a revision with required-backend support')
+ if (core or getattr(args,'native_adapter_required',False)) and b'MITCHELL_REQUIRE_WASM' not in payload['scripts/uci.cjs']:raise ValueError('The frozen adapter cannot enforce WASM; choose a revision with required-backend support')
  if core and not model:raise ValueError('WASM benchmark requires identifiable embedded network metadata')
  c=json.loads((ROOT/'validation/independent/campaign-config.json').read_text())
  c['createdUtc']=datetime.datetime.now(datetime.timezone.utc).isoformat();c['testedRevision']=revision;c['runnerSourceRevision']=git('rev-parse','HEAD').decode().strip()
