@@ -1,3 +1,15 @@
+# Visible pause/resume checks (November 2026)
+
+    node scripts/browser-pause-test.cjs
+
+Exact final results are in validation/pause-checks.json. Coverage includes an
+obvious control in untimed/timed casual modes, keyboard and touch resume, paused
+board/takeback exclusion, save/history navigation, preserved clock delay and
+per-move time, real worker cancellation, delayed AI/hint callback isolation,
+official guards, restored official touch locks, and portrait/landscape visibility.
+The engine and licence disclosure remain byte-identical to main 5152cc8.
+COMFORT-IDEAS.md contains future proposals, not claims of implemented features.
+
 # Share, review and teaching polish (November 2026)
 
     node scripts/test-move-explanations.cjs

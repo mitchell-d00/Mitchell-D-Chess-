@@ -50,6 +50,10 @@ button,select,input{font:inherit;color:inherit}
 .analysis-chart{position:relative}.graph-axis{position:absolute;left:2px;font-size:.8rem;color:var(--muted);pointer-events:none}.graph-axis.top{top:8px}.graph-axis.zero{top:62px}.graph-axis.bottom{top:116px}.graph-ends{position:absolute;bottom:2px;left:8%;right:2%;display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);pointer-events:none}
 .analysis-graph{width:100%;height:160px;touch-action:pan-y;display:block;cursor:crosshair;background:var(--well);border-radius:8px}
 .analysis-list{display:grid;gap:6px;max-height:300px;overflow:auto}.analysis-row{display:grid;text-align:left;gap:3px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font:inherit}.analysis-row small{color:var(--muted)}.analysis-list .cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.session-controls{width:100%;max-width:var(--bsize);padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;box-shadow:var(--shadow)}
+.session-controls.is-paused{border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel))}
+.session-state{display:grid;gap:3px;min-width:0}.session-state small{font-size:.8rem;color:var(--muted)}.session-actions{display:flex;flex-wrap:wrap;gap:8px}.session-actions .btn{min-height:48px;min-width:136px}.session-actions #pauseLabel{white-space:nowrap}#pauseIcon{display:inline-flex;width:18px;height:18px;flex:none}#pauseIcon svg{width:100%;height:100%}.session-controls.is-paused .session-actions{grid-column:1/-1}.session-controls.is-paused .session-actions .btn{flex:1}
+@media (orientation:landscape) and (max-height:600px){.session-controls{padding:6px 8px}.session-state small{display:none}.session-actions .btn{min-height:44px;min-width:124px}.session-controls.is-paused .session-actions{grid-column:auto}.session-controls.is-paused .session-actions .btn{min-width:0}.session-controls.is-paused #savePausedBtn{display:none}}
 .position-cue{width:100%;max-width:var(--bsize);padding:10px 12px;display:grid;gap:5px;overflow-wrap:anywhere}.position-cue p{font-size:.9rem}.position-cue small{color:var(--muted)}
 .share-url{width:100%;min-width:0;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-family:var(--mono);font-size:16px}.check-control{display:flex;align-items:center;gap:10px;min-height:44px}.check-control input{width:22px;height:22px;flex:none}.review-summary{display:grid;gap:6px;padding-block:10px}.analysis-graph text{fill:var(--muted);font:14px system-ui,sans-serif}
 .card-heading{display:flex;gap:8px;justify-content:space-between;align-items:center}
@@ -81,7 +85,7 @@ header.top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-
 .top .right{margin-left:auto;display:flex;gap:6px;align-items:center}
 
 .game{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:start}
-.boardcol{display:grid;gap:8px;justify-items:center;min-width:0}
+.boardcol{position:relative;display:grid;gap:8px;justify-items:center;min-width:0}
 .playerbar{width:100%;max-width:var(--bsize);display:flex;align-items:center;gap:10px;min-height:32px;font-size:.92rem}
 .playerbar .who{font-weight:700;display:flex;align-items:center;gap:8px;min-width:0}
 .playerbar .who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -232,6 +236,7 @@ html[data-motion="off"] .pc{transition:none}
   .wide-label{display:none}.narrow-label{display:inline}
 }
 @media (orientation:landscape) and (max-height:600px) and (min-width:700px){
+  .session-controls{position:absolute;left:calc(100% + 12px);top:0;width:310px;max-width:none;z-index:5}.game.session-active #railPlay{padding-top:70px}
   :root{--bsize:min(640px,calc(100vw - 370px),calc(100vh - 150px))}
   .game{grid-template-columns:minmax(0,1fr) 310px;gap:12px}.rail{max-height:calc(100vh - 85px);overflow:auto;overscroll-behavior:contain}
   header.top{padding-block:6px;margin-bottom:8px}.playerbar{min-height:26px}
@@ -262,6 +267,10 @@ html[data-motion="off"] .pc{transition:none}
 
   <main class="game">
     <div class="boardcol">
+      <div class="panel session-controls" id="sessionControls" hidden>
+        <div class="session-state" role="status" aria-live="polite"><strong id="sessionTitle">Game in progress</strong><small id="sessionDetail"></small></div>
+        <div class="session-actions"><button class="btn primary" id="pauseBtn" type="button" aria-describedby="sessionDetail"><span id="pauseIcon" aria-hidden="true">⏸</span><span id="pauseLabel">Pause game</span></button><button class="btn" id="savePausedBtn" type="button" hidden>Save for later</button></div>
+      </div>
       <div class="playerbar" id="barTop"></div>
       <div class="boardwrap" id="boardwrap">
         <div class="board" id="board" role="grid" aria-label="Chessboard" aria-describedby="boardHelp" aria-rowcount="8" aria-colcount="8"></div>
@@ -341,7 +350,6 @@ html[data-motion="off"] .pc{transition:none}
           <button class="btn icon small" id="navLast" aria-label="Latest position">⏭</button>
           <button class="btn small" id="flipBtn">⇅ Flip</button>
           <span class="grow"></span>
-          <button class="btn small" id="pauseBtn" hidden>Pause</button>
         </div>
         <div class="ctlgrid">
           <button class="btn small" id="undoBtn">Take back</button>
@@ -3005,9 +3013,8 @@ $('#navLast').onclick = () => setView(G.fens.length - 1);
 function renderButtons() {
   $('#board').setAttribute('aria-readonly', String(!BV.interactive()));
   const cvc = G.mode === 'cvc';
-  $('#pauseBtn').hidden = !(cvc || (G.clock && !G.official)) || !!G.over;
-  $('#pauseBtn').textContent = G.paused ? 'Resume' : 'Pause';
-  $('#undoBtn').disabled = G.review || cvc || G.official || !G.moves.length || (G.mode === 'pvc' && !G.moves.some((_, i) => G.players[(i + (G.startFen.split(' ')[1] === 'b' ? 1 : 0)) % 2 ? 'b' : 'w'].type === 'human'));
+  renderSessionControls();
+  $('#undoBtn').disabled = G.paused || G.review || cvc || G.official || !G.moves.length || (G.mode === 'pvc' && !G.moves.some((_, i) => G.players[(i + (G.startFen.split(' ')[1] === 'b' ? 1 : 0)) % 2 ? 'b' : 'w'].type === 'human'));
   $('#undoBtn').title = G.official ? 'Take backs are not allowed under official rules' : '';
   $('#hintBtn').disabled = !humanToMove() || G.official || !!G.hinting;
   $('#hintBtn').title = G.official ? 'Hints are not allowed under official rules' : '';
@@ -3018,16 +3025,39 @@ function renderButtons() {
   $('#navFirst').disabled = $('#navPrev').disabled = (G.view === 0) || G.fens.length < 2;
   $('#navNext').disabled = $('#navLast').disabled = G.view == null;
 }
-$('#pauseBtn').onclick = () => {
-  G.paused = !G.paused;
-  if (G.clock && !G.paused) G.clock.last = performance.now();
-  renderClocks();
-  if (!G.paused && G.pendingAI) { const m = G.pendingAI; G.pendingAI = null; playMove(m, true); }
-  else if (!G.paused) { afterChange(); }
-  renderButtons(); renderStatus();
-};
+// One state transition serves the visible control and restored-game resume.
+function renderSessionControls() {
+  const visible=tab==='play'&&!G.review&&!G.over,paused=!!G.paused;
+  $('#sessionControls').hidden=!visible;$('.game').classList.toggle('session-active',visible);if(!visible)return;
+  $('#sessionControls').classList.toggle('is-paused',paused);
+  const title=paused?(G.restored?'Saved game paused':'Game paused'):'Game in progress';
+  const detail=paused?(G.clock?'Clock and moves are stopped. Resume when ready.':'Moves are stopped. Resume when ready.'):G.official?'Pause is unavailable during official play.':G.clock?'Take a break: pause stops the clock and moves.':'Take a break: pause stops all moves.';
+  if($('#sessionTitle').textContent!==title)$('#sessionTitle').textContent=title;
+  if($('#sessionDetail').textContent!==detail)$('#sessionDetail').textContent=detail;
+  $('#pauseLabel').textContent=paused?'Resume game':'Pause game';$('#pauseIcon').innerHTML=paused?'<svg viewBox="0 0 20 20"><path fill="currentColor" d="M5 3L17 10L5 17Z"/></svg>':'<svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 3H8V17H4ZM12 3H16V17H12Z"/></svg>';
+  $('#pauseBtn').disabled=!paused&&G.official;
+  $('#savePausedBtn').hidden=!paused;
+}
+function pauseGame() {
+  if(tab!=='play'||!G||G.review||G.over||G.paused||G.official)return false;
+  // Charge elapsed play before freezing, preserving the remaining delay/increment.
+  if(G.clock)tickClock();if(G.over)return false;
+  G.paused=true;G.token=Math.random();G.thinking=false;G.hinting=false;G.moveCue=null;delete G.pendingAI;
+  cancelThinking();$('#hintBtn').textContent='Hint';
+  if(drag){drag.el.classList.remove('drag');drag=null;}
+  $('.promo')?.remove();BV.sel=null;BV.targets=[];BV.arrows=[];
+  afterChange();return true;
+}
+function resumeGame() {
+  if(tab!=='play'||!G||G.review||G.over||!G.paused)return false;
+  G.restored=false;G.paused=false;G.view=null;delete G.pendingAI;
+  if(G.clock)G.clock.last=performance.now();
+  afterChange();return true;
+}
+$('#pauseBtn').onclick=()=>G.paused?resumeGame():pauseGame();
+$('#savePausedBtn').onclick=()=>openGames();
 $('#undoBtn').onclick = () => {
-  if (!G.moves.length || G.official) return;
+  if (G.paused || !G.moves.length || G.official) return;
   cancelThinking(); G.thinking = false; G.over = null; G.view = null; $('#boardmsg').hidden = true; G.token = Math.random();
   const pop = () => { G.chess.unmake(); G.moves.pop(); G.sans.pop(); G.fens.pop(); G.lastFromTo.pop(); const h = G.clockHist.pop(); if (G.clock && h) { G.clock.w = h.w; G.clock.b = h.b; } };
   pop();
@@ -3446,7 +3476,7 @@ function openGames() {
   });
 }
 $('#gamesBtn').onclick=openGames;
-$('#resumeSavedBtn').onclick=()=>{G.restored=false;G.paused=false;G.view=null;if(G.clock)G.clock.last=performance.now();afterChange();};
+$('#resumeSavedBtn').onclick=resumeGame;
 function requestNewGame(action) {
   if (!G || (!G.moves.length && G.startFen===START)) { action(); return; }
   openModal(`<div class="modal-head"><h2>Replace this game?</h2><button class="btn small" data-close>Keep game</button></div><p>The current history will be replaced. Use Saved games first if you want to keep it.</p><div class="navrow"><button class="btn" id="saveBeforeNew">Open saves</button><button class="btn primary" id="confirmNew">Start new game</button></div>`);
@@ -3558,7 +3588,7 @@ $('#analysisGraph').onkeydown=e=>{const data=G.analysis;if(!data||!data.position
 let tab = 'play';
 function setTab(t) {
   if (t === tab) return;
-  tab = t; $('#moveCue').hidden=true;
+  tab = t; $('#moveCue').hidden=true; $('#sessionControls').hidden=t!=='play';
   $$('.tabs button').forEach(b => { b.classList.toggle('on', b.dataset.tab === t); b.setAttribute('aria-selected', b.dataset.tab === t); b.tabIndex = b.dataset.tab === t ? 0 : -1; });
   $('#railPlay').hidden = t !== 'play'; $('#railLearn').hidden = t !== 'learn';
   $('#boardmsg').hidden = true;
@@ -3644,6 +3674,7 @@ $('#setBtn').onclick = openSettings;
 function openGuide() {
   openModal(`<div class="modal-head"><h2>Getting started</h2><button class="btn small" data-close>Done</button></div>
     <div class="setsec"><h3>Play or learn</h3><p>Play the computer, share a screen with a friend, or watch two computers. Learn offers 38 lessons from piece moves to strategy.</p></div>
+    <div class="setsec"><h3>Take a break</h3><p>Pause game sits above the board in casual games, with or without a clock. It stops clocks, moves and computer thinking. Resume game continues at the latest position. Save for later keeps a named local copy. Official play keeps pause unavailable; loaded games start paused and can be resumed.</p></div>
     <div class="setsec"><h3>Choose your pace</h3><p>Use the level slider for 65 presets and choose a clock. Levels are difficulty settings, not verified Elo ratings. The highest levels can think for up to a minute.</p></div>
     <div class="setsec"><h3>Make it yours</h3><p>Colours &amp; settings controls board and piece colours, contrast, legal-move dots, animation and sound. Hide game setup when you want more room.</p></div>
     <div class="setsec"><h3>Explore games and positions</h3><p>Import FEN or PGN, click a SAN move to step through a game, or share the displayed position. Saved games keeps named local copies. Game review adds estimated evaluations and alternatives after a game or import. Everything runs locally once this HTML is saved.</p></div>
