@@ -84,3 +84,15 @@ Both players must use WASM, share the frozen adapter and 32 MiB WASM setting,
 and receive colour-reversed openings and equal time controls. Failed backends
 stop the campaign. All results and forfeits are retained. The short control
 measures relative behavior; it does not establish absolute Elo.
+
+## Independent strength measurements
+
+`npm run strength:prepare -- ...` freezes independent-opponent runs. WASM
+revisions automatically require their native backend and record the embedded
+core/network identity, rather than counting silent fallback as WASM evidence.
+`npm run strength:report -- /path/to/archive --output results.md` verifies hashes,
+replays every PGN and recomputes results before reporting. `--json` produces a
+machine-readable report with absolute rating left unset. The reporter does not
+execute archived code, transfer opponent ratings or combine incompatible runs.
+See [the complete protocol](validation/strength/PROTOCOL.md) for setup, runtime
+variables, resumable runs, full 200-game preparation and archival commands.

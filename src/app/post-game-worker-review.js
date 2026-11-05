@@ -5,15 +5,8 @@ function cancelAnalysis() {
   const job=analysisJob;analysisJob=null;job.game.analysis.status='cancelled';cancelThinking();if(G===job.game)renderAnalysis();
 }
 function analysisRow(index, before, after) {
-  const side=G.fens[index].split(' ')[1],played=G.moves[index],reliable=(before.depth>=2||before.terminal)&&(after.depth>=2||after.terminal),mate=typeof before.white==='number'&&Math.abs(before.white)>=E.MATE-1000||typeof after.white==='number'&&Math.abs(after.white)>=E.MATE-1000;
-  const loss=mate||!reliable?null:Math.max(0,(before.white-after.white)*(side==='w'?1:-1));
-  let label='Within this search estimate';
-  if (!reliable) label='Search too shallow for comparison';
-  else if (before.best===played) label='Engine choice';
-  else if (mate) label='Mate context — inspect the line';
-  else if (before.depth<2||after.depth<2) label='Search too shallow to classify';
-  else if (loss>=200) label='Possible blunder';else if(loss>=100)label='Possible mistake';else if(loss>=50)label='Possible inaccuracy';
-  return {ply:index+1,san:G.sans[index],label,loss,alternative:before.best!==played?before.bestSan:null};
+  const row=ReviewTeaching.row({fen:G.fens[index],uci:G.moves[index],before,after,ply:index+1});
+  if(!row)throw new Error('Invalid move in review history.');return row;
 }
 async function startAnalysis() {
   if (tab!=='play'||!G||( !G.over&&!G.review)) return;
@@ -48,7 +41,7 @@ function renderAnalysis() {
   $('#analysisProgress').textContent=!available?'Available after a game ends, or after you import a game for review.':!data?'Run short local searches to see estimated evaluations and alternatives.':data.status==='running'?`Analysing ${data.positions.length} of ${data.total} positions…`:data.status==='complete'?`Reviewed ${data.rows.length} half-moves. Estimates from an unrated engine, not an accuracy score.`:data.status==='cancelled'?'Review cancelled. Partial estimates remain below.':'Review stopped: '+data.error;
   $('#analysisOutput').hidden=!data||!data.positions.length;
   const list=$('#analysisMoves');
-  if(!data){list.innerHTML='';list._record=null;return;}
+  if(!data){list.innerHTML='';list._record=null;$('#analysisLesson').hidden=true;const moments=$('#analysisMoments');moments.innerHTML='';moments._record=null;moments._key='';$('#analysisPractice').innerHTML='';return;}
   if(list._record!==data){list.innerHTML='<button class="btn small" data-analysis-ply="0">Starting position</button>';list._record=data;list._count=0;}
   const fresh=data.rows.slice(list._count);list._count=data.rows.length;
   for(const row of fresh){
@@ -57,6 +50,7 @@ function renderAnalysis() {
     list.insertAdjacentHTML('beforeend',`<button class="analysis-row" data-analysis-ply="${row.ply}"><strong>${esc(number+' '+row.san)}</strong><span>${esc(row.label)}</span><small>${esc([alternative,loss].filter(Boolean).join(' · '))}</small></button>`);
   }
   const current=G.view==null?G.moves.length:G.view;$$('[data-analysis-ply]',list).forEach(b=>b.classList.toggle('cur',+b.dataset.analysisPly===current));
+  renderReviewTeaching(data,current);
   const positions=data.positions,span=Math.max(1,data.total-1),points=positions.map((r,i)=>r.white==null?null:[48+538*i/span,70-Math.max(-800,Math.min(800,r.white))*54/800]);
   let connected=false;const path=points.map(point=>{if(!point){connected=false;return '';}const [x,y]=point,command=connected?'L':'M';connected=true;return command+x.toFixed(2)+' '+y.toFixed(2);}).join(' ');
   const score=positions[current],recommendation=currentRecommendation(),graph=$('#analysisGraph');
@@ -70,7 +64,7 @@ function renderAnalysis() {
 
 }
 $('#analyseBtn').onclick=startAnalysis;$('#cancelAnalysisBtn').onclick=cancelAnalysis;
-$('#analysisMoves').onclick=e=>{const b=e.target.closest('[data-analysis-ply]');if(b)setView(+b.dataset.analysisPly);};
+$('#analysisMoves').onclick=e=>{const b=e.target.closest('[data-analysis-ply]');if(b){G.analysis.selectedPly=+b.dataset.analysisPly;setView(+b.dataset.analysisPly);}};
 $('#analysisGraph').onclick=e=>{const data=G.analysis;if(!data||!data.positions.length)return;const box=e.currentTarget.getBoundingClientRect(),fraction=Math.max(0,Math.min(1,((e.clientX-box.left)/box.width*600-48)/538));setView(Math.round(fraction*(data.total-1)));};
 
 $('#analysisArrows').onchange=()=>renderArrows();
@@ -78,3 +72,27 @@ $('#analysisGraph').onkeydown=e=>{const data=G.analysis;if(!data||!data.position
   if(e.key==='ArrowLeft')target=current-1;else if(e.key==='ArrowRight')target=current+1;else if(e.key==='Home')target=0;else if(e.key==='End')target=max;else return;
   e.preventDefault();e.stopPropagation();setView(Math.max(0,Math.min(max,target)));
 };
+
+function renderReviewTeaching(data,current){
+  const focus=$('#analysisFocus').value,summary=ReviewTeaching.summary(data.rows,focus),name=focus==='w'?'White':focus==='b'?'Black':'Both players';
+  $('#analysisTakeaways').textContent=`${name}: ${summary.reviewed} ${summary.reviewed===1?'move':'moves'} reviewed, ${summary.issues} ${summary.issues===1?'position':'positions'} to revisit.`+(summary.uncertain?` ${summary.uncertain} comparisons are too shallow to classify.`:'')+(data.status==='complete'?'':' Partial review.');
+  const moments=$('#analysisMoments'),key=focus+':'+summary.moments.map(row=>row.ply+row.label).join('|');
+  if(moments._record!==data||moments._key!==key){
+    moments._record=data;moments._key=key;
+    moments.innerHTML=summary.moments.length?summary.moments.map(row=>`<button class="btn review-moment" data-review-moment="${row.ply}"><strong>${esc(row.player+' · '+row.moveLabel)}</strong><span>${esc(row.label)}</span><small>${esc(row.topic)}</small></button>`).join(''):'<p class="muted">No key moment identified in these estimates yet. This does not mean every move was best.</p>';
+    $('#analysisPractice').innerHTML=summary.practices.map(p=>`<li><strong>${esc(p.topic)}:</strong> ${esc(p.text)}</li>`).join('');
+  }
+  const selected=data.selectedPly,at=selected&&(current===selected||current===selected-1)?selected:current;
+  const row=at>0?data.rows[at-1]:null;$('#analysisLesson').hidden=!row;if(!row)return;
+  $('#analysisLesson').dataset.ply=row.ply;
+  $('#analysisLessonTitle').textContent=(current===row.ply-1?'Before ':'After ')+row.player+' played '+row.san+' · '+row.label;
+  $('#analysisPlayed').textContent='Played: '+row.played;
+  $('#analysisReply').textContent=[row.topic==='Piece safety'&&row.reply?'':row.context,row.reply?'Reply to examine: '+row.reply:''].filter(Boolean).join(' ');
+  $('#analysisAlternative').textContent=row.alternativeText?'Compare with: '+row.alternativeText:'The search did not suggest a different move here.';
+  $('#analysisEstimate').textContent=row.estimate;
+  $('#analysisLessonTip').textContent='Practise: '+row.practice;
+  $('#analysisBeforeBtn').disabled=current===row.ply-1;$('#analysisAfterBtn').disabled=current===row.ply;
+}
+$('#analysisFocus').onchange=()=>renderAnalysis();
+$('#analysisMoments').onclick=e=>{const button=e.target.closest('[data-review-moment]');if(!button||!G.analysis)return;G.analysis.selectedPly=+button.dataset.reviewMoment;setView(G.analysis.selectedPly-1);};
+for(const [id,offset]of [['#analysisBeforeBtn',-1],['#analysisAfterBtn',0]])$(id).onclick=()=>{if(!G.analysis)return;const ply=+$('#analysisLesson').dataset.ply;G.analysis.selectedPly=ply;setView(ply+offset);};

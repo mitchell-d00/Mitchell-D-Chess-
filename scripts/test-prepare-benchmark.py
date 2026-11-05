@@ -1,4 +1,5 @@
 import argparse, hashlib, importlib.util, json, shutil, tempfile, unittest, subprocess, sys
+from unittest.mock import patch
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('prepare',ROOT/'scripts/prepare-benchmark.py');prepare=importlib.util.module_from_spec(spec);spec.loader.exec_module(prepare)
@@ -13,10 +14,30 @@ class PrepareTests(unittest.TestCase):
    for field in ['html','adapter','helper','runner','node','fastchess','openings']:
     self.assertEqual(hashlib.sha256(Path(config[field]).read_bytes()).hexdigest(),config[field+'Sha256'])
    self.assertEqual(config['purpose'],'Frozen integration fixture')
+   self.assertEqual(config['engineIdentity']['backend'],'wasm-required')
+   self.assertEqual(config['environment']['MITCHELL_REQUIRE_WASM'],'1')
+   self.assertEqual(config['engineIdentity']['modelSha256'],'794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704')
    with self.assertRaises(ValueError):prepare.prepare(args)
    args.out=str(root/'too-many');args.games_per_opponent=10000
    with self.assertRaises(ValueError):prepare.prepare(args)
    self.assertFalse((root/'too-many').exists())
+   runtime=root/'runtime.json';runtime.write_text(json.dumps({'MITCHELL_REQUIRE_WASM':'0'}));args.environment=str(runtime);args.games_per_opponent=4;args.out=str(root/'bad-env')
+   with self.assertRaisesRegex(ValueError,'cannot override'):prepare.prepare(args)
+   self.assertFalse((root/'bad-env').exists())
+   runtime.write_text(json.dumps({'DOTNET_SYSTEM_GLOBALIZATION_INVARIANT':'1'}));args.out=str(root/'with-runtime');valid=json.loads(prepare.prepare(args).read_text())
+   self.assertEqual(valid['environment']['DOTNET_SYSTEM_GLOBALIZATION_INVARIANT'],'1');self.assertEqual(valid['environment']['MITCHELL_REQUIRE_WASM'],'1')
+   original_git=prepare.git;args.out=str(root/'legacy-adapter')
+   def legacy(*argv):return b'// old adapter without native enforcement' if argv[0]=='show' and argv[1].endswith(':scripts/uci.cjs') else original_git(*argv)
+   with patch.object(prepare,'git',side_effect=legacy):
+    with self.assertRaisesRegex(ValueError,'cannot enforce WASM'):prepare.prepare(args)
+   self.assertFalse((root/'legacy-adapter').exists())
+   args.native_adapter_required=True;args.out=str(root/'legacy-alternate')
+   def old_alternate(*argv):
+    if argv[0]=='show' and argv[1].endswith(':index.html'):return b'<script id="engine-src">var oldJavascript=true;</script>'
+    return legacy(*argv)
+   with patch.object(prepare,'git',side_effect=old_alternate):
+    with self.assertRaisesRegex(ValueError,'cannot enforce WASM'):prepare.prepare(args)
+   self.assertFalse((root/'legacy-alternate').exists())
    Path(config['helper']).write_text('modified helper')
    result=subprocess.run([sys.executable,config['runner'],str(path)],capture_output=True,text=True,timeout=10)
    self.assertNotEqual(result.returncode,0);self.assertIn('Pinned input changed: helper',result.stderr)

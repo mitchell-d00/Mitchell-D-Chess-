@@ -1,0 +1,23 @@
+const assert=require('node:assert/strict'),E=require('./engine.cjs')(),cues=require('../ui/move-explanations.js')(E),T=require('../ui/review-teaching.js')(E,cues);
+const fen='4k3/8/8/8/8/8/4q3/4R1K1 w - - 0 1';
+const input={fen,uci:'g1h1',before:{white:500,best:'e1e2',depth:5},after:{white:-900,best:'e2e1',depth:5},ply:1};
+const white=T.row(input);assert.equal(white.loss,1400);assert.equal(white.label,'Possible blunder');assert.match(white.context,/captures the rook on e1/);assert.match(white.alternativeText,/captures the queen/);assert.equal(white.topic,'Piece safety');
+const black=T.row({fen:'4k3/4r3/8/8/8/8/4Q3/6K1 b - - 0 17',uci:'e8d8',before:{white:-500,best:'e7e2',depth:5},after:{white:900,best:'e2e7',depth:5},ply:2});
+assert.equal(black.loss,1400);assert.equal(black.player,'Black');assert.equal(black.moveLabel,'17... Kd8');
+for(const value of [null,undefined,NaN,Infinity]){const r=T.row({...input,before:{...input.before,white:value}});assert.equal(r.loss,null);assert(!r.reliable);assert(!r.critical);assert.match(r.label,/too shallow/);}
+const shallow=T.row({...input,before:{...input.before,depth:1}});assert(!shallow.critical);assert.equal(shallow.loss,null);
+const chosen=T.row({...input,before:{...input.before,best:'g1h1'}});assert.equal(chosen.loss,0);assert.equal(chosen.label,'Engine choice');assert(!chosen.critical);
+const mateFen='6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1';
+const missed=T.row({fen:mateFen,uci:'d1d2',before:{white:E.MATE-1,best:'d1d8',depth:1},after:{white:800,best:'g8f8',depth:1},ply:3});
+assert.equal(missed.label,'Missed mate in one');assert.equal(missed.loss,null);assert(missed.critical);assert.match(missed.context,/Rd8# gives immediate checkmate/);
+const finished=T.row({fen:mateFen,uci:'d1d8',before:{white:E.MATE-1,best:'d1d8',depth:1},after:{white:E.MATE,depth:0,terminal:true},ply:4});
+assert(finished.finish);assert.equal(finished.label,'Checkmate delivered');assert(!finished.critical);
+const p=new E.Chess();for(const u of ['f2f3','e7e5'])p.make(p.findUci(u));
+const danger=T.row({fen:p.fen(),uci:'g2g4',before:{white:0,best:'e2e4',depth:2},after:{white:-E.MATE,best:'d8h4',depth:2},ply:5});
+assert.match(danger.label,/Mate in one available to Black/);assert.match(danger.reply,/Qh4#/);assert.equal(danger.loss,null);
+const stalemate=T.row({fen:'7k/5K2/8/6Q1/8/8/8/8 w - - 0 1',uci:'g5g6',before:{white:1000,best:'g5f5',depth:4},after:{white:0,terminal:true,depth:0},ply:6});assert.equal(stalemate.label,'Stalemate');assert.match(stalemate.context,/no legal move and is not in check/);assert(stalemate.critical);
+const illegalReply=T.row({...input,after:{...input.after,best:'e1e8'}});assert.equal(illegalReply.reply,null);
+assert.equal(T.row({...input,uci:'e1h8'}),null);
+const rows=[white,black,shallow,missed,finished,danger,stalemate],copy=JSON.stringify(rows);
+const summary=T.summary(rows,'all');assert.equal(summary.moments.length,3);assert.equal(summary.moments[0].label,'Missed mate in one');assert.equal(summary.issues,5);assert.equal(summary.uncertain,1);assert(summary.practices.length<=3);assert.equal(T.summary(rows,'b').reviewed,1);assert.equal(T.summary([finished],'all').moments[0].label,'Checkmate delivered');assert.equal(T.summary([shallow],'all').moments.length,0);assert.equal(JSON.stringify(rows),copy);
+console.log('PASS: review teaching, both-side loss perspective, shallow/null scores, factual mate-in-one, stalemate, legal replies, focused priorities and immutable summaries');

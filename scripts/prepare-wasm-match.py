@@ -13,7 +13,8 @@ def main():
  p.add_argument('--revision',default='HEAD',help='Candidate revision and shared adapter revision')
  p.add_argument('--games',type=int,default=40);p.add_argument('--move-seconds',type=float,default=.1);p.add_argument('--node',default=shutil.which('node'))
  a=p.parse_args();candidate=Path(a.candidate_html).resolve().read_bytes();baseline=Path(a.baseline_html).resolve().read_bytes()
- if any(b'WASM_CORE_DATA' not in html for html in [candidate,baseline]):p.error('Both inputs must be explicit WASM builds')
+ cores=[re.search(rb"var WASM_CORE_DATA = '([^']+)'",html) for html in [candidate,baseline]]
+ if any(m is None for m in cores):p.error('Both inputs must be explicit WASM builds')
  models=[re.search(rb"var NNUE_MODEL = \{ hidden: (\d+), data: '([^']+)' \}",html) for html in [candidate,baseline]]
  if any(m is None for m in models):p.error('Network metadata is missing')
  if models[0].groups()!=models[1].groups():p.error('Performance ablations require the same network and hidden width')
@@ -21,6 +22,7 @@ def main():
  with tempfile.TemporaryDirectory() as td:
   opponents=Path(td)/'opponents.json';opponents.write_text(json.dumps({'Mitchell-WASM-baseline':{'command':a.node,'options':['option.Level=65','option.MoveOverhead=20']}}))
   args=argparse.Namespace(out=a.out,revision=a.revision,opponents=str(opponents),games_per_opponent=a.games,fruit=None,minimal=None,move_seconds=a.move_seconds,margin_ms=250,fastchess=a.fastchess,node=a.node,concurrency=1,openings=None,purpose='Paired full-WASM evolution experiment')
+  args.native_adapter_required=True
   config_path=prepare.prepare(args)
  c=json.loads(config_path.read_text());root=config_path.parent
  Path(c['html']).write_bytes(candidate);c['htmlSha256']=prepare.sha(c['html'])
@@ -32,6 +34,7 @@ def main():
  opponent['sourceRevision']=baseline_revision
  c['environment']={'MITCHELL_REQUIRE_WASM':'1','MITCHELL_WASM_MEMORY':'32','MITCHELL_EXACT_ENDGAMES':'0'}
  c['networkSha256']=hashlib.sha256(base64.b64decode(models[0].group(2),validate=True)).hexdigest();c['hidden']=int(models[0].group(1))
+ c['engineIdentity']={'level':65,'backend':'wasm-required','wasmMemoryMiB':32,'wasmSha256':hashlib.sha256(base64.b64decode(cores[0].group(1),validate=True)).hexdigest(),'modelSha256':c['networkSha256'],'hidden':c['hidden']}
  c['artifactReconstruction']='node scripts/build.cjs --candidate-wasm --output engine-under-test.html'
  c['preparer']=str(root/'prepare-wasm-match.py');shutil.copyfile(__file__,c['preparer']);c['preparerSha256']=prepare.sha(c['preparer'])
  c['purposeNote']='Relative short-control test, not a rating. Same adapter, 32 MiB WASM, network and time control; no books, no evaluation adjudication, no arbitrary move-limit draws. All completed games retained. Caller-supplied artifacts are identified by hashes; revision labels must correspond to their explicit builds.'

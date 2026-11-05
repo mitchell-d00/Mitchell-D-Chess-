@@ -1,0 +1,39 @@
+{
+  "createdUtc": "2026-11-05T21:47:22.457019+00:00",
+  "complete": true,
+  "completedGames": 12,
+  "plannedGames": 12,
+  "testedRevision": "4bfcb94597d5cd4abb5d84159c84b85092e82327",
+  "htmlSha256": "b661acb96abb62d41d5493aabd67c2d4c9199b39f6ef68001fc799049cc740cf",
+  "uncompressedLogs": {
+    "01-opponent.log": "dc876e66287379f0bdf2633f994fb1ca618a544c8b6789d211d6080c517f8f95",
+    "02-opponent.log": "aa01c2f0c8a68d8e2fbeb915c383d29a24997dfedc935a4a5382eb280b327def",
+    "campaign.log": "ee0116ed2d13d9bdc1eada927a4ad991a83a95e1e66a9b53d943fb5f34271ee7"
+  },
+  "files": {
+    "01-opponent.command.json": "51308d44660d887530c06163a84045226a80ccc0908e178bda374c324bf3ac45",
+    "01-opponent.done.json": "915d6347ed27bc09f87446c88d00be8a87ba4ae5ba2dac0909a1b7c72da5a870",
+    "01-opponent.log.gz": "b23f3b0b31ea28be145114634e1ee244834ded4c0f555bc2cf694067b028a334",
+    "01-opponent.pgn": "4a2dcd8c3d097afbb1625cc6a4367898d5a3ec22727dce9bc8cabeb0a69f9559",
+    "01-opponent.state.json": "329204abc471ff0de70b008a0fea65100c338675a5e31ad9202ce5ae2d353e88",
+    "02-opponent.command.json": "a5cc03f16e72c1ca41b57eafdc6ca460165aa4b72d21f53e5b0f2757d8ad739d",
+    "02-opponent.done.json": "27b0a34d4c8ec4b91692c8913f9400eb36cb84bf202ea400a760f961975ab9f7",
+    "02-opponent.log.gz": "de9bf58f55f3f9418861d84184e3fc4168860079da3c81baddac328ba41ef0ca",
+    "02-opponent.pgn": "3fafac646fc044ac0f388b2553a512f82d1c97ed2dee697f447fde905adbd73e",
+    "02-opponent.state.json": "24c0fa4de86d09c3ec316f42bf50c604dafc23d4af71ce759704c33310369722",
+    "adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "adapter/uci.cjs": "c9a11e49507c42930a55ab52bad9c487cf2364c3fe672100e43d28a1c9b6118b",
+    "campaign.json": "d9663b643572789096a3fd26874532cf33c73b3c2e52fe4c4a7d1e96fb46d8a2",
+    "campaign.log.gz": "ca693babf364993b67cfb479fc63c4449544bacc3469d49cffc89dc7f3cbc83b",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "prepare-benchmark.py": "f902d0da49c8290318fdf42ce9c871c7aaf74036f0138d432d5724f323923368",
+    "runner.py": "5b85b658dd3e41f8cd8bbc661becce20393c13532c7546af0392afc97f3b8722",
+    "status.json": "be7b0e6858bdb46690f36a7f91cfc0c79f7789dde867744718a0a1392cb397d9",
+    "summary.json": "84a3352b37f46e4b3293a5b0c25e9253e7784c2c9f6c37145ee45b8ded835130"
+  },
+  "notes": [
+    "Static evidence snapshot, not live progress.",
+    "Third-party executables, libraries and models are intentionally not archived.",
+    "Reconstruct frozen HTML from testedRevision and verify htmlSha256."
+  ]
+}

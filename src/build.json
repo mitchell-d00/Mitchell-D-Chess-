@@ -38,7 +38,8 @@
     "LESSONS": "src/lessons.js",
     "POSITION_TOOLS": "ui/position-tools.js",
     "GAME_LIBRARY": "ui/game-library.js",
-    "MOVE_EXPLANATIONS": "ui/move-explanations.js"
+    "MOVE_EXPLANATIONS": "ui/move-explanations.js",
+    "REVIEW_TEACHING": "ui/review-teaching.js"
   },
   "model": {
     "path": "third-party/leorik-128.nnue",
@@ -72,6 +73,11 @@
     },
     "MOVE_EXPLANATIONS": {
       "open": "<script id=\"move-explanations-src\">",
+      "leading": "\n",
+      "trailing": ""
+    },
+    "REVIEW_TEACHING": {
+      "open": "<script id=\"review-teaching-src\">",
       "leading": "\n",
       "trailing": ""
     },

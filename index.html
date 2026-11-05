@@ -50,6 +50,7 @@ button,select,input{font:inherit;color:inherit}
 .analysis-chart{position:relative}.graph-axis{position:absolute;left:2px;font-size:.8rem;color:var(--muted);pointer-events:none}.graph-axis.top{top:8px}.graph-axis.zero{top:62px}.graph-axis.bottom{top:116px}.graph-ends{position:absolute;bottom:2px;left:8%;right:2%;display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);pointer-events:none}
 .analysis-graph{width:100%;height:160px;touch-action:pan-y;display:block;cursor:crosshair;background:var(--well);border-radius:8px}
 .analysis-list{display:grid;gap:6px;max-height:300px;overflow:auto}.analysis-row{display:grid;text-align:left;gap:3px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);font:inherit}.analysis-row small{color:var(--muted)}.analysis-list .cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.review-overview,.review-lesson{display:grid;gap:10px;padding:12px;margin-block:12px;border:1px solid var(--line);border-radius:10px;min-width:0;overflow-wrap:anywhere}.review-overview h4,.review-lesson h4,.review-overview p,.review-lesson p{margin:0}.review-moments{display:grid;gap:8px}.review-moments .review-moment{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;text-align:left;white-space:normal;min-height:60px;width:100%;min-width:0}.review-moment small{color:var(--muted)}.review-practice{margin:0;padding-left:20px;display:grid;gap:8px}.review-lesson .navrow{flex-wrap:wrap}.review-lesson .btn{min-height:44px}
 .session-controls{width:100%;max-width:var(--bsize);padding:10px 12px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;box-shadow:var(--shadow)}
 .session-controls.is-paused{border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel))}
 .session-state{display:grid;gap:3px;min-width:0}.session-state small{font-size:.8rem;color:var(--muted)}.session-actions{display:flex;flex-wrap:wrap;gap:8px}.session-actions .btn{min-height:48px;min-width:136px}.session-actions #pauseLabel{white-space:nowrap}#pauseIcon{display:inline-flex;width:18px;height:18px;flex:none}#pauseIcon svg{width:100%;height:100%}.session-controls.is-paused .session-actions{grid-column:1/-1}.session-controls.is-paused .session-actions .btn{flex:1}
@@ -365,7 +366,7 @@ html[data-motion="off"] .pc{transition:none}
           <button class="btn small" id="gamesBtn">Saved games</button>
         </div>
       </div>
-      <div class="card panel" id="analysisCard"><h3>Game review</h3><p class="muted">Short local searches from this unrated engine. Labels are estimates; longer searches may disagree. Positive evaluations favour White. Gaps mean no completed evaluation.</p><label class="field">Search per position<select id="analysisBudget"><option value="100">Fast · 0.1 second</option><option value="250" selected>Standard · 0.25 second</option><option value="500">Deeper · 0.5 second</option></select></label><div class="navrow"><button class="btn small primary" id="analyseBtn">Review game</button><button class="btn small" id="cancelAnalysisBtn" hidden>Cancel review</button></div><p id="analysisProgress" class="muted" role="status" aria-live="polite"></p><div id="analysisOutput" hidden><div class="analysis-chart"><span class="graph-axis top" aria-hidden="true">+8</span><span class="graph-axis zero" aria-hidden="true">0</span><span class="graph-axis bottom" aria-hidden="true">−8</span><svg id="analysisGraph" class="analysis-graph" viewBox="0 0 600 160" preserveAspectRatio="none" role="slider" tabindex="0" aria-label="Review position. Left and Right step through evaluations; Home and End go to the ends." aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></svg><div class="graph-ends" aria-hidden="true"><span>Start</span><span id="analysisEnd"></span></div></div><div class="review-summary"><strong id="analysisScore" role="status"></strong><span id="analysisBest"></span><label class="check-control"><input type="checkbox" id="analysisArrows" checked>Show suggested-move arrow on the board</label><small class="muted">Scores in pawns, from White’s view; plot capped at ±8. Tap the graph or use its arrow keys to select a position.</small></div><div id="analysisMoves" class="analysis-list"></div></div></div>
+      <div class="card panel" id="analysisCard"><h3>Game review</h3><p class="muted">Short local searches from this unrated engine. Labels are estimates; longer searches may disagree. Positive evaluations favour White. Gaps mean no completed evaluation.</p><label class="field">Search per position<select id="analysisBudget"><option value="100">Fast · 0.1 second</option><option value="250" selected>Standard · 0.25 second</option><option value="500">Deeper · 0.5 second</option></select></label><div class="navrow"><button class="btn small primary" id="analyseBtn">Review game</button><button class="btn small" id="cancelAnalysisBtn" hidden>Cancel review</button></div><p id="analysisProgress" class="muted" role="status" aria-live="polite"></p><div id="analysisOutput" hidden><section class="review-overview" aria-label="Review takeaways"><h4>What to work on</h4><label class="field">Focus<select id="analysisFocus"><option value="all">Both players</option><option value="w">White</option><option value="b">Black</option></select></label><p id="analysisTakeaways"></p><div id="analysisMoments" class="review-moments" aria-label="Key moments"></div><ul id="analysisPractice" class="review-practice"></ul></section><div class="analysis-chart"><span class="graph-axis top" aria-hidden="true">+8</span><span class="graph-axis zero" aria-hidden="true">0</span><span class="graph-axis bottom" aria-hidden="true">−8</span><svg id="analysisGraph" class="analysis-graph" viewBox="0 0 600 160" preserveAspectRatio="none" role="slider" tabindex="0" aria-label="Review position. Left and Right step through evaluations; Home and End go to the ends." aria-valuemin="0" aria-valuemax="0" aria-valuenow="0"></svg><div class="graph-ends" aria-hidden="true"><span>Start</span><span id="analysisEnd"></span></div></div><div class="review-summary"><strong id="analysisScore" role="status"></strong><span id="analysisBest"></span><label class="check-control"><input type="checkbox" id="analysisArrows" checked>Show suggested-move arrow on the board</label><small class="muted">Scores in pawns, from White’s view; plot capped at ±8. Tap the graph or use its arrow keys to select a position.</small></div><section id="analysisLesson" class="review-lesson" aria-labelledby="analysisLessonTitle" hidden><h4 id="analysisLessonTitle"></h4><p id="analysisPlayed"></p><p id="analysisReply"></p><p id="analysisAlternative"></p><p id="analysisEstimate" class="muted"></p><p id="analysisLessonTip"></p><div class="navrow"><button class="btn small" id="analysisBeforeBtn">Revisit before move</button><button class="btn small" id="analysisAfterBtn">Show played move</button></div><small class="muted">Move descriptions show position facts. Suggestions and loss labels come from short searches and can change.</small></section><div id="analysisMoves" class="analysis-list"></div></div></div>
     </aside>
 
     <aside class="rail" id="railLearn" role="tabpanel" aria-labelledby="learnTab" hidden>
@@ -2604,6 +2605,69 @@ if (typeof module !== 'undefined') module.exports = LESSONS;
   return {describe};
 });
 </script>
+<script id="review-teaching-src">
+// Original MIT: position facts and clearly separated short-search estimates.
+(function(root,factory){
+  if(typeof module==='object'&&module.exports)module.exports=factory;
+  else root.ReviewTeaching=factory(root.ENGINE,root.MoveExplanations);
+})(typeof globalThis!=='undefined'?globalThis:this,function(E,cues){
+  'use strict';
+  const names=['','pawn','knight','bishop','rook','queen','king'];
+  function row(input){
+    const {fen,uci,before,after,ply}=input,p=new E.Chess(fen),move=p.findUci(uci);
+    if(!move)return null;
+    const side=p.side?'b':'w',player=side==='w'?'White':'Black',sign=side==='w'?1:-1;
+    const played=cues.describe(fen,uci),best=before.best&&p.findUci(before.best),alternative=best&&before.best!==uci?cues.describe(fen,before.best):null;
+    const finite=Number.isFinite(before.white)&&Number.isFinite(after.white);
+    const reliable=finite&&(before.depth>=2||before.terminal)&&(after.depth>=2||after.terminal);
+    const mate=finite&&(Math.abs(before.white)>=E.MATE-1000||Math.abs(after.white)>=E.MATE-1000);
+    const loss=reliable&&!mate?(before.best===uci?0:Math.max(0,(before.white-after.white)*sign)):null;
+    const missedMate=alternative&&alternative.san.endsWith('#')&&!played.san.endsWith('#');
+    p.make(move);const outcome=p.status(true),replyMove=after.best&&p.findUci(after.best),reply=replyMove?cues.describe(p.fen(),after.best):null;
+    let label='Within this search estimate',practice='Before choosing a move, compare the opponent’s checks, captures and threats.',topic='Checks, captures and threats',priority=loss||0;
+    if(!reliable)label='Search too shallow for comparison';
+    else if(before.best===uci)label='Engine choice';
+    else if(mate)label='Mate context — inspect the position';
+    else if(loss>=200)label='Possible blunder';else if(loss>=100)label='Possible mistake';else if(loss>=50)label='Possible inaccuracy';
+    let critical=!!(reliable&&before.best!==uci&&loss>=50),context='';
+    if(played.san.endsWith('#')){
+      label='Checkmate delivered';topic='Mating patterns';practice='Remember this final mating pattern and the squares the king could not use.';
+    }else if(missedMate){
+      label='Missed mate in one';critical=true;priority=30000;topic='Mating patterns';
+      context=alternative.san+' gives immediate checkmate; '+played.san+' does not.';
+      practice='When the king is exposed, check every forcing move before choosing a quieter move.';
+    }else if(reply&&reply.san.endsWith('#')){
+      label='Mate in one available to '+(side==='w'?'Black':'White');
+      critical=before.best!==uci;priority=20000;topic='King safety';
+      context='In this position, '+reply.san+' is a legal checkmating reply.';
+      practice='Before playing, look for the opponent’s immediate checks and mating threats.';
+    }else if(outcome&&outcome.reason==='stalemate'){
+      label='Stalemate';topic='Finishing an endgame';context='The opponent has no legal move and is not in check, so the position is a draw.';
+      practice='Before a finishing move, check whether the opponent will have a legal move or be in check.';
+    }else if(replyMove&&(E.mFlags(replyMove)&1)){
+      const ep=!!(E.mFlags(replyMove)&2),target=E.mTo(replyMove),type=ep?1:p.b[target]&7;
+      context='The suggested reply captures the '+names[type]+' on '+E.sqName(ep?(p.side?target+16:target-16):target)+'.';
+      topic='Piece safety';practice=alternative?'Check what your opponent can capture after your move, and compare the suggested alternative.':'Check what your opponent can capture after your move, and whether you have a useful reply.';
+    }else if(alternative&&best&&(E.mFlags(best)&4)){
+      topic='King safety';practice='Compare your king’s safety and rook activity before and after castling.';
+    }else if(alternative&&E.mPromo(best)){
+      topic='Pawn promotion';practice='Look for promotion opportunities and compare all legal promotion pieces.';
+    }
+    const estimate=loss==null?(mate?'Mating scores are not converted into pawn losses.':!reliable?'A deeper search is needed before assigning a mistake label.':'No pawn-loss estimate for this position.'):
+      'The short search estimates '+(loss/100).toFixed(1)+' pawns lost from '+player+'’s point of view.';
+    return {ply,side,player,san:played.san,moveLabel:fen.split(' ')[5]+(side==='w'?'. ':'... ')+played.san,label,loss,reliable,critical,priority,topic,practice,context,estimate,
+      played:played.text,reply:reply?reply.text:null,alternative:alternative?alternative.san:null,alternativeText:alternative?alternative.text:null,finish:played.san.endsWith('#')};
+  }
+  function summary(rows,side){
+    const selected=rows.filter(r=>!side||side==='all'||r.side===side),issues=selected.filter(r=>r.critical);
+    let moments=issues.sort((a,b)=>b.priority-a.priority||a.ply-b.ply).slice(0,3);
+    if(!moments.length){const finish=selected.slice().reverse().find(r=>r.finish);if(finish)moments=[finish];}
+    return {reviewed:selected.length,issues:issues.length,uncertain:selected.filter(r=>!r.reliable&&!r.finish&&r.label!=='Missed mate in one').length,moments,
+      practices:[...new Map(moments.map(r=>[r.topic,{topic:r.topic,text:r.practice}])).values()]};
+  }
+  return {row,summary};
+});
+</script>
 <script>
 'use strict';
 const E = ENGINE;
@@ -3611,15 +3675,8 @@ function cancelAnalysis() {
   const job=analysisJob;analysisJob=null;job.game.analysis.status='cancelled';cancelThinking();if(G===job.game)renderAnalysis();
 }
 function analysisRow(index, before, after) {
-  const side=G.fens[index].split(' ')[1],played=G.moves[index],reliable=(before.depth>=2||before.terminal)&&(after.depth>=2||after.terminal),mate=typeof before.white==='number'&&Math.abs(before.white)>=E.MATE-1000||typeof after.white==='number'&&Math.abs(after.white)>=E.MATE-1000;
-  const loss=mate||!reliable?null:Math.max(0,(before.white-after.white)*(side==='w'?1:-1));
-  let label='Within this search estimate';
-  if (!reliable) label='Search too shallow for comparison';
-  else if (before.best===played) label='Engine choice';
-  else if (mate) label='Mate context — inspect the line';
-  else if (before.depth<2||after.depth<2) label='Search too shallow to classify';
-  else if (loss>=200) label='Possible blunder';else if(loss>=100)label='Possible mistake';else if(loss>=50)label='Possible inaccuracy';
-  return {ply:index+1,san:G.sans[index],label,loss,alternative:before.best!==played?before.bestSan:null};
+  const row=ReviewTeaching.row({fen:G.fens[index],uci:G.moves[index],before,after,ply:index+1});
+  if(!row)throw new Error('Invalid move in review history.');return row;
 }
 async function startAnalysis() {
   if (tab!=='play'||!G||( !G.over&&!G.review)) return;
@@ -3654,7 +3711,7 @@ function renderAnalysis() {
   $('#analysisProgress').textContent=!available?'Available after a game ends, or after you import a game for review.':!data?'Run short local searches to see estimated evaluations and alternatives.':data.status==='running'?`Analysing ${data.positions.length} of ${data.total} positions…`:data.status==='complete'?`Reviewed ${data.rows.length} half-moves. Estimates from an unrated engine, not an accuracy score.`:data.status==='cancelled'?'Review cancelled. Partial estimates remain below.':'Review stopped: '+data.error;
   $('#analysisOutput').hidden=!data||!data.positions.length;
   const list=$('#analysisMoves');
-  if(!data){list.innerHTML='';list._record=null;return;}
+  if(!data){list.innerHTML='';list._record=null;$('#analysisLesson').hidden=true;const moments=$('#analysisMoments');moments.innerHTML='';moments._record=null;moments._key='';$('#analysisPractice').innerHTML='';return;}
   if(list._record!==data){list.innerHTML='<button class="btn small" data-analysis-ply="0">Starting position</button>';list._record=data;list._count=0;}
   const fresh=data.rows.slice(list._count);list._count=data.rows.length;
   for(const row of fresh){
@@ -3663,6 +3720,7 @@ function renderAnalysis() {
     list.insertAdjacentHTML('beforeend',`<button class="analysis-row" data-analysis-ply="${row.ply}"><strong>${esc(number+' '+row.san)}</strong><span>${esc(row.label)}</span><small>${esc([alternative,loss].filter(Boolean).join(' · '))}</small></button>`);
   }
   const current=G.view==null?G.moves.length:G.view;$$('[data-analysis-ply]',list).forEach(b=>b.classList.toggle('cur',+b.dataset.analysisPly===current));
+  renderReviewTeaching(data,current);
   const positions=data.positions,span=Math.max(1,data.total-1),points=positions.map((r,i)=>r.white==null?null:[48+538*i/span,70-Math.max(-800,Math.min(800,r.white))*54/800]);
   let connected=false;const path=points.map(point=>{if(!point){connected=false;return '';}const [x,y]=point,command=connected?'L':'M';connected=true;return command+x.toFixed(2)+' '+y.toFixed(2);}).join(' ');
   const score=positions[current],recommendation=currentRecommendation(),graph=$('#analysisGraph');
@@ -3676,7 +3734,7 @@ function renderAnalysis() {
 
 }
 $('#analyseBtn').onclick=startAnalysis;$('#cancelAnalysisBtn').onclick=cancelAnalysis;
-$('#analysisMoves').onclick=e=>{const b=e.target.closest('[data-analysis-ply]');if(b)setView(+b.dataset.analysisPly);};
+$('#analysisMoves').onclick=e=>{const b=e.target.closest('[data-analysis-ply]');if(b){G.analysis.selectedPly=+b.dataset.analysisPly;setView(+b.dataset.analysisPly);}};
 $('#analysisGraph').onclick=e=>{const data=G.analysis;if(!data||!data.positions.length)return;const box=e.currentTarget.getBoundingClientRect(),fraction=Math.max(0,Math.min(1,((e.clientX-box.left)/box.width*600-48)/538));setView(Math.round(fraction*(data.total-1)));};
 
 $('#analysisArrows').onchange=()=>renderArrows();
@@ -3684,6 +3742,30 @@ $('#analysisGraph').onkeydown=e=>{const data=G.analysis;if(!data||!data.position
   if(e.key==='ArrowLeft')target=current-1;else if(e.key==='ArrowRight')target=current+1;else if(e.key==='Home')target=0;else if(e.key==='End')target=max;else return;
   e.preventDefault();e.stopPropagation();setView(Math.max(0,Math.min(max,target)));
 };
+
+function renderReviewTeaching(data,current){
+  const focus=$('#analysisFocus').value,summary=ReviewTeaching.summary(data.rows,focus),name=focus==='w'?'White':focus==='b'?'Black':'Both players';
+  $('#analysisTakeaways').textContent=`${name}: ${summary.reviewed} ${summary.reviewed===1?'move':'moves'} reviewed, ${summary.issues} ${summary.issues===1?'position':'positions'} to revisit.`+(summary.uncertain?` ${summary.uncertain} comparisons are too shallow to classify.`:'')+(data.status==='complete'?'':' Partial review.');
+  const moments=$('#analysisMoments'),key=focus+':'+summary.moments.map(row=>row.ply+row.label).join('|');
+  if(moments._record!==data||moments._key!==key){
+    moments._record=data;moments._key=key;
+    moments.innerHTML=summary.moments.length?summary.moments.map(row=>`<button class="btn review-moment" data-review-moment="${row.ply}"><strong>${esc(row.player+' · '+row.moveLabel)}</strong><span>${esc(row.label)}</span><small>${esc(row.topic)}</small></button>`).join(''):'<p class="muted">No key moment identified in these estimates yet. This does not mean every move was best.</p>';
+    $('#analysisPractice').innerHTML=summary.practices.map(p=>`<li><strong>${esc(p.topic)}:</strong> ${esc(p.text)}</li>`).join('');
+  }
+  const selected=data.selectedPly,at=selected&&(current===selected||current===selected-1)?selected:current;
+  const row=at>0?data.rows[at-1]:null;$('#analysisLesson').hidden=!row;if(!row)return;
+  $('#analysisLesson').dataset.ply=row.ply;
+  $('#analysisLessonTitle').textContent=(current===row.ply-1?'Before ':'After ')+row.player+' played '+row.san+' · '+row.label;
+  $('#analysisPlayed').textContent='Played: '+row.played;
+  $('#analysisReply').textContent=[row.topic==='Piece safety'&&row.reply?'':row.context,row.reply?'Reply to examine: '+row.reply:''].filter(Boolean).join(' ');
+  $('#analysisAlternative').textContent=row.alternativeText?'Compare with: '+row.alternativeText:'The search did not suggest a different move here.';
+  $('#analysisEstimate').textContent=row.estimate;
+  $('#analysisLessonTip').textContent='Practise: '+row.practice;
+  $('#analysisBeforeBtn').disabled=current===row.ply-1;$('#analysisAfterBtn').disabled=current===row.ply;
+}
+$('#analysisFocus').onchange=()=>renderAnalysis();
+$('#analysisMoments').onclick=e=>{const button=e.target.closest('[data-review-moment]');if(!button||!G.analysis)return;G.analysis.selectedPly=+button.dataset.reviewMoment;setView(G.analysis.selectedPly-1);};
+for(const [id,offset]of [['#analysisBeforeBtn',-1],['#analysisAfterBtn',0]])$(id).onclick=()=>{if(!G.analysis)return;const ply=+$('#analysisLesson').dataset.ply;G.analysis.selectedPly=ply;setView(ply+offset);};
 // ================= Tabs =================
 let tab = 'play';
 function setTab(t) {
@@ -3779,7 +3861,8 @@ function openGuide() {
     <div class="setsec"><h3>Make it yours</h3><p>Colours &amp; settings controls board and piece colours, contrast, legal-move dots, animation and sound. Hide game setup when you want more room.</p></div>
     <div class="setsec"><h3>Explore games and positions</h3><p>Import FEN or PGN, click a SAN move to step through a game, or share the displayed position. Saved games keeps named local copies. Game review adds estimated evaluations and alternatives after a game or import. Everything runs locally once this HTML is saved.</p></div>
     <div class="setsec"><h3>Keyboard play</h3><p>Tab to the board, use arrows to explore, and Enter or Space to select a piece and play a destination. Home/End go to the row edges. Escape cancels a selection unless official touch-move applies. Outside the board, Left/Right step through moves.</p></div>
-    <div class="setsec"><h3>Engine strength · unrated</h3><p>Levels 51–65 now use the improved Mitchell WASM engine, with automatic JavaScript fallback. It retains Thomas Jahn’s credited MIT Leorik neural weights. The upgrade scored 20 wins, 15 draws and 5 losses against the first WASM version in 40 games at 0.1 seconds per move, without forfeits. These short matches do not establish an absolute Elo.</p><p>The earlier JavaScript/NNUE engine completed a separate benchmark at one second per move: 0 wins, 7 draws and 93 losses against Stockfish 19, and 0 wins, 20 draws and 80 losses against native Leorik 3.1.3, without forfeits. Those results describe the earlier engine.</p></div>
+    <div class="setsec"><h3>Learn from your game</h3><p>After a game, choose Review game. What to work on highlights key moments for White, Black or both players. Select a moment, revisit the position before the move, and compare the played move, the opponent’s reply and the suggested alternative. Short-search labels are estimates, not accuracy scores or player ratings.</p></div>
+    <div class="setsec"><h3>Engine strength · unrated</h3><p>Levels 51–65 use the improved Mitchell WASM engine, with automatic JavaScript fallback. It retains Thomas Jahn’s credited MIT Leorik neural weights. A completed pilot at one second per move scored 0 wins, 5 draws and 1 loss against native Leorik 3.1.3, and 3 wins, 2 draws and 1 loss against Texel 1.06, with no forfeits. Six games per opponent is too small to establish an absolute Elo. The Source repository contains all games, settings and repeat commands.</p><p>The earlier JavaScript/NNUE engine completed a separate benchmark at one second per move: 0 wins, 7 draws and 93 losses against Stockfish 19, and 0 wins, 20 draws and 80 losses against native Leorik 3.1.3, without forfeits. Those results describe the earlier engine.</p></div>
     <p class="muted">Free, MIT-licensed, no ads or accounts. Source and credits are available in the header. Engine strength remains unrated.</p>`);
 }
 $('#helpBtn').onclick = openGuide; $('#welcomeGuide').onclick = openGuide;

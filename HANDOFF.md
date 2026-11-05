@@ -523,3 +523,49 @@ Publication uses PR #6 after CI, then verifies the deployed HTML and an actual
 neural-level worker move. Preserve MIT/Leorik credits and frozen benchmark data.
 Future strength measurement must label the new release separately from the
 older JS-only 200-game baseline and the short relative WASM experiments.
+
+## Post-game teaching and reproducible strength measurements
+
+User authorized these next priorities. Branch improve/review-teaching-strength
+starts from released main 4bfcb94. The engine script, embedded core and credited
+network remain byte-identical to that release; this is an app/tooling update.
+
+Teaching is a separate pure helper in ui/review-teaching.js, embedded by the
+normal build. It computes side-correct estimated losses with finite/depth guards,
+separates legal mate/stalemate facts, ranks up to three key moments, and gives
+played/reply/alternative descriptions plus a practice takeaway. Search estimates
+stay labelled as estimates. No accuracy or player rating is generated. Key
+moments support White/Black/both focus, Before/After navigation without altering
+history, preserved keyboard focus, mobile targets and new-game cache cleanup.
+
+Measurement preparation now pins required WASM/core/model identities, refuses
+legacy adapters unable to enforce WASM, and freezes non-secret external runtime
+settings without permitting MITCHELL_ overrides. report-strength.cjs verifies
+hashes/legal PGNs and recomputes W/D/L/paired intervals using repository code,
+rejects inconsistent stored summaries, and separates incomplete runs/forfeits.
+Use npm run strength:prepare and strength:report; complete commands and a
+200-game profile are in validation/strength/PROTOCOL.md.
+
+Completed independent pilot of the released 4bfcb94 engine: 12 games at 1s/move,
+native Leorik 3.1.3 0W/5D/1L; Texel 1.06 3W/2D/1L; zero forfeits. First three
+openings reversed by colour, at most two games at once, one thread each, no
+books/score adjudication/move-limit draws. All 1,606 half-moves replayed legally.
+WASM was required; inputs were frozen before play. Light development/unit work
+ran concurrently; browser/throughput suites were held until completion. Preserve
+the exact source/preparer/runtime/configuration, raw logs (including Leorik PV
+warnings), PGNs and hashes in validation/strength/release-pilot-12. This is a
+small protocol pilot, not an absolute rating or a completed 200-game campaign.
+
+See validation/teaching-strength.md for changes/limits and
+validation/teaching-strength-checks for raw checks and exact engine identity.
+22 core commands, 9 browser suites, 6,013 engine cases plus protocol/archive
+checks passed locally. A focused real-worker teaching flow also passed after
+final presentation/cleanup edits. Source/browser tests cover actual tactical
+examples, both-side scores, non-finite/shallow values, legal alternatives,
+mate/stalemate facts, before/after state, focused moments and mobile/keyboard
+behaviour. No external opponent code or binary is added to the game.
+
+Next measurement: select a larger competitive pool and use the documented
+200-game profile with repeated colour pairs. Keep controls/revisions separate;
+do not transfer CCRL or human FIDE ratings. Existing permission to publish
+measured improvements while rating work continues remains in force.
