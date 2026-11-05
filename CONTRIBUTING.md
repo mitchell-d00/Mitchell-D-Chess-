@@ -96,3 +96,13 @@ machine-readable report with absolute rating left unset. The reporter does not
 execute archived code, transfer opponent ratings or combine incompatible runs.
 See [the complete protocol](validation/strength/PROTOCOL.md) for setup, runtime
 variables, resumable runs, full 200-game preparation and archival commands.
+
+## Level progression
+
+`node scripts/test-level-progression.cjs` checks all 65 presets and legal moves;
+`node scripts/audit-levels.cjs [index.html]` exports settings and effective clock
+budgets. `scripts/prepare-level-matches.py` freezes colour-paired level matches
+with per-level backend assertions. See [the level audit](validation/levels/README.md)
+for the complete ladder screening, unresolved neighbours and repeat commands.
+Increasing resources are an invariant; statistically increasing playing strength
+requires match evidence. Preserve unsuccessful games when changing the ladder.

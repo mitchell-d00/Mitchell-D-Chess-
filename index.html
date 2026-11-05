@@ -171,6 +171,7 @@ input[type=number]{background:var(--panel);border:1px solid var(--line);border-r
 .clock.low{color:var(--bad)}
 .clock.run.low{background:var(--bad);color:#fff;border-color:var(--bad)}
 .clock.out{background:var(--bad);color:#fff;border-color:var(--bad)}
+.clock-budget{display:block;font-size:.8rem;font-weight:400;color:var(--muted);margin-top:4px}
 .drawbox{display:grid;gap:8px;padding:.6rem .7rem;border-radius:10px;background:var(--well);font-size:.9rem}
 .drawbox .row{display:flex;gap:6px;flex-wrap:wrap}
 .official-tag{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.08rem .45rem;border-radius:99px;background:var(--accent);color:var(--accent-ink);margin-left:6px;vertical-align:2px}
@@ -1063,11 +1064,11 @@ var ENGINE = (function () {
       if(legal.length===1){result.move=p.uci(legal[0]);return result;}
       var core=prepareWasmCore();if(!core)throw new Error('Candidate unavailable');
       coreLoad(core,initial);for(var j=0;j<encoded.length;j++)if(!core.play(encoded[j]))throw new Error('Candidate history mismatch');
-      var time=Math.max(1,Math.min(120000,extra&&extra.time||L.t||1000));
+      var time=levelThinkTime(levelIdx,extra);
       core.set_endgames(extra&&extra.exactEndgames!==undefined?+extra.exactEndgames:+WASM_CORE_CONFIG.exactEndgames);
       var move=core.iterate(L.d,time,3,extra&&extra.adv!==undefined?+extra.adv:+L.adv,1,20);
       if(!core.result_valid()||legal.indexOf(move)<0||coreFen(core)!==p.fen())throw new Error('Candidate failed root validation');
-      result.move=p.uci(move);result.score=core.result_score();result.depth=core.result_depth();result.nodes=core.nodes();result.seldepth=core.seldepth();return result;
+      result.move=p.uci(move);result.score=core.result_score();result.depth=core.result_depth();result.nodes=core.nodes();result.seldepth=core.seldepth();result.timeBudget=time;return result;
     } catch(error) {
       // History/level errors must stay errors, never become repaired game input.
       if(/Invalid move history|Invalid engine level/.test(String(error.message)))throw error;
@@ -1583,16 +1584,34 @@ var ENGINE = (function () {
 
   // Score every root move (weaker levels pick among these with noise)
   function rootScores(pos, opt) {
-    var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: 0 });
-    var ms = pos.legalMoves(), out = [];
-    for (var i = 0; i < ms.length; i++) {
-      pos.make(ms[i]);
-      var sc = opt.depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(opt.depth - 1, -INF, INF, 1, false, 0);
-      if (pos.inCheck() && !pos.legalMoves().length) sc = MATE - 1;
-      pos.unmake();
-      out.push({ m: ms[i], s: sc });
+    var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: opt.time || 0 });
+    var ms = pos.legalMoves(), out = [], basePly=pos.uMove.length, completedDepth=0;
+    // A complete cheap fallback prevents partial root iterations favouring
+    // whichever moves happened to be generated first when the clock expires.
+    if(opt.time)for(var f=0;f<ms.length;f++){
+      pos.make(ms[f]);var value=-evaluate(pos,s.mode);
+      if(pos.inCheck()&&!pos.legalMoves().length)value=MATE-1;
+      pos.unmake();out.push({m:ms[f],s:value});
+    }
+    for(var depth=opt.time?1:opt.depth;depth<=opt.depth;depth++){
+      var pass=[];
+      try{
+        for (var i = 0; i < ms.length; i++) {
+          if(opt.time&&Date.now()>=s.deadline)throw STOP;
+          pos.make(ms[i]);
+          var sc = depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(depth - 1, -INF, INF, 1, false, 0);
+          if (pos.inCheck() && !pos.legalMoves().length) sc = MATE - 1;
+          pos.unmake();pass.push({ m: ms[i], s: sc });
+        }
+        out=pass;completedDepth=depth;
+      }catch(error){
+        if(error!==STOP)throw error;
+        while(pos.uMove.length>basePly){if(pos.uMove[pos.uMove.length-1]===0)pos.unmakeNull();else pos.unmake();}
+        break;
+      }
     }
     out.sort(function (a, b) { return b.s - a.s; });
+    out.completedDepth=completedDepth;out.nodes=s.nodes;
     return out;
   }
   function gauss() { var u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
@@ -2094,8 +2113,8 @@ var ENGINE = (function () {
     { name: 'First Steps', tier: 'Beginner', d: 1, ev: 'mat', q: false, noise: 260, bl: 0.4, about: 'Counts pieces one move ahead and misses most threats.' },
     { name: 'Curious Cat', tier: 'Beginner', d: 1, ev: 'mat', q: true, noise: 200, bl: 0.3, about: 'Sees simple captures but still drops pieces.' },
     { name: 'Kitchen Table', tier: 'Beginner', d: 1, ev: 'pst', q: true, noise: 160, bl: 0.25, about: 'Starts to like the centre. Often leaves pieces loose.' },
-    { name: 'Rookie', tier: 'Beginner', d: 2, ev: 'mat', q: true, noise: 140, bl: 0.2, about: 'Looks two moves ahead, but only at material.' },
-    { name: 'Weekend Player', tier: 'Novice', d: 2, ev: 'pst', q: false, noise: 120, bl: 0.16, about: 'Develops pieces and sometimes sees your threats.' },
+    { name: 'Rookie', tier: 'Beginner', d: 2, ev: 'pst', q: true, noise: 140, bl: 0.2, about: 'Looks two moves ahead and starts to value piece placement.' },
+    { name: 'Weekend Player', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 120, bl: 0.16, about: 'Develops pieces and sometimes sees your threats.' },
     { name: 'Park Bench', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 95, bl: 0.13, about: 'Spots one-move tactics and protects its pieces.' },
     { name: 'Coffeehouse', tier: 'Novice', d: 2, ev: 'pst', q: true, noise: 75, bl: 0.1, about: 'Rarely hangs a piece, still loose in the endgame.' },
     { name: 'Library Club', tier: 'Novice', d: 3, ev: 'pst', q: true, noise: 65, bl: 0.08, about: 'Thinks three moves deep, plays by simple principles.' },
@@ -2128,17 +2147,31 @@ var ENGINE = (function () {
   ];
 
   for (var lv = 36; lv <= 50; lv++) {
-    var seconds = 20 + (lv - 36) * 40 / 14;
+    var seconds = 17 + (lv - 36) * 13 / 14;
     LEVELS.push({ name: 'Deep Analysis ' + (lv - 35), tier: 'Analysis', d: 64,
       t: Math.round(seconds * 1000), ev: 'full', q: true, adv: true, book: true,
       about: 'Full custom engine, up to ' + Math.round(seconds) + ' seconds per move. Strength is unrated.' });
   }
 
   for (var neuralLevel = 51; neuralLevel <= 65; neuralLevel++) {
-    var neuralSeconds = 10 + (neuralLevel - 51) * 50 / 14;
+    var neuralSeconds = 32 + (neuralLevel - 51) * 28 / 14;
     LEVELS.push({ name: 'Neural Analysis ' + (neuralLevel - 50), tier: 'Neural', d: 64,
       t: Math.round(neuralSeconds * 1000), ev: 'nnue', q: true, adv: true, book: true,
       about: 'Trained MIT neural evaluation, up to ' + Math.round(neuralSeconds) + ' seconds per move. Unrated.' });
+  }
+
+  // Separate presets even when an external clock caps their untimed budgets.
+  // Level 65 retains the full allowance; lower levels use increasing shares.
+  for (var effortLevel = 2; effortLevel <= 65; effortLevel++) {
+    LEVELS[effortLevel - 1].clockShare = Math.pow(2, (effortLevel - 65) / 12);
+    if(!LEVELS[effortLevel - 1].t)LEVELS[effortLevel - 1].t=Math.round(400*Math.pow(2,(effortLevel-17)/12));
+  }
+  function levelThinkTime(levelIdx, extra) {
+    var L = LEVELS[levelIdx];if(!L)throw new Error('Invalid engine level');
+    if(L.random)return 0;
+    var cap = L.t || 1000, supplied = extra && Number(extra.time);
+    var time = supplied > 0 && isFinite(supplied) ? supplied * (L.clockShare || 1) : cap;
+    return Math.max(1, Math.floor(Math.min(120000, cap, time)));
   }
 
   // Choose a move. moves: UCI list from the start position (startFen optional).
@@ -2162,7 +2195,9 @@ var ENGINE = (function () {
     }
     if (legal.length === 1) { res.move = pos.uci(legal[0]); return res; }
     if (L.noise || L.bl) {
-      var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q });
+      var limited=levelThinkTime(levelIdx,extra);
+      var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q, time:limited });
+      res.depth=sc.completedDepth;res.nodes=sc.nodes;res.timeBudget=limited;
       if (sc[0].s >= MATE - 2 && levelIdx >= 2) { res.move = pos.uci(sc[0].m); res.score = sc[0].s; return res; }
       var noisy = sc.map(function (x) { return { m: x.m, s: x.s + gauss() * (L.noise || 0) }; });
       noisy.sort(function (a, b) { return b.s - a.s; });
@@ -2170,10 +2205,9 @@ var ENGINE = (function () {
       if (Math.random() < (L.bl || 0) && noisy.length > 2) choice = noisy[1 + Math.floor(Math.random() * Math.min(4, noisy.length - 1))];
       res.move = pos.uci(choice.m);
       res.score = sc.filter(function (x) { return x.m === choice.m; })[0].s;
-      res.depth = L.d;
       return res;
     }
-    var time = Math.max(1, Math.min(120000, (extra && extra.time) || L.t || 1000));
+    var time = levelThinkTime(levelIdx,extra);
     var basePly = pos.uMove.length, lastBest = 0, stability = 0;
     var searchStart = Date.now();
     var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, exactEndgames: !!(extra && extra.exactEndgames), adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
@@ -2210,7 +2244,7 @@ var ENGINE = (function () {
       if (Date.now() - t0 > time * soft) break;
     }
     if (legal.indexOf(best) < 0) throw new Error('Search selected an illegal root move');
-    res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes; res.seldepth = s.seldepth;
+    res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes; res.seldepth = s.seldepth;res.timeBudget=time;
     return res;
   }
 
@@ -2219,7 +2253,7 @@ var ENGINE = (function () {
 
   return {
     NNUE_CONFIG: NNUE_CONFIG, NeuralAccumulator: NeuralAccumulator, neuralEvaluate: neuralEvaluate, NNUE_MODEL: NNUE_MODEL, probeKPK: probeKPK, Searcher: Searcher, EVAL_WEIGHTS: EVAL_WEIGHTS, bookLines: BOOK, Chess: Chess, LEVELS: LEVELS, WASM_CORE: {config:WASM_CORE_CONFIG, prepare:prepareWasmCore, get error(){return WASM_CORE_ERROR;}}, think: thinkWithWasm, evaluate: evaluate, sqName: sqName, sqParse: sqParse, MATE: MATE,
-    mFrom: mFrom, mTo: mTo, mPromo: mPromo, mFlags: mFlags, whiteScore: whiteScore, CHARS: CHARS
+    mFrom: mFrom, mTo: mTo, mPromo: mPromo, mFlags: mFlags, whiteScore: whiteScore, CHARS: CHARS, levelThinkTime:levelThinkTime
   };
 })();
 
@@ -3069,17 +3103,18 @@ function maybeAI() {
     const claim = G.chess.claimable();
     if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
   }
-  G.thinking = true; renderBars(); renderStatus(); renderButtons();
+  G.thinking = true;G.thinkBudget=null; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
   let minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
   let extra;
   if (G.clock) {
     const c = G.clock, rem = c[side], L = L18[p.level - 1];
-    const allocation = allocateThinkTime(c, side, L.t, ply);
+    const allocation = allocateThinkTime(c, side, 120000, ply);
     const budget = allocation.time, reserve = allocation.reserve;
-    if (L.t) extra = { time: Math.min(L.t, budget) };
+    extra = { time: budget };
     minDelay = Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
+    G.thinkBudget=E.levelThinkTime(p.level-1,extra);renderStatus();
   }
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
     const wait = Math.max(0, minDelay - (Date.now() - t0));
@@ -3087,7 +3122,8 @@ function maybeAI() {
       if (!G || G.token !== tok || G.moves.length !== ply) return;
       G.thinking = false;
       if (!r || !r.move) { renderStatus(); return; }
-      G.engineSource={ply:ply+1,text:r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled'):''};
+      const backend=r.backend==='wasm'?' · WASM':r.backend==='js-fallback'?' · JavaScript fallback':'';
+      G.engineSource={ply:ply+1,text:r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled')+backend:''};
       if (!r.book && r.depth) { G.evalW = E.whiteScore(fenBefore, r.score); G.depth = r.depth; }
       if (G.paused) { G.pendingAI = r.move; renderStatus(); renderButtons(); return; }
       playMove(r.move, true);
@@ -3137,7 +3173,8 @@ function renderStatus() {
     if (inC) { txt = 'Check! ' + txt; el.classList.add('check'); }
     if (G.touched && humanToMove()) txt += ` · touch-move: move the piece on ${G.touched}`;
   }
-  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}</span>`;
+  const limited=G.clock&&G.thinking&&!G.paused&&!G.over&&G.view==null&&G.thinkBudget>0;
+  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}${limited?`<small class="clock-budget">Clocked thinking allowance: up to ${(G.thinkBudget/1000).toFixed(G.thinkBudget<1000?2:1)}s for this move.</small>`:''}</span>`;
   const source=G.engineSource;$('#engineSource').hidden=G.view!=null||!source||!source.text||source.ply>G.moves.length;
   if(!$('#engineSource').hidden)$('#engineSource').textContent=source.text;
   renderDrawBox();

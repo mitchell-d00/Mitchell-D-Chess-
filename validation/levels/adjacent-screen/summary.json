@@ -1,0 +1,1383 @@
+{
+  "updatedUtc": "2026-11-05T23:28:41.632303+00:00",
+  "plannedGames": 276,
+  "completedGames": 276,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Level65-vs-Level50": {
+      "planned": 20,
+      "wins": 20,
+      "draws": 0,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 20,
+      "normalResults": {
+        "wins": 20,
+        "draws": 0,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 1.0,
+      "completedNormalPairs": 10,
+      "pairedScoreBootstrap95": null
+    },
+    "Level2-vs-Level1": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 4,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 4,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level3-vs-Level2": {
+      "planned": 4,
+      "wins": 4,
+      "draws": 0,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 4,
+        "draws": 0,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 1.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level4-vs-Level3": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level5-vs-Level4": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 0,
+      "losses": 4,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 4
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level6-vs-Level5": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 1,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.875,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level7-vs-Level6": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level8-vs-Level7": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level9-vs-Level8": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level10-vs-Level9": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level11-vs-Level10": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 0,
+      "losses": 4,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 4
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level12-vs-Level11": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level13-vs-Level12": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level14-vs-Level13": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level15-vs-Level14": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level16-vs-Level15": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 0,
+      "losses": 4,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 4
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level17-vs-Level16": {
+      "planned": 4,
+      "wins": 4,
+      "draws": 0,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 4,
+        "draws": 0,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 1.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level18-vs-Level17": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level19-vs-Level18": {
+      "planned": 4,
+      "wins": 4,
+      "draws": 0,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 4,
+        "draws": 0,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 1.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level20-vs-Level19": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level21-vs-Level20": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level22-vs-Level21": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 2,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 2,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.25,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level23-vs-Level22": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level24-vs-Level23": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level25-vs-Level24": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level26-vs-Level25": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level27-vs-Level26": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level28-vs-Level27": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level29-vs-Level28": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level30-vs-Level29": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 0,
+      "losses": 3,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 0,
+        "losses": 3
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.25,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level31-vs-Level30": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level32-vs-Level31": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level33-vs-Level32": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level34-vs-Level33": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 2,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level35-vs-Level34": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level36-vs-Level35": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level37-vs-Level36": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 2,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level38-vs-Level37": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 0,
+      "losses": 4,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 4
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level39-vs-Level38": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 0,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 0,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level40-vs-Level39": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level41-vs-Level40": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 2,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level42-vs-Level41": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level43-vs-Level42": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level44-vs-Level43": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level45-vs-Level44": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 1,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.875,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level46-vs-Level45": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 0,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 0,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level47-vs-Level46": {
+      "planned": 4,
+      "wins": 3,
+      "draws": 1,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 3,
+        "draws": 1,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.875,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level48-vs-Level47": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level49-vs-Level48": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 0,
+      "losses": 3,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 0,
+        "losses": 3
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.25,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level50-vs-Level49": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 1,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level51-vs-Level50": {
+      "planned": 4,
+      "wins": 4,
+      "draws": 0,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 4,
+        "draws": 0,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 1.0,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level52-vs-Level51": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 2,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 2,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.75,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level53-vs-Level52": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 3,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 3,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level54-vs-Level53": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 3,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level55-vs-Level54": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 3,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level56-vs-Level55": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level57-vs-Level56": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level58-vs-Level57": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 3,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level59-vs-Level58": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level60-vs-Level59": {
+      "planned": 4,
+      "wins": 1,
+      "draws": 2,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 1,
+        "draws": 2,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level61-vs-Level60": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level62-vs-Level61": {
+      "planned": 4,
+      "wins": 2,
+      "draws": 1,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 2,
+        "draws": 1,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.625,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level63-vs-Level62": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 4,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 4,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level64-vs-Level63": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 2,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 2,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.25,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    },
+    "Level65-vs-Level64": {
+      "planned": 4,
+      "wins": 0,
+      "draws": 3,
+      "losses": 1,
+      "forfeits": 0,
+      "completed": 4,
+      "normalResults": {
+        "wins": 0,
+        "draws": 3,
+        "losses": 1
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.375,
+      "completedNormalPairs": 2,
+      "pairedScoreBootstrap95": null
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

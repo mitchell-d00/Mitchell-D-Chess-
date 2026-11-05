@@ -1,0 +1,1623 @@
+{
+  "createdUtc": "2026-11-05T23:16:19.508096+00:00",
+  "testedRevision": "ee1fcafc1c70271ddbd7804a6714c12dc37e6641",
+  "html": "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html",
+  "htmlSha256": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+  "adapter": "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs",
+  "adapterSha256": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 2,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/mitchell-performance/levels-after-screen/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "opponents": {
+    "Level65-vs-Level50": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=50",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level2-vs-Level1": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=1",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level3-vs-Level2": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=2",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level4-vs-Level3": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=3",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level5-vs-Level4": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=4",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level6-vs-Level5": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=5",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level7-vs-Level6": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=6",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level8-vs-Level7": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=7",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level9-vs-Level8": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=8",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level10-vs-Level9": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=9",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level11-vs-Level10": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=10",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level12-vs-Level11": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=11",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level13-vs-Level12": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=12",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level14-vs-Level13": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=13",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level15-vs-Level14": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=14",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level16-vs-Level15": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=15",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level17-vs-Level16": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=16",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level18-vs-Level17": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=17",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level19-vs-Level18": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=18",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level20-vs-Level19": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=19",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level21-vs-Level20": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=20",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level22-vs-Level21": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=21",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level23-vs-Level22": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=22",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level24-vs-Level23": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=23",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level25-vs-Level24": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=24",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level26-vs-Level25": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=25",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level27-vs-Level26": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=26",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level28-vs-Level27": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=27",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level29-vs-Level28": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=28",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level30-vs-Level29": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=29",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level31-vs-Level30": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=30",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level32-vs-Level31": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=31",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level33-vs-Level32": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=32",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level34-vs-Level33": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=33",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level35-vs-Level34": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=34",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level36-vs-Level35": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=35",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level37-vs-Level36": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=36",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level38-vs-Level37": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=37",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level39-vs-Level38": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=38",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level40-vs-Level39": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=39",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level41-vs-Level40": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=40",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level42-vs-Level41": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=41",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level43-vs-Level42": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=42",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level44-vs-Level43": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=43",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level45-vs-Level44": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=44",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level46-vs-Level45": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=45",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level47-vs-Level46": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=46",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level48-vs-Level47": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=47",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level49-vs-Level48": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=48",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level50-vs-Level49": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=49",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level51-vs-Level50": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=50",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level52-vs-Level51": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=51",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level53-vs-Level52": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=52",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level54-vs-Level53": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=53",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level55-vs-Level54": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=54",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level56-vs-Level55": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=55",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level57-vs-Level56": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=56",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level58-vs-Level57": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=57",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level59-vs-Level58": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=58",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level60-vs-Level59": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=59",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level61-vs-Level60": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=60",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level62-vs-Level61": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=61",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level63-vs-Level62": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=62",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level64-vs-Level63": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=63",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    },
+    "Level65-vs-Level64": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=64",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-after-screen/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-after-screen/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-after-screen/engine-under-test.html": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Level65-vs-Level50",
+      "games": 20,
+      "openingStart": 1,
+      "candidateLevel": 65
+    },
+    {
+      "id": "02-opponent",
+      "opponent": "Level2-vs-Level1",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 2
+    },
+    {
+      "id": "03-opponent",
+      "opponent": "Level3-vs-Level2",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 3
+    },
+    {
+      "id": "04-opponent",
+      "opponent": "Level4-vs-Level3",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 4
+    },
+    {
+      "id": "05-opponent",
+      "opponent": "Level5-vs-Level4",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 5
+    },
+    {
+      "id": "06-opponent",
+      "opponent": "Level6-vs-Level5",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 6
+    },
+    {
+      "id": "07-opponent",
+      "opponent": "Level7-vs-Level6",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 7
+    },
+    {
+      "id": "08-opponent",
+      "opponent": "Level8-vs-Level7",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 8
+    },
+    {
+      "id": "09-opponent",
+      "opponent": "Level9-vs-Level8",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 9
+    },
+    {
+      "id": "10-opponent",
+      "opponent": "Level10-vs-Level9",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 10
+    },
+    {
+      "id": "11-opponent",
+      "opponent": "Level11-vs-Level10",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 11
+    },
+    {
+      "id": "12-opponent",
+      "opponent": "Level12-vs-Level11",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 12
+    },
+    {
+      "id": "13-opponent",
+      "opponent": "Level13-vs-Level12",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 13
+    },
+    {
+      "id": "14-opponent",
+      "opponent": "Level14-vs-Level13",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 14
+    },
+    {
+      "id": "15-opponent",
+      "opponent": "Level15-vs-Level14",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 15
+    },
+    {
+      "id": "16-opponent",
+      "opponent": "Level16-vs-Level15",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 16
+    },
+    {
+      "id": "17-opponent",
+      "opponent": "Level17-vs-Level16",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 17
+    },
+    {
+      "id": "18-opponent",
+      "opponent": "Level18-vs-Level17",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 18
+    },
+    {
+      "id": "19-opponent",
+      "opponent": "Level19-vs-Level18",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 19
+    },
+    {
+      "id": "20-opponent",
+      "opponent": "Level20-vs-Level19",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 20
+    },
+    {
+      "id": "21-opponent",
+      "opponent": "Level21-vs-Level20",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 21
+    },
+    {
+      "id": "22-opponent",
+      "opponent": "Level22-vs-Level21",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 22
+    },
+    {
+      "id": "23-opponent",
+      "opponent": "Level23-vs-Level22",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 23
+    },
+    {
+      "id": "24-opponent",
+      "opponent": "Level24-vs-Level23",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 24
+    },
+    {
+      "id": "25-opponent",
+      "opponent": "Level25-vs-Level24",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 25
+    },
+    {
+      "id": "26-opponent",
+      "opponent": "Level26-vs-Level25",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 26
+    },
+    {
+      "id": "27-opponent",
+      "opponent": "Level27-vs-Level26",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 27
+    },
+    {
+      "id": "28-opponent",
+      "opponent": "Level28-vs-Level27",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 28
+    },
+    {
+      "id": "29-opponent",
+      "opponent": "Level29-vs-Level28",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 29
+    },
+    {
+      "id": "30-opponent",
+      "opponent": "Level30-vs-Level29",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 30
+    },
+    {
+      "id": "31-opponent",
+      "opponent": "Level31-vs-Level30",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 31
+    },
+    {
+      "id": "32-opponent",
+      "opponent": "Level32-vs-Level31",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 32
+    },
+    {
+      "id": "33-opponent",
+      "opponent": "Level33-vs-Level32",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 33
+    },
+    {
+      "id": "34-opponent",
+      "opponent": "Level34-vs-Level33",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 34
+    },
+    {
+      "id": "35-opponent",
+      "opponent": "Level35-vs-Level34",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 35
+    },
+    {
+      "id": "36-opponent",
+      "opponent": "Level36-vs-Level35",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 36
+    },
+    {
+      "id": "37-opponent",
+      "opponent": "Level37-vs-Level36",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 37
+    },
+    {
+      "id": "38-opponent",
+      "opponent": "Level38-vs-Level37",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 38
+    },
+    {
+      "id": "39-opponent",
+      "opponent": "Level39-vs-Level38",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 39
+    },
+    {
+      "id": "40-opponent",
+      "opponent": "Level40-vs-Level39",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 40
+    },
+    {
+      "id": "41-opponent",
+      "opponent": "Level41-vs-Level40",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 41
+    },
+    {
+      "id": "42-opponent",
+      "opponent": "Level42-vs-Level41",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 42
+    },
+    {
+      "id": "43-opponent",
+      "opponent": "Level43-vs-Level42",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 43
+    },
+    {
+      "id": "44-opponent",
+      "opponent": "Level44-vs-Level43",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 44
+    },
+    {
+      "id": "45-opponent",
+      "opponent": "Level45-vs-Level44",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 45
+    },
+    {
+      "id": "46-opponent",
+      "opponent": "Level46-vs-Level45",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 46
+    },
+    {
+      "id": "47-opponent",
+      "opponent": "Level47-vs-Level46",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 47
+    },
+    {
+      "id": "48-opponent",
+      "opponent": "Level48-vs-Level47",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 48
+    },
+    {
+      "id": "49-opponent",
+      "opponent": "Level49-vs-Level48",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 49
+    },
+    {
+      "id": "50-opponent",
+      "opponent": "Level50-vs-Level49",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 50
+    },
+    {
+      "id": "51-opponent",
+      "opponent": "Level51-vs-Level50",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 51
+    },
+    {
+      "id": "52-opponent",
+      "opponent": "Level52-vs-Level51",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 52
+    },
+    {
+      "id": "53-opponent",
+      "opponent": "Level53-vs-Level52",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 53
+    },
+    {
+      "id": "54-opponent",
+      "opponent": "Level54-vs-Level53",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 54
+    },
+    {
+      "id": "55-opponent",
+      "opponent": "Level55-vs-Level54",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 55
+    },
+    {
+      "id": "56-opponent",
+      "opponent": "Level56-vs-Level55",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 56
+    },
+    {
+      "id": "57-opponent",
+      "opponent": "Level57-vs-Level56",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 57
+    },
+    {
+      "id": "58-opponent",
+      "opponent": "Level58-vs-Level57",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 58
+    },
+    {
+      "id": "59-opponent",
+      "opponent": "Level59-vs-Level58",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 59
+    },
+    {
+      "id": "60-opponent",
+      "opponent": "Level60-vs-Level59",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 60
+    },
+    {
+      "id": "61-opponent",
+      "opponent": "Level61-vs-Level60",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 61
+    },
+    {
+      "id": "62-opponent",
+      "opponent": "Level62-vs-Level61",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 62
+    },
+    {
+      "id": "63-opponent",
+      "opponent": "Level63-vs-Level62",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 63
+    },
+    {
+      "id": "64-opponent",
+      "opponent": "Level64-vs-Level63",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 64
+    },
+    {
+      "id": "65-opponent",
+      "opponent": "Level65-vs-Level64",
+      "games": 4,
+      "openingStart": 1,
+      "candidateLevel": 65
+    }
+  ],
+  "environment": {
+    "MITCHELL_REQUIRE_LEVEL_BACKEND": "1",
+    "MITCHELL_WASM_MEMORY": "32",
+    "MITCHELL_EXACT_ENDGAMES": "0"
+  },
+  "runnerSourceRevision": "ee1fcafc1c70271ddbd7804a6714c12dc37e6641",
+  "stopOnForfeit": true,
+  "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+  "fastchessSha256": "3d0a8f3c8b837a96366ac838f3ddf6fe87b813abb4ad2852284c0ce409132566",
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14",
+    "cpuQuota": "400000 100000",
+    "memoryLimit": "17179869184"
+  },
+  "engineIdentity": {
+    "level": "per batch",
+    "backend": "asserted per-level routing",
+    "wasmMemoryMiB": 32,
+    "wasmSha256": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+    "modelSha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704",
+    "hidden": 128
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 276,
+  "purpose": "Colour-paired difficulty-level screening",
+  "event": "Colour-paired difficulty-level screening",
+  "helper": "/workspace/mitchell-performance/levels-after-screen/adapter/engine.cjs",
+  "helperSha256": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+  "engineSourceSha256": "b3ffafe520089cb46296711928ca6d67d0bb4d138329a1c00402fabf19477dd4",
+  "runner": "/workspace/mitchell-performance/levels-after-screen/runner.py",
+  "runnerSha256": "c8f7339fc1b9298dd58e84e147b81120e835344590c2d7dc6c94e94fbc1440cb",
+  "preparer": "/workspace/mitchell-performance/levels-after-screen/prepare-level-matches.py",
+  "preparerSha256": "d4dd8e89bea4ca208dbd15b8c757e08b1f812fbfa8212bad021e5b4b74f6b27a",
+  "candidateName": "MitchellHigher",
+  "adapterSourceRevision": "ee1fcafc1c70271ddbd7804a6714c12dc37e6641",
+  "purposeNote": "Each row is higher versus lower level, colours reversed. Short screenings detect regressions but cannot prove every adjacent level is statistically stronger. No Elo is assigned."
+}

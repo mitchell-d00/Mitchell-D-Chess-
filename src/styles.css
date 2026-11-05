@@ -160,6 +160,7 @@ input[type=number]{background:var(--panel);border:1px solid var(--line);border-r
 .clock.low{color:var(--bad)}
 .clock.run.low{background:var(--bad);color:#fff;border-color:var(--bad)}
 .clock.out{background:var(--bad);color:#fff;border-color:var(--bad)}
+.clock-budget{display:block;font-size:.8rem;font-weight:400;color:var(--muted);margin-top:4px}
 .drawbox{display:grid;gap:8px;padding:.6rem .7rem;border-radius:10px;background:var(--well);font-size:.9rem}
 .drawbox .row{display:flex;gap:6px;flex-wrap:wrap}
 .official-tag{display:inline-block;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.08rem .45rem;border-radius:99px;background:var(--accent);color:var(--accent-ink);margin-left:6px;vertical-align:2px}

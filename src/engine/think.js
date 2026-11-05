@@ -19,7 +19,9 @@
     }
     if (legal.length === 1) { res.move = pos.uci(legal[0]); return res; }
     if (L.noise || L.bl) {
-      var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q });
+      var limited=levelThinkTime(levelIdx,extra);
+      var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q, time:limited });
+      res.depth=sc.completedDepth;res.nodes=sc.nodes;res.timeBudget=limited;
       if (sc[0].s >= MATE - 2 && levelIdx >= 2) { res.move = pos.uci(sc[0].m); res.score = sc[0].s; return res; }
       var noisy = sc.map(function (x) { return { m: x.m, s: x.s + gauss() * (L.noise || 0) }; });
       noisy.sort(function (a, b) { return b.s - a.s; });
@@ -27,10 +29,9 @@
       if (Math.random() < (L.bl || 0) && noisy.length > 2) choice = noisy[1 + Math.floor(Math.random() * Math.min(4, noisy.length - 1))];
       res.move = pos.uci(choice.m);
       res.score = sc.filter(function (x) { return x.m === choice.m; })[0].s;
-      res.depth = L.d;
       return res;
     }
-    var time = Math.max(1, Math.min(120000, (extra && extra.time) || L.t || 1000));
+    var time = levelThinkTime(levelIdx,extra);
     var basePly = pos.uMove.length, lastBest = 0, stability = 0;
     var searchStart = Date.now();
     var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, exactEndgames: !!(extra && extra.exactEndgames), adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
@@ -67,7 +68,7 @@
       if (Date.now() - t0 > time * soft) break;
     }
     if (legal.indexOf(best) < 0) throw new Error('Search selected an illegal root move');
-    res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes; res.seldepth = s.seldepth;
+    res.move = pos.uci(best); res.score = bestScore; res.depth = depthDone; res.nodes = s.nodes; res.seldepth = s.seldepth;res.timeBudget=time;
     return res;
   }
 
@@ -76,7 +77,7 @@
 
   return {
     NNUE_CONFIG: NNUE_CONFIG, NeuralAccumulator: NeuralAccumulator, neuralEvaluate: neuralEvaluate, NNUE_MODEL: NNUE_MODEL, probeKPK: probeKPK, Searcher: Searcher, EVAL_WEIGHTS: EVAL_WEIGHTS, bookLines: BOOK, Chess: Chess, LEVELS: LEVELS, think: think, evaluate: evaluate, sqName: sqName, sqParse: sqParse, MATE: MATE,
-    mFrom: mFrom, mTo: mTo, mPromo: mPromo, mFlags: mFlags, whiteScore: whiteScore, CHARS: CHARS
+    mFrom: mFrom, mTo: mTo, mPromo: mPromo, mFlags: mFlags, whiteScore: whiteScore, CHARS: CHARS, levelThinkTime:levelThinkTime
   };
 })();
 

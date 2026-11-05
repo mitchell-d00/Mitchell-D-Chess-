@@ -1,0 +1,114 @@
+{
+  "updatedUtc": "2026-11-05T23:37:34.158353+00:00",
+  "plannedGames": 80,
+  "completedGames": 80,
+  "timeControl": {
+    "movetimeSeconds": 1.0,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Level5-vs-Level4": {
+      "planned": 20,
+      "wins": 16,
+      "draws": 2,
+      "losses": 2,
+      "forfeits": 0,
+      "completed": 20,
+      "normalResults": {
+        "wins": 16,
+        "draws": 2,
+        "losses": 2
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.85,
+      "completedNormalPairs": 10,
+      "pairedScoreBootstrap95": [
+        0.725,
+        0.95
+      ]
+    },
+    "Level11-vs-Level10": {
+      "planned": 20,
+      "wins": 11,
+      "draws": 1,
+      "losses": 8,
+      "forfeits": 0,
+      "completed": 20,
+      "normalResults": {
+        "wins": 11,
+        "draws": 1,
+        "losses": 8
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.575,
+      "completedNormalPairs": 10,
+      "pairedScoreBootstrap95": [
+        0.325,
+        0.8
+      ]
+    },
+    "Level16-vs-Level15": {
+      "planned": 20,
+      "wins": 9,
+      "draws": 2,
+      "losses": 9,
+      "forfeits": 0,
+      "completed": 20,
+      "normalResults": {
+        "wins": 9,
+        "draws": 2,
+        "losses": 9
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.5,
+      "completedNormalPairs": 10,
+      "pairedScoreBootstrap95": [
+        0.3,
+        0.675
+      ]
+    },
+    "Level38-vs-Level37": {
+      "planned": 20,
+      "wins": 8,
+      "draws": 5,
+      "losses": 7,
+      "forfeits": 0,
+      "completed": 20,
+      "normalResults": {
+        "wins": 8,
+        "draws": 5,
+        "losses": 7
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.525,
+      "completedNormalPairs": 10,
+      "pairedScoreBootstrap95": [
+        0.35,
+        0.725
+      ]
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

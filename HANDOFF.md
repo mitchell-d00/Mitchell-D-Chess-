@@ -569,3 +569,52 @@ Next measurement: select a larger competitive pool and use the documented
 200-game profile with repeated colour pairs. Keep controls/revisions separate;
 do not transfer CCRL or human FIDE ratings. Existing permission to publish
 measured improvements while rating work continues remains in force.
+
+## Level progression audit and fixes — November 5, 2026
+
+User asked to test all levels, particularly the apparent similarity of 50/65.
+Branch fix/level-progression starts at public main 40ca6e3. This task explicitly
+changes engine level/time policy; the earlier UI-only byte-preservation scope
+above is historical. Full native WASM binary and credited MIT network remain
+unchanged. The release is still one offline HTML with worker searches.
+
+Found: clock limits collapsed 31–50 into identical settings and 51–65 into
+identical settings; unclocked cap fell 60s to 10s at 50/51; level 5 discarded PST,
+6 discarded quiescence; noisy beginner searches ignored supplied deadlines.
+Fixed: increasing per-level clock shares, monotone caps (36–50:17–30s,
+51–65:32–60s), retained evaluation/quiescence, bounded noisy iterative root
+search with complete-iteration fallback and actual completed depth. Level 65's
+60s maximum and full clock allowance are retained. App displays thinking caps
+for clocked moves and WASM/fallback backend labels. Tiny millisecond rounding,
+forced/book moves and search randomness can still give identical behaviour.
+
+Tooling: freeze candidateLevel/opponent levels independently, colour-reversed
+openings, separately pinned current adapter for historical HTML, correct backend
+TT resets, and per-level dispatch assertions. Independent campaign/reporting
+remain compatible with historical Mitchell65 datasets. The check runner now
+fails on a child-process launch error even if the sandbox returns status zero.
+
+Completed 376 games, zero forfeits, 48,404 legal replayed half-moves:
+- Before 40ca6e3: 65 vs 50, 20W/0D/0L at nominal 100ms/move.
+- Candidate ee1fcaf: 65 vs 50, 20W/0D/0L; all 64 adjacent pairs, 4 games each.
+  Adjacent outcomes: higher leads 29, tied 17, lower leads 18.
+- Candidate ee1fcaf: 20-game 1s/move follow-ups: 5/4 16W2D2L;
+  11/10 11W1D8L; 16/15 9W2D9L; 38/37 8W5D7L.
+These exploratory samples do NOT certify every adjacent level stronger or give
+an Elo. In particular 16/15 remains tied and other small comparisons unresolved.
+No tuning was performed against the follow-up results. All games and losses
+are published in validation/levels, including hashes, raw compressed logs,
+commands, settings, intervals and exact repeat instructions. Nominal controls
+are equal external ceilings; level-specific allowances deliberately differ.
+
+The final engine-src SHA-256 is
+b3ffafe520089cb46296711928ca6d67d0bb4d138329a1c00402fabf19477dd4,
+identical to frozen ee1fcaf; subsequent UI diagnostics do not change the engine.
+Offline browser checks cover real-worker 50/65 budgets and source labels.
+10 browser suites and 6,013 native engine cases passed, plus native protocol
+and archive checks. 27 core checks passed, including verification of all three level archives.
+
+Next: preserve these archives. A larger fresh-opening adjacent-level study at
+longer controls is needed to calibrate unresolved neighbours. Do not describe
+monotone resources as proven monotone strength. Publication status is recorded
+below after CI and live verification.

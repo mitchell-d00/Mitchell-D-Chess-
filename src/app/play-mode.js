@@ -97,17 +97,18 @@ function maybeAI() {
     const claim = G.chess.claimable();
     if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
   }
-  G.thinking = true; renderBars(); renderStatus(); renderButtons();
+  G.thinking = true;G.thinkBudget=null; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
   let minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
   let extra;
   if (G.clock) {
     const c = G.clock, rem = c[side], L = L18[p.level - 1];
-    const allocation = allocateThinkTime(c, side, L.t, ply);
+    const allocation = allocateThinkTime(c, side, 120000, ply);
     const budget = allocation.time, reserve = allocation.reserve;
-    if (L.t) extra = { time: Math.min(L.t, budget) };
+    extra = { time: budget };
     minDelay = Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
+    G.thinkBudget=E.levelThinkTime(p.level-1,extra);renderStatus();
   }
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
     const wait = Math.max(0, minDelay - (Date.now() - t0));
@@ -115,7 +116,8 @@ function maybeAI() {
       if (!G || G.token !== tok || G.moves.length !== ply) return;
       G.thinking = false;
       if (!r || !r.move) { renderStatus(); return; }
-      G.engineSource={ply:ply+1,text:r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled'):''};
+      const backend=r.backend==='wasm'?' · WASM':r.backend==='js-fallback'?' · JavaScript fallback':'';
+      G.engineSource={ply:ply+1,text:r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled')+backend:''};
       if (!r.book && r.depth) { G.evalW = E.whiteScore(fenBefore, r.score); G.depth = r.depth; }
       if (G.paused) { G.pendingAI = r.move; renderStatus(); renderButtons(); return; }
       playMove(r.move, true);
@@ -165,7 +167,8 @@ function renderStatus() {
     if (inC) { txt = 'Check! ' + txt; el.classList.add('check'); }
     if (G.touched && humanToMove()) txt += ` · touch-move: move the piece on ${G.touched}`;
   }
-  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}</span>`;
+  const limited=G.clock&&G.thinking&&!G.paused&&!G.over&&G.view==null&&G.thinkBudget>0;
+  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}${limited?`<small class="clock-budget">Clocked thinking allowance: up to ${(G.thinkBudget/1000).toFixed(G.thinkBudget<1000?2:1)}s for this move.</small>`:''}</span>`;
   const source=G.engineSource;$('#engineSource').hidden=G.view!=null||!source||!source.text||source.ply>G.moves.length;
   if(!$('#engineSource').hidden)$('#engineSource').textContent=source.text;
   renderDrawBox();
