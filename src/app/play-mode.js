@@ -104,9 +104,9 @@ function maybeAI() {
   let extra;
   if (G.clock) {
     const c = G.clock, rem = c[side], L = L18[p.level - 1];
-    const allocation = allocateThinkTime(c, side, L.t, ply);
+    const allocation = allocateThinkTime(c, side, 120000, ply);
     const budget = allocation.time, reserve = allocation.reserve;
-    if (L.t) extra = { time: Math.min(L.t, budget) };
+    extra = { time: budget };
     minDelay = Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
   }
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {

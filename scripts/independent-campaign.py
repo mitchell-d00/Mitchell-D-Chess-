@@ -57,7 +57,7 @@ def main():
     if not isinstance(seconds,(int,float)) or not math.isfinite(seconds) or seconds<=0:raise ValueError('Move time must be positive and finite')
     if not isinstance(margin,(int,float)) or not math.isfinite(margin) or margin<0:raise ValueError('Time margin must be nonnegative and finite')
     if any(b['games']%2 for b in config['batches']):raise ValueError('All batches must contain colour pairs')
-    if any(not 1<=b.get('candidateLevel',65)<=65 for b in config['batches']):raise ValueError('Candidate levels must be 1–65')
+    if any(type(b.get('candidateLevel',65)) is not int or not 1<=b.get('candidateLevel',65)<=65 for b in config['batches']):raise ValueError('Candidate levels must be integers in 1–65')
     if not 1<=config.get('concurrency',1)<=2:raise ValueError('At most two simultaneous games on this host')
     if hashlib.sha256(Path(config['html']).read_bytes()).hexdigest()!=config['htmlSha256']:raise ValueError('Frozen engine hash changed')
     if hashlib.sha256(Path(config['adapter']).read_bytes()).hexdigest()!=config['adapterSha256']:raise ValueError('Frozen adapter hash changed')

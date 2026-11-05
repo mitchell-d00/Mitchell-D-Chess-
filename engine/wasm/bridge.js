@@ -37,11 +37,11 @@
       if(legal.length===1){result.move=p.uci(legal[0]);return result;}
       var core=prepareWasmCore();if(!core)throw new Error('Candidate unavailable');
       coreLoad(core,initial);for(var j=0;j<encoded.length;j++)if(!core.play(encoded[j]))throw new Error('Candidate history mismatch');
-      var time=Math.max(1,Math.min(120000,extra&&extra.time||L.t||1000));
+      var time=levelThinkTime(levelIdx,extra);
       core.set_endgames(extra&&extra.exactEndgames!==undefined?+extra.exactEndgames:+WASM_CORE_CONFIG.exactEndgames);
       var move=core.iterate(L.d,time,3,extra&&extra.adv!==undefined?+extra.adv:+L.adv,1,20);
       if(!core.result_valid()||legal.indexOf(move)<0||coreFen(core)!==p.fen())throw new Error('Candidate failed root validation');
-      result.move=p.uci(move);result.score=core.result_score();result.depth=core.result_depth();result.nodes=core.nodes();result.seldepth=core.seldepth();return result;
+      result.move=p.uci(move);result.score=core.result_score();result.depth=core.result_depth();result.nodes=core.nodes();result.seldepth=core.seldepth();result.timeBudget=time;return result;
     } catch(error) {
       // History/level errors must stay errors, never become repaired game input.
       if(/Invalid move history|Invalid engine level/.test(String(error.message)))throw error;

@@ -6,6 +6,11 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.dont_write_bytecode=True
 spec=importlib.util.spec_from_file_location('campaign',ROOT/'scripts/independent-campaign.py');campaign=importlib.util.module_from_spec(spec);spec.loader.exec_module(campaign)
 class CampaignTests(unittest.TestCase):
+ def test_named_higher_level_accounting(self):
+  with tempfile.TemporaryDirectory() as td:
+   root=Path(td);(root/'pair.pgn').write_text('[Event "levels"]\n[Round "1"]\n[White "MitchellHigher"]\n[Black "Level50"]\n[Result "1-0"]\n[Termination "normal"]\n[Event "levels"]\n[Round "1"]\n[White "Level50"]\n[Black "MitchellHigher"]\n[Result "0-1"]\n[Termination "normal"]\n')
+   c={'candidateName':'MitchellHigher','timeControl':{},'batches':[{'id':'pair','opponent':'Level65-vs-Level50','games':2,'candidateLevel':65}]}
+   result=campaign.summarize(c,root);self.assertEqual(result['completedGames'],2);self.assertEqual(result['opponents']['Level65-vs-Level50']['wins'],2);self.assertEqual(result['opponents']['Level65-vs-Level50']['completedNormalPairs'],1)
  def test_pair_and_forfeit_accounting(self):
   with tempfile.TemporaryDirectory() as td:
    root=Path(td);(root/'one.pgn').write_text('''[Event "test"]

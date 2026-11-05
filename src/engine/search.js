@@ -288,16 +288,34 @@
 
   // Score every root move (weaker levels pick among these with noise)
   function rootScores(pos, opt) {
-    var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: 0 });
-    var ms = pos.legalMoves(), out = [];
-    for (var i = 0; i < ms.length; i++) {
-      pos.make(ms[i]);
-      var sc = opt.depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(opt.depth - 1, -INF, INF, 1, false, 0);
-      if (pos.inCheck() && !pos.legalMoves().length) sc = MATE - 1;
-      pos.unmake();
-      out.push({ m: ms[i], s: sc });
+    var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: opt.time || 0 });
+    var ms = pos.legalMoves(), out = [], basePly=pos.uMove.length, completedDepth=0;
+    // A complete cheap fallback prevents partial root iterations favouring
+    // whichever moves happened to be generated first when the clock expires.
+    if(opt.time)for(var f=0;f<ms.length;f++){
+      pos.make(ms[f]);var value=-evaluate(pos,s.mode);
+      if(pos.inCheck()&&!pos.legalMoves().length)value=MATE-1;
+      pos.unmake();out.push({m:ms[f],s:value});
+    }
+    for(var depth=opt.time?1:opt.depth;depth<=opt.depth;depth++){
+      var pass=[];
+      try{
+        for (var i = 0; i < ms.length; i++) {
+          if(opt.time&&Date.now()>=s.deadline)throw STOP;
+          pos.make(ms[i]);
+          var sc = depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(depth - 1, -INF, INF, 1, false, 0);
+          if (pos.inCheck() && !pos.legalMoves().length) sc = MATE - 1;
+          pos.unmake();pass.push({ m: ms[i], s: sc });
+        }
+        out=pass;completedDepth=depth;
+      }catch(error){
+        if(error!==STOP)throw error;
+        while(pos.uMove.length>basePly){if(pos.uMove[pos.uMove.length-1]===0)pos.unmakeNull();else pos.unmake();}
+        break;
+      }
     }
     out.sort(function (a, b) { return b.s - a.s; });
+    out.completedDepth=completedDepth;out.nodes=s.nodes;
     return out;
   }
   function gauss() { var u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
