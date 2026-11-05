@@ -23,7 +23,7 @@ byte-identical. Preserve the single HTML / offline / Web Worker design, all
 - [x] Pass 2: onboarding, responsive/touch polish and keyboard board access.
 - [x] Pass 3: local named saves and post-game worker analysis.
 - [x] Final regression checks and documentation.
-- [ ] Publication (tracked below).
+- [x] Publication (tracked below).
 
 ## Decisions
 
@@ -142,3 +142,15 @@ Implementation checkpoints: `b846480` (position tools), `edc17d3` (accessibility
 
 Next: publish `ui/offline-tools`, merge the reviewed/tested UI changes to main,
 and record the publication link/status here. No engine strength claim is added.
+
+## Publication completed
+
+Merged to main through [PR #1](https://github.com/mitchell-d00/Mitchell-D-Chess-/pull/1),
+merge commit `a7fd4ee0ea95464c8be4b01e578eac8b897dd52d`. All three UI passes and
+the complete regression artifact are included. This final documentation-only
+checkpoint records the actual merge rather than an intended action.
+
+For future changes, edit the UI modules and run `node scripts/embed-ui.cjs` before
+committing the standalone `index.html`; rerun the applicable documented checks.
+The separate engine candidate still has no approval to replace the public engine.
+Do not reinterpret these UI results as an engine-strength benchmark.
