@@ -439,3 +439,62 @@ now committed separately on engine/wasm-parity-roadmap (77ae2ae), with 5,476
 parity checks, an initial offline-browser pass and a strict 40-game comparison
 running. It has not been promoted. Remaining browser/network/endgame experiments
 are pending and must not be described as finished.
+
+## WASM SIMD evolution completed — latest status
+
+User requested improving, testing and evolving the new WASM candidate. Work
+remains on `engine/wasm-parity-roadmap`; public main is not switched to WASM.
+The original Mitchell-only replacement strength gate is still unmet. The
+credited MIT Leorik128 network is unchanged; no new training or absolute rating
+is claimed.
+
+Implemented original SIMD memory copy/clear and fused neural transitions in
+`engine/wasm/mitchell.cpp`. Source core change: e6023b0. The frozen evolution
+artifact/adapter is 7144e46, with baseline dd1714a. Versioned LLVM linker PATH
+resolution is fixed in the development build. Candidate HTML now enforces its
+raw/gzip size budget, and a separate CI workflow compiles, tests and uploads the
+single HTML without deploying it. Dedicated worker tests assert native backend,
+32/64 MiB memory, no-WASM fallback and compilation-failure fallback. The UCI
+adapter resets native TT without unnecessarily allocating the JS search table.
+
+Completed evidence:
+
+- First WASM vs JS: 40 games at 0.1s/move, 20W/19D/1L, no forfeits. Archived
+  in validation/wasm-port/v1-vs-js-40; 6,487 half-moves replayed legally.
+- Enhanced WASM vs first WASM: 40 games at 0.1s/move, 20W/15D/5L, no forfeits,
+  68.75% score; paired bootstrap interval 56.25%–80%. Archived in
+  validation/wasm-port/evolution/match-40; 5,934 half-moves replayed legally.
+  Same frozen adapter, network, 32 MiB WASM/19-bit TT and one search thread.
+  First 20 existing openings reversed by colour, no books, pondering, score
+  adjudication or arbitrary move-limit draws. Both require actual WASM.
+- Seven alternating Node fixed-depth repetitions: 1.540x median throughput.
+  Five alternating fresh Chromium-worker runs: 1.399x. Both use equal memory,
+  four positions/depth 11 and identical scores, moves and nodes. These are
+  local performance measurements, not an absolute strength calibration.
+- 6,013 engine checks (5,476 parity, 524 scalar accumulator stress, 13 sparse
+  edge cases), protocol-preparation integration check, 19 core checks, seven
+  browser suites and four explicit backend/fallback worker scenarios passed.
+- Rejected deferred hash-move generation trial measured 0.940x; reverted. Its
+  patch and samples are retained so rejected experiments are visible.
+
+Reports and raw outputs: validation/wasm-port/evolution/README.md and status.json.
+The final standalone candidate is
+/workspace/mitchell-performance/mitchell-wasm-enhanced.html: 643,122 raw bytes,
+246,445 gzip bytes; 55,357-byte core; default 32 MiB / optional 64 MiB WASM.
+It only adds main's report-only Guide update to the frozen game artifact; its
+engine script is byte-identical to the tested artifact. Normal index.html stays
+the JavaScript build. Main's completed 200-game report was merged into this
+research branch at 63df5f7; the earlier handoff sections are historical.
+
+Repeat: see CONTRIBUTING.md and scripts/prepare-wasm-match.py, which freeze both
+HTMLs and their declared revisions, shared adapter, binaries and settings.
+Run the frozen runner, archive with scripts/archive-benchmark.py, then verify
+with scripts/verify-evidence.cjs. New tests reject changed networks and existing
+output directories. Preserve every completed game and do not combine the two
+relative experiments with the independent 200-game baseline.
+
+Next: longer-control independent-opponent screening and broader host coverage;
+then isolated search changes, loss-regression corpus and permissive network
+comparisons. The optional exact sparse-endgame experiment remains disabled,
+despite passing its fixtures, until separately measured. Do not call any
+candidate 2500+/3000+ or promote it based on these short relative tests alone.

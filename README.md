@@ -253,10 +253,11 @@ See [the hash-move regression report](validation/hash-move-fix.md).
 
 **Strength is unrated.** No absolute Elo estimate is supported by the current
 evidence. Wins against our own unrated previous version demonstrate a relative
-improvement only; the two-game losses to Stockfish cannot calibrate a rating.
-A larger benchmark against independent, rated engines at documented time controls
-is needed before making an absolute strength claim. In particular, 2500+ play at
-10–30 seconds per move has not been established.
+improvement only. The completed 200-game modern-opponent benchmark shows a clear
+gap to Stockfish 19 and native Leorik 3.1.3 at one second per move; it does not
+calibrate an absolute rating. Competitive results against a comparable-strength
+pool at documented controls are needed. In particular, 2500+ play at 10–30
+seconds per move has not been established.
 
 A separate [200-game independent-engine campaign](validation/independent-campaign.md)
 was paused at **58/200 games at 1 second per move**, after an opponent UCI-format
@@ -271,6 +272,24 @@ control completed four games each: Stockfish 5 **0W–3D–1L**, Texel 1.06
 promotion-format diagnostic completed normally using a labelled external-engine
 adapter. Raw PGNs, configuration, logs, audit and repeat commands are published;
 these small samples do not establish Elo.
+
+### Experimental full Mitchell WASM engine
+
+The development candidate ports Mitchell's engine to original freestanding C++
+and embeds the compiled WASM in one HTML file. The latest SIMD memory operations
+and fused neural transitions preserve fixed-depth moves, scores and node counts.
+On the measured host, four-position searches ran about **40% faster in Chromium**
+and **54% faster in Node** than the first full-WASM version, at equal memory.
+
+At 0.1 seconds per move, the first WASM version scored **20W–19D–1L** against the
+previous JS engine. The enhanced version then scored **20W–15D–5L** against the
+first WASM version. Both 40-game experiments completed without forfeits. These
+are relative short-control results, not an absolute Elo or normal-time rating.
+
+The candidate remains experimental and is **not the public default**. It retains
+the credited MIT Leorik network, 32 MiB default WASM memory, worker search and
+JavaScript fallback. See [build and test instructions](engine/wasm/README.md) and
+[raw performance/match evidence](validation/wasm-port/evolution/README.md).
 
 ### Reproduce checks and run matches
 

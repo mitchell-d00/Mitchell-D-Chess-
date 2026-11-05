@@ -1,3 +1,25 @@
+# Experimental WASM evolution (November 2026)
+
+The enhanced candidate completed 40 paired games at 0.1 seconds/move against
+the first WASM version: 20 wins, 15 draws, 5 losses; zero forfeits. Its measured
+same-tree throughput was 1.399x in browser workers and 1.540x in Node, with equal
+memory. These are local relative results, not an absolute rating. Public main
+has not switched to this candidate. See validation/wasm-port/evolution/README.md.
+
+    npm run build:wasm
+    npm run test:wasm
+    node scripts/build.cjs --candidate-wasm --output /tmp/mitchell-candidate.html
+    MITCHELL_TEST_HTML=/tmp/mitchell-candidate.html node scripts/browser-wasm-test.cjs
+    MITCHELL_TEST_HTML=/tmp/mitchell-candidate.html npm run test:browser
+    node scripts/verify-evidence.cjs validation/wasm-port/evolution/match-40
+
+6013 engine checks cover exact search parity, full-range accumulator stress and
+sparse-endgame rules. Seven existing browser suites and four explicit native /
+fallback worker scenarios passed locally. The native build requires LLVM 19;
+the HTML build can use the checked-in compiled core. No build is needed to play
+the generated single offline HTML. See CONTRIBUTING.md for portable experiment
+preparation and archiving. Earlier samples below are retained as separate history.
+
 # Completed modern benchmark (November 2026)
 
 200/200 games finished at nominal one second per move, with no forfeits.

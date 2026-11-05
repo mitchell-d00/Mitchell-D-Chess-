@@ -1,0 +1,4 @@
+PASS: offline worker native32, legal move, responsive UI, backend wasm
+PASS: offline worker native64, legal move, responsive UI, backend wasm
+PASS: offline worker no-wasm, legal move, responsive UI, backend js-fallback
+PASS: offline worker compile-failure, legal move, responsive UI, backend js-fallback

@@ -62,3 +62,10 @@ The first WASM version completed 40 paired games against the frozen JS engine:
 **20 wins, 19 draws, 1 loss**, zero forfeits at 0.1 seconds/move. See
 [the archived referee records](../../validation/wasm-port/v1-vs-js-40/).
 This is relative short-control evidence, not an absolute rating.
+
+The SIMD evolution then completed **20 wins, 15 draws, 5 losses** against that
+first WASM version in another 40-game, 0.1-second/move paired experiment, zero
+forfeits. It measured 1.399× same-tree browser throughput and 1.540× Node
+throughput on the recorded host. See [the complete evolution report](../../validation/wasm-port/evolution/README.md)
+for raw samples, all PGNs, qualifications and repeat commands. The public engine
+has not been replaced, and the candidate remains unrated.
