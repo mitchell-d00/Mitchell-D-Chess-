@@ -11,7 +11,8 @@ if(!isMainThread){
  parentPort.on('message',d=>{
   if(d.reset){
    const core=E.WASM_CORE&&E.WASM_CORE.prepare();
-   if(core){core.reset_tt();return;}
+   if(core)core.reset_tt();
+   if(core&&E.LEVELS[(d.level||65)-1].ev==='nnue')return;
    const p=new E.Chess();new E.Searcher(p,{eval:'mat'});return;
   }
   try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true,exactEndgames:workerData.endgames==='1'});if(workerData.requireWasm&&(!r||r.backend!=='wasm'))throw Error('Required WASM backend was not used');if(workerData.levelBackend&&(!r||(E.LEVELS[d.level-1].ev==='nnue'?r.backend!=='wasm':r.backend==='wasm')))throw Error('Required per-level backend was not used');parentPort.postMessage({id:d.id,result:r});}
@@ -45,7 +46,7 @@ if(!isMainThread){
    const v=parts.indexOf('value'),name=parts.slice(2,v).join(' ').toLowerCase(),value=+parts[v+1];
    if(name==='level'&&Number.isInteger(value)&&value>=1&&value<=65)level=value;
    if(name==='moveoverhead'&&Number.isFinite(value))overhead=Math.max(0,Math.min(1000,value));
-  }else if(command==='ucinewgame'){worker.postMessage({reset:true});fen=null;moves=[];}
+  }else if(command==='ucinewgame'){worker.postMessage({reset:true,level});fen=null;moves=[];}
   else if(command==='position'){
    const i=parts.indexOf('moves');fen=parts[1]==='startpos'?null:parts.slice(2,i<0?undefined:i).join(' ');moves=i<0?[]:parts.slice(i+1);
   }else if(command==='go'){

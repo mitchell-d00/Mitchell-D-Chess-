@@ -24,5 +24,5 @@ def main():
  c['engineIdentity']['level']='per batch';c['engineIdentity']['backend']='asserted per-level routing';c['adapterSourceRevision']=prepare.git('rev-parse','HEAD').decode().strip()
  c['preparer']=str(root/'prepare-level-matches.py');Path(c['preparer']).write_bytes(Path(__file__).read_bytes());c['preparerSha256']=prepare.sha(c['preparer'])
  c['purposeNote']='Each row is higher versus lower level, colours reversed. Short screenings detect regressions but cannot prove every adjacent level is statistically stronger. No Elo is assigned.'
- file.write_text(json.dumps(c,indent=2)+'\n');print('Prepared:',file);print('Run:',a.node if False else 'python3',root/'runner.py',file)
+ file.write_text(json.dumps(c,indent=2)+'\n');print('Prepared:',file);print('Run:','python3',root/'runner.py',file)
 if __name__=='__main__':main()
