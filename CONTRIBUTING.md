@@ -51,3 +51,30 @@ forfeits, and separate incomplete runs from completed evidence. Do not infer Elo
 from a few wins or copy an opponent's published rating onto Mitchell.
 
 Describe changes, checks, limitations and the next action in `HANDOFF.md`.
+
+## Experimental full WASM engine
+
+The release still defaults to JavaScript. The original full C++/SIMD candidate
+has an explicit build, isolated CI job and dedicated parity/browser gates. See
+[engine/wasm/README.md](engine/wasm/README.md) for LLVM 19 build instructions.
+`npm run test:wasm` checks the compiled core; `MITCHELL_TEST_HTML` points browser
+checks at a candidate without replacing the public `index.html`.
+
+To reproduce a paired experiment, build baseline and candidate HTML from their
+recorded revisions in separate checkouts, then freeze a new run:
+
+```sh
+python3 scripts/prepare-wasm-match.py \
+  --baseline-html /path/to/baseline.html --baseline-revision <baseline-commit> \
+  --candidate-html /path/to/candidate.html --revision <candidate-commit> \
+  --out /path/to/new-empty-run --fastchess /path/to/fastchess \
+  --games 40 --move-seconds 0.1
+python3 /path/to/new-empty-run/runner.py /path/to/new-empty-run/campaign.json
+python3 scripts/archive-benchmark.py /path/to/new-empty-run/campaign.json /path/to/new-archive
+node scripts/verify-evidence.cjs /path/to/new-archive
+```
+
+Both players must use WASM, share the frozen adapter and 32 MiB WASM setting,
+and receive colour-reversed openings and equal time controls. Failed backends
+stop the campaign. All results and forfeits are retained. The short control
+measures relative behavior; it does not establish absolute Elo.
