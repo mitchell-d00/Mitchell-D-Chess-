@@ -44,6 +44,13 @@ and portable commands to repeat the experiments. The engine remains unrated.
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
   and pause.
+- **Visible pause and resume.** A large control beside the board works in all
+  casual modes, with or without a clock. Pausing stops clocks, moves, hints and
+  computer thinking; Resume continues at the latest position without refilling
+  per-move time or delay. A highlighted paused state offers Save for later.
+  Short landscape screens place the control at the top of the side panel so the
+  board still fits. Official games show why pause is unavailable; a loaded saved
+  game starts paused and can be resumed once before normal official play continues.
 - **Chess clocks.** Bullet (1+0, 1+1, 2+1), blitz (3+0, 3+2, 5+0, 5+3),
   rapid (10+0, 10+5, 15+10, 25+10) and classical (30+0, 30+20, 60+30, 90+30),
   a per-move timer (10, 30 or 60 seconds a move), or a custom control with
@@ -325,3 +332,9 @@ upstream MIT notice.
 ## License
 
 MIT. See `LICENSE`.
+
+## Comfort ideas
+
+[COMFORT-IDEAS.md](COMFORT-IDEAS.md) records proposed improvements and tradeoffs,
+separately from shipped features. The suggested next sequence is automatic game
+recovery, a focused board layout, then separate sound and clock-alert controls.

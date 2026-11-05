@@ -198,3 +198,37 @@ Next maintainer: update `ui/move-explanations.js` and re-embed before committing
 `index.html` when changing teaching cues. Keep observed features separate from
 claims about move quality. Reproduce the UI checks listed in `tests`; the separate
 engine candidate remains subject to its existing qualification requirement.
+
+## Follow-up: visible pause/resume and comfort ideas
+
+User requested clearer pause/resume and a brainstorm of player comforts. Branch
+`ui/visible-pause-resume` starts at main `5152cc8`; engine and licence text must
+stay unchanged. Only pause/resume is implemented here. Other comfort proposals
+are documented, prioritized and explicitly labelled unbuilt in COMFORT-IDEAS.md.
+
+- A primary control sits above the board, or at the top of the side panel in
+  short landscapes. Text/icon, a highlighted paused state and explanatory status
+  distinguish Pause game from Resume game. All casual modes support it, including
+  untimed human play. Save for later opens the existing named-save dialog.
+- One guarded transition charges elapsed play before pausing, stops the worker,
+  invalidates delayed AI/hint callbacks, clears pending input/selection and prevents
+  moves/takebacks. Resume returns to the latest position, retaining clock time and
+  remaining delay. It restarts AI search instead of continuing background work.
+- Official games cannot be paused, including CVC. A restored official game still
+  starts paused and can resume, preserving its touch-move lock; pause is then
+  unavailable. Existing review/finished/lesson screens hide the session control.
+- The landscape control uses the rail area rather than pushing the board off the
+  screen. The compact landscape control omits Save for later; Saved games remains
+  in the rail. No new keyboard shortcut or automatic tab/background pause is added.
+
+Files: index.html, scripts/browser-pause-test.cjs, COMFORT-IDEAS.md, README and
+`tests`. The new integration check exercises real worker/hint cancellation,
+clock/delay continuity, saved official state, keyboard/touch and mobile layouts.
+All 13 final commands passed; exact commands, timestamps, outputs and exit codes
+are committed in validation/pause-checks.json. Engine/licence comparisons and
+`git diff --check` passed. Portrait/landscape screenshots were inspected. Actual
+touch pause/resume, an in-flight long search, a delayed book move, cancelled hints,
+paused takebacks and an official saved-game touch lock are covered.
+
+Next: publish this verified UI-only change and record its merge. Suggested next comfort work: recovery slot, focus
+layout, then granular audio/clock alerts. These remain proposals.
