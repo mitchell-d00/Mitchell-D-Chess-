@@ -317,3 +317,23 @@ overwrite the historical archive or silently promote an incomplete run.
 
 Next: verify the checkpoint commit in CI, merge the standalone update, and check
 Pages. The remaining campaign games continue as authorized long-running work.
+
+## Upgrade publication completed
+
+Merged through [PR #4](https://github.com/mitchell-d00/Mitchell-D-Chess-/pull/4),
+merge `0950dddf64fb35d59eeee3df87a5a7f8fb214df6`. Final checkpoint CI passed:
+https://github.com/mitchell-d00/Mitchell-D-Chess-/actions/runs/42080097729
+https://github.com/mitchell-d00/Mitchell-D-Chess-/actions/runs/42080084832
+All 25 checks passed, including the incomplete candidate-evidence archive.
+
+The published candidate checkpoint remains a dated 2/200 snapshot, not the live
+count. The separate process at /workspace/mitchell-performance/modern-200 continues
+with immutable inputs. Check its status/summary and archive a new dated checkpoint
+when reporting later results; do not edit the frozen protocol or combine samples.
+The public engine remains unrated. Build/performance/infrastructure changes are
+complete; the long-running experiment is explicitly incomplete.
+
+Next maintainer: use src/ and the deterministic build, keep original/Leorik notices
+and pinned model hash, and run the relevant checks. CI guards source/artifact and
+size agreement. Further search, bitbase, multi-PV or multiplayer work should remain
+separate measured changes as described in validation/implementation-scope.md.
