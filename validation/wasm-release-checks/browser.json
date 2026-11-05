@@ -1,0 +1,93 @@
+{
+  "createdUtc": "2026-11-05T21:11:10.434Z",
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "scripts/browser-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:44.365Z",
+      "finishedUtc": "2026-11-05T21:10:46.438Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline standalone HTML, 65 levels, 38 lessons, legal worker move, responsive UI, cancellation, book, computer-vs-computer, worker failure\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-wasm-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:46.440Z",
+      "finishedUtc": "2026-11-05T21:10:48.164Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline worker native32, legal move, responsive UI, backend wasm\nPASS: offline worker native64, legal move, responsive UI, backend wasm\nPASS: offline worker no-wasm, legal move, responsive UI, backend js-fallback\nPASS: offline worker compile-failure, legal move, responsive UI, backend js-fallback\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-tools-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:48.164Z",
+      "finishedUtc": "2026-11-05T21:10:49.955Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline paste/file import, transactional errors, inert headers, review/navigation, shared-position reload, custom-FEN play and black-start PGN export\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-accessibility-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:49.955Z",
+      "finishedUtc": "2026-11-05T21:10:51.998Z",
+      "exitCode": 0,
+      "stdout": "PASS: accessible board/roving focus, keyboard and touch-move legality, flipped navigation, underpromotion, modal trap/return, guide persistence, tabs, contrast, portrait/landscape, real touch taps and 44px targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-library-analysis-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:51.998Z",
+      "finishedUtc": "2026-11-05T21:10:55.188Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline named saves, new-game confirmation, paused official-clock restoration, transactional corrupt-save rejection, real worker review/alternatives/graph, cancellation and stale-result isolation\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-polish-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:55.188Z",
+      "finishedUtc": "2026-11-05T21:10:59.158Z",
+      "exitCode": 0,
+      "stdout": "PASS: persistent share URL and denied clipboard fallback; lesson/low-level cues and official exclusion; real review arrows, flip/toggle/terminal/keyboard graph; six mobile/tablet viewports and edge underpromotion targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-pause-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:10:59.158Z",
+      "finishedUtc": "2026-11-05T21:11:08.209Z",
+      "exitCode": 0,
+      "stdout": "PASS: visible untimed/timed pause, keyboard resume, readonly board, save/history, delay/per-move clock continuity, cancelled workers/hints/delayed AI, official guards and restored touch lock, review/end/lesson visibility and three mobile layouts with real touch pause/resume\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-engine-info-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T21:11:08.209Z",
+      "finishedUtc": "2026-11-05T21:11:10.434Z",
+      "exitCode": 0,
+      "stdout": "PASS: real-worker book/out-of-book/custom-position indicators, history hiding and new-record reset offline\n",
+      "stderr": ""
+    }
+  ]
+}

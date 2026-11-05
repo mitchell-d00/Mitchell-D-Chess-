@@ -1,4 +1,4 @@
-name: Experimental WASM candidate
+name: Full WASM build and tests
 on: [push, pull_request]
 permissions:
   contents: read

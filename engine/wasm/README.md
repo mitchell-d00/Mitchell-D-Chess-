@@ -1,17 +1,19 @@
-# Original full-engine WASM candidate
+# Original full-engine WASM core
 
 This is a freestanding C++ port of Mitchell's existing MIT engine. It does not
 link another chess engine, libc or a C++ runtime. The existing credited MIT
 Leorik network and original KPK bits are copied into its memory at initialization.
-Only `env.clock` is imported. The JavaScript engine remains the release default.
+Only `env.clock` is imported. The release uses this core for levels 51–65 and
+keeps JavaScript for lower levels and automatic fallback.
 
 Build with LLVM/Clang 19 and wasm-ld (development tools only):
 
     WASM_CXX=clang++-19 WASM_LD=wasm-ld-19 node scripts/build-wasm-core.cjs
     node scripts/test-wasm-parity.cjs
+    node scripts/build.cjs
     node scripts/build.cjs --candidate-wasm --output /tmp/mitchell-candidate.html
 
-The candidate is one offline HTML file. The build requires an explicit output
+The release is one offline HTML file. Alternate builds require an explicit output
 so an experiment cannot silently overwrite index.html. Levels 51–65 use the full
 port; lower levels keep existing accessibility settings. Unsupported WASM falls
 back to JavaScript inside the worker. Default native memory is 32 MiB, with a
@@ -27,7 +29,9 @@ numerically. Preliminary timing is not a strength qualification.
 The optional sparse-endgame experiment recognizes actual stalemate/dead positions
 before leaf evaluation. It defaults off and requires separate regression and
 match evidence. Browser/fallback, resource and equal-time match gates must pass
-before a public backend change. No Elo or GM claim is made.
+before a public backend change. The release passed these checks; the user
+authorized publishing the upgrade while rating work continues. No Elo or GM
+claim is made. See [the rollout record](../../validation/wasm-release.md).
 
 ## SIMD evolution candidate
 
@@ -56,7 +60,8 @@ Compare two locally built cores/artifacts; both versions must be preserved:
 Both benchmarks alternate warmed engines with identical TT capacity and require
 identical nodes, moves and scores. The candidate build enforces the 768 KiB raw /
 320 KiB gzip size budget. CI compiles and tests the candidate separately and
-uploads the single HTML as an artifact; it does not deploy the candidate.
+uploads the single HTML as an artifact. The regular build/test workflow guards
+the checked-in WASM-enabled index.html used by GitHub Pages.
 
 The first WASM version completed 40 paired games against the frozen JS engine:
 **20 wins, 19 draws, 1 loss**, zero forfeits at 0.1 seconds/move. See
@@ -67,5 +72,5 @@ The SIMD evolution then completed **20 wins, 15 draws, 5 losses** against that
 first WASM version in another 40-game, 0.1-second/move paired experiment, zero
 forfeits. It measured 1.399× same-tree browser throughput and 1.540× Node
 throughput on the recorded host. See [the complete evolution report](../../validation/wasm-port/evolution/README.md)
-for raw samples, all PGNs, qualifications and repeat commands. The public engine
-has not been replaced, and the candidate remains unrated.
+for raw samples, all PGNs, qualifications and repeat commands. This tested core
+is now the release default on neural levels; its absolute strength remains unrated.

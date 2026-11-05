@@ -52,13 +52,19 @@ from a few wins or copy an opponent's published rating onto Mitchell.
 
 Describe changes, checks, limitations and the next action in `HANDOFF.md`.
 
-## Experimental full WASM engine
+## Full WASM engine
 
-The release still defaults to JavaScript. The original full C++/SIMD candidate
-has an explicit build, isolated CI job and dedicated parity/browser gates. See
+The release embeds the original full C++/SIMD engine by default for levels
+51–65, with automatic JavaScript fallback. It has a dedicated compilation CI
+job and parity/browser gates. See
 [engine/wasm/README.md](engine/wasm/README.md) for LLVM 19 build instructions.
 `npm run test:wasm` checks the compiled core; `MITCHELL_TEST_HTML` points browser
-checks at a candidate without replacing the public `index.html`.
+checks at an alternate artifact without replacing the public `index.html`.
+The ordinary `node scripts/build.cjs` produces the WASM-enabled release.
+For a JavaScript-only diagnostic build, use
+`node scripts/build.cjs --javascript --output /tmp/mitchell-js.html`.
+The existing `--candidate-wasm --output ...` form still creates a labelled
+experimental artifact. Players need none of these development tools.
 
 To reproduce a paired experiment, build baseline and candidate HTML from their
 recorded revisions in separate checkouts, then freeze a new run:

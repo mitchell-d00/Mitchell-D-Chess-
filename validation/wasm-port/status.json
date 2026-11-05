@@ -1,6 +1,6 @@
 {
-  "createdUtc": "2026-11-05T20:59:23.289484+00:00",
-  "status": "experimental; not promoted",
+  "createdUtc": "2026-11-05T21:13:04.031565+00:00",
+  "status": "WASM release enabled for levels 51\u201365; unrated",
   "sourceRevision": "e6023b0",
   "differentialChecks": 5476,
   "candidateHtml": "Build explicitly with --candidate-wasm --output",
@@ -10,13 +10,13 @@
   },
   "browserStatus": "All seven existing browser suites and four dedicated backend/memory/fallback worker scenarios passed locally",
   "notes": [
-    "32 MiB default; 64 MiB developer mode used for exact JS TT parity.",
-    "Matched-run adapters require WASM and fault on fallback.",
-    "Two relative short-control experiments remain separate; no absolute Elo calibration.",
-    "The SIMD evolution core preserves search/eval/model and has completed local correctness, throughput and matched-game gates.",
-    "Promotion to public default remains unqualified; network/loss-regression/longer independent-opponent work remains pending."
+    "User authorized upgrade now and rating later, superseding the previous publication gate.",
+    "The release embeds the match-tested core for neural levels with automatic worker JavaScript fallback.",
+    "Earlier frozen experiment artifacts and their hashes remain historical records.",
+    "No absolute Elo or human/FIDE rating has been established.",
+    "Loss regressions, network comparisons and longer-control independent-opponent measurement remain future work."
   ],
-  "latestReport": "evolution/README.md",
+  "latestReport": "../wasm-release.md",
   "additionalEngineChecks": 537,
   "firstMatch": {
     "archive": "v1-vs-js-40",

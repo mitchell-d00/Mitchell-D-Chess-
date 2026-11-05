@@ -27,6 +27,10 @@ Leorik 3.1.3**, with no forfeits. These results apply to the frozen JavaScript/N
 engine, and do not establish an absolute Elo. All games, conditions and repeat
 commands are in [modern benchmark evidence](validation/modern/README.md).
 
+Levels **51–65 now use the improved full Mitchell WASM engine**, with automatic
+JavaScript fallback. The release remains one offline HTML file and is still
+unrated. See [the rollout and validation record](validation/wasm-release.md).
+
 ## What is in it
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,
@@ -214,14 +218,16 @@ network is embedded in the HTML; it is never downloaded during play. We do not
 claim to have trained these weights. Full provenance, the pinned source revision,
 and SHA-256 are in `third-party/README.md`.
 
-The JavaScript inference integration and **1,206-byte WASM SIMD kernel** are new
-code. Piece-square feature deltas are recorded by make/unmake and materialized
+The full search and evaluation core runs as embedded WASM on levels 51–65.
+The JavaScript fallback includes an original **1,206-byte WASM SIMD kernel** for
+inference where supported, plus scalar inference when WASM is unavailable.
+Piece-square feature deltas are recorded by make/unmake and materialized
 only when evaluation needs them. Two perspective accumulators handle captures,
 castling, en passant, promotions and null moves. The kernel accelerates their
 updates and output evaluation. The expanded kernel keeps a bounded ply-frame
 cache, fuses ordinary move deltas with parent copying, and evaluates directly
 from the resident frame. JavaScript copies keep backend/position switching safe.
-Repeated browser measurements on one shared host showed approximately 20% faster
+Earlier measurements of the fallback's small kernel on one shared host showed approximately 20% faster
 NNUE evaluation and 3% higher fixed-depth whole-search NPS; Node whole-search NPS
 was essentially flat. These are limited performance observations, not strength
 gains or a 2–5× claim. [Raw runs and method](validation/performance/README.md).
@@ -273,9 +279,9 @@ promotion-format diagnostic completed normally using a labelled external-engine
 adapter. Raw PGNs, configuration, logs, audit and repeat commands are published;
 these small samples do not establish Elo.
 
-### Experimental full Mitchell WASM engine
+### Full Mitchell WASM engine
 
-The development candidate ports Mitchell's engine to original freestanding C++
+The release ports Mitchell's engine to original freestanding C++
 and embeds the compiled WASM in one HTML file. The latest SIMD memory operations
 and fused neural transitions preserve fixed-depth moves, scores and node counts.
 On the measured host, four-position searches ran about **40% faster in Chromium**
@@ -286,10 +292,12 @@ previous JS engine. The enhanced version then scored **20W–15D–5L** against 
 first WASM version. Both 40-game experiments completed without forfeits. These
 are relative short-control results, not an absolute Elo or normal-time rating.
 
-The candidate remains experimental and is **not the public default**. It retains
+This engine is now the release default for levels **51–65**. It retains
 the credited MIT Leorik network, 32 MiB default WASM memory, worker search and
 JavaScript fallback. See [build and test instructions](engine/wasm/README.md) and
 [raw performance/match evidence](validation/wasm-port/evolution/README.md).
+The user approved publishing the measured upgrade before establishing an
+absolute rating. The existing difficulty presets remain unrated.
 
 ### Reproduce checks and run matches
 

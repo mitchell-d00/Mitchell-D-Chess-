@@ -1,3 +1,19 @@
+# WASM release rollout (November 2026)
+
+The user authorized publishing the tested SIMD evolution before absolute rating.
+The ordinary build now embeds full WASM for levels 51–65 with automatic JS
+fallback. Lower levels keep their existing behaviour. See validation/wasm-release.md
+for release checks and validation/wasm-port/evolution for the frozen measurements.
+
+    node scripts/build.cjs
+    npm test
+    npm run test:wasm
+    npm run test:browser
+
+The release worker test requires actual WASM at neural levels. Browser checks
+exercise unavailable/failed WASM fallback as well as offline UI/player flows.
+No absolute Elo claim is made. The earlier experiment reports below are history.
+
 # Experimental WASM evolution (November 2026)
 
 The enhanced candidate completed 40 paired games at 0.1 seconds/move against

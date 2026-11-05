@@ -1,5 +1,10 @@
 # Mitchell WASM SIMD evolution — November 5, 2026
 
+Release update: the user subsequently authorized publishing this tested core
+while rating work continues. It is now the release default for levels 51–65.
+See [the rollout record](../../wasm-release.md). The report below records the
+pre-publication experiment; all frozen results and hashes remain unchanged.
+
 The enhanced experimental candidate completed **20 wins, 15 draws and 5 losses**
 against the first full-WASM version: **68.75%**, zero forfeits. This is a
 40-game relative comparison at **0.1 seconds per move**, not an absolute Elo or

@@ -498,3 +498,28 @@ then isolated search changes, loss-regression corpus and permissive network
 comparisons. The optional exact sparse-endgame experiment remains disabled,
 despite passing its fixtures, until separately measured. Do not call any
 candidate 2500+/3000+ or promote it based on these short relative tests alone.
+
+## User-authorized live upgrade — latest instruction
+
+The user explicitly said: "Let’s upgrade now and rate later." This supersedes
+the earlier 3000+ publication prerequisite. Publish the measured improvement;
+continue to describe strength as unrated. Do not reapply the old approval gate.
+
+The normal build now embeds full WASM by default for levels 51–65, keeps lower
+levels' JS behaviour and worker JS fallback, and preserves the public branding.
+Alternate --candidate-wasm/--javascript builds require explicit output paths.
+src/build.json controls the default; source modules, index.html and docs are
+updated together. Release raw budget is explicitly 700 KiB; gzip stays 256 KiB.
+The native core binary, model, search and disabled endgame flag are unchanged.
+
+Local validation: 20 core checks, 6,013 engine cases plus protocol/archive checks,
+and all eight browser suites passed. The release UI worker must actually return
+backend=wasm for neural search. Tests also cover native 32/64 MiB and unavailable /
+failed WASM fallback. Release-level routing checks cover beginner/classical /
+neural boundaries and the exact match-tested binary hash. See
+validation/wasm-release.md and validation/wasm-release-checks/ for raw results.
+
+Publication uses PR #6 after CI, then verifies the deployed HTML and an actual
+neural-level worker move. Preserve MIT/Leorik credits and frozen benchmark data.
+Future strength measurement must label the new release separately from the
+older JS-only 200-game baseline and the short relative WASM experiments.

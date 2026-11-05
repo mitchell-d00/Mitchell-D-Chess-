@@ -1,4 +1,4 @@
-  // Original MIT bridge: the full C++ candidate is embedded only by an explicit build flag.
+  // Original MIT bridge: the full C++ core is embedded in the offline release.
   var WASM_CORE_DATA = '__WASM_CORE__';
   var WASM_CORE_CONFIG = { enabled: true, memory: 'standard', exactEndgames: false };
   var WASM_CORE_INSTANCE = null, WASM_CORE_ERROR = '';

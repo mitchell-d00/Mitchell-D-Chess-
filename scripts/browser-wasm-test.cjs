@@ -1,7 +1,7 @@
-// MIT. Exercise the actual offline candidate in dedicated browser workers.
+// MIT. Exercise the actual offline full-engine release in dedicated browser workers.
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{
- const file=process.env.MITCHELL_TEST_HTML;if(!file)throw Error('Set MITCHELL_TEST_HTML to an explicit candidate build');
+ const file=process.env.MITCHELL_TEST_HTML||'index.html';
  const html=fs.readFileSync(file,'utf8'),source=html.match(/<script id="engine-src">([\s\S]*?)<\/script>/)[1];
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
  try{
