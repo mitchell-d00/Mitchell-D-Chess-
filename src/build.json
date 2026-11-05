@@ -6,6 +6,9 @@
       "neural": true,
       "suffix": "\n"
     },
+    {
+      "wasmCore": true
+    },
     "src/engine/evaluation.js",
     "src/engine/search.js",
     "src/engine/book.js",
@@ -76,5 +79,9 @@
       "leading": "",
       "trailing": ""
     }
+  },
+  "candidateSizeBudget": {
+    "raw": 786432,
+    "gzip": 327680
   }
 }

@@ -1,13 +1,20 @@
   // ---------- Search ----------
   var TT_BITS = 21, TT_SIZE = 1 << TT_BITS, TT_MASK = TT_SIZE - 1;
-  var ttLo = new Int32Array(TT_SIZE), ttHi = new Int32Array(TT_SIZE), ttMove = new Int32Array(TT_SIZE), ttScore = new Int32Array(TT_SIZE);
-  var ttDepth = new Int8Array(TT_SIZE), ttFlag = new Int8Array(TT_SIZE);
+  // UI/referee contexts never search: allocate these 36 MiB only when needed.
+  var ttLo = null, ttHi = null, ttMove = null, ttScore = null, ttDepth = null, ttFlag = null;
+  function ensureTT() {
+    if (ttLo) return;
+    ttLo = new Int32Array(TT_SIZE); ttHi = new Int32Array(TT_SIZE);
+    ttMove = new Int32Array(TT_SIZE); ttScore = new Int32Array(TT_SIZE);
+    ttDepth = new Int8Array(TT_SIZE); ttFlag = new Int8Array(TT_SIZE);
+  }
   var STOP = { stop: true }, TT_CONTEXT = null;
   var LMR = [];
   for (var dd = 0; dd < 64; dd++) { LMR.push(new Int8Array(64)); for (var mm = 0; mm < 64; mm++) LMR[dd][mm] = dd && mm ? Math.floor(0.7 + Math.log(dd) * Math.log(mm) / 2.3) : 0; }
   var MAXPLY = 96;
 
   function Searcher(pos, opt) {
+    ensureTT();
     this.pos = pos; this.opt = opt; this.nodes = 0;
     this.deadline = opt.time ? Date.now() + opt.time : Infinity;
     this.killers = []; for (var i = 0; i < MAXPLY + 2; i++) this.killers.push([0, 0]);
@@ -20,8 +27,9 @@
     this.mode = opt.eval || 'full';
     if (this.mode === 'nnue') { if (!pos.nnue) pos.nnue = new NeuralAccumulator(pos); }
     else pos.nnue = null;
-    var ttContext = this.mode + ':' + (opt.q !== false) + ':' + pos.side + ':' + (opt.contempt || 0);
+    var ttContext = this.mode + ':' + (opt.q !== false) + ':' + pos.side + ':' + (opt.contempt || 0) + ':' + !!opt.exactEndgames;
     if (ttContext !== TT_CONTEXT) { ttDepth.fill(-1); ttFlag.fill(-1); TT_CONTEXT = ttContext; }
+    this.exactEndgames = !!opt.exactEndgames;
     this.q = opt.q !== false;
     this.useNull = opt.nullMove !== false;
     this.adv = !!opt.adv;
@@ -86,6 +94,10 @@
     this.checkTime();
     if (ply > this.seldepth) this.seldepth = ply;
     var pos = this.pos, us = pos.side, inCheck = pos.inCheck();
+    if (this.exactEndgames && this.mode === 'nnue' && pos.nnue.count[pos.nnue.ply] <= 4) {
+      if (pos.insufficient()) return 0;
+      if (!pos.legalMoves().length) return inCheck ? -MATE + ply : 0;
+    }
     // Mate takes precedence over a claimable fifty-move draw.
     if (this.isDraw() && (!inCheck || pos.legalMoves().length)) return this.drawScore();
     var stand = inCheck ? -INF : this.evaluate();

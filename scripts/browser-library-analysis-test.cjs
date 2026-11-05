@@ -3,7 +3,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox'],headless:true});
  try{
   const page=await browser.newPage(),errors=[],network=[];page.on('pageerror',e=>errors.push(String(e)));
-  await page.route(/^https?:/,r=>{network.push(r.request().url());return r.abort();});await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync('index.html','utf8')}));
+  await page.route(/^https?:/,r=>{network.push(r.request().url());return r.abort();});await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
   await page.goto('http://localhost:8765/');await page.context().setOffline(true);
   await page.evaluate(()=>{setup.mode='pvp';setup.rules='official';setup.tc='1+1';newGame();playMove('e2e4');activateSquare('e7');});
   await page.click('#gamesBtn');await page.fill('#saveName','My timed game');await page.click('#saveGameBtn');

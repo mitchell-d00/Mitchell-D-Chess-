@@ -337,3 +337,59 @@ Next maintainer: use src/ and the deterministic build, keep original/Leorik noti
 and pinned model hash, and run the relevant checks. CI guards source/artifact and
 size agreement. Further search, bitbase, multi-PV or multiplayer work should remain
 separate measured changes as described in validation/implementation-scope.md.
+
+## Full Mitchell WASM roadmap — active work
+
+User accepted the six-stage plan (loss regressions, original full WASM port,
+controlled search experiments, permissive network comparisons, browser resource
+limits and common-endgame work). Branch `engine/wasm-parity-roadmap` starts from
+main `8788622`. The independent 200-game baseline keeps running from its frozen
+inputs; do not alter them or merge its results with new candidate experiments.
+
+Implemented so far:
+
+- Lazy JS TT allocation saves the UI/referee context its unused 36 MiB search
+  table. Searcher allocates on first actual search. Hash-corruption tests now
+  observe lazy arrays through test-only getters.
+- Original freestanding C++ port under engine/wasm/: 0x88 rules, ordered move
+  generation, make/unmake, full 64-bit hash, SEE, original classical/KPK/NNUE
+  evaluation, quiescence, pruning, history, TT, iterative search and hard timeout
+  restoration. No linked engine, C/C++ runtime or copied GPL code.
+- 5,476 initial differential checks pass: perft, random walks/unmake/nulls, all
+  eval modes, reference scores, exact fixed-depth scores/moves/node counts,
+  repetition history and timeouts. Signed numeric zero is treated numerically
+  (+0/-0 have the same chess meaning).
+- One embedded WASM module supports 32 MiB default memory (smaller TT) and an
+  explicit 64 MiB setting matching the reference TT size. Only a clock function
+  is imported. Model and KPK data are passed from existing credited inline data.
+- `node scripts/build.cjs --candidate-wasm --output <file>` creates a labelled
+  single-HTML experiment; it refuses to overwrite index.html without an explicit
+  output. Normal release builds still use JS. Levels below 51 keep the old path.
+
+Compiler setup in this workspace: Debian LLVM 19.1.7 packages extracted under
+/tmp/mitchell-llvm (compiler/format/linker only, not distributed). Build:
+`LD_LIBRARY_PATH=/tmp/mitchell-llvm/usr/lib/x86_64-linux-gnu WASM_CXX=/tmp/mitchell-llvm/usr/bin/clang++-19 WASM_LD=/tmp/mitchell-llvm/usr/bin/wasm-ld-19 node scripts/build-wasm-core.cjs`.
+The compiler generates tables.inc and evaluation.inc from canonical MIT sources.
+Output imports only env.clock. Development bridge: scripts/wasm-core.cjs.
+
+Active candidate: /workspace/mitchell-performance/wasm-candidate.html. Do not
+promote it based on preliminary NPS (~2x in three Node samples). Next: real
+browser candidate/fallback tests, matched games, loss-derived regression suite,
+network comparison and exact sparse-endgame experiment. Add reproducible reports
+and update the handoff before publication. No rating or promotion gate passed yet.
+
+## Status report checkpoint: completed baseline campaign
+
+The frozen 200-game run completed on 2026-11-05 at 20:14 UTC. Stockfish 19:
+0W/7D/93L; native Leorik 3.1.3: 0W/20D/80L. Zero forfeits. These results concern
+frozen JS/NNUE candidate eec0d23, not the new full-WASM port. The complete archive
+is validation/modern/completed-200 and has been replayed/hash-verified.
+
+The last requested browser-verification tool call was interrupted; its settings
+UI edits and test run did not land. No wasm-browser-checks.json exists yet. Do
+not claim final browser or match qualification. Original parity run passed 5,476
+checks; source/model behavior remains experimental. The candidate has a 32 MiB
+default and 64 MiB developer setting, not a verified new settings control yet.
+Next: browser/fallback verification, frozen WASM-vs-JS equal-time experiments,
+loss regressions and network comparison. All current port work is uncommitted on
+engine/wasm-parity-roadmap; the public game still runs the prior JS engine.

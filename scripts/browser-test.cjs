@@ -7,7 +7,7 @@ try{
  page.on('pageerror',e=>errors.push(String(e)));
  await page.route(/^https?:/,r=>{network.push(r.request().url());return r.abort();});
  // Serve the single file from memory; no development server or network is needed.
- await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:require('node:fs').readFileSync('index.html','utf8')}));
+ await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:require('node:fs').readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
  await page.goto('http://localhost:8765/');
  await page.context().setOffline(true);
  assert.equal(await page.locator('#lvl').getAttribute('max'),'65');

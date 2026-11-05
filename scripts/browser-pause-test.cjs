@@ -8,7 +8,7 @@ const fs = require('node:fs');
     const page = await browser.newPage(), errors = [], network = [];
     page.on('pageerror', e=>errors.push(String(e)));
     await page.route(/^https?:/, r=>{network.push(r.request().url());return r.abort();});
-    await page.route('http://localhost:8765/', r=>r.fulfill({contentType:'text/html',body:fs.readFileSync('index.html','utf8')}));
+    await page.route('http://localhost:8765/', r=>r.fulfill({contentType:'text/html',body:fs.readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
     await page.goto('http://localhost:8765/');await page.context().setOffline(true);
 
     // Untimed casual play also offers an obvious pause, with keyboard resume.
@@ -85,7 +85,7 @@ const fs = require('node:fs');
     const touchContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
     const touch=await touchContext.newPage();touch.on('pageerror',e=>errors.push(String(e)));
     await touch.route(/^https?:/,r=>{network.push(r.request().url());return r.abort();});
-    await touch.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync('index.html','utf8')}));
+    await touch.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
     await touch.goto('http://localhost:8765/');await touchContext.setOffline(true);
     await touch.evaluate(()=>{setup.mode='pvp';setup.rules='casual';setup.tc='none';newGame();});
     await touch.locator('#pauseBtn').tap();assert(await touch.evaluate(()=>G.paused));
