@@ -266,6 +266,18 @@
       "exitCode": 0,
       "stdout": "PASS: legal CC0 import including castling, explicit replacement, manual-line preservation and malformed input rejection\n",
       "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/candidate-checkpoint"
+      ],
+      "startedUtc": "2026-11-05T18:00:23.606230+00:00",
+      "finishedUtc": "2026-11-05T18:00:23.735188+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 2 legal PGNs (307 half-moves); complete=false\n",
+      "stderr": ""
     }
   ]
 }

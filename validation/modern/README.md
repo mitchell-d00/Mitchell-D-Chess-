@@ -54,6 +54,13 @@ time control, build identities and every referee command. Checkpoints are saved
 after each game; abnormal terminations stop the run. Forfeits are counted and
 reported separately, not treated as ordinary strength results.
 
+The campaign started from frozen commit `eec0d23da885fad1944cefc232348978d514f16d` on
+`2026-11-05T17:54:55.801712+00:00`. [protocol-200.json](protocol-200.json) is the exact frozen
+configuration. [candidate-checkpoint/](candidate-checkpoint/) is a static snapshot
+at `2026-11-05T17:59:07.996898+00:00`: **2/200 completed**, explicitly incomplete,
+with no forfeits. It is not a live score and is not combined with the completed
+12-game baseline screening. The background run continues in the working environment.
+
 Only a completed run should be described as a completed 200-game result.
 Checkpoint snapshots are explicitly incomplete and are not live progress.
 Even a complete all-loss score would not calibrate a useful absolute rating;

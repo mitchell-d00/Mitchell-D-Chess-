@@ -285,3 +285,35 @@ Next: freeze this candidate commit, cleanly restart/checkpoint the modern 200-ga
 run, verify push/PR CI, then publish and record exact status. Multiworker search,
 more bitbases, multi-PV, puzzles and networking are deferred explicitly in
 validation/implementation-scope.md, not silently claimed as implemented.
+
+## Candidate freeze, restart and CI checkpoint
+
+Frozen candidate: `eec0d23da885fad1944cefc232348978d514f16d` (source extraction and
+generated release are consecutive commits). Modern run directory:
+`/workspace/mitchell-performance/modern-200/`; runner PID 17500 at launch. Exact
+protocol is published in validation/modern/protocol-200.json. It uses the frozen
+runner.py, immutable engine-under-test.html and adapter/helper copies, so later
+documentation changes do not alter an in-flight match.
+
+The snapshot in validation/modern/candidate-checkpoint is **2/200**, dated
+`2026-11-05T17:59:07.996898+00:00`, with zero forfeits. Every archived move replayed legally.
+It is explicitly incomplete, not a completed strength/rating result. The process
+is running in the background; inspect status.json and summary.json for live state.
+Do not launch a second runner while campaign.pid names a live process.
+
+Push CI passed: https://github.com/mitchell-d00/Mitchell-D-Chess-/actions/runs/42079323305
+PR CI passed: https://github.com/mitchell-d00/Mitchell-D-Chess-/actions/runs/42079520397
+Both compiled WAT and checked the generated file before the full suite. The PR is
+https://github.com/mitchell-d00/Mitchell-D-Chess-/pull/4. This data-only checkpoint
+will trigger a final CI run before merge.
+
+If the environment stops, resume only with the same inputs:
+`python /workspace/mitchell-performance/modern-200/runner.py /workspace/mitchell-performance/modern-200/campaign.json --resume`
+The binaries/model/runtime must still match their frozen hashes. A new host needs
+independently installed dependencies and a newly labelled protocol. To publish a
+later checkpoint, use archive-benchmark.py --allow-incomplete into a new directory,
+verify-evidence.cjs, and explicitly report its timestamp/completed count. Never
+overwrite the historical archive or silently promote an incomplete run.
+
+Next: verify the checkpoint commit in CI, merge the standalone update, and check
+Pages. The remaining campaign games continue as authorized long-running work.
