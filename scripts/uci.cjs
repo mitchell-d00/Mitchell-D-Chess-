@@ -10,7 +10,7 @@ if(!isMainThread){
  parentPort.postMessage({ready:true});
  parentPort.on('message',d=>{
   if(d.reset){const p=new E.Chess();new E.Searcher(p,{eval:'mat'});return;}
-  try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true,exactEndgames:workerData.endgames==='1'});parentPort.postMessage({id:d.id,result:r});}
+  try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true,exactEndgames:workerData.endgames==='1'});if(workerData.requireWasm&&(!r||r.backend!=='wasm'))throw Error('Required WASM backend was not used');parentPort.postMessage({id:d.id,result:r});}
   catch(e){parentPort.postMessage({id:d.id,error:String(e.stack||e)});}
  });
 }else{
@@ -19,7 +19,7 @@ if(!isMainThread){
  let worker,ready=false,pendingReady=0,active=null,id=0,fen=null,moves=[],level=65,overhead=20;
  const out=line=>process.stdout.write(line+'\n');
  function start(){
-  ready=false;worker=new Worker(__filename,{workerData:{html,memory:process.env.MITCHELL_WASM_MEMORY||'32',endgames:process.env.MITCHELL_EXACT_ENDGAMES||'0'}});
+  ready=false;worker=new Worker(__filename,{workerData:{html,memory:process.env.MITCHELL_WASM_MEMORY||'32',endgames:process.env.MITCHELL_EXACT_ENDGAMES||'0',requireWasm:process.env.MITCHELL_REQUIRE_WASM==='1'}});
   worker.on('message',d=>{
    if(d.ready){ready=true;while(pendingReady>0){out('readyok');pendingReady--;}return;}
    if(!active||d.id!==active.id)return;
