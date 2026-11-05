@@ -37,6 +37,13 @@ scored **0W–5D–1L against native Leorik 3.1.3** and **3W–2D–1L against T
 not an absolute rating. [Verified results](validation/strength/RESULTS.md) and
 [repeat commands](validation/strength/PROTOCOL.md) include every game and setting.
 
+The level ladder now uses increasing clocked thinking allowances and removes
+three configuration reversals. A **376-game level audit** found level 65 beat
+level 50 **20–0 before and 20–0 after** the changes at a nominal 0.1 s/move.
+All 64 adjacent pairs were screened; several remain statistically unresolved,
+including a tied 20-game level-16/15 follow-up. These results do not certify a
+strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/levels/README.md).
+
 ## What is in it
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,
@@ -52,8 +59,8 @@ not an absolute rating. [Verified results](validation/strength/RESULTS.md) and
   | Expert | 21–25 | 1.2 to 2.6 seconds a move with advanced pruning |
   | Master | 26–30 | 3 to 6 seconds a move |
   | Grandmaster (legacy names) | 31–35 | 7.5 to 16 seconds a move |
-  | Analysis | 36–50 | Original classical evaluation, 20 to 60 seconds a move |
-  | Neural | 51–65 | Trained MIT NNUE evaluation, 10 to 60 seconds a move; unrated |
+  | Analysis | 36–50 | Original classical evaluation, 17 to 30 seconds a move |
+  | Neural | 51–65 | Trained MIT NNUE evaluation, 32 to 60 seconds a move; unrated |
 
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
@@ -194,9 +201,21 @@ engines, models or other resources are fetched at runtime.
 
 Levels 1–35 retain their existing names, depth limits and beginner noise/blunder
 settings. Levels 36–50 use the full custom engine with budgets increasing from
-20 to 60 seconds. Clock games cap those budgets to available time, reserving
-some time for worker messages and rendering. Stable best moves can finish early;
+17 to 30 seconds. Neural levels 51–65 continue from 32 to 60 seconds, without
+resetting the budget at the tier boundary. Clock games calculate a common safe
+allowance, then apply increasing per-level effort shares and the preset cap.
+This prevents short clocks from erasing all the differences between higher
+presets. Time is reserved for worker messages/rendering. Stable best moves can finish early;
 unstable searches use more of the budget.
+
+The level-progression correction also keeps piece-placement evaluation on level
+5, capture continuation on level 6, and bounds noisy beginner searches by their
+clock budget. Levels 2–16 retain their depth/noise/blunder settings, with increasing
+time caps and complete fallback scores when a timed root iteration cannot finish.
+The thinking status shows the current clocked allowance. These are difficulty
+presets, not individually rated engines; adjacent levels can draw, upset one
+another or make the same move. Millisecond rounding, book moves and very short
+clocks can still make neighbouring presets behave alike.
 
 - Corrected quiescence: no stand-pat in check, all legal evasions and all
   underpromotions retained, with mate taking priority over a fifty-move claim.
@@ -250,7 +269,7 @@ remaining moves until it is needed. A numerically equivalent JavaScript fallback
 without WASM or SIMD. Sparse endings retain the classical guidance and exact KPK
 bitbase. Levels 1–50 keep their existing evaluation modes and budgets.
 
-Level 51 allows 10 seconds per move; budgets increase to 60 seconds at Level 65.
+Level 51 allows 32 seconds per move; budgets increase to 60 seconds at Level 65.
 Clock controls cap these budgets. Clock allocation retains a scheduling reserve,
 uses the remaining delay rather than refilling it after resume, and shortens its
 planning horizon later in the game. The move-time benchmark adapter keeps its

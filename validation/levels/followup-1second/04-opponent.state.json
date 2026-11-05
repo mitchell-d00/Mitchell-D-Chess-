@@ -1,0 +1,163 @@
+{
+    "resign": {
+        "move_count": 1,
+        "score": 0,
+        "twosided": false,
+        "enabled": false
+    },
+    "draw": {
+        "move_number": 0,
+        "move_count": 1,
+        "score": 0,
+        "enabled": false
+    },
+    "maxmoves": {
+        "move_count": 1,
+        "enabled": false
+    },
+    "tb_adjudication": {
+        "syzygy_dirs": "",
+        "max_pieces": 0,
+        "ignore_50_move_rule": false,
+        "enabled": false
+    },
+    "opening": {
+        "file": "/workspace/mitchell-performance/levels-followup-1second/openings.epd",
+        "format": 0,
+        "order": 1,
+        "plies": -1,
+        "start": 1
+    },
+    "pgn": {
+        "additional_lines_rgx": [],
+        "event_name": "Colour-paired difficulty-level screening",
+        "site": "local shared Linux host",
+        "file": "/workspace/mitchell-performance/levels-followup-1second/04-opponent.pgn",
+        "notation": 0,
+        "append_file": true,
+        "track_nodes": true,
+        "track_seldepth": false,
+        "track_nps": true,
+        "track_hashfull": false,
+        "track_tbhits": false,
+        "track_timeleft": true,
+        "track_latency": false,
+        "track_pv": false,
+        "min": false,
+        "crc": false
+    },
+    "epd": {
+        "file": "",
+        "append_file": true
+    },
+    "sprt": {
+        "alpha": 0.0,
+        "beta": 0.0,
+        "elo0": 0.0,
+        "elo1": 0.0,
+        "model": "normalized",
+        "enabled": false
+    },
+    "config_name": "/workspace/mitchell-performance/levels-followup-1second/04-opponent.state.json",
+    "output": 0,
+    "seed": 7322763956224452708,
+    "variant": 0,
+    "type": 0,
+    "gauntlet_seeds": 1,
+    "ratinginterval": 10,
+    "scoreinterval": 1,
+    "wait": 0,
+    "autosaveinterval": 1,
+    "games": 2,
+    "rounds": 10,
+    "concurrency": 1,
+    "force_concurrency": false,
+    "recover": true,
+    "noswap": false,
+    "reverse": false,
+    "report_penta": true,
+    "affinity": false,
+    "check_mate_pvs": false,
+    "show_latency": false,
+    "log": {
+        "file": "",
+        "level": 3,
+        "append_file": true,
+        "compress": false,
+        "realtime": true,
+        "engine_coms": false
+    },
+    "engines": [
+        {
+            "name": "MitchellHigher",
+            "dir": "",
+            "cmd": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "args": "/workspace/mitchell-performance/levels-followup-1second/adapter/uci.cjs",
+            "restart": false,
+            "options": [
+                [
+                    "Level",
+                    "38"
+                ],
+                [
+                    "MoveOverhead",
+                    "20"
+                ]
+            ],
+            "limit": {
+                "tc": {
+                    "increment": 0,
+                    "fixed_time": 1000,
+                    "time": 0,
+                    "moves": 0,
+                    "timemargin": 250
+                },
+                "nodes": 0,
+                "plies": 0
+            },
+            "variant": 0
+        },
+        {
+            "name": "Level38-vs-Level37",
+            "dir": "",
+            "cmd": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "args": "/workspace/mitchell-performance/levels-followup-1second/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-followup-1second/engine-under-test.html",
+            "restart": false,
+            "options": [
+                [
+                    "Level",
+                    "37"
+                ],
+                [
+                    "MoveOverhead",
+                    "20"
+                ]
+            ],
+            "limit": {
+                "tc": {
+                    "increment": 0,
+                    "fixed_time": 1000,
+                    "time": 0,
+                    "moves": 0,
+                    "timemargin": 250
+                },
+                "nodes": 0,
+                "plies": 0
+            },
+            "variant": 0
+        }
+    ],
+    "stats": {
+        "MitchellHigher vs Level38-vs-Level37": {
+            "wins": 8,
+            "losses": 7,
+            "draws": 5,
+            "penta_WW": 2,
+            "penta_WD": 1,
+            "penta_WL": 3,
+            "penta_DD": 1,
+            "penta_LD": 2,
+            "penta_LL": 1
+        }
+    }
+}

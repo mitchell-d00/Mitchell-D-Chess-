@@ -1,0 +1,459 @@
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "1"]
+[White "MitchellHigher"]
+[Black "Level14-vs-Level13"]
+[Result "1-0"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "rn1qkb1r/pb1p1ppp/1p2pn2/2p5/2PP4/5NP1/PP2PPBP/RNBQK2R w KQkq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:23 +0000"]
+[GameEndTime "2026-11-05T23:18:23 +0000"]
+[PlyCount "107"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "E15"]
+[Opening "Queen's Indian Defense: Fianchetto Variation, Sämisch Variation"]
+
+1. Nc3 {+0.48/0 0.007s, tl=0.100s, n=50, nps=0}
+Bxf3 {+2.51/0 0.006s, tl=0.100s, n=7, nps=0}
+2. exf3 {+0.51/0 0.006s, tl=0.100s, n=107, nps=0}
+cxd4 {+1.14/0 0.007s, tl=0.100s, n=62, nps=0}
+3. Qxd4 {+0.32/0 0.004s, tl=0.100s, n=67, nps=0}
+Nc6 {+0.14/0 0.005s, tl=0.100s, n=126, nps=0}
+4. Qxf6 {+2.72/0 0.004s, tl=0.100s, n=90, nps=0}
+Qxf6 {+5.84/0 0.003s, tl=0.100s, n=128, nps=0}
+5. Be3 {-5.74/0 0.006s, tl=0.100s, n=0, nps=0}
+Qxc3+ {+8.80/0 0.003s, tl=0.100s, n=8, nps=0}
+6. bxc3 {-0.53/0 0.010s, tl=0.100s, n=128, nps=0}
+Bd6 {+0.71/0 0.003s, tl=0.100s, n=46, nps=0}
+7. Bd4 {-1.04/1 0.005s, tl=0.100s, n=256, nps=0}
+Nxd4 {+4.50/0 0.003s, tl=0.100s, n=40, nps=0}
+8. cxd4 {-0.79/0 0.004s, tl=0.100s, n=169, nps=0}
+Rc8 {+0.75/1 0.002s, tl=0.100s, n=128, nps=0}
+9. Rc1 {-0.92/1 0.008s, tl=0.100s, n=235, nps=0}
+Rxc4 {+2.05/0 0.003s, tl=0.100s, n=68, nps=0}
+10. Rxc4 {+3.81/0 0.007s, tl=0.100s, n=161, nps=0}
+a6 {-4.02/1 0.003s, tl=0.100s, n=128, nps=0}
+11. Ke2 {+4.25/1 0.004s, tl=0.100s, n=442, nps=0}
+Ke7 {-4.29/1 0.004s, tl=0.100s, n=249, nps=0}
+12. Rhc1 {+4.40/1 0.004s, tl=0.100s, n=227, nps=0}
+b5 {-4.48/1 0.003s, tl=0.100s, n=139, nps=0}
+13. Rc8 {+4.65/0 0.003s, tl=0.100s, n=95, nps=0}
+Rxc8 {+1.80/0 0.003s, tl=0.100s, n=68, nps=0}
+14. Rxc8 {+4.08/1 0.003s, tl=0.100s, n=305, nps=0}
+Kf6 {-4.07/1 0.002s, tl=0.100s, n=238, nps=0}
+15. f4 {+4.25/1 0.002s, tl=0.100s, n=337, nps=0}
+h5 {-4.41/1 0.004s, tl=0.100s, n=256, nps=0}
+16. Bb7 {+4.07/1 0.004s, tl=0.100s, n=637, nps=0}
+a5 {-4.29/1 0.003s, tl=0.100s, n=384, nps=0}
+17. Kd3 {+4.26/1 0.007s, tl=0.100s, n=562, nps=0}
+g6 {-4.39/1 0.003s, tl=0.100s, n=471, nps=0}
+18. Bf3 {+4.39/1 0.004s, tl=0.100s, n=721, nps=0}
+b4 {-4.63/1 0.003s, tl=0.100s, n=565, nps=0}
+19. Kc4 {+4.23/1 0.003s, tl=0.100s, n=401, nps=0}
+h4 {-4.47/1 0.002s, tl=0.100s, n=410, nps=0}
+20. gxh4 {+4.99/0 0.005s, tl=0.100s, n=220, nps=0}
+Bxf4 {-4.04/1 0.006s, tl=0.100s, n=470, nps=0}
+21. d5 {+3.40/1 0.005s, tl=0.100s, n=306, nps=0}
+exd5+ {-3.71/1 0.004s, tl=0.100s, n=335, nps=0}
+22. Bxd5 {+3.55/2 0.004s, tl=0.100s, n=640, nps=0}
+Bxh2 {-3.55/1 0.005s, tl=0.100s, n=630, nps=0}
+23. Kd4 {+3.66/1 0.004s, tl=0.100s, n=576, nps=0}
+Be5+ {-3.31/1 0.003s, tl=0.100s, n=502, nps=0}
+24. Ke4 {+3.46/2 0.004s, tl=0.100s, n=305, nps=0}
+d6 {-3.46/1 0.003s, tl=0.100s, n=512, nps=0}
+25. f4 {+3.43/1 0.004s, tl=0.100s, n=734, nps=0}
+Bb2 {-3.70/1 0.003s, tl=0.100s, n=768, nps=0}
+26. Rc7 {+3.64/1 0.004s, tl=0.100s, n=640, nps=0}
+Kg7 {-5.39/1 0.002s, tl=0.100s, n=163, nps=0}
+27. Rxf7+ {+5.39/1 0.003s, tl=0.100s, n=512, nps=0}
+Kg8 {-6.42/2 0.003s, tl=0.100s, n=544, nps=0}
+28. Rd7+ {+6.26/1 0.004s, tl=0.100s, n=580, nps=0}
+Kf8 {-6.26/2 0.003s, tl=0.100s, n=640, nps=0}
+29. Rxd6 {+6.26/1 0.003s, tl=0.100s, n=296, nps=0}
+Kg7 {-6.52/1 0.005s, tl=0.100s, n=621, nps=0}
+30. Bc4 {+6.56/1 0.004s, tl=0.100s, n=984, nps=0}
+Bc3 {-6.66/1 0.003s, tl=0.100s, n=732, nps=0}
+31. Rd8 {+6.47/1 0.004s, tl=0.100s, n=713, nps=0}
+Kf6 {-6.20/1 0.003s, tl=0.100s, n=636, nps=0}
+32. Rf8+ {+6.13/1 0.004s, tl=0.100s, n=638, nps=0}
+Ke7 {-5.96/2 0.003s, tl=0.100s, n=640, nps=0}
+33. Ra8 {+5.84/1 0.004s, tl=0.100s, n=763, nps=0}
+Be1 {-6.94/1 0.000s, tl=0.100s, n=704, nps=0}
+34. Ke5 {+6.30/1 0.004s, tl=0.100s, n=726, nps=0}
+Bg3 {-6.82/1 0.002s, tl=0.100s, n=512, nps=0}
+35. Rxa5 {+6.82/1 0.005s, tl=0.100s, n=896, nps=0}
+Bxh4 {-6.82/1 0.005s, tl=0.100s, n=498, nps=0}
+36. Ra7+ {+7.42/1 0.004s, tl=0.100s, n=721, nps=0}
+Kf8 {-7.41/2 0.005s, tl=0.100s, n=512, nps=0}
+37. Be2 {+6.99/1 0.003s, tl=0.100s, n=767, nps=0}
+Be7 {-7.07/1 0.004s, tl=0.100s, n=337, nps=0}
+38. Rd7 {+7.04/1 0.004s, tl=0.100s, n=960, nps=0}
+Kf7 {-6.91/1 0.004s, tl=0.100s, n=662, nps=0}
+39. Bc4+ {+7.42/1 0.004s, tl=0.100s, n=464, nps=0}
+Kf8 {-7.19/2 0.003s, tl=0.100s, n=640, nps=0}
+40. Ke4 {+7.18/1 0.004s, tl=0.100s, n=997, nps=0}
+Bc5 {-7.36/1 0.010s, tl=0.100s, n=704, nps=0}
+41. Ke5 {+7.16/1 0.007s, tl=0.100s, n=704, nps=0}
+Be7 {0.00/1 0.004s, tl=0.100s, n=593, nps=0}
+42. Rc7 {+7.25/2 0.004s, tl=0.100s, n=886, nps=0}
+g5 {-7.36/1 0.003s, tl=0.100s, n=640, nps=0}
+43. f5 {+7.34/1 0.005s, tl=0.100s, n=318, nps=0}
+g4 {-7.52/2 0.003s, tl=0.100s, n=628, nps=0}
+44. f6 {+7.52/1 0.004s, tl=0.100s, n=671, nps=0}
+Bxf6+ {-8.64/1 0.002s, tl=0.100s, n=384, nps=0}
+45. Kxf6 {+8.37/2 0.005s, tl=0.100s, n=512, nps=0}
+Ke8 {-9.99/3 0.003s, tl=0.100s, n=681, nps=0}
+46. Ke5 {+8.74/1 0.004s, tl=0.100s, n=508, nps=0}
+g3 {-8.54/2 0.003s, tl=0.100s, n=384, nps=0}
+47. Rg7 {+10.17/2 0.005s, tl=0.100s, n=1024, nps=0}
+Kd8 {-10.27/2 0.004s, tl=0.100s, n=640, nps=0}
+48. Rxg3 {+10.27/1 0.007s, tl=0.100s, n=498, nps=0}
+Kc7 {-10.21/2 0.003s, tl=0.100s, n=896, nps=0}
+49. Rb3 {+10.77/2 0.008s, tl=0.100s, n=1240, nps=0}
+Kb8 {-11.31/2 0.003s, tl=0.100s, n=793, nps=0}
+50. Kd6 {+11.39/2 0.004s, tl=0.100s, n=1280, nps=0}
+Kc8 {-11.60/2 0.004s, tl=0.100s, n=896, nps=0}
+51. Bd5 {+11.69/2 0.003s, tl=0.100s, n=1280, nps=0}
+Kd8 {-11.93/3 0.002s, tl=0.100s, n=427, nps=0}
+52. Bc6 {+11.64/2 0.004s, tl=0.100s, n=1744, nps=0}
+Kc8 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+53. Rxb4 {+11.84/2 0.004s, tl=0.100s, n=947, nps=0}
+Kd8 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+54. Rb8# {+M1/2 0.004s, tl=0.100s, n=1097, nps=0, White mates} 1-0
+
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "1"]
+[White "Level14-vs-Level13"]
+[Black "MitchellHigher"]
+[Result "1-0"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "rn1qkb1r/pb1p1ppp/1p2pn2/2p5/2PP4/5NP1/PP2PPBP/RNBQK2R w KQkq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:23 +0000"]
+[GameEndTime "2026-11-05T23:18:24 +0000"]
+[PlyCount "97"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "E15"]
+[Opening "Queen's Indian Defense: Fianchetto Variation, Sämisch Variation"]
+
+1. dxc5 {+0.82/0 0.002s, tl=0.100s, n=242, nps=0}
+Bxf3 {+2.20/0 0.004s, tl=0.100s, n=475, nps=0}
+2. Bxf3 {+1.21/0 0.002s, tl=0.100s, n=253, nps=0}
+Nc6 {-0.65/1 0.004s, tl=0.100s, n=470, nps=0}
+3. Bxc6 {+3.97/0 0.002s, tl=0.100s, n=256, nps=0}
+dxc6 {-0.44/0 0.003s, tl=0.100s, n=222, nps=0}
+4. Qxd8+ {+9.07/0 0.002s, tl=0.100s, n=210, nps=0}
+Kxd8 {-0.24/2 0.003s, tl=0.100s, n=256, nps=0}
+5. cxb6 {+1.65/0 0.004s, tl=0.100s, n=0, nps=0}
+axb6 {-0.24/1 0.009s, tl=0.100s, n=346, nps=0}
+6. Nc3 {+0.62/1 0.003s, tl=0.100s, n=382, nps=0}
+Be7 {-0.70/1 0.004s, tl=0.100s, n=809, nps=0}
+7. a3 {+0.61/1 0.002s, tl=0.100s, n=429, nps=0}
+Kd7 {-0.31/1 0.003s, tl=0.100s, n=640, nps=0}
+8. Bf4 {+0.56/1 0.002s, tl=0.100s, n=306, nps=0}
+Bd6 {-0.47/1 0.005s, tl=0.100s, n=512, nps=0}
+9. Bxd6 {+3.78/0 0.003s, tl=0.100s, n=384, nps=0}
+Kxd6 {-0.40/1 0.004s, tl=0.100s, n=640, nps=0}
+10. O-O-O+ {+1.01/1 0.000s, tl=0.100s, n=384, nps=0}
+Kc5 {-0.11/2 0.004s, tl=0.100s, n=1024, nps=0}
+11. Rhf1 {-0.18/1 0.000s, tl=0.100s, n=384, nps=0}
+Kxc4 {+0.18/1 0.004s, tl=0.100s, n=632, nps=0}
+12. e3 {-0.23/1 0.000s, tl=0.100s, n=610, nps=0}
+Rhd8 {+0.26/1 0.003s, tl=0.100s, n=491, nps=0}
+13. Rg1 {-0.43/1 0.002s, tl=0.100s, n=309, nps=0}
+Rd3 {+0.31/1 0.004s, tl=0.100s, n=375, nps=0}
+14. Rxd3 {+5.38/0 0.002s, tl=0.100s, n=256, nps=0}
+Nd5 {-5.46/1 0.003s, tl=0.100s, n=640, nps=0}
+15. Nxd5 {+8.75/0 0.002s, tl=0.100s, n=256, nps=0}
+Kxd3 {-4.78/1 0.004s, tl=0.100s, n=512, nps=0}
+16. Rd1+ {+4.82/1 0.002s, tl=0.100s, n=384, nps=0}
+Ke2 {-5.49/2 0.003s, tl=0.100s, n=512, nps=0}
+17. Rd2+ {+5.09/1 0.003s, tl=0.100s, n=488, nps=0}
+Kf3 {-5.34/3 0.003s, tl=0.100s, n=721, nps=0}
+18. Nxb6 {+5.09/1 0.002s, tl=0.100s, n=445, nps=0}
+Rb8 {-5.43/1 0.003s, tl=0.100s, n=768, nps=0}
+19. Nc4 {+5.15/1 0.002s, tl=0.100s, n=384, nps=0}
+Ke4 {-5.10/1 0.003s, tl=0.100s, n=688, nps=0}
+20. Nd6+ {+6.37/1 0.002s, tl=0.100s, n=413, nps=0}
+Kf3 {-6.45/2 0.003s, tl=0.100s, n=768, nps=0}
+21. Nxf7 {+6.45/1 0.003s, tl=0.100s, n=335, nps=0}
+h5 {-6.62/1 0.003s, tl=0.100s, n=618, nps=0}
+22. Ng5+ {+8.04/1 0.002s, tl=0.100s, n=323, nps=0}
+Kg4 {-8.04/2 0.004s, tl=0.100s, n=768, nps=0}
+23. Nxe6 {+8.04/1 0.002s, tl=0.100s, n=392, nps=0}
+g5 {-8.15/1 0.003s, tl=0.100s, n=570, nps=0}
+24. b4 {+8.04/1 0.003s, tl=0.100s, n=308, nps=0}
+Kf5 {-7.72/1 0.003s, tl=0.100s, n=534, nps=0}
+25. Nd4+ {+8.76/1 0.003s, tl=0.100s, n=248, nps=0}
+Kf6 {-8.85/2 0.003s, tl=0.100s, n=640, nps=0}
+26. Nxc6 {+8.85/1 0.003s, tl=0.100s, n=336, nps=0}
+Rb7 {-9.09/1 0.004s, tl=0.100s, n=767, nps=0}
+27. Rd6+ {+9.04/1 0.003s, tl=0.100s, n=426, nps=0}
+Kf5 {-9.21/2 0.004s, tl=0.100s, n=768, nps=0}
+28. Rd2 {+8.76/1 0.003s, tl=0.100s, n=361, nps=0}
+Kf6 {0.00/1 0.004s, tl=0.100s, n=625, nps=0}
+29. f3 {+8.87/1 0.003s, tl=0.100s, n=361, nps=0}
+Ke6 {-8.99/1 0.004s, tl=0.100s, n=640, nps=0}
+30. Nd8+ {+13.55/1 0.003s, tl=0.100s, n=332, nps=0}
+Kf6 {-13.85/2 0.004s, tl=0.100s, n=640, nps=0}
+31. Rd6+ {+13.57/1 0.003s, tl=0.100s, n=153, nps=0}
+Ke5 {-13.57/2 0.004s, tl=0.100s, n=512, nps=0}
+32. Nxb7 {+13.57/0 0.002s, tl=0.100s, n=198, nps=0}
+g4 {-14.17/2 0.003s, tl=0.100s, n=615, nps=0}
+33. fxg4 {+13.78/1 0.002s, tl=0.100s, n=255, nps=0}
+hxg4 {-13.97/2 0.003s, tl=0.100s, n=640, nps=0}
+34. b5 {+13.95/2 0.003s, tl=0.100s, n=384, nps=0}
+Kf5 {-14.65/3 0.003s, tl=0.100s, n=768, nps=0}
+35. Kd2 {+14.30/1 0.003s, tl=0.100s, n=512, nps=0}
+Ke5 {-14.51/2 0.004s, tl=0.100s, n=896, nps=0}
+36. Ke2 {+14.21/1 0.002s, tl=0.100s, n=256, nps=0}
+Ke4 {-15.03/2 0.003s, tl=0.100s, n=768, nps=0}
+37. Nc5+ {+15.03/1 0.003s, tl=0.100s, n=510, nps=0}
+Kf5 {-15.73/3 0.004s, tl=0.100s, n=896, nps=0}
+38. b6 {+15.43/1 0.002s, tl=0.100s, n=128, nps=0}
+Ke5 {-15.40/2 0.004s, tl=0.100s, n=768, nps=0}
+39. Rd8 {+15.22/1 0.007s, tl=0.100s, n=504, nps=0}
+Kf6 {-16.36/2 0.004s, tl=0.100s, n=768, nps=0}
+40. b7 {+16.36/1 0.003s, tl=0.100s, n=454, nps=0}
+Kf5 {-21.93/1 0.003s, tl=0.100s, n=635, nps=0}
+41. e4+ {+22.15/1 0.003s, tl=0.100s, n=512, nps=0}
+Kf6 {-22.20/2 0.004s, tl=0.100s, n=768, nps=0}
+42. Rf8+ {+22.20/1 0.004s, tl=0.100s, n=272, nps=0}
+Kg5 {-22.64/2 0.005s, tl=0.100s, n=896, nps=0}
+43. Ne6+ {+22.64/1 0.003s, tl=0.100s, n=277, nps=0}
+Kg6 {-22.65/2 0.004s, tl=0.100s, n=768, nps=0}
+44. b8=Q {+22.65/1 0.003s, tl=0.100s, n=227, nps=0}
+Kh7 {-23.33/2 0.004s, tl=0.100s, n=1024, nps=0}
+45. a4 {+22.96/1 0.003s, tl=0.100s, n=640, nps=0}
+Kh6 {-23.33/2 0.004s, tl=0.100s, n=1152, nps=0}
+46. Kd3 {+23.18/1 0.004s, tl=0.100s, n=384, nps=0}
+Kh5 {-23.73/2 0.005s, tl=0.100s, n=1024, nps=0}
+47. Qe5+ {+23.69/1 0.003s, tl=0.100s, n=640, nps=0}
+Kh6 {-M4/4 0.003s, tl=0.100s, n=917, nps=0}
+48. Qg5+ {+25.13/1 0.003s, tl=0.100s, n=640, nps=0}
+Kh7 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+49. Qh5# {+M1/1 0.003s, tl=0.100s, n=499, nps=0, White mates} 1-0
+
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "2"]
+[White "MitchellHigher"]
+[Black "Level14-vs-Level13"]
+[Result "1-0"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "r1bqkb1r/pppp1ppp/2nn4/1B2p3/3P4/5N2/PPP2PPP/RNBQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:24 +0000"]
+[GameEndTime "2026-11-05T23:18:24 +0000"]
+[PlyCount "95"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "C67"]
+[Opening "Ruy Lopez: Berlin Defense, l'Hermet Variation"]
+
+1. Bxc6 {+2.61/0 0.004s, tl=0.100s, n=455, nps=0}
+dxc6 {+0.55/0 0.002s, tl=0.100s, n=256, nps=0}
+2. Nxe5 {+0.70/1 0.003s, tl=0.100s, n=617, nps=0}
+Qh4 {-0.30/1 0.003s, tl=0.100s, n=384, nps=0}
+3. Nc3 {+0.65/1 0.003s, tl=0.100s, n=512, nps=0}
+Qxf2+ {+0.74/0 0.002s, tl=0.100s, n=261, nps=0}
+4. Rxf2 {+8.76/2 0.000s, tl=0.100s, n=896, nps=0}
+Bf5 {-8.76/1 0.002s, tl=0.100s, n=370, nps=0}
+5. Bg5 {+8.99/1 0.000s, tl=0.100s, n=640, nps=0}
+Bxc2 {-8.20/0 0.002s, tl=0.100s, n=328, nps=0}
+6. Qxc2 {+11.73/0 0.002s, tl=0.100s, n=435, nps=0}
+a6 {-11.89/1 0.002s, tl=0.100s, n=384, nps=0}
+7. Qb3 {+12.08/1 0.003s, tl=0.100s, n=496, nps=0}
+f6 {-11.76/0 0.002s, tl=0.100s, n=350, nps=0}
+8. Bxf6 {+13.20/0 0.003s, tl=0.100s, n=457, nps=0}
+gxf6 {-9.88/0 0.002s, tl=0.100s, n=331, nps=0}
+9. Rxf6 {+11.53/0 0.004s, tl=0.100s, n=440, nps=0}
+O-O-O {-10.76/1 0.003s, tl=0.100s, n=640, nps=0}
+10. Raf1 {+10.91/1 0.004s, tl=0.100s, n=640, nps=0}
+Kb8 {-10.68/0 0.003s, tl=0.100s, n=490, nps=0}
+11. Qxb7+ {+13.81/0 0.003s, tl=0.100s, n=540, nps=0}
+Kxb7 {-3.09/2 0.003s, tl=0.100s, n=768, nps=0}
+12. Ne2 {+2.84/1 0.004s, tl=0.100s, n=640, nps=0}
+Rg8 {-2.83/0 0.002s, tl=0.100s, n=366, nps=0}
+13. Nc3 {+2.74/1 0.004s, tl=0.100s, n=896, nps=0}
+Rxg2+ {-1.01/0 0.003s, tl=0.100s, n=533, nps=0}
+14. Kxg2 {+6.31/2 0.003s, tl=0.100s, n=768, nps=0}
+Be7 {-6.45/1 0.003s, tl=0.100s, n=640, nps=0}
+15. R6f4 {+6.05/1 0.003s, tl=0.100s, n=752, nps=0}
+h6 {-6.27/1 0.003s, tl=0.100s, n=795, nps=0}
+16. Kh3 {+6.14/1 0.004s, tl=0.100s, n=768, nps=0}
+Bg5 {-6.38/1 0.003s, tl=0.100s, n=737, nps=0}
+17. R4f3 {+5.93/1 0.000s, tl=0.100s, n=1266, nps=0}
+Kb6 {-6.26/1 0.003s, tl=0.100s, n=882, nps=0}
+18. Rf8 {+6.32/1 0.002s, tl=0.100s, n=910, nps=0}
+Rxf8 {-6.52/1 0.002s, tl=0.100s, n=486, nps=0}
+19. Rxf8 {+6.52/1 0.004s, tl=0.100s, n=954, nps=0}
+Bd2 {-6.86/1 0.001s, tl=0.100s, n=896, nps=0}
+20. Kg4 {+6.68/1 0.004s, tl=0.100s, n=1024, nps=0}
+Bxc3 {-6.68/1 0.001s, tl=0.100s, n=728, nps=0}
+21. Rb8+ {+6.84/1 0.003s, tl=0.100s, n=896, nps=0}
+Nb7 {-6.99/2 0.003s, tl=0.100s, n=768, nps=0}
+22. bxc3 {+6.99/1 0.002s, tl=0.100s, n=1152, nps=0}
+c5 {-7.91/2 0.003s, tl=0.100s, n=768, nps=0}
+23. dxc5+ {+7.91/1 0.004s, tl=0.100s, n=896, nps=0}
+Kxc5 {-9.13/2 0.001s, tl=0.100s, n=640, nps=0}
+24. Rxb7 {+9.13/1 0.003s, tl=0.100s, n=1024, nps=0}
+Kd5 {-9.39/2 0.003s, tl=0.100s, n=1024, nps=0}
+25. Kf5 {+9.71/2 0.002s, tl=0.100s, n=1152, nps=0}
+Kd6 {-9.92/2 0.002s, tl=0.100s, n=640, nps=0}
+26. Nc4+ {+9.92/1 0.003s, tl=0.100s, n=1012, nps=0}
+Kd7 {-9.97/2 0.000s, tl=0.100s, n=768, nps=0}
+27. a4 {+9.97/1 0.004s, tl=0.100s, n=891, nps=0}
+Kc6 {-9.76/2 0.003s, tl=0.100s, n=961, nps=0}
+28. Ra7 {+10.53/2 0.003s, tl=0.100s, n=1087, nps=0}
+Kd5 {-10.67/2 0.003s, tl=0.100s, n=768, nps=0}
+29. Ne3+ {+10.67/2 0.004s, tl=0.100s, n=1280, nps=0}
+Kd6 {-10.67/2 0.002s, tl=0.100s, n=640, nps=0}
+30. h4 {+10.51/2 0.000s, tl=0.100s, n=890, nps=0}
+a5 {-10.60/2 0.002s, tl=0.100s, n=768, nps=0}
+31. Rxa5 {+10.51/1 0.002s, tl=0.100s, n=1024, nps=0}
+c6 {-11.06/2 0.003s, tl=0.100s, n=640, nps=0}
+32. Nc4+ {+11.94/2 0.003s, tl=0.100s, n=1071, nps=0}
+Ke7 {-11.97/3 0.002s, tl=0.100s, n=846, nps=0}
+33. Ra7+ {+11.97/2 0.003s, tl=0.100s, n=1024, nps=0}
+Kf8 {-12.32/2 0.002s, tl=0.100s, n=640, nps=0}
+34. Rh7 {+12.80/2 0.003s, tl=0.100s, n=1024, nps=0}
+h5 {-12.80/2 0.002s, tl=0.100s, n=512, nps=0}
+35. a5 {+12.92/2 0.003s, tl=0.100s, n=971, nps=0}
+Kg8 {-13.24/2 0.002s, tl=0.100s, n=640, nps=0}
+36. Rc7 {+13.23/2 0.003s, tl=0.100s, n=1392, nps=0}
+c5 {-13.23/2 0.002s, tl=0.100s, n=662, nps=0}
+37. Ke6 {+13.27/2 0.003s, tl=0.100s, n=1152, nps=0}
+Kf8 {-14.41/3 0.002s, tl=0.100s, n=465, nps=0}
+38. Rxc5 {+14.41/2 0.004s, tl=0.100s, n=1152, nps=0}
+Kg8 {-14.68/2 0.002s, tl=0.100s, n=640, nps=0}
+39. a6 {+15.25/2 0.004s, tl=0.100s, n=981, nps=0}
+Kf8 {-15.25/2 0.002s, tl=0.100s, n=512, nps=0}
+40. a7 {+20.37/2 0.003s, tl=0.100s, n=1152, nps=0}
+Kg7 {-20.37/2 0.003s, tl=0.100s, n=640, nps=0}
+41. Rc7+ {+20.32/2 0.004s, tl=0.100s, n=1280, nps=0}
+Kh6 {-20.32/2 0.002s, tl=0.100s, n=512, nps=0}
+42. Rd7 {+20.40/2 0.003s, tl=0.100s, n=922, nps=0}
+Kg6 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+43. Rf7 {+20.59/2 0.004s, tl=0.100s, n=896, nps=0}
+Kh6 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+44. Nd6 {+20.65/2 0.004s, tl=0.100s, n=1235, nps=0}
+Kg6 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+45. Kd5 {+20.56/2 0.004s, tl=0.100s, n=1024, nps=0}
+Kh6 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+46. a8=Q {+20.56/1 0.004s, tl=0.100s, n=816, nps=0}
+Kg6 {0.00/0 0.001s, tl=0.100s, n=0, nps=0}
+47. Qg8+ {+M3/2 0.004s, tl=0.100s, n=1152, nps=0}
+Kh6 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+48. Nf5# {+M1/3 0.003s, tl=0.100s, n=1120, nps=0, White mates} 1-0
+
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "2"]
+[White "Level14-vs-Level13"]
+[Black "MitchellHigher"]
+[Result "1/2-1/2"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "r1bqkb1r/pppp1ppp/2nn4/1B2p3/3P4/5N2/PPP2PPP/RNBQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:24 +0000"]
+[GameEndTime "2026-11-05T23:18:24 +0000"]
+[PlyCount "68"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "C67"]
+[Opening "Ruy Lopez: Berlin Defense, l'Hermet Variation"]
+
+1. Bxc6 {+2.61/0 0.002s, tl=0.100s, n=217, nps=0}
+bxc6 {+0.26/0 0.001s, tl=0.100s, n=370, nps=0}
+2. dxe5 {+0.92/1 0.002s, tl=0.100s, n=478, nps=0}
+Nc4 {-0.86/1 0.003s, tl=0.100s, n=674, nps=0}
+3. Nc3 {+1.21/1 0.000s, tl=0.100s, n=448, nps=0}
+Rb8 {-1.23/1 0.003s, tl=0.100s, n=640, nps=0}
+4. Qxd7+ {+2.42/0 0.000s, tl=0.100s, n=338, nps=0}
+Qxd7 {+6.36/2 0.004s, tl=0.100s, n=768, nps=0}
+5. h3 {-6.59/0 0.001s, tl=0.100s, n=256, nps=0}
+Nxb2 {+7.39/1 0.003s, tl=0.100s, n=512, nps=0}
+6. Bg5 {-7.17/1 0.002s, tl=0.100s, n=384, nps=0}
+Be7 {+7.23/1 0.001s, tl=0.100s, n=605, nps=0}
+7. Bxe7 {-3.86/0 0.002s, tl=0.100s, n=256, nps=0}
+Kxe7 {+6.99/1 0.000s, tl=0.100s, n=640, nps=0}
+8. Rab1 {-7.07/1 0.004s, tl=0.100s, n=256, nps=0}
+Kf8 {+7.18/1 0.000s, tl=0.100s, n=581, nps=0}
+9. Rfe1 {-7.37/1 0.002s, tl=0.100s, n=441, nps=0}
+Ba6 {+7.48/1 0.003s, tl=0.100s, n=768, nps=0}
+10. Red1 {-7.51/1 0.000s, tl=0.100s, n=405, nps=0}
+Qf5 {+7.39/1 0.004s, tl=0.100s, n=768, nps=0}
+11. Rxb2 {-4.65/0 0.001s, tl=0.100s, n=265, nps=0}
+Rxb2 {+9.87/0 0.003s, tl=0.100s, n=437, nps=0}
+12. Kh2 {-10.14/0 0.002s, tl=0.100s, n=211, nps=0}
+Rxc2 {+10.83/1 0.001s, tl=0.100s, n=594, nps=0}
+13. Rd7 {-10.93/0 0.002s, tl=0.100s, n=245, nps=0}
+Qxd7 {+16.24/0 0.000s, tl=0.100s, n=500, nps=0}
+14. Ne4 {-17.21/1 0.002s, tl=0.100s, n=372, nps=0}
+Rxa2 {+17.21/1 0.002s, tl=0.100s, n=633, nps=0}
+15. Nc5 {-17.37/1 0.002s, tl=0.100s, n=338, nps=0}
+Qd8 {+17.11/1 0.003s, tl=0.100s, n=544, nps=0}
+16. e6 {-17.29/1 0.003s, tl=0.100s, n=489, nps=0}
+fxe6 {+18.19/0 0.003s, tl=0.100s, n=510, nps=0}
+17. Nxa6 {-15.98/0 0.002s, tl=0.100s, n=305, nps=0}
+Qd6+ {+18.21/1 0.003s, tl=0.100s, n=512, nps=0}
+18. Kh1 {-19.17/2 0.002s, tl=0.100s, n=640, nps=0}
+Ra1+ {+19.17/1 0.003s, tl=0.100s, n=768, nps=0}
+19. Ng1 {-19.17/2 0.003s, tl=0.100s, n=512, nps=0}
+Rxa6 {+19.17/1 0.003s, tl=0.100s, n=800, nps=0}
+20. f3 {-19.79/2 0.002s, tl=0.100s, n=640, nps=0}
+Ra1 {+19.88/2 0.003s, tl=0.100s, n=640, nps=0}
+21. h4 {-19.98/2 0.003s, tl=0.100s, n=640, nps=0}
+a5 {+19.89/1 0.004s, tl=0.100s, n=1011, nps=0}
+22. h5 {-20.17/2 0.002s, tl=0.100s, n=640, nps=0}
+Kf7 {+20.17/1 0.003s, tl=0.100s, n=768, nps=0}
+23. g4 {-20.53/2 0.003s, tl=0.100s, n=640, nps=0}
+c5 {+20.39/1 0.003s, tl=0.100s, n=699, nps=0}
+24. Kg2 {-20.68/2 0.003s, tl=0.100s, n=640, nps=0}
+Qd2+ {+20.68/1 0.003s, tl=0.100s, n=778, nps=0}
+25. Kh1 {-20.82/2 0.003s, tl=0.100s, n=640, nps=0}
+a4 {+20.80/1 0.003s, tl=0.100s, n=757, nps=0}
+26. f4 {-21.97/2 0.002s, tl=0.100s, n=512, nps=0}
+Qxf4 {+21.97/1 0.003s, tl=0.100s, n=640, nps=0}
+27. g5 {-23.43/1 0.002s, tl=0.100s, n=512, nps=0}
+Qh4+ {+27.42/1 0.003s, tl=0.100s, n=680, nps=0}
+28. Kg2 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+Qxg5+ {+27.42/1 0.004s, tl=0.100s, n=768, nps=0}
+29. Kf2 {-27.58/2 0.003s, tl=0.100s, n=542, nps=0}
+Rxg1 {+27.58/1 0.004s, tl=0.100s, n=796, nps=0}
+30. h6 {-28.58/2 0.003s, tl=0.100s, n=640, nps=0}
+gxh6 {+28.58/1 0.003s, tl=0.100s, n=640, nps=0}
+31. Ke2 {-28.50/2 0.003s, tl=0.100s, n=640, nps=0}
+Rd8 {+28.33/1 0.004s, tl=0.100s, n=861, nps=0}
+32. Kf3 {-29.28/2 0.004s, tl=0.100s, n=384, nps=0}
+Rd2 {+29.28/1 0.004s, tl=0.100s, n=384, nps=0}
+33. Ke4 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+Qf5+ {+29.24/1 0.004s, tl=0.100s, n=384, nps=0}
+34. Ke3 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+Rgg2 {+29.31/1 0.004s, tl=0.100s, n=612, nps=0, Draw by stalemate} 1/2-1/2
+

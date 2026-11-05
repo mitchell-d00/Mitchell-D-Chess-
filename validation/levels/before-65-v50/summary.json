@@ -1,0 +1,39 @@
+{
+  "updatedUtc": "2026-11-05T23:28:40.141799+00:00",
+  "plannedGames": 20,
+  "completedGames": 20,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Level65-vs-Level50": {
+      "planned": 20,
+      "wins": 20,
+      "draws": 0,
+      "losses": 0,
+      "forfeits": 0,
+      "completed": 20,
+      "normalResults": {
+        "wins": 20,
+        "draws": 0,
+        "losses": 0
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 1.0,
+      "completedNormalPairs": 10,
+      "pairedScoreBootstrap95": null
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

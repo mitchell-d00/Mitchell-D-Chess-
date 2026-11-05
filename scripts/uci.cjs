@@ -15,7 +15,7 @@ if(!isMainThread){
    if(core&&E.LEVELS[(d.level||65)-1].ev==='nnue')return;
    const p=new E.Chess();new E.Searcher(p,{eval:'mat'});return;
   }
-  try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true,exactEndgames:workerData.endgames==='1'});if(workerData.requireWasm&&(!r||r.backend!=='wasm'))throw Error('Required WASM backend was not used');if(workerData.levelBackend&&(!r||(E.LEVELS[d.level-1].ev==='nnue'?r.backend!=='wasm':r.backend==='wasm')))throw Error('Required per-level backend was not used');parentPort.postMessage({id:d.id,result:r});}
+  try{const r=E.think(d.fen,d.moves,d.level-1,{time:d.time,noBook:true,exactEndgames:workerData.endgames==='1'});if(workerData.requireWasm&&(!r||r.backend!=='wasm'))throw Error('Required WASM backend was not used');if(workerData.levelBackend&&(!r||(E.WASM_CORE&&E.LEVELS[d.level-1].ev==='nnue'?r.backend!=='wasm':r.backend==='wasm')))throw Error('Required per-level backend was not used');parentPort.postMessage({id:d.id,result:r});}
   catch(e){parentPort.postMessage({id:d.id,error:String(e.stack||e)});}
  });
 }else{

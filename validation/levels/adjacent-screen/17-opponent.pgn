@@ -1,0 +1,234 @@
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "1"]
+[White "MitchellHigher"]
+[Black "Level17-vs-Level16"]
+[Result "1-0"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "rn1qkb1r/pb1p1ppp/1p2pn2/2p5/2PP4/5NP1/PP2PPBP/RNBQK2R w KQkq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:38 +0000"]
+[GameEndTime "2026-11-05T23:18:38 +0000"]
+[PlyCount "23"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "E15"]
+[Opening "Queen's Indian Defense: Fianchetto Variation, Sämisch Variation"]
+
+1. Nbd2 {0.00/0 0.008s, tl=0.100s, n=128, nps=0}
+Bxf3 {+2.72/0 0.008s, tl=0.100s, n=64, nps=0}
+2. Nxf3 {+0.23/2 0.006s, tl=0.100s, n=384, nps=0}
+cxd4 {+0.43/0 0.007s, tl=0.100s, n=128, nps=0}
+3. Nxd4 {+0.70/1 0.007s, tl=0.100s, n=384, nps=0}
+Nc6 {-0.15/0 0.004s, tl=0.100s, n=140, nps=0}
+4. Nxc6 {+2.83/1 0.005s, tl=0.100s, n=384, nps=0}
+dxc6 {-0.19/0 0.006s, tl=0.100s, n=174, nps=0}
+5. Bxc6+ {+2.83/1 0.007s, tl=0.100s, n=512, nps=0}
+Ke7 {-2.92/2 0.004s, tl=0.100s, n=384, nps=0}
+6. Bxa8 {+2.92/1 0.006s, tl=0.100s, n=384, nps=0}
+Qxa8 {-2.92/1 0.004s, tl=0.100s, n=211, nps=0}
+7. O-O {+3.08/1 0.008s, tl=0.100s, n=256, nps=0}
+Qb7 {-3.15/1 0.004s, tl=0.100s, n=384, nps=0}
+8. Bf4 {+3.98/1 0.006s, tl=0.100s, n=384, nps=0}
+Ke8 {-3.65/1 0.008s, tl=0.100s, n=185, nps=0}
+9. Qd4 {+3.82/2 0.004s, tl=0.100s, n=638, nps=0}
+Bd6 {-3.29/0 0.004s, tl=0.100s, n=158, nps=0}
+10. Qxd6 {+7.04/2 0.004s, tl=0.100s, n=512, nps=0}
+Ng4 {-7.04/1 0.004s, tl=0.100s, n=512, nps=0}
+11. Rfd1 {+7.23/1 0.007s, tl=0.100s, n=256, nps=0}
+h6 {-7.42/1 0.006s, tl=0.100s, n=512, nps=0}
+12. Qd8# {+M1/4 0.001s, tl=0.100s, n=289, nps=0, White mates} 1-0
+
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "1"]
+[White "Level17-vs-Level16"]
+[Black "MitchellHigher"]
+[Result "0-1"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "rn1qkb1r/pb1p1ppp/1p2pn2/2p5/2PP4/5NP1/PP2PPBP/RNBQK2R w KQkq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:38 +0000"]
+[GameEndTime "2026-11-05T23:18:38 +0000"]
+[PlyCount "28"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "E15"]
+[Opening "Queen's Indian Defense: Fianchetto Variation, Sämisch Variation"]
+
+1. dxc5 {+0.82/0 0.003s, tl=0.100s, n=254, nps=0}
+Bxc5 {+0.44/1 0.009s, tl=0.100s, n=256, nps=0}
+2. Qxd7+ {+0.22/0 0.006s, tl=0.100s, n=170, nps=0}
+Nbxd7 {+8.44/1 0.007s, tl=0.100s, n=640, nps=0}
+3. Nc3 {-8.44/0 0.004s, tl=0.100s, n=272, nps=0}
+Ne5 {+9.02/1 0.009s, tl=0.100s, n=384, nps=0}
+4. Nxe5 {-5.55/0 0.008s, tl=0.100s, n=128, nps=0}
+Bxg2 {+9.23/2 0.005s, tl=0.100s, n=640, nps=0}
+5. Nxf7 {-7.98/0 0.008s, tl=0.100s, n=230, nps=0}
+Kxf7 {+11.50/2 0.006s, tl=0.100s, n=608, nps=0}
+6. Rg1 {-11.50/1 0.007s, tl=0.100s, n=549, nps=0}
+Bc6 {+11.32/1 0.004s, tl=0.100s, n=640, nps=0}
+7. Kf1 {-10.89/1 0.004s, tl=0.100s, n=640, nps=0}
+Bb4 {0.00/0 0.005s, tl=0.100s, n=128, nps=0}
+8. Bf4 {-10.57/1 0.003s, tl=0.100s, n=609, nps=0}
+Qd4 {+10.60/1 0.005s, tl=0.100s, n=640, nps=0}
+9. e4 {-10.44/0 0.004s, tl=0.100s, n=196, nps=0}
+Bxc3 {+12.98/1 0.005s, tl=0.100s, n=1024, nps=0}
+10. bxc3 {-10.67/0 0.004s, tl=0.100s, n=351, nps=0}
+Qd3+ {+13.03/1 0.005s, tl=0.100s, n=1024, nps=0}
+11. Kg2 {-10.87/0 0.008s, tl=0.100s, n=128, nps=0}
+Bxe4+ {+13.03/1 0.005s, tl=0.100s, n=1024, nps=0}
+12. Kh3 {-13.03/2 0.005s, tl=0.100s, n=709, nps=0}
+Qxc3 {+13.03/1 0.007s, tl=0.100s, n=512, nps=0}
+13. Rgc1 {-13.39/1 0.004s, tl=0.100s, n=355, nps=0}
+Qf3 {+13.42/1 0.009s, tl=0.100s, n=896, nps=0}
+14. Rf1 {-13.59/1 0.004s, tl=0.100s, n=512, nps=0}
+Qg4# {+M1/4 0.001s, tl=0.100s, n=289, nps=0, Black mates} 0-1
+
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "2"]
+[White "MitchellHigher"]
+[Black "Level17-vs-Level16"]
+[Result "1-0"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "r1bqkb1r/pppp1ppp/2nn4/1B2p3/3P4/5N2/PPP2PPP/RNBQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:38 +0000"]
+[GameEndTime "2026-11-05T23:18:38 +0000"]
+[PlyCount "49"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "C67"]
+[Opening "Ruy Lopez: Berlin Defense, l'Hermet Variation"]
+
+1. Bxc6 {+0.72/2 0.006s, tl=0.100s, n=640, nps=0}
+Ne4 {-2.62/0 0.004s, tl=0.100s, n=218, nps=0}
+2. Bxe4 {+5.69/2 0.007s, tl=0.100s, n=640, nps=0}
+d5 {-5.69/1 0.004s, tl=0.100s, n=453, nps=0}
+3. Bg5 {+5.72/1 0.004s, tl=0.100s, n=512, nps=0}
+Qxg5 {-2.15/0 0.003s, tl=0.100s, n=256, nps=0}
+4. Nxg5 {+9.33/3 0.005s, tl=0.100s, n=896, nps=0}
+dxe4 {-7.94/0 0.004s, tl=0.100s, n=384, nps=0}
+5. dxe5 {+9.33/1 0.006s, tl=0.100s, n=384, nps=0}
+Bf5 {-9.27/1 0.004s, tl=0.100s, n=455, nps=0}
+6. Nc3 {+9.72/1 0.005s, tl=0.100s, n=896, nps=0}
+Rd8 {-9.59/1 0.004s, tl=0.100s, n=491, nps=0}
+7. Qxd8+ {+11.52/2 0.005s, tl=0.100s, n=640, nps=0}
+Kxd8 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+8. Nxf7+ {+11.52/1 0.005s, tl=0.100s, n=384, nps=0}
+Kd7 {-11.52/1 0.004s, tl=0.100s, n=218, nps=0}
+9. Nxh8 {+11.38/2 0.005s, tl=0.100s, n=640, nps=0}
+Be6 {-11.40/0 0.003s, tl=0.100s, n=52, nps=0}
+10. Rfd1+ {+12.57/2 0.004s, tl=0.100s, n=640, nps=0}
+Kc6 {-12.57/1 0.004s, tl=0.100s, n=248, nps=0}
+11. Nxe4 {+12.48/2 0.008s, tl=0.100s, n=342, nps=0}
+Bb4 {-12.48/1 0.004s, tl=0.100s, n=191, nps=0}
+12. f3 {+12.47/1 0.007s, tl=0.100s, n=384, nps=0}
+g6 {-12.70/1 0.005s, tl=0.100s, n=587, nps=0}
+13. a3 {+12.62/1 0.005s, tl=0.100s, n=640, nps=0}
+Bc5+ {-12.61/1 0.000s, tl=0.100s, n=384, nps=0}
+14. Nxc5 {+12.74/2 0.005s, tl=0.100s, n=768, nps=0}
+Kxc5 {-12.61/1 0.000s, tl=0.100s, n=640, nps=0}
+15. Kf2 {+12.79/2 0.005s, tl=0.100s, n=896, nps=0}
+a6 {-12.79/1 0.001s, tl=0.100s, n=384, nps=0}
+16. Ke3 {+13.08/2 0.008s, tl=0.100s, n=1152, nps=0}
+b6 {-13.11/1 0.004s, tl=0.100s, n=512, nps=0}
+17. f4 {+13.18/2 0.005s, tl=0.100s, n=768, nps=0}
+c6 {-13.28/1 0.004s, tl=0.100s, n=512, nps=0}
+18. b4+ {+13.56/2 0.006s, tl=0.100s, n=768, nps=0}
+Kb5 {-13.56/2 0.004s, tl=0.100s, n=512, nps=0}
+19. Rd6 {+14.08/2 0.006s, tl=0.100s, n=896, nps=0}
+Bg4 {-14.09/1 0.005s, tl=0.100s, n=447, nps=0}
+20. Nf7 {+14.61/2 0.005s, tl=0.100s, n=768, nps=0}
+a5 {-14.61/1 0.004s, tl=0.100s, n=623, nps=0}
+21. e6 {+14.93/2 0.005s, tl=0.100s, n=960, nps=0}
+h5 {-14.96/1 0.004s, tl=0.100s, n=433, nps=0}
+22. e7 {+19.14/2 0.004s, tl=0.100s, n=640, nps=0}
+axb4 {-14.30/0 0.007s, tl=0.100s, n=43, nps=0}
+23. e8=Q {+21.92/2 0.005s, tl=0.100s, n=1152, nps=0}
+bxa3 {-21.92/1 0.004s, tl=0.100s, n=545, nps=0}
+24. Rb1+ {+M3/3 0.010s, tl=0.100s, n=896, nps=0}
+Ka5 {-19.08/1 0.004s, tl=0.100s, n=256, nps=0}
+25. Qa8# {+M1/4 0.002s, tl=0.100s, n=260, nps=0, White mates} 1-0
+
+[Event "Colour-paired difficulty-level screening"]
+[Site "local shared Linux host"]
+[Date "2026.11.05"]
+[Round "2"]
+[White "Level17-vs-Level16"]
+[Black "MitchellHigher"]
+[Result "0-1"]
+[EngineWhiteName "Mitchell D Chess Level 65"]
+[EngineWhiteAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[EngineBlackName "Mitchell D Chess Level 65"]
+[EngineBlackAuthor "Mitchell D. McPhetridge; NNUE weights Thomas Jahn"]
+[SetUp "1"]
+[FEN "r1bqkb1r/pppp1ppp/2nn4/1B2p3/3P4/5N2/PPP2PPP/RNBQ1RK1 w kq - 0 1"]
+[GameDuration "00:00:00"]
+[GameStartTime "2026-11-05T23:18:38 +0000"]
+[GameEndTime "2026-11-05T23:18:39 +0000"]
+[PlyCount "42"]
+[Termination "normal"]
+[TimeControl "0.1/move"]
+[ECO "C67"]
+[Opening "Ruy Lopez: Berlin Defense, l'Hermet Variation, Westerinen Line"]
+
+1. Bxc6 {+2.61/0 0.004s, tl=0.100s, n=403, nps=0}
+dxc6 {-0.72/2 0.004s, tl=0.100s, n=768, nps=0}
+2. dxe5 {+0.72/1 0.003s, tl=0.100s, n=384, nps=0}
+Ne4 {-0.63/2 0.005s, tl=0.100s, n=768, nps=0}
+3. Qxd8+ {+8.94/0 0.005s, tl=0.100s, n=128, nps=0}
+Kxd8 {0.00/0 0.000s, tl=0.100s, n=0, nps=0}
+4. Rd1+ {+0.28/1 0.012s, tl=0.100s, n=256, nps=0}
+Bd7 {-0.43/1 0.005s, tl=0.100s, n=1152, nps=0}
+5. Rxd7+ {+3.89/0 0.007s, tl=0.100s, n=254, nps=0}
+Kxd7 {+1.18/2 0.005s, tl=0.100s, n=1024, nps=0}
+6. Be3 {-1.57/1 0.005s, tl=0.100s, n=300, nps=0}
+Bb4 {+1.65/3 0.005s, tl=0.100s, n=1246, nps=0}
+7. Nbd2 {-1.65/1 0.004s, tl=0.100s, n=256, nps=0}
+Bxd2 {+1.57/3 0.005s, tl=0.100s, n=1152, nps=0}
+8. Nxd2 {-1.65/1 0.005s, tl=0.100s, n=227, nps=0}
+Nxd2 {+1.54/3 0.007s, tl=0.100s, n=768, nps=0}
+9. Bxd2 {-1.57/1 0.003s, tl=0.100s, n=634, nps=0}
+Ke6 {+1.68/3 0.007s, tl=0.100s, n=491, nps=0}
+10. Re1 {-1.68/1 0.004s, tl=0.100s, n=753, nps=0}
+Rad8 {+1.83/2 0.008s, tl=0.100s, n=512, nps=0}
+11. Be3 {-1.92/1 0.004s, tl=0.100s, n=883, nps=0}
+a6 {+1.90/2 0.005s, tl=0.100s, n=1408, nps=0}
+12. Bc5 {-1.90/1 0.004s, tl=0.100s, n=999, nps=0}
+Rd5 {+2.78/3 0.005s, tl=0.100s, n=1024, nps=0}
+13. b4 {-2.78/1 0.004s, tl=0.100s, n=938, nps=0}
+Rxe5 {+2.89/3 0.005s, tl=0.100s, n=1024, nps=0}
+14. Rd1 {-2.85/1 0.005s, tl=0.100s, n=763, nps=0}
+Rd5 {+2.89/1 0.006s, tl=0.100s, n=512, nps=0}
+15. Re1+ {-2.70/1 0.006s, tl=0.100s, n=896, nps=0}
+Kf6 {+2.83/2 0.005s, tl=0.100s, n=801, nps=0}
+16. c4 {-2.79/1 0.004s, tl=0.100s, n=965, nps=0}
+Rd2 {+3.08/3 0.005s, tl=0.100s, n=1408, nps=0}
+17. a4 {-2.94/1 0.004s, tl=0.100s, n=466, nps=0}
+Rhd8 {+3.11/1 0.005s, tl=0.100s, n=384, nps=0}
+18. Be7+ {-1.09/1 0.005s, tl=0.100s, n=512, nps=0}
+Kf5 {+1.09/2 0.007s, tl=0.100s, n=1024, nps=0}
+19. Bxd8 {-1.09/1 0.005s, tl=0.100s, n=768, nps=0}
+Rxd8 {+1.14/3 0.005s, tl=0.100s, n=1664, nps=0}
+20. Re7 {-1.19/1 0.004s, tl=0.100s, n=896, nps=0}
+Rd1+ {+M3/4 0.001s, tl=0.100s, n=332, nps=0}
+21. Re1 {0.00/0 0.001s, tl=0.100s, n=0, nps=0}
+Rxe1# {+M1/4 0.000s, tl=0.100s, n=127, nps=0, Black mates} 0-1
+

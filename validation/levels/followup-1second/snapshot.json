@@ -1,0 +1,52 @@
+{
+  "createdUtc": "2026-11-05T23:37:34.159005+00:00",
+  "complete": true,
+  "completedGames": 80,
+  "plannedGames": 80,
+  "testedRevision": "ee1fcafc1c70271ddbd7804a6714c12dc37e6641",
+  "htmlSha256": "2211294d2124e920b0ce2e9d8e01f90ef1b5d1b6a0fe0c76a4cf146f752e2fac",
+  "uncompressedLogs": {
+    "01-opponent.log": "4623615d8bcc7c799e474f4f8cf2bd1a7009db10e003909e62abe6ef66ff9f11",
+    "04-opponent.log": "a1dc49833f577cc8beb47f87fec1e09540cc2bf6e27ae88c977369d711217fb5",
+    "02-opponent.log": "ea2e8f8e7b904adeec2432190ca40077456693486bfdca3fa8e7682ca4e26ec5",
+    "campaign.log": "7ca615abcf2da3af878a5775c9ac4c93871c2916db76b4b0f6713587914acd3e",
+    "03-opponent.log": "459e1fda328b2170fa5358f645189d64fc0ad32a2720e53c3b6eae38475ce166"
+  },
+  "files": {
+    "01-opponent.command.json": "7b98b701c732833c38606dfa899992d04c17102873ec5de31229351e2771907d",
+    "01-opponent.done.json": "d4189ae716d97a8268cf4ca73b5fa437179c8e38b02edf77aa412ddd9317c2bc",
+    "01-opponent.log.gz": "6d07751388aac227e2ad49140dba723105651ef72bcf455d36be91e58ffe8863",
+    "01-opponent.pgn": "fb78384874da5a3e8abf28d1d91801a0a6e912114bf53a1b17f98594fb136de1",
+    "01-opponent.state.json": "bba5b48925deae63bb67c7cb344e4ce2b37ec1495a79f8d54cfc6255c1cfdef7",
+    "02-opponent.command.json": "3f192dc95e26007e023c42cf08382a02f4e9e27544e1fdc8441589fbb0336cd3",
+    "02-opponent.done.json": "b127e69e4ed129a3ea8662fbfe978cd4aa0c96863ae6e1a75472884c6b1617f7",
+    "02-opponent.log.gz": "8615d894540902f30bc9e0a8ed4b691626646af1fd87a49ea110ee5a6cd891c2",
+    "02-opponent.pgn": "1795b54d0e55d8b24ad56f1ecdb07343e8d9765e2730e85717e9987c737fdea0",
+    "02-opponent.state.json": "2e157b8184ea0173751c4a21fe63a0a28ba2077a3f05091dd13d46db459c555f",
+    "03-opponent.command.json": "6556bfb7369dd9faf9e571c7b2203276ee071cdc025468d25499a479c68541d4",
+    "03-opponent.done.json": "fce750b599f4d89e64581ff8b958d979a91cc327d08ac8dcbcf0e9ae4b476d97",
+    "03-opponent.log.gz": "95b5fbebe1683c4a5e2b09673d24b5faaab333681c9365c6d37ea8c2142e06d7",
+    "03-opponent.pgn": "6cb937363a6653b2ec8142c1360071e74047d7a499627200a1c8d3901f1ace3b",
+    "03-opponent.state.json": "db4fb24948dfc81fb08a1c94bbd1dba10c9c4f115b87e6977fbec1817f55d527",
+    "04-opponent.command.json": "57b239ca5b5d8d1dfb09ed0ac063ab9c058e7800af77323bec618fee89484bda",
+    "04-opponent.done.json": "fffe3fced12bf534a07e8179267a6b8a41c1453a206b23b8b3a713106a5f9c91",
+    "04-opponent.log.gz": "821f00274e4a036129ce66f811ff293ccd0f7af45688f352998cf09db2dcbb5e",
+    "04-opponent.pgn": "1869d24bae711396ddc0e531912fc81f547a86bcf71c9b84bec7614ee42d9e85",
+    "04-opponent.state.json": "48ed09e351abfc80beb07db3aa5f4c58a8fc066dc418b72e9b97e6c9e75c171c",
+    "adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+    "adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+    "campaign.json": "00aa250d6ce6c0e07c2502eb8c515864d3a28e858779fe48fafbf741c5b8fb51",
+    "campaign.log.gz": "1e0c708c65a5bd5b3f377bf88af3c64570fd32876c3785bc5b7e0fdbde515792",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "prepare-level-matches.py": "d4dd8e89bea4ca208dbd15b8c757e08b1f812fbfa8212bad021e5b4b74f6b27a",
+    "runner.py": "c8f7339fc1b9298dd58e84e147b81120e835344590c2d7dc6c94e94fbc1440cb",
+    "status.json": "66fe82fdf3cc66dbd8232b5f85a92a34d468138e5b2cbd0f1ce51474c734b61f",
+    "summary.json": "876bf5d02b418e8e964194b2f1a46298095175049a300bd6ef6433e58d65c5f9"
+  },
+  "notes": [
+    "Static evidence snapshot, not live progress.",
+    "Third-party executables, libraries and models are intentionally not archived.",
+    "Reconstruct frozen HTML from testedRevision and verify htmlSha256."
+  ]
+}

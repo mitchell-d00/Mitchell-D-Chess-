@@ -1,0 +1,34 @@
+{
+  "createdUtc": "2026-11-05T23:28:40.142025+00:00",
+  "complete": true,
+  "completedGames": 20,
+  "plannedGames": 20,
+  "testedRevision": "40ca6e35634aea3ac25eaf048f850aa9722e3ed8",
+  "htmlSha256": "e1f54afc30d99ac072c9607c889eea1856ffc7d9285a70fc37ccc9ebe3f49166",
+  "uncompressedLogs": {
+    "01-opponent.log": "e51a5ea24d40f1ea567488779d18ae8b036dc96f7de6544a427d4a4d2a04b7a7",
+    "campaign.log": "a20a977619b3e74e44ffe587bba5934f2a70f7862efea2dd9bfbeb1ccd9f4707"
+  },
+  "files": {
+    "01-opponent.command.json": "c0ffafea74a865cdb32e41baf097024ce1dbbb9b708807b8a023337c421ff3ee",
+    "01-opponent.done.json": "65fd5b44ed5bde403eba44870da4b970567f6db6798e317d2a126bffdc2d86b0",
+    "01-opponent.log.gz": "549e97749845ae87d2d6ec0d7cd67162d45414f6015d9aa655f1ac574005e912",
+    "01-opponent.pgn": "61a0360a2eaab81cbd72d59fef226dbe303f9fd7ec037621cccc6bac32263392",
+    "01-opponent.state.json": "761587c30320df9fd2b475f81660dc2ce9b818e373e777552581a412e76e09da",
+    "adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+    "adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+    "campaign.json": "ba122ffddb52a7b13c9bc07468ddbb9e044b2d06a39205219b9ff7b33e37cfd6",
+    "campaign.log.gz": "d85e964814537c1118730fa6d9c4dd8f870b009f19e34e51e25fefd05c21d714",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "prepare-level-matches.py": "f5878e3b2077f5ea0074b7ad120acb309a5fa62225f1bf67a0e16419f5baf79c",
+    "runner.py": "d01348f33b6dccba4f6086b1118addc175ab119fe1bb3e4f2134ed7fdf53223e",
+    "status.json": "73af7ddb9e1e2abd2e8c326f2ac37f28c55d8ee390946fe37c530be21127e85a",
+    "summary.json": "5141385969c567e39447483b332a275bbe090fd630d9507dbaf798773d4e7d6b"
+  },
+  "notes": [
+    "Static evidence snapshot, not live progress.",
+    "Third-party executables, libraries and models are intentionally not archived.",
+    "Reconstruct frozen HTML from testedRevision and verify htmlSha256."
+  ]
+}

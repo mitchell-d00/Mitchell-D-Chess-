@@ -1,3 +1,23 @@
+# Level progression audit (November 5, 2026)
+
+376 completed games, zero forfeits, 48,404 legally replayed half-moves.
+Level 65 vs 50: 20/0/0 before and 20/0/0 after the policy changes at nominal
+0.1 s/move. Every adjacent pair was screened. Several neighbours remain
+statistically unresolved; level 16 vs 15 tied its 20-game follow-up.
+No absolute Elo or all-level strength certification is claimed.
+
+    node scripts/test-level-progression.cjs
+    node scripts/audit-levels.cjs
+    python3 scripts/test-prepare-levels.py
+    node scripts/browser-level-clocks-test.cjs
+    node scripts/report-strength.cjs validation/levels/adjacent-screen
+    node scripts/report-strength.cjs validation/levels/followup-1second
+
+Settings, full tables, all PGNs, hashes and repeat commands:
+validation/levels/README.md. Clock allowances increase by level; max time no
+longer falls at 50/51. Beginner searches obey deadlines and retain completed
+iterations. The embedded WASM binary and credited network are unchanged.
+
 # Teaching and reproducible strength reports (November 2026)
 
     node scripts/test-review-teaching.cjs

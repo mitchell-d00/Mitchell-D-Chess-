@@ -1,0 +1,87 @@
+{
+  "createdUtc": "2026-11-05T23:10:59.112971+00:00",
+  "testedRevision": "40ca6e35634aea3ac25eaf048f850aa9722e3ed8",
+  "html": "/workspace/mitchell-performance/levels-before-65-v50/engine-under-test.html",
+  "htmlSha256": "e1f54afc30d99ac072c9607c889eea1856ffc7d9285a70fc37ccc9ebe3f49166",
+  "adapter": "/workspace/mitchell-performance/levels-before-65-v50/adapter/uci.cjs",
+  "adapterSha256": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 1,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/mitchell-performance/levels-before-65-v50/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "opponents": {
+    "Level65-vs-Level50": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=50",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/levels-before-65-v50/adapter/level-opponent.cjs /workspace/mitchell-performance/levels-before-65-v50/engine-under-test.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/levels-before-65-v50/adapter/level-opponent.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/levels-before-65-v50/engine-under-test.html": "e1f54afc30d99ac072c9607c889eea1856ffc7d9285a70fc37ccc9ebe3f49166",
+        "/workspace/mitchell-performance/levels-before-65-v50/adapter/uci.cjs": "98fa645c7f5cb065b94f908eeb12a266fba37c6e86f520117da445a365536d77",
+        "/workspace/mitchell-performance/levels-before-65-v50/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      }
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Level65-vs-Level50",
+      "games": 20,
+      "openingStart": 1,
+      "candidateLevel": 65
+    }
+  ],
+  "environment": {
+    "MITCHELL_REQUIRE_LEVEL_BACKEND": "1",
+    "MITCHELL_WASM_MEMORY": "32",
+    "MITCHELL_EXACT_ENDGAMES": "0"
+  },
+  "runnerSourceRevision": "f71f01b3c01cfe992b7ece06a9cf2dee8f1538ac",
+  "stopOnForfeit": true,
+  "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+  "fastchessSha256": "3d0a8f3c8b837a96366ac838f3ddf6fe87b813abb4ad2852284c0ce409132566",
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14",
+    "cpuQuota": "400000 100000",
+    "memoryLimit": "17179869184"
+  },
+  "engineIdentity": {
+    "level": "per batch",
+    "backend": "asserted per-level routing",
+    "wasmMemoryMiB": 32,
+    "wasmSha256": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+    "modelSha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704",
+    "hidden": 128
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 20,
+  "purpose": "Colour-paired difficulty-level screening",
+  "event": "Colour-paired difficulty-level screening",
+  "helper": "/workspace/mitchell-performance/levels-before-65-v50/adapter/engine.cjs",
+  "helperSha256": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+  "engineSourceSha256": "799af9c1f28cd7084eb0e2a9e099143f7f4e02f55ea2680dc01a8fcd5d6f7942",
+  "runner": "/workspace/mitchell-performance/levels-before-65-v50/runner.py",
+  "runnerSha256": "d01348f33b6dccba4f6086b1118addc175ab119fe1bb3e4f2134ed7fdf53223e",
+  "preparer": "/workspace/mitchell-performance/levels-before-65-v50/prepare-level-matches.py",
+  "preparerSha256": "f5878e3b2077f5ea0074b7ad120acb309a5fa62225f1bf67a0e16419f5baf79c",
+  "candidateName": "MitchellHigher",
+  "adapterSourceRevision": "f71f01b3c01cfe992b7ece06a9cf2dee8f1538ac",
+  "purposeNote": "Each row is higher versus lower level, colours reversed. Short screenings detect regressions but cannot prove every adjacent level is statistically stronger. No Elo is assigned."
+}
