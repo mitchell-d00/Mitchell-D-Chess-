@@ -13,10 +13,18 @@ class PrepareTests(unittest.TestCase):
    for field in ['html','adapter','helper','runner','node','fastchess','openings']:
     self.assertEqual(hashlib.sha256(Path(config[field]).read_bytes()).hexdigest(),config[field+'Sha256'])
    self.assertEqual(config['purpose'],'Frozen integration fixture')
+   self.assertEqual(config['engineIdentity']['backend'],'wasm-required')
+   self.assertEqual(config['environment']['MITCHELL_REQUIRE_WASM'],'1')
+   self.assertEqual(config['engineIdentity']['modelSha256'],'794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704')
    with self.assertRaises(ValueError):prepare.prepare(args)
    args.out=str(root/'too-many');args.games_per_opponent=10000
    with self.assertRaises(ValueError):prepare.prepare(args)
    self.assertFalse((root/'too-many').exists())
+   runtime=root/'runtime.json';runtime.write_text(json.dumps({'MITCHELL_REQUIRE_WASM':'0'}));args.environment=str(runtime);args.games_per_opponent=4;args.out=str(root/'bad-env')
+   with self.assertRaisesRegex(ValueError,'cannot override'):prepare.prepare(args)
+   self.assertFalse((root/'bad-env').exists())
+   runtime.write_text(json.dumps({'DOTNET_SYSTEM_GLOBALIZATION_INVARIANT':'1'}));args.out=str(root/'with-runtime');valid=json.loads(prepare.prepare(args).read_text())
+   self.assertEqual(valid['environment']['DOTNET_SYSTEM_GLOBALIZATION_INVARIANT'],'1');self.assertEqual(valid['environment']['MITCHELL_REQUIRE_WASM'],'1')
    Path(config['helper']).write_text('modified helper')
    result=subprocess.run([sys.executable,config['runner'],str(path)],capture_output=True,text=True,timeout=10)
    self.assertNotEqual(result.returncode,0);self.assertIn('Pinned input changed: helper',result.stderr)
