@@ -282,6 +282,7 @@ html[data-motion="off"] .pc{transition:none}
       </div>
 
       <div class="card panel">
+        <div class="drawbox" id="recordBox" hidden><strong id="recordTitle">Imported game · review</strong><span class="muted">Use the move list to explore. To play, start a new game from the displayed position.</span><button class="btn small" id="continueBtn">Play from this position</button></div>
         <div class="status" id="status"><span class="ic"></span><span>White to move</span></div>
         <div class="drawbox" id="drawBox" hidden></div>
         <div id="evalBox" hidden>
@@ -305,6 +306,8 @@ html[data-motion="off"] .pc{transition:none}
           <button class="btn small" id="resignBtn">Resign</button>
           <button class="btn small" id="pgnBtn">Copy PGN</button>
           <button class="btn small" id="fenBtn">Copy FEN</button>
+          <button class="btn small" id="importBtn">Import FEN / PGN</button>
+          <button class="btn small" id="shareBtn">Share position</button>
         </div>
       </div>
     </aside>
@@ -2216,6 +2219,141 @@ var LESSONS = [
 if (typeof module !== 'undefined') module.exports = LESSONS;
 
 </script>
+<script id="position-tools-src">
+// Original MIT offline position/game tools. Embedded verbatim into index.html.
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) module.exports = factory;
+  else root.PositionTools = factory(root.ENGINE);
+})(typeof self !== 'undefined' ? self : globalThis, function (E) {
+  'use strict';
+  const START = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
+  const MAX_TEXT = 256000, MAX_PLIES = 1024, RESULTS = ['*', '1-0', '0-1', '1/2-1/2'];
+  function fail(message) { throw new Error(message); }
+  function validateFen(input) {
+    if (typeof input !== 'string' || input.length > 512) fail('FEN must be a short text position.');
+    let fields = input.trim().split(/\s+/);
+    if (fields.length === 4) fields.push('0', '1');
+    if (fields.length !== 6) fail('FEN needs a board, side, castling, en passant and two move counters.');
+    const rows = fields[0].split('/'), kings = [0, 0], pawns = [0, 0], count = [0, 0];
+    if (rows.length !== 8) fail('FEN needs eight ranks.');
+    for (let r = 0; r < 8; r++) {
+      let width = 0;
+      for (const ch of rows[r]) {
+        if (/^[1-8]$/.test(ch)) { width += +ch; continue; }
+        if (!/^[pnbrqkPNBRQK]$/.test(ch)) fail('FEN contains an unknown piece.');
+        width++; const side = ch === ch.toLowerCase() ? 1 : 0; count[side]++;
+        if (ch.toLowerCase() === 'k') kings[side]++;
+        if (ch.toLowerCase() === 'p') { pawns[side]++; if (r === 0 || r === 7) fail('Pawns cannot remain on the first or last rank.'); }
+      }
+      if (width !== 8) fail('Every FEN rank must contain eight squares.');
+    }
+    if (kings.some(n => n !== 1)) fail('The position needs exactly one king of each colour.');
+    if (count.some(n => n > 16) || pawns.some(n => n > 8)) fail('The position has too many pieces or pawns.');
+    if (!/^[wb]$/.test(fields[1])) fail('Side to move must be w or b.');
+    if (fields[2] !== '-' && (!/^[KQkq]+$/.test(fields[2]) || new Set(fields[2]).size !== fields[2].length)) fail('Invalid castling rights.');
+    if (fields[3] !== '-' && !/^[a-h][36]$/.test(fields[3])) fail('Invalid en passant square.');
+    if (!/^\d+$/.test(fields[4]) || !/^\d+$/.test(fields[5]) || +fields[4] > 1000000 || +fields[5] < 1 || +fields[5] > 1000000) fail('Invalid move counters.');
+    const p = new E.Chess(fields.join(' ')), a = p.kingSq[0], b = p.kingSq[1];
+    if (Math.max(Math.abs((a & 7) - (b & 7)), Math.abs((a >> 4) - (b >> 4))) <= 1) fail('Kings cannot be adjacent.');
+    for (const [right, king, rook, piece] of [['K',4,7,0],['Q',4,0,0],['k',116,119,8],['q',116,112,8]]) {
+      if (fields[2].includes(right) && (p.b[king] !== (6 | piece) || p.b[rook] !== (4 | piece))) fail('Castling rights do not match the king and rook positions.');
+    }
+    if (p.ep >= 0) {
+      const step = p.side ? 16 : -16;
+      if ((p.ep >> 4) !== (p.side ? 2 : 5) || p.b[p.ep] || p.b[p.ep + step] !== (1 | (p.side ^ 8)) || p.b[p.ep - step] || p.half !== 0) fail('En passant does not match a just-played double pawn move.');
+    }
+    if (p.inCheck(p.side ^ 8)) fail('The side that just moved cannot have left its own king in check.');
+    return p.fen();
+  }
+  function fromMoves(start, moves, tags, result) {
+    const startFen = validateFen(start), p = new E.Chess(startFen), sans = [], fens = [startFen], lastFromTo = [null], canonical = [];
+    if (!Array.isArray(moves) || moves.length > MAX_PLIES) fail('The game is too long.');
+    for (let i = 0; i < moves.length; i++) {
+      const u = moves[i];
+      if (typeof u !== 'string' || !/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(u)) fail('Invalid move at ply ' + (i + 1) + '.');
+      const m = p.findUci(u); if (!m) fail('Illegal move ' + u + ' at ply ' + (i + 1) + '.');
+      canonical.push(p.uci(m)); sans.push(p.san(m)); lastFromTo.push([E.sqName(E.mFrom(m)), E.sqName(E.mTo(m))]); p.make(m); fens.push(p.fen());
+    }
+    if (!RESULTS.includes(result || '*')) fail('Invalid game result.');
+    return { version: 1, startFen, moves: canonical, sans, fens, lastFromTo, tags: tags || {}, result: result || '*' };
+  }
+  function fromFen(text) { return fromMoves(validateFen(text), [], {}, '*'); }
+  function sanMove(p, input) {
+    if (/^[a-h][1-8][a-h][1-8][qrbn]?$/.test(input)) return p.findUci(input);
+    const normalize = s => s.replace(/[!?]+$/g, '').replace(/[+#]+$/g, '').replace(/0/g, 'O').replace(/([a-h][18])([QRBN])$/, '$1=$2');
+    const token = normalize(input), target = token.match(/([a-h][1-8])(?:=[QRBN])?$/), type = /^[NBRQK]/.test(token) ? ' pnbrqk'.indexOf(token[0].toLowerCase()) : 1;
+    const candidates = p.legalMoves().filter(m => token.startsWith('O-O') ? !!(E.mFlags(m) & 4) : target && E.sqName(E.mTo(m)) === target[1] && (p.b[E.mFrom(m)] & 7) === type);
+    const matches = candidates.filter(m => normalize(p.san(m)) === token);
+    return matches.length === 1 ? matches[0] : 0;
+  }
+  function parsePgn(input) {
+    if (typeof input !== 'string' || input.length > MAX_TEXT) fail('Use one PGN game of at most 256,000 characters.');
+    if (!input.trim()) fail('Paste a PGN game first.');
+    let text = input.replace(/^\uFEFF/, ''), at = 0, variations = 0, skipped = false, result = null;
+    const tags = Object.create(null), tokens = [];
+    function space() { while (/\s/.test(text[at] || '') && at < text.length) at++; }
+    space();
+    while (text[at] === '[') {
+      const match = text.slice(at).match(/^\[([A-Za-z][A-Za-z0-9_]*)\s+"((?:\\.|[^"\\])*)"\s*\]/);
+      if (!match || match[2].length > 4096 || Object.keys(tags).length >= 64) fail('Invalid or oversized PGN header.');
+      if (Object.prototype.hasOwnProperty.call(tags, match[1])) fail('Duplicate PGN header: ' + match[1] + '.');
+      tags[match[1]] = match[2].replace(/\\([\\"])/g, '$1'); at += match[0].length; space();
+    }
+    while (at < text.length) {
+      const ch = text[at];
+      if (/\s/.test(ch)) { at++; continue; }
+      if (ch === '{') { const end = text.indexOf('}', at + 1); if (end < 0) fail('Unclosed PGN comment.'); at = end + 1; continue; }
+      if (ch === ';' || (ch === '%' && (at === 0 || text[at - 1] === '\n'))) { const end = text.indexOf('\n', at + 1); at = end < 0 ? text.length : end + 1; continue; }
+      if (ch === '(') { variations++; skipped = true; at++; continue; }
+      if (ch === ')') { if (!variations) fail('Unmatched PGN variation bracket.'); variations--; at++; continue; }
+      if (ch === '[') fail('Import one game at a time. A second or misplaced header was found.');
+      if (ch === '}') fail('Unmatched PGN comment bracket.');
+      let end = at; while (end < text.length && !/[\s{}();]/.test(text[end])) end++;
+      let token = text.slice(at, end); at = end;
+      if (variations) continue;
+      token = token.replace(/^\d+\.(?:\.\.)?/, '');
+      if (!token || /^\.+$/.test(token) || /^\$\d+$/.test(token) || /^[!?]+$/.test(token) || /^e\.?p\.?$/i.test(token)) continue;
+      token = token.replace(/\$\d+$/, '');
+      if (RESULTS.includes(token)) { if (result !== null) fail('More than one PGN result was found.'); result = token; continue; }
+      if (result !== null) fail('Moves follow the PGN result. Import only one game.');
+      tokens.push(token); if (tokens.length > MAX_PLIES) fail('Import supports at most 1,024 half-moves.');
+    }
+    if (variations) fail('Unclosed PGN variation.');
+    if (tags.Variant && !/^(standard|chess|from position)$/i.test(tags.Variant)) fail('Only standard chess PGN is supported.');
+    if (tags.SetUp && !/^[01]$/.test(tags.SetUp)) fail('Invalid SetUp header.');
+    if (tags.SetUp === '1' && !tags.FEN) fail('SetUp 1 requires a FEN header.');
+    if (tags.SetUp === '0' && tags.FEN && validateFen(tags.FEN) !== START) fail('FEN conflicts with SetUp 0.');
+    if (tags.Result && !RESULTS.includes(tags.Result)) fail('Invalid Result header.');
+    if (tags.Result && result && tags.Result !== result) fail('PGN header and move-text results disagree.');
+    const startFen = validateFen(tags.FEN || START), p = new E.Chess(startFen), moves = [];
+    for (let i = 0; i < tokens.length; i++) {
+      const m = sanMove(p, tokens[i]); if (!m) fail('Could not play “' + tokens[i] + '” at half-move ' + (i + 1) + '.');
+      moves.push(p.uci(m)); p.make(m);
+    }
+    const record = fromMoves(startFen, moves, tags, result || tags.Result || '*');
+    record.notice = skipped ? 'Loaded the main line; variations were skipped.' : '';
+    return record;
+  }
+  function exportPgn(record, supplied) {
+    const tags = Object.assign({}, record.tags || {}, supplied || {}), result = record.result || '*';
+    if (!RESULTS.includes(result)) fail('Invalid game result.');
+    tags.Result = result;
+    if (record.startFen !== START) { tags.SetUp = '1'; tags.FEN = record.startFen; } else { delete tags.SetUp; delete tags.FEN; }
+    const quote = value => String(value).replace(/[\r\n]/g, ' ').replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+    let out = Object.keys(tags).filter(k => /^[A-Za-z][A-Za-z0-9_]*$/.test(k)).map(k => '[' + k + ' "' + quote(tags[k]) + '"]').join('\n') + '\n\n';
+    const fields = record.startFen.split(' '); let black = fields[1] === 'b', number = +fields[5];
+    record.sans.forEach((san, i) => { if (!black) out += number + '. '; else if (i === 0) out += number + '... '; out += san + ' '; if (black) number++; black = !black; });
+    return out + result + '\n';
+  }
+  function hashFen(hash) {
+    if (!hash.startsWith('#fen=')) return null;
+    if (hash.length > 2048) fail('The position link is too long.');
+    let value; try { value = decodeURIComponent(hash.slice(5)); } catch (error) { fail('The position link has invalid encoding.'); }
+    return validateFen(value);
+  }
+  return { START, MAX_TEXT, MAX_PLIES, validateFen, fromMoves, fromFen, parsePgn, exportPgn, hashFen };
+});
+</script>
 <script>
 'use strict';
 const E = ENGINE;
@@ -2475,9 +2613,12 @@ function playerLabel(side) {
   const L = L18[p.level - 1];
   return { name: L.name, lvl: `Level ${p.level} · ${L.tier}` };
 }
-function newGame() {
+function newGame(options = {}) {
+  const record = options.record, startFen = record ? record.startFen : (options.startFen || START);
+  const chess = new E.Chess(startFen);
+  if (record) for (const u of record.moves) { const m = chess.findUci(u); if (!m) throw new Error('Invalid imported move.'); chess.make(m); }
   cancelThinking();
-  const mode = setup.mode;
+  const mode = record ? 'pvp' : setup.mode;
   let players;
   if (mode === 'pvc') {
     let c = setup.color === 'r' ? (Math.random() < .5 ? 'w' : 'b') : setup.color;
@@ -2485,16 +2626,18 @@ function newGame() {
     BV.flipped = c === 'b';
   } else if (mode === 'pvp') { players = { w: { type: 'human' }, b: { type: 'human' } }; BV.flipped = false; }
   else { players = { w: { type: 'ai', level: setup.lvlW }, b: { type: 'ai', level: setup.lvlB } }; BV.flipped = false; }
-  G = { mode, players, chess: new E.Chess(START), moves: [], sans: [], fens: [START], lastFromTo: [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random(),
-    official: setup.rules === 'official', clock: makeClock(), clockHist: [], touched: null, drawOffer: null, tabPaused: false };
-  if (G.clock) startClock('w');
+  G = { mode, players, chess, startFen, review: !!record, tags: record ? record.tags : {}, moves: record ? record.moves.slice() : [], sans: record ? record.sans.slice() : [], fens: record ? record.fens.slice() : [startFen], lastFromTo: record ? record.lastFromTo.slice() : [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random(),
+    official: !record && setup.rules === 'official', clock: record ? null : makeClock(), clockHist: [], touched: null, drawOffer: null, tabPaused: false };
+  if (record && record.result !== '*') G.over = { result: record.result, reason: 'imported result' };
+  else G.over = G.chess.status(G.official);
+  if (G.clock && !G.over) startClock(sideToMove());
   BV.sel = null; BV.targets = []; BV.arrows = []; BV.marks = [];
   $('#boardmsg').hidden = true;
   syncPlay(); afterChange();
 }
 function curFen() { return G.view == null ? G.chess.fen() : G.fens[G.view]; }
 function sideToMove() { return G.chess.side ? 'b' : 'w'; }
-function humanToMove() { return !G.over && G.view == null && G.players[sideToMove()].type === 'human' && !G.thinking; }
+function humanToMove() { return !G.review && !G.over && G.view == null && G.players[sideToMove()].type === 'human' && !G.thinking; }
 function playMove(uci, fromAI) {
   if (G.over) return false;
   const m = G.chess.findUci(uci); if (!m) return false;
@@ -2540,11 +2683,13 @@ function afterChange() {
   BV.onMove = uci => { playMove(uci); };
   BV.lock = () => (tab === 'play' && G && G.official && humanToMove()) ? G.touched : null;
   BV.onTouch = sq => { if (tab === 'play' && G && G.official && humanToMove() && !G.touched) { G.touched = sq; renderStatus(); } };
+  $('#recordBox').hidden = !G.review;
+  if (G.review) $('#recordTitle').textContent = (G.moves.length ? 'Imported game' : 'Imported position') + ' · review';
   renderBoard(); renderBars(); renderStatus(); renderMoves(); renderButtons();
   maybeAI();
 }
 function maybeAI() {
-  if (!G || G.over || G.view != null || G.paused || G.thinking) return;
+  if (!G || G.review || G.over || G.view != null || G.paused || G.thinking) return;
   const side = sideToMove(), p = G.players[side];
   if (p.type !== 'ai') return;
   if (G.official) {
@@ -2564,7 +2709,7 @@ function maybeAI() {
     if (L.t) extra = { time: Math.min(L.t, budget) };
     minDelay = Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
   }
-  think(null, G.moves.slice(), p.level - 1, extra).then(r => {
+  think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
     const wait = Math.max(0, minDelay - (Date.now() - t0));
     setTimeout(() => {
       if (!G || G.token !== tok || G.moves.length !== ply) return;
@@ -2608,6 +2753,7 @@ function renderStatus() {
   let txt, side = sideToMove();
   if (G.over) { const r = G.over.result; txt = (r === '1/2-1/2' ? 'Draw' : r === '1-0' ? 'White wins' : 'Black wins') + ' by ' + G.over.reason; }
   else if (G.view != null) txt = `Viewing move ${G.view} of ${G.moves.length}`;
+  else if (G.review) txt = 'Review · ' + (side === 'w' ? 'White' : 'Black') + ' to move';
   else {
     const inC = G.chess.inCheck();
     const who = G.players[side].type === 'ai' ? playerLabel(side).name : (G.mode === 'pvp' ? (side === 'w' ? 'White' : 'Black') : 'You');
@@ -2629,15 +2775,17 @@ function renderStatus() {
 }
 function renderMoves() {
   const box = $('#moves');
-  if (!G.sans.length) { box.innerHTML = '<div class="empty">No moves yet. White moves first.</div>'; return; }
-  let h = '';
+  if (!G.sans.length) { box.innerHTML = '<div class="empty">No moves yet. ' + (G.startFen.split(' ')[1] === 'b' ? 'Black' : 'White') + ' moves next.</div>'; return; }
+  let h = '', i = 0, number = +G.startFen.split(' ')[5], firstBlack = G.startFen.split(' ')[1] === 'b';
   const cur = G.view == null ? G.sans.length : G.view;
-  for (let i = 0; i < G.sans.length; i += 2) {
-    h += `<span class="n">${i / 2 + 1}.</span><button data-i="${i + 1}" class="${cur === i + 1 ? 'cur' : ''}">${esc(G.sans[i])}</button>`;
-    h += G.sans[i + 1] ? `<button data-i="${i + 2}" class="${cur === i + 2 ? 'cur' : ''}">${esc(G.sans[i + 1])}</button>` : '<span></span>';
+  const button = at => `<button data-i="${at + 1}" class="${cur === at + 1 ? 'cur' : ''}" aria-label="Position after ${esc(G.sans[at])}, half-move ${at + 1}">${esc(G.sans[at])}</button>`;
+  while (i < G.sans.length) {
+    h += `<span class="n">${number++}.</span>`;
+    if (firstBlack) { h += '<span></span>'; firstBlack = false; } else h += button(i++);
+    h += i < G.sans.length ? button(i++) : '<span></span>';
   }
   box.innerHTML = h;
-  const c = box.querySelector('.cur'); if (c && G.view == null) box.scrollTop = box.scrollHeight;
+  if (G.view == null) box.scrollTop = box.scrollHeight;
 }
 $('#moves').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (!b) return; setView(+b.dataset.i); });
 function setView(i) {
@@ -2653,12 +2801,12 @@ function renderButtons() {
   const cvc = G.mode === 'cvc';
   $('#pauseBtn').hidden = !(cvc || (G.clock && !G.official)) || !!G.over;
   $('#pauseBtn').textContent = G.paused ? 'Resume' : 'Pause';
-  $('#undoBtn').disabled = cvc || G.official || !G.moves.length || (G.mode === 'pvc' && !G.moves.some((_, i) => G.players[i % 2 ? 'b' : 'w'].type === 'human'));
+  $('#undoBtn').disabled = G.review || cvc || G.official || !G.moves.length || (G.mode === 'pvc' && !G.moves.some((_, i) => G.players[(i + (G.startFen.split(' ')[1] === 'b' ? 1 : 0)) % 2 ? 'b' : 'w'].type === 'human'));
   $('#undoBtn').title = G.official ? 'Take backs are not allowed under official rules' : '';
   $('#hintBtn').disabled = !humanToMove() || G.official;
   $('#hintBtn').title = G.official ? 'Hints are not allowed under official rules' : '';
   $('#drawBtn').disabled = cvc || !!G.over || !humanToMove() || !!G.drawOffer || G.moves.length < 2;
-  $('#resignBtn').disabled = !!G.over || cvc || !G.moves.length && G.mode === 'pvc' && G.players.w.type === 'ai';
+  $('#resignBtn').disabled = G.review || !!G.over || cvc || !G.moves.length && G.mode === 'pvc' && G.players.w.type === 'ai';
   $('#navFirst').disabled = $('#navPrev').disabled = (G.view === 0) || G.fens.length < 2;
   $('#navNext').disabled = $('#navLast').disabled = G.view == null;
 }
@@ -2686,7 +2834,7 @@ $('#hintBtn').onclick = () => {
   if (!humanToMove() || G.official) return;
   const tok = G.token, ply = G.moves.length;
   $('#hintBtn').disabled = true; $('#hintBtn').textContent = 'Thinking…';
-  think(null, G.moves.slice(), 24, { time: 1500 }).then(r => {
+  think(G.startFen === START ? null : G.startFen, G.moves.slice(), 24, { time: 1500 }).then(r => {
     $('#hintBtn').textContent = 'Hint';
     if (!G || G.token !== tok || G.moves.length !== ply || !r || !r.move) { renderButtons(); return; }
     BV.arrows = [[r.move.slice(0, 2), r.move.slice(2, 4)]]; renderBoard(); renderButtons();
@@ -2709,14 +2857,66 @@ $('#resignBtn').onclick = () => {
 };
 function pgn() {
   const d = new Date(), date = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
-  const nm = s => { const p = G.players[s]; return p.type === 'human' ? (G.mode === 'pvc' ? 'You' : (s === 'w' ? 'White' : 'Black')) : `Mitchell D Chess level ${p.level} (${L18[p.level - 1].name})`; };
-  const res = G.over ? G.over.result : '*';
-  let body = '';
-  G.sans.forEach((s, i) => { if (i % 2 === 0) body += (i / 2 + 1) + '. '; body += s + ' '; });
-  const tcTag = G.clock ? G.clock.pgn : '-';
-  const term = !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal';
-  return `[Event "Mitchell D Chess game${G.official ? ' (official rules)' : ''}"]\n[Site "Mitchell D Chess"]\n[Date "${date}"]\n[White "${nm('w')}"]\n[Black "${nm('b')}"]\n[Result "${res}"]\n[TimeControl "${tcTag}"]\n[Termination "${term}"]\n\n${body}${res}\n`;
+  const nm = side => { const p = G.players[side]; return p.type === 'human' ? (G.mode === 'pvc' ? 'You' : (side === 'w' ? 'White' : 'Black')) : `Mitchell D Chess level ${p.level} (${L18[p.level - 1].name})`; };
+  const tags = G.tags || {}, result = G.over ? G.over.result : '*';
+  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags }, {
+    Event: tags.Event || 'Mitchell D Chess game' + (G.official ? ' (official rules)' : ''), Site: tags.Site || 'Mitchell D Chess', Date: tags.Date || date,
+    White: tags.White || nm('w'), Black: tags.Black || nm('b'), TimeControl: G.clock ? G.clock.pgn : (tags.TimeControl || '-'), Termination: !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal'
+  });
 }
+// Parsing uses a disposable worker so large annotated games cannot block play.
+function positionJob(text, format) {
+  let jobWorker, timer, settle;
+  const promise = new Promise((resolve, reject) => {
+    settle = reject;
+    try {
+      const handler = `self.onmessage=e=>{try{const result=e.data.format==='fen'?PositionTools.fromFen(e.data.text):PositionTools.parsePgn(e.data.text);self.postMessage({ok:true,result});}catch(error){self.postMessage({ok:false,error:String(error.message||error)});}};`;
+      const url = URL.createObjectURL(new Blob([$('#engine-src').textContent, $('#position-tools-src').textContent, handler], {type:'text/javascript'}));
+      try { jobWorker = new Worker(url); } finally { URL.revokeObjectURL(url); }
+      const finish = () => { clearTimeout(timer); jobWorker.terminate(); };
+      jobWorker.onmessage = e => { finish(); e.data.ok ? resolve(e.data.result) : reject(new Error(e.data.error)); };
+      jobWorker.onerror = () => { finish(); reject(new Error('Could not read the game in this browser.')); };
+      timer = setTimeout(() => { finish(); reject(new Error('Import took too long. Try a shorter PGN main line.')); },15000);
+      jobWorker.postMessage({text,format});
+    } catch (error) { reject(new Error('Could not start the import worker.')); }
+  });
+  return { promise, cancel() { clearTimeout(timer); if (jobWorker) jobWorker.terminate(); settle(new Error('Import cancelled.')); } };
+}
+function openImport(initial = '') {
+  openModal(`<div class="modal-head"><h2>Import a position or game</h2><button class="btn small" data-close>Cancel</button></div>
+    <p>Paste FEN or one PGN game, or choose a text file. PGN comments and variations are skipped; the main line is loaded for review.</p>
+    <label class="field">Format<select id="importFormat"><option value="auto">Detect automatically</option><option value="fen">FEN position</option><option value="pgn">PGN game</option></select></label>
+    <label class="field">FEN or PGN<textarea id="importText" spellcheck="false" maxlength="256000"></textarea></label>
+    <label class="field">Or choose a file<input id="importFile" type="file" accept=".pgn,.fen,.txt,text/plain,application/x-chess-pgn"></label>
+    <p class="muted">Loading replaces the current game. Review starts without a clock or computer moves. Maximum 256 KB and 1,024 half-moves.</p>
+    <p id="importError" class="feedback bad" role="alert" hidden></p><button class="btn primary" id="importLoad">Load for review</button>`, () => $('#importText').focus());
+  $('#importText').value = initial;
+  let disposed = false, job = null; modalCleanup = () => { disposed = true; if (job) job.cancel(); };
+  const error = message => { $('#importError').textContent = message; $('#importError').hidden = false; };
+  $('#importFile').onchange = async e => {
+    const file = e.target.files[0]; if (!file) return;
+    if (file.size > PositionTools.MAX_TEXT) { error('Choose one file smaller than 256 KB.'); return; }
+    try { const text = await file.text(); if (!disposed) $('#importText').value = text; } catch (e) { if (!disposed) error('Could not read that file.'); }
+  };
+  $('#importLoad').onclick = async () => {
+    const text = $('#importText').value.trim(); if (!text) { error('Paste a FEN position or PGN game first.'); return; }
+    const requested = $('#importFormat').value, format = requested === 'auto' ? (/^[pnbrqkPNBRQK1-8]+\//.test(text) ? 'fen' : 'pgn') : requested;
+    $('#importLoad').disabled = true; $('#importLoad').textContent = 'Checking…'; $('#importError').hidden = true;
+    job = positionJob(text, format);
+    try {
+      const record = await job.promise; if (disposed) return;
+      newGame({record}); if (tab !== 'play') setTab('play'); closeModal(); if (record.notice) toast(record.notice);
+    } catch (e) { if (!disposed) { error(e.message); $('#importLoad').disabled = false; $('#importLoad').textContent = 'Load for review'; } }
+  };
+}
+$('#importBtn').onclick = () => openImport();
+$('#shareBtn').onclick = () => {
+  const fen = tab === 'play' ? curFen() : LS.chess.fen();
+  const url = new URL(location.protocol === 'file:' ? 'https://mitchell-d00.github.io/Mitchell-D-Chess-/' : location.href);
+  url.hash = 'fen=' + encodeURIComponent(fen); copyText(url.href, 'Position link');
+};
+$('#continueBtn').onclick = () => { const fen = curFen(); newGame({startFen:fen}); toast('New game from the displayed position; fresh clocks and your selected setup.'); };
+window.addEventListener('hashchange', () => { try { const fen = PositionTools.hashFen(location.hash); if (fen) openImport(fen); } catch (e) { toast(e.message); } });
 function copyText(text, label) {
   const done = () => toast(label + ' copied.');
   const fallback = () => openModal(`<div class="modal-head"><h3>${esc(label)}</h3><button class="btn small" data-close>Close</button></div><p class="muted">Select the text below and copy it.</p><textarea readonly id="copyArea">${esc(text)}</textarea>`, () => { const t = $('#copyArea'); t.focus(); t.select(); });
@@ -2755,7 +2955,7 @@ $('#lvl').oninput = () => { setup.level = +$('#lvl').value; saveSetup(); showLev
 $('#lvlW').onchange = () => { setup.lvlW = +$('#lvlW').value; saveSetup(); };
 $('#lvlB').onchange = () => { setup.lvlB = +$('#lvlB').value; saveSetup(); };
 $('#newBtn').onclick = () => newGame();
-const setupChanged = () => { saveSetup(); syncPlay(); if (G && !G.moves.length) newGame(); };
+const setupChanged = () => { saveSetup(); syncPlay(); if (G && !G.review && G.startFen === START && !G.moves.length) newGame(); };
 $('#tcSel').onchange = () => { setup.tc = $('#tcSel').value; setupChanged(); };
 ['tcWm', 'tcBm', 'tcBonus'].forEach(id => $('#' + id).onchange = () => {
   setup.cw = Math.min(600, Math.max(0.25, +$('#tcWm').value || 10)); setup.cb = Math.min(600, Math.max(0.25, +$('#tcBm').value || 10));
@@ -3002,12 +3202,14 @@ function setTab(t) {
 $$('.tabs button').forEach(b => b.onclick = () => setTab(b.dataset.tab));
 
 // ================= Settings modal =================
+let modalCleanup = null;
 function openModal(html, after) {
+  if (modalCleanup) { const cleanup = modalCleanup; modalCleanup = null; cleanup(); }
   $('#ovBox').innerHTML = html; $('#ov').hidden = false;
   $('#ovBox').querySelectorAll('[data-close]').forEach(b => b.onclick = closeModal);
   if (after) after(); else $('#ovBox button')?.focus();
 }
-function closeModal() { $('#ov').hidden = true; $('#ovBox').innerHTML = ''; }
+function closeModal() { if (modalCleanup) { const cleanup = modalCleanup; modalCleanup = null; cleanup(); } $('#ov').hidden = true; $('#ovBox').innerHTML = ''; }
 $('#ov').addEventListener('click', e => { if (e.target.id === 'ov') closeModal(); });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { if (!$('#ov').hidden) closeModal(); else if ($('.promo')) { if (!(BV.lock && BV.lock())) $('.promo').remove(); } else if (BV.sel && !(BV.lock && BV.lock())) { BV.sel = null; BV.targets = []; renderBoard(); } }
@@ -3060,7 +3262,7 @@ function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = fal
 applySettings();
 LS.idx = Math.min(LESSONS.length - 1, store.get('lessonIdx', 0) || 0);
 syncPlay();
-newGame();
+try { const fen = PositionTools.hashFen(location.hash); newGame(fen ? {record:PositionTools.fromFen(fen)} : {}); } catch (error) { newGame(); toast(error.message); }
 </script>
 
 </body>
