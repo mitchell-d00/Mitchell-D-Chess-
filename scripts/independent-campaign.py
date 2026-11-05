@@ -10,14 +10,14 @@ def save(path, value):
     temp = path.with_suffix(path.suffix + '.tmp')
     temp.write_text(json.dumps(value, indent=2) + '\n')
     temp.replace(path)
-def games(path):
+def games(path, candidate='Mitchell65'):
     if not path.exists(): return []
     result = []
     for block in re.split(r'(?=^\[Event )', path.read_text(errors='replace'), flags=re.M):
         tags = dict(re.findall(r'^\[(\w+) "([^"\n]*)"\]', block, flags=re.M))
         if tags.get('Result') not in ('1-0','0-1','1/2-1/2'): continue
-        if 'Mitchell65' not in (tags.get('White'),tags.get('Black')): continue
-        score = .5 if tags['Result']=='1/2-1/2' else float((tags['Result']=='1-0') == (tags.get('White')=='Mitchell65'))
+        if candidate not in (tags.get('White'),tags.get('Black')): continue
+        score = .5 if tags['Result']=='1/2-1/2' else float((tags['Result']=='1-0') == (tags.get('White')==candidate))
         result.append({'score':score, 'round':tags.get('Round'), 'termination':tags.get('Termination','unknown'), 'fen':tags.get('FEN','startpos'), 'white':tags.get('White'), 'black':tags.get('Black')})
     return result
 
@@ -26,7 +26,7 @@ def summarize(config, root):
     for batch in config['batches']:
         opponent=batch['opponent']; entry=by.setdefault(opponent,{'planned':0,'wins':0,'draws':0,'losses':0,'forfeits':0,'completed':0,'normalResults':{'wins':0,'draws':0,'losses':0},'forfeitResults':{'wins':0,'draws':0,'losses':0},'pairs':[]})
         entry['planned']+=batch['games']; pairs={}
-        for game in games(root/(batch['id']+'.pgn')):
+        for game in games(root/(batch['id']+'.pgn'),config.get('candidateName','Mitchell65')):
             entry['completed']+=1; entry[{1:'wins',.5:'draws',0:'losses'}[game['score']]]+=1
             abnormal=game['termination'] not in ('normal','adjudication')
             if abnormal:entry['forfeits']+=1
@@ -57,6 +57,7 @@ def main():
     if not isinstance(seconds,(int,float)) or not math.isfinite(seconds) or seconds<=0:raise ValueError('Move time must be positive and finite')
     if not isinstance(margin,(int,float)) or not math.isfinite(margin) or margin<0:raise ValueError('Time margin must be nonnegative and finite')
     if any(b['games']%2 for b in config['batches']):raise ValueError('All batches must contain colour pairs')
+    if any(not 1<=b.get('candidateLevel',65)<=65 for b in config['batches']):raise ValueError('Candidate levels must be 1–65')
     if not 1<=config.get('concurrency',1)<=2:raise ValueError('At most two simultaneous games on this host')
     if hashlib.sha256(Path(config['html']).read_bytes()).hexdigest()!=config['htmlSha256']:raise ValueError('Frozen engine hash changed')
     if hashlib.sha256(Path(config['adapter']).read_bytes()).hexdigest()!=config['adapterSha256']:raise ValueError('Frozen adapter hash changed')
@@ -93,14 +94,14 @@ def main():
                 if args.resume and state.exists():command=[config['fastchess'],'-config','file='+str(state),'outname='+str(state),'stats=true']
                 else:
                     opponent=config['opponents'][batch['opponent']]
-                    command=[config['fastchess'],'-engine','cmd='+config['node'],'args='+config['adapter'],'name=Mitchell65','option.Level=65','option.MoveOverhead=20','-engine','cmd='+opponent['command']]+opponent.get('arguments',[])+['name='+batch['opponent']]+opponent.get('options',[])
+                    command=[config['fastchess'],'-engine','cmd='+config['node'],'args='+config['adapter'],'name='+config.get('candidateName','Mitchell65'),'option.Level='+str(batch.get('candidateLevel',65)),'option.MoveOverhead=20','-engine','cmd='+opponent['command']]+opponent.get('arguments',[])+['name='+batch['opponent']]+opponent.get('options',[])
                     command+=['-each','proto=uci','st='+str(seconds),'timemargin='+str(margin),'-rounds',str(batch['games']//2),'-games','2','-concurrency','1','-openings','file='+config['openings'],'format=epd','order=sequential','start='+str(batch['openingStart']),'-pgnout','file='+str(root/(name+'.pgn')),'nodes=true','nps=true','timeleft=true','-config','outname='+str(state),'-autosaveinterval','1','-recover','-event',config.get('event','Mitchell independent benchmark'),'-site','local shared Linux host']
                 log=open(root/(name+'.log'),'a' if args.resume else 'w');process=subprocess.Popen(command,env=env,stdout=log,stderr=subprocess.STDOUT,cwd=root)
                 active[name]=(process,log,batch);statuses[name]='running';save(root/(name+'.command.json'),{'startedUtc':utc(),'argv':command,'pid':process.pid})
             for name,(process,log,batch) in list(active.items()):
                 code=process.poll()
                 if code is None:continue
-                log.close();actual=len(games(root/(name+'.pgn')));success=code==0 and actual==batch['games'];statuses[name]='completed' if success else 'failed'
+                log.close();actual=len(games(root/(name+'.pgn'),config.get('candidateName','Mitchell65')));success=code==0 and actual==batch['games'];statuses[name]='completed' if success else 'failed'
                 if success:save(root/(name+'.done.json'),{'finishedUtc':utc(),'games':actual,'exitCode':code})
                 del active[name]
                 if not success:request_stop('Batch '+name+' stopped: exit '+str(code)+', completed '+str(actual)+'/'+str(batch['games']))
