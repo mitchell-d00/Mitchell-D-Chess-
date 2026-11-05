@@ -1,0 +1,115 @@
+{
+  "engineAndLicenceUnchanged": true,
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "scripts/test.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:51:41.756192+00:00",
+      "finishedUtc": "2026-11-05T14:51:42.084512+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all 454 book lines, 65 levels, script syntax\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-neural.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:51:42.084857+00:00",
+      "finishedUtc": "2026-11-05T14:51:42.766091+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: 2777 incremental rebuild, special-move, null-move, unmake, JS/SIMD and independent-reference checks\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-hash-moves.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:51:42.766556+00:00",
+      "finishedUtc": "2026-11-05T14:51:47.529887+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: historical hash collision, six failed-game positions, TT corruption injection, strict history, incremental hash restoration\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-position-tools.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:51:47.530203+00:00",
+      "finishedUtc": "2026-11-05T14:51:47.643939+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: immutable public engine, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-game-library.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:51:47.644241+00:00",
+      "finishedUtc": "2026-11-05T14:51:47.716300+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: versioned local records, player/clock validation, bounded library, explicit overwrite/delete and atomic quota failures\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/test-campaign.py"
+      ],
+      "startedUtc": "2026-11-05T14:51:47.716637+00:00",
+      "finishedUtc": "2026-11-05T14:52:02.970998+00:00",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 15.153s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:52:02.971268+00:00",
+      "finishedUtc": "2026-11-05T14:52:04.744896+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: offline standalone HTML, 65 levels, 38 lessons, legal worker move, responsive UI, cancellation, book, computer-vs-computer, worker failure\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-tools-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:52:04.745213+00:00",
+      "finishedUtc": "2026-11-05T14:52:06.509204+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: offline paste/file import, transactional errors, inert headers, review/navigation, shared-position reload, custom-FEN play and black-start PGN export\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-accessibility-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:52:06.509539+00:00",
+      "finishedUtc": "2026-11-05T14:52:08.782865+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: accessible board/roving focus, keyboard and touch-move legality, flipped navigation, underpromotion, modal trap/return, guide persistence, tabs, contrast, portrait/landscape, real touch taps and 44px targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-library-analysis-test.cjs"
+      ],
+      "startedUtc": "2026-11-05T14:52:08.783187+00:00",
+      "finishedUtc": "2026-11-05T14:52:11.975556+00:00",
+      "exitCode": 0,
+      "stdout": "PASS: offline named saves, new-game confirmation, paused official-clock restoration, transactional corrupt-save rejection, real worker review/alternatives/graph, cancellation and stale-result isolation\n",
+      "stderr": ""
+    }
+  ]
+}

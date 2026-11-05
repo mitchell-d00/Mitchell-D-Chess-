@@ -22,7 +22,8 @@ byte-identical. Preserve the single HTML / offline / Web Worker design, all
 - [x] Pass 1: validated FEN/PGN import and shareable positions.
 - [x] Pass 2: onboarding, responsive/touch polish and keyboard board access.
 - [x] Pass 3: local named saves and post-game worker analysis.
-- [ ] Final regression checks, documentation and publication.
+- [x] Final regression checks and documentation.
+- [ ] Publication (tracked below).
 
 ## Decisions
 
@@ -34,10 +35,10 @@ byte-identical. Preserve the single HTML / offline / Web Worker design, all
 - Analysis is an estimate from this unrated engine, with explicit time budgets;
   never present score differences as a calibrated accuracy or Elo measurement.
 
-## Verification and next action
+## Handoff convention
 
-Next: implement independent position/PGN parsing and round-trip export, then
-connect import/share UI and browser checks before beginning pass 2.
+The pass entries below are chronological checkpoints; their “Next” notes describe
+the next action at that checkpoint. The latest status is at the end of this file.
 
 For each pass, append changed files, checks run/results, design constraints,
 known limitations and the exact next step. Do not mark unfinished checks passed.
@@ -127,3 +128,17 @@ checks real touchscreen e2-e4. Final full-suite output will be recorded in
 
 Next: final full regression run and engine/licence byte comparisons, mark final
 status, then publish the UI-only commits. The research branch must stay separate.
+
+## Final verification completed
+
+All 10 final commands passed; exact commands, UTC timestamps, outputs and exit
+codes are committed in `validation/ui-checks.json`. The suite covers the original
+engine/neural/hash/campaign/browser checks and all new offline UI checks. Exact
+engine-script and licence-disclosure comparisons against base main passed.
+Portrait, landscape and game-review screenshots were inspected.
+
+Implementation checkpoints: `b846480` (position tools), `edc17d3` (accessibility),
+`16e11f6` (saves/review). The UI does not incorporate the engine research branch.
+
+Next: publish `ui/offline-tools`, merge the reviewed/tested UI changes to main,
+and record the publication link/status here. No engine strength claim is added.
