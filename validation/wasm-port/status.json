@@ -1,0 +1,23 @@
+{
+  "createdUtc": "2026-11-05T20:31:14.927087+00:00",
+  "status": "experimental; not promoted",
+  "sourceRevision": "dd1714a",
+  "differentialChecks": 5476,
+  "candidateHtml": "/workspace/mitchell-performance/wasm-ablation-inputs/candidate.html",
+  "candidateHtmlSha256": "5801113f02ed26970aa2eabc0b46e355566503cc0a8eac3f7b70a5acc3e7c368",
+  "files": {
+    "engine/wasm/mitchell.cpp": "59b32da4117872864e5bbd7533744ac87e5d6b5751d6c45ed4ca644f48b7d7de",
+    "engine/wasm/mitchell.wasm": "f32f6b6f239501734e950b7db5c85a4ec1246d9758e3478104e5337ce2b8f313",
+    "engine/wasm/evaluation.inc": "28a14dc7f2f0cd5f6ac3b582ca2f7be4eb0f8d48982484d064614824bc90ed21",
+    "engine/wasm/tables.inc": "2f284f017ed8cbdc864a351434b9299a9358a5c7b09be7bf5d124525cad92c44",
+    "scripts/test-wasm-parity.cjs": "7c74f4b8de854490cdf75968a8cb74f0e61029153f051035299b7a422fbb592f"
+  },
+  "browserStatus": "Original offline browser-test.cjs passed with MITCHELL_TEST_HTML set to the candidate; remaining suites pending",
+  "matchConfig": "/workspace/mitchell-performance/wasm-ablation-strict-40/campaign.json",
+  "notes": [
+    "32 MiB default; 64 MiB developer mode used for exact TT parity.",
+    "Strict matched-run adapter rejects any non-WASM candidate response.",
+    "Earlier diagnostic pilot was stopped for adding this assertion; do not combine samples.",
+    "No completed rating or network-comparison result is claimed."
+  ]
+}

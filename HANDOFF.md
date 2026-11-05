@@ -393,3 +393,24 @@ default and 64 MiB developer setting, not a verified new settings control yet.
 Next: browser/fallback verification, frozen WASM-vs-JS equal-time experiments,
 loss regressions and network comparison. All current port work is uncommitted on
 engine/wasm-parity-roadmap; the public game still runs the prior JS engine.
+
+## Port checkpoint and strict matched comparison
+
+Full port committed as 3ef7045, strict adapter assertion added in dd1714a. Latest
+5,476-check parity rerun passed; report in validation/wasm-port. One actual offline
+standalone browser test also passed with the candidate; remaining browser suites
+are pending. No settings-UI memory control is claimed.
+
+A 40-game paired comparison at 100ms/move is running from immutable inputs in
+/workspace/mitchell-performance/wasm-ablation-strict-40. Candidate default memory
+32 MiB uses a smaller TT than the frozen JS baseline. The frozen adapter requires
+WASM and faults on fallback, so silent fallback cannot count as a WASM result.
+This is relative short-control testing, not an Elo calibration. An earlier
+diagnostic pilot in wasm-ablation-40 was stopped to add this assertion; retain
+but exclude its results from the strict sample.
+
+The baseline 200-game completion is being published separately through PR #5.
+No full-WASM replacement has been merged. Remaining roadmap: complete candidate
+browser/resource/fallback gates and matched run, derive loss regressions, compare
+permissive networks, validate exact sparse-endgame experiment, then decide whether
+any candidate qualifies for promotion.
