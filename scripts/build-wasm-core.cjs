@@ -12,7 +12,12 @@ header+='static constexpr int SEEVAL[7]={0,100,320,330,500,900,10000};\n';
 header+='static constexpr int SAFETY[100]='+literal(Array.from({length:100},(_,i)=>Math.min(450,Math.round(i*i*.16))))+';\n';
 header+='static constexpr signed char LMR[64][64]='+literal(Array.from({length:64},(_,d)=>Array.from({length:64},(_,m)=>d&&m?Math.floor(.7+Math.log(d)*Math.log(m)/2.3):0)))+';\n';
 fs.writeFileSync(path.join(root,'engine/wasm/tables.inc'),header);
-const compiler=process.env.WASM_CXX||'clang++-19',linker=process.env.WASM_LD||'wasm-ld-19';
+const compiler=process.env.WASM_CXX||'clang++-19',linkerName=process.env.WASM_LD||'wasm-ld-19';
+// Clang accepts absolute linker paths but rejects a versioned bare name in
+// -fuse-ld. Resolve PATH explicitly so the documented default works in CI too.
+const linker=path.isAbsolute(linkerName)||linkerName.includes(path.sep)?path.resolve(linkerName):
+ (process.env.PATH||'').split(path.delimiter).map(dir=>path.resolve(dir,linkerName)).find(file=>{try{fs.accessSync(file,fs.constants.X_OK);return fs.statSync(file).isFile();}catch{return false;}});
+if(!linker)throw Error('WASM linker not found: '+linkerName);
 const generation=spawnSync(process.execPath,[path.join(root,'scripts/generate-wasm-evaluation.cjs')],{cwd:root,encoding:'utf8'});if(generation.status!==0)throw Error(generation.stderr);
 const output=path.join(root,'engine/wasm/mitchell.wasm');
 const args=['--target=wasm32','-O3','-std=c++17','-msimd128','-ffreestanding','-fno-builtin','-fno-exceptions','-fno-rtti','-fwrapv','-nostdlib','-fuse-ld='+linker,'-Wl,--no-entry','-Wl,--export-memory','-Wl,--export-if-defined=__wasm_call_ctors','-Wl,--initial-memory=33554432','-Wl,--max-memory=67108864','-Wl,-z,stack-size=4194304','-Wl,--strip-all',path.join(root,'engine/wasm/mitchell.cpp'),'-o',output];

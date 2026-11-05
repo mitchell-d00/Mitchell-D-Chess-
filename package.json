@@ -9,7 +9,7 @@
     "build:check": "node scripts/build.cjs --check && node scripts/check-size.cjs",
     "build:kernel": "node scripts/build-neural-kernel.cjs",
     "build:wasm": "node scripts/build-wasm-core.cjs",
-    "test:wasm": "node scripts/test-wasm-parity.cjs && node scripts/test-wasm-accumulator.cjs && node scripts/test-wasm-endgames.cjs",
+    "test:wasm": "node scripts/test-wasm-parity.cjs && node scripts/test-wasm-accumulator.cjs && node scripts/test-wasm-endgames.cjs && python3 scripts/test-prepare-wasm.py",
     "test": "node scripts/checks.cjs core",
     "test:browser": "node scripts/checks.cjs browser",
     "test:all": "node scripts/checks.cjs all"
