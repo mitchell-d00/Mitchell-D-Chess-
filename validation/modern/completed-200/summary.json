@@ -1,0 +1,66 @@
+{
+  "updatedUtc": "2026-11-05T20:23:02.869414+00:00",
+  "plannedGames": 200,
+  "completedGames": 200,
+  "timeControl": {
+    "movetimeSeconds": 1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "opponents": {
+    "Stockfish19": {
+      "planned": 100,
+      "wins": 0,
+      "draws": 7,
+      "losses": 93,
+      "forfeits": 0,
+      "completed": 100,
+      "normalResults": {
+        "wins": 0,
+        "draws": 7,
+        "losses": 93
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.035,
+      "completedNormalPairs": 50,
+      "pairedScoreBootstrap95": [
+        0.01,
+        0.06
+      ]
+    },
+    "Leorik3.1.3": {
+      "planned": 100,
+      "wins": 0,
+      "draws": 20,
+      "losses": 80,
+      "forfeits": 0,
+      "completed": 100,
+      "normalResults": {
+        "wins": 0,
+        "draws": 20,
+        "losses": 80
+      },
+      "forfeitResults": {
+        "wins": 0,
+        "draws": 0,
+        "losses": 0
+      },
+      "scoreRate": 0.1,
+      "completedNormalPairs": 50,
+      "pairedScoreBootstrap95": [
+        0.065,
+        0.135
+      ]
+    }
+  },
+  "ratingStatus": "Unrated. CCRL reference ratings and this different time control cannot be transferred directly.",
+  "notes": [
+    "PGNs are the authoritative game records. Forfeits are reported separately.",
+    "Bootstrap resamples whole colour-reversed normal-result pairs; no interval is given for very small or degenerate samples."
+  ]
+}

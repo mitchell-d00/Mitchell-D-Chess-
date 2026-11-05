@@ -337,3 +337,19 @@ Next maintainer: use src/ and the deterministic build, keep original/Leorik noti
 and pinned model hash, and run the relevant checks. CI guards source/artifact and
 size agreement. Further search, bitbase, multi-PV or multiplayer work should remain
 separate measured changes as described in validation/implementation-scope.md.
+
+## Completed 200-game report
+
+The frozen JavaScript/NNUE campaign completed 200/200 games at 20:14 UTC on
+2026-11-05. Results: Stockfish 19 0W/7D/93L; Leorik 3.1.3 0W/20D/80L. Zero
+forfeits. Full archive in validation/modern/completed-200; all 21,091 half-moves
+and archive hashes verified. README, in-app guide and tests now report completed
+evidence rather than a running campaign. The older 2-game checkpoint is retained
+explicitly as history. No absolute Elo is inferred.
+
+The full-WASM port is separate, uncommitted experimental work in the UI worktree
+on engine/wasm-parity-roadmap. It has initial 5,476 parity checks and preliminary
+~2x Node speed samples, but is not the engine tested in the completed campaign.
+Its first existing offline browser check passed after the interrupted tool call;
+remaining browser and matched-game gates are pending. Do not replace the public
+engine based on this report. This report-only branch changes no engine source.

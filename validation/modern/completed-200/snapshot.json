@@ -1,0 +1,38 @@
+{
+  "createdUtc": "2026-11-05T20:23:02.869821+00:00",
+  "complete": true,
+  "completedGames": 200,
+  "plannedGames": 200,
+  "testedRevision": "eec0d23da885fad1944cefc232348978d514f16d",
+  "htmlSha256": "bea05d037e5e29be4bebfdbd0a2cc1e6c9ef7f79e0e6c96f0312dca60b6a208a",
+  "uncompressedLogs": {
+    "01-opponent.log": "93ea7f7f2417346f8fdb80e3b86bbb49114de9bbba886a112038bc46ff83eb55",
+    "02-opponent.log": "ce0006b89bc6ef3a596763fd7a99781ce6b9de3df1e236b29370e6b0b559d827",
+    "campaign.log": "2526ec5613b306517ede3cad4695f0354e7fed05f52cf4f086d553f806eadc5d"
+  },
+  "files": {
+    "01-opponent.command.json": "09df7774a1c3c8b40e00585733f5d8458a54ced28c7b4aa85e7e96ef715efc66",
+    "01-opponent.done.json": "fc2d424adf38add98e6e986e83206977b8dc1e1aaa35cf42ef81cf33a1e78f81",
+    "01-opponent.log.gz": "f8b77bcae8d93e9503b5155c672f6db5a0fb8e1870cd11affb3364d3a9b254aa",
+    "01-opponent.pgn": "ac3054dd681cf9829b397c0ba5558b5c0fd897c68ad9408f756528b5d6f5c3cb",
+    "01-opponent.state.json": "6d9bcc23a831c3d870f62094fd6d468f635e522b2774dc858b9e1289fc21a6ba",
+    "02-opponent.command.json": "55f1f389a2172bbbe01ce0904104346b440b9e4697a1dccd8f314dcbfcfe704c",
+    "02-opponent.done.json": "c715dbc73a5e65e0332faaad3c56a46c889407ed56e71993e85707140c4aa65f",
+    "02-opponent.log.gz": "4bdcd7872ad0c45feed0237fd756d2b6604466225d73df92512245f17e52a078",
+    "02-opponent.pgn": "a3c7db68c419ac72794791d83aebbbf101a5d34bbc7138cbf6b75fa1df829a37",
+    "02-opponent.state.json": "09dc39ff0421a894c8f3878d8827d1ccbe69af7d8d89f61ceb7c7f2b8e5af3c7",
+    "adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "adapter/uci.cjs": "2c0e333b4e76a8946792b6192ff73041298f6519cdf0d2bddbc44b7b69cd6ef9",
+    "campaign.json": "b48fa4e56dce7b917a4489475034f3d8961d1d3a5dc165d1a9ea37f5a0e7d0a8",
+    "campaign.log.gz": "21080aa5ec33d38e2eca36d887ca76a9e9ed4ee1ef98ce60c7d13a19d4e97706",
+    "openings.epd": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+    "runner.py": "5b85b658dd3e41f8cd8bbc661becce20393c13532c7546af0392afc97f3b8722",
+    "status.json": "e9ae9f2c1515d2e37be9a49bf6a5ceced6664fc475dd13e8c1a7ea1c964cb1bd",
+    "summary.json": "4259d315ded2d614ac995a3a31022da5bb0e2bfade7fba2f2dd2e9378e170e34"
+  },
+  "notes": [
+    "Static evidence snapshot, not live progress.",
+    "Third-party executables, libraries and models are intentionally not archived.",
+    "Reconstruct frozen HTML from testedRevision and verify htmlSha256."
+  ]
+}

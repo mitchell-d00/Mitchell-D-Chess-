@@ -1,3 +1,16 @@
+# Completed modern benchmark (November 2026)
+
+200/200 games finished at nominal one second per move, with no forfeits.
+Mitchell vs Stockfish 19: 0W/7D/93L. Vs native Leorik 3.1.3: 0W/20D/80L.
+These results concern the frozen JavaScript/NNUE engine eec0d23; the full-WASM
+port is a separate experiment and has not completed match qualification.
+
+    node scripts/verify-evidence.cjs validation/modern/completed-200
+
+All 200 PGNs (21,091 half-moves), full compressed logs, commands, binary/model
+hashes and recovery state are archived. See validation/modern/README.md. The
+engine remains unrated; the results do not transfer an opponent's Elo to Mitchell.
+
 # Measured build / SIMD upgrade (November 2026)
 
 A completed modern screening of the previous public engine at 1 second per move

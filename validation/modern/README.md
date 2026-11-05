@@ -39,10 +39,33 @@ Verify hashes, lossless log compression and all legal PGNs:
 node scripts/verify-evidence.cjs validation/modern/stockfish19-pilot
 ```
 
-## Larger candidate campaign
+## Completed 200-game JavaScript/NNUE benchmark
 
-The new 200-game run is a clean restart, not a continuation or reinterpretation
-of the old partial campaign. Its planned opponents are Stockfish 19 and native
+The run finished on November 5, 2026 at 20:14 UTC: **200/200 normal completions,
+zero forfeits**. The independent referee used 100 games per opponent, each with
+50 colour-reversed opening pairs, at nominal one second per move.
+
+| Opponent | Mitchell wins | Draws | Mitchell losses | Games |
+| --- | ---: | ---: | ---: | ---: |
+| Stockfish 19 | 0 | 7 | 93 | 100 |
+| Native Leorik 3.1.3 | 0 | 20 | 80 | 100 |
+| Total | 0 | 27 | 173 | 200 |
+
+[completed-200/](completed-200/) contains every PGN, full compressed logs,
+commands, recovery states, pinned runner/adapter and hash manifest. All **21,091
+half-moves** were legally replayed after archiving. The result shows a clear gap
+to these two native engines under these conditions; no absolute Elo is inferred.
+The newly developed full-WASM port has not completed match qualification and is
+not the engine tested in this campaign.
+
+```sh
+node scripts/verify-evidence.cjs validation/modern/completed-200
+```
+
+### Frozen protocol and earlier checkpoint
+
+The 200-game run was a clean restart, not a continuation or reinterpretation
+of the old partial campaign. Its opponents were Stockfish 19 and native
 Leorik 3.1.3, 100 games each, at one second per move. The latter uses its own
 separately installed 640-hidden network, not the game's embedded 128-hidden net.
 Both run with one thread and 32 MB hash; concurrency is at most two games.
@@ -59,7 +82,7 @@ The campaign started from frozen commit `eec0d23da885fad1944cefc232348978d514f16
 configuration. [candidate-checkpoint/](candidate-checkpoint/) is a static snapshot
 at `2026-11-05T17:59:07.996898+00:00`: **2/200 completed**, explicitly incomplete,
 with no forfeits. It is not a live score and is not combined with the completed
-12-game baseline screening. The background run continues in the working environment.
+12-game baseline screening. That checkpoint is retained as history; the complete result is now archived above.
 
 Only a completed run should be described as a completed 200-game result.
 Checkpoint snapshots are explicitly incomplete and are not live progress.
