@@ -21,10 +21,11 @@ deploy from the `main` branch, root folder). The game will be served at
 Settings, setup choices and tutorial progress are saved in the browser.
 
 See [tests](tests) for published results, raw game records, correctness checks,
-and portable commands to repeat the experiments. The engine remains unrated. A completed **12-game screening at 1 second per move
-against Stockfish 19 scored 0W–0D–12L**, with no forfeits, using the previous
-public engine. The older 58/200 snapshot and small mid-tier pilots do not establish
-an absolute Elo. See [modern benchmark evidence](validation/modern/README.md).
+and portable commands to repeat the experiments. The engine remains unrated. A completed **200-game benchmark at 1 second per
+move** scored **0W–7D–93L against Stockfish 19** and **0W–20D–80L against native
+Leorik 3.1.3**, with no forfeits. These results apply to the frozen JavaScript/NNUE
+engine, and do not establish an absolute Elo. All games, conditions and repeat
+commands are in [modern benchmark evidence](validation/modern/README.md).
 
 ## What is in it
 

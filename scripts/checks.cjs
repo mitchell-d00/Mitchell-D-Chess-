@@ -5,7 +5,7 @@ if(!['core','browser','all'].includes(mode))throw Error('Use core, browser or al
 const core = [
  ['node','scripts/build.cjs','--check'],['node','scripts/check-size.cjs'],
  ...['test.cjs','test-build.cjs','test-neural.cjs','test-neural-cache.cjs','test-hash-moves.cjs','test-position-tools.cjs','test-game-library.cjs','test-move-explanations.cjs','test-uci-normalize.cjs','test-time-management.cjs','test-book-import.cjs'].map(x=>['node','scripts/'+x]),
- ['node','scripts/verify-evidence.cjs','validation/modern/stockfish19-pilot'],['node','scripts/verify-evidence.cjs','validation/modern/candidate-checkpoint'],['python3','scripts/test-prepare-benchmark.py'],['python3','scripts/test-campaign.py'],['python3','scripts/test-uci-normalize.py']];
+ ['node','scripts/verify-evidence.cjs','validation/modern/stockfish19-pilot'],['node','scripts/verify-evidence.cjs','validation/modern/candidate-checkpoint'],['node','scripts/verify-evidence.cjs','validation/modern/completed-200'],['python3','scripts/test-prepare-benchmark.py'],['python3','scripts/test-campaign.py'],['python3','scripts/test-uci-normalize.py']];
 const browser = ['browser-test.cjs','browser-tools-test.cjs','browser-accessibility-test.cjs','browser-library-analysis-test.cjs','browser-polish-test.cjs','browser-pause-test.cjs','browser-engine-info-test.cjs'].map(x=>['node','scripts/'+x]);
 const commands = mode==='core'?core:mode==='browser'?browser:[...core,...browser];
 const checks = [], reportIndex = process.argv.indexOf('--report');

@@ -414,3 +414,28 @@ No full-WASM replacement has been merged. Remaining roadmap: complete candidate
 browser/resource/fallback gates and matched run, derive loss regressions, compare
 permissive networks, validate exact sparse-endgame experiment, then decide whether
 any candidate qualifies for promotion.
+## Completed 200-game report
+
+The frozen JavaScript/NNUE campaign completed 200/200 games at 20:14 UTC on
+2026-11-05. Results: Stockfish 19 0W/7D/93L; Leorik 3.1.3 0W/20D/80L. Zero
+forfeits. Full archive in validation/modern/completed-200; all 21,091 half-moves
+and archive hashes verified. README, in-app guide and tests now report completed
+evidence rather than a running campaign. The older 2-game checkpoint is retained
+explicitly as history. No absolute Elo is inferred.
+
+The full-WASM port is separate, uncommitted experimental work in the UI worktree
+on engine/wasm-parity-roadmap. It has initial 5,476 parity checks and preliminary
+~2x Node speed samples, but is not the engine tested in the completed campaign.
+Its first existing offline browser check passed after the interrupted tool call;
+remaining browser and matched-game gates are pending. Do not replace the public
+engine based on this report. This report-only branch changes no engine source.
+
+## Completed benchmark publication
+
+Merged through PR #5 (74f016fd95cbeb649316eef8a8519a4438006803). The complete
+200-game archive and honest README/in-app strength note are now on main; the
+public engine code and licences remain unchanged. The full-WASM prototype is
+now committed separately on engine/wasm-parity-roadmap (77ae2ae), with 5,476
+parity checks, an initial offline-browser pass and a strict 40-game comparison
+running. It has not been promoted. Remaining browser/network/endgame experiments
+are pending and must not be described as finished.
