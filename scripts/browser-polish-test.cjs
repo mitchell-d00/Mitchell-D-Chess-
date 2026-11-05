@@ -9,7 +9,7 @@ const fs = require('node:fs');
     const page = await context.newPage(), errors = [], network = [];
     page.on('pageerror', e => errors.push(String(e)));
     await page.route(/^https?:/, r => {network.push(r.request().url());return r.abort();});
-    await page.route('http://localhost:8765/', r => r.fulfill({contentType:'text/html',body:fs.readFileSync('index.html','utf8')}));
+    await page.route('http://localhost:8765/', r => r.fulfill({contentType:'text/html',body:fs.readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
     await page.goto('http://localhost:8765/'); await context.setOffline(true);
 
     await page.evaluate(() => Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.copied=text;}}}));

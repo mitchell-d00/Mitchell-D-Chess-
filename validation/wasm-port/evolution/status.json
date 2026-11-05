@@ -1,0 +1,36 @@
+{
+  "createdUtc": "2026-11-05T20:56:27.709Z",
+  "status": "Experimental; not promoted to public default",
+  "sourceCoreRevision": "e6023b04d8a7109b9a6b58ed49d24ece8be0960e",
+  "matchRevision": "7144e46",
+  "matchCandidateHtmlSha256": "a0f376385d0662a7e7d026c3f71917497997bb4fd8c1f6312a52c3c58027331c",
+  "finalHtmlSha256": "0f725c4d34b8c160455422db7193b74b160a73073ad722364d692be7b82b7190",
+  "wasmSha256": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+  "engineSourceSha256": "b477ac968d2fcbfa03f542ca46bb2052dbcfd916dc451640bafe182afaee5f54",
+  "finalHtmlBytes": 643122,
+  "finalHtmlGzipBytes": 246445,
+  "wasmBytes": 55357,
+  "defaultWasmMemoryMiB": 32,
+  "maxWasmMemoryMiB": 64,
+  "engineChecks": 6013,
+  "nodeSpeedup": 1.5399396356493211,
+  "browserSpeedup": 1.3987889273175897,
+  "match": {
+    "games": 40,
+    "wins": 20,
+    "draws": 15,
+    "losses": 5,
+    "forfeits": 0,
+    "secondsPerMove": 0.1,
+    "pairedScoreBootstrap95": [
+      0.5625,
+      0.8
+    ]
+  },
+  "ratingStatus": "Unrated; no absolute rating established",
+  "notes": [
+    "Final artifact only incorporates the report-only Guide update; its engine source exactly matches the frozen match artifact.",
+    "Same credited MIT Leorik128 network; no neural training or model change in this iteration.",
+    "Optional exact sparse-endgame experiment stays off."
+  ]
+}

@@ -27,8 +27,12 @@ def main():
   (out/file.name).write_bytes(raw)
  for file in root.glob('*.log'):
   raw=file.read_bytes();(out/(file.name+'.gz')).write_bytes(gzip.compress(raw,mtime=0));logs[file.name]=digest(raw)
- for name in ['uci.cjs','engine.cjs']:
-  (out/'adapter').mkdir(exist_ok=True);shutil.copyfile(root/'adapter'/name,out/'adapter'/name)
+ for file in sorted((root/'adapter').glob('*.cjs')):
+  (out/'adapter').mkdir(exist_ok=True);shutil.copyfile(file,out/'adapter'/file.name)
+ preparer=root/'prepare-wasm-match.py'
+ if preparer.exists():
+  if digest(preparer.read_bytes())!=config.get('preparerSha256'):raise ValueError('Preparer hash changed')
+  shutil.copyfile(preparer,out/preparer.name)
  shutil.copyfile(runner,out/'runner.py')
  summary=module.summarize(config,out);(out/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
  complete=summary['completedGames']==summary['plannedGames'] and status['status']=='completed'

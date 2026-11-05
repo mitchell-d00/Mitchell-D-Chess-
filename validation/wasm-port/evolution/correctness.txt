@@ -1,0 +1,14 @@
+
+> mitchell-d-chess@1.0.0 test:wasm
+> node scripts/test-wasm-parity.cjs && node scripts/test-wasm-accumulator.cjs && node scripts/test-wasm-endgames.cjs && python3 scripts/test-prepare-wasm.py && node scripts/verify-evidence.cjs validation/wasm-port/v1-vs-js-40 && node scripts/verify-evidence.cjs validation/wasm-port/evolution/match-40
+
+PASS: 5476 WASM parity checks; perft, ordered legality, hashes, SEE, special moves, all eval modes, exact fixed-depth trees, history and timeout restoration
+PASS: 524 scalar/fused accumulator checks with full-range synthetic weights, widths 16/24/128/256, dirty chains, nulls, captures, promotions and castling
+PASS: 13 sparse-endgame checks; stalemate, dead positions, mating material, mate precedence and experiment context
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.502s
+
+OK
+PASS: archive SHA-256s, lossless logs and 40 legal PGNs (6487 half-moves); complete=true
+PASS: archive SHA-256s, lossless logs and 40 legal PGNs (5934 half-moves); complete=true

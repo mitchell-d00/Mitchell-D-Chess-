@@ -1,0 +1,9 @@
+{
+  "updatedUtc": "2026-11-05T20:55:16.084690+00:00",
+  "status": "completed",
+  "completedGames": 40,
+  "plannedGames": 40,
+  "batches": {
+    "01-opponent": "completed"
+  }
+}

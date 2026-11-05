@@ -20,7 +20,7 @@ for(let i=0;i<250;i++){
 }
 // Inject an inconsistent entry without exposing TT internals in production.
 let source=fs.readFileSync('index.html','utf8').match(/<script id="engine-src">([\s\S]*?)<\/script>/)[1];
-source=source.replace('NNUE_CONFIG: NNUE_CONFIG,','__tt: {lo:ttLo,hi:ttHi,move:ttMove,score:ttScore,depth:ttDepth,flag:ttFlag}, NNUE_CONFIG: NNUE_CONFIG,');
+source=source.replace('NNUE_CONFIG: NNUE_CONFIG,','__tt: {get lo(){return ttLo;},get hi(){return ttHi;},get move(){return ttMove;},get score(){return ttScore;},get depth(){return ttDepth;},get flag(){return ttFlag;}}, NNUE_CONFIG: NNUE_CONFIG,');
 const context={module:{exports:{}}};vm.runInNewContext(source,context);const D=context.module.exports;
 for(const ply of [0,1]){
  const q=new D.Chess(collision.positions[1]),s=new D.Searcher(q,{eval:'nnue',adv:true,time:5000}),tt=D.__tt,h=q.lo&(tt.lo.length-1),before=q.fen(),legal=q.legalMoves();s.rootDepth=2;

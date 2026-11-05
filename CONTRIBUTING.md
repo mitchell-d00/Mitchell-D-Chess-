@@ -51,3 +51,36 @@ forfeits, and separate incomplete runs from completed evidence. Do not infer Elo
 from a few wins or copy an opponent's published rating onto Mitchell.
 
 Describe changes, checks, limitations and the next action in `HANDOFF.md`.
+
+## Full WASM engine
+
+The release embeds the original full C++/SIMD engine by default for levels
+51–65, with automatic JavaScript fallback. It has a dedicated compilation CI
+job and parity/browser gates. See
+[engine/wasm/README.md](engine/wasm/README.md) for LLVM 19 build instructions.
+`npm run test:wasm` checks the compiled core; `MITCHELL_TEST_HTML` points browser
+checks at an alternate artifact without replacing the public `index.html`.
+The ordinary `node scripts/build.cjs` produces the WASM-enabled release.
+For a JavaScript-only diagnostic build, use
+`node scripts/build.cjs --javascript --output /tmp/mitchell-js.html`.
+The existing `--candidate-wasm --output ...` form still creates a labelled
+experimental artifact. Players need none of these development tools.
+
+To reproduce a paired experiment, build baseline and candidate HTML from their
+recorded revisions in separate checkouts, then freeze a new run:
+
+```sh
+python3 scripts/prepare-wasm-match.py \
+  --baseline-html /path/to/baseline.html --baseline-revision <baseline-commit> \
+  --candidate-html /path/to/candidate.html --revision <candidate-commit> \
+  --out /path/to/new-empty-run --fastchess /path/to/fastchess \
+  --games 40 --move-seconds 0.1
+python3 /path/to/new-empty-run/runner.py /path/to/new-empty-run/campaign.json
+python3 scripts/archive-benchmark.py /path/to/new-empty-run/campaign.json /path/to/new-archive
+node scripts/verify-evidence.cjs /path/to/new-archive
+```
+
+Both players must use WASM, share the frozen adapter and 32 MiB WASM setting,
+and receive colour-reversed openings and equal time controls. Failed backends
+stop the campaign. All results and forfeits are retained. The short control
+measures relative behavior; it does not establish absolute Elo.

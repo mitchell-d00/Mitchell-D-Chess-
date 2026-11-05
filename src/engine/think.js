@@ -33,7 +33,7 @@
     var time = Math.max(1, Math.min(120000, (extra && extra.time) || L.t || 1000));
     var basePly = pos.uMove.length, lastBest = 0, stability = 0;
     var searchStart = Date.now();
-    var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
+    var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, exactEndgames: !!(extra && extra.exactEndgames), adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
     s.deadline = searchStart + time;
     var best = legal[0], bestScore = 0, depthDone = 0, t0 = Date.now(), prev = 0;
     for (var d = 1; d <= L.d; d++) {

@@ -7,7 +7,7 @@ try{
  page.on('pageerror',e=>errors.push(String(e)));
  await page.route(/^https?:/,r=>{network.push(r.request().url());return r.abort();});
  // Serve the single file from memory; no development server or network is needed.
- await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:require('node:fs').readFileSync('index.html','utf8')}));
+ await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:require('node:fs').readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
  await page.goto('http://localhost:8765/');
  await page.context().setOffline(true);
  assert.equal(await page.locator('#lvl').getAttribute('max'),'65');
@@ -21,8 +21,8 @@ try{
    let ticks=0;const timer=setInterval(()=>ticks++,10);
    const result=await think(null,['e2e4','c7c5','g1f3'],64,{time:350,noBook:true});clearInterval(timer);
    const p=new E.Chess();for(const u of ['e2e4','c7c5','g1f3'])p.make(p.findUci(u));
-   return {ticks,legal:!!p.findUci(result.move),depth:result.depth};
- });assert(r.legal);assert(r.ticks>=5,'UI heartbeat blocked');
+   return {ticks,legal:!!p.findUci(result.move),depth:result.depth,backend:result.backend};
+ });assert(r.legal);assert.equal(r.backend,'wasm','Release UI worker must actually use full WASM');assert(r.ticks>=5,'UI heartbeat blocked');
  const cancelled=await page.evaluate(async()=>{const job=think(null,[],64,{time:60000,noBook:true}).then(()=>false,()=>true);cancelThinking();return job;});assert(cancelled);
  const book=await page.evaluate(()=>think(null,[],34));assert(book.book);
  await page.evaluate(()=>{setup.mode='cvc';setup.lvlW=1;setup.lvlB=1;setup.speed='fast';newGame();});

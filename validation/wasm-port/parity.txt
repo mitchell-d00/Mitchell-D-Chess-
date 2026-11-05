@@ -1,0 +1,1 @@
+PASS: 5476 WASM parity checks; perft, ordered legality, hashes, SEE, special moves, all eval modes, exact fixed-depth trees, history and timeout restoration

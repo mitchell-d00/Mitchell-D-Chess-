@@ -1,0 +1,369 @@
+{
+  "createdUtc": "2026-11-05T20:45:34.554Z",
+  "depth": 11,
+  "repeats": 5,
+  "ttBits": 19,
+  "memoryMiB": 32,
+  "fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r1bq1rk1/ppp2ppp/2np1n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQ1RK1 w - - 6 7",
+    "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+    "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1"
+  ],
+  "hashes": {
+    "baseline": "5801113f02ed26970aa2eabc0b46e355566503cc0a8eac3f7b70a5acc3e7c368",
+    "candidate": "a0f376385d0662a7e7d026c3f71917497997bb4fd8c1f6312a52c3c58027331c"
+  },
+  "runs": [
+    {
+      "name": "baseline",
+      "repeat": 0,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 84.30000000074506
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 56
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 169.20000000298023
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 14
+        }
+      ],
+      "nodes": 337831,
+      "ms": 323.5000000037253,
+      "nps": 1044299.8454284689,
+      "memory": 33554432
+    },
+    {
+      "name": "candidate",
+      "repeat": 0,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 80.5
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 42.5
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 113
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 7.5
+        }
+      ],
+      "nodes": 337831,
+      "ms": 243.5,
+      "nps": 1387396.3039014374,
+      "memory": 33554432
+    },
+    {
+      "name": "candidate",
+      "repeat": 1,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 54.600000001490116
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 34.5
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 120.09999999776483
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 7.300000000745058
+        }
+      ],
+      "nodes": 337831,
+      "ms": 216.5,
+      "nps": 1560420.3233256352,
+      "memory": 33554432
+    },
+    {
+      "name": "baseline",
+      "repeat": 1,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 88
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 56.80000000074506
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 172.30000000074506
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 14.100000001490116
+        }
+      ],
+      "nodes": 337831,
+      "ms": 331.20000000298023,
+      "nps": 1020021.135256522,
+      "memory": 33554432
+    },
+    {
+      "name": "baseline",
+      "repeat": 2,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 85.39999999850988
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 56.099999997764826
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 168.89999999850988
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 13
+        }
+      ],
+      "nodes": 337831,
+      "ms": 323.3999999947846,
+      "nps": 1044622.7582110332,
+      "memory": 33554432
+    },
+    {
+      "name": "candidate",
+      "repeat": 2,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 66
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 36.30000000074506
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 121.19999999925494
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 7.699999999254942
+        }
+      ],
+      "nodes": 337831,
+      "ms": 231.19999999925494,
+      "nps": 1461206.747409553,
+      "memory": 33554432
+    },
+    {
+      "name": "candidate",
+      "repeat": 3,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 58.69999999925494
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 46.80000000074506
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 143.29999999701977
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 7.800000000745058
+        }
+      ],
+      "nodes": 337831,
+      "ms": 256.5999999977648,
+      "nps": 1316566.6406973607,
+      "memory": 33554432
+    },
+    {
+      "name": "baseline",
+      "repeat": 3,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 81.59999999776483
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 56.19999999925494
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 170.19999999925494
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 13.5
+        }
+      ],
+      "nodes": 337831,
+      "ms": 321.4999999962747,
+      "nps": 1050796.2675082877,
+      "memory": 33554432
+    },
+    {
+      "name": "baseline",
+      "repeat": 4,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 82.70000000298023
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 53.5
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 163.19999999925494
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 12.800000000745058
+        }
+      ],
+      "nodes": 337831,
+      "ms": 312.20000000298023,
+      "nps": 1082098.0140832001,
+      "memory": 33554432
+    },
+    {
+      "name": "candidate",
+      "repeat": 4,
+      "cases": [
+        {
+          "score": 93,
+          "move": 1055252,
+          "nodes": 97398,
+          "ms": 59.19999999925494
+        },
+        {
+          "score": 84,
+          "move": 6178,
+          "nodes": 62886,
+          "ms": 36
+        },
+        {
+          "score": -298,
+          "move": 141332,
+          "nodes": 158498,
+          "ms": 118.90000000223517
+        },
+        {
+          "score": 377,
+          "move": 137905,
+          "nodes": 19049,
+          "ms": 8.900000002235174
+        }
+      ],
+      "nodes": 337831,
+      "ms": 223.0000000037253,
+      "nps": 1514937.219705634,
+      "memory": 33554432
+    }
+  ],
+  "notes": [
+    "Fresh offline worker per measured run, two whole-suite warmups per worker, alternating engine order.",
+    "Same fixed-depth scores/moves/nodes required; no playing-strength conclusion."
+  ],
+  "browser": "155.0.8059.79",
+  "medianNps": {
+    "baseline": 1044622.7582110332,
+    "candidate": 1461206.747409553
+  },
+  "speedup": 1.3987889273175897
+}

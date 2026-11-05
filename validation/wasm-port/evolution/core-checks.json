@@ -1,0 +1,237 @@
+{
+  "createdUtc": "2026-11-05T20:56:02.271Z",
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "scripts/build.cjs",
+        "--check"
+      ],
+      "startedUtc": "2026-11-05T20:55:39.710Z",
+      "finishedUtc": "2026-11-05T20:55:39.750Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/check-size.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:39.751Z",
+      "finishedUtc": "2026-11-05T20:55:39.806Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:39.806Z",
+      "finishedUtc": "2026-11-05T20:55:40.143Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-build.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:40.143Z",
+      "finishedUtc": "2026-11-05T20:55:40.193Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-neural.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:40.193Z",
+      "finishedUtc": "2026-11-05T20:55:40.894Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-neural-cache.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:40.895Z",
+      "finishedUtc": "2026-11-05T20:55:41.070Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-hash-moves.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:41.070Z",
+      "finishedUtc": "2026-11-05T20:55:45.372Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-position-tools.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.373Z",
+      "finishedUtc": "2026-11-05T20:55:45.442Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-game-library.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.442Z",
+      "finishedUtc": "2026-11-05T20:55:45.498Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-move-explanations.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.502Z",
+      "finishedUtc": "2026-11-05T20:55:45.545Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-uci-normalize.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.545Z",
+      "finishedUtc": "2026-11-05T20:55:45.589Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-time-management.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.589Z",
+      "finishedUtc": "2026-11-05T20:55:45.619Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-book-import.cjs"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.619Z",
+      "finishedUtc": "2026-11-05T20:55:45.671Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/stockfish19-pilot"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.671Z",
+      "finishedUtc": "2026-11-05T20:55:45.766Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/candidate-checkpoint"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.767Z",
+      "finishedUtc": "2026-11-05T20:55:45.843Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/completed-200"
+      ],
+      "startedUtc": "2026-11-05T20:55:45.843Z",
+      "finishedUtc": "2026-11-05T20:55:46.357Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": "spawnSync node EPERM"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-prepare-benchmark.py"
+      ],
+      "startedUtc": "2026-11-05T20:55:46.358Z",
+      "finishedUtc": "2026-11-05T20:55:46.935Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.507s\n\nOK\n",
+      "error": "spawnSync python3 EPERM"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-campaign.py"
+      ],
+      "startedUtc": "2026-11-05T20:55:46.935Z",
+      "finishedUtc": "2026-11-05T20:56:02.151Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 15.148s\n\nOK\n",
+      "error": "spawnSync python3 EPERM"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-uci-normalize.py"
+      ],
+      "startedUtc": "2026-11-05T20:56:02.152Z",
+      "finishedUtc": "2026-11-05T20:56:02.270Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.054s\n\nOK\n",
+      "error": "spawnSync python3 EPERM"
+    }
+  ]
+}

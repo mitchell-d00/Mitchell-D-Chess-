@@ -5,7 +5,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   const context=await browser.newContext(),page=await context.newPage(),errors=[],network=[];
   page.on('pageerror',e=>errors.push(String(e)));
   await page.route(/^https?:/,r=>{network.push(r.request().url());return r.abort();});
-  await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync('index.html','utf8')}));
+  await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:fs.readFileSync(process.env.MITCHELL_TEST_HTML||'index.html','utf8')}));
   await page.goto('http://localhost:8765/');await context.setOffline(true);
   await page.evaluate(()=>{setup.mode='pvp';setup.tc='none';newGame();playMove('e2e4');});
   const before=await page.evaluate(()=>G.chess.fen());

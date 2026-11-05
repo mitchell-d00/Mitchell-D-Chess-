@@ -1,0 +1,41 @@
+name: Full WASM build and tests
+on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: wasm-candidate-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install LLVM 19 development tools
+        timeout-minutes: 4
+        run: |
+          if ! command -v clang++-19 >/dev/null || ! command -v wasm-ld-19 >/dev/null; then
+            sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+            sudo apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install --no-install-recommends -y clang-19 lld-19
+          fi
+      - run: npm ci
+      - name: Compile and verify the full engine
+        run: npm run build:wasm && npm run test:wasm
+      - name: Build a single offline candidate
+        run: node scripts/build.cjs --candidate-wasm --output /tmp/mitchell-wasm-candidate.html
+      - run: npx playwright install --with-deps chromium
+      - name: Verify real WASM and fallback workers
+        env:
+          MITCHELL_TEST_HTML: /tmp/mitchell-wasm-candidate.html
+        run: |
+          export CHROMIUM_PATH="$(node -p 'require("playwright").chromium.executablePath()')"
+          node scripts/browser-wasm-test.cjs
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mitchell-wasm-candidate
+          path: /tmp/mitchell-wasm-candidate.html

@@ -9,4 +9,9 @@ const decode=x=>x.replaceAll('&quot;','"').replaceAll('&amp;','&').replaceAll('&
 assert(decode(disclosure).includes(fs.readFileSync('LICENSE','utf8').trim()));
 assert(decode(disclosure).includes(fs.readFileSync('third-party/LEORIK-LICENSE.txt','utf8').trim()));
 assert.equal((html.match(/id="engine-src"/g)||[]).length,1);
-console.log('PASS: deterministic modular build, pinned network, original MIT and Leorik notices, single inline engine');
+assert(html.includes('think: thinkWithWasm,'),'Release must dispatch high levels to full WASM');
+assert.equal(html.match(/<title>([^<]+)<\/title>/)[1],'Mitchell D Chess');
+assert(!build({wasm:false}).includes('var WASM_CORE_DATA'),'Explicit JavaScript diagnostic build');
+const embedded=html.match(/var WASM_CORE_DATA = '([^']+)'/)[1];
+assert.deepEqual(Buffer.from(embedded,'base64'),fs.readFileSync('engine/wasm/mitchell.wasm'));
+console.log('PASS: deterministic release WASM dispatch/binary, JavaScript diagnostic build, pinned network, MIT notices and single inline engine');

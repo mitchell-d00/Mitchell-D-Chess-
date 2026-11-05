@@ -1,0 +1,78 @@
+{
+  "createdUtc": "2026-11-05T20:48:15.511358+00:00",
+  "testedRevision": "7144e462e5b2dfb7133eb6c22e722f9c1b5ec882",
+  "html": "/workspace/mitchell-performance/wasm-evolution-40/engine-under-test.html",
+  "htmlSha256": "a0f376385d0662a7e7d026c3f71917497997bb4fd8c1f6312a52c3c58027331c",
+  "adapter": "/workspace/mitchell-performance/wasm-evolution-40/adapter/uci.cjs",
+  "adapterSha256": "c9a11e49507c42930a55ab52bad9c487cf2364c3fe672100e43d28a1c9b6118b",
+  "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+  "nodeVersion": "v24.22.1",
+  "fastchess": "/tmp/chess-benchmark-fastchess/fastchess-linux-x86-64/fastchess",
+  "fastchessVersion": "fastchess alpha 1.8.2 compiled for ubuntu-22.04 20260726-f618e34 (CI)",
+  "concurrency": 1,
+  "timeControl": {
+    "movetimeSeconds": 0.1,
+    "equalTimeMarginMs": 250,
+    "candidateMoveOverheadMs": 20,
+    "noPonder": true
+  },
+  "openings": "/workspace/mitchell-performance/wasm-evolution-40/openings.epd",
+  "openingsSha256": "5998127ce1b3825aa543caa512677c1e8bb8b12884cc67f080bf35ba33c40646",
+  "opponents": {
+    "Mitchell-WASM-baseline": {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "options": [
+        "option.Level=65",
+        "option.MoveOverhead=20"
+      ],
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "arguments": [
+        "args=/workspace/mitchell-performance/wasm-evolution-40/adapter/uci-file.cjs /workspace/mitchell-performance/wasm-evolution-40/baseline.html"
+      ],
+      "additionalInputs": {
+        "/workspace/mitchell-performance/wasm-evolution-40/baseline.html": "5801113f02ed26970aa2eabc0b46e355566503cc0a8eac3f7b70a5acc3e7c368",
+        "/workspace/mitchell-performance/wasm-evolution-40/adapter/uci-file.cjs": "bccce5427a9afd4cbc6de10a7fe6337d0c49a05f5088f4a579abde12c37ff17d",
+        "/workspace/mitchell-performance/wasm-evolution-40/adapter/uci.cjs": "c9a11e49507c42930a55ab52bad9c487cf2364c3fe672100e43d28a1c9b6118b",
+        "/workspace/mitchell-performance/wasm-evolution-40/adapter/engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f"
+      },
+      "sourceRevision": "dd1714a282e959fb71b2b374cf319471d6f3fbf8"
+    }
+  },
+  "batches": [
+    {
+      "id": "01-opponent",
+      "opponent": "Mitchell-WASM-baseline",
+      "games": 40,
+      "openingStart": 1
+    }
+  ],
+  "environment": {
+    "MITCHELL_REQUIRE_WASM": "1",
+    "MITCHELL_WASM_MEMORY": "32",
+    "MITCHELL_EXACT_ENDGAMES": "0"
+  },
+  "runnerSourceRevision": "7144e462e5b2dfb7133eb6c22e722f9c1b5ec882",
+  "stopOnForfeit": true,
+  "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+  "fastchessSha256": "3d0a8f3c8b837a96366ac838f3ddf6fe87b813abb4ad2852284c0ce409132566",
+  "host": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "logicalCpus": 5,
+    "pythonVersion": "3.12.14",
+    "cpuQuota": "400000 100000",
+    "memoryLimit": "17179869184"
+  },
+  "protocolReference": "validation/independent/results-58/campaign.json",
+  "expectedGames": 40,
+  "purpose": "Paired full-WASM evolution experiment",
+  "event": "Paired full-WASM evolution experiment",
+  "helper": "/workspace/mitchell-performance/wasm-evolution-40/adapter/engine.cjs",
+  "helperSha256": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+  "engineSourceSha256": "b477ac968d2fcbfa03f542ca46bb2052dbcfd916dc451640bafe182afaee5f54",
+  "runner": "/workspace/mitchell-performance/wasm-evolution-40/runner.py",
+  "runnerSha256": "5b85b658dd3e41f8cd8bbc661becce20393c13532c7546af0392afc97f3b8722",
+  "artifactReconstruction": "node scripts/build.cjs --candidate-wasm --output engine-under-test.html",
+  "preparer": "/workspace/mitchell-performance/wasm-evolution-40/prepare-wasm-match.py",
+  "preparerSha256": "929c5b906c60661911b24d8c2e0e2b903e2eeae10b217bfa8e804213bb193f85",
+  "purposeNote": "Relative short-control test, not a rating. Same adapter, 32 MiB WASM, network and time control; no books, no evaluation adjudication, no arbitrary move-limit draws. All completed games retained. Caller-supplied artifacts are identified by hashes; revision labels must correspond to their explicit builds."
+}

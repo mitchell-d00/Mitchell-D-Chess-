@@ -1,0 +1,43 @@
+{
+  "createdUtc": "2026-11-05T21:13:04.031565+00:00",
+  "status": "WASM release enabled for levels 51\u201365; unrated",
+  "sourceRevision": "e6023b0",
+  "differentialChecks": 5476,
+  "candidateHtml": "Build explicitly with --candidate-wasm --output",
+  "candidateHtmlSha256": "0f725c4d34b8c160455422db7193b74b160a73073ad722364d692be7b82b7190",
+  "files": {
+    "engine/wasm/mitchell.wasm": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0"
+  },
+  "browserStatus": "All seven existing browser suites and four dedicated backend/memory/fallback worker scenarios passed locally",
+  "notes": [
+    "User authorized upgrade now and rating later, superseding the previous publication gate.",
+    "The release embeds the match-tested core for neural levels with automatic worker JavaScript fallback.",
+    "Earlier frozen experiment artifacts and their hashes remain historical records.",
+    "No absolute Elo or human/FIDE rating has been established.",
+    "Loss regressions, network comparisons and longer-control independent-opponent measurement remain future work."
+  ],
+  "latestReport": "../wasm-release.md",
+  "additionalEngineChecks": 537,
+  "firstMatch": {
+    "archive": "v1-vs-js-40",
+    "games": 40,
+    "wins": 20,
+    "draws": 19,
+    "losses": 1,
+    "forfeits": 0,
+    "secondsPerMove": 0.1
+  },
+  "evolutionMatch": {
+    "archive": "evolution/match-40",
+    "games": 40,
+    "wins": 20,
+    "draws": 15,
+    "losses": 5,
+    "forfeits": 0,
+    "secondsPerMove": 0.1,
+    "pairedScoreBootstrap95": [
+      0.5625,
+      0.8
+    ]
+  }
+}

@@ -1,10 +1,14 @@
 {
+  "defaultEngine": "wasm",
   "engine": [
     "src/engine/position.js",
     "src/engine/kpk.js",
     {
       "neural": true,
       "suffix": "\n"
+    },
+    {
+      "wasmCore": true
     },
     "src/engine/evaluation.js",
     "src/engine/search.js",
@@ -42,7 +46,7 @@
     "sha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704"
   },
   "sizeBudget": {
-    "raw": 614400,
+    "raw": 716800,
     "gzip": 262144
   },
   "wrappers": {
@@ -76,5 +80,9 @@
       "leading": "",
       "trailing": ""
     }
+  },
+  "candidateSizeBudget": {
+    "raw": 786432,
+    "gzip": 327680
   }
 }
