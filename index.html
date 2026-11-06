@@ -21,7 +21,7 @@
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
   /* board + pieces (overwritten from settings) */
   --sq-light:#eeeed2; --sq-dark:#769656;
-  --pw:#fbfaf5; --pw-line:#1d1d1d; --pb:#262321; --pb-line:#f0ede6;
+  --pw:#fbfaf5; --pw-line:#000000; --pb:#262321; --pb-line:#ffffff;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -2803,13 +2803,15 @@ const DEF = { theme: 'system', light: '#eeeed2', dark: '#769656', pw: '#fbfaf5',
 let S = Object.assign({}, DEF, store.get('settings', {}));
 const saveS = () => store.set('settings', S);
 function lum(hex) { const n = parseInt(hex.slice(1), 16), r = (n >> 16) / 255, g = (n >> 8 & 255) / 255, b = (n & 255) / 255; const f = c => c <= .03928 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); return .2126 * f(r) + .7152 * f(g) + .0722 * f(b); }
+// Pure black or white, whichever contrasts more strongly with the piece fill.
+function pieceOutline(hex) { const l = lum(hex) + .05; return l / .05 >= 1.05 / l ? '#000000' : '#ffffff'; }
 function applySettings() {
   const r = document.documentElement;
   if (S.theme === 'system') r.removeAttribute('data-theme'); else r.setAttribute('data-theme', S.theme);
   r.style.setProperty('--sq-light', S.light); r.style.setProperty('--sq-dark', S.dark);
   r.style.setProperty('--pw', S.pw); r.style.setProperty('--pb', S.pb);
-  r.style.setProperty('--pw-line', lum(S.pw) > .35 ? '#1c1c1c' : '#f3f1ec');
-  r.style.setProperty('--pb-line', lum(S.pb) > .35 ? '#1c1c1c' : '#f3f1ec');
+  r.style.setProperty('--pw-line', pieceOutline(S.pw));
+  r.style.setProperty('--pb-line', pieceOutline(S.pb));
   r.style.setProperty('--anim', S.anim === 'off' ? '0ms' : S.anim === 'fast' ? '90ms' : '170ms');
   r.dataset.motion = S.anim === 'off' ? 'off' : '';
   const dark = S.theme === 'dark' || (S.theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
@@ -2833,8 +2835,10 @@ const PIECE_PATHS = {
 };
 function pieceSVG(type, color, extra) {
   const P = PIECE_PATHS[type], f = color === 'w' ? 'var(--pw)' : 'var(--pb)', l = color === 'w' ? 'var(--pw-line)' : 'var(--pb-line)';
-  let s = `<svg viewBox="0 0 45 45" aria-hidden="true" ${extra || ''}><g fill="${f}" stroke="${l}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">`;
-  if (P.cross) s += `<path d="${P.cross}" fill="none" stroke-width="2.4"/>`;
+  let s = `<svg viewBox="0 0 45 45" aria-hidden="true" ${extra || ''}><g fill="${f}" stroke="${l}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">`;
+  // The cross is a piece-coloured stroke inside a wider contrasting silhouette.
+  // A single outline-coloured stroke disappears on a matching board square.
+  if (P.cross) s += `<path d="${P.cross}" fill="none" stroke-width="5"/><path d="${P.cross}" fill="none" stroke="${f}" stroke-width="2.4"/>`;
   P.body.forEach(d => s += `<path d="${d}"/>`);
   (P.circ || []).forEach(c => s += `<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}"/>`);
   if (P.det) s += `<path d="${P.det}" fill="none"/>`;
@@ -4137,7 +4141,7 @@ document.addEventListener('keydown', e => {
 function seg(key, opts) { return `<div class="seg" data-set="${key}">${opts.map(([v, l]) => `<button data-v="${v}" class="${String(S[key]) === String(v) ? 'on' : ''}">${l}</button>`).join('')}</div>`; }
 function openSettings() {
   const bt = BOARD_THEMES.map(([n, a, b]) => `<button class="swatch ${S.light === a && S.dark === b ? 'on' : ''}" data-board="${a},${b}"><span class="mini"><i style="background:${a}"></i><i style="background:${b}"></i><i style="background:${b}"></i><i style="background:${a}"></i></span>${n}</button>`).join('');
-  const pt = PIECE_THEMES.map(([n, a, b]) => `<button class="swatch ${S.pw === a && S.pb === b ? 'on' : ''}" data-pieces="${a},${b}"><span class="pcpair" style="--pw:${a};--pb:${b};--pw-line:${lum(a) > .35 ? '#1c1c1c' : '#f3f1ec'};--pb-line:${lum(b) > .35 ? '#1c1c1c' : '#f3f1ec'};background:linear-gradient(90deg,${S.light} 50%,${S.dark} 50%);border-radius:5px">${pieceSVG('n', 'w')}${pieceSVG('n', 'b')}</span>${n}</button>`).join('');
+  const pt = PIECE_THEMES.map(([n, a, b]) => `<button class="swatch ${S.pw === a && S.pb === b ? 'on' : ''}" data-pieces="${a},${b}"><span class="pcpair" style="--pw:${a};--pb:${b};--pw-line:${pieceOutline(a)};--pb-line:${pieceOutline(b)};background:linear-gradient(90deg,${S.light} 50%,${S.dark} 50%);border-radius:5px">${pieceSVG('n', 'w')}${pieceSVG('n', 'b')}</span>${n}</button>`).join('');
   openModal(`<div class="modal-head"><h2 style="font-size:1.4rem">Colours &amp; settings</h2><button class="btn small" data-close>Done</button></div>
   <div class="setsec"><h3>Appearance</h3>
     <div class="setrow"><div class="lab"><b>Theme</b><span>Light, dark, or follow your device</span></div>${seg('theme', [['system', 'Auto'], ['light', 'Light'], ['dark', 'Dark']])}</div>

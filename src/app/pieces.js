@@ -9,8 +9,10 @@ const PIECE_PATHS = {
 };
 function pieceSVG(type, color, extra) {
   const P = PIECE_PATHS[type], f = color === 'w' ? 'var(--pw)' : 'var(--pb)', l = color === 'w' ? 'var(--pw-line)' : 'var(--pb-line)';
-  let s = `<svg viewBox="0 0 45 45" aria-hidden="true" ${extra || ''}><g fill="${f}" stroke="${l}" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">`;
-  if (P.cross) s += `<path d="${P.cross}" fill="none" stroke-width="2.4"/>`;
+  let s = `<svg viewBox="0 0 45 45" aria-hidden="true" ${extra || ''}><g fill="${f}" stroke="${l}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">`;
+  // The cross is a piece-coloured stroke inside a wider contrasting silhouette.
+  // A single outline-coloured stroke disappears on a matching board square.
+  if (P.cross) s += `<path d="${P.cross}" fill="none" stroke-width="5"/><path d="${P.cross}" fill="none" stroke="${f}" stroke-width="2.4"/>`;
   P.body.forEach(d => s += `<path d="${d}"/>`);
   (P.circ || []).forEach(c => s += `<circle cx="${c[0]}" cy="${c[1]}" r="${c[2]}"/>`);
   if (P.det) s += `<path d="${P.det}" fill="none"/>`;

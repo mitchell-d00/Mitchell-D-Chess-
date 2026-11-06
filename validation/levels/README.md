@@ -1,6 +1,6 @@
 # Latest browser-clock comparison — November 6, 2026
 
-Level 65 scored **7 wins, 12 draws and 1 losses** in a completed **20-game level-65/51 browser match at 60+1** (65% of points).
+Level 65 scored **7 wins, 12 draws and 1 loss** in a completed **20-game level-65/51 browser match at 60+1** (65% of points).
 
 Both presets use NNUE/WASM and differ in thinking allowance. There were 0 level-65 flag falls and 0 level-51 flag falls, with 0 recoveries. [Results, PGNs and clock traces](65-v51-60plus1/README.md) and [the repeat protocol](BROWSER-MATCH-PROTOCOL.md) are retained. The artifact matches the persona release, with Standard selected. Unlike the older 65/50 tests below, this compares two neural presets at an increment clock; results should not be pooled. No absolute Elo is assigned.
 

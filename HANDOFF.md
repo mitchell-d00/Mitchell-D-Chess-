@@ -906,3 +906,30 @@ Local final checks: all33 core commands pass, including the new archive audit.
 Focused rerun checks exact published Markdown/report.json regeneration and
 negative corruption cases. All runtime engine/app files and index.html are
 unchanged from the frozen release; git diff confirms no game-source change.
+
+## Piece and king-cross visibility — November 6, 2026
+
+User screenshot shows white king with a dark single-stroke cross and black king
+with a light one: each disappears when that stroke matches a solid square.
+New cross draws a 5-unit contrasting silhouette followed by a2.4-unit stroke
+in the piece's own colour. All body/circle outlines increase1.5→2 SVG units.
+The common pieceSVG renderer covers board, lessons, captured icons, promotion
+and settings previews. Keep custom piece fills; no rule/search/clock changes.
+
+settings.js pieceOutline chooses pure#000000/#ffffff by greater contrast ratio
+against the fill. Use that same helper in settings-modal swatches; root CSS
+fallbacks match. This corrects the old low-contrast mid-grey threshold too.
+
+New offline browser-piece-contrast-test renders actual SVG with inherited
+variables into canvas, checks king core/border colours, opaque silhouette edge
+pixels, and visibility composited on black/white. Nine palettes: all7 presets,
+reversed custom black/white and mid-grey.108 sprites,216 backgrounds,53472 edge
+pixels pass. Settings swatches checked too. Screenshot24 extremes in
+validation/graphics/piece-outlines.png visually reviewed; readme has repeat
+command. Test added to browser CI. Accessibility and basic browser regressions
+run separately. Runtime engine source/binary/network unchanged; single HTML
+regenerated680543raw/258562gzip, below existing budgets. Corrected stale README
+palette counts to10boards/7piece sets and the prior match's singular-loss typo.
+
+Next: publish after GitHub checks and verify fetched live HTML with the contrast
+browser test. No new strength rating or game outcome changes are involved.
