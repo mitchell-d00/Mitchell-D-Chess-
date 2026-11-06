@@ -19,8 +19,24 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    }
    think=saved;G.thinking=false;G.clock=null;G.mode='pvp';newGame();return result;
   });
-  assert(budgets.every(r=>r.time>0&&r.text.includes('Clocked thinking allowance')));assert(budgets[1].time>budgets[0].time);assert(budgets[3].time>2*budgets[2].time);
+  // Survival budgets can coincide after integer rounding in time trouble.
+  assert(budgets.every(r=>r.time>0&&r.text.includes('Clocked thinking allowance')));assert(budgets[1].time>=budgets[0].time);assert(budgets[3].time>2*budgets[2].time);
+  const expiredRequest=await page.evaluate(()=>think(null,['e2e4','c7c5','g1f3'],64,{time:5000,noBook:true,clockDeadline:performance.timeOrigin+performance.now()-100}));
+  assert(expiredRequest.timeBudget<=1,'Worker must reduce stale queued requests to the minimum budget');
   assert(await page.locator('.clock-budget').count()===0);
+  const policies=await page.evaluate(()=>{
+   const saved=think;think=()=>new Promise(()=>{});setup.mode='pvp';setup.tc='none';newGame();
+   try{
+    const rows=[];for(let level=1;level<=65;level++){
+     G.mode='cvc';G.players={w:{type:'ai',level},b:{type:'human'}};G.thinking=false;G.aiClockOverhead=75;
+     G.clock={w:1000,b:60000,start:{w:60000,b:60000},running:null,last:performance.now(),inc:0,delay:0,delayLeft:0,per:0};
+     maybeAI();rows.push({level,mode:G.clockMode,time:G.thinkBudget});
+    }
+    const budgets=[];for(const overhead of [20,300]){G.clock.w=60000;G.thinking=false;G.aiClockOverhead=overhead;maybeAI();budgets.push(G.thinkBudget);}
+    return {rows,budgets};
+   }finally{think=saved;G.thinking=false;newGame();}
+  });
+  assert(policies.rows.every(r=>r.mode==='emergency'&&r.time<=1));assert(policies.budgets[1]<policies.budgets[0],'Observed device overhead reduces the actual UI search allocation');
   const trouble=await page.evaluate(async()=>{
    setup.mode='pvp';setup.tc='none';newGame();
    const savedThink=think,savedTimeout=window.setTimeout,timers=[],requests=[];
@@ -44,6 +60,6 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    await page.evaluate(()=>{think=window.savedLevelThink;newGame();});
   }
   assert.deepEqual(errors,[]);
-  console.log('PASS: real worker level-50/65 budget separation; fresh clock allocation, no viewing delay in time trouble, expired-turn guard; visible cap, backend/fallback labels and cleanup');
+  console.log('PASS: real worker budget separation and queued deadline; all 65 emergency presets, adaptive UI overhead, fresh clock allocation, no viewing hold, expired-turn guard, source labels and cleanup');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

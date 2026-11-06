@@ -2782,7 +2782,13 @@ const Snd = {
 let worker = null, reqId = 0, pending = {};
 function makeWorker() {
   try {
-    const src = $('#engine-src').textContent;
+    // Queueing/startup consume the same wall clock as search. Recheck the
+    // game's monotonic deadline after the request actually reaches the worker.
+    const src = $('#engine-src').textContent + `\nconst handleEngineRequest=self.onmessage;
+self.onmessage=function(e){const x=e.data.extra;if(x&&Number.isFinite(x.clockDeadline)){
+ const left=x.clockDeadline-(performance.timeOrigin+performance.now());
+ x.time=Math.max(1,Math.min(Number(x.time)||1,left));
+}handleEngineRequest(e);};`;
     const url = URL.createObjectURL(new Blob([src], { type: 'text/javascript' }));
     const w = new Worker(url); URL.revokeObjectURL(url);
     w.onmessage = e => { const p = pending[e.data.id]; if (!p) return; delete pending[e.data.id]; e.data.ok ? p.res(e.data.result) : p.rej(new Error(e.data.error)); };
@@ -2990,20 +2996,37 @@ function kingInCheckSq(chess) {
   return E.sqName(chess.kingSq[chess.side >> 3]);
 }
 
-// Original MIT clock allocation. Milliseconds throughout; no clock is reset here.
-function allocateThinkTime(clock, side, levelCap, ply) {
+// Original MIT clock allocation. All values are milliseconds; clocks are never reset.
+function allocateThinkTime(clock, side, levelCap, ply, context = {}) {
   const remaining = Math.max(0, Number(clock[side]) || 0);
   const cap = Math.max(1, Number(levelCap) || 1000);
-  const reserve = Math.min(remaining * .15, Math.max(40, Math.min(500, remaining * .02)));
+  const start = Math.max(remaining, Number(clock.start && clock.start[side]) || remaining);
+  const overhead = Math.max(20, Math.min(2000, Number(context.overheadMs) || 75));
   const delay = Math.max(0, Number(clock.delayLeft) || 0);
+  const increment = Math.max(0, Number(clock.inc) || 0);
+  // Leave dispatch/rendering room separately from the bank for future moves.
+  const reserve = Math.min(remaining * .45, Math.max(120, overhead * 2));
   const available = Math.max(1, remaining + delay - reserve);
-  // A planning horizon, not a prediction of the game's actual remaining length.
-  const movesLeft = Math.max(18, 40 - Math.floor(Math.max(0, ply) / 6));
-  const ideal = clock.per ? remaining * .65 : remaining / movesLeft + Math.max(0, clock.inc || 0) * .8 + delay * .8;
-  const burstCap = clock.per ? remaining * .75 : remaining * .25 + delay * .8;
-  return {time:Math.max(1, Math.floor(Math.min(cap, available, burstCap, ideal))),reserve};
+  const bank = clock.per ? 0 : Math.min(remaining * .35, Math.max(500, Math.min(8000, start * .08)));
+  // Long endings need a longer horizon as time dwindles, rather than assuming
+  // only 18 moves remain. Increment/delay are replenished; the main bank is not.
+  const pressure = 1 - Math.min(1, remaining / 15000);
+  const emergency = 1 - Math.min(1, remaining / 3000);
+  const movesLeft = Math.max(56, 72 - Math.floor(Math.max(0, Number(ply) || 0) / 8)) + pressure * 40 + emergency * 40;
+  const ideal = clock.per ? remaining * .65 : (remaining - bank) / movesLeft + increment * .65 + delay * .7;
+  const burstCap = clock.per ? remaining * .75 : remaining * .08 + increment * .7 + delay * .75;
+  // Measured overhead must reduce search time, including the per-move mode.
+  const time = Math.max(1, Math.floor(Math.min(cap, available, burstCap, Math.max(1, ideal - overhead))));
+  const mode = clock.per ? 'per-move' : remaining < 1500 ? 'emergency' : remaining < Math.min(15000, Math.max(3000, start * .2)) ? 'time trouble' : remaining < start * .35 ? 'saving time' : 'balanced';
+  return {time,reserve,bank,movesLeft,overhead,mode};
 }
-if (typeof module !== 'undefined') module.exports = allocateThinkTime;
+// Track observed excess wall time conservatively, with gradual recovery after
+// fast replies. This state belongs to the current game, not persisted clocks.
+function updateClockOverhead(previous, roundTripMs, searchBudgetMs) {
+  const observed = Math.max(0, (Number(roundTripMs) || 0) - Math.max(0, Number(searchBudgetMs) || 0));
+  return Math.max(20, Math.min(2000, Math.max((Number(previous) || 75) * .9, observed * 1.5 + 20)));
+}
+if (typeof module !== 'undefined') { module.exports = allocateThinkTime; module.exports.updateClockOverhead = updateClockOverhead; }
 // ================= Play mode =================
 const L18 = E.LEVELS; // all 65 levels
 let G = null;
@@ -3107,21 +3130,23 @@ function maybeAI() {
     const claim = G.chess.claimable();
     if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
   }
-  G.thinking = true;G.thinkBudget=null; renderBars(); renderStatus(); renderButtons();
+  G.thinking = true;G.thinkBudget=null;G.clockMode=null; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
   let minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
   let extra;
   if (G.clock) {
     const c = G.clock, rem = c[side];
-    const allocation = allocateThinkTime(c, side, 120000, ply);
+    const allocation = allocateThinkTime(c, side, 120000, ply, {overheadMs:G.aiClockOverhead});
     const budget = allocation.time, reserve = allocation.reserve;
-    extra = { time: budget };
+    extra = { time: budget, clockDeadline:performance.timeOrigin+performance.now()+Math.max(1,rem+c.delayLeft-reserve) };
     // Viewing speed must not spend the last seconds on an already chosen move.
     minDelay = rem < 10000 ? 0 : Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
-    G.thinkBudget=E.levelThinkTime(p.level-1,extra);renderStatus();
+    G.thinkBudget=E.levelThinkTime(p.level-1,extra);G.clockMode=allocation.mode;renderStatus();
   }
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
+    if (!G || G.token !== tok || G.moves.length !== ply) return;
+    if(G.clock)G.aiClockOverhead=updateClockOverhead(G.aiClockOverhead,Date.now()-t0,r&&r.timeBudget);
     const wait = Math.max(0, minDelay - (Date.now() - t0));
     setTimeout(() => {
       if (!G || G.token !== tok || G.moves.length !== ply) return;
@@ -3179,7 +3204,8 @@ function renderStatus() {
     if (G.touched && humanToMove()) txt += ` · touch-move: move the piece on ${G.touched}`;
   }
   const limited=G.clock&&G.thinking&&!G.paused&&!G.over&&G.view==null&&G.thinkBudget>0;
-  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}${limited?`<small class="clock-budget">Clocked thinking allowance: up to ${(G.thinkBudget/1000).toFixed(G.thinkBudget<1000?2:1)}s for this move.</small>`:''}</span>`;
+  const allowance=G.thinkBudget<10?'under 0.01s':'up to '+(G.thinkBudget/1000).toFixed(G.thinkBudget<1000?2:1)+'s';
+  el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}${limited?`<small class="clock-budget">Clocked thinking allowance: ${allowance} for this move${G.clockMode&&G.clockMode!=='balanced'?' · '+esc(G.clockMode):''}.</small>`:''}</span>`;
   const source=G.engineSource;$('#engineSource').hidden=G.view!=null||!source||!source.text||source.ply>G.moves.length;
   if(!$('#engineSource').hidden)$('#engineSource').textContent=source.text;
   renderDrawBox();
