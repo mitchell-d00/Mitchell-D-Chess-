@@ -44,6 +44,8 @@ All 64 adjacent pairs were screened; several remain statistically unresolved,
 including a tied 20-game level-16/15 follow-up. These results do not certify a
 strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/levels/README.md).
 
+Level 65 scored **7 wins, 12 draws and 1 losses** in a completed **20-game level-65/51 browser match at 60+1** (65% of points). Both used Standard personas and the actual browser clocks, with ten colour-reversed openings. This is a relative comparison, not an absolute rating. [Every game, clocks and results](validation/levels/65-v51-60plus1/README.md); [repeat protocol](validation/levels/BROWSER-MATCH-PROTOCOL.md).
+
 ## What is in it
 
 - **Full rules.** Castling, en passant, promotion, check, checkmate, stalemate,

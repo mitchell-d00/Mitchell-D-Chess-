@@ -1,0 +1,31 @@
+{
+  "game": 5,
+  "opening": "Open Sicilian",
+  "openingMoves": [
+    "e2e4",
+    "c7c5",
+    "g1f3",
+    "d7d6",
+    "d2d4",
+    "c5d4",
+    "f3d4",
+    "g8f6"
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 51,
+  "startedUtc": "2026-11-06T14:45:00.768Z",
+  "finishedUtc": "2026-11-06T14:48:33.225Z",
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "insufficient material"
+  },
+  "plies": 246,
+  "whiteMs": 47666.29999999702,
+  "blackMs": 98367.80000000261,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 238
+}

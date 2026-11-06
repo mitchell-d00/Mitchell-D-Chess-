@@ -1,3 +1,18 @@
+# Level 65 versus level 51 at actual 60+1 clocks (November 6, 2026)
+
+Level 65 scored 7 wins, 12 draws and 1 losses in a completed 20-game level-65/51 browser match at 60+1 (65% of points).
+All twenty games, opening pairs, PGNs, per-move clock/search traces, frozen
+HTML/runner and hashes are in validation/levels/65-v51-60plus1/.
+The protocol is validation/levels/BROWSER-MATCH-PROTOCOL.md.
+
+    node scripts/verify-level-match.cjs validation/levels/65-v51-60plus1
+    node scripts/test-level-match.cjs
+    node scripts/report-level-match.cjs validation/levels/65-v51-60plus1
+    node scripts/browser-level-match.cjs --out /new/empty/path --games 20 --seconds 60 --increment 1 --concurrency 2
+
+This measures relative performance between these presets, not absolute Elo.
+CI checks the archived evidence and report without rerunning the timed games.
+
 # Optional opponent personalities (November 6, 2026)
 
 Standard defaults to zero style adjustment; independent per-side profiles are

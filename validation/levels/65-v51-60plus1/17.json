@@ -1,0 +1,31 @@
+{
+  "game": 17,
+  "opening": "English Four Knights",
+  "openingMoves": [
+    "c2c4",
+    "e7e5",
+    "b1c3",
+    "g8f6",
+    "g1f3",
+    "b8c6",
+    "g2g3",
+    "d7d5"
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 51,
+  "startedUtc": "2026-11-06T14:59:44.306Z",
+  "finishedUtc": "2026-11-06T15:02:15.381Z",
+  "over": {
+    "result": "0-1",
+    "reason": "checkmate"
+  },
+  "plies": 184,
+  "whiteMs": 49213.099999997765,
+  "blackMs": 96332.69999999925,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 176
+}

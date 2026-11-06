@@ -1,0 +1,31 @@
+{
+  "game": 9,
+  "opening": "Caro-Kann Advance",
+  "openingMoves": [
+    "e2e4",
+    "c7c6",
+    "d2d4",
+    "d7d5",
+    "e4e5",
+    "c8f5",
+    "g1f3",
+    "e7e6"
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 51,
+  "startedUtc": "2026-11-06T14:49:26.494Z",
+  "finishedUtc": "2026-11-06T14:51:13.394Z",
+  "over": {
+    "result": "1-0",
+    "reason": "checkmate"
+  },
+  "plies": 135,
+  "whiteMs": 55299.800000000745,
+  "blackMs": 85256.49999999441,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 127
+}

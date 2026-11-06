@@ -1,0 +1,31 @@
+{
+  "game": 11,
+  "opening": "Queens Gambit Declined",
+  "openingMoves": [
+    "d2d4",
+    "d7d5",
+    "c2c4",
+    "e7e6",
+    "b1c3",
+    "g8f6",
+    "c1g5",
+    "f8e7"
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 51,
+  "startedUtc": "2026-11-06T14:51:13.530Z",
+  "finishedUtc": "2026-11-06T14:53:07.191Z",
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "stalemate"
+  },
+  "plies": 142,
+  "whiteMs": 53537.400000002235,
+  "blackMs": 87407.70000000857,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 134
+}

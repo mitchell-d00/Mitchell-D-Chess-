@@ -52,6 +52,16 @@ from a few wins or copy an opponent's published rating onto Mitchell.
 
 Describe changes, checks, limitations and the next action in `HANDOFF.md`.
 
+For comparisons using actual browser clocks, use
+`node scripts/browser-level-match.cjs --out /path/to/new-empty-directory`.
+The default is 20 colour-paired level-65/51 games at 60+1 with Standard personas.
+See [the browser-match protocol](validation/levels/BROWSER-MATCH-PROTOCOL.md).
+The runner snapshots the release and its own source; PGNs, per-move clock/search
+traces, failures and input hashes are retained. Use
+`node scripts/verify-level-match.cjs /path/to/archive` to recount a completed run,
+and `node scripts/report-level-match.cjs /path/to/archive` to render its report.
+CI audits frozen evidence; it does not rerun the lengthy clocked matches.
+
 ## Full WASM engine
 
 The release embeds the original full C++/SIMD engine by default for levels

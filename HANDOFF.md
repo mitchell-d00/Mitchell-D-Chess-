@@ -866,3 +866,43 @@ Next: publish after CI, verify deployed HTML and actual offline persona worker.
 Standing user publication authorization applies. Native compile here uses
 LD_LIBRARY_PATH=/tmp/mitchell-llvm/usr/lib/x86_64-linux-gnu and compiler/linker
 from /tmp/mitchell-llvm/usr/bin as documented in earlier handoff.
+
+## Completed 65-versus-51 browser match — November 6, 2026
+
+User requested20 games after their legitimate130.Kxe6 insufficient-material
+draw at60+1. Frozen released HTML97b0f0454cf7a3be8e4f2f81440e9de661f6098ede1da72fcebb85860f54bcc2
+(main3fe56a3) ran20 actual offline Chromium/worker games. Standard personas,
+casual rules, Fast viewing, two concurrent games on4-CPU quota. Ten book
+prefixes of8plies, colours reversed; clocks begin60seconds AFTER prescribed
+plies, without charging/incrementing them. Book stays enabled afterwards.
+No engine, model, time-allocation or runtime index/source change during run.
+Warm native worker before clocks; no search-budget override/adjudication.
+
+Level65 W/D/L=7/12/1, score65%. Flags65=0,
+flags51=0, recoveries=0, inactiveMs=0.
+All3659plies legal;3499clocked moves have per-move
+backend/budget/depth/nodes/clock diagnostics. Not an absolute Elo/ladder guarantee.
+This is a server/headless run, not an iOS background-suspension test.
+
+Runner commit4f96929 and frozen source/artifact are archived. Additional
+commits add separate static verifier/reporter/tests, not engine changes.
+Archive: validation/levels/65-v51-60plus1; report/protocol/PGNs/JSON/JSONL/
+hashes/raw console log all retained. Initial2-second two-game smoke is excluded;
+custom zero-increment PGN control is canonical seconds (2), not2+0.
+
+verify-level-match replays frozen Chess rules, checks earliest terminal, colours,
+prescribed history, earned increments, PGN clock readings, flags, backends,
+recoveries and file hashes, then recounts WDL separately. report-level-match
+regenerates report.json/README; test-level-match rejects incomplete/false-score/
+modified-trace/fabricated-clock inputs and checks report reproduction. CI core
+now includes this static audit; does not rerun20 timed games. Index staysexactly
+680218bytes. No strength calibration or level settings changed.
+
+Next: publish results after CI. Further strength work should use separately
+frozen rated opponents/time controls; do not infer FIDE or absolute engine Elo
+from this self-play comparison or pool it with earlier65/50 per-move matches.
+
+Local final checks: all33 core commands pass, including the new archive audit.
+Focused rerun checks exact published Markdown/report.json regeneration and
+negative corruption cases. All runtime engine/app files and index.html are
+unchanged from the frozen release; git diff confirms no game-source change.

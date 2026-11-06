@@ -1,0 +1,31 @@
+{
+  "games": 20,
+  "control": "60+1",
+  "wins65": 7,
+  "draws": 12,
+  "losses65": 1,
+  "score65": 0.65,
+  "byColour": {
+    "white": {
+      "wins": 2,
+      "draws": 7,
+      "losses": 1
+    },
+    "black": {
+      "wins": 5,
+      "draws": 5,
+      "losses": 0
+    }
+  },
+  "flags65": 0,
+  "flags51": 0,
+  "recoveries": 0,
+  "inactiveMs": 0,
+  "plies": 3659,
+  "traceMoves": 3499,
+  "backends": {
+    "wasm": 3499
+  },
+  "htmlSha256": "97b0f0454cf7a3be8e4f2f81440e9de661f6098ede1da72fcebb85860f54bcc2"
+}
+PASS: frozen identities, complete paired games, legal PGNs/terminal results, per-move clocks, native routing and independent score recount

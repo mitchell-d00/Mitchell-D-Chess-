@@ -1,0 +1,31 @@
+{
+  "game": 13,
+  "opening": "Slav",
+  "openingMoves": [
+    "d2d4",
+    "d7d5",
+    "c2c4",
+    "c7c6",
+    "g1f3",
+    "g8f6",
+    "b1c3",
+    "d5c4"
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 51,
+  "startedUtc": "2026-11-06T14:53:07.353Z",
+  "finishedUtc": "2026-11-06T14:54:32.570Z",
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "threefold repetition"
+  },
+  "plies": 103,
+  "whiteMs": 52269.70000000484,
+  "blackMs": 78078.10000000894,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 95
+}

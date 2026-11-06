@@ -1,0 +1,153 @@
+{
+  "games": 20,
+  "control": "60+1",
+  "wins65": 7,
+  "draws": 12,
+  "losses65": 1,
+  "score65": 0.65,
+  "byColour": {
+    "white": {
+      "wins": 2,
+      "draws": 7,
+      "losses": 1
+    },
+    "black": {
+      "wins": 5,
+      "draws": 5,
+      "losses": 0
+    }
+  },
+  "flags65": 0,
+  "flags51": 0,
+  "recoveries": 0,
+  "inactiveMs": 0,
+  "plies": 3659,
+  "traceMoves": 3499,
+  "backends": {
+    "wasm": 3499
+  },
+  "htmlSha256": "97b0f0454cf7a3be8e4f2f81440e9de661f6098ede1da72fcebb85860f54bcc2",
+  "points65": 13,
+  "levels": {
+    "51": {
+      "playedMoves": 1748,
+      "bookMoves": 48,
+      "clockSpentSeconds": 1124.385299999969,
+      "clockSecondsPerPlayedMove": 0.6432410183066184,
+      "meanSearchBudgetMs": 825.6991097922848,
+      "medianCompletedDepth": 14,
+      "minClockSeconds": 60.38510000000149
+    },
+    "65": {
+      "playedMoves": 1751,
+      "bookMoves": 49,
+      "clockSpentSeconds": 1911.6682999999468,
+      "clockSecondsPerPlayedMove": 1.0917580239862632,
+      "meanSearchBudgetMs": 1426.2326266195523,
+      "medianCompletedDepth": 15,
+      "minClockSeconds": 42.91919999999739
+    }
+  },
+  "endings": {
+    "fifty-move rule": 4,
+    "checkmate": 8,
+    "threefold repetition": 4,
+    "insufficient material": 2,
+    "stalemate": 2
+  },
+  "pairs": [
+    {
+      "opening": "Ruy Lopez",
+      "white65": "D",
+      "black65": "W",
+      "games": [
+        1,
+        2
+      ]
+    },
+    {
+      "opening": "Italian",
+      "white65": "D",
+      "black65": "D",
+      "games": [
+        3,
+        4
+      ]
+    },
+    {
+      "opening": "Open Sicilian",
+      "white65": "D",
+      "black65": "W",
+      "games": [
+        5,
+        6
+      ]
+    },
+    {
+      "opening": "French Tarrasch",
+      "white65": "W",
+      "black65": "D",
+      "games": [
+        7,
+        8
+      ]
+    },
+    {
+      "opening": "Caro-Kann Advance",
+      "white65": "W",
+      "black65": "W",
+      "games": [
+        9,
+        10
+      ]
+    },
+    {
+      "opening": "Queens Gambit Declined",
+      "white65": "D",
+      "black65": "D",
+      "games": [
+        11,
+        12
+      ]
+    },
+    {
+      "opening": "Slav",
+      "white65": "D",
+      "black65": "D",
+      "games": [
+        13,
+        14
+      ]
+    },
+    {
+      "opening": "Kings Indian",
+      "white65": "D",
+      "black65": "D",
+      "games": [
+        15,
+        16
+      ]
+    },
+    {
+      "opening": "English Four Knights",
+      "white65": "L",
+      "black65": "W",
+      "games": [
+        17,
+        18
+      ]
+    },
+    {
+      "opening": "Nimzo-Larsen",
+      "white65": "D",
+      "black65": "W",
+      "games": [
+        19,
+        20
+      ]
+    }
+  ],
+  "startedUtc": "2026-11-06T14:39:00.920Z",
+  "finishedUtc": "2026-11-06T15:05:04.428Z",
+  "protocolRevision": "4f96929a49c8badbc4ca82a63407b86bc42721b5"
+}

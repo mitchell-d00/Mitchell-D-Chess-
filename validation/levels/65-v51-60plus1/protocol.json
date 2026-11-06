@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "startedUtc": "2026-11-06T14:39:00.920Z",
+  "revision": "4f96929a49c8badbc4ca82a63407b86bc42721b5",
+  "htmlSha256": "97b0f0454cf7a3be8e4f2f81440e9de661f6098ede1da72fcebb85860f54bcc2",
+  "engineSha256": "9adc1ee8cc070f71f70a07271fc5e04bde71c258144a0d1baae1ede80eb4e97b",
+  "frozenFiles": {
+    "engine-under-test.html": "97b0f0454cf7a3be8e4f2f81440e9de661f6098ede1da72fcebb85860f54bcc2",
+    "engine.cjs": "6e64b21332e7b428453f2fb234e763002c398212b0a0efffbf92a72af8e3652f",
+    "position-tools.js": "f161a6848c6ebd4bc86545c26a38b472834f4cf25056aa62ff6acd34493a7a15",
+    "runner.cjs": "f79de98bfca3c8a550f5d82619803bb89bfdb1769202024b86d81ca2eab29f0b"
+  },
+  "node": "v24.22.1",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logicalCpus": 5,
+    "cpuMax": "400000 100000"
+  },
+  "games": 20,
+  "levels": [
+    65,
+    51
+  ],
+  "seconds": 60,
+  "increment": 1,
+  "control": "60+1",
+  "concurrency": 2,
+  "timeoutMinutes": 30,
+  "rules": "casual",
+  "speed": "fast",
+  "personas": "Standard engine",
+  "openings": [
+    {
+      "name": "Ruy Lopez",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "b8c6",
+        "f1b5",
+        "a7a6",
+        "b5a4",
+        "g8f6"
+      ]
+    },
+    {
+      "name": "Italian",
+      "moves": [
+        "e2e4",
+        "e7e5",
+        "g1f3",
+        "b8c6",
+        "f1c4",
+        "f8c5",
+        "c2c3",
+        "g8f6"
+      ]
+    },
+    {
+      "name": "Open Sicilian",
+      "moves": [
+        "e2e4",
+        "c7c5",
+        "g1f3",
+        "d7d6",
+        "d2d4",
+        "c5d4",
+        "f3d4",
+        "g8f6"
+      ]
+    },
+    {
+      "name": "French Tarrasch",
+      "moves": [
+        "e2e4",
+        "e7e6",
+        "d2d4",
+        "d7d5",
+        "b1d2",
+        "g8f6",
+        "e4e5",
+        "f6d7"
+      ]
+    },
+    {
+      "name": "Caro-Kann Advance",
+      "moves": [
+        "e2e4",
+        "c7c6",
+        "d2d4",
+        "d7d5",
+        "e4e5",
+        "c8f5",
+        "g1f3",
+        "e7e6"
+      ]
+    },
+    {
+      "name": "Queens Gambit Declined",
+      "moves": [
+        "d2d4",
+        "d7d5",
+        "c2c4",
+        "e7e6",
+        "b1c3",
+        "g8f6",
+        "c1g5",
+        "f8e7"
+      ]
+    },
+    {
+      "name": "Slav",
+      "moves": [
+        "d2d4",
+        "d7d5",
+        "c2c4",
+        "c7c6",
+        "g1f3",
+        "g8f6",
+        "b1c3",
+        "d5c4"
+      ]
+    },
+    {
+      "name": "Kings Indian",
+      "moves": [
+        "d2d4",
+        "g8f6",
+        "c2c4",
+        "g7g6",
+        "b1c3",
+        "f8g7",
+        "e2e4",
+        "d7d6"
+      ]
+    },
+    {
+      "name": "English Four Knights",
+      "moves": [
+        "c2c4",
+        "e7e5",
+        "b1c3",
+        "g8f6",
+        "g1f3",
+        "b8c6",
+        "g2g3",
+        "d7d5"
+      ]
+    },
+    {
+      "name": "Nimzo-Larsen",
+      "moves": [
+        "b2b3",
+        "e7e5",
+        "c1b2",
+        "b8c6",
+        "e2e3",
+        "g8f6",
+        "f1b5",
+        "d7d6"
+      ]
+    }
+  ],
+  "notes": [
+    "Each opening is played twice with colours reversed. The same first 8 plies are prescribed, not charged or incremented; both clocks start at the supplied main time after that prefix.",
+    "Uses actual app clocks, allocation, book and worker; no engine, search-time or move-delay overrides. Worker/network initialization is warmed before clocks start.",
+    "Offline after load. Two headless pages share this host; background timer/renderer throttling disabled.",
+    "No move-limit, evaluation or material adjudication beyond normal app rules. Administrative wall timeout retains an incomplete game, never manufactures a draw.",
+    "Book choices and wall-clock search timing are not seeded; repetition means the protocol is repeatable, not identical move sequences.",
+    "Within-engine level comparison only, not an absolute Elo estimate."
+  ],
+  "browser": "155.0.8059.79"
+}

@@ -9,6 +9,7 @@ const core = [
 core.push(...['before-65-v50','adjacent-screen','followup-1second'].map(x=>['node','scripts/verify-evidence.cjs','validation/levels/'+x]));
 core.push(['node','scripts/verify-clock-games.cjs','validation/clock-management/before','validation/clock-management/after']);
 core.push(['node','scripts/verify-clock-games.cjs',...['before','after','ending-before','ending-after'].map(x=>'validation/clock-aware/'+x)]);
+core.push(['node','scripts/test-level-match.cjs']);
 const browser = ['browser-test.cjs','browser-wasm-test.cjs','browser-personas-test.cjs','browser-level-clocks-test.cjs','browser-engine-recovery-test.cjs','browser-ai-draw-claims-test.cjs','browser-tools-test.cjs','browser-accessibility-test.cjs','browser-library-analysis-test.cjs','browser-review-teaching-test.cjs','browser-polish-test.cjs','browser-pause-test.cjs','browser-engine-info-test.cjs'].map(x=>['node','scripts/'+x]);
 const commands = mode==='core'?core:mode==='browser'?browser:[...core,...browser];
 const checks = [], reportIndex = process.argv.indexOf('--report');

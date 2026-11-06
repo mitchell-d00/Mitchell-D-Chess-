@@ -1,0 +1,31 @@
+{
+  "game": 20,
+  "opening": "Nimzo-Larsen",
+  "openingMoves": [
+    "b2b3",
+    "e7e5",
+    "c1b2",
+    "b8c6",
+    "e2e3",
+    "g8f6",
+    "f1b5",
+    "d7d6"
+  ],
+  "whiteLevel": 51,
+  "blackLevel": 65,
+  "startedUtc": "2026-11-06T15:02:15.549Z",
+  "finishedUtc": "2026-11-06T15:03:49.032Z",
+  "over": {
+    "result": "0-1",
+    "reason": "checkmate"
+  },
+  "plies": 122,
+  "whiteMs": 83117.20000000112,
+  "blackMs": 57992.500000003725,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 114
+}
