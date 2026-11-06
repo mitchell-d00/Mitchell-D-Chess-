@@ -3239,6 +3239,7 @@ function maybeAI() {
     if(draw){
       if(G.clock){tickClock();if(G.over)return;}
       G.drawClaim=draw;
+      Object.assign(G.tags,{DrawClaim:draw.reason,DrawClaimType:draw.type,...(draw.move?{DrawClaimMove:draw.move,DrawClaimSAN:draw.san}:{})});
       endGame({result:'1/2-1/2',reason:`${draw.reason}, claimed by ${playerLabel(side).name}${draw.type==='intended'?' with intended '+draw.san:''}`});afterChange();return;
     }
     if(G.clock)G.aiClockOverhead=updateClockOverhead(G.aiClockOverhead,Date.now()-t0,r&&r.timeBudget);

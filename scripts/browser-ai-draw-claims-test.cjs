@@ -16,8 +16,8 @@ const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('nod
   },text);
   for(const [n,type]of [[210,'intended'],[211,'current']]){
    await page.evaluate(([n])=>window.setupClaimPosition(n,true),[n]);await page.waitForFunction(()=>!!G.over);
-   const r=await page.evaluate(()=>({over:G.over,plies:G.moves.length,claim:G.drawClaim,half:G.chess.half,pgn:pgn(),last:G.lastThink}));
-   assert.equal(r.over.result,'1/2-1/2');assert.match(r.over.reason,/fifty-move rule/);assert.equal(r.plies,n);assert.equal(r.claim.type,type);assert.equal(r.last.backend,'wasm');assert.equal(r.half,n===210?99:100);
+   const r=await page.evaluate(()=>({over:G.over,plies:G.moves.length,claim:G.drawClaim,tags:G.tags,half:G.chess.half,pgn:pgn(),last:G.lastThink}));
+   assert.equal(r.over.result,'1/2-1/2');assert.match(r.over.reason,/fifty-move rule/);assert.equal(r.plies,n);assert.equal(r.claim.type,type);assert.equal(r.tags.DrawClaimType,type);assert.equal(r.last.backend,'wasm');assert.equal(r.half,n===210?99:100);
    const parsed=await page.evaluate(s=>PositionTools.parsePgn(s),r.pgn);assert.equal(parsed.moves.length,n);if(n===210){assert.match(r.pgn,/\[DrawClaimMove "/);assert.match(r.pgn,/intended/);}
    assert.match(parsed.tags.LastThinkReason,/fifty-move rule/);await page.waitForTimeout(100);const frozen=await page.evaluate(()=>PositionTools.parsePgn(pgn()).tags.LastThinkWallMs);assert.equal(frozen,parsed.tags.LastThinkWallMs,'Post-game request timings must stop growing');
    await page.evaluate(r=>window.claimResults.push(r),r);
