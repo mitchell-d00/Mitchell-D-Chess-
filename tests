@@ -1,6 +1,16 @@
+# Piece visibility on solid black/white boards (November 6, 2026)
+
+All piece outlines now use a contrasting pure black or white, including themed
+colours and settings swatches. Kings have piece-coloured crosses inside an
+opposite-colour border. Pixel checks cover108 piece/colour combinations,
+216 solid backgrounds and53472 outer-contour pixels. Preview and repeat method:
+validation/graphics/README.md.
+
+    node scripts/browser-piece-contrast-test.cjs
+
 # Level 65 versus level 51 at actual 60+1 clocks (November 6, 2026)
 
-Level 65 scored 7 wins, 12 draws and 1 losses in a completed 20-game level-65/51 browser match at 60+1 (65% of points).
+Level 65 scored 7 wins, 12 draws and 1 loss in a completed 20-game level-65/51 browser match at 60+1 (65% of points).
 All twenty games, opening pairs, PGNs, per-move clock/search traces, frozen
 HTML/runner and hashes are in validation/levels/65-v51-60plus1/.
 The protocol is validation/levels/BROWSER-MATCH-PROTOCOL.md.

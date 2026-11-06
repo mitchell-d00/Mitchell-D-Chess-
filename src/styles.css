@@ -10,7 +10,7 @@
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
   /* board + pieces (overwritten from settings) */
   --sq-light:#eeeed2; --sq-dark:#769656;
-  --pw:#fbfaf5; --pw-line:#1d1d1d; --pb:#262321; --pb-line:#f0ede6;
+  --pw:#fbfaf5; --pw-line:#000000; --pb:#262321; --pb-line:#ffffff;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){

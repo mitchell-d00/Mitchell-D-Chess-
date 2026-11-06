@@ -44,7 +44,7 @@ All 64 adjacent pairs were screened; several remain statistically unresolved,
 including a tied 20-game level-16/15 follow-up. These results do not certify a
 strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/levels/README.md).
 
-Level 65 scored **7 wins, 12 draws and 1 losses** in a completed **20-game level-65/51 browser match at 60+1** (65% of points). Both used Standard personas and the actual browser clocks, with ten colour-reversed openings. This is a relative comparison, not an absolute rating. [Every game, clocks and results](validation/levels/65-v51-60plus1/README.md); [repeat protocol](validation/levels/BROWSER-MATCH-PROTOCOL.md).
+Level 65 scored **7 wins, 12 draws and 1 loss** in a completed **20-game level-65/51 browser match at 60+1** (65% of points). Both used Standard personas and the actual browser clocks, with ten colour-reversed openings. This is a relative comparison, not an absolute rating. [Every game, clocks and results](validation/levels/65-v51-60plus1/README.md); [repeat protocol](validation/levels/BROWSER-MATCH-PROTOCOL.md).
 
 ## What is in it
 
@@ -125,8 +125,11 @@ Level 65 scored **7 wins, 12 draws and 1 losses** in a completed **20-game level
   mate; endgames you play out against the computer; and master ideas like
   outposts, pawn structure, candidate moves and prophylaxis. The final exam is
   beating level 18 from the start.
-- **Your colours.** Light, dark or automatic theme. 8 board colour sets and
-  6 piece colour sets, plus colour pickers for any custom colours.
+- **Your colours.** Light, dark or automatic theme. 10 board colour sets and
+  7 piece colour sets, plus colour pickers for any custom colours. All pieces
+  have strong black/white outlines chosen to contrast with their fill. Kings’
+  crosses match their piece colour inside a contrasting border, staying visible
+  on solid black or white squares. [Rendered checks](validation/graphics/README.md).
 - **Tools.** Take back, hint arrow, flip board, draw offers, resign, step
   through earlier moves, an evaluation bar, and copy the game as PGN (with
   time control) or the position as FEN.

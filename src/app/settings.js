@@ -13,13 +13,15 @@ const DEF = { theme: 'system', light: '#eeeed2', dark: '#769656', pw: '#fbfaf5',
 let S = Object.assign({}, DEF, store.get('settings', {}));
 const saveS = () => store.set('settings', S);
 function lum(hex) { const n = parseInt(hex.slice(1), 16), r = (n >> 16) / 255, g = (n >> 8 & 255) / 255, b = (n & 255) / 255; const f = c => c <= .03928 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); return .2126 * f(r) + .7152 * f(g) + .0722 * f(b); }
+// Pure black or white, whichever contrasts more strongly with the piece fill.
+function pieceOutline(hex) { const l = lum(hex) + .05; return l / .05 >= 1.05 / l ? '#000000' : '#ffffff'; }
 function applySettings() {
   const r = document.documentElement;
   if (S.theme === 'system') r.removeAttribute('data-theme'); else r.setAttribute('data-theme', S.theme);
   r.style.setProperty('--sq-light', S.light); r.style.setProperty('--sq-dark', S.dark);
   r.style.setProperty('--pw', S.pw); r.style.setProperty('--pb', S.pb);
-  r.style.setProperty('--pw-line', lum(S.pw) > .35 ? '#1c1c1c' : '#f3f1ec');
-  r.style.setProperty('--pb-line', lum(S.pb) > .35 ? '#1c1c1c' : '#f3f1ec');
+  r.style.setProperty('--pw-line', pieceOutline(S.pw));
+  r.style.setProperty('--pb-line', pieceOutline(S.pb));
   r.style.setProperty('--anim', S.anim === 'off' ? '0ms' : S.anim === 'fast' ? '90ms' : '170ms');
   r.dataset.motion = S.anim === 'off' ? 'off' : '';
   const dark = S.theme === 'dark' || (S.theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
