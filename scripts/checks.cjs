@@ -4,12 +4,12 @@ const mode = process.argv[2] || 'all';
 if(!['core','browser','all'].includes(mode))throw Error('Use core, browser or all');
 const core = [
  ['node','scripts/build.cjs','--check'],['node','scripts/check-size.cjs'],
- ...['test.cjs','test-build.cjs','test-release-engine.cjs','test-level-progression.cjs','test-user-knight-ending.cjs','test-neural.cjs','test-neural-cache.cjs','test-hash-moves.cjs','test-position-tools.cjs','test-game-library.cjs','test-move-explanations.cjs','test-review-teaching.cjs','test-uci-normalize.cjs','test-time-management.cjs','test-book-import.cjs'].map(x=>['node','scripts/'+x]),
+ ...['test.cjs','test-build.cjs','test-release-engine.cjs','test-level-progression.cjs','test-user-knight-ending.cjs','test-ai-draw-claims.cjs','test-neural.cjs','test-neural-cache.cjs','test-hash-moves.cjs','test-position-tools.cjs','test-game-library.cjs','test-move-explanations.cjs','test-review-teaching.cjs','test-uci-normalize.cjs','test-time-management.cjs','test-book-import.cjs'].map(x=>['node','scripts/'+x]),
  ['node','scripts/verify-evidence.cjs','validation/modern/stockfish19-pilot'],['node','scripts/verify-evidence.cjs','validation/modern/candidate-checkpoint'],['node','scripts/verify-evidence.cjs','validation/modern/completed-200'],['node','scripts/test-strength-report.cjs'],['python3','scripts/test-prepare-benchmark.py'],['python3','scripts/test-prepare-levels.py'],['python3','scripts/test-campaign.py'],['python3','scripts/test-uci-normalize.py']];
 core.push(...['before-65-v50','adjacent-screen','followup-1second'].map(x=>['node','scripts/verify-evidence.cjs','validation/levels/'+x]));
 core.push(['node','scripts/verify-clock-games.cjs','validation/clock-management/before','validation/clock-management/after']);
 core.push(['node','scripts/verify-clock-games.cjs',...['before','after','ending-before','ending-after'].map(x=>'validation/clock-aware/'+x)]);
-const browser = ['browser-test.cjs','browser-wasm-test.cjs','browser-level-clocks-test.cjs','browser-engine-recovery-test.cjs','browser-tools-test.cjs','browser-accessibility-test.cjs','browser-library-analysis-test.cjs','browser-review-teaching-test.cjs','browser-polish-test.cjs','browser-pause-test.cjs','browser-engine-info-test.cjs'].map(x=>['node','scripts/'+x]);
+const browser = ['browser-test.cjs','browser-wasm-test.cjs','browser-level-clocks-test.cjs','browser-engine-recovery-test.cjs','browser-ai-draw-claims-test.cjs','browser-tools-test.cjs','browser-accessibility-test.cjs','browser-library-analysis-test.cjs','browser-review-teaching-test.cjs','browser-polish-test.cjs','browser-pause-test.cjs','browser-engine-info-test.cjs'].map(x=>['node','scripts/'+x]);
 const commands = mode==='core'?core:mode==='browser'?browser:[...core,...browser];
 const checks = [], reportIndex = process.argv.indexOf('--report');
 for(const argv of commands){

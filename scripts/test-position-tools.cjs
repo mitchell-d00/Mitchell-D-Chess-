@@ -18,3 +18,7 @@ assert(timed.includes('e4 {[%clk 0:01:01.0]}'));assert.deepEqual(T.parsePgn(time
 const blackTimed=T.exportPgn({...black,clockTimes:[8000,null]});assert(blackTimed.includes('42... Kf6 {[%clk 0:00:08.0]}'));
 for(const clockTimes of [[1],Array(game.moves.length).fill(-1),Array(game.moves.length).fill(NaN),Array(game.moves.length).fill('0:01:00')])assert.throws(()=>T.exportPgn({...game,clockTimes}),/clock/i);
 console.log('PASS: numeric per-move clock annotations, black starts, absent readings, strict invalid-clock rejection and legal PGN round trips');
+const recovered=T.exportPgn({...game,clockTimes:game.moves.map(()=>60000),moveRecoveries:game.moves.map((_,i)=>i===2?'timeout':null)});assert.match(recovered,/Engine recovery: timeout/);assert.deepEqual(T.parsePgn(recovered).moves,game.moves);
+assert.throws(()=>T.exportPgn({...game,moveRecoveries:['timeout']}),/Recovery/);
+assert.throws(()=>T.exportPgn({...game,moveRecoveries:game.moves.map(()=>'} 1-0 {')}),/recovery/);
+console.log('PASS: per-move recovery markers round-trip legally; length and comment injection rejected');

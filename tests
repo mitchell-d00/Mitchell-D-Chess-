@@ -1,3 +1,18 @@
+# Official AI draw claims (November 6, 2026)
+
+The supplied 128-move checkmate had a legal fifty-move draw claim at move106.
+The old AI gate inverted the opponent's previous -20 draw score to +20 and
+compared it with15, declining the claim. Matched actual-worker replies are
+identical (-20/depth64/...Rg1); only the corrected app claims the available draw.
+Fresh current-side results now decide current/intended claims, retaining wins
+and mate and respecting flag priority. Future PGNs mark each played recovery.
+Full normalized input, clocks, hashes, before/after replays and checks:
+validation/user-reports/2026-11-06-rook-draw-claim/README.md.
+
+    node scripts/test-ai-draw-claims.cjs
+    node scripts/browser-ai-draw-claims-test.cjs
+    node scripts/reproduce-draw-claim.cjs --out /path/to/new-empty-directory
+
 # Reported knight ending and interrupted searches (November 6, 2026)
 
 The user PGN has 135 legal plies, no repeated position and halfmove counter30;

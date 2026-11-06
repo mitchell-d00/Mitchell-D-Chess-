@@ -1,0 +1,19 @@
+{
+  "createdUtc": "2026-11-06T13:07:27.923Z",
+  "baselineRevision": "f1f8145fa6244d515d820392f825efff0a916029",
+  "candidateRevision": "268caf1",
+  "input": "Normalized from the supplied PGN; all SAN moves, headers and clock readings retained. TSV clocks are seconds after each move.",
+  "notes": [
+    "Before/after turns use actual 211-ply history; seeded -20 prior draw score exposes the old +20 versus 15 claim gate.",
+    "Single-turn diagnostics are not matches or Elo evidence.",
+    "The original one recovery cannot be located from the session counter alone."
+  ],
+  "files": {
+    "game.pgn": "483064769f9122bcbf905699c588f565bca13788084d0ef62c43e621dcacaf27",
+    "moves-with-clocks.tsv": "3c523ac35ffb53bca7485fddcb7d57b21232b004227a2e2933566685b895dfab",
+    "claims.json": "32f1df58211eee9a93bb6d98e928d0b1f4de5bcb3083e111b87ca7cd801b5431",
+    "before-turn.json": "feb6312a80341f08a3b49395396129cb11e85fcf0a64cce6dfac1b0d3960b006",
+    "after-turn.json": "c4f15c74080999fa411d223c6ebc5101badc279e3d57dbd71c0d0503b1959931",
+    "browser-claims.json": "b99c6f3e515e737182892fa870b49f015ba24201f3e3728483929bfacfc185e4"
+  }
+}

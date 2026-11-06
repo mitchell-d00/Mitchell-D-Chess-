@@ -121,9 +121,14 @@
     let out = Object.keys(tags).filter(k => /^[A-Za-z][A-Za-z0-9_]*$/.test(k)).map(k => '[' + k + ' "' + quote(tags[k]) + '"]').join('\n') + '\n\n';
     const fields = record.startFen.split(' '); let black = fields[1] === 'b', number = +fields[5];
     const times=record.clockTimes;
+    const recoveries=record.moveRecoveries;
     if(times!==undefined&&(!Array.isArray(times)||times.length!==record.sans.length))fail('Clock readings must match the move list.');
+    if(recoveries!==undefined&&(!Array.isArray(recoveries)||recoveries.length!==record.sans.length))fail('Recovery markers must match the move list.');
     record.sans.forEach((san, i) => { if (!black) out += number + '. '; else if (i === 0) out += number + '... '; out += san;
-      if(times&&times[i]!=null){const ms=times[i];if(!Number.isFinite(ms)||ms<0||ms>1e9)fail('Invalid PGN clock reading.');const t=Math.floor(ms/100),h=Math.floor(t/36000),m=Math.floor(t%36000/600),s=Math.floor(t%600/10);out+=' {[%clk '+h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+t%10+']}';}
+      const notes=[];
+      if(times&&times[i]!=null){const ms=times[i];if(!Number.isFinite(ms)||ms<0||ms>1e9)fail('Invalid PGN clock reading.');const t=Math.floor(ms/100),h=Math.floor(t/36000),m=Math.floor(t%36000/600),s=Math.floor(t%600/10);notes.push('[%clk '+h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+t%10+']');}
+      if(recoveries&&recoveries[i]!=null){if(!['timeout','worker-error'].includes(recoveries[i]))fail('Invalid engine recovery marker.');notes.push('Engine recovery: '+recoveries[i]);}
+      if(notes.length)out+=' {'+notes.join(' ')+'}';
       out+=' ';if (black) number++; black = !black; });
     return out + result + '\n';
   }
