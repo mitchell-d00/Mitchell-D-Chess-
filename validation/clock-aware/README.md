@@ -11,8 +11,9 @@ elapsed turn time before allocation. It still planned for as few as 18 future
 moves and had no long-game bank or measured device margin. This update changes
 the allocation itself:
 
-- Keep a main-clock bank, bounded by 8% of the initial clock, 8 seconds, and 35%
-  of the current balance. The minimum target is 500 ms where the balance allows.
+- Keep a main-clock bank, based on 8% of the larger of the initial and current
+  balance, capped at 8 seconds and 35% of the current balance. The minimum
+  target is 500 ms where the balance allows.
 - Plan for 56–72 future moves under comfortable clocks; extend that horizon
   smoothly as the main clock falls below 15 seconds and then 3 seconds.
 - Leave a separate dispatch/rendering margin. Reduce search time when recent
@@ -21,8 +22,8 @@ the allocation itself:
 - Use only the currently remaining delay and a conservative share of increment.
   Neither future increment nor a fresh delay is credited early. Per-move timers
   use the current move's remaining time without a future-game bank.
-- Recheck the wall-clock allowance when the worker receives a queued request.
-  Startup/queueing time cannot silently preserve a stale, larger search allowance.
+- Recheck the safe wall-clock allowance when the worker receives a queued
+  request, shrinking requests that arrive with less remaining headroom.
 - Display saving-time, time-trouble or emergency status beside the allowance.
   Completed moves retain the previous no-viewing-hold policy below ten seconds.
 
