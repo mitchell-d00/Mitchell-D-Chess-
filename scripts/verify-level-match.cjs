@@ -15,6 +15,12 @@ function verify(directory){
   assert.equal(g.tags.Round,String(index+1));assert.equal(g.tags.TimeControl,protocol.control);assert.equal(g.tags.PrescribedPlies,String(opening.moves.length));assert.equal(g.tags.ClocksStartPly,String(opening.moves.length+1));assert.match(g.tags.White,new RegExp('level '+r.whiteLevel+' '));assert.match(g.tags.Black,new RegExp('level '+r.blackLevel+' '));
   for(const name of ['White','Black']){assert.equal(g.tags[name+'Persona'],'Standard engine');assert.equal(g.tags[name+'Aggression'],'0');}
   assert.equal(g.moves.length,r.plies);assert.equal(trace.length,r.plies-opening.moves.length);assert.equal(r.traceMoves,trace.length);assert.equal(g.result,r.over.result);
+  const clockText=fs.readFileSync(path.join(root,stem+'.pgn'),'utf8'),readClock=s=>{const a=s.split(':').map(Number);assert.equal(a.length,3);return (a[0]*3600+a[1]*60+a[2])*1000;};
+  const annotations=[...clockText.matchAll(/\[%clk ([0-9:.]+)\]/g)];assert.equal(annotations.length,trace.length,'Only played, clocked moves have readings');
+  const near=(recorded,actual)=>{assert(recorded<=actual+.01&&actual<recorded+100.01,'PGN clock disagrees with trace');};
+  for(let i=0;i<trace.length;i++)near(readClock(annotations[i][1]),trace[i][trace[i].ply%2?'whiteMs':'blackMs']);
+  near(readClock(g.tags.WhiteClock),r.whiteMs);near(readClock(g.tags.BlackClock),r.blackMs);
+  assert.equal(g.tags.Termination,/lost on time|ran out of time/.test(r.over.reason)?'time forfeit':'normal');
   const p=new E.Chess(g.startFen);let terminal=null;
   for(let i=0;i<g.moves.length;i++){assert.equal(terminal,null,'Moves played after a terminal position');const m=p.findUci(g.moves[i]);assert(m);p.make(m);terminal=p.status(false);}
   if(terminal)assert.deepEqual(JSON.parse(JSON.stringify(terminal)),r.over,'Natural ending must match the board');
@@ -25,7 +31,7 @@ function verify(directory){
   }
   let w=protocol.seconds*1000,b=w,playedRecoveries=0;
   for(let i=0;i<trace.length;i++){
-   const t=trace[i],ply=opening.moves.length+i+1,white=ply%2===1;assert.equal(t.ply,ply);assert.equal(t.move,g.moves[ply-1]);assert.equal(t.level,white?r.whiteLevel:r.blackLevel);assert(Number.isFinite(t.whiteMs)&&t.whiteMs>=0&&t.whiteMs<=w+(white?protocol.increment*1000:0)+.01);assert(Number.isFinite(t.blackMs)&&t.blackMs>=0&&t.blackMs<=b+(!white?protocol.increment*1000:0)+.01);w=t.whiteMs;b=t.blackMs;
+   const t=trace[i],ply=opening.moves.length+i+1,white=ply%2===1;assert.equal(t.ply,ply);assert.equal(t.move,g.moves[ply-1]);assert.equal(t.level,white?r.whiteLevel:r.blackLevel);assert(Number.isFinite(t.whiteMs)&&t.whiteMs>=0&&t.whiteMs<=w+(white?protocol.increment*1000:0)+.01,'White clock exceeds earned increment');assert(Number.isFinite(t.blackMs)&&t.blackMs>=0&&t.blackMs<=b+(!white?protocol.increment*1000:0)+.01,'Black clock exceeds earned increment');w=t.whiteMs;b=t.blackMs;
    assert(['wasm','js-fallback','clock-fallback'].includes(t.backend));backends[t.backend]=(backends[t.backend]||0)+1;
    assert(Number.isFinite(t.allowanceMs)&&t.allowanceMs>=1&&t.allowanceMs<=E.LEVELS[t.level-1].t);if(t.timeBudgetMs!==null)assert(t.timeBudgetMs>=1&&t.timeBudgetMs<=t.allowanceMs);assert(t.nodes>=0&&Number.isInteger(t.nodes));assert(t.depth>=0&&t.depth<=64);if(t.recovery){assert(['timeout','worker-error'].includes(t.recovery));playedRecoveries++;}
   }
