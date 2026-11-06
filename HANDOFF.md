@@ -765,3 +765,57 @@ Next: publish after checks, then inspect a fresh user's PGN with the added clock
 version and response/inactivity fields if the clock loss recurs. Do not infer a
 forced win/draw from the quiet material, or claim this unidentified original
 failure is conclusively fixed. No original core/weight changes require new Elo.
+
+## Confirmed official draw-claim fault — November 6, 2026
+
+The next user PGN is a different 120+1 game, 255 plies/128.Ra8# by52 over65.
+Black retains99.9s, no observed inactivity, one session recovery. This is not a
+clock forfeit. Its session counter cannot identify the recovered move; do not
+attribute111...Rb1+ to recovery without per-move evidence. Preserve the actual
+1-0 result. Input formatting is normalized; all SAN/clocks/headers are retained
+in validation/user-reports/2026-11-06-rook-draw-claim/game.pgn and TSV.
+
+Confirmed: last capture56.Kxa4 sets half0, after105...Ke6 half99,106.Kc3 half100.
+There are12 claimable positions through111...Rb1+;112.Kxb1 resets half0. Claiming
+was optional; it was missed by strategy/integration, not a wrong legal checker.
+The old pre-search gate used the opponent's previous white-relative score. A
+root draw adjustment-20 flips to+20 for next side, above threshold15, so both
+could decline rights while the search treats later continuations as drawn.
+This explains why the game continued past an available draw; it does not prove
+which transport event accounts for the single recorded recovery.
+
+Branch fix/official-ai-draw-claims starts at mainf1f8145. App commits c8dda0f /
+268caf1 add a pure reversible fresh-score claim helper, current and intended
+FIDE9.2/9.3 claims, explicit intended-move tags (retained in G.tags for saves),
+clock-expiry guard, and frozen end-request diagnostics when no move ends a game.
+Only non-positive/uncertain own results choose a legal point. Immediate mate
+and positive fresh continuations remain, including actual112.Kxb1. No early
+material/quiet-position adjudication. Casual automatic draws and other rules
+are unchanged. Engine script, native binary, weights and MIT notices unchanged;
+engine-src SHA b3ffafe520089cb46296711928ca6d67d0bb4d138329a1c00402fabf19477dd4.
+
+Actual browser with supplied 210-ply history claims with intended106.Kc3 before
+playing it; from211-ply history Black claims current fifty-move right. Matched
+single-turn old/new runs both return native -20/depth64/...Rg1: old plays it,
+new claims without move. These are diagnostic turns, not matches or Elo proof;
+depth64 here is draw cutoffs. Data, normalization/protocol, source revisions and
+hashes in the new report. No retroactive result change to the user's game.
+
+Per-move recovery comments now identify known actually played fallback moves.
+Their map is current-session diagnostic state; no new save schema. Imported
+comments still ignored. Counters/reset scope remains documented. A recovered
+request which ends with a claim has no played move to annotate. Invalid recovery
+strings/lengths are rejected before PGN export and numeric clocks preserved.
+
+43-command full core/offline-browser suite passed on the frozen app. Focused
+unit rerun adds actual positive112.Kxb1 and verifies input clocks, matched turn
+data and SHA manifests; recovery browser rerun checks the new move marker.
+Native draw scores are probed at the actual historical positions. Tests cover
+intended/current repetition/fifty rights, restoration, captures, winning/mate
+priority, tag persistence, frozen postgame timing, casual timing and flag priority.
+CI now includes the new unit/browser suites. Repeat scripts and results are in
+validation/user-reports/2026-11-06-rook-draw-claim/README.md.
+
+Next: publish after CI and verify the live artifact. The earlier knight-game
+forfeit's cause remains unconfirmed; this later game's draw-claim fault is a
+separate confirmed issue. No absolute Elo or strength gain is claimed.

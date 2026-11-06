@@ -1,0 +1,30 @@
+{
+  "createdUtc": "2026-11-06T12:56:20.234Z",
+  "runnerRevision": "268caf1afe69e4829c8df840107762beb9f692be",
+  "htmlSha256": "4f6f5afcbe1f1c03c11b11e95bef2561d4695ba20546d99bae4005335533bd9d",
+  "method": "Single foreground turn from the actual 211-ply history with provided rounded balances; old gate seeded from the previous -20 draw score. Stop after one move or claim; no match outcome is inferred.",
+  "start": {
+    "fen": "8/1R6/4k3/8/8/2K5/6r1/8 b - - 100 106",
+    "claimable": "fifty-move rule",
+    "oldGateScore": 20,
+    "oldGateThreshold": 15
+  },
+  "over": null,
+  "plies": 212,
+  "claim": null,
+  "fen": "8/1R6/4k3/8/8/2K5/8/6r1 w - - 101 107",
+  "clocks": {
+    "w": 137427.7000000002,
+    "b": 89557.60000000056
+  },
+  "probes": [
+    {
+      "score": -20,
+      "depth": 64,
+      "move": "g2g1",
+      "backend": "wasm"
+    }
+  ],
+  "pgn": "[Event \"Mitchell D Chess game (official rules)\"]\n[Site \"Mitchell D Chess\"]\n[Date \"2026.11.06\"]\n[White \"White\"]\n[Black \"Mitchell D Chess level 65 (Neural Analysis 15)\"]\n[TimeControl \"120+1\"]\n[Termination \"unterminated\"]\n[CurrentClockPolicy \"bank-latency-v1/recovery-v1\"]\n[WhiteClock \"0:02:17.4\"]\n[BlackClock \"0:01:29.5\"]\n[SessionInactiveMs \"0\"]\n[SessionEngineRecoveries \"0\"]\n[LastThinkSide \"b\"]\n[LastThinkLevel \"65\"]\n[LastThinkBudgetMs \"2015\"]\n[LastThinkWallMs \"121\"]\n[LastThinkInactiveMs \"0\"]\n[LastThinkState \"reply ready\"]\n[LastThinkReason \"move ready\"]\n[LastThinkRecovery \"none\"]\n[LastThinkBackend \"wasm\"]\n[LastThinkDepth \"64\"]\n[Result \"*\"]\n\n1. d4 Nf6 2. Bf4 e6 3. e3 c5 4. c3 Nc6 5. Nd2 d5 6. Ngf3 Bd6 7. Bg3 O-O 8. Be2 Bxg3 9. hxg3 Qe7 10. Ne5 Nxe5 11. dxe5 Nd7 12. Qc2 g6 13. Nf3 b6 14. O-O-O Bb7 15. Bb5 Rfd8 16. Qa4 Nf8 17. Qh4 Qxh4 18. Rxh4 Rac8 19. Kd2 a6 20. Bd3 Rc7 21. Rdh1 Rcd7 22. b3 Kg7 23. Ng5 h5 24. g4 hxg4 25. Rxg4 c4 26. Bb1 a5 27. Rgh4 Rc7 28. Rh8 cxb3 29. axb3 Rdc8 30. Bd3 b5 31. Bxb5 Rxc3 32. Bc4 dxc4 33. Kxc3 Bxg2 34. R1h4 cxb3+ 35. Kxb3 Rb8+ 36. Ka3 Bc6 37. f4 Rb1 38. Rh3 Re1 39. R8h4 Re2 40. Rg3 Kg8 41. Kb3 Kg7 42. Rhg4 Kg8 43. e4 a4+ 44. Ka3 Bxe4 45. Nxe4 Rxe4 46. Rd3 Kh7 47. Rd2 Kh6 48. Rd8 Kg7 49. Rd6 g5 50. Rxg5+ Ng6 51. f5 Rxe5 52. Rxe6 fxe6 53. Rxg6+ Kf7 54. Rxe6 Rxf5 55. Rc6 Rb5 56. Kxa4 Rb2 57. Ka3 Rb8 58. Ka2 Ke7 59. Rg6 Kd7 60. Ka3 Kc7 61. Rf6 Rb1 62. Ka2 Rb4 63. Rh6 Rb5 64. Rg6 Kd7 65. Rh6 Ke7 66. Ka3 Rb8 67. Rc6 Rb1 68. Rh6 Rb5 69. Rg6 Kf7 70. Rd6 Rb8 71. Ka2 Rb7 72. Rc6 Ke7 73. Rg6 Kf8 74. Ka3 Rb8 75. Rg4 Kf7 76. Rb4 Rg8 77. Rb7+ Ke6 78. Kb3 Rc8 79. Rh7 Kd6 80. Rg7 Rc1 81. Rf7 Ke6 82. Rh7 Rc8 83. Ra7 Kf6 84. Rd7 Rc5 85. Rh7 Rc1 86. Kb2 Rc8 87. Kb3 Kf5 88. Rh4 Rc7 89. Rh5+ Ke4 90. Rh8 Kd4 91. Rh4+ Ke3 92. Rh3+ Kf4 93. Rh5 Rc1 94. Rh7 Ke5 95. Rd7 Rc6 96. Rf7 Ke6 97. Rg7 Rc5 98. Ra7 Ke5 99. Rf7 Rc6 100. Rg7 Kf6 101. Rb7 Re6 102. Kc4 Re4+ 103. Kc3 Re2 104. Kd3 Rg2 105. Kd4 Ke6 106. Kc3 Rg1 {[%clk 0:01:29.5]} *\n",
+  "errors": []
+}

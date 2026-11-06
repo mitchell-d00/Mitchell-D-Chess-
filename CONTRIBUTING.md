@@ -127,3 +127,12 @@ the supplied game and verifies frozen diagnostic evidence. The optional
 reported position with its full history. Keep interrupted/partial runs labelled;
 [the report](validation/user-reports/2026-11-06-knight-ending/README.md) documents
 why its original timeout remains unconfirmed and which PGN timings to inspect.
+
+## AI draw-claim decisions
+
+`src/app/ai-draw-claims.js` makes a pure, reversible current/intended claim
+check from the current player's returned score. Do not use the previous
+opponent's displayed evaluation. Run `scripts/test-ai-draw-claims.cjs` and
+`scripts/browser-ai-draw-claims-test.cjs`; `scripts/reproduce-draw-claim.cjs`
+provides the one-turn historical comparison. The supplied rook-game evidence
+explains why a legal optional claim was missed without changing its actual result.

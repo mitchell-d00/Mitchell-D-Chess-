@@ -85,6 +85,11 @@ strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/l
   running normally. PGN exports include move-clock readings and local request/
   inactivity diagnostics to investigate time losses.
   [Reported knight ending and recovery checks](validation/user-reports/2026-11-06-knight-ending/README.md).
+- **Computer draw claims under official rules.** The AI uses its own fresh
+  search result to decide current or intended-move fifty-move/repetition claims.
+  It keeps positively evaluated continuations and immediate mates. Claims are
+  recorded without playing an announced move; expired clocks still take priority.
+  [Rook-ending bug, fix and repeatable replay](validation/user-reports/2026-11-06-rook-draw-claim/README.md).
 - **Chess clocks.** Bullet (1+0, 1+1, 2+1), blitz (3+0, 3+2, 5+0, 5+3),
   rapid (10+0, 10+5, 15+10, 25+10) and classical (30+0, 30+20, 60+30, 90+30),
   a per-move timer (10, 30 or 60 seconds a move), or a custom control with

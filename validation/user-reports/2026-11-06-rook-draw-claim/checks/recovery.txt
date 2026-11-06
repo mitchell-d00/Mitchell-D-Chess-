@@ -1,0 +1,1 @@
+PASS: real worker timeout/crash recovery, legal fallback, strict errors/cancellation, one bounded retry and visible retry control, game/PGN clocks and no retroactive moves after an injected inactivity/timer stall

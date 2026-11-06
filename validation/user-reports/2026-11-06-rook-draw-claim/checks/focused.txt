@@ -1,0 +1,2 @@
+PASS: supplied 255-ply mate, first fifty-move right at ply211, fresh native draw scores, intended/current claims, mate/win priority, capture reset, repetitions and restoration
+PASS: immutable normalized clocks, matched native before/after replies and corrected browser claim

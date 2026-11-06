@@ -1,0 +1,491 @@
+{
+  "createdUtc": "2026-11-06T12:59:38.330Z",
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "scripts/build.cjs",
+        "--check"
+      ],
+      "startedUtc": "2026-11-06T12:58:20.992Z",
+      "finishedUtc": "2026-11-06T12:58:21.071Z",
+      "exitCode": 0,
+      "stdout": "PASS: standalone HTML exactly matches modular sources\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/check-size.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:21.072Z",
+      "finishedUtc": "2026-11-06T12:58:21.140Z",
+      "exitCode": 0,
+      "stdout": "PASS: HTML bytes 666581 / 716800; gzip 254301 / 262144\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:21.140Z",
+      "finishedUtc": "2026-11-06T12:58:21.379Z",
+      "exitCode": 0,
+      "stdout": "PASS: perft, checkmate, quiet evasions, underpromotion, timeout, KPK, mate-in-one, book transposition, all 454 book lines, 65 levels, script syntax\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-build.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:21.379Z",
+      "finishedUtc": "2026-11-06T12:58:21.541Z",
+      "exitCode": 0,
+      "stdout": "PASS: deterministic release WASM dispatch/binary, JavaScript diagnostic build, pinned network, MIT notices and single inline engine\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-release-engine.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:21.541Z",
+      "finishedUtc": "2026-11-06T12:58:21.650Z",
+      "exitCode": 0,
+      "stdout": "PASS: match-tested release binary, beginner/classical/neural level boundaries, native dispatch, 32 MiB memory and strict input errors\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-level-progression.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:21.650Z",
+      "finishedUtc": "2026-11-06T12:58:22.036Z",
+      "exitCode": 0,
+      "stdout": "PASS: all 65 levels legal; monotone feature/depth/cap/clock policies, noise/blunder progression and distinct budgets at 1s–60s; sub-second rounding and statistical strength require separate interpretation\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-user-knight-ending.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:22.037Z",
+      "finishedUtc": "2026-11-06T12:58:22.109Z",
+      "exitCode": 0,
+      "stdout": "PASS: user PGN 135 legal plies, screenshot at ply121, independent position counts, no missed claim, halfmove30 and legal bounded foreground continuation\nPASS: both foreground continuations, zero healthy-search recoveries and immutable user-report evidence hashes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-ai-draw-claims.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:22.109Z",
+      "finishedUtc": "2026-11-06T12:58:22.190Z",
+      "exitCode": 0,
+      "stdout": "PASS: supplied 255-ply mate, first fifty-move right at ply211, fresh native draw scores, intended/current claims, mate/win priority, capture reset, repetitions and restoration\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-neural.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:22.191Z",
+      "finishedUtc": "2026-11-06T12:58:22.814Z",
+      "exitCode": 0,
+      "stdout": "PASS: 2777 incremental rebuild, special-move, null-move, unmake, JS/SIMD and independent-reference checks\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-neural-cache.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:22.814Z",
+      "finishedUtc": "2026-11-06T12:58:22.987Z",
+      "exitCode": 0,
+      "stdout": "PASS: interleaved position caches, JS/SIMD switches, 200 null frames, sibling reuse, unavailable SIMD, 16/256-hidden memory sizing\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-hash-moves.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:22.988Z",
+      "finishedUtc": "2026-11-06T12:58:27.614Z",
+      "exitCode": 0,
+      "stdout": "PASS: historical hash collision, six failed-game positions, TT corruption injection, strict history, incremental hash restoration\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-position-tools.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:27.614Z",
+      "finishedUtc": "2026-11-06T12:58:27.719Z",
+      "exitCode": 0,
+      "stdout": "PASS: reproducible standalone build, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes\nPASS: numeric per-move clock annotations, black starts, absent readings, strict invalid-clock rejection and legal PGN round trips\nPASS: per-move recovery markers round-trip legally; length and comment injection rejected\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-game-library.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:27.719Z",
+      "finishedUtc": "2026-11-06T12:58:27.797Z",
+      "exitCode": 0,
+      "stdout": "PASS: versioned local records, player/clock validation, bounded library, explicit overwrite/delete and atomic quota failures\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-move-explanations.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:27.798Z",
+      "finishedUtc": "2026-11-06T12:58:27.848Z",
+      "exitCode": 0,
+      "stdout": "PASS: factual development, centre, castling, en passant, underpromotion, mate, fork, capture and blocked-ray cues; illegal moves rejected\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-review-teaching.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:27.849Z",
+      "finishedUtc": "2026-11-06T12:58:27.914Z",
+      "exitCode": 0,
+      "stdout": "PASS: review teaching, both-side loss perspective, shallow/null scores, factual mate-in-one, stalemate, legal replies, focused priorities and immutable summaries\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-uci-normalize.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:27.914Z",
+      "finishedUtc": "2026-11-06T12:58:27.986Z",
+      "exitCode": 0,
+      "stdout": "PASS: promotion spelling, ponder/PV fields, untouched identifiers/strings, invalid tokens and saved forfeit position\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-time-management.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:27.986Z",
+      "finishedUtc": "2026-11-06T12:58:28.090Z",
+      "exitCode": 0,
+      "stdout": "PASS: bounded clock budgets, side/phase/increment/remaining delay, per-move remainder and scheduling reserve\nPASS: all 65 presets survive 200 synthetic no-increment turns at 20/80/150ms overhead; adaptive reserves, increment/delay/per-move budgets and emergency modes\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-book-import.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:28.091Z",
+      "finishedUtc": "2026-11-06T12:58:28.150Z",
+      "exitCode": 0,
+      "stdout": "PASS: legal CC0 import including castling, explicit replacement, manual-line preservation and malformed input rejection\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/stockfish19-pilot"
+      ],
+      "startedUtc": "2026-11-06T12:58:28.151Z",
+      "finishedUtc": "2026-11-06T12:58:28.262Z",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 12 legal PGNs (1048 half-moves); complete=true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/candidate-checkpoint"
+      ],
+      "startedUtc": "2026-11-06T12:58:28.263Z",
+      "finishedUtc": "2026-11-06T12:58:28.346Z",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 2 legal PGNs (307 half-moves); complete=false\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/modern/completed-200"
+      ],
+      "startedUtc": "2026-11-06T12:58:28.347Z",
+      "finishedUtc": "2026-11-06T12:58:28.900Z",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 200 legal PGNs (21091 half-moves); complete=true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/test-strength-report.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:28.900Z",
+      "finishedUtc": "2026-11-06T12:58:29.960Z",
+      "exitCode": 0,
+      "stdout": "PASS: verified/recounted strength reports, complete/incomplete separation, native identity, normal scores, escaped text and rejection of tampered or miscounted summaries\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-prepare-benchmark.py"
+      ],
+      "startedUtc": "2026-11-06T12:58:29.961Z",
+      "finishedUtc": "2026-11-06T12:58:30.782Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.711s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-prepare-levels.py"
+      ],
+      "startedUtc": "2026-11-06T12:58:30.782Z",
+      "finishedUtc": "2026-11-06T12:58:40.509Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 9.642s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-campaign.py"
+      ],
+      "startedUtc": "2026-11-06T12:58:40.510Z",
+      "finishedUtc": "2026-11-06T12:58:55.744Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 15.156s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/test-uci-normalize.py"
+      ],
+      "startedUtc": "2026-11-06T12:58:55.745Z",
+      "finishedUtc": "2026-11-06T12:58:55.901Z",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ".\n----------------------------------------------------------------------\nRan 1 test in 0.075s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/levels/before-65-v50"
+      ],
+      "startedUtc": "2026-11-06T12:58:55.901Z",
+      "finishedUtc": "2026-11-06T12:58:56.077Z",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 20 legal PGNs (1924 half-moves); complete=true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/levels/adjacent-screen"
+      ],
+      "startedUtc": "2026-11-06T12:58:56.077Z",
+      "finishedUtc": "2026-11-06T12:58:56.906Z",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 276 legal PGNs (36689 half-moves); complete=true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-evidence.cjs",
+        "validation/levels/followup-1second"
+      ],
+      "startedUtc": "2026-11-06T12:58:56.906Z",
+      "finishedUtc": "2026-11-06T12:58:57.239Z",
+      "exitCode": 0,
+      "stdout": "PASS: archive SHA-256s, lossless logs and 80 legal PGNs (9791 half-moves); complete=true\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-clock-games.cjs",
+        "validation/clock-management/before",
+        "validation/clock-management/after"
+      ],
+      "startedUtc": "2026-11-06T12:58:57.239Z",
+      "finishedUtc": "2026-11-06T12:58:57.354Z",
+      "exitCode": 0,
+      "stdout": "PASS: static hashes, clock traces and 4 legal PGNs (895 half-moves); clock losses retained\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/verify-clock-games.cjs",
+        "validation/clock-aware/before",
+        "validation/clock-aware/after",
+        "validation/clock-aware/ending-before",
+        "validation/clock-aware/ending-after"
+      ],
+      "startedUtc": "2026-11-06T12:58:57.354Z",
+      "finishedUtc": "2026-11-06T12:58:57.467Z",
+      "exitCode": 0,
+      "stdout": "PASS: static hashes, clock traces and 8 legal PGNs (952 half-moves); clock losses retained\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:57.468Z",
+      "finishedUtc": "2026-11-06T12:58:59.600Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline standalone HTML, 65 levels, 38 lessons, legal worker move, responsive UI, cancellation, book, computer-vs-computer, worker failure\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-wasm-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:58:59.600Z",
+      "finishedUtc": "2026-11-06T12:59:01.271Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline worker native32, legal move, responsive UI, backend wasm\nPASS: offline worker native64, legal move, responsive UI, backend wasm\nPASS: offline worker no-wasm, legal move, responsive UI, backend js-fallback\nPASS: offline worker compile-failure, legal move, responsive UI, backend js-fallback\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-level-clocks-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:01.271Z",
+      "finishedUtc": "2026-11-06T12:59:03.209Z",
+      "exitCode": 0,
+      "stdout": "PASS: real worker budget separation and queued deadline; all 65 emergency presets, adaptive UI overhead, fresh clock allocation, no viewing hold, expired-turn guard, source labels and cleanup\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-engine-recovery-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:03.209Z",
+      "finishedUtc": "2026-11-06T12:59:10.278Z",
+      "exitCode": 0,
+      "stdout": "PASS: real worker timeout/crash recovery, legal fallback, strict errors/cancellation, one bounded retry and visible retry control, game/PGN clocks and no retroactive moves after an injected inactivity/timer stall\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-ai-draw-claims-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:10.278Z",
+      "finishedUtc": "2026-11-06T12:59:12.193Z",
+      "exitCode": 0,
+      "stdout": "PASS: actual 120+1 user position claims current/intended fifty-move draws with fresh WASM results; no unplayed move, casual timing, mate priority and flag priority preserved\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-tools-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:12.194Z",
+      "finishedUtc": "2026-11-06T12:59:14.285Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline paste/file import, transactional errors, inert headers, review/navigation, shared-position reload, custom-FEN play and black-start PGN export\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-accessibility-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:14.286Z",
+      "finishedUtc": "2026-11-06T12:59:16.787Z",
+      "exitCode": 0,
+      "stdout": "PASS: accessible board/roving focus, keyboard and touch-move legality, flipped navigation, underpromotion, modal trap/return, guide persistence, tabs, contrast, portrait/landscape, real touch taps and 44px targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-library-analysis-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:16.788Z",
+      "finishedUtc": "2026-11-06T12:59:20.368Z",
+      "exitCode": 0,
+      "stdout": "PASS: offline named saves, new-game confirmation, paused official-clock restoration, transactional corrupt-save rejection, real worker review/alternatives/graph, cancellation and stale-result isolation\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-review-teaching-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:20.368Z",
+      "finishedUtc": "2026-11-06T12:59:22.343Z",
+      "exitCode": 0,
+      "stdout": "PASS: real-worker teaching, key moments and preserved keyboard focus, factual capture/alternative/mate, before-after navigation, side focus, mobile targets, new-game cleanup and zero-move review offline\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-polish-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:22.343Z",
+      "finishedUtc": "2026-11-06T12:59:26.716Z",
+      "exitCode": 0,
+      "stdout": "PASS: persistent share URL and denied clipboard fallback; lesson/low-level cues and official exclusion; real review arrows, flip/toggle/terminal/keyboard graph; six mobile/tablet viewports and edge underpromotion targets\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-pause-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:26.717Z",
+      "finishedUtc": "2026-11-06T12:59:35.886Z",
+      "exitCode": 0,
+      "stdout": "PASS: visible untimed/timed pause, keyboard resume, readonly board, save/history, delay/per-move clock continuity, cancelled workers/hints/delayed AI, official guards and restored touch lock, review/end/lesson visibility and three mobile layouts with real touch pause/resume\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/browser-engine-info-test.cjs"
+      ],
+      "startedUtc": "2026-11-06T12:59:35.886Z",
+      "finishedUtc": "2026-11-06T12:59:38.330Z",
+      "exitCode": 0,
+      "stdout": "PASS: real-worker book/out-of-book/custom-position indicators, history hiding and new-record reset offline\n",
+      "stderr": ""
+    }
+  ]
+}
