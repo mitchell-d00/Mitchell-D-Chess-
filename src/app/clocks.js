@@ -30,6 +30,8 @@ function tickClock() {
 }
 function flagFall(side) {
   const opp = side === 'w' ? 'b' : 'w', name = side === 'w' ? 'White' : 'Black';
+  captureThinkDiagnostic('flag fall');
+  G.flaggedSide=side;
   cancelThinking(); G.thinking = false; G.token = Math.random();
   if (!G.chess.canMate(opp)) endGame({ result: '1/2-1/2', reason: `${name} ran out of time, but ${opp === 'w' ? 'White' : 'Black'} cannot checkmate` });
   else endGame({ result: opp === 'w' ? '1-0' : '0-1', reason: `${name} lost on time` });
