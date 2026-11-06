@@ -618,3 +618,50 @@ Next: preserve these archives. A larger fresh-opening adjacent-level study at
 longer controls is needed to calibrate unresolved neighbours. Do not describe
 monotone resources as proven monotone strength. Publication status is recorded
 below after CI and live verification.
+
+## Bullet-clock feedback — November 6, 2026
+
+User supplied a 1+0 screenshot: level 65 White flagged; level 52 Black had
+8.2 seconds. Branch fix/bullet-clock-overhead starts at released main 8ffc05c.
+The clock win counts; this is not evidence of a rated or strictly ordered ladder.
+Found a real UI cost: clocked Fast moves retained a 120ms viewing floor even
+in time trouble, and allocation could read a nearly 100ms-old clock tick.
+
+Fixed in 6709812: charge elapsed time before maybeAI allocates, stop on an
+expired turn, and remove the viewing hold below ten seconds. Above that
+threshold existing clocked limits remain; untimed speed controls are unchanged.
+Clocks are never refunded or extended. Engine-src remains byte-identical to
+8ffc05c and ee1fcaf (SHA b3ffafe520089cb46296711928ca6d67d0bb4d138329a1c00402fabf19477dd4).
+
+Expanded the existing offline level-clock browser test with stale-clock,
+zero-viewing-delay and expired-search guards. Focused test and full pause suite
+passed before real games. Added optional scripts/browser-clock-games.cjs:
+two colour-reversed 65/52 games using actual offline browser workers, clocks,
+normal book, casual rules, Fast speed and 1+0. It saves every PGN, clock trace,
+HTML/runner hashes and host/runtime identity, refuses overwrites and verifies
+PGN legality. This optional long experiment is not added to normal CI.
+
+Before release 8ffc05c: 65 White flagged at 240 half-moves, 52 retained
+10.165 seconds; reversed colours ended in stalemate at 141 half-moves,
+65 retaining 8.731 seconds. Actual clocks reproduce the reported class of loss.
+No score or move-limit adjudication, at most two browser games at once on a
+shared host. Browser/throughput tests were held while these games ran.
+Detailed final results and repeat instructions: validation/clock-management.
+A no-increment game can still flag after this fix; outcomes from this small
+integration sample must not be presented as a strength gain or an Elo.
+
+Fixed-app sample: 65 White drew by insufficient material at 219 half-moves
+with 1.348 seconds left; 65 Black still flagged at 295 half-moves, opponent
+retaining 4.419 seconds. Both versions thus scored one draw/one clock loss for
+65. Publish this negative result alongside the regression fix. All four PGNs,
+895 half-moves, replay legally; archive verifier also checks hashes, summary
+consistency and monotone no-increment clock traces.
+
+The new stale-clock regression fails on the previous HTML as expected and
+passes on the fixed HTML. The full 37-command existing core/browser suite
+passed, plus the newly added static clock-archive check (now in the core suite).
+The native engine source is unchanged, so its earlier 6,013 parity cases remain
+applicable; normal compilation CI verifies the release again. Check records
+are retained in validation/clock-management/checks. Next: publish this bounded
+UI correction and retain the flagged candidate game; improving bullet results
+beyond this requires a separate, larger clock-aware time-management study.

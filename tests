@@ -443,3 +443,16 @@ two test-uci-normalize commands above.
 When publishing new results, include the exact revision and HTML hash, complete
 PGNs, counts of abnormal/incomplete games, full configuration and an honest
 statement of which rating scale, if any, the evidence supports.
+
+# Clock trouble integration (November 6, 2026)
+
+A 65/52 1+0 browser reproduction retained all four games: one flag fall and
+one draw before the fix, and one flag fall and one draw after. No match-score
+improvement is claimed. The focused regression verifies removal of viewing
+holds below ten seconds and stale-clock allocation; clock wins still count.
+All 895 half-moves replayed legally. Results and hashes:
+validation/clock-management/README.md.
+
+    node scripts/browser-level-clocks-test.cjs
+    node scripts/verify-clock-games.cjs validation/clock-management/before validation/clock-management/after
+    node scripts/browser-clock-games.cjs --out /path/to/new-empty-directory

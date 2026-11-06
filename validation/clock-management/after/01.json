@@ -1,0 +1,1550 @@
+{
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "insufficient material"
+  },
+  "plies": 219,
+  "whiteMs": 1347.800000011921,
+  "blackMs": 11124.799999974668,
+  "trace": [
+    {
+      "ply": 1,
+      "whiteMs": 59876.09999999404,
+      "blackMs": 59962.39999999851,
+      "source": "Last computer move: opening book",
+      "lastMove": "d2d4"
+    },
+    {
+      "ply": 2,
+      "whiteMs": 59871.79999998957,
+      "blackMs": 59841.09999999404,
+      "source": "Last computer move: opening book",
+      "lastMove": "d7d6"
+    },
+    {
+      "ply": 3,
+      "whiteMs": 59750.79999998957,
+      "blackMs": 59834.89999999851,
+      "source": "Last computer move: opening book",
+      "lastMove": "g1f3"
+    },
+    {
+      "ply": 4,
+      "whiteMs": 59745.59999998659,
+      "blackMs": 59714.89999999851,
+      "source": "Last computer move: opening book",
+      "lastMove": "g7g6"
+    },
+    {
+      "ply": 5,
+      "whiteMs": 59625.79999998957,
+      "blackMs": 59708.29999999702,
+      "source": "Last computer move: opening book",
+      "lastMove": "c2c4"
+    },
+    {
+      "ply": 6,
+      "whiteMs": 59620.79999998957,
+      "blackMs": 59588.20000000298,
+      "source": "Last computer move: opening book",
+      "lastMove": "f8g7"
+    },
+    {
+      "ply": 7,
+      "whiteMs": 59500.69999998808,
+      "blackMs": 59583.80000000447,
+      "source": "Last computer move: opening book",
+      "lastMove": "e2e4"
+    },
+    {
+      "ply": 8,
+      "whiteMs": 59496.69999998808,
+      "blackMs": 59464,
+      "source": "Last computer move: opening book",
+      "lastMove": "c8g4"
+    },
+    {
+      "ply": 9,
+      "whiteMs": 58563.9999999851,
+      "blackMs": 59458.20000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1e2"
+    },
+    {
+      "ply": 10,
+      "whiteMs": 58558.89999998361,
+      "blackMs": 58737.40000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7c5"
+    },
+    {
+      "ply": 11,
+      "whiteMs": 57305.09999998659,
+      "blackMs": 58732.20000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4d5"
+    },
+    {
+      "ply": 12,
+      "whiteMs": 57299.79999998212,
+      "blackMs": 58190.90000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8f6"
+    },
+    {
+      "ply": 13,
+      "whiteMs": 56093.39999998361,
+      "blackMs": 58183.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b1c3"
+    },
+    {
+      "ply": 14,
+      "whiteMs": 56086.69999998808,
+      "blackMs": 57720.40000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e8g8"
+    },
+    {
+      "ply": 15,
+      "whiteMs": 54610.19999998808,
+      "blackMs": 57715.00000000745,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3g5"
+    },
+    {
+      "ply": 16,
+      "whiteMs": 54605.09999998659,
+      "blackMs": 57276.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4e2"
+    },
+    {
+      "ply": 17,
+      "whiteMs": 53680.9999999851,
+      "blackMs": 57270.80000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1e2"
+    },
+    {
+      "ply": 18,
+      "whiteMs": 53673.9999999851,
+      "blackMs": 56559.20000001043,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8e8"
+    },
+    {
+      "ply": 19,
+      "whiteMs": 52222.4999999851,
+      "blackMs": 56552.5000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1g1"
+    },
+    {
+      "ply": 20,
+      "whiteMs": 52215.79999998957,
+      "blackMs": 56040.30000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h7h6"
+    },
+    {
+      "ply": 21,
+      "whiteMs": 50928.9999999851,
+      "blackMs": 56035.10000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g5f3"
+    },
+    {
+      "ply": 22,
+      "whiteMs": 50923.4999999851,
+      "blackMs": 55564.20000001043,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e7e6"
+    },
+    {
+      "ply": 23,
+      "whiteMs": 49546.39999998361,
+      "blackMs": 55558.20000001043,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1e1"
+    },
+    {
+      "ply": 24,
+      "whiteMs": 49540.29999998957,
+      "blackMs": 54849.20000001043,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6d5"
+    },
+    {
+      "ply": 25,
+      "whiteMs": 48532.79999998957,
+      "blackMs": 54842.20000001043,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4d5"
+    },
+    {
+      "ply": 26,
+      "whiteMs": 48525.09999998659,
+      "blackMs": 54123.30000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8a6"
+    },
+    {
+      "ply": 27,
+      "whiteMs": 47401.89999999106,
+      "blackMs": 54117.30000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1f4"
+    },
+    {
+      "ply": 28,
+      "whiteMs": 47396.69999998808,
+      "blackMs": 53407.60000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a6c7"
+    },
+    {
+      "ply": 29,
+      "whiteMs": 46626.09999998659,
+      "blackMs": 53399.0000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e2d3"
+    },
+    {
+      "ply": 30,
+      "whiteMs": 46620.19999998063,
+      "blackMs": 52698.60000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b7b5"
+    },
+    {
+      "ply": 31,
+      "whiteMs": 45647.69999998063,
+      "blackMs": 52693.20000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a2a3"
+    },
+    {
+      "ply": 32,
+      "whiteMs": 45640.89999997616,
+      "blackMs": 51981.80000000447,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7a5"
+    },
+    {
+      "ply": 33,
+      "whiteMs": 44336.19999998063,
+      "blackMs": 51974.90000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a1d1"
+    },
+    {
+      "ply": 34,
+      "whiteMs": 44330.39999998361,
+      "blackMs": 51272.30000000447,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b5b4"
+    },
+    {
+      "ply": 35,
+      "whiteMs": 43622.29999998212,
+      "blackMs": 51266.40000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3a4"
+    },
+    {
+      "ply": 36,
+      "whiteMs": 43615.79999998212,
+      "blackMs": 50778.20000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a8b8"
+    },
+    {
+      "ply": 37,
+      "whiteMs": 42457.79999998212,
+      "blackMs": 50773,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c2"
+    },
+    {
+      "ply": 38,
+      "whiteMs": 42452.59999997914,
+      "blackMs": 50161.10000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6h5"
+    },
+    {
+      "ply": 39,
+      "whiteMs": 41203.09999997914,
+      "blackMs": 50155.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4e3"
+    },
+    {
+      "ply": 40,
+      "whiteMs": 41194.29999997467,
+      "blackMs": 49458.20000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b4a3"
+    },
+    {
+      "ply": 41,
+      "whiteMs": 40379.29999997467,
+      "blackMs": 49451.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b2a3"
+    },
+    {
+      "ply": 42,
+      "whiteMs": 40373.29999997467,
+      "blackMs": 48919.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7b5"
+    },
+    {
+      "ply": 43,
+      "whiteMs": 39247.9999999702,
+      "blackMs": 48910.70000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3d2"
+    },
+    {
+      "ply": 44,
+      "whiteMs": 39241.59999996424,
+      "blackMs": 48210.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h5f6"
+    },
+    {
+      "ply": 45,
+      "whiteMs": 38050.79999996722,
+      "blackMs": 48203.89999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h2h3"
+    },
+    {
+      "ply": 46,
+      "whiteMs": 38044.99999996275,
+      "blackMs": 47513.60000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b5a3"
+    },
+    {
+      "ply": 47,
+      "whiteMs": 37062.39999996871,
+      "blackMs": 47507.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2d3"
+    },
+    {
+      "ply": 48,
+      "whiteMs": 37052.89999996871,
+      "blackMs": 46839.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a3b5"
+    },
+    {
+      "ply": 49,
+      "whiteMs": 36281.19999997318,
+      "blackMs": 46833.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1b1"
+    },
+    {
+      "ply": 50,
+      "whiteMs": 36272.9999999702,
+      "blackMs": 46379.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b5d4"
+    },
+    {
+      "ply": 51,
+      "whiteMs": 35456.39999997616,
+      "blackMs": 46367.99999999255,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b1b8"
+    },
+    {
+      "ply": 52,
+      "whiteMs": 35445.89999997616,
+      "blackMs": 45684.09999999404,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d8b8"
+    },
+    {
+      "ply": 53,
+      "whiteMs": 34337.29999997467,
+      "blackMs": 45678.09999999404,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1b1"
+    },
+    {
+      "ply": 54,
+      "whiteMs": 34330.79999997467,
+      "blackMs": 45071.39999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8a7"
+    },
+    {
+      "ply": 55,
+      "whiteMs": 33222.4999999702,
+      "blackMs": 45065.89999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a4c3"
+    },
+    {
+      "ply": 56,
+      "whiteMs": 33216.69999996573,
+      "blackMs": 44379.39999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e8b8"
+    },
+    {
+      "ply": 57,
+      "whiteMs": 32623.899999968708,
+      "blackMs": 44371.39999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c4"
+    },
+    {
+      "ply": 58,
+      "whiteMs": 32609.799999967217,
+      "blackMs": 43933.19999999553,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8b1"
+    },
+    {
+      "ply": 59,
+      "whiteMs": 31944.899999968708,
+      "blackMs": 43927.09999999404,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3b1"
+    },
+    {
+      "ply": 60,
+      "whiteMs": 31939.499999970198,
+      "blackMs": 43545.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7a6"
+    },
+    {
+      "ply": 61,
+      "whiteMs": 31248.399999968708,
+      "blackMs": 43537,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b1a2"
+    },
+    {
+      "ply": 62,
+      "whiteMs": 31241.999999970198,
+      "blackMs": 42850.39999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4c2"
+    },
+    {
+      "ply": 63,
+      "whiteMs": 30484.799999967217,
+      "blackMs": 42843.70000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e4e5"
+    },
+    {
+      "ply": 64,
+      "whiteMs": 30479.199999965727,
+      "blackMs": 42341.20000000298,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2b4"
+    },
+    {
+      "ply": 65,
+      "whiteMs": 29462.599999971688,
+      "blackMs": 42334.5,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a2b3"
+    },
+    {
+      "ply": 66,
+      "whiteMs": 29454.099999971688,
+      "blackMs": 41838.10000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d6e5"
+    },
+    {
+      "ply": 67,
+      "whiteMs": 28764.499999970198,
+      "blackMs": 41830.60000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d5d6"
+    },
+    {
+      "ply": 68,
+      "whiteMs": 28757.199999973178,
+      "blackMs": 41418.00000000745,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6d7"
+    },
+    {
+      "ply": 69,
+      "whiteMs": 28133.299999974668,
+      "blackMs": 41411.40000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3a4"
+    },
+    {
+      "ply": 70,
+      "whiteMs": 28127.299999974668,
+      "blackMs": 41030.60000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a6b5"
+    },
+    {
+      "ply": 71,
+      "whiteMs": 27463.099999971688,
+      "blackMs": 41024.80000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a4c3"
+    },
+    {
+      "ply": 72,
+      "whiteMs": 27455.399999968708,
+      "blackMs": 40654.80000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b5c6"
+    },
+    {
+      "ply": 73,
+      "whiteMs": 26827.699999973178,
+      "blackMs": 40648.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b3a4"
+    },
+    {
+      "ply": 74,
+      "whiteMs": 26822.199999973178,
+      "blackMs": 40056.60000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c6a4"
+    },
+    {
+      "ply": 75,
+      "whiteMs": 25864.299999974668,
+      "blackMs": 40047.80000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3a4"
+    },
+    {
+      "ply": 76,
+      "whiteMs": 25858.299999974668,
+      "blackMs": 39449.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b4d3"
+    },
+    {
+      "ply": 77,
+      "whiteMs": 25067.499999970198,
+      "blackMs": 39442.50000000745,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4a5"
+    },
+    {
+      "ply": 78,
+      "whiteMs": 25060.099999971688,
+      "blackMs": 39065.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5e4"
+    },
+    {
+      "ply": 79,
+      "whiteMs": 24130.099999971688,
+      "blackMs": 39059.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g1f1"
+    },
+    {
+      "ply": 80,
+      "whiteMs": 24120.099999971688,
+      "blackMs": 38569.00000000745,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f7f5"
+    },
+    {
+      "ply": 81,
+      "whiteMs": 23223.499999970198,
+      "blackMs": 38559.50000000745,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5b3"
+    },
+    {
+      "ply": 82,
+      "whiteMs": 23216.599999971688,
+      "blackMs": 37884.10000000894,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5c4"
+    },
+    {
+      "ply": 83,
+      "whiteMs": 22717.099999971688,
+      "blackMs": 37878.40000001341,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b3c5"
+    },
+    {
+      "ply": 84,
+      "whiteMs": 22710.099999971688,
+      "blackMs": 37429.80000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d7c5"
+    },
+    {
+      "ply": 85,
+      "whiteMs": 22132.799999974668,
+      "blackMs": 37423.5000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a4c5"
+    },
+    {
+      "ply": 86,
+      "whiteMs": 22123.699999973178,
+      "blackMs": 36994.60000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7f6"
+    },
+    {
+      "ply": 87,
+      "whiteMs": 21270.199999973178,
+      "blackMs": 36984.80000001937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d6d7"
+    },
+    {
+      "ply": 88,
+      "whiteMs": 21260.699999973178,
+      "blackMs": 36460.20000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c5"
+    },
+    {
+      "ply": 89,
+      "whiteMs": 20735.299999974668,
+      "blackMs": 36453.40000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3c5"
+    },
+    {
+      "ply": 90,
+      "whiteMs": 20729.599999971688,
+      "blackMs": 35908.30000001937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6d8"
+    },
+    {
+      "ply": 91,
+      "whiteMs": 20259.799999974668,
+      "blackMs": 35902.40000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1e2"
+    },
+    {
+      "ply": 92,
+      "whiteMs": 20253.399999976158,
+      "blackMs": 35516.90000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8f7"
+    },
+    {
+      "ply": 93,
+      "whiteMs": 19700.899999976158,
+      "blackMs": 35507.80000001937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e2d2"
+    },
+    {
+      "ply": 94,
+      "whiteMs": 19693.299999974668,
+      "blackMs": 34956.60000002384,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d8a5"
+    },
+    {
+      "ply": 95,
+      "whiteMs": 19130.09999997914,
+      "blackMs": 34950.30000001937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c2"
+    },
+    {
+      "ply": 96,
+      "whiteMs": 19120.09999997914,
+      "blackMs": 34289.10000002384,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f7e6"
+    },
+    {
+      "ply": 97,
+      "whiteMs": 18322.49999997765,
+      "blackMs": 34281.60000002384,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5b4"
+    },
+    {
+      "ply": 98,
+      "whiteMs": 18310.39999998361,
+      "blackMs": 33864.70000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5b6"
+    },
+    {
+      "ply": 99,
+      "whiteMs": 17546.39999998361,
+      "blackMs": 33852.30000001937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b4c5"
+    },
+    {
+      "ply": 100,
+      "whiteMs": 17538.69999998808,
+      "blackMs": 33185.70000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b6c7"
+    },
+    {
+      "ply": 101,
+      "whiteMs": 16810.39999998361,
+      "blackMs": 33179.40000001341,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2c3"
+    },
+    {
+      "ply": 102,
+      "whiteMs": 16803.79999998212,
+      "blackMs": 32808.70000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6d7"
+    },
+    {
+      "ply": 103,
+      "whiteMs": 16072.399999983609,
+      "blackMs": 32802.5000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3c4"
+    },
+    {
+      "ply": 104,
+      "whiteMs": 16064.799999982119,
+      "blackMs": 32129.20000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d7e6"
+    },
+    {
+      "ply": 105,
+      "whiteMs": 15439.499999985099,
+      "blackMs": 32121.70000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g2g3"
+    },
+    {
+      "ply": 106,
+      "whiteMs": 15433.099999986589,
+      "blackMs": 31461.40000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h6h5"
+    },
+    {
+      "ply": 107,
+      "whiteMs": 15057.799999982119,
+      "blackMs": 31455.300000026822,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4d4"
+    },
+    {
+      "ply": 108,
+      "whiteMs": 15051.099999986589,
+      "blackMs": 30808.700000025332,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7a5"
+    },
+    {
+      "ply": 109,
+      "whiteMs": 14556.599999986589,
+      "blackMs": 30802.40000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5a7"
+    },
+    {
+      "ply": 110,
+      "whiteMs": 14550.399999983609,
+      "blackMs": 30414.700000025332,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5d2"
+    },
+    {
+      "ply": 111,
+      "whiteMs": 13888.299999982119,
+      "blackMs": 30406.90000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7b8"
+    },
+    {
+      "ply": 112,
+      "whiteMs": 13881.799999982119,
+      "blackMs": 29984.100000023842,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c1"
+    },
+    {
+      "ply": 113,
+      "whiteMs": 13250.099999979138,
+      "blackMs": 29973.500000029802,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3g4"
+    },
+    {
+      "ply": 114,
+      "whiteMs": 13240.199999980628,
+      "blackMs": 29382.800000026822,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h5g4"
+    },
+    {
+      "ply": 115,
+      "whiteMs": 12825.699999980628,
+      "blackMs": 29375.400000028312,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h3g4"
+    },
+    {
+      "ply": 116,
+      "whiteMs": 12818.799999974668,
+      "blackMs": 28907.300000026822,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6f6"
+    },
+    {
+      "ply": 117,
+      "whiteMs": 12375.899999976158,
+      "blackMs": 28900.200000032783,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4f5"
+    },
+    {
+      "ply": 118,
+      "whiteMs": 12365.499999977648,
+      "blackMs": 28370.900000028312,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g6f5"
+    },
+    {
+      "ply": 119,
+      "whiteMs": 11796.099999979138,
+      "blackMs": 28363.700000025332,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4d5"
+    },
+    {
+      "ply": 120,
+      "whiteMs": 11789.499999977648,
+      "blackMs": 27941.400000028312,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6g5"
+    },
+    {
+      "ply": 121,
+      "whiteMs": 11198.899999976158,
+      "blackMs": 27935.300000026822,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8e5"
+    },
+    {
+      "ply": 122,
+      "whiteMs": 11192.299999974668,
+      "blackMs": 27275.100000023842,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g5g4"
+    },
+    {
+      "ply": 123,
+      "whiteMs": 10805.199999973178,
+      "blackMs": 27264.00000002235,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5d4"
+    },
+    {
+      "ply": 124,
+      "whiteMs": 10798.799999974668,
+      "blackMs": 26827.50000002235,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4f3"
+    },
+    {
+      "ply": 125,
+      "whiteMs": 10459.599999979138,
+      "blackMs": 26820.30000001937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d5e5"
+    },
+    {
+      "ply": 126,
+      "whiteMs": 10448.499999985099,
+      "blackMs": 26371.90000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5f4"
+    },
+    {
+      "ply": 127,
+      "whiteMs": 9949.599999979138,
+      "blackMs": 26361.40000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5f5"
+    },
+    {
+      "ply": 128,
+      "whiteMs": 9941.899999976158,
+      "blackMs": 25991.90000002086,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1a3"
+    },
+    {
+      "ply": 129,
+      "whiteMs": 9607.199999980628,
+      "blackMs": 25984.10000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4c3"
+    },
+    {
+      "ply": 130,
+      "whiteMs": 9598.399999976158,
+      "blackMs": 25573.60000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e4e3"
+    },
+    {
+      "ply": 131,
+      "whiteMs": 9231.499999977648,
+      "blackMs": 25566.0000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2e3"
+    },
+    {
+      "ply": 132,
+      "whiteMs": 9223.199999980628,
+      "blackMs": 25187.10000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4e3"
+    },
+    {
+      "ply": 133,
+      "whiteMs": 8928.899999983609,
+      "blackMs": 25179.40000001341,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3d4"
+    },
+    {
+      "ply": 134,
+      "whiteMs": 8919.999999977648,
+      "blackMs": 24812.90000001341,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3e2"
+    },
+    {
+      "ply": 135,
+      "whiteMs": 8540.099999979138,
+      "blackMs": 24805.20000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4c3"
+    },
+    {
+      "ply": 136,
+      "whiteMs": 8532.699999980628,
+      "blackMs": 24270.0000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a3c5"
+    },
+    {
+      "ply": 137,
+      "whiteMs": 8220.099999979138,
+      "blackMs": 24263.30000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3e1"
+    },
+    {
+      "ply": 138,
+      "whiteMs": 8206.999999977648,
+      "blackMs": 23813.90000001341,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5f2"
+    },
+    {
+      "ply": 139,
+      "whiteMs": 7749.399999983609,
+      "blackMs": 23801.90000001341,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1a5"
+    },
+    {
+      "ply": 140,
+      "whiteMs": 7742.599999986589,
+      "blackMs": 23426.5000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2g3"
+    },
+    {
+      "ply": 141,
+      "whiteMs": 7310.999999985099,
+      "blackMs": 23414.0000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5d2"
+    },
+    {
+      "ply": 142,
+      "whiteMs": 7303.899999983609,
+      "blackMs": 22843.60000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3h4"
+    },
+    {
+      "ply": 143,
+      "whiteMs": 7055.599999986589,
+      "blackMs": 22835.20000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2b4"
+    },
+    {
+      "ply": 144,
+      "whiteMs": 7049.299999989569,
+      "blackMs": 22386.0000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3g2"
+    },
+    {
+      "ply": 145,
+      "whiteMs": 6655.899999991059,
+      "blackMs": 22379.0000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5g4"
+    },
+    {
+      "ply": 146,
+      "whiteMs": 6647.0999999940395,
+      "blackMs": 22009.10000001639,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4g3"
+    },
+    {
+      "ply": 147,
+      "whiteMs": 6442.0999999940395,
+      "blackMs": 21999.20000001788,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b4d2"
+    },
+    {
+      "ply": 148,
+      "whiteMs": 6433.499999992549,
+      "blackMs": 21664.30000001192,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3d6"
+    },
+    {
+      "ply": 149,
+      "whiteMs": 6074.0999999940395,
+      "blackMs": 21657.50000000745,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2a5"
+    },
+    {
+      "ply": 150,
+      "whiteMs": 6064.299999989569,
+      "blackMs": 21309.40000000596,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g2f1"
+    },
+    {
+      "ply": 151,
+      "whiteMs": 5815.199999988079,
+      "blackMs": 21302.60000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4f3"
+    },
+    {
+      "ply": 152,
+      "whiteMs": 5807.0999999940395,
+      "blackMs": 20962.60000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d6c7"
+    },
+    {
+      "ply": 153,
+      "whiteMs": 5612.899999991059,
+      "blackMs": 20955.10000000149,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5d2"
+    },
+    {
+      "ply": 154,
+      "whiteMs": 5602.399999991059,
+      "blackMs": 20586,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7b6"
+    },
+    {
+      "ply": 155,
+      "whiteMs": 5396.299999989569,
+      "blackMs": 20577.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c3"
+    },
+    {
+      "ply": 156,
+      "whiteMs": 5384.199999988079,
+      "blackMs": 20255.29999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b6f2"
+    },
+    {
+      "ply": 157,
+      "whiteMs": 5083.099999986589,
+      "blackMs": 20244.5,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3d2"
+    },
+    {
+      "ply": 158,
+      "whiteMs": 5073.399999983609,
+      "blackMs": 19864.5,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2e1"
+    },
+    {
+      "ply": 159,
+      "whiteMs": 4909.299999989569,
+      "blackMs": 19853.39999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2e3"
+    },
+    {
+      "ply": 160,
+      "whiteMs": 4901.499999992549,
+      "blackMs": 19539.79999999702,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1c3"
+    },
+    {
+      "ply": 161,
+      "whiteMs": 4741.299999989569,
+      "blackMs": 19530.39999999106,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3f2"
+    },
+    {
+      "ply": 162,
+      "whiteMs": 4734.099999986589,
+      "blackMs": 19177.89999999106,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3d4"
+    },
+    {
+      "ply": 163,
+      "whiteMs": 4534.799999989569,
+      "blackMs": 19169.59999998659,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2g3"
+    },
+    {
+      "ply": 164,
+      "whiteMs": 4524.499999985099,
+      "blackMs": 18880.4999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4f6"
+    },
+    {
+      "ply": 165,
+      "whiteMs": 4353.299999989569,
+      "blackMs": 18873.19999998063,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3e3"
+    },
+    {
+      "ply": 166,
+      "whiteMs": 4344.799999989569,
+      "blackMs": 18513.89999998361,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6e5"
+    },
+    {
+      "ply": 167,
+      "whiteMs": 4207.999999992549,
+      "blackMs": 18505.4999999851,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3h4"
+    },
+    {
+      "ply": 168,
+      "whiteMs": 4201.299999989569,
+      "blackMs": 18169.09999997914,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5c7"
+    },
+    {
+      "ply": 169,
+      "whiteMs": 3966.0999999940395,
+      "blackMs": 18160.399999976158,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3f3"
+    },
+    {
+      "ply": 170,
+      "whiteMs": 3957.7999999970198,
+      "blackMs": 17873.899999976158,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7d8"
+    },
+    {
+      "ply": 171,
+      "whiteMs": 3808.5,
+      "blackMs": 17865.899999976158,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4g3"
+    },
+    {
+      "ply": 172,
+      "whiteMs": 3799.89999999851,
+      "blackMs": 17530.49999997765,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d8g5"
+    },
+    {
+      "ply": 173,
+      "whiteMs": 3663.2999999970198,
+      "blackMs": 17522.99999997765,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3e4"
+    },
+    {
+      "ply": 174,
+      "whiteMs": 3653.5,
+      "blackMs": 17208.399999976158,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g5h6"
+    },
+    {
+      "ply": 175,
+      "whiteMs": 3517.60000000149,
+      "blackMs": 17200.599999971688,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e4f3"
+    },
+    {
+      "ply": 176,
+      "whiteMs": 3510.5,
+      "blackMs": 16840.199999973178,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h6d2"
+    },
+    {
+      "ply": 177,
+      "whiteMs": 3388.9000000059605,
+      "blackMs": 16828.699999973178,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3f2"
+    },
+    {
+      "ply": 178,
+      "whiteMs": 3376.0000000074506,
+      "blackMs": 16529.899999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c3"
+    },
+    {
+      "ply": 179,
+      "whiteMs": 3257.5000000074506,
+      "blackMs": 16516.399999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2g3"
+    },
+    {
+      "ply": 180,
+      "whiteMs": 3248.400000013411,
+      "blackMs": 16272.499999970198,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3b4"
+    },
+    {
+      "ply": 181,
+      "whiteMs": 3128.900000013411,
+      "blackMs": 16263.299999967217,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3f2"
+    },
+    {
+      "ply": 182,
+      "whiteMs": 3117.000000014901,
+      "blackMs": 16004.799999967217,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b4c5"
+    },
+    {
+      "ply": 183,
+      "whiteMs": 3009.300000011921,
+      "blackMs": 15992.999999962747,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2g3"
+    },
+    {
+      "ply": 184,
+      "whiteMs": 2997.300000011921,
+      "blackMs": 15758.099999964237,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5d4"
+    },
+    {
+      "ply": 185,
+      "whiteMs": 2896.1000000163913,
+      "blackMs": 15748.899999961257,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3h4"
+    },
+    {
+      "ply": 186,
+      "whiteMs": 2883.8000000193715,
+      "blackMs": 15439.399999961257,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4b6"
+    },
+    {
+      "ply": 187,
+      "whiteMs": 2787.1000000163913,
+      "blackMs": 15431.799999967217,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4g3"
+    },
+    {
+      "ply": 188,
+      "whiteMs": 2779.300000011921,
+      "blackMs": 15091.399999961257,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b6a5"
+    },
+    {
+      "ply": 189,
+      "whiteMs": 2676.700000010431,
+      "blackMs": 15081.999999955297,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3f2"
+    },
+    {
+      "ply": 190,
+      "whiteMs": 2667.0000000074506,
+      "blackMs": 14795.899999961257,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5d2"
+    },
+    {
+      "ply": 191,
+      "whiteMs": 2568.0000000074506,
+      "blackMs": 14787.099999964237,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2g3"
+    },
+    {
+      "ply": 192,
+      "whiteMs": 2555.6000000089407,
+      "blackMs": 14511.499999962747,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2e1"
+    },
+    {
+      "ply": 193,
+      "whiteMs": 2464.200000010431,
+      "blackMs": 14503.499999962747,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3d6"
+    },
+    {
+      "ply": 194,
+      "whiteMs": 2452.800000011921,
+      "blackMs": 14156.599999964237,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1a5"
+    },
+    {
+      "ply": 195,
+      "whiteMs": 2359.000000014901,
+      "blackMs": 14148.999999962747,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d6g3"
+    },
+    {
+      "ply": 196,
+      "whiteMs": 2351.400000013411,
+      "blackMs": 13939.399999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5b6"
+    },
+    {
+      "ply": 197,
+      "whiteMs": 2255.200000010431,
+      "blackMs": 13931.899999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3h4"
+    },
+    {
+      "ply": 198,
+      "whiteMs": 2244.700000010431,
+      "blackMs": 13681.599999971688,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b6a7"
+    },
+    {
+      "ply": 199,
+      "whiteMs": 2156.300000011921,
+      "blackMs": 13673.499999970198,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4g3"
+    },
+    {
+      "ply": 200,
+      "whiteMs": 2146.300000011921,
+      "blackMs": 13464.299999974668,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7b8"
+    },
+    {
+      "ply": 201,
+      "whiteMs": 2065.000000014901,
+      "blackMs": 13451.199999973178,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3f2"
+    },
+    {
+      "ply": 202,
+      "whiteMs": 2057.000000014901,
+      "blackMs": 13182.199999973178,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8f4"
+    },
+    {
+      "ply": 203,
+      "whiteMs": 1978.5000000149012,
+      "blackMs": 13170.299999967217,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2h4"
+    },
+    {
+      "ply": 204,
+      "whiteMs": 1970.1000000089407,
+      "blackMs": 12969.799999967217,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4d6"
+    },
+    {
+      "ply": 205,
+      "whiteMs": 1900.400000013411,
+      "blackMs": 12960.599999964237,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4f2"
+    },
+    {
+      "ply": 206,
+      "whiteMs": 1892.900000013411,
+      "blackMs": 12733.699999965727,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d6e5"
+    },
+    {
+      "ply": 207,
+      "whiteMs": 1813.1000000163913,
+      "blackMs": 12725.799999967217,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2h4"
+    },
+    {
+      "ply": 208,
+      "whiteMs": 1804.6000000163913,
+      "blackMs": 12488.399999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5b2"
+    },
+    {
+      "ply": 209,
+      "whiteMs": 1720.7000000178814,
+      "blackMs": 12479.399999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4g3"
+    },
+    {
+      "ply": 210,
+      "whiteMs": 1710.6000000163913,
+      "blackMs": 12254.999999962747,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b2c1"
+    },
+    {
+      "ply": 211,
+      "whiteMs": 1635.1000000163913,
+      "blackMs": 12244.999999962747,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3h4"
+    },
+    {
+      "ply": 212,
+      "whiteMs": 1626.6000000163913,
+      "blackMs": 12008.699999965727,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1g5"
+    },
+    {
+      "ply": 213,
+      "whiteMs": 1543.400000013411,
+      "blackMs": 12001.099999971688,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4g3"
+    },
+    {
+      "ply": 214,
+      "whiteMs": 1533.2000000178814,
+      "blackMs": 11684.899999968708,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g5e7"
+    },
+    {
+      "ply": 215,
+      "whiteMs": 1475.900000013411,
+      "blackMs": 11677.099999971688,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3f2"
+    },
+    {
+      "ply": 216,
+      "whiteMs": 1466.0000000149012,
+      "blackMs": 11399.699999973178,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e7a3"
+    },
+    {
+      "ply": 217,
+      "whiteMs": 1405.900000013411,
+      "blackMs": 11390.299999974668,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2h4"
+    },
+    {
+      "ply": 218,
+      "whiteMs": 1398.6000000163913,
+      "blackMs": 11124.799999974668,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e2e1r"
+    },
+    {
+      "ply": 219,
+      "whiteMs": 1347.800000011921,
+      "blackMs": 11124.799999974668,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4e1"
+    }
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 52,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "finishedUtc": "2026-11-06T00:02:21.371Z"
+}
