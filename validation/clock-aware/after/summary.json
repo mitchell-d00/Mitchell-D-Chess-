@@ -1,0 +1,43 @@
+{
+  "finishedUtc": "2026-11-06T11:04:53.841Z",
+  "complete": true,
+  "games": [
+    {
+      "over": {
+        "result": "1/2-1/2",
+        "reason": "threefold repetition"
+      },
+      "plies": 109,
+      "whiteMs": 34656.10000000079,
+      "blackMs": 45862.29999999958,
+      "whiteLevel": 65,
+      "blackLevel": 52,
+      "completed": true,
+      "error": null,
+      "errors": [],
+      "finishedUtc": "2026-11-06T11:04:53.829Z"
+    },
+    {
+      "over": {
+        "result": "1/2-1/2",
+        "reason": "threefold repetition"
+      },
+      "plies": 34,
+      "whiteMs": 55882.60000000079,
+      "blackMs": 52289.19999999995,
+      "whiteLevel": 52,
+      "blackLevel": 65,
+      "completed": true,
+      "error": null,
+      "errors": [],
+      "finishedUtc": "2026-11-06T11:04:26.158Z"
+    }
+  ],
+  "files": {
+    "01.json": "5e4250da47396899ffcbfd73a0c806f4d0cc37905455a51c9c9643797557eb39",
+    "01.pgn": "be2218f464bbe741e829c9fa0bc488b1ba4ce49880fdc92f16b157b49654f690",
+    "02.json": "8859aff87401c0908c5d87ee6776b0562429e9b4ef0505403a6f9a7dd3387b17",
+    "02.pgn": "e462c39ac14d8735033cd761198d1e6ba78a3a55384b340d0673f951084a55d3",
+    "protocol.json": "830b2cb9508eb669c14e26b0d1d4808d34f7431fa4392896b1c9a8c26c5586bf"
+  }
+}

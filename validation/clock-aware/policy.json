@@ -1,0 +1,1325 @@
+{
+  "createdUtc": "2026-11-06T11:09:32.874Z",
+  "htmlSha256": "802714b0aa1ac95a3e171eb861a44a6d278cb6860802d3b2352245f8de44aaf1",
+  "allocationSource": "embedded HTML",
+  "orderedPolicy": true,
+  "rows": [
+    {
+      "level": 1,
+      "name": "Pawn Pusher",
+      "eval": "random",
+      "depth": 0,
+      "quiescence": false,
+      "advanced": false,
+      "book": false,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": null,
+      "clockShare": null,
+      "fixed100ms": 0,
+      "clocks": {
+        "late": 0,
+        "increment": 0,
+        "perMove": 0
+      }
+    },
+    {
+      "level": 2,
+      "name": "First Steps",
+      "eval": "mat",
+      "depth": 1,
+      "quiescence": false,
+      "advanced": false,
+      "book": false,
+      "noise": 260,
+      "blunders": 0.4,
+      "capMs": 168,
+      "clockShare": 0.026278012976678578,
+      "fixed100ms": 2,
+      "clocks": {
+        "late": 1,
+        "increment": 58,
+        "perMove": 168
+      }
+    },
+    {
+      "level": 3,
+      "name": "Curious Cat",
+      "eval": "mat",
+      "depth": 1,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 200,
+      "blunders": 0.3,
+      "capMs": 178,
+      "clockShare": 0.0278405849418856,
+      "fixed100ms": 2,
+      "clocks": {
+        "late": 1,
+        "increment": 61,
+        "perMove": 178
+      }
+    },
+    {
+      "level": 4,
+      "name": "Kitchen Table",
+      "eval": "pst",
+      "depth": 1,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 160,
+      "blunders": 0.25,
+      "capMs": 189,
+      "clockShare": 0.029496072271302926,
+      "fixed100ms": 2,
+      "clocks": {
+        "late": 1,
+        "increment": 65,
+        "perMove": 189
+      }
+    },
+    {
+      "level": 5,
+      "name": "Rookie",
+      "eval": "pst",
+      "depth": 2,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 140,
+      "blunders": 0.2,
+      "capMs": 200,
+      "clockShare": 0.03125,
+      "fixed100ms": 3,
+      "clocks": {
+        "late": 1,
+        "increment": 69,
+        "perMove": 200
+      }
+    },
+    {
+      "level": 6,
+      "name": "Weekend Player",
+      "eval": "pst",
+      "depth": 2,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 120,
+      "blunders": 0.16,
+      "capMs": 212,
+      "clockShare": 0.03310822169872797,
+      "fixed100ms": 3,
+      "clocks": {
+        "late": 1,
+        "increment": 73,
+        "perMove": 212
+      }
+    },
+    {
+      "level": 7,
+      "name": "Park Bench",
+      "eval": "pst",
+      "depth": 2,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 95,
+      "blunders": 0.13,
+      "capMs": 224,
+      "clockShare": 0.035076939009667914,
+      "fixed100ms": 3,
+      "clocks": {
+        "late": 1,
+        "increment": 77,
+        "perMove": 224
+      }
+    },
+    {
+      "level": 8,
+      "name": "Coffeehouse",
+      "eval": "pst",
+      "depth": 2,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 75,
+      "blunders": 0.1,
+      "capMs": 238,
+      "clockShare": 0.03716272234383503,
+      "fixed100ms": 3,
+      "clocks": {
+        "late": 1,
+        "increment": 82,
+        "perMove": 238
+      }
+    },
+    {
+      "level": 9,
+      "name": "Library Club",
+      "eval": "pst",
+      "depth": 3,
+      "quiescence": true,
+      "advanced": false,
+      "book": false,
+      "noise": 65,
+      "blunders": 0.08,
+      "capMs": 252,
+      "clockShare": 0.03937253280921478,
+      "fixed100ms": 3,
+      "clocks": {
+        "late": 1,
+        "increment": 87,
+        "perMove": 252
+      }
+    },
+    {
+      "level": 10,
+      "name": "School Champion",
+      "eval": "pst",
+      "depth": 3,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 55,
+      "blunders": 0.06,
+      "capMs": 267,
+      "clockShare": 0.04171374544281358,
+      "fixed100ms": 4,
+      "clocks": {
+        "late": 1,
+        "increment": 92,
+        "perMove": 267
+      }
+    },
+    {
+      "level": 11,
+      "name": "Club Rookie",
+      "eval": "full",
+      "depth": 3,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 45,
+      "blunders": 0.05,
+      "capMs": 283,
+      "clockShare": 0.04419417382415922,
+      "fixed100ms": 4,
+      "clocks": {
+        "late": 1,
+        "increment": 97,
+        "perMove": 283
+      }
+    },
+    {
+      "level": 12,
+      "name": "Club Regular",
+      "eval": "full",
+      "depth": 3,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 35,
+      "blunders": 0.04,
+      "capMs": 300,
+      "clockShare": 0.04682209615239629,
+      "fixed100ms": 4,
+      "clocks": {
+        "late": 1,
+        "increment": 103,
+        "perMove": 300
+      }
+    },
+    {
+      "level": 13,
+      "name": "Club Captain",
+      "eval": "full",
+      "depth": 3,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 25,
+      "blunders": 0.03,
+      "capMs": 317,
+      "clockShare": 0.049606282874006244,
+      "fixed100ms": 4,
+      "clocks": {
+        "late": 1,
+        "increment": 109,
+        "perMove": 317
+      }
+    },
+    {
+      "level": 14,
+      "name": "County Player",
+      "eval": "full",
+      "depth": 4,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 20,
+      "blunders": 0.02,
+      "capMs": 336,
+      "clockShare": 0.052556025953357156,
+      "fixed100ms": 5,
+      "clocks": {
+        "late": 1,
+        "increment": 116,
+        "perMove": 336
+      }
+    },
+    {
+      "level": 15,
+      "name": "League Anchor",
+      "eval": "full",
+      "depth": 4,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 14,
+      "blunders": 0.015,
+      "capMs": 356,
+      "clockShare": 0.0556811698837712,
+      "fixed100ms": 5,
+      "clocks": {
+        "late": 1,
+        "increment": 123,
+        "perMove": 356
+      }
+    },
+    {
+      "level": 16,
+      "name": "Tactician",
+      "eval": "full",
+      "depth": 4,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 9,
+      "blunders": 0.01,
+      "capMs": 378,
+      "clockShare": 0.05899214454260585,
+      "fixed100ms": 5,
+      "clocks": {
+        "late": 1,
+        "increment": 130,
+        "perMove": 378
+      }
+    },
+    {
+      "level": 17,
+      "name": "Strategist",
+      "eval": "full",
+      "depth": 5,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 400,
+      "clockShare": 0.0625,
+      "fixed100ms": 6,
+      "clocks": {
+        "late": 2,
+        "increment": 138,
+        "perMove": 400
+      }
+    },
+    {
+      "level": 18,
+      "name": "Tournament Player",
+      "eval": "full",
+      "depth": 6,
+      "quiescence": true,
+      "advanced": false,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 600,
+      "clockShare": 0.06621644339745596,
+      "fixed100ms": 6,
+      "clocks": {
+        "late": 2,
+        "increment": 146,
+        "perMove": 425
+      }
+    },
+    {
+      "level": 19,
+      "name": "Open Section",
+      "eval": "full",
+      "depth": 6,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 800,
+      "clockShare": 0.0701538780193358,
+      "fixed100ms": 7,
+      "clocks": {
+        "late": 2,
+        "increment": 155,
+        "perMove": 450
+      }
+    },
+    {
+      "level": 20,
+      "name": "Regional Contender",
+      "eval": "full",
+      "depth": 7,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 1000,
+      "clockShare": 0.07432544468767006,
+      "fixed100ms": 7,
+      "clocks": {
+        "late": 2,
+        "increment": 164,
+        "perMove": 477
+      }
+    },
+    {
+      "level": 21,
+      "name": "Sharp Expert",
+      "eval": "full",
+      "depth": 8,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 1200,
+      "clockShare": 0.07874506561842957,
+      "fixed100ms": 7,
+      "clocks": {
+        "late": 2,
+        "increment": 174,
+        "perMove": 505
+      }
+    },
+    {
+      "level": 22,
+      "name": "Positional Expert",
+      "eval": "full",
+      "depth": 9,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 1500,
+      "clockShare": 0.08342749088562713,
+      "fixed100ms": 8,
+      "clocks": {
+        "late": 2,
+        "increment": 184,
+        "perMove": 536
+      }
+    },
+    {
+      "level": 23,
+      "name": "Endgame Expert",
+      "eval": "full",
+      "depth": 10,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 1800,
+      "clockShare": 0.08838834764831845,
+      "fixed100ms": 8,
+      "clocks": {
+        "late": 2,
+        "increment": 195,
+        "perMove": 567
+      }
+    },
+    {
+      "level": 24,
+      "name": "Attacking Expert",
+      "eval": "full",
+      "depth": 11,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 2200,
+      "clockShare": 0.09364419230479261,
+      "fixed100ms": 9,
+      "clocks": {
+        "late": 2,
+        "increment": 206,
+        "perMove": 601
+      }
+    },
+    {
+      "level": 25,
+      "name": "Expert Analyst",
+      "eval": "full",
+      "depth": 12,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 2600,
+      "clockShare": 0.09921256574801246,
+      "fixed100ms": 9,
+      "clocks": {
+        "late": 3,
+        "increment": 219,
+        "perMove": 637
+      }
+    },
+    {
+      "level": 26,
+      "name": "Candidate Master",
+      "eval": "full",
+      "depth": 14,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 3000,
+      "clockShare": 0.10511205190671431,
+      "fixed100ms": 10,
+      "clocks": {
+        "late": 3,
+        "increment": 232,
+        "perMove": 675
+      }
+    },
+    {
+      "level": 27,
+      "name": "Master",
+      "eval": "full",
+      "depth": 16,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 3600,
+      "clockShare": 0.11136233976754242,
+      "fixed100ms": 11,
+      "clocks": {
+        "late": 3,
+        "increment": 246,
+        "perMove": 715
+      }
+    },
+    {
+      "level": 28,
+      "name": "Senior Master",
+      "eval": "full",
+      "depth": 18,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 4200,
+      "clockShare": 0.11798428908521168,
+      "fixed100ms": 11,
+      "clocks": {
+        "late": 3,
+        "increment": 260,
+        "perMove": 758
+      }
+    },
+    {
+      "level": 29,
+      "name": "Theory Master",
+      "eval": "full",
+      "depth": 20,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 5000,
+      "clockShare": 0.125,
+      "fixed100ms": 12,
+      "clocks": {
+        "late": 4,
+        "increment": 276,
+        "perMove": 803
+      }
+    },
+    {
+      "level": 30,
+      "name": "Deep Master",
+      "eval": "full",
+      "depth": 24,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 6000,
+      "clockShare": 0.1324328867949119,
+      "fixed100ms": 13,
+      "clocks": {
+        "late": 4,
+        "increment": 292,
+        "perMove": 850
+      }
+    },
+    {
+      "level": 31,
+      "name": "Grandmaster",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 7500,
+      "clockShare": 0.1403077560386716,
+      "fixed100ms": 14,
+      "clocks": {
+        "late": 4,
+        "increment": 310,
+        "perMove": 901
+      }
+    },
+    {
+      "level": 32,
+      "name": "Super Grandmaster",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 9000,
+      "clockShare": 0.14865088937534013,
+      "fixed100ms": 14,
+      "clocks": {
+        "late": 4,
+        "increment": 328,
+        "perMove": 955
+      }
+    },
+    {
+      "level": 33,
+      "name": "Elite Grandmaster",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 11000,
+      "clockShare": 0.15749013123685915,
+      "fixed100ms": 15,
+      "clocks": {
+        "late": 5,
+        "increment": 348,
+        "perMove": 1011
+      }
+    },
+    {
+      "level": 34,
+      "name": "World Contender",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 13000,
+      "clockShare": 0.16685498177125427,
+      "fixed100ms": 16,
+      "clocks": {
+        "late": 5,
+        "increment": 368,
+        "perMove": 1072
+      }
+    },
+    {
+      "level": 35,
+      "name": "Final Boss",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 16000,
+      "clockShare": 0.1767766952966369,
+      "fixed100ms": 17,
+      "clocks": {
+        "late": 5,
+        "increment": 390,
+        "perMove": 1135
+      }
+    },
+    {
+      "level": 36,
+      "name": "Deep Analysis 1",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 17000,
+      "clockShare": 0.18728838460958522,
+      "fixed100ms": 18,
+      "clocks": {
+        "late": 5,
+        "increment": 413,
+        "perMove": 1203
+      }
+    },
+    {
+      "level": 37,
+      "name": "Deep Analysis 2",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 17929,
+      "clockShare": 0.19842513149602492,
+      "fixed100ms": 19,
+      "clocks": {
+        "late": 6,
+        "increment": 438,
+        "perMove": 1274
+      }
+    },
+    {
+      "level": 38,
+      "name": "Deep Analysis 3",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 18857,
+      "clockShare": 0.21022410381342863,
+      "fixed100ms": 21,
+      "clocks": {
+        "late": 6,
+        "increment": 464,
+        "perMove": 1350
+      }
+    },
+    {
+      "level": 39,
+      "name": "Deep Analysis 4",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 19786,
+      "clockShare": 0.22272467953508485,
+      "fixed100ms": 22,
+      "clocks": {
+        "late": 7,
+        "increment": 492,
+        "perMove": 1431
+      }
+    },
+    {
+      "level": 40,
+      "name": "Deep Analysis 5",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 20714,
+      "clockShare": 0.23596857817042335,
+      "fixed100ms": 23,
+      "clocks": {
+        "late": 7,
+        "increment": 521,
+        "perMove": 1516
+      }
+    },
+    {
+      "level": 41,
+      "name": "Deep Analysis 6",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 21643,
+      "clockShare": 0.25,
+      "fixed100ms": 25,
+      "clocks": {
+        "late": 8,
+        "increment": 552,
+        "perMove": 1606
+      }
+    },
+    {
+      "level": 42,
+      "name": "Deep Analysis 7",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 22571,
+      "clockShare": 0.2648657735898238,
+      "fixed100ms": 26,
+      "clocks": {
+        "late": 8,
+        "increment": 585,
+        "perMove": 1701
+      }
+    },
+    {
+      "level": 43,
+      "name": "Deep Analysis 8",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 23500,
+      "clockShare": 0.28061551207734325,
+      "fixed100ms": 28,
+      "clocks": {
+        "late": 8,
+        "increment": 620,
+        "perMove": 1802
+      }
+    },
+    {
+      "level": 44,
+      "name": "Deep Analysis 9",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 24429,
+      "clockShare": 0.29730177875068026,
+      "fixed100ms": 29,
+      "clocks": {
+        "late": 9,
+        "increment": 657,
+        "perMove": 1910
+      }
+    },
+    {
+      "level": 45,
+      "name": "Deep Analysis 10",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 25357,
+      "clockShare": 0.3149802624737183,
+      "fixed100ms": 31,
+      "clocks": {
+        "late": 10,
+        "increment": 696,
+        "perMove": 2023
+      }
+    },
+    {
+      "level": 46,
+      "name": "Deep Analysis 11",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 26286,
+      "clockShare": 0.3337099635425086,
+      "fixed100ms": 33,
+      "clocks": {
+        "late": 10,
+        "increment": 737,
+        "perMove": 2144
+      }
+    },
+    {
+      "level": 47,
+      "name": "Deep Analysis 12",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 27214,
+      "clockShare": 0.3535533905932738,
+      "fixed100ms": 35,
+      "clocks": {
+        "late": 11,
+        "increment": 781,
+        "perMove": 2271
+      }
+    },
+    {
+      "level": 48,
+      "name": "Deep Analysis 13",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 28143,
+      "clockShare": 0.3745767692191704,
+      "fixed100ms": 37,
+      "clocks": {
+        "late": 11,
+        "increment": 827,
+        "perMove": 2406
+      }
+    },
+    {
+      "level": 49,
+      "name": "Deep Analysis 14",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 29071,
+      "clockShare": 0.3968502629920499,
+      "fixed100ms": 39,
+      "clocks": {
+        "late": 12,
+        "increment": 877,
+        "perMove": 2549
+      }
+    },
+    {
+      "level": 50,
+      "name": "Deep Analysis 15",
+      "eval": "full",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 30000,
+      "clockShare": 0.42044820762685725,
+      "fixed100ms": 42,
+      "clocks": {
+        "late": 13,
+        "increment": 929,
+        "perMove": 2701
+      }
+    },
+    {
+      "level": 51,
+      "name": "Neural Analysis 1",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 32000,
+      "clockShare": 0.44544935907016964,
+      "fixed100ms": 44,
+      "clocks": {
+        "late": 14,
+        "increment": 984,
+        "perMove": 2862
+      }
+    },
+    {
+      "level": 52,
+      "name": "Neural Analysis 2",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 34000,
+      "clockShare": 0.47193715634084676,
+      "fixed100ms": 47,
+      "clocks": {
+        "late": 15,
+        "increment": 1042,
+        "perMove": 3032
+      }
+    },
+    {
+      "level": 53,
+      "name": "Neural Analysis 3",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 36000,
+      "clockShare": 0.5,
+      "fixed100ms": 50,
+      "clocks": {
+        "late": 16,
+        "increment": 1105,
+        "perMove": 3212
+      }
+    },
+    {
+      "level": 54,
+      "name": "Neural Analysis 4",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 38000,
+      "clockShare": 0.5297315471796477,
+      "fixed100ms": 52,
+      "clocks": {
+        "late": 16,
+        "increment": 1170,
+        "perMove": 3403
+      }
+    },
+    {
+      "level": 55,
+      "name": "Neural Analysis 5",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 40000,
+      "clockShare": 0.5612310241546865,
+      "fixed100ms": 56,
+      "clocks": {
+        "late": 17,
+        "increment": 1240,
+        "perMove": 3605
+      }
+    },
+    {
+      "level": 56,
+      "name": "Neural Analysis 6",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 42000,
+      "clockShare": 0.5946035575013605,
+      "fixed100ms": 59,
+      "clocks": {
+        "late": 19,
+        "increment": 1314,
+        "perMove": 3820
+      }
+    },
+    {
+      "level": 57,
+      "name": "Neural Analysis 7",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 44000,
+      "clockShare": 0.6299605249474366,
+      "fixed100ms": 62,
+      "clocks": {
+        "late": 20,
+        "increment": 1392,
+        "perMove": 4047
+      }
+    },
+    {
+      "level": 58,
+      "name": "Neural Analysis 8",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 46000,
+      "clockShare": 0.6674199270850172,
+      "fixed100ms": 66,
+      "clocks": {
+        "late": 21,
+        "increment": 1474,
+        "perMove": 4288
+      }
+    },
+    {
+      "level": 59,
+      "name": "Neural Analysis 9",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 48000,
+      "clockShare": 0.7071067811865476,
+      "fixed100ms": 70,
+      "clocks": {
+        "late": 22,
+        "increment": 1562,
+        "perMove": 4543
+      }
+    },
+    {
+      "level": 60,
+      "name": "Neural Analysis 10",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 50000,
+      "clockShare": 0.7491535384383408,
+      "fixed100ms": 74,
+      "clocks": {
+        "late": 23,
+        "increment": 1655,
+        "perMove": 4813
+      }
+    },
+    {
+      "level": 61,
+      "name": "Neural Analysis 11",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 52000,
+      "clockShare": 0.7937005259840998,
+      "fixed100ms": 79,
+      "clocks": {
+        "late": 25,
+        "increment": 1754,
+        "perMove": 5099
+      }
+    },
+    {
+      "level": 62,
+      "name": "Neural Analysis 12",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 54000,
+      "clockShare": 0.8408964152537145,
+      "fixed100ms": 84,
+      "clocks": {
+        "late": 26,
+        "increment": 1858,
+        "perMove": 5402
+      }
+    },
+    {
+      "level": 63,
+      "name": "Neural Analysis 13",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 56000,
+      "clockShare": 0.8908987181403393,
+      "fixed100ms": 89,
+      "clocks": {
+        "late": 28,
+        "increment": 1968,
+        "perMove": 5724
+      }
+    },
+    {
+      "level": 64,
+      "name": "Neural Analysis 14",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 58000,
+      "clockShare": 0.9438743126816935,
+      "fixed100ms": 94,
+      "clocks": {
+        "late": 30,
+        "increment": 2085,
+        "perMove": 6064
+      }
+    },
+    {
+      "level": 65,
+      "name": "Neural Analysis 15",
+      "eval": "nnue",
+      "depth": 64,
+      "quiescence": true,
+      "advanced": true,
+      "book": true,
+      "noise": 0,
+      "blunders": 0,
+      "capMs": 60000,
+      "clockShare": 1,
+      "fixed100ms": 100,
+      "clocks": {
+        "late": 32,
+        "increment": 2210,
+        "perMove": 6425
+      }
+    }
+  ],
+  "issues": [],
+  "identicalTimedPresets": [],
+  "rounded100msBudgetTies": [
+    [
+      2,
+      3
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      6,
+      7
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      8,
+      9
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      11,
+      12
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      14,
+      15
+    ],
+    [
+      15,
+      16
+    ],
+    [
+      17,
+      18
+    ],
+    [
+      19,
+      20
+    ],
+    [
+      20,
+      21
+    ],
+    [
+      22,
+      23
+    ],
+    [
+      24,
+      25
+    ],
+    [
+      27,
+      28
+    ],
+    [
+      31,
+      32
+    ]
+  ],
+  "notes": [
+    "Budget/resource audit, not a statistical strength proof.",
+    "Uses the HTML clock allocator when present, with its default initial overhead estimate.",
+    "One-millisecond rounding and forced/book moves can make neighbouring presets behave alike.",
+    "Lower noisy presets retain capped maximum depths, noise and deliberate mistakes."
+  ]
+}

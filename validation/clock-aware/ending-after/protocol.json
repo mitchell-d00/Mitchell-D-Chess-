@@ -1,0 +1,25 @@
+{
+  "startedUtc": "2026-11-06T11:06:44.902Z",
+  "htmlPath": "/workspace/Mitchell-D-Chess-ui/index.html",
+  "htmlSha256": "802714b0aa1ac95a3e171eb861a44a6d278cb6860802d3b2352245f8de44aaf1",
+  "runnerRevision": "3e41627994c10618ef5b0bde3c425fb0e856990b",
+  "runnerSha256": "6562daf7d380c76910fcd472861c44b3b358a34bf3032c26ee6286c25e8a0848",
+  "node": "v24.22.1",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "cpus": 5
+  },
+  "control": "10+0",
+  "startFen": "8/1p4pk/4p2p/3pP3/3P1P2/2R3PK/7P/5r2 w - - 0 1",
+  "rules": "casual",
+  "speed": "fast",
+  "book": false,
+  "concurrency": 2,
+  "notes": [
+    "UI integration experiment, not an Elo estimate.",
+    "Both actual browser clocks run; flag falls count. No move-limit or score adjudication.",
+    "Two pages share the same host; no browser CPU throttling is requested."
+  ],
+  "browser": "155.0.8059.79"
+}

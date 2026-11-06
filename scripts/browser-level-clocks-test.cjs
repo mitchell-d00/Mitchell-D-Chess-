@@ -54,6 +54,17 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   assert(trouble.charged.remaining<=300&&trouble.charged.remaining>0,'Charge render/dispatch time before budgeting');
   assert.equal(trouble.delay,0,'Do not hold an already chosen move in time trouble');
   assert.equal(trouble.requests,1,'Do not start a search after time has already expired');assert(trouble.flagged);
+  // A real cold worker must also make a legal move with a nearly empty clock.
+  await page.evaluate(()=>{
+   setup.mode='pvp';setup.tc='none';newGame({startFen:'8/1p4pk/4p2p/3pP3/3P1P2/2R3PK/7P/5r2 w - - 0 1'});
+   worker.terminate();worker=null;
+   G.mode='cvc';G.players={w:{type:'ai',level:65},b:{type:'human'}};
+   G.clock={w:1400,b:60000,start:{w:60000,b:60000},running:'w',last:performance.now(),inc:0,delay:0,delayLeft:0,per:0};
+   maybeAI();window.coldClockMode=G.clockMode;
+  });
+  await page.waitForFunction(()=>G.moves.length===1||!!G.over);
+  const cold=await page.evaluate(()=>({mode:window.coldClockMode,plies:G.moves.length,remaining:G.clock.w,over:G.over,overhead:G.aiClockOverhead}));
+  assert.equal(cold.mode,'emergency');assert.equal(cold.plies,1);assert(cold.remaining>0&&!cold.over);assert(cold.overhead>=20);
   for(const backend of ['wasm','js-fallback']){
    await page.evaluate(backend=>{window.savedLevelThink=think;think=()=>Promise.resolve({move:'e2e4',score:0,depth:4,backend,book:false});setup.mode='pvp';setup.tc='none';setup.speed='fast';newGame();G.mode='cvc';G.players={w:{type:'ai',level:65},b:{type:'human'}};maybeAI();},backend);
    await page.waitForFunction(()=>G.moves.length===1);assert.match(await page.textContent('#engineSource'),backend==='wasm'?/WASM/:/JavaScript fallback/);

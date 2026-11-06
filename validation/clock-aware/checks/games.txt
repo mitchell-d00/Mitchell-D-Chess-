@@ -1,0 +1,1 @@
+PASS: static hashes, clock traces and 8 legal PGNs (952 half-moves); clock losses retained

@@ -665,3 +665,43 @@ applicable; normal compilation CI verifies the release again. Check records
 are retained in validation/clock-management/checks. Next: publish this bounded
 UI correction and retain the flagged candidate game; improving bullet results
 beyond this requires a separate, larger clock-aware time-management study.
+
+## Clock-aware levels — November 6, 2026
+
+User explicitly requested clock awareness across all levels after more 65/52
+games. The new screenshot showed checkmate with 17.2s left on 65's clock; that
+particular loss is not a flag. We addressed time management without presenting
+clock fixes as an explanation for every loss or a rating gain.
+
+Branch improve/clock-aware-levels starts at live edf20f7. Frozen app 56d5895:
+main-clock bank; longer future-move horizon as balance falls; separate measured
+latency reserve; increment, remaining delay and per-move treatment; worker
+queue/startup deadline recheck; visible saving/time-trouble/emergency mode.
+Learned overhead resets with a new game. No clock is reset/refunded/paused for
+AI. Existing per-level shares and untimed maxima remain. Engine source/core/
+network are byte-identical to the previous release (engine-src SHA
+b3ffafe520089cb46296711928ca6d67d0bb4d138329a1c00402fabf19477dd4).
+
+Checks: 65 levels x 200 synthetic turns x 3 overhead costs =39,000 modeled turns,
+all retaining >4s; level65/20ms cost previously flags on turn114, now retains
+8.1s after200. These are modeled timings, not chess strength evidence. Real
+browser checks cover all65 emergency modes, different device margins, stale
+queued deadlines, expired turns and a legal move from a cold worker at1.4s.
+Full39-command core/offline-browser suite passed. No source/native search or
+weights changed; existing parity evidence remains applicable and native CI
+recompiles/tests it again on publication.
+
+Actual games: two60+0 colour pairs and two10+0 rook-ending colour pairs across
+before/candidate, eight games/952 legal half-moves. Zero flags both before and
+after. Both60+0 versions drew both; each10+0 version scored one65 win/one draw.
+No measured score/flag-rate improvement is claimed. All outcomes, clocks,
+policy/allowance/overhead traces, source/runtime hashes and repeat commands are
+in validation/clock-aware. Preserve older flagged games too. Only light editing
+ran during games; full browser suites were held until completion. Normal runs
+use runner d8de6b9; endings use3e41627; candidate HTML stays56d5895. No tuning
+against these game outcomes. Source audit now uses each HTML's own allocator,
+with explicit initial balances, to avoid rewriting historical clock behavior.
+
+Next: publish these tested clock policies and preserve the controls separately.
+A larger clock-aware comparison with fixed colour-paired openings is needed to
+measure strength/flag-rate tradeoffs; neither these games nor presets give Elo.

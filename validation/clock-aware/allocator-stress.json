@@ -1,0 +1,26 @@
+{
+  "createdUtc": "2026-11-06T11:05:03.338Z",
+  "control": "60000ms, no increment",
+  "ownMoves": 200,
+  "costMs": 20,
+  "level": 65,
+  "model": "full allotted search time plus fixed dispatch/render cost; no chess positions",
+  "sources": {
+    "before": {
+      "sha256": "d4ddbc5b02b0c0c7011dcf9ddc0bd111bd3a934278662c075a3b850b5b61a83f"
+    },
+    "after": {
+      "sha256": "62492d0fd972e96a4fecd8e46c6f44fe6d44d395f650271299d57a941d8b9d3e"
+    }
+  },
+  "runs": {
+    "before": {
+      "moves": 114,
+      "remainingMs": -5
+    },
+    "after": {
+      "moves": 200,
+      "remainingMs": 8095
+    }
+  }
+}
