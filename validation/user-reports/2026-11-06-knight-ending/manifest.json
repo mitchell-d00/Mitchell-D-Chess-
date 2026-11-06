@@ -1,0 +1,19 @@
+{
+  "createdUtc": "2026-11-06T12:00:09.077Z",
+  "baselineRevision": "419d8e4f903c8b2b4f69cb3f5ec8c41fc5d15626",
+  "candidateRevision": "ac13be9",
+  "notes": [
+    "User PGN has no per-move clocks; original timeout cause is unconfirmed.",
+    "Foreground continuations are bounded debugging traces with approximate screenshot balances, not completed matches.",
+    "Subsequent app changes only name failed requests and include the reason in PGN diagnostics."
+  ],
+  "files": {
+    "game.pgn": "fac9ad3177503bfd8bb72c268a65c18ef8d9bd7df8dc4cb630b764642a30fc66",
+    "replay.json": "ac2bae8e0b04dcb942fe02edd49998bc7cf7d0950e18dc90f673332ce5295ae7",
+    "foreground.json": "9a5b4ad1bc1a5c4df02c202a5df58ac33be1bc4473597ca6889998432c7305a3",
+    "foreground-after.json": "4b314a4778ea74d697b3ebf5d9c649e32a376b876485fbb2eff073c18acb8d2e",
+    "reference-analysis.json": "f9dfbaf93b6bdab5b7a1eec1e7de5a4be434228e22153f30694834b746929308",
+    "baseline-runner.cjs.txt": "dd08354a6d94ef601c928abefc7b49d568ffe5c021e0d93ea555aa2a910d8a50",
+    "reference-runner.py.txt": "13a3ae2b31f0a62a06b8f9944c5963040e25e8810a62f5fd5120a99e8bb65ee6"
+  }
+}

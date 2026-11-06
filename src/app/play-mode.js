@@ -144,7 +144,7 @@ function maybeAI() {
     }, wait);
   }).catch(() => {
     if(!G||G.over||G.token!==tok||G.moves.length!==ply)return;
-    captureThinkDiagnostic('worker failure');G.activeThink=null;G.thinking=false;
+    request.phase='failed';captureThinkDiagnostic('worker failure');G.activeThink=null;G.thinking=false;
     const retry=G.engineRetry&&G.engineRetry.ply===ply?G.engineRetry.count:0;
     if(retry<1){G.engineRetry={ply,count:retry+1};setTimeout(()=>{if(G&&G.token===tok&&!G.over)maybeAI();},0);}
     else{G.engineFault=true;renderStatus();renderButtons();}
@@ -321,7 +321,7 @@ function pgn() {
   if(G.clock){
     const c=G.clock;clockTimes=G.sans.map((_,i)=>{const h=G.clockHist[i];return !h?null:c.per||h[(i+Number(firstBlack))%2?'b':'w']+c.inc;});
     Object.assign(timing,{CurrentClockPolicy:CLOCK_POLICY_VERSION,WhiteClock:pgnClock(c.w),BlackClock:pgnClock(c.b),SessionInactiveMs:Math.round(gameInactiveMs()),SessionEngineRecoveries:G.engineRecoveries||0});
-    const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkRecovery:info.recovery||'none',LastThinkBackend:info.backend,LastThinkDepth:info.depth});
+    const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkReason:info.reason||'active',LastThinkRecovery:info.recovery||'none',LastThinkBackend:info.backend,LastThinkDepth:info.depth});
   }
   return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}) }, {
     Event: tags.Event || 'Mitchell D Chess game' + (G.official ? ' (official rules)' : ''), Site: tags.Site || 'Mitchell D Chess', Date: tags.Date || date,

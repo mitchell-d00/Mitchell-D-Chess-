@@ -11,17 +11,17 @@ const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('nod
   });
   const fallback=await page.evaluate(async()=>{
    const fen='8/1p4pk/4p2p/3pP3/3P1P2/2R3PK/7P/5r2 w - - 0 1';
-   const result=await think(fen,[],64,{time:500,noBook:true,maxWallMs:150,fallbackFen:fen,injectHang:true});
+   const result=await think(fen,[],64,{time:500,noBook:true,maxWallMs:800,fallbackFen:fen,injectHang:true});
    return {result,legal:!!new E.Chess(fen).findUci(result.move),pending:Object.keys(pending).length};
   });assert(fallback.legal);assert.equal(fallback.result.recovery,'timeout');assert.equal(fallback.pending,0);
   const crash=await page.evaluate(async()=>{
-   const fen=START,result=await think(null,[],64,{time:500,maxWallMs:500,fallbackFen:fen,injectCrash:true});return {result,legal:!!new E.Chess(fen).findUci(result.move)};
+   const fen=START,result=await think(null,[],64,{time:500,maxWallMs:1000,fallbackFen:fen,injectCrash:true});return {result,legal:!!new E.Chess(fen).findUci(result.move)};
   });assert(crash.legal);assert.equal(crash.result.recovery,'worker-error');
   const strict=await page.evaluate(async()=>{try{await think(null,['e2e5'],64,{time:20,maxWallMs:1000,fallbackFen:START});return false;}catch(e){return /Invalid move history/.test(String(e));}});assert(strict,'A semantic input error must not be repaired with a provisional move');
   const noFallback=await page.evaluate(async()=>{try{await think(null,[],64,{time:1,maxWallMs:80,injectHang:true});return false;}catch(e){return /timed out/.test(String(e));}});assert(noFallback);
   const cancel=await page.evaluate(async()=>{const p=think(null,[],64,{time:500,maxWallMs:500,fallbackFen:START,injectHang:true}).then(()=>false,()=>true);cancelThinking();return p;});assert(cancel);
   // Normal replies clear the watchdog; an old timer cannot kill the next worker.
-  const normal=await page.evaluate(async()=>{const r=await think(null,[],64,{time:20,noBook:true,maxWallMs:1200,fallbackFen:START});window.checkedWorker=worker;return {legal:!!new E.Chess().findUci(r.move),recovery:r.recovery};});assert(normal.legal);assert.equal(normal.recovery,undefined);
+  const normal=await page.evaluate(async()=>{const r=await think(null,[],0,{time:20,noBook:true,maxWallMs:1200,fallbackFen:START});window.checkedWorker=worker;return {legal:!!new E.Chess().findUci(r.move),recovery:r.recovery};});assert(normal.legal);assert.equal(normal.recovery,undefined);
   await page.waitForTimeout(1300);assert(await page.evaluate(()=>worker===window.checkedWorker&&Object.keys(pending).length===0));
   // The actual game uses the same recovery, labels it, and exports diagnostics.
   await page.evaluate(()=>{

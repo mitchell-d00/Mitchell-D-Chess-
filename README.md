@@ -79,6 +79,12 @@ strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/l
   Completed moves have no viewing hold below ten seconds; clocks still run
   normally and flag falls count. Untimed limits are unchanged.
   [Policy, checks and repeat method](validation/clock-aware/README.md).
+- **Recovery from an interrupted computer search.** Clocked games can use a
+  legal worker-prepared fallback when a search stalls or its worker crashes.
+  Recovery is labelled; repeated failures offer Retry computer. Clocks keep
+  running normally. PGN exports include move-clock readings and local request/
+  inactivity diagnostics to investigate time losses.
+  [Reported knight ending and recovery checks](validation/user-reports/2026-11-06-knight-ending/README.md).
 - **Chess clocks.** Bullet (1+0, 1+1, 2+1), blitz (3+0, 3+2, 5+0, 5+3),
   rapid (10+0, 10+5, 15+10, 25+10) and classical (30+0, 30+20, 60+30, 90+30),
   a per-move timer (10, 30 or 60 seconds a move), or a custom control with

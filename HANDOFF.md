@@ -705,3 +705,63 @@ with explicit initial balances, to avoid rewriting historical clock behavior.
 Next: publish these tested clock policies and preserve the controls separately.
 A larger clock-aware comparison with fixed colour-paired openings is needed to
 measure strength/flag-rate tradeoffs; neither these games nor presets give Elo.
+
+## Reported knight ending / stalled worker recovery — November 6, 2026
+
+User supplied a screenshot and the complete 135-ply official 120+1 PGN: level52
+White, level65 Black, Black flagged after68.Kc2. Original runtime build, per-move
+clocks, worker responses and visibility are absent. The original cause remains
+unconfirmed; do not present suspected iOS suspension or a worker fault as proven.
+The optional visibility clarification has not been answered in this turn.
+
+Branch investigate/knight-ending starts at main419d8e4. Replayed all moves:
+no position repeats at all, max/final halfmove30, no claimable threefold/fifty
+or automatic draw. White has mating material. Screenshot is exactly after
+61.Kd2: 8/8/4p3/3p2k1/3P4/2P2P2/1n1KN3/8 b - - 16 61.
+Separate Stockfish19/nativeLeorik3.1.3, one thread/32MiB/3s maximum, both choose
+...Nc4+ as Mitchell did. Scores from Black:0cp and-32cp. No tablebase proof or
+rating inference; their lines contain knight manoeuvres too. Reference binaries
+are never embedded/linked. Logs, hashes and exact runner text are archived.
+
+Two bounded offline-browser continuations preserve the full 121-ply history,
+with approximate screenshot balances132s/102s and120+1. Both play30 more plies,
+including pawn breaks/captures, with healthy clocks and no reproduced forfeit.
+Candidate ac13be9 uses zero recoveries. These are incomplete debug traces,
+not completed matches, not reconstructed original timings. Subsequent app changes
+only label failed requests and expose their reason. Test manifest pins evidence.
+
+Real fault gaps found independently: no request watchdog, and error/empty/illegal
+reply could leave the AI idle with a running clock. Clocked app requests now
+prepare a cheap legal PST/material fallback inside the worker, then run normal
+search. A bounded watchdog/failing worker can settle with that fallback and
+replace the worker; UI/source labels and session counter disclose it, stale eval
+is cleared. Normal replies win. Invalid history still rejects; no provisional
+repair of semantic input errors. Other failures get one automatic retry then a
+visible Retry computer control. Timer cleanup and stale worker/generation guards
+preserve cancellation. All moves still pass legality and real-clock checks.
+No clock refund/pause or early draw/adjudication is introduced. Official CVC
+asks to keep the game visible; relevant observed inactivity appears after flags.
+
+New local game-diagnostics module records observed inactive wall time and request
+budget/wall/state/recovery/backend/depth, with session counters reset on reload/
+restoration. PGN now includes numeric standard per-move clock comments, credited
+increment/per-move reset, final clocks and diagnostic headers. Unknown readings
+are omitted. Counters are not telemetry or CPU timings and inactivity is not
+proof of cause. Structured save schema is unchanged. Existing PGN imports still
+ignore comments. Endgame search/evaluation, binary, weights and MIT notices are
+unchanged; engine-source SHA remains b3ffafe520089cb46296711928ca6d67d0bb4d138329a1c00402fabf19477dd4.
+
+41 core/offline-browser commands passed on the final app (plus a focused rerun
+of the fault suite with wider cold-start test margins). Tests use actual workers
+with injected hang/crash/creation/invalid-reply faults, verify bounded recovery,
+strict input rejection, retry, legal moves, timers/cancellation, clock PGN round
+trips and no retroactive move after an injected main-loop/visibility gap. That
+is not a physical iOS background-suspension test. Core CI replays and hashes
+all report evidence; external engines are not run/downloaded by the suite.
+
+Evidence, exact limits and repeat commands:
+validation/user-reports/2026-11-06-knight-ending/README.md.
+Next: publish after checks, then inspect a fresh user's PGN with the added clocks,
+version and response/inactivity fields if the clock loss recurs. Do not infer a
+forced win/draw from the quiet material, or claim this unidentified original
+failure is conclusively fixed. No original core/weight changes require new Elo.
