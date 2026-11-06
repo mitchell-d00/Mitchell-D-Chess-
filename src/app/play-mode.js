@@ -26,7 +26,8 @@ function newGame(options = {}) {
   } else if (mode === 'pvp') { players = { w: { type: 'human' }, b: { type: 'human' } }; BV.flipped = false; }
   else { players = { w: { type: 'ai', level: setup.lvlW }, b: { type: 'ai', level: setup.lvlB } }; BV.flipped = false; }
   G = { mode, players, chess, startFen, review: !!record, tags: record ? record.tags : {}, moves: record ? record.moves.slice() : [], sans: record ? record.sans.slice() : [], fens: record ? record.fens.slice() : [startFen], lastFromTo: record ? record.lastFromTo.slice() : [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random(),
-    official: !record && setup.rules === 'official', clock: record ? null : makeClock(), clockHist: [], touched: null, drawOffer: null, tabPaused: false };
+    official: !record && setup.rules === 'official', clock: record ? null : makeClock(), clockHist: [], touched: null, drawOffer: null, tabPaused: false,
+    activity:{hiddenMs:0,hiddenSince:document.hidden?Date.now():null},engineRecoveries:0 };
   if (record && record.result !== '*') G.over = { result: record.result, reason: 'imported result' };
   else G.over = G.chess.status(record ? true : G.official);
   if (G.clock && !G.over) startClock(sideToMove());
@@ -57,6 +58,7 @@ function playMove(uci, fromAI) {
   return true;
 }
 function endGame(st) {
+  finishGameDiagnostics(st.reason);
   G.over = st; Snd.end();
   if (G.clock) G.clock.running = null;
   G.drawOffer = null; G.touched = null;
@@ -65,7 +67,8 @@ function endGame(st) {
   let title = res === '1/2-1/2' ? 'Draw' : (res === '1-0' ? 'White wins' : 'Black wins');
   if (G.mode === 'pvc' && res !== '1/2-1/2') { const humanSide = G.players.w.type === 'human' ? 'w' : 'b'; title = (res === '1-0') === (humanSide === 'w') ? 'You win!' : 'You lost'; }
   const box = $('#boardmsg');
-  box.innerHTML = `<div><p class="eyebrow">${esc(why)}</p><h2>${esc(title)}</h2><p class="muted">${res.replace('1/2-1/2', '½–½')}</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn" id="msgClose">Look at the board</button><button class="btn primary" id="msgNew">New game</button></div></div>`;
+  const inactiveNote=G.flaggedSide&&G.lastThink&&G.lastThink.side===G.flaggedSide&&G.lastThink.ply===G.moves.length&&G.lastThink.hiddenMs>=500?'<p class="muted">Browser inactivity was recorded during this turn. The clock kept running.</p>':'';
+  box.innerHTML = `<div><p class="eyebrow">${esc(why)}</p><h2>${esc(title)}</h2><p class="muted">${res.replace('1/2-1/2', '½–½')}</p>${inactiveNote}<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn" id="msgClose">Look at the board</button><button class="btn primary" id="msgNew">New game</button></div></div>`;
   box.hidden = false;
   $('#msgClose').onclick = () => box.hidden = true;
   $('#msgNew').onclick = () => requestNewGame(()=>newGame());
@@ -101,7 +104,7 @@ function maybeAI() {
     const claim = G.chess.claimable();
     if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
   }
-  G.thinking = true;G.thinkBudget=null;G.clockMode=null; renderBars(); renderStatus(); renderButtons();
+  G.thinking = true;G.engineFault=null;G.thinkBudget=null;G.clockMode=null; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
   let minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
@@ -114,22 +117,38 @@ function maybeAI() {
     // Viewing speed must not spend the last seconds on an already chosen move.
     minDelay = rem < 10000 ? 0 : Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
     G.thinkBudget=E.levelThinkTime(p.level-1,extra);G.clockMode=allocation.mode;renderStatus();
+    extra.maxWallMs=Math.max(1,Math.min(G.thinkBudget+Math.max(1000,allocation.overhead*3),rem+c.delayLeft-reserve));
+    extra.fallbackFen=fenBefore;
   }
+  const request={token:tok,ply,side,level:p.level,budgetMs:G.thinkBudget??E.levelThinkTime(p.level-1,extra),startedAt:Date.now(),inactiveAtStart:gameInactiveMs(),phase:'searching'};
+  G.activeThink=request;
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
-    if (!G || G.token !== tok || G.moves.length !== ply) return;
+    if (!G || G.over || G.token !== tok || G.moves.length !== ply) return;
+    if(!r||!r.move||!G.chess.findUci(r.move))throw new Error('The computer returned no legal move');
+    request.phase='reply ready';request.recovery=r&&r.recovery;
+    request.backend=r&&r.backend||'javascript';request.depth=r&&r.depth;
+    if(r&&r.recovery){G.engineRecoveries=(G.engineRecoveries||0)+1;G.evalW=null;G.depth=0;}
+    captureThinkDiagnostic('reply');
     if(G.clock)G.aiClockOverhead=updateClockOverhead(G.aiClockOverhead,Date.now()-t0,r&&r.timeBudget);
     const wait = Math.max(0, minDelay - (Date.now() - t0));
     setTimeout(() => {
-      if (!G || G.token !== tok || G.moves.length !== ply) return;
+      if (!G || G.over || G.token !== tok || G.moves.length !== ply) return;
       G.thinking = false;
       if (!r || !r.move) { renderStatus(); return; }
       const backend=r.backend==='wasm'?' · WASM':r.backend==='js-fallback'?' · JavaScript fallback':'';
-      G.engineSource={ply:ply+1,text:r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled')+backend:''};
+      G.engineSource={ply:ply+1,text:r.recovery?'Computer recovered with a fallback move · '+(r.recovery==='timeout'?'search timed out':'worker interrupted'):r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled')+backend:''};
       if (!r.book && r.depth) { G.evalW = E.whiteScore(fenBefore, r.score); G.depth = r.depth; }
       if (G.paused) { G.pendingAI = r.move; renderStatus(); renderButtons(); return; }
-      playMove(r.move, true);
+      captureThinkDiagnostic('move ready');playMove(r.move, true);
+      if(G.activeThink===request)G.activeThink=null;
     }, wait);
-  }).catch(() => { if (G.token === tok) { G.thinking = false; renderStatus(); } });
+  }).catch(() => {
+    if(!G||G.over||G.token!==tok||G.moves.length!==ply)return;
+    request.phase='failed';captureThinkDiagnostic('worker failure');G.activeThink=null;G.thinking=false;
+    const retry=G.engineRetry&&G.engineRetry.ply===ply?G.engineRetry.count:0;
+    if(retry<1){G.engineRetry={ply,count:retry+1};setTimeout(()=>{if(G&&G.token===tok&&!G.over)maybeAI();},0);}
+    else{G.engineFault=true;renderStatus();renderButtons();}
+  });
 }
 function capturedFor(fen) {
   const start = { p: 8, n: 2, b: 2, r: 2, q: 1 }, have = { w: { p: 0, n: 0, b: 0, r: 0, q: 0 }, b: { p: 0, n: 0, b: 0, r: 0, q: 0 } };
@@ -166,6 +185,7 @@ function renderStatus() {
   else if (G.restored && G.paused) txt = 'Saved game paused. Resume when you are ready.';
   else if (G.paused) txt = 'Paused';
   else if (G.review) txt = 'Review · ' + (side === 'w' ? 'White' : 'Black') + ' to move';
+  else if (G.engineFault) txt = 'The computer could not continue. Retry the computer or save this game.'+(G.clock?' The clock is still running.':'');
   else {
     const inC = G.chess.inCheck();
     const who = G.players[side].type === 'ai' ? playerLabel(side).name : (G.mode === 'pvp' ? (side === 'w' ? 'White' : 'Black') : 'You');
@@ -177,6 +197,7 @@ function renderStatus() {
   const limited=G.clock&&G.thinking&&!G.paused&&!G.over&&G.view==null&&G.thinkBudget>0;
   const allowance=G.thinkBudget<10?'under 0.01s':'up to '+(G.thinkBudget/1000).toFixed(G.thinkBudget<1000?2:1)+'s';
   el.innerHTML = `<span class="ic" style="background:var(--p${G.over ? (G.over.result === '0-1' ? 'b' : 'w') : side})"></span><span>${esc(txt)}${G.official ? '<span class="official-tag">FIDE</span>' : ''}${limited?`<small class="clock-budget">Clocked thinking allowance: ${allowance} for this move${G.clockMode&&G.clockMode!=='balanced'?' · '+esc(G.clockMode):''}.</small>`:''}</span>`;
+  if(G.engineFault&&!G.over&&!G.paused&&G.view==null){const retry=document.createElement('button');retry.className='btn small';retry.textContent='Retry computer';retry.onclick=()=>{G.engineRetry=null;G.engineFault=null;maybeAI();};el.appendChild(retry);}
   const source=G.engineSource;$('#engineSource').hidden=G.view!=null||!source||!source.text||source.ply>G.moves.length;
   if(!$('#engineSource').hidden)$('#engineSource').textContent=source.text;
   renderDrawBox();
@@ -234,7 +255,7 @@ function renderSessionControls() {
   $('#sessionControls').hidden=!visible;$('.game').classList.toggle('session-active',visible);if(!visible)return;
   $('#sessionControls').classList.toggle('is-paused',paused);
   const title=paused?(G.restored?'Saved game paused':'Game paused'):'Game in progress';
-  const detail=paused?(G.clock?'Clock and moves are stopped. Resume when ready.':'Moves are stopped. Resume when ready.'):G.official?'Pause is unavailable during official play.':G.clock?'Take a break: pause stops the clock and moves.':'Take a break: pause stops all moves.';
+  const detail=paused?(G.clock?'Clock and moves are stopped. Resume when ready.':'Moves are stopped. Resume when ready.'):G.official?'Pause is unavailable during official play.'+(G.mode==='cvc'?' Keep the game visible while computers play.':''):G.clock?'Take a break: pause stops the clock and moves.':'Take a break: pause stops all moves.';
   if($('#sessionTitle').textContent!==title)$('#sessionTitle').textContent=title;
   if($('#sessionDetail').textContent!==detail)$('#sessionDetail').textContent=detail;
   $('#pauseLabel').textContent=paused?'Resume game':'Pause game';$('#pauseIcon').innerHTML=paused?'<svg viewBox="0 0 20 20"><path fill="currentColor" d="M5 3L17 10L5 17Z"/></svg>':'<svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 3H8V17H4ZM12 3H16V17H12Z"/></svg>';
@@ -292,12 +313,19 @@ $('#resignBtn').onclick = () => {
   $('#rsYes').onclick=()=>{closeModal();if(!G||G.token!==token||G.over)return;endGame({result:loser==='w'?'0-1':'1-0',reason:(loser==='w'?'White':'Black')+' resigned'});afterChange();};
 };
 function pgn() {
+  if(G.clock&&!G.over)tickClock();
   const d = new Date(), date = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
   const nm = side => { const p = G.players[side]; return p.type === 'human' ? (G.mode === 'pvc' ? 'You' : (side === 'w' ? 'White' : 'Black')) : `Mitchell D Chess level ${p.level} (${L18[p.level - 1].name})`; };
   const tags = G.tags || {}, result = G.over ? G.over.result : '*';
-  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags }, {
+  const timing={},firstBlack=G.startFen.split(' ')[1]==='b';let clockTimes;
+  if(G.clock){
+    const c=G.clock;clockTimes=G.sans.map((_,i)=>{const h=G.clockHist[i];return !h?null:c.per||h[(i+Number(firstBlack))%2?'b':'w']+c.inc;});
+    Object.assign(timing,{CurrentClockPolicy:CLOCK_POLICY_VERSION,WhiteClock:pgnClock(c.w),BlackClock:pgnClock(c.b),SessionInactiveMs:Math.round(gameInactiveMs()),SessionEngineRecoveries:G.engineRecoveries||0});
+    const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkReason:info.reason||'active',LastThinkRecovery:info.recovery||'none',LastThinkBackend:info.backend,LastThinkDepth:info.depth});
+  }
+  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}) }, {
     Event: tags.Event || 'Mitchell D Chess game' + (G.official ? ' (official rules)' : ''), Site: tags.Site || 'Mitchell D Chess', Date: tags.Date || date,
-    White: tags.White || nm('w'), Black: tags.Black || nm('b'), TimeControl: G.clock ? G.clock.pgn : (tags.TimeControl || '-'), Termination: !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal'
+    White: tags.White || nm('w'), Black: tags.Black || nm('b'), TimeControl: G.clock ? G.clock.pgn : (tags.TimeControl || '-'), Termination: !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal',...timing
   });
 }
 // Parsing uses a disposable worker so large annotated games cannot block play.

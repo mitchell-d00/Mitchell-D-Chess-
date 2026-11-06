@@ -1,0 +1,33 @@
+import subprocess,time,os,select,json,hashlib,pathlib,datetime
+fen='8/8/4p3/3p2k1/3P4/2P2P2/1n1KN3/8 b - - 16 61'
+commands={'Stockfish19':'/tmp/stockfish-native/stockfish/stockfish-linux-x86-64-universal','Leorik3.1.3':'/tmp/leorik31-native/Leorik 3.1 Linux/Leorik-3.1.3'}
+result={'createdUtc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'fen':fen,'movetimeMs':3000,'threads':1,'hashMiB':32,'scorePerspective':'side to move (Black)','notes':['Single-position analysis, not tablebase proof, a match, or an Elo estimate.','External reference engines are executed separately and never linked or embedded in Mitchell.'],'engines':{}}
+for name,cmd in commands.items():
+ path=pathlib.Path(cmd)
+ if not path.is_file():result['engines'][name]={'unavailable':True};continue
+ p=subprocess.Popen([cmd],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=0)
+ lines=[];buffer=b''
+ def send(s):p.stdin.write((s+'\n').encode());p.stdin.flush()
+ def until(prefix,timeout):
+  global buffer
+  deadline=time.monotonic()+timeout
+  while time.monotonic()<deadline:
+   if b'\n' not in buffer:
+    if not select.select([p.stdout],[],[],max(0,deadline-time.monotonic()))[0]:break
+    data=os.read(p.stdout.fileno(),65536)
+    if not data:break
+    buffer+=data
+   while b'\n' in buffer:
+    raw,buffer=buffer.split(b'\n',1);line=raw.decode('utf-8','replace').strip();lines.append(line)
+    if line.startswith(prefix):return line
+  raise TimeoutError(prefix)
+ try:
+  send('uci');until('uciok',10);send('setoption name Threads value 1');send('setoption name Hash value 32');send('setoption name Ponder value false');send('isready');until('readyok',10);send('ucinewgame');send('position fen '+fen);send('go movetime 3000');best=until('bestmove',12)
+  infos=[x for x in lines if x.startswith('info ') and ' score ' in x]
+  result['engines'][name]={'command':cmd,'binarySha256':hashlib.sha256(path.read_bytes()).hexdigest(),'bestmove':best,'lastInfo':infos[-1] if infos else None,'log':lines}
+ except Exception as e:result['engines'][name]={'error':str(e),'log':lines}
+ finally:
+  try:send('quit');p.wait(timeout=3)
+  except Exception:p.kill()
+pathlib.Path('validation/user-reports/2026-11-06-knight-ending/reference-analysis.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps({**result,'engines':{k:{a:b for a,b in v.items() if a!='log'} for k,v in result['engines'].items()}},indent=2))

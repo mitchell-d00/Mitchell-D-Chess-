@@ -116,3 +116,14 @@ stress and `scripts/browser-level-clocks-test.cjs` for actual worker/UI wiring.
 Optional real 1+0 browser games and all outcomes are described in
 [clock-aware validation](validation/clock-aware/README.md). Keep model-based
 stress results separate from chess-game evidence and absolute strength claims.
+
+## Computer interruption reports
+
+`scripts/browser-engine-recovery-test.cjs` uses real workers with injected faults
+and checks timeout/crash recovery, strict invalid input, bounded retry, timer
+cleanup and official flag timing. `scripts/test-user-knight-ending.cjs` replays
+the supplied game and verifies frozen diagnostic evidence. The optional
+`scripts/reproduce-user-ending.cjs --out /new/empty/directory` continues the
+reported position with its full history. Keep interrupted/partial runs labelled;
+[the report](validation/user-reports/2026-11-06-knight-ending/README.md) documents
+why its original timeout remains unconfirmed and which PGN timings to inspect.

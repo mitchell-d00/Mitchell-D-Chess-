@@ -24,6 +24,7 @@
     "src/app/engine-worker.js",
     "src/app/board-view.js",
     "src/app/time-management.js",
+    "src/app/game-diagnostics.js",
     "src/app/play-mode.js",
     "src/app/clocks.js",
     "src/app/draw-offers-and-claims.js",

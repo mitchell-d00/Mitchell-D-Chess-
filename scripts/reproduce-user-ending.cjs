@@ -1,0 +1,20 @@
+const path=require('node:path'),project=path.resolve(__dirname,'..'),{createRequire}=require('node:module'),req=createRequire(path.join(project,'package.json')),{chromium}=req('playwright'),fs=require('fs'),crypto=require('crypto'),assert=require('assert/strict');
+(async()=>{
+const args=process.argv.slice(2);if(args.length!==2||args[0]!=='--out'||!args[1])throw Error('Use --out /path/to/new-empty-directory');const out=path.resolve(args[1]);if(fs.existsSync(out))throw Error('Output directory must not exist');fs.mkdirSync(out,{recursive:true});const root=project+'/',html=fs.readFileSync(process.env.MITCHELL_TEST_HTML||root+'index.html'),pgn=fs.readFileSync(root+'validation/user-reports/2026-11-06-knight-ending/game.pgn','utf8');
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-background-timer-throttling']});
+try{const page=await browser.newPage(),errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.route('http://localhost:8765/',r=>r.fulfill({contentType:'text/html',body:html}));await page.goto('http://localhost:8765/');await page.context().setOffline(true);
+const start=await page.evaluate(pgn=>{
+ const game=PositionTools.parsePgn(pgn),record=PositionTools.fromMoves(game.startFen,game.moves.slice(0,121),{},'*');setup.mode='pvp';setup.tc='none';newGame({record});
+ G.clockHist=Array(121).fill(null);G.review=false;G.mode='cvc';G.players={w:{type:'ai',level:52},b:{type:'ai',level:65}};G.official=true;setup.speed='fast';
+ G.clock={w:132000,b:102000,start:{w:120000,b:120000},inc:1000,delay:0,per:0,pgn:'120+1',running:null,last:0,delayLeft:0};
+ window.endingTrace=[];window.endingStart=performance.now();window.endingHeartbeats=0;window.endingTimer=setInterval(()=>window.endingHeartbeats++,10);
+ const saved=think;think=function(fen,moves,level,extra){const t=performance.now(),side=sideToMove();return saved(fen,moves,level,extra).then(r=>{window.endingTrace.push({ply:moves.length+1,side,level:level+1,allowanceMs:G.thinkBudget,elapsedMs:performance.now()-t,score:r&&r.score,depth:r&&r.depth,backend:r&&r.backend,mode:G.clockMode,remainingMs:G.clock&&G.clock[side],move:r&&r.move,recovery:r&&r.recovery});return r;});};
+ const starting={fen:G.chess.fen(),plies:G.moves.length,clocks:{w:G.clock.w,b:G.clock.b},claimable:G.chess.claimable()};startClock('b');afterChange();return starting;
+},pgn);assert.equal(start.fen,'8/8/4p3/3p2k1/3P4/2P2P2/1n1KN3/8 b - - 16 61');
+let stop='30 additional half-moves';try{await page.waitForFunction(()=>G.over||G.moves.length>=151,{},{timeout:90000,polling:100});}catch(e){stop=String(e);}
+const ending=await page.evaluate(()=>{tickClock();G.paused=true;G.token=Math.random();cancelThinking();clearInterval(window.endingTimer);return {engineRecoveries:G.engineRecoveries||0,over:G.over,plies:G.moves.length,clocks:{w:G.clock.w,b:G.clock.b},fen:G.chess.fen(),claimable:G.chess.claimable(),trace:window.endingTrace,elapsedMs:performance.now()-window.endingStart,heartbeats:window.endingHeartbeats,moves:G.moves.slice(121),pgn:pgn()};});
+const result={createdUtc:new Date().toISOString(),htmlSha256:crypto.createHash('sha256').update(html).digest('hex'),browser:browser.version(),method:'Foreground offline browser continuation from actual 121-ply history, with approximate screenshot balances. This is a bounded debugging trace, not a completed match or recovered original timings.',start,stop,...ending,errors};
+fs.writeFileSync(path.join(out,'foreground.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({...result,trace:result.trace.map(x=>({ply:x.ply,level:x.level,allowance:x.allowanceMs,elapsed:x.elapsedMs,score:x.score,depth:x.depth,move:x.move})),pgn:undefined},null,2));
+assert.deepEqual(errors,[]);assert(!result.over||!/lost on time/.test(result.over.reason));
+}finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exitCode=1;});

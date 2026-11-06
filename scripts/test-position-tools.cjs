@@ -13,3 +13,8 @@ const under=T.parsePgn('[FEN "8/P7/4k3/8/8/8/8/4K3 w - - 0 1"]\n1. a8=N *');asse
 for(const text of ['1. e5 *','1. e4 (1. d4','1. e4 {bad','1. e4 * 1... e5','[Result "1-0"] 1. e4 0-1','[Variant "Chess960"] *','[SetUp "1"] *','1. e4 *\n[Event "second"] 1. d4 *'])assert.throws(()=>T.parsePgn(text),/./,text);
 assert.equal(T.hashFen('#fen='+encodeURIComponent(T.START)),T.START);assert.equal(T.hashFen('#licenses'),null);assert.throws(()=>T.hashFen('#fen=%ZZ'));
 console.log('PASS: reproducible standalone build, strict FEN, annotated/main-line PGN, special moves, black-start numbering, round-trip export, malformed inputs and position hashes');
+const timed=T.exportPgn({...game,clockTimes:game.moves.map((_,i)=>61000-i*1000)});
+assert(timed.includes('e4 {[%clk 0:01:01.0]}'));assert.deepEqual(T.parsePgn(timed).moves,game.moves);
+const blackTimed=T.exportPgn({...black,clockTimes:[8000,null]});assert(blackTimed.includes('42... Kf6 {[%clk 0:00:08.0]}'));
+for(const clockTimes of [[1],Array(game.moves.length).fill(-1),Array(game.moves.length).fill(NaN),Array(game.moves.length).fill('0:01:00')])assert.throws(()=>T.exportPgn({...game,clockTimes}),/clock/i);
+console.log('PASS: numeric per-move clock annotations, black starts, absent readings, strict invalid-clock rejection and legal PGN round trips');
