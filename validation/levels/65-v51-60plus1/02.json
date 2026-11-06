@@ -1,0 +1,31 @@
+{
+  "game": 2,
+  "opening": "Ruy Lopez",
+  "openingMoves": [
+    "e2e4",
+    "e7e5",
+    "g1f3",
+    "b8c6",
+    "f1b5",
+    "a7a6",
+    "b5a4",
+    "g8f6"
+  ],
+  "whiteLevel": 51,
+  "blackLevel": 65,
+  "startedUtc": "2026-11-06T14:39:01.339Z",
+  "finishedUtc": "2026-11-06T14:41:07.459Z",
+  "over": {
+    "result": "0-1",
+    "reason": "checkmate"
+  },
+  "plies": 154,
+  "whiteMs": 88215.89999999851,
+  "blackMs": 52559.99999999814,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 146
+}

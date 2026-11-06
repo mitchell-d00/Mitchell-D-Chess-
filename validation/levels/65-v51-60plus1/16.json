@@ -1,0 +1,31 @@
+{
+  "game": 16,
+  "opening": "Kings Indian",
+  "openingMoves": [
+    "d2d4",
+    "g8f6",
+    "c2c4",
+    "g7g6",
+    "b1c3",
+    "f8g7",
+    "e2e4",
+    "d7d6"
+  ],
+  "whiteLevel": 51,
+  "blackLevel": 65,
+  "startedUtc": "2026-11-06T14:56:51.069Z",
+  "finishedUtc": "2026-11-06T15:00:13.046Z",
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "stalemate"
+  },
+  "plies": 238,
+  "whiteMs": 98155.79999999516,
+  "blackMs": 50389.700000027195,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 230
+}

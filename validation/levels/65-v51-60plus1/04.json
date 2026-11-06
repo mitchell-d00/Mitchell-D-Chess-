@@ -1,0 +1,31 @@
+{
+  "game": 4,
+  "opening": "Italian",
+  "openingMoves": [
+    "e2e4",
+    "e7e5",
+    "g1f3",
+    "b8c6",
+    "f1c4",
+    "f8c5",
+    "c2c3",
+    "g8f6"
+  ],
+  "whiteLevel": 51,
+  "blackLevel": 65,
+  "startedUtc": "2026-11-06T14:43:46.757Z",
+  "finishedUtc": "2026-11-06T14:45:00.613Z",
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "threefold repetition"
+  },
+  "plies": 93,
+  "whiteMs": 78212.90000000037,
+  "blackMs": 53634.500000003725,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 85
+}

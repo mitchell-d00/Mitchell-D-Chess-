@@ -67,3 +67,6 @@ output files. The verifier checks hashes, colour/opening pairing, legal moves,
 earliest terminal positions, results, clocks/increments, backend routing,
 recovery counts and independently recounts wins/draws/losses. CI should verify
 completed archives statically; it should not rerun a lengthy timed campaign.
+Replay uses the frozen Mitchell Chess referee; scoring, clock and hash checks
+are separate from the browser runner. These are foreground server-browser
+tests, with host details recorded, rather than physical mobile-device tests.

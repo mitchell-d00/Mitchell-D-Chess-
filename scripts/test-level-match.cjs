@@ -2,6 +2,7 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto'),assert=require('node:assert/strict'),verify=require('./verify-level-match.cjs'),report=require('./report-level-match.cjs');
 const source=path.resolve(process.argv[2]||'validation/levels/65-v51-60plus1'),valid=verify(source),rendered=report(source);
 assert.equal(rendered.data.points65,valid.wins65+valid.draws/2);assert.equal(rendered.data.levels[65].playedMoves+rendered.data.levels[51].playedMoves,valid.traceMoves);assert.equal(rendered.data.pairs.length,valid.games/2);assert(rendered.markdown.includes(`completed ${valid.games}-game browser match`));
+if(fs.existsSync(path.join(source,'README.md')))assert.equal(rendered.markdown,fs.readFileSync(path.join(source,'README.md'),'utf8'),'Published Markdown must reproduce exactly');
 if(fs.existsSync(path.join(source,'report.json')))assert.deepEqual(rendered.data,JSON.parse(fs.readFileSync(path.join(source,'report.json'))),'Published report must reproduce exactly');
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'mitchell-level-match-test-'));
 try{

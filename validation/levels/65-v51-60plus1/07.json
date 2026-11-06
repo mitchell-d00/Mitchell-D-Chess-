@@ -1,0 +1,31 @@
+{
+  "game": 7,
+  "opening": "French Tarrasch",
+  "openingMoves": [
+    "e2e4",
+    "e7e6",
+    "d2d4",
+    "d7d5",
+    "b1d2",
+    "g8f6",
+    "e4e5",
+    "f6d7"
+  ],
+  "whiteLevel": 65,
+  "blackLevel": 51,
+  "startedUtc": "2026-11-06T14:48:33.353Z",
+  "finishedUtc": "2026-11-06T14:49:08.539Z",
+  "over": {
+    "result": "1-0",
+    "reason": "checkmate"
+  },
+  "plies": 57,
+  "whiteMs": 61844.60000000335,
+  "blackMs": 72510.60000000522,
+  "engineRecoveries": 0,
+  "inactiveMs": 0,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "traceMoves": 49
+}
