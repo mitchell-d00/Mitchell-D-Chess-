@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "baselineRevision": "8a4a55e55efa86b3bf7c1f1a983dfe40f87a2d26",
+  "baselineWasmSha256": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+  "wasmSha256": "ff43dc6346de73a1e21271d145ef03139a5edd6edfebd51b5299c6173fc6ffa0",
+  "standardParityEvidence": "validation/personas/standard-parity.json",
+  "standardParitySha256": "c0322cc3d7bf9c6483d201360a2ebdbd416345b296ee0f1e30fc007c791ef5ed",
+  "notes": [
+    "Optional style preferences added; zero preserves fixed-depth search behavior on the documented fixtures.",
+    "This is correctness/throughput evidence, not new match results or Elo qualification."
+  ]
+}

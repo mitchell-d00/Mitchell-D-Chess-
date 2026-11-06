@@ -1,0 +1,291 @@
+{
+  "schema": 1,
+  "depth": 4,
+  "mode": "nnue",
+  "ttBits": 21,
+  "seed": 109,
+  "differentMoves": 1,
+  "totalPositions": 12,
+  "notes": [
+    "Deterministic random legal positions show that styles affect decisions.",
+    "Fixed-depth illustration; not a strength comparison or Elo measurement."
+  ],
+  "rows": [
+    {
+      "fen": "r1bqkbnr/ppp1p3/1n3pp1/3p3p/7P/1PP1P2N/P2P1PP1/RNBQKB1R w KQkq - 0 7",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "h3f4",
+          "score": 86,
+          "nodes": 3308
+        },
+        {
+          "aggression": 0,
+          "move": "h3f4",
+          "score": -60,
+          "nodes": 4280
+        },
+        {
+          "aggression": 100,
+          "move": "c1a3",
+          "score": -56,
+          "nodes": 3267
+        }
+      ]
+    },
+    {
+      "fen": "r2qkbnr/1pp1p3/pn3pp1/3p3p/1P4bP/P1P1P2N/3P1PP1/RNBQKB1R w KQkq - 1 9",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "d1c2",
+          "score": -180,
+          "nodes": 1423
+        },
+        {
+          "aggression": 0,
+          "move": "d1c2",
+          "score": -190,
+          "nodes": 1414
+        },
+        {
+          "aggression": 100,
+          "move": "d1c2",
+          "score": -200,
+          "nodes": 1419
+        }
+      ]
+    },
+    {
+      "fen": "1r1qkbnr/1pp1p3/pn3pp1/3pP2p/1P5P/P1P4b/3P1PP1/RNBQKB1R w KQk - 0 11",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "h1h3",
+          "score": -127,
+          "nodes": 1027
+        },
+        {
+          "aggression": 0,
+          "move": "h1h3",
+          "score": -135,
+          "nodes": 938
+        },
+        {
+          "aggression": 100,
+          "move": "h1h3",
+          "score": -143,
+          "nodes": 1026
+        }
+      ]
+    },
+    {
+      "fen": "1r1qkbnr/1ppbp3/p3Ppp1/3p3p/1Pn4P/P1PP4/5PP1/RNBQKB1R w KQk - 1 13",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": 887,
+          "nodes": 546
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": 886,
+          "nodes": 546
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": 885,
+          "nodes": 474
+        }
+      ]
+    },
+    {
+      "fen": "1r1qkbn1/1pp1p2r/p1b1Ppp1/3p2Bp/QPn4P/P1PP4/5PP1/RN2KB1R w KQ - 5 15",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "a4b3",
+          "score": -1000,
+          "nodes": 1580
+        },
+        {
+          "aggression": 0,
+          "move": "a4b3",
+          "score": -934,
+          "nodes": 1480
+        },
+        {
+          "aggression": 100,
+          "move": "a4b3",
+          "score": -930,
+          "nodes": 1482
+        }
+      ]
+    },
+    {
+      "fen": "1rq1kbn1/1ppbp2r/p3Ppp1/3p2Bp/QPn4P/P1PP4/5PP1/RN1BK2R w KQ - 9 17",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": 169,
+          "nodes": 302
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": 169,
+          "nodes": 302
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": 169,
+          "nodes": 302
+        }
+      ]
+    },
+    {
+      "fen": "1rq1kbn1/1p1bp2r/p3Ppp1/2ppn2p/QP5P/P1PP2P1/3B1P2/RN1BK2R w KQ - 2 19",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": -148,
+          "nodes": 2183
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": -159,
+          "nodes": 2188
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": -170,
+          "nodes": 2181
+        }
+      ]
+    },
+    {
+      "fen": "1rq1kbn1/3bp2r/p3Ppp1/1p1pn2p/Qp4BP/P1PPB1P1/5P2/RN2K2R w KQ - 0 21",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": -242,
+          "nodes": 1365
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": -243,
+          "nodes": 1365
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": -244,
+          "nodes": 1358
+        }
+      ]
+    },
+    {
+      "fen": "1rq1kbn1/3bp2r/p3PppB/1p5p/Qp1p2nP/P1PP2P1/5P2/RN1K3R w - - 0 23",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": -2469,
+          "nodes": 2621
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": -2484,
+          "nodes": 2610
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": -2499,
+          "nodes": 2603
+        }
+      ]
+    },
+    {
+      "fen": "1r2kbn1/3bp2r/p3PppB/1p5p/Qp1p2nP/P1PP2P1/5P2/RN1K3q w - - 0 25",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "d1d2",
+          "score": -7311,
+          "nodes": 4703
+        },
+        {
+          "aggression": 0,
+          "move": "d1d2",
+          "score": -7336,
+          "nodes": 4422
+        },
+        {
+          "aggression": 100,
+          "move": "d1d2",
+          "score": -7361,
+          "nodes": 4424
+        }
+      ]
+    },
+    {
+      "fen": "1r2k1n1/3bp1br/p3PppB/1p5p/Qp1p2nP/P1PP2P1/1K3P2/RN3q2 w - - 4 27",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": -2972,
+          "nodes": 3310
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": -2997,
+          "nodes": 3353
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": -3022,
+          "nodes": 3282
+        }
+      ]
+    },
+    {
+      "fen": "1r2k1n1/3bp1br/4Ppp1/pp5p/Qp4nP/P1pPB1P1/2K2P2/RN3q2 w - - 0 29",
+      "styles": [
+        {
+          "aggression": -100,
+          "move": "e6d7",
+          "score": -3085,
+          "nodes": 777
+        },
+        {
+          "aggression": 0,
+          "move": "e6d7",
+          "score": -3107,
+          "nodes": 779
+        },
+        {
+          "aggression": 100,
+          "move": "e6d7",
+          "score": -3129,
+          "nodes": 781
+        }
+      ]
+    }
+  ]
+}

@@ -3,13 +3,15 @@ const L18 = E.LEVELS; // all 65 levels
 let G = null;
 let setup = Object.assign({ mode: 'pvc', color: 'w', level: 8, lvlW: 25, lvlB: 18, tc: 'none', rules: 'casual', cw: 10, cb: 10, bonus: 5, btype: 'inc' }, store.get('setup', {}));
 ['level', 'lvlW', 'lvlB'].forEach(k => { setup[k] = Math.min(L18.length, Math.max(1, +setup[k] || 1)); });
+['persona','personaW','personaB'].forEach(k=>setup[k]=E.normalizePersona(setup[k]));
 const saveSetup = () => store.set('setup', setup);
 function playerLabel(side) {
   if (G.review && G.tags && G.tags[side === 'w' ? 'White' : 'Black']) return {name:G.tags[side === 'w' ? 'White' : 'Black'],lvl:''};
   const p = G.players[side];
   if (p.type === 'human') return { name: G.mode === 'pvp' ? (side === 'w' ? 'White' : 'Black') : 'You', lvl: '' };
   const L = L18[p.level - 1];
-  return { name: L.name, lvl: `Level ${p.level} · ${L.tier}` };
+  const persona=E.normalizePersona(p.persona);
+  return { name: persona?persona.name:L.name, lvl: `Level ${p.level} · ${L.tier}${persona?' · '+personaStyle(persona.aggression):''}` };
 }
 function newGame(options = {}) {
   cancelAnalysis();
@@ -25,7 +27,8 @@ function newGame(options = {}) {
     BV.flipped = c === 'b';
   } else if (mode === 'pvp') { players = { w: { type: 'human' }, b: { type: 'human' } }; BV.flipped = false; }
   else { players = { w: { type: 'ai', level: setup.lvlW }, b: { type: 'ai', level: setup.lvlB } }; BV.flipped = false; }
-  G = { mode, players, chess, startFen, review: !!record, tags: record ? record.tags : {}, moves: record ? record.moves.slice() : [], sans: record ? record.sans.slice() : [], fens: record ? record.fens.slice() : [startFen], lastFromTo: record ? record.lastFromTo.slice() : [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random(),
+  for(const side of ['w','b'])if(players[side].type==='ai'){const persona=E.normalizePersona(setup[mode==='pvc'?'persona':side==='w'?'personaW':'personaB']);if(persona)players[side].persona=persona;}
+  G = { mode, players, chess, startFen, review: !!record, tags: record ? record.tags : personaTags(players), moves: record ? record.moves.slice() : [], sans: record ? record.sans.slice() : [], fens: record ? record.fens.slice() : [startFen], lastFromTo: record ? record.lastFromTo.slice() : [null], view: null, over: null, thinking: false, paused: false, evalW: null, depth: 0, token: Math.random(),
     official: !record && setup.rules === 'official', clock: record ? null : makeClock(), clockHist: [], touched: null, drawOffer: null, tabPaused: false,
     activity:{hiddenMs:0,hiddenSince:document.hidden?Date.now():null},engineRecoveries:0 };
   if (record && record.result !== '*') G.over = { result: record.result, reason: 'imported result' };
@@ -116,6 +119,7 @@ function maybeAI() {
     extra.maxWallMs=Math.max(1,Math.min(G.thinkBudget+Math.max(1000,allocation.overhead*3),rem+c.delayLeft-reserve));
     extra.fallbackFen=fenBefore;
   }
+  if(p.persona)extra={...extra,persona:E.normalizePersona(p.persona)};
   const request={token:tok,ply,side,level:p.level,budgetMs:G.thinkBudget??E.levelThinkTime(p.level-1,extra),startedAt:Date.now(),inactiveAtStart:gameInactiveMs(),phase:'searching'};
   G.activeThink=request;
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
@@ -401,6 +405,7 @@ $('#fenBtn').onclick = () => copyText(tab === 'play' ? curFen() : LS.chess.fen()
 
 // --- setup controls
 function syncPlay() {
+  syncPersonas();
   $$('#modeSeg button').forEach(b => b.classList.toggle('on', b.dataset.mode === setup.mode));
   $('#setupPvc').hidden = setup.mode !== 'pvc';
   $('#setupCvc').hidden = setup.mode !== 'cvc';

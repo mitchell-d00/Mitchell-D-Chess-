@@ -65,6 +65,14 @@ strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/l
 - **Three modes.** You vs computer (as White, Black or random), two players on
   one device, and computer vs computer with separate levels, a speed setting
   and pause.
+- **Custom computer opponents.** Open **Game setup → Custom opponents** for
+  a defensive-to-aggressive slider and Solid Defender, Positional Player,
+  Tactical Attacker and Gambit Player presets. Name and save up to 12 opponents
+  with their level in this browser. White and Black have independent styles
+  in computer-vs-computer. Changes apply to the next game; **Standard engine**
+  disables personalities with one click. PGNs and named game saves retain the
+  settings. Styles are preferences, not separate ratings or strength upgrades.
+  [Design, limits and repeatable checks](validation/personas/README.md).
 - **Visible pause and resume.** A large control beside the board works in all
   casual modes, with or without a clock. Pausing stops clocks, moves, hints and
   computer thinking; Resume continues at the latest position without refilling

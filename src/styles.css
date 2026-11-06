@@ -233,3 +233,16 @@ html[data-motion="off"] .pc{transition:none}
   header.top{padding-block:6px;margin-bottom:8px}.playerbar{min-height:26px}
   .brand h1{font-size:1.1rem}.featureline{display:none}.top .right{gap:4px}.top .right .btn{font-size:.78rem;min-height:44px;padding:.3rem .45rem}.tabs button{min-height:44px;padding:.35rem .7rem}
 }
+
+/* Optional opponent editor keeps controls usable on touch screens. */
+.persona-panel{border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+.persona-panel summary{cursor:pointer;font-weight:700;min-height:44px;display:list-item;align-content:center}
+.persona-panel .btn{min-height:44px;white-space:normal}
+.persona-panel p{font-size:.85rem;line-height:1.5;margin:10px 0}
+.persona-editor{min-width:0;margin:12px 0 0;padding:12px;border:1px solid var(--line);border-radius:10px;display:grid;gap:10px}
+.persona-editor legend{font-weight:700;padding:0 5px}
+.persona-editor input[type="range"]{width:100%;min-height:44px}
+.persona-editor input,.persona-editor select{min-height:44px;max-width:100%;min-width:0}
+.persona-editor [data-persona-name]{background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;font-size:16px;width:100%}
+.persona-editor output{font-size:.85rem;color:var(--muted)}
+.persona-editor .navrow{flex-wrap:wrap}

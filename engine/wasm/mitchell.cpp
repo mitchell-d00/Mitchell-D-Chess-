@@ -910,6 +910,9 @@ static int neuralEvaluate(Position &pos) {
   return pos.rawScore();
 }
 #include "evaluation.inc"
+#include "personality.inc"
+static int STYLE_AGGRESSION = 0;
+API("persona_bias") int persona_bias(int aggression) { return personaBias(pos, imax(-100, imin(100, aggression))); }
 API("evaluate") int eval_position(int mode) { return evaluate(pos, mode); }
 static int TT_SIZE=1<<19,TT_MASK=(1<<19)-1;
 static u32 *ttLo,*ttHi;static i32 *ttMove,*ttScore;static i8 *ttDepth,*ttFlag;
@@ -933,6 +936,10 @@ API("set_memory") int set_memory(int bits){if(bits!=19&&bits!=21)return 0;initSe
 static bool EXACT_ENDGAMES=false;
 static bool deadPosition(Position&p){int minors=0,bishops=0,colour=-1;for(int s=0;s<128;s++){if(s&0x88){s+=7;continue;}int ty=p.b[s]&7;if(!ty||ty==K)continue;if(ty==P||ty==R||ty==Q)return false;minors++;if(ty==B){int c=((s>>4)+(s&7))&1;if(colour<0)colour=c;else if(colour!=c)colour=2;bishops++;}}return minors<=1||(minors==bishops&&colour!=2);}
 API("set_endgames") void set_endgames(int enabled){bool next=enabled!=0;if(EXACT_ENDGAMES!=next){EXACT_ENDGAMES=next;clearTT();contextMode=-1;}}
+API("set_style") void set_style(int aggression) {
+  int next = imax(-100, imin(100, aggression));
+  if (next != STYLE_AGGRESSION) { STYLE_AGGRESSION = next; clearTT(); contextMode = -1; }
+}
 struct Searcher {
   Position *p;
   int mode;
@@ -990,7 +997,7 @@ struct Searcher {
     u32 lo = (u32)p->hash, hi = (u32)(p->hash >> 32), h = lo & 32767;
     if (ecFull[h] == p->full && ecLo[h] == lo && ecHi[h] == hi)
       return ecValue[h];
-    int v = ::evaluate(*p, mode);
+    int v = ::evaluate(*p, mode) + (STYLE_AGGRESSION ? personaBias(*p, STYLE_AGGRESSION) : 0);
     ecLo[h] = lo;
     ecHi[h] = hi;
     ecFull[h] = p->full;

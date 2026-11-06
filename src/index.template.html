@@ -76,6 +76,13 @@
           <div class="field"><label for="lvlB">Black computer</label><select id="lvlB"></select></div>
           <div class="field"><span class="lab">Move speed</span><div class="seg" id="speedSeg"><button data-sp="slow">Slow</button><button data-sp="normal" class="on">Normal</button><button data-sp="fast">Fast</button></div></div>
         </div>
+        <details id="personaPanel" class="persona-panel"><summary>Custom opponents · playing styles</summary>
+          <p id="personaNotice" class="muted" role="status">Selections apply to the next game. Difficulty stays separate from style.</p>
+          <button class="btn small" id="personasOff">Standard engine · disable all personas</button>
+          <div id="personaEditors"></div>
+          <p class="muted">Styles gently favour activity or shelter; they can affect strength. Standard is the reference engine. Beginners keep their mistakes, and the shared opening book stays the same. Gambit Player favours activity; it does not force sacrifices.</p>
+          <p class="muted">Save up to 12 named opponents with their level on this device. Saving the same name replaces it.</p>
+        </details>
         <div class="field"><label for="tcSel">Clock</label>
           <select id="tcSel">
             <option value="none">No clock</option>

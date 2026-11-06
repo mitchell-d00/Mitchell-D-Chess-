@@ -1,3 +1,8 @@
+> November 6 personality extension: the current binary now includes an opt-in
+> style API. The rollout and match results below describe the earlier binary.
+> [Current identity, Standard parity and persona checks](personas/README.md)
+> distinguish the extension from those historical strength results.
+
 # Full Mitchell WASM release
 
 The user authorized publishing the tested upgrade now and measuring its rating
