@@ -3212,6 +3212,7 @@ function maybeAI() {
   G.activeThink=request;
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
     if (!G || G.over || G.token !== tok || G.moves.length !== ply) return;
+    if(!r||!r.move||!G.chess.findUci(r.move))throw new Error('The computer returned no legal move');
     request.phase='reply ready';request.recovery=r&&r.recovery;
     request.backend=r&&r.backend||'javascript';request.depth=r&&r.depth;
     if(r&&r.recovery){G.engineRecoveries=(G.engineRecoveries||0)+1;G.evalW=null;G.depth=0;}

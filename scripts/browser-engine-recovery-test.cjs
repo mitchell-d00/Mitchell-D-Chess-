@@ -40,6 +40,11 @@ const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('nod
   });await page.waitForFunction(()=>G.engineFault===true);
   assert(await page.evaluate(()=>window.workerCreateFailures===2&&!G.thinking));assert.match(await page.textContent('#status'),/could not continue/);
   await page.evaluate(()=>{window.Worker=window.realWorker;});await page.getByRole('button',{name:'Retry computer',exact:true}).click();await page.waitForFunction(()=>G.moves.length===1);assert.equal(await page.evaluate(()=>G.engineFault),null);
+  for(const response of [null,{move:'e2e5',score:0,depth:0}]){
+   await page.evaluate(response=>{setup.mode='pvp';setup.tc='none';newGame();window.invalidReplies=0;think=()=>{window.invalidReplies++;return Promise.resolve(response);};G.mode='cvc';G.players={w:{type:'ai',level:65},b:{type:'human'}};maybeAI();},response);
+   await page.waitForFunction(()=>G.engineFault===true);assert(await page.evaluate(()=>G.moves.length===0&&window.invalidReplies===2&&!G.thinking));
+  }
+  await page.evaluate(()=>{think=window.actualThink;});
   // An injected main-loop stall/visibility gap cannot play a recovered move
   // after official flag fall. This is not a physical iOS suspension test.
   await page.evaluate(()=>{
