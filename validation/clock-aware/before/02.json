@@ -1,0 +1,2177 @@
+{
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "fifty-move rule"
+  },
+  "plies": 216,
+  "whiteMs": 11971.200000000186,
+  "blackMs": 1800.6000000004424,
+  "trace": [
+    {
+      "ply": 1,
+      "whiteMs": 59873.90000000002,
+      "blackMs": 59923.70000000007,
+      "source": "Last computer move: opening book",
+      "lastMove": "e2e4",
+      "clockMode": null,
+      "allowanceMs": 707,
+      "overheadMs": null
+    },
+    {
+      "ply": 2,
+      "whiteMs": 59868.20000000007,
+      "blackMs": 59803,
+      "source": "Last computer move: opening book",
+      "lastMove": "c7c6",
+      "clockMode": null,
+      "allowanceMs": 1498,
+      "overheadMs": null
+    },
+    {
+      "ply": 3,
+      "whiteMs": 59747.90000000002,
+      "blackMs": 59797.09999999998,
+      "source": "Last computer move: opening book",
+      "lastMove": "b1c3",
+      "clockMode": null,
+      "allowanceMs": 706,
+      "overheadMs": null
+    },
+    {
+      "ply": 4,
+      "whiteMs": 59742.29999999993,
+      "blackMs": 59676.40000000002,
+      "source": "Last computer move: opening book",
+      "lastMove": "d7d5",
+      "clockMode": null,
+      "allowanceMs": 1494,
+      "overheadMs": null
+    },
+    {
+      "ply": 5,
+      "whiteMs": 59621.79999999993,
+      "blackMs": 59668.70000000007,
+      "source": "Last computer move: opening book",
+      "lastMove": "g1f3",
+      "clockMode": null,
+      "allowanceMs": 704,
+      "overheadMs": null
+    },
+    {
+      "ply": 6,
+      "whiteMs": 59604.59999999986,
+      "blackMs": 59547.5,
+      "source": "Last computer move: opening book",
+      "lastMove": "c8g4",
+      "clockMode": null,
+      "allowanceMs": 1491,
+      "overheadMs": null
+    },
+    {
+      "ply": 7,
+      "whiteMs": 59483.79999999993,
+      "blackMs": 59542.90000000002,
+      "source": "Last computer move: opening book",
+      "lastMove": "h2h3",
+      "clockMode": null,
+      "allowanceMs": 721,
+      "overheadMs": null
+    },
+    {
+      "ply": 8,
+      "whiteMs": 59478.09999999998,
+      "blackMs": 59422.10000000009,
+      "source": "Last computer move: opening book",
+      "lastMove": "g4f3",
+      "clockMode": null,
+      "allowanceMs": 1526,
+      "overheadMs": null
+    },
+    {
+      "ply": 9,
+      "whiteMs": 59010.59999999998,
+      "blackMs": 59412.200000000186,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1f3",
+      "clockMode": null,
+      "allowanceMs": 719,
+      "overheadMs": null
+    },
+    {
+      "ply": 10,
+      "whiteMs": 59003.5,
+      "blackMs": 57887.200000000186,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8f6",
+      "clockMode": null,
+      "allowanceMs": 1523,
+      "overheadMs": null
+    },
+    {
+      "ply": 11,
+      "whiteMs": 58302.09999999998,
+      "blackMs": 57882.00000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2d4",
+      "clockMode": null,
+      "allowanceMs": 713,
+      "overheadMs": null
+    },
+    {
+      "ply": 12,
+      "whiteMs": 58296.90000000002,
+      "blackMs": 56397.80000000028,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d5e4",
+      "clockMode": null,
+      "allowanceMs": 1484,
+      "overheadMs": null
+    },
+    {
+      "ply": 13,
+      "whiteMs": 57700.59999999998,
+      "blackMs": 56391.7000000003,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3e3",
+      "clockMode": null,
+      "allowanceMs": 723,
+      "overheadMs": null
+    },
+    {
+      "ply": 14,
+      "whiteMs": 57693.59999999998,
+      "blackMs": 55531.900000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8d7",
+      "clockMode": null,
+      "allowanceMs": 1483,
+      "overheadMs": null
+    },
+    {
+      "ply": 15,
+      "whiteMs": 57255.29999999993,
+      "blackMs": 55522.7000000003,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1e2",
+      "clockMode": null,
+      "allowanceMs": 716,
+      "overheadMs": null
+    },
+    {
+      "ply": 16,
+      "whiteMs": 57248.29999999993,
+      "blackMs": 54074.80000000028,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7g6",
+      "clockMode": null,
+      "allowanceMs": 1461,
+      "overheadMs": null
+    },
+    {
+      "ply": 17,
+      "whiteMs": 56699.29999999993,
+      "blackMs": 54067.900000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3e4",
+      "clockMode": null,
+      "allowanceMs": 710,
+      "overheadMs": null
+    },
+    {
+      "ply": 18,
+      "whiteMs": 56690.89999999991,
+      "blackMs": 53102.900000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6e4",
+      "clockMode": null,
+      "allowanceMs": 1422,
+      "overheadMs": null
+    },
+    {
+      "ply": 19,
+      "whiteMs": 56146.09999999986,
+      "blackMs": 53096.80000000028,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3e4",
+      "clockMode": null,
+      "allowanceMs": 723,
+      "overheadMs": null
+    },
+    {
+      "ply": 20,
+      "whiteMs": 56128.59999999986,
+      "blackMs": 51859.80000000028,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8g7",
+      "clockMode": null,
+      "allowanceMs": 1435,
+      "overheadMs": null
+    },
+    {
+      "ply": 21,
+      "whiteMs": 55542.49999999977,
+      "blackMs": 51852.900000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2c3",
+      "clockMode": null,
+      "allowanceMs": 715,
+      "overheadMs": null
+    },
+    {
+      "ply": 22,
+      "whiteMs": 55534.099999999744,
+      "blackMs": 50901.60000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e8g8",
+      "clockMode": null,
+      "allowanceMs": 1401,
+      "overheadMs": null
+    },
+    {
+      "ply": 23,
+      "whiteMs": 55051.299999999814,
+      "blackMs": 50894.40000000014,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1g1",
+      "clockMode": null,
+      "allowanceMs": 707,
+      "overheadMs": null
+    },
+    {
+      "ply": 24,
+      "whiteMs": 55043.799999999814,
+      "blackMs": 49999.00000000012,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7a5",
+      "clockMode": null,
+      "allowanceMs": 1375,
+      "overheadMs": null
+    },
+    {
+      "ply": 25,
+      "whiteMs": 54330.69999999984,
+      "blackMs": 49990.50000000012,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a2a4",
+      "clockMode": null,
+      "allowanceMs": 721,
+      "overheadMs": null
+    },
+    {
+      "ply": 26,
+      "whiteMs": 54323.49999999977,
+      "blackMs": 48600.10000000009,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8e8",
+      "clockMode": null,
+      "allowanceMs": 1388,
+      "overheadMs": null
+    },
+    {
+      "ply": 27,
+      "whiteMs": 53668.19999999984,
+      "blackMs": 48592.700000000186,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e4c2",
+      "clockMode": null,
+      "allowanceMs": 711,
+      "overheadMs": null
+    },
+    {
+      "ply": 28,
+      "whiteMs": 53659.49999999988,
+      "blackMs": 47495.30000000016,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e7e5",
+      "clockMode": null,
+      "allowanceMs": 1349,
+      "overheadMs": null
+    },
+    {
+      "ply": 29,
+      "whiteMs": 53257.79999999993,
+      "blackMs": 47487.10000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4e5",
+      "clockMode": null,
+      "allowanceMs": 703,
+      "overheadMs": null
+    },
+    {
+      "ply": 30,
+      "whiteMs": 53251.19999999995,
+      "blackMs": 46733.200000000186,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7e5",
+      "clockMode": null,
+      "allowanceMs": 1319,
+      "overheadMs": null
+    },
+    {
+      "ply": 31,
+      "whiteMs": 52614.39999999991,
+      "blackMs": 46725.10000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1d1",
+      "clockMode": null,
+      "allowanceMs": 717,
+      "overheadMs": null
+    },
+    {
+      "ply": 32,
+      "whiteMs": 52608,
+      "blackMs": 45833.50000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d8e7",
+      "clockMode": null,
+      "allowanceMs": 1335,
+      "overheadMs": null
+    },
+    {
+      "ply": 33,
+      "whiteMs": 52032.5,
+      "blackMs": 45826.10000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1e3",
+      "clockMode": null,
+      "allowanceMs": 709,
+      "overheadMs": null
+    },
+    {
+      "ply": 34,
+      "whiteMs": 52025.09999999986,
+      "blackMs": 44765.30000000016,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5c7",
+      "clockMode": null,
+      "allowanceMs": 1309,
+      "overheadMs": null
+    },
+    {
+      "ply": 35,
+      "whiteMs": 51603,
+      "blackMs": 44754.2000000003,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e2f1",
+      "clockMode": null,
+      "allowanceMs": 701,
+      "overheadMs": null
+    },
+    {
+      "ply": 36,
+      "whiteMs": 51597.69999999995,
+      "blackMs": 44045.50000000012,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a8d8",
+      "clockMode": null,
+      "allowanceMs": 1278,
+      "overheadMs": null
+    },
+    {
+      "ply": 37,
+      "whiteMs": 50880.89999999991,
+      "blackMs": 44038.90000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1d4",
+      "clockMode": null,
+      "allowanceMs": 715,
+      "overheadMs": null
+    },
+    {
+      "ply": 38,
+      "whiteMs": 50873.69999999995,
+      "blackMs": 42741.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d7f6",
+      "clockMode": null,
+      "allowanceMs": 1295,
+      "overheadMs": null
+    },
+    {
+      "ply": 39,
+      "whiteMs": 50387.19999999995,
+      "blackMs": 42734.40000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a1d1",
+      "clockMode": null,
+      "allowanceMs": 706,
+      "overheadMs": null
+    },
+    {
+      "ply": 40,
+      "whiteMs": 50380.30000000005,
+      "blackMs": 41851.90000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d8d4",
+      "clockMode": null,
+      "allowanceMs": 1256,
+      "overheadMs": null
+    },
+    {
+      "ply": 41,
+      "whiteMs": 49979.69999999995,
+      "blackMs": 41843.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3d4",
+      "clockMode": null,
+      "allowanceMs": 698,
+      "overheadMs": null
+    },
+    {
+      "ply": 42,
+      "whiteMs": 49972.5,
+      "blackMs": 40816.40000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7e5",
+      "clockMode": null,
+      "allowanceMs": 1230,
+      "overheadMs": null
+    },
+    {
+      "ply": 43,
+      "whiteMs": 49257.69999999995,
+      "blackMs": 40807.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4a7",
+      "clockMode": null,
+      "allowanceMs": 714,
+      "overheadMs": null
+    },
+    {
+      "ply": 44,
+      "whiteMs": 49245.5,
+      "blackMs": 40042.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6d5",
+      "clockMode": null,
+      "allowanceMs": 1236,
+      "overheadMs": null
+    },
+    {
+      "ply": 45,
+      "whiteMs": 48668.299999999814,
+      "blackMs": 40016.99999999988,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1c4",
+      "clockMode": null,
+      "allowanceMs": 704,
+      "overheadMs": null
+    },
+    {
+      "ply": 46,
+      "whiteMs": 48658.19999999972,
+      "blackMs": 38861.49999999988,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e8a8",
+      "clockMode": null,
+      "allowanceMs": 1212,
+      "overheadMs": null
+    },
+    {
+      "ply": 47,
+      "whiteMs": 48202.69999999972,
+      "blackMs": 38853.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4d5",
+      "clockMode": null,
+      "allowanceMs": 695,
+      "overheadMs": null
+    },
+    {
+      "ply": 48,
+      "whiteMs": 48193.59999999986,
+      "blackMs": 37898.90000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a8a7",
+      "clockMode": null,
+      "allowanceMs": 1177,
+      "overheadMs": null
+    },
+    {
+      "ply": 49,
+      "whiteMs": 47480.99999999977,
+      "blackMs": 37892.00000000012,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d5a2",
+      "clockMode": null,
+      "allowanceMs": 710,
+      "overheadMs": null
+    },
+    {
+      "ply": 50,
+      "whiteMs": 47473.99999999977,
+      "blackMs": 36714.90000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5f6",
+      "clockMode": null,
+      "allowanceMs": 1184,
+      "overheadMs": null
+    },
+    {
+      "ply": 51,
+      "whiteMs": 46971.59999999986,
+      "blackMs": 36707.59999999998,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g2g3",
+      "clockMode": null,
+      "allowanceMs": 699,
+      "overheadMs": null
+    },
+    {
+      "ply": 52,
+      "whiteMs": 46953.30000000005,
+      "blackMs": 35993.00000000012,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b7b5",
+      "clockMode": null,
+      "allowanceMs": 1147,
+      "overheadMs": null
+    },
+    {
+      "ply": 53,
+      "whiteMs": 46354.5,
+      "blackMs": 35979.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g1g2",
+      "clockMode": null,
+      "allowanceMs": 692,
+      "overheadMs": null
+    },
+    {
+      "ply": 54,
+      "whiteMs": 46346.10000000009,
+      "blackMs": 35125.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8g7",
+      "clockMode": null,
+      "allowanceMs": 1124,
+      "overheadMs": null
+    },
+    {
+      "ply": 55,
+      "whiteMs": 45666.90000000014,
+      "blackMs": 35117.90000000002,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1d2",
+      "clockMode": null,
+      "allowanceMs": 705,
+      "overheadMs": null
+    },
+    {
+      "ply": 56,
+      "whiteMs": 45660.700000000186,
+      "blackMs": 34158.09999999998,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h7h5",
+      "clockMode": null,
+      "allowanceMs": 1132,
+      "overheadMs": null
+    },
+    {
+      "ply": 57,
+      "whiteMs": 44964.700000000186,
+      "blackMs": 34136.59999999998,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h3h4",
+      "clockMode": null,
+      "allowanceMs": 694,
+      "overheadMs": null
+    },
+    {
+      "ply": 58,
+      "whiteMs": 44957.10000000009,
+      "blackMs": 33528.39999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e7c5",
+      "clockMode": null,
+      "allowanceMs": 1101,
+      "overheadMs": null
+    },
+    {
+      "ply": 59,
+      "whiteMs": 44285.00000000023,
+      "blackMs": 33521.99999999988,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2d1",
+      "clockMode": null,
+      "allowanceMs": 684,
+      "overheadMs": null
+    },
+    {
+      "ply": 60,
+      "whiteMs": 44278.30000000028,
+      "blackMs": 32909.099999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7e7",
+      "clockMode": null,
+      "allowanceMs": 1081,
+      "overheadMs": null
+    },
+    {
+      "ply": 61,
+      "whiteMs": 43580.100000000326,
+      "blackMs": 32900.099999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2d7",
+      "clockMode": null,
+      "allowanceMs": 696,
+      "overheadMs": null
+    },
+    {
+      "ply": 62,
+      "whiteMs": 43573.100000000326,
+      "blackMs": 31963.89999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5f5",
+      "clockMode": null,
+      "allowanceMs": 1096,
+      "overheadMs": null
+    },
+    {
+      "ply": 63,
+      "whiteMs": 43141.600000000326,
+      "blackMs": 31955.999999999884,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d7e7",
+      "clockMode": null,
+      "allowanceMs": 685,
+      "overheadMs": null
+    },
+    {
+      "ply": 64,
+      "whiteMs": 43134.80000000028,
+      "blackMs": 30996.599999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6e7",
+      "clockMode": null,
+      "allowanceMs": 1065,
+      "overheadMs": null
+    },
+    {
+      "ply": 65,
+      "whiteMs": 42450.90000000014,
+      "blackMs": 30990.699999999604,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a2b3",
+      "clockMode": null,
+      "allowanceMs": 678,
+      "overheadMs": null
+    },
+    {
+      "ply": 66,
+      "whiteMs": 42442.50000000023,
+      "blackMs": 30191.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e7c5",
+      "clockMode": null,
+      "allowanceMs": 1033,
+      "overheadMs": null
+    },
+    {
+      "ply": 67,
+      "whiteMs": 41992.700000000186,
+      "blackMs": 30184.199999999604,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1f3",
+      "clockMode": null,
+      "allowanceMs": 690,
+      "overheadMs": null
+    },
+    {
+      "ply": 68,
+      "whiteMs": 41986.100000000326,
+      "blackMs": 29142.099999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5f6",
+      "clockMode": null,
+      "allowanceMs": 1040,
+      "overheadMs": null
+    },
+    {
+      "ply": 69,
+      "whiteMs": 41441.100000000326,
+      "blackMs": 29132.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b3d1",
+      "clockMode": null,
+      "allowanceMs": 682,
+      "overheadMs": null
+    },
+    {
+      "ply": 70,
+      "whiteMs": 41432.30000000051,
+      "blackMs": 28164.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6f3",
+      "clockMode": null,
+      "allowanceMs": 1004,
+      "overheadMs": null
+    },
+    {
+      "ply": 71,
+      "whiteMs": 40803.90000000037,
+      "blackMs": 28154.699999999604,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g2f3",
+      "clockMode": null,
+      "allowanceMs": 673,
+      "overheadMs": null
+    },
+    {
+      "ply": 72,
+      "whiteMs": 40795.500000000466,
+      "blackMs": 27581.199999999604,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f7f5",
+      "clockMode": null,
+      "allowanceMs": 970,
+      "overheadMs": null
+    },
+    {
+      "ply": 73,
+      "whiteMs": 40363.70000000042,
+      "blackMs": 27573.699999999604,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3e2",
+      "clockMode": null,
+      "allowanceMs": 687,
+      "overheadMs": null
+    },
+    {
+      "ply": 74,
+      "whiteMs": 40356.500000000466,
+      "blackMs": 26587.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7f6",
+      "clockMode": null,
+      "allowanceMs": 984,
+      "overheadMs": null
+    },
+    {
+      "ply": 75,
+      "whiteMs": 39674.70000000042,
+      "blackMs": 26577.799999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e2f1",
+      "clockMode": null,
+      "allowanceMs": 680,
+      "overheadMs": null
+    },
+    {
+      "ply": 76,
+      "whiteMs": 39664.000000000466,
+      "blackMs": 25626.99999999965,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f6e7",
+      "clockMode": null,
+      "allowanceMs": 949,
+      "overheadMs": null
+    },
+    {
+      "ply": 77,
+      "whiteMs": 39109.10000000056,
+      "blackMs": 25617.899999999558,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b2b4",
+      "clockMode": null,
+      "allowanceMs": 668,
+      "overheadMs": null
+    },
+    {
+      "ply": 78,
+      "whiteMs": 39100.500000000466,
+      "blackMs": 25005.799999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a5b4",
+      "clockMode": null,
+      "allowanceMs": 914,
+      "overheadMs": null
+    },
+    {
+      "ply": 79,
+      "whiteMs": 38458.20000000042,
+      "blackMs": 24994.999999999418,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3b4",
+      "clockMode": null,
+      "allowanceMs": 683,
+      "overheadMs": null
+    },
+    {
+      "ply": 80,
+      "whiteMs": 38449.20000000042,
+      "blackMs": 24464.19999999937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5b4",
+      "clockMode": null,
+      "allowanceMs": 925,
+      "overheadMs": null
+    },
+    {
+      "ply": 81,
+      "whiteMs": 37989.90000000037,
+      "blackMs": 24452.799999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a4b5",
+      "clockMode": null,
+      "allowanceMs": 672,
+      "overheadMs": null
+    },
+    {
+      "ply": 82,
+      "whiteMs": 37983.200000000186,
+      "blackMs": 23781.799999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c6b5",
+      "clockMode": null,
+      "allowanceMs": 905,
+      "overheadMs": null
+    },
+    {
+      "ply": 83,
+      "whiteMs": 37517.100000000326,
+      "blackMs": 23773.499999999418,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d1e2",
+      "clockMode": null,
+      "allowanceMs": 663,
+      "overheadMs": null
+    },
+    {
+      "ply": 84,
+      "whiteMs": 37507.700000000186,
+      "blackMs": 22996.69999999937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5f4",
+      "clockMode": null,
+      "allowanceMs": 880,
+      "overheadMs": null
+    },
+    {
+      "ply": 85,
+      "whiteMs": 37111.30000000028,
+      "blackMs": 22981.59999999928,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3g4",
+      "clockMode": null,
+      "allowanceMs": 680,
+      "overheadMs": null
+    },
+    {
+      "ply": 86,
+      "whiteMs": 37101.50000000023,
+      "blackMs": 22404.899999999325,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h5g4",
+      "clockMode": null,
+      "allowanceMs": 883,
+      "overheadMs": null
+    },
+    {
+      "ply": 87,
+      "whiteMs": 36495.30000000028,
+      "blackMs": 22393.899999999325,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e2b5",
+      "clockMode": null,
+      "allowanceMs": 672,
+      "overheadMs": null
+    },
+    {
+      "ply": 88,
+      "whiteMs": 36487.30000000028,
+      "blackMs": 21529.799999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b4c5",
+      "clockMode": null,
+      "allowanceMs": 861,
+      "overheadMs": null
+    },
+    {
+      "ply": 89,
+      "whiteMs": 36016.00000000023,
+      "blackMs": 21521.299999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1g2",
+      "clockMode": null,
+      "allowanceMs": 662,
+      "overheadMs": null
+    },
+    {
+      "ply": 90,
+      "whiteMs": 36007.80000000028,
+      "blackMs": 21022.59999999951,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c5a7",
+      "clockMode": null,
+      "allowanceMs": 827,
+      "overheadMs": null
+    },
+    {
+      "ply": 91,
+      "whiteMs": 35326.60000000009,
+      "blackMs": 21014.09999999951,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2f3",
+      "clockMode": null,
+      "allowanceMs": 679,
+      "overheadMs": null
+    },
+    {
+      "ply": 92,
+      "whiteMs": 35318.80000000005,
+      "blackMs": 20513.999999999418,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7e3",
+      "clockMode": null,
+      "allowanceMs": 840,
+      "overheadMs": null
+    },
+    {
+      "ply": 93,
+      "whiteMs": 34924.5,
+      "blackMs": 20505.399999999325,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3g4",
+      "clockMode": null,
+      "allowanceMs": 666,
+      "overheadMs": null
+    },
+    {
+      "ply": 94,
+      "whiteMs": 34915.39999999991,
+      "blackMs": 19771.59999999928,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g6g5",
+      "clockMode": null,
+      "allowanceMs": 820,
+      "overheadMs": null
+    },
+    {
+      "ply": 95,
+      "whiteMs": 34495.09999999986,
+      "blackMs": 19763.29999999923,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g2f3",
+      "clockMode": null,
+      "allowanceMs": 658,
+      "overheadMs": null
+    },
+    {
+      "ply": 96,
+      "whiteMs": 34488.80000000005,
+      "blackMs": 19223.399999999325,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g5h4",
+      "clockMode": null,
+      "allowanceMs": 790,
+      "overheadMs": null
+    },
+    {
+      "ply": 97,
+      "whiteMs": 34032.69999999995,
+      "blackMs": 19214.29999999923,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b5f1",
+      "clockMode": null,
+      "allowanceMs": 678,
+      "overheadMs": null
+    },
+    {
+      "ply": 98,
+      "whiteMs": 34026.299999999814,
+      "blackMs": 18765.69999999937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h4h3",
+      "clockMode": null,
+      "allowanceMs": 800,
+      "overheadMs": null
+    },
+    {
+      "ply": 99,
+      "whiteMs": 33598.59999999986,
+      "blackMs": 18757.09999999951,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1h3",
+      "clockMode": null,
+      "allowanceMs": 668,
+      "overheadMs": null
+    },
+    {
+      "ply": 100,
+      "whiteMs": 33591.89999999991,
+      "blackMs": 18203.69999999937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3c1",
+      "clockMode": null,
+      "allowanceMs": 781,
+      "overheadMs": null
+    },
+    {
+      "ply": 101,
+      "whiteMs": 33182.69999999972,
+      "blackMs": 18194.899999999325,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4g5",
+      "clockMode": null,
+      "allowanceMs": 660,
+      "overheadMs": null
+    },
+    {
+      "ply": 102,
+      "whiteMs": 33173.59999999963,
+      "blackMs": 17774.999999999418,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e7f7",
+      "clockMode": null,
+      "allowanceMs": 758,
+      "overheadMs": null
+    },
+    {
+      "ply": 103,
+      "whiteMs": 32769.299999999814,
+      "blackMs": 17765.799999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h3d7",
+      "clockMode": null,
+      "allowanceMs": 680,
+      "overheadMs": null
+    },
+    {
+      "ply": 104,
+      "whiteMs": 32760.699999999953,
+      "blackMs": 17130.299999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f7f8",
+      "clockMode": null,
+      "allowanceMs": 772,
+      "overheadMs": null
+    },
+    {
+      "ply": 105,
+      "whiteMs": 32349.399999999907,
+      "blackMs": 17121.69999999937,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d7c6",
+      "clockMode": null,
+      "allowanceMs": 672,
+      "overheadMs": null
+    },
+    {
+      "ply": 106,
+      "whiteMs": 32343.299999999814,
+      "blackMs": 16643.299999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8g7",
+      "clockMode": null,
+      "allowanceMs": 744,
+      "overheadMs": null
+    },
+    {
+      "ply": 107,
+      "whiteMs": 31965.59999999986,
+      "blackMs": 16634.499999999418,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c6e4",
+      "clockMode": null,
+      "allowanceMs": 663,
+      "overheadMs": null
+    },
+    {
+      "ply": 108,
+      "whiteMs": 31947.299999999814,
+      "blackMs": 16217.399999999558,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7g8",
+      "clockMode": null,
+      "allowanceMs": 723,
+      "overheadMs": null
+    },
+    {
+      "ply": 109,
+      "whiteMs": 31468.69999999972,
+      "blackMs": 16210.49999999965,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e4d3",
+      "clockMode": null,
+      "allowanceMs": 685,
+      "overheadMs": null
+    },
+    {
+      "ply": 110,
+      "whiteMs": 31461.899999999674,
+      "blackMs": 15797.299999999464,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8h8",
+      "clockMode": null,
+      "allowanceMs": 736,
+      "overheadMs": null
+    },
+    {
+      "ply": 111,
+      "whiteMs": 31052.999999999767,
+      "blackMs": 15790.399999999558,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c2",
+      "clockMode": null,
+      "allowanceMs": 674,
+      "overheadMs": null
+    },
+    {
+      "ply": 112,
+      "whiteMs": 31046.099999999627,
+      "blackMs": 15340.099999999511,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h8g8",
+      "clockMode": null,
+      "allowanceMs": 717,
+      "overheadMs": null
+    },
+    {
+      "ply": 113,
+      "whiteMs": 30649.79999999958,
+      "blackMs": 15330.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2e4",
+      "clockMode": null,
+      "allowanceMs": 665,
+      "overheadMs": null
+    },
+    {
+      "ply": 114,
+      "whiteMs": 30638.79999999958,
+      "blackMs": 14845.199999999604,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8h8",
+      "clockMode": null,
+      "allowanceMs": 696,
+      "overheadMs": null
+    },
+    {
+      "ply": 115,
+      "whiteMs": 30165.899999999674,
+      "blackMs": 14835.39999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f3g4",
+      "clockMode": null,
+      "allowanceMs": 688,
+      "overheadMs": null
+    },
+    {
+      "ply": 116,
+      "whiteMs": 30157.79999999958,
+      "blackMs": 14295.49999999965,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4f3",
+      "clockMode": null,
+      "allowanceMs": 706,
+      "overheadMs": null
+    },
+    {
+      "ply": 117,
+      "whiteMs": 29686.899999999674,
+      "blackMs": 14287.099999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e4d3",
+      "clockMode": null,
+      "allowanceMs": 677,
+      "overheadMs": null
+    },
+    {
+      "ply": 118,
+      "whiteMs": 29678.999999999767,
+      "blackMs": 13863.49999999965,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1d2",
+      "clockMode": null,
+      "allowanceMs": 680,
+      "overheadMs": null
+    },
+    {
+      "ply": 119,
+      "whiteMs": 29196.499999999767,
+      "blackMs": 13854.099999999511,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c4",
+      "clockMode": null,
+      "allowanceMs": 666,
+      "overheadMs": null
+    },
+    {
+      "ply": 120,
+      "whiteMs": 29189.799999999814,
+      "blackMs": 13450.399999999558,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h8g7",
+      "clockMode": null,
+      "allowanceMs": 659,
+      "overheadMs": null
+    },
+    {
+      "ply": 121,
+      "whiteMs": 28717.399999999674,
+      "blackMs": 13440.799999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4d3",
+      "clockMode": null,
+      "allowanceMs": 688,
+      "overheadMs": null
+    },
+    {
+      "ply": 122,
+      "whiteMs": 28709.599999999627,
+      "blackMs": 13014.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2e1",
+      "clockMode": null,
+      "allowanceMs": 672,
+      "overheadMs": null
+    },
+    {
+      "ply": 123,
+      "whiteMs": 28260.999999999767,
+      "blackMs": 12999.299999999697,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4f4",
+      "clockMode": null,
+      "allowanceMs": 677,
+      "overheadMs": null
+    },
+    {
+      "ply": 124,
+      "whiteMs": 28251.499999999767,
+      "blackMs": 12558.699999999837,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7f8",
+      "clockMode": null,
+      "allowanceMs": 649,
+      "overheadMs": null
+    },
+    {
+      "ply": 125,
+      "whiteMs": 27827.899999999674,
+      "blackMs": 12549.699999999837,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4g4",
+      "clockMode": null,
+      "allowanceMs": 666,
+      "overheadMs": null
+    },
+    {
+      "ply": 126,
+      "whiteMs": 27818.899999999674,
+      "blackMs": 12172.999999999884,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8g8",
+      "clockMode": null,
+      "allowanceMs": 627,
+      "overheadMs": null
+    },
+    {
+      "ply": 127,
+      "whiteMs": 27255.899999999674,
+      "blackMs": 12164.499999999884,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c4",
+      "clockMode": null,
+      "allowanceMs": 690,
+      "overheadMs": null
+    },
+    {
+      "ply": 128,
+      "whiteMs": 27246.79999999958,
+      "blackMs": 11564.599999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8g7",
+      "clockMode": null,
+      "allowanceMs": 640,
+      "overheadMs": null
+    },
+    {
+      "ply": 129,
+      "whiteMs": 26795.499999999534,
+      "blackMs": 11552.199999999837,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4d3",
+      "clockMode": null,
+      "allowanceMs": 676,
+      "overheadMs": null
+    },
+    {
+      "ply": 130,
+      "whiteMs": 26787.099999999627,
+      "blackMs": 11107.39999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7f8",
+      "clockMode": null,
+      "allowanceMs": 608,
+      "overheadMs": null
+    },
+    {
+      "ply": 131,
+      "whiteMs": 26269.999999999534,
+      "blackMs": 11100.499999999884,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4f4",
+      "clockMode": null,
+      "allowanceMs": 664,
+      "overheadMs": null
+    },
+    {
+      "ply": 132,
+      "whiteMs": 26260.79999999958,
+      "blackMs": 10710.89999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e1d2",
+      "clockMode": null,
+      "allowanceMs": 584,
+      "overheadMs": null
+    },
+    {
+      "ply": 133,
+      "whiteMs": 25741.999999999534,
+      "blackMs": 10702.39999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4g3",
+      "clockMode": null,
+      "allowanceMs": 688,
+      "overheadMs": null
+    },
+    {
+      "ply": 134,
+      "whiteMs": 25735.099999999627,
+      "blackMs": 10319.699999999837,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2e3",
+      "clockMode": null,
+      "allowanceMs": 594,
+      "overheadMs": null
+    },
+    {
+      "ply": 135,
+      "whiteMs": 25287.399999999674,
+      "blackMs": 10309.599999999744,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c4",
+      "clockMode": null,
+      "allowanceMs": 674,
+      "overheadMs": null
+    },
+    {
+      "ply": 136,
+      "whiteMs": 25280.59999999986,
+      "blackMs": 9906.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8g7",
+      "clockMode": null,
+      "allowanceMs": 572,
+      "overheadMs": null
+    },
+    {
+      "ply": 137,
+      "whiteMs": 24762.799999999814,
+      "blackMs": 9899.29999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3g4",
+      "clockMode": null,
+      "allowanceMs": 662,
+      "overheadMs": null
+    },
+    {
+      "ply": 138,
+      "whiteMs": 24755.499999999767,
+      "blackMs": 9570.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3d4",
+      "clockMode": null,
+      "allowanceMs": 549,
+      "overheadMs": null
+    },
+    {
+      "ply": 139,
+      "whiteMs": 24159.899999999907,
+      "blackMs": 9562.699999999837,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4d3",
+      "clockMode": null,
+      "allowanceMs": 648,
+      "overheadMs": null
+    },
+    {
+      "ply": 140,
+      "whiteMs": 24148.100000000093,
+      "blackMs": 9243.29999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4c3",
+      "clockMode": null,
+      "allowanceMs": 531,
+      "overheadMs": null
+    },
+    {
+      "ply": 141,
+      "whiteMs": 23798,
+      "blackMs": 9234.099999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3f1",
+      "clockMode": null,
+      "allowanceMs": 632,
+      "overheadMs": null
+    },
+    {
+      "ply": 142,
+      "whiteMs": 23787.199999999953,
+      "blackMs": 8940.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3b2",
+      "clockMode": null,
+      "allowanceMs": 513,
+      "overheadMs": null
+    },
+    {
+      "ply": 143,
+      "whiteMs": 23186.699999999953,
+      "blackMs": 8932.39999999979,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4g3",
+      "clockMode": null,
+      "allowanceMs": 623,
+      "overheadMs": null
+    },
+    {
+      "ply": 144,
+      "whiteMs": 23180,
+      "blackMs": 8613.599999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b2c1",
+      "clockMode": null,
+      "allowanceMs": 496,
+      "overheadMs": null
+    },
+    {
+      "ply": 145,
+      "whiteMs": 22821.300000000047,
+      "blackMs": 8605.400000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1d3",
+      "clockMode": null,
+      "allowanceMs": 607,
+      "overheadMs": null
+    },
+    {
+      "ply": 146,
+      "whiteMs": 22810.899999999907,
+      "blackMs": 8333.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7f8",
+      "clockMode": null,
+      "allowanceMs": 478,
+      "overheadMs": null
+    },
+    {
+      "ply": 147,
+      "whiteMs": 22367.800000000047,
+      "blackMs": 8326.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3c4",
+      "clockMode": null,
+      "allowanceMs": 597,
+      "overheadMs": null
+    },
+    {
+      "ply": 148,
+      "whiteMs": 22357.199999999953,
+      "blackMs": 8028.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1e3",
+      "clockMode": null,
+      "allowanceMs": 462,
+      "overheadMs": null
+    },
+    {
+      "ply": 149,
+      "whiteMs": 21962.5,
+      "blackMs": 8019.999999999884,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3g4",
+      "clockMode": null,
+      "allowanceMs": 586,
+      "overheadMs": null
+    },
+    {
+      "ply": 150,
+      "whiteMs": 21953.800000000047,
+      "blackMs": 7747.199999999837,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3d2",
+      "clockMode": null,
+      "allowanceMs": 445,
+      "overheadMs": null
+    },
+    {
+      "ply": 151,
+      "whiteMs": 21502.600000000093,
+      "blackMs": 7738.099999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c4f1",
+      "clockMode": null,
+      "allowanceMs": 575,
+      "overheadMs": null
+    },
+    {
+      "ply": 152,
+      "whiteMs": 21494.300000000047,
+      "blackMs": 7448.099999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c1",
+      "clockMode": null,
+      "allowanceMs": 429,
+      "overheadMs": null
+    },
+    {
+      "ply": 153,
+      "whiteMs": 21152.5,
+      "blackMs": 7439.29999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1d3",
+      "clockMode": null,
+      "allowanceMs": 563,
+      "overheadMs": null
+    },
+    {
+      "ply": 154,
+      "whiteMs": 21139.899999999907,
+      "blackMs": 7141.599999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8g7",
+      "clockMode": null,
+      "allowanceMs": 413,
+      "overheadMs": null
+    },
+    {
+      "ply": 155,
+      "whiteMs": 20683.59999999986,
+      "blackMs": 7131.099999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4g3",
+      "clockMode": null,
+      "allowanceMs": 554,
+      "overheadMs": null
+    },
+    {
+      "ply": 156,
+      "whiteMs": 20675.899999999907,
+      "blackMs": 6741.099999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7h8",
+      "clockMode": null,
+      "allowanceMs": 396,
+      "overheadMs": null
+    },
+    {
+      "ply": 157,
+      "whiteMs": 20347.199999999953,
+      "blackMs": 6733.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3f2",
+      "clockMode": null,
+      "allowanceMs": 541,
+      "overheadMs": null
+    },
+    {
+      "ply": 158,
+      "whiteMs": 20338.600000000093,
+      "blackMs": 6454.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1f4",
+      "clockMode": null,
+      "allowanceMs": 374,
+      "overheadMs": null
+    },
+    {
+      "ply": 159,
+      "whiteMs": 19990.100000000093,
+      "blackMs": 6443.900000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d3f5",
+      "clockMode": null,
+      "allowanceMs": 532,
+      "overheadMs": null
+    },
+    {
+      "ply": 160,
+      "whiteMs": 19981.5,
+      "blackMs": 6211.599999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4e5",
+      "clockMode": null,
+      "allowanceMs": 357,
+      "overheadMs": null
+    },
+    {
+      "ply": 161,
+      "whiteMs": 19625.800000000047,
+      "blackMs": 6199.900000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5g4",
+      "clockMode": null,
+      "allowanceMs": 523,
+      "overheadMs": null
+    },
+    {
+      "ply": 162,
+      "whiteMs": 19616.300000000047,
+      "blackMs": 5948.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5d4",
+      "clockMode": null,
+      "allowanceMs": 344,
+      "overheadMs": null
+    },
+    {
+      "ply": 163,
+      "whiteMs": 19302.5,
+      "blackMs": 5937.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2f1",
+      "clockMode": null,
+      "allowanceMs": 513,
+      "overheadMs": null
+    },
+    {
+      "ply": 164,
+      "whiteMs": 19285.600000000093,
+      "blackMs": 5715.400000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h8g7",
+      "clockMode": null,
+      "allowanceMs": 329,
+      "overheadMs": null
+    },
+    {
+      "ply": 165,
+      "whiteMs": 18937.700000000186,
+      "blackMs": 5705.599999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4h3",
+      "clockMode": null,
+      "allowanceMs": 505,
+      "overheadMs": null
+    },
+    {
+      "ply": 166,
+      "whiteMs": 18930.200000000186,
+      "blackMs": 5506.900000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4e3",
+      "clockMode": null,
+      "allowanceMs": 316,
+      "overheadMs": null
+    },
+    {
+      "ply": 167,
+      "whiteMs": 18624.900000000373,
+      "blackMs": 5497.599999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h3g4",
+      "clockMode": null,
+      "allowanceMs": 496,
+      "overheadMs": null
+    },
+    {
+      "ply": 168,
+      "whiteMs": 18609.800000000512,
+      "blackMs": 5315.900000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7g6",
+      "clockMode": null,
+      "allowanceMs": 305,
+      "overheadMs": null
+    },
+    {
+      "ply": 169,
+      "whiteMs": 18274.900000000373,
+      "blackMs": 5305.099999999977,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4e6",
+      "clockMode": null,
+      "allowanceMs": 487,
+      "overheadMs": null
+    },
+    {
+      "ply": 170,
+      "whiteMs": 18264.900000000373,
+      "blackMs": 5061.800000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3a7",
+      "clockMode": null,
+      "allowanceMs": 294,
+      "overheadMs": null
+    },
+    {
+      "ply": 171,
+      "whiteMs": 17950.600000000326,
+      "blackMs": 5054.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6g4",
+      "clockMode": null,
+      "allowanceMs": 478,
+      "overheadMs": null
+    },
+    {
+      "ply": 172,
+      "whiteMs": 17943.700000000186,
+      "blackMs": 4894.900000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g6f7",
+      "clockMode": null,
+      "allowanceMs": 280,
+      "overheadMs": null
+    },
+    {
+      "ply": 173,
+      "whiteMs": 17640.000000000233,
+      "blackMs": 4886.900000000023,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4h5",
+      "clockMode": null,
+      "allowanceMs": 470,
+      "overheadMs": null
+    },
+    {
+      "ply": 174,
+      "whiteMs": 17632.100000000326,
+      "blackMs": 4709.10000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f7g7",
+      "clockMode": null,
+      "allowanceMs": 271,
+      "overheadMs": null
+    },
+    {
+      "ply": 175,
+      "whiteMs": 17305.80000000028,
+      "blackMs": 4701.60000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h5g4",
+      "clockMode": null,
+      "allowanceMs": 462,
+      "overheadMs": null
+    },
+    {
+      "ply": 176,
+      "whiteMs": 17297.500000000233,
+      "blackMs": 4541.000000000116,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7h8",
+      "clockMode": null,
+      "allowanceMs": 261,
+      "overheadMs": null
+    },
+    {
+      "ply": 177,
+      "whiteMs": 17025.80000000028,
+      "blackMs": 4533.000000000116,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4c8",
+      "clockMode": null,
+      "allowanceMs": 453,
+      "overheadMs": null
+    },
+    {
+      "ply": 178,
+      "whiteMs": 17017.70000000042,
+      "blackMs": 4378.60000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h8g8",
+      "clockMode": null,
+      "allowanceMs": 251,
+      "overheadMs": null
+    },
+    {
+      "ply": 179,
+      "whiteMs": 16715.20000000042,
+      "blackMs": 4367.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c8e6",
+      "clockMode": null,
+      "allowanceMs": 445,
+      "overheadMs": null
+    },
+    {
+      "ply": 180,
+      "whiteMs": 16705.80000000028,
+      "blackMs": 4221.10000000021,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g8f8",
+      "clockMode": null,
+      "allowanceMs": 242,
+      "overheadMs": null
+    },
+    {
+      "ply": 181,
+      "whiteMs": 16413.400000000373,
+      "blackMs": 4213.800000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6b3",
+      "clockMode": null,
+      "allowanceMs": 437,
+      "overheadMs": null
+    },
+    {
+      "ply": 182,
+      "whiteMs": 16403.900000000373,
+      "blackMs": 3977.5000000003492,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a7b8",
+      "clockMode": null,
+      "allowanceMs": 234,
+      "overheadMs": null
+    },
+    {
+      "ply": 183,
+      "whiteMs": 16106.80000000028,
+      "blackMs": 3970.0000000003492,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1f2",
+      "clockMode": null,
+      "allowanceMs": 429,
+      "overheadMs": null
+    },
+    {
+      "ply": 184,
+      "whiteMs": 16097.80000000028,
+      "blackMs": 3844.0000000003492,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f8g7",
+      "clockMode": null,
+      "allowanceMs": 220,
+      "overheadMs": null
+    },
+    {
+      "ply": 185,
+      "whiteMs": 15818.80000000028,
+      "blackMs": 3833.1000000004424,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b3a2",
+      "clockMode": null,
+      "allowanceMs": 421,
+      "overheadMs": null
+    },
+    {
+      "ply": 186,
+      "whiteMs": 15809.200000000186,
+      "blackMs": 3646.400000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b8h2",
+      "clockMode": null,
+      "allowanceMs": 212,
+      "overheadMs": null
+    },
+    {
+      "ply": 187,
+      "whiteMs": 15554.200000000186,
+      "blackMs": 3634.7000000003027,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "a2e6",
+      "clockMode": null,
+      "allowanceMs": 414,
+      "overheadMs": null
+    },
+    {
+      "ply": 188,
+      "whiteMs": 15545.800000000047,
+      "blackMs": 3431.6000000002095,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7h8",
+      "clockMode": null,
+      "allowanceMs": 201,
+      "overheadMs": null
+    },
+    {
+      "ply": 189,
+      "whiteMs": 15270.800000000047,
+      "blackMs": 3423.300000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f2f1",
+      "clockMode": null,
+      "allowanceMs": 407,
+      "overheadMs": null
+    },
+    {
+      "ply": 190,
+      "whiteMs": 15262.000000000233,
+      "blackMs": 3291.5000000001164,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h2f4",
+      "clockMode": null,
+      "allowanceMs": 190,
+      "overheadMs": null
+    },
+    {
+      "ply": 191,
+      "whiteMs": 14980.500000000233,
+      "blackMs": 3281.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6b3",
+      "clockMode": null,
+      "allowanceMs": 399,
+      "overheadMs": null
+    },
+    {
+      "ply": 192,
+      "whiteMs": 14972.000000000233,
+      "blackMs": 3132.9000000000233,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f4g3",
+      "clockMode": null,
+      "allowanceMs": 182,
+      "overheadMs": null
+    },
+    {
+      "ply": 193,
+      "whiteMs": 14716.700000000186,
+      "blackMs": 3125.79999999993,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b3c2",
+      "clockMode": null,
+      "allowanceMs": 392,
+      "overheadMs": null
+    },
+    {
+      "ply": 194,
+      "whiteMs": 14707.700000000186,
+      "blackMs": 3023.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g3e5",
+      "clockMode": null,
+      "allowanceMs": 173,
+      "overheadMs": null
+    },
+    {
+      "ply": 195,
+      "whiteMs": 14452.200000000186,
+      "blackMs": 3010.5999999999767,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c2f5",
+      "clockMode": null,
+      "allowanceMs": 385,
+      "overheadMs": null
+    },
+    {
+      "ply": 196,
+      "whiteMs": 14442.000000000233,
+      "blackMs": 2863.0000000001164,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h8g7",
+      "clockMode": null,
+      "allowanceMs": 167,
+      "overheadMs": null
+    },
+    {
+      "ply": 197,
+      "whiteMs": 14152.30000000028,
+      "blackMs": 2852.5000000001164,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5g4",
+      "clockMode": null,
+      "allowanceMs": 378,
+      "overheadMs": null
+    },
+    {
+      "ply": 198,
+      "whiteMs": 14140.600000000093,
+      "blackMs": 2691.5000000001164,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e5c7",
+      "clockMode": null,
+      "allowanceMs": 158,
+      "overheadMs": null
+    },
+    {
+      "ply": 199,
+      "whiteMs": 13912.30000000028,
+      "blackMs": 2680.6000000002095,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4c8",
+      "clockMode": null,
+      "allowanceMs": 370,
+      "overheadMs": null
+    },
+    {
+      "ply": 200,
+      "whiteMs": 13902.000000000233,
+      "blackMs": 2588.300000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c7b6",
+      "clockMode": null,
+      "allowanceMs": 148,
+      "overheadMs": null
+    },
+    {
+      "ply": 201,
+      "whiteMs": 13668.900000000373,
+      "blackMs": 2578.300000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c8f5",
+      "clockMode": null,
+      "allowanceMs": 364,
+      "overheadMs": null
+    },
+    {
+      "ply": 202,
+      "whiteMs": 13658.70000000042,
+      "blackMs": 2480.800000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g7h8",
+      "clockMode": null,
+      "allowanceMs": 143,
+      "overheadMs": null
+    },
+    {
+      "ply": 203,
+      "whiteMs": 13431.600000000326,
+      "blackMs": 2467.1000000002095,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f5h3",
+      "clockMode": null,
+      "allowanceMs": 357,
+      "overheadMs": null
+    },
+    {
+      "ply": 204,
+      "whiteMs": 13423.200000000186,
+      "blackMs": 2367.5000000001164,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "b6e3",
+      "clockMode": null,
+      "allowanceMs": 137,
+      "overheadMs": null
+    },
+    {
+      "ply": 205,
+      "whiteMs": 13168.100000000326,
+      "blackMs": 2359.800000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "h3c8",
+      "clockMode": null,
+      "allowanceMs": 351,
+      "overheadMs": null
+    },
+    {
+      "ply": 206,
+      "whiteMs": 13147.700000000186,
+      "blackMs": 2282.800000000163,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3d2",
+      "clockMode": null,
+      "allowanceMs": 131,
+      "overheadMs": null
+    },
+    {
+      "ply": 207,
+      "whiteMs": 12895.100000000326,
+      "blackMs": 2267.400000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c8g4",
+      "clockMode": null,
+      "allowanceMs": 344,
+      "overheadMs": null
+    },
+    {
+      "ply": 208,
+      "whiteMs": 12884.30000000028,
+      "blackMs": 2188.20000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d2c3",
+      "clockMode": null,
+      "allowanceMs": 125,
+      "overheadMs": null
+    },
+    {
+      "ply": 209,
+      "whiteMs": 12653.000000000233,
+      "blackMs": 2175.4999999998836,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4e6",
+      "clockMode": null,
+      "allowanceMs": 337,
+      "overheadMs": null
+    },
+    {
+      "ply": 210,
+      "whiteMs": 12641.40000000014,
+      "blackMs": 2101.70000000007,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c3d4",
+      "clockMode": null,
+      "allowanceMs": 120,
+      "overheadMs": null
+    },
+    {
+      "ply": 211,
+      "whiteMs": 12396.600000000093,
+      "blackMs": 2087.900000000256,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e6g4",
+      "clockMode": null,
+      "allowanceMs": 331,
+      "overheadMs": null
+    },
+    {
+      "ply": 212,
+      "whiteMs": 12374.200000000186,
+      "blackMs": 2000.1000000002095,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "d4e3",
+      "clockMode": null,
+      "allowanceMs": 115,
+      "overheadMs": null
+    },
+    {
+      "ply": 213,
+      "whiteMs": 12161.600000000093,
+      "blackMs": 1988.9000000002561,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "g4c8",
+      "clockMode": null,
+      "allowanceMs": 324,
+      "overheadMs": null
+    },
+    {
+      "ply": 214,
+      "whiteMs": 12148.90000000014,
+      "blackMs": 1876.5000000003492,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "e3c1",
+      "clockMode": null,
+      "allowanceMs": 110,
+      "overheadMs": null
+    },
+    {
+      "ply": 215,
+      "whiteMs": 11971.200000000186,
+      "blackMs": 1866.7000000003027,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "f1e1",
+      "clockMode": null,
+      "allowanceMs": 318,
+      "overheadMs": null
+    },
+    {
+      "ply": 216,
+      "whiteMs": 11971.200000000186,
+      "blackMs": 1800.6000000004424,
+      "source": "Last computer move: engine search · out of book · WASM",
+      "lastMove": "c1b2",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    }
+  ],
+  "whiteLevel": 52,
+  "blackLevel": 65,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "finishedUtc": "2026-11-06T11:04:13.061Z"
+}

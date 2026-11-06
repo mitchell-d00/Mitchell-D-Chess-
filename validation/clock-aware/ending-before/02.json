@@ -1,0 +1,1277 @@
+{
+  "over": {
+    "result": "1/2-1/2",
+    "reason": "stalemate"
+  },
+  "plies": 126,
+  "whiteMs": 4263.300000000047,
+  "blackMs": 1546.6999999999534,
+  "trace": [
+    {
+      "ply": 1,
+      "whiteMs": 9838.5,
+      "blackMs": 9932.5,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c3b3",
+      "clockMode": null,
+      "allowanceMs": 117,
+      "overheadMs": null
+    },
+    {
+      "ply": 2,
+      "whiteMs": 9833,
+      "blackMs": 9744.100000000093,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f1d1",
+      "clockMode": null,
+      "allowanceMs": 248,
+      "overheadMs": null
+    },
+    {
+      "ply": 3,
+      "whiteMs": 9734.600000000093,
+      "blackMs": 9735.800000000047,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "b3b7",
+      "clockMode": null,
+      "allowanceMs": 115,
+      "overheadMs": null
+    },
+    {
+      "ply": 4,
+      "whiteMs": 9728.100000000093,
+      "blackMs": 9579.800000000047,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d1d4",
+      "clockMode": null,
+      "allowanceMs": 243,
+      "overheadMs": null
+    },
+    {
+      "ply": 5,
+      "whiteMs": 9608.90000000014,
+      "blackMs": 9570.899999999907,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "b7e7",
+      "clockMode": null,
+      "allowanceMs": 114,
+      "overheadMs": null
+    },
+    {
+      "ply": 6,
+      "whiteMs": 9603.90000000014,
+      "blackMs": 9424.199999999953,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d4d2",
+      "clockMode": null,
+      "allowanceMs": 239,
+      "overheadMs": null
+    },
+    {
+      "ply": 7,
+      "whiteMs": 9524.500000000233,
+      "blackMs": 9417.300000000047,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e7e6",
+      "clockMode": null,
+      "allowanceMs": 116,
+      "overheadMs": null
+    },
+    {
+      "ply": 8,
+      "whiteMs": 9518.70000000042,
+      "blackMs": 9174.800000000047,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g7g6",
+      "clockMode": null,
+      "allowanceMs": 241,
+      "overheadMs": null
+    },
+    {
+      "ply": 9,
+      "whiteMs": 9401.20000000042,
+      "blackMs": 9169.5,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e6d6",
+      "clockMode": null,
+      "allowanceMs": 115,
+      "overheadMs": null
+    },
+    {
+      "ply": 10,
+      "whiteMs": 9394.30000000028,
+      "blackMs": 9027.800000000047,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h7g7",
+      "clockMode": null,
+      "allowanceMs": 235,
+      "overheadMs": null
+    },
+    {
+      "ply": 11,
+      "whiteMs": 9287.600000000326,
+      "blackMs": 9016.300000000047,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g3g4",
+      "clockMode": null,
+      "allowanceMs": 113,
+      "overheadMs": null
+    },
+    {
+      "ply": 12,
+      "whiteMs": 9280.400000000373,
+      "blackMs": 8783.09999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d2d3",
+      "clockMode": null,
+      "allowanceMs": 231,
+      "overheadMs": null
+    },
+    {
+      "ply": 13,
+      "whiteMs": 9163.900000000373,
+      "blackMs": 8774.499999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h3g2",
+      "clockMode": null,
+      "allowanceMs": 115,
+      "overheadMs": null
+    },
+    {
+      "ply": 14,
+      "whiteMs": 9156.70000000042,
+      "blackMs": 8542.899999999674,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d5d4",
+      "clockMode": null,
+      "allowanceMs": 230,
+      "overheadMs": null
+    },
+    {
+      "ply": 15,
+      "whiteMs": 9042.20000000042,
+      "blackMs": 8536.499999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f4f5",
+      "clockMode": null,
+      "allowanceMs": 113,
+      "overheadMs": null
+    },
+    {
+      "ply": 16,
+      "whiteMs": 9037.20000000042,
+      "blackMs": 8377.999999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g6f5",
+      "clockMode": null,
+      "allowanceMs": 224,
+      "overheadMs": null
+    },
+    {
+      "ply": 17,
+      "whiteMs": 8956.80000000028,
+      "blackMs": 8371.69999999972,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g4f5",
+      "clockMode": null,
+      "allowanceMs": 111,
+      "overheadMs": null
+    },
+    {
+      "ply": 18,
+      "whiteMs": 8951.400000000373,
+      "blackMs": 8163.699999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d3e3",
+      "clockMode": null,
+      "allowanceMs": 220,
+      "overheadMs": null
+    },
+    {
+      "ply": 19,
+      "whiteMs": 8885.000000000466,
+      "blackMs": 8158.199999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d6d5",
+      "clockMode": null,
+      "allowanceMs": 113,
+      "overheadMs": null
+    },
+    {
+      "ply": 20,
+      "whiteMs": 8879.800000000512,
+      "blackMs": 7954.299999999814,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g7f7",
+      "clockMode": null,
+      "allowanceMs": 220,
+      "overheadMs": null
+    },
+    {
+      "ply": 21,
+      "whiteMs": 8766.500000000466,
+      "blackMs": 7948.699999999953,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g2f2",
+      "clockMode": null,
+      "allowanceMs": 112,
+      "overheadMs": null
+    },
+    {
+      "ply": 22,
+      "whiteMs": 8759.900000000605,
+      "blackMs": 7733.59999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h6h5",
+      "clockMode": null,
+      "allowanceMs": 214,
+      "overheadMs": null
+    },
+    {
+      "ply": 23,
+      "whiteMs": 8648.100000000559,
+      "blackMs": 7727.799999999814,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e5e6",
+      "clockMode": null,
+      "allowanceMs": 111,
+      "overheadMs": null
+    },
+    {
+      "ply": 24,
+      "whiteMs": 8641.400000000605,
+      "blackMs": 7535.499999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f7f6",
+      "clockMode": null,
+      "allowanceMs": 208,
+      "overheadMs": null
+    },
+    {
+      "ply": 25,
+      "whiteMs": 8573.800000000512,
+      "blackMs": 7527.999999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d5d4",
+      "clockMode": null,
+      "allowanceMs": 113,
+      "overheadMs": null
+    },
+    {
+      "ply": 26,
+      "whiteMs": 8568.900000000373,
+      "blackMs": 7402.999999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e3e5",
+      "clockMode": null,
+      "allowanceMs": 209,
+      "overheadMs": null
+    },
+    {
+      "ply": 27,
+      "whiteMs": 8492.100000000559,
+      "blackMs": 7397.899999999674,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d4f4",
+      "clockMode": null,
+      "allowanceMs": 112,
+      "overheadMs": null
+    },
+    {
+      "ply": 28,
+      "whiteMs": 8486.500000000698,
+      "blackMs": 7191.499999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f6g5",
+      "clockMode": null,
+      "allowanceMs": 205,
+      "overheadMs": null
+    },
+    {
+      "ply": 29,
+      "whiteMs": 8375.400000000605,
+      "blackMs": 7185.09999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f2g3",
+      "clockMode": null,
+      "allowanceMs": 110,
+      "overheadMs": null
+    },
+    {
+      "ply": 30,
+      "whiteMs": 8370.200000000652,
+      "blackMs": 7040.499999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g5f6",
+      "clockMode": null,
+      "allowanceMs": 199,
+      "overheadMs": null
+    },
+    {
+      "ply": 31,
+      "whiteMs": 8286.600000000559,
+      "blackMs": 7033.899999999674,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g3h4",
+      "clockMode": null,
+      "allowanceMs": 112,
+      "overheadMs": null
+    },
+    {
+      "ply": 32,
+      "whiteMs": 8280.100000000559,
+      "blackMs": 6914.5999999996275,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e5e2",
+      "clockMode": null,
+      "allowanceMs": 200,
+      "overheadMs": null
+    },
+    {
+      "ply": 33,
+      "whiteMs": 8177.000000000466,
+      "blackMs": 6909.199999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h2h3",
+      "clockMode": null,
+      "allowanceMs": 111,
+      "overheadMs": null
+    },
+    {
+      "ply": 34,
+      "whiteMs": 8166.800000000512,
+      "blackMs": 6757.999999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e2e3",
+      "clockMode": null,
+      "allowanceMs": 197,
+      "overheadMs": null
+    },
+    {
+      "ply": 35,
+      "whiteMs": 8086.700000000652,
+      "blackMs": 6751.899999999674,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f4f2",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 36,
+      "whiteMs": 8081.600000000792,
+      "blackMs": 6558.699999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e3a3",
+      "clockMode": null,
+      "allowanceMs": 192,
+      "overheadMs": null
+    },
+    {
+      "ply": 37,
+      "whiteMs": 7985.700000000652,
+      "blackMs": 6553.699999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f2e2",
+      "clockMode": null,
+      "allowanceMs": 111,
+      "overheadMs": null
+    },
+    {
+      "ply": 38,
+      "whiteMs": 7980.600000000792,
+      "blackMs": 6360.499999999534,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a3a8",
+      "clockMode": null,
+      "allowanceMs": 192,
+      "overheadMs": null
+    },
+    {
+      "ply": 39,
+      "whiteMs": 7897.0000000006985,
+      "blackMs": 6353.799999999348,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h4h5",
+      "clockMode": null,
+      "allowanceMs": 110,
+      "overheadMs": null
+    },
+    {
+      "ply": 40,
+      "whiteMs": 7891.100000000792,
+      "blackMs": 6206.899999999441,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f6f5",
+      "clockMode": null,
+      "allowanceMs": 186,
+      "overheadMs": null
+    },
+    {
+      "ply": 41,
+      "whiteMs": 7823.600000000792,
+      "blackMs": 6201.399999999441,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h5h6",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 42,
+      "whiteMs": 7816.800000000745,
+      "blackMs": 6084.399999999441,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f5f6",
+      "clockMode": null,
+      "allowanceMs": 182,
+      "overheadMs": null
+    },
+    {
+      "ply": 43,
+      "whiteMs": 7743.800000000745,
+      "blackMs": 6079.199999999255,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h6h7",
+      "clockMode": null,
+      "allowanceMs": 111,
+      "overheadMs": null
+    },
+    {
+      "ply": 44,
+      "whiteMs": 7729.100000000792,
+      "blackMs": 5963.199999999255,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f6e7",
+      "clockMode": null,
+      "allowanceMs": 184,
+      "overheadMs": null
+    },
+    {
+      "ply": 45,
+      "whiteMs": 7654.300000000745,
+      "blackMs": 5955.899999999208,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h3h4",
+      "clockMode": null,
+      "allowanceMs": 110,
+      "overheadMs": null
+    },
+    {
+      "ply": 46,
+      "whiteMs": 7647.800000000745,
+      "blackMs": 5808.299999999348,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a8a5",
+      "clockMode": null,
+      "allowanceMs": 180,
+      "overheadMs": null
+    },
+    {
+      "ply": 47,
+      "whiteMs": 7537.300000000745,
+      "blackMs": 5799.899999999441,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e2e4",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 48,
+      "whiteMs": 7530.700000000885,
+      "blackMs": 5688.899999999441,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a5a3",
+      "clockMode": null,
+      "allowanceMs": 175,
+      "overheadMs": null
+    },
+    {
+      "ply": 49,
+      "whiteMs": 7450.400000000838,
+      "blackMs": 5682.299999999581,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h4h5",
+      "clockMode": null,
+      "allowanceMs": 110,
+      "overheadMs": null
+    },
+    {
+      "ply": 50,
+      "whiteMs": 7444.700000000652,
+      "blackMs": 5560.999999999534,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a3a1",
+      "clockMode": null,
+      "allowanceMs": 177,
+      "overheadMs": null
+    },
+    {
+      "ply": 51,
+      "whiteMs": 7352.400000000838,
+      "blackMs": 5555.199999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h5h6",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 52,
+      "whiteMs": 7343.900000000838,
+      "blackMs": 5438.5999999996275,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a1g1",
+      "clockMode": null,
+      "allowanceMs": 173,
+      "overheadMs": null
+    },
+    {
+      "ply": 53,
+      "whiteMs": 7279.800000000978,
+      "blackMs": 5432.199999999488,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e4e2",
+      "clockMode": null,
+      "allowanceMs": 108,
+      "overheadMs": null
+    },
+    {
+      "ply": 54,
+      "whiteMs": 7269.000000000931,
+      "blackMs": 5261.799999999581,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g1g5",
+      "clockMode": null,
+      "allowanceMs": 169,
+      "overheadMs": null
+    },
+    {
+      "ply": 55,
+      "whiteMs": 7173.200000000885,
+      "blackMs": 5254.699999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h7h8",
+      "clockMode": null,
+      "allowanceMs": 110,
+      "overheadMs": null
+    },
+    {
+      "ply": 56,
+      "whiteMs": 7164.200000000885,
+      "blackMs": 5133.199999999721,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g5g6",
+      "clockMode": null,
+      "allowanceMs": 169,
+      "overheadMs": null
+    },
+    {
+      "ply": 57,
+      "whiteMs": 7088.100000000792,
+      "blackMs": 5124.999999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "h6h7",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 58,
+      "whiteMs": 7080.500000000931,
+      "blackMs": 5019.899999999907,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g6g5",
+      "clockMode": null,
+      "allowanceMs": 165,
+      "overheadMs": null
+    },
+    {
+      "ply": 59,
+      "whiteMs": 7008.000000000931,
+      "blackMs": 5010.59999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e2e4",
+      "clockMode": null,
+      "allowanceMs": 107,
+      "overheadMs": null
+    },
+    {
+      "ply": 60,
+      "whiteMs": 7001.300000000978,
+      "blackMs": 4898.09999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g5g3",
+      "clockMode": null,
+      "allowanceMs": 161,
+      "overheadMs": null
+    },
+    {
+      "ply": 61,
+      "whiteMs": 6908.500000000931,
+      "blackMs": 4886.299999999814,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e4e1",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 62,
+      "whiteMs": 6902.1000000010245,
+      "blackMs": 4721.59999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g3g5",
+      "clockMode": null,
+      "allowanceMs": 162,
+      "overheadMs": null
+    },
+    {
+      "ply": 63,
+      "whiteMs": 6819.6000000010245,
+      "blackMs": 4714.09999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e1e2",
+      "clockMode": null,
+      "allowanceMs": 108,
+      "overheadMs": null
+    },
+    {
+      "ply": 64,
+      "whiteMs": 6811.700000000885,
+      "blackMs": 4554.299999999814,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g5g4",
+      "clockMode": null,
+      "allowanceMs": 157,
+      "overheadMs": null
+    },
+    {
+      "ply": 65,
+      "whiteMs": 6718.6000000010245,
+      "blackMs": 4543,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e2e3",
+      "clockMode": null,
+      "allowanceMs": 107,
+      "overheadMs": null
+    },
+    {
+      "ply": 66,
+      "whiteMs": 6711.800000000978,
+      "blackMs": 4427.299999999814,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g4g5",
+      "clockMode": null,
+      "allowanceMs": 151,
+      "overheadMs": null
+    },
+    {
+      "ply": 67,
+      "whiteMs": 6648.200000000885,
+      "blackMs": 4418.499999999767,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e3e1",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 68,
+      "whiteMs": 6642.300000000745,
+      "blackMs": 4264.59999999986,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g5g4",
+      "clockMode": null,
+      "allowanceMs": 152,
+      "overheadMs": null
+    },
+    {
+      "ply": 69,
+      "whiteMs": 6533.700000000885,
+      "blackMs": 4257.699999999953,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e1b1",
+      "clockMode": null,
+      "allowanceMs": 108,
+      "overheadMs": null
+    },
+    {
+      "ply": 70,
+      "whiteMs": 6527.300000000978,
+      "blackMs": 4174.199999999953,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e7e6",
+      "clockMode": null,
+      "allowanceMs": 146,
+      "overheadMs": null
+    },
+    {
+      "ply": 71,
+      "whiteMs": 6450.700000000885,
+      "blackMs": 4168.299999999814,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "b1f1",
+      "clockMode": null,
+      "allowanceMs": 106,
+      "overheadMs": null
+    },
+    {
+      "ply": 72,
+      "whiteMs": 6445.100000000792,
+      "blackMs": 4063.5999999998603,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e6e7",
+      "clockMode": null,
+      "allowanceMs": 143,
+      "overheadMs": null
+    },
+    {
+      "ply": 73,
+      "whiteMs": 6340.5000000006985,
+      "blackMs": 4057.399999999907,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f1a1",
+      "clockMode": null,
+      "allowanceMs": 108,
+      "overheadMs": null
+    },
+    {
+      "ply": 74,
+      "whiteMs": 6333.300000000745,
+      "blackMs": 3957.5,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g4g6",
+      "clockMode": null,
+      "allowanceMs": 144,
+      "overheadMs": null
+    },
+    {
+      "ply": 75,
+      "whiteMs": 6260.0000000006985,
+      "blackMs": 3950.8000000000466,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a1a7",
+      "clockMode": null,
+      "allowanceMs": 106,
+      "overheadMs": null
+    },
+    {
+      "ply": 76,
+      "whiteMs": 6253.100000000792,
+      "blackMs": 3847.3000000000466,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e7f8",
+      "clockMode": null,
+      "allowanceMs": 141,
+      "overheadMs": null
+    },
+    {
+      "ply": 77,
+      "whiteMs": 6186.0000000006985,
+      "blackMs": 3840.500000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a7a2",
+      "clockMode": null,
+      "allowanceMs": 105,
+      "overheadMs": null
+    },
+    {
+      "ply": 78,
+      "whiteMs": 6179.5000000006985,
+      "blackMs": 3762.600000000093,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f8f7",
+      "clockMode": null,
+      "allowanceMs": 137,
+      "overheadMs": null
+    },
+    {
+      "ply": 79,
+      "whiteMs": 6095.0000000006985,
+      "blackMs": 3754.9000000001397,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a2f2",
+      "clockMode": null,
+      "allowanceMs": 107,
+      "overheadMs": null
+    },
+    {
+      "ply": 80,
+      "whiteMs": 6088.5000000006985,
+      "blackMs": 3667.4000000001397,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f7e7",
+      "clockMode": null,
+      "allowanceMs": 139,
+      "overheadMs": null
+    },
+    {
+      "ply": 81,
+      "whiteMs": 6020.700000000652,
+      "blackMs": 3660.2000000001863,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f2c2",
+      "clockMode": null,
+      "allowanceMs": 106,
+      "overheadMs": null
+    },
+    {
+      "ply": 82,
+      "whiteMs": 6013.800000000745,
+      "blackMs": 3566.500000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "e7f7",
+      "clockMode": null,
+      "allowanceMs": 135,
+      "overheadMs": null
+    },
+    {
+      "ply": 83,
+      "whiteMs": 5949.800000000745,
+      "blackMs": 3556.8000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c2c7",
+      "clockMode": null,
+      "allowanceMs": 104,
+      "overheadMs": null
+    },
+    {
+      "ply": 84,
+      "whiteMs": 5942.100000000792,
+      "blackMs": 3424.200000000419,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f7f8",
+      "clockMode": null,
+      "allowanceMs": 131,
+      "overheadMs": null
+    },
+    {
+      "ply": 85,
+      "whiteMs": 5875.600000000792,
+      "blackMs": 3418.9000000003725,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c7c4",
+      "clockMode": null,
+      "allowanceMs": 107,
+      "overheadMs": null
+    },
+    {
+      "ply": 86,
+      "whiteMs": 5868.400000000838,
+      "blackMs": 3333.500000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g6f6",
+      "clockMode": null,
+      "allowanceMs": 131,
+      "overheadMs": null
+    },
+    {
+      "ply": 87,
+      "whiteMs": 5801.300000000745,
+      "blackMs": 3325.8000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c4g4",
+      "clockMode": null,
+      "allowanceMs": 106,
+      "overheadMs": null
+    },
+    {
+      "ply": 88,
+      "whiteMs": 5792.5000000006985,
+      "blackMs": 3196.4000000003725,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f6f1",
+      "clockMode": null,
+      "allowanceMs": 127,
+      "overheadMs": null
+    },
+    {
+      "ply": 89,
+      "whiteMs": 5697.200000000652,
+      "blackMs": 3187.5000000004657,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g4g5",
+      "clockMode": null,
+      "allowanceMs": 104,
+      "overheadMs": null
+    },
+    {
+      "ply": 90,
+      "whiteMs": 5690.5000000006985,
+      "blackMs": 3098.600000000326,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f8f7",
+      "clockMode": null,
+      "allowanceMs": 122,
+      "overheadMs": null
+    },
+    {
+      "ply": 91,
+      "whiteMs": 5620.400000000838,
+      "blackMs": 3092.600000000326,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g5g7",
+      "clockMode": null,
+      "allowanceMs": 107,
+      "overheadMs": null
+    },
+    {
+      "ply": 92,
+      "whiteMs": 5612.800000000745,
+      "blackMs": 3014.200000000419,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f7f8",
+      "clockMode": null,
+      "allowanceMs": 123,
+      "overheadMs": null
+    },
+    {
+      "ply": 93,
+      "whiteMs": 5545.300000000745,
+      "blackMs": 3007.700000000419,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g7a7",
+      "clockMode": null,
+      "allowanceMs": 105,
+      "overheadMs": null
+    },
+    {
+      "ply": 94,
+      "whiteMs": 5539.300000000745,
+      "blackMs": 2902.4000000003725,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f1c1",
+      "clockMode": null,
+      "allowanceMs": 120,
+      "overheadMs": null
+    },
+    {
+      "ply": 95,
+      "whiteMs": 5471.700000000885,
+      "blackMs": 2895.2000000001863,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a7d7",
+      "clockMode": null,
+      "allowanceMs": 104,
+      "overheadMs": null
+    },
+    {
+      "ply": 96,
+      "whiteMs": 5465.200000000885,
+      "blackMs": 2829.7000000001863,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c1a1",
+      "clockMode": null,
+      "allowanceMs": 115,
+      "overheadMs": null
+    },
+    {
+      "ply": 97,
+      "whiteMs": 5356.700000000885,
+      "blackMs": 2818.7000000001863,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d7c7",
+      "clockMode": null,
+      "allowanceMs": 107,
+      "overheadMs": null
+    },
+    {
+      "ply": 98,
+      "whiteMs": 5348.800000000978,
+      "blackMs": 2746.000000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a1g1",
+      "clockMode": null,
+      "allowanceMs": 117,
+      "overheadMs": null
+    },
+    {
+      "ply": 99,
+      "whiteMs": 5277.400000000838,
+      "blackMs": 2738.000000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c7c5",
+      "clockMode": null,
+      "allowanceMs": 104,
+      "overheadMs": null
+    },
+    {
+      "ply": 100,
+      "whiteMs": 5270.300000000745,
+      "blackMs": 2635.9000000001397,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g1f1",
+      "clockMode": null,
+      "allowanceMs": 114,
+      "overheadMs": null
+    },
+    {
+      "ply": 101,
+      "whiteMs": 5195.600000000792,
+      "blackMs": 2627.4000000001397,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c5c8",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    },
+    {
+      "ply": 102,
+      "whiteMs": 5189.300000000745,
+      "blackMs": 2532.000000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f8f7",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 103,
+      "whiteMs": 5081.900000000605,
+      "blackMs": 2523.600000000093,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c8c7",
+      "clockMode": null,
+      "allowanceMs": 106,
+      "overheadMs": null
+    },
+    {
+      "ply": 104,
+      "whiteMs": 5076.000000000466,
+      "blackMs": 2458.100000000093,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f7f8",
+      "clockMode": null,
+      "allowanceMs": 109,
+      "overheadMs": null
+    },
+    {
+      "ply": 105,
+      "whiteMs": 5013.000000000466,
+      "blackMs": 2450.3000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c7g7",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    },
+    {
+      "ply": 106,
+      "whiteMs": 5005.100000000326,
+      "blackMs": 2379.8000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f1d1",
+      "clockMode": null,
+      "allowanceMs": 106,
+      "overheadMs": null
+    },
+    {
+      "ply": 107,
+      "whiteMs": 4901.000000000466,
+      "blackMs": 2373.9000000003725,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g7b7",
+      "clockMode": null,
+      "allowanceMs": 102,
+      "overheadMs": null
+    },
+    {
+      "ply": 108,
+      "whiteMs": 4892.000000000466,
+      "blackMs": 2292.4000000003725,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d1c1",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    },
+    {
+      "ply": 109,
+      "whiteMs": 4823.700000000419,
+      "blackMs": 2284.600000000326,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "b7a7",
+      "clockMode": null,
+      "allowanceMs": 104,
+      "overheadMs": null
+    },
+    {
+      "ply": 110,
+      "whiteMs": 4815.300000000279,
+      "blackMs": 2189.000000000233,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "c1d1",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    },
+    {
+      "ply": 111,
+      "whiteMs": 4748.800000000279,
+      "blackMs": 2180.600000000093,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a7a8",
+      "clockMode": null,
+      "allowanceMs": 102,
+      "overheadMs": null
+    },
+    {
+      "ply": 112,
+      "whiteMs": 4740.100000000326,
+      "blackMs": 2121.8000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f8f7",
+      "clockMode": null,
+      "allowanceMs": 99,
+      "overheadMs": null
+    },
+    {
+      "ply": 113,
+      "whiteMs": 4637.000000000233,
+      "blackMs": 2109.600000000093,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a8g8",
+      "clockMode": null,
+      "allowanceMs": 101,
+      "overheadMs": null
+    },
+    {
+      "ply": 114,
+      "whiteMs": 4628.800000000047,
+      "blackMs": 2034.9000000001397,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d1d2",
+      "clockMode": null,
+      "allowanceMs": 95,
+      "overheadMs": null
+    },
+    {
+      "ply": 115,
+      "whiteMs": 4565.700000000186,
+      "blackMs": 2026.0000000002328,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g8g7",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    },
+    {
+      "ply": 116,
+      "whiteMs": 4556.90000000014,
+      "blackMs": 1959.8000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f7f6",
+      "clockMode": null,
+      "allowanceMs": 96,
+      "overheadMs": null
+    },
+    {
+      "ply": 117,
+      "whiteMs": 4486.90000000014,
+      "blackMs": 1945.200000000419,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g7g1",
+      "clockMode": null,
+      "allowanceMs": 101,
+      "overheadMs": null
+    },
+    {
+      "ply": 118,
+      "whiteMs": 4479.40000000014,
+      "blackMs": 1879.9000000003725,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d2d8",
+      "clockMode": null,
+      "allowanceMs": 92,
+      "overheadMs": null
+    },
+    {
+      "ply": 119,
+      "whiteMs": 4477.699999999953,
+      "blackMs": 1872.100000000326,
+      "source": "",
+      "lastMove": "g1g8",
+      "clockMode": null,
+      "allowanceMs": 100,
+      "overheadMs": null
+    },
+    {
+      "ply": 120,
+      "whiteMs": 4470.5,
+      "blackMs": 1782.100000000326,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d8d7",
+      "clockMode": null,
+      "allowanceMs": 89,
+      "overheadMs": null
+    },
+    {
+      "ply": 121,
+      "whiteMs": 4404.300000000047,
+      "blackMs": 1775.5000000002328,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g8a8",
+      "clockMode": null,
+      "allowanceMs": 105,
+      "overheadMs": null
+    },
+    {
+      "ply": 122,
+      "whiteMs": 4397.100000000093,
+      "blackMs": 1718.0000000002328,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "f6g6",
+      "clockMode": null,
+      "allowanceMs": 88,
+      "overheadMs": null
+    },
+    {
+      "ply": 123,
+      "whiteMs": 4333.800000000047,
+      "blackMs": 1709.8000000002794,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a8a6",
+      "clockMode": null,
+      "allowanceMs": 103,
+      "overheadMs": null
+    },
+    {
+      "ply": 124,
+      "whiteMs": 4325.600000000093,
+      "blackMs": 1622.1000000000931,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "g6f7",
+      "clockMode": null,
+      "allowanceMs": 85,
+      "overheadMs": null
+    },
+    {
+      "ply": 125,
+      "whiteMs": 4263.300000000047,
+      "blackMs": 1612.6999999999534,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "a6a7",
+      "clockMode": null,
+      "allowanceMs": 101,
+      "overheadMs": null
+    },
+    {
+      "ply": 126,
+      "whiteMs": 4263.300000000047,
+      "blackMs": 1546.6999999999534,
+      "source": "Last computer move: engine search · custom position · WASM",
+      "lastMove": "d7a7",
+      "clockMode": null,
+      "allowanceMs": 80,
+      "overheadMs": null
+    }
+  ],
+  "whiteLevel": 52,
+  "blackLevel": 65,
+  "completed": true,
+  "error": null,
+  "errors": [],
+  "finishedUtc": "2026-11-06T11:06:44.447Z"
+}

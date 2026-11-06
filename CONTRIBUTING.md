@@ -106,3 +106,13 @@ with per-level backend assertions. See [the level audit](validation/levels/READM
 for the complete ladder screening, unresolved neighbours and repeat commands.
 Increasing resources are an invariant; statistically increasing playing strength
 requires match evidence. Preserve unsuccessful games when changing the ladder.
+
+## Clock-aware play
+
+The shared allocator lives in `src/app/time-management.js`; app dispatch adds
+queue-deadline checks and learns excess round-trip time without modifying the
+engine or clocks. Run `scripts/test-time-management.cjs` for all-level long-game
+stress and `scripts/browser-level-clocks-test.cjs` for actual worker/UI wiring.
+Optional real 1+0 browser games and all outcomes are described in
+[clock-aware validation](validation/clock-aware/README.md). Keep model-based
+stress results separate from chess-game evidence and absolute strength claims.

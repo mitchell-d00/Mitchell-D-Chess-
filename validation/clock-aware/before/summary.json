@@ -1,0 +1,43 @@
+{
+  "finishedUtc": "2026-11-06T11:04:13.073Z",
+  "complete": true,
+  "games": [
+    {
+      "over": {
+        "result": "1/2-1/2",
+        "reason": "insufficient material"
+      },
+      "plies": 194,
+      "whiteMs": 1781.3000000003958,
+      "blackMs": 12742.800000000861,
+      "whiteLevel": 65,
+      "blackLevel": 52,
+      "completed": true,
+      "error": null,
+      "errors": [],
+      "finishedUtc": "2026-11-06T11:04:12.347Z"
+    },
+    {
+      "over": {
+        "result": "1/2-1/2",
+        "reason": "fifty-move rule"
+      },
+      "plies": 216,
+      "whiteMs": 11971.200000000186,
+      "blackMs": 1800.6000000004424,
+      "whiteLevel": 52,
+      "blackLevel": 65,
+      "completed": true,
+      "error": null,
+      "errors": [],
+      "finishedUtc": "2026-11-06T11:04:13.061Z"
+    }
+  ],
+  "files": {
+    "01.json": "0b9974f8324210fe6a0e3d1c4e498c5b2ccd89a3092b29232b929996f78362fa",
+    "01.pgn": "53f1216928292a68eeac32c9ffb1dc709befba25f97d659ee0c48c93d3511412",
+    "02.json": "0eeec6283695ecfe112c5234b32a85a863e0ba78db4ee5f9c41745107d7fec90",
+    "02.pgn": "3d70c7f536377b5ece12e1f1922757ef371b130df6b7e9bc3e042673cb51b602",
+    "protocol.json": "d7cd94dce45f1ed9a61f17bb37f5cc9260c68bb82103762293cf0e8ad29fd4b1"
+  }
+}

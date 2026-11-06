@@ -1,3 +1,21 @@
+# Clock-aware levels (November 6, 2026)
+
+All 65 levels use a clock bank, longer low-time horizon and observed browser
+latency margins. Queue/startup time is rechecked in the worker. Increment,
+remaining delay and per-move controls have separate treatment. Untimed limits,
+engine source, native binary and credited network are unchanged.
+
+39,000 synthetic turns across all levels passed; a real cold worker moved with
+1.4s left. All39 core/browser commands passed. Eight actual browser games,
+952 legally replayed half-moves, had zero flags both before and after; scores
+were unchanged. These samples establish no Elo or measured strength gain.
+All games and repeat commands: validation/clock-aware/README.md.
+
+    node scripts/test-time-management.cjs
+    node scripts/browser-level-clocks-test.cjs
+    node scripts/browser-clock-games.cjs --out /path/to/new-empty-directory
+    node scripts/verify-clock-games.cjs validation/clock-aware/before validation/clock-aware/after validation/clock-aware/ending-before validation/clock-aware/ending-after
+
 # Level progression audit (November 5, 2026)
 
 376 completed games, zero forfeits, 48,404 legally replayed half-moves.

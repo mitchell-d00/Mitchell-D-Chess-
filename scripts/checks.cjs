@@ -8,6 +8,7 @@ const core = [
  ['node','scripts/verify-evidence.cjs','validation/modern/stockfish19-pilot'],['node','scripts/verify-evidence.cjs','validation/modern/candidate-checkpoint'],['node','scripts/verify-evidence.cjs','validation/modern/completed-200'],['node','scripts/test-strength-report.cjs'],['python3','scripts/test-prepare-benchmark.py'],['python3','scripts/test-prepare-levels.py'],['python3','scripts/test-campaign.py'],['python3','scripts/test-uci-normalize.py']];
 core.push(...['before-65-v50','adjacent-screen','followup-1second'].map(x=>['node','scripts/verify-evidence.cjs','validation/levels/'+x]));
 core.push(['node','scripts/verify-clock-games.cjs','validation/clock-management/before','validation/clock-management/after']);
+core.push(['node','scripts/verify-clock-games.cjs',...['before','after','ending-before','ending-after'].map(x=>'validation/clock-aware/'+x)]);
 const browser = ['browser-test.cjs','browser-wasm-test.cjs','browser-level-clocks-test.cjs','browser-tools-test.cjs','browser-accessibility-test.cjs','browser-library-analysis-test.cjs','browser-review-teaching-test.cjs','browser-polish-test.cjs','browser-pause-test.cjs','browser-engine-info-test.cjs'].map(x=>['node','scripts/'+x]);
 const commands = mode==='core'?core:mode==='browser'?browser:[...core,...browser];
 const checks = [], reportIndex = process.argv.indexOf('--report');

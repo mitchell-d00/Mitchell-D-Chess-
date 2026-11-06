@@ -1,0 +1,13 @@
+[Event "Mitchell D Chess game"]
+[Site "Mitchell D Chess"]
+[Date "2026.11.06"]
+[White "Mitchell D Chess level 65 (Neural Analysis 15)"]
+[Black "Mitchell D Chess level 52 (Neural Analysis 2)"]
+[TimeControl "10"]
+[Termination "normal"]
+[Result "1-0"]
+[SetUp "1"]
+[FEN "8/1p4pk/4p2p/3pP3/3P1P2/2R3PK/7P/5r2 w - - 0 1"]
+
+1. Rb3 Rd1 2. Rb6 Rxd4 3. Rxe6 b5 4. Rb6 Rb4 5. Kg4 d4 6. Kf5 Rb2 7. Rd6 Rxh2 8. Rxd4 Re2 9. Ke6 Kg6 10. f5+ Kh7 11. g4 Re1 12. Rb4 h5 13. gxh5 Rh1 14. Rxb5 Rxh5 15. Rb4 Rg5 16. Rd4 Kg8 17. Rd8+ Kh7 18. Rf8 Rg2 19. Ke7 Kh6 20. e6 Re2 21. Kf7 Re5 22. e7 Rxf5+ 23. Ke6 Rxf8 24. exf8=Q Kg6 25. Qf5+ Kh6 26. Kf7 g5 27. Qh3# 1-0
+

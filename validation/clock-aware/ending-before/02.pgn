@@ -1,0 +1,13 @@
+[Event "Mitchell D Chess game"]
+[Site "Mitchell D Chess"]
+[Date "2026.11.06"]
+[White "Mitchell D Chess level 52 (Neural Analysis 2)"]
+[Black "Mitchell D Chess level 65 (Neural Analysis 15)"]
+[TimeControl "10"]
+[Termination "normal"]
+[Result "1/2-1/2"]
+[SetUp "1"]
+[FEN "8/1p4pk/4p2p/3pP3/3P1P2/2R3PK/7P/5r2 w - - 0 1"]
+
+1. Rb3 Rd1 2. Rxb7 Rxd4 3. Re7 Rd2 4. Rxe6 g6 5. Rd6 Kg7 6. g4 Rd3+ 7. Kg2 d4 8. f5 gxf5 9. gxf5 Re3 10. Rd5 Kf7 11. Kf2 h5 12. e6+ Kf6 13. Rxd4 Re5 14. Rf4 Kg5 15. Kg3 Kf6 16. Kh4 Re2 17. h3 Re3 18. Rf2 Ra3 19. Re2 Ra8 20. Kxh5 Kxf5 21. Kh6 Kf6 22. Kh7 Ke7 23. h4 Ra5 24. Re4 Ra3 25. h5 Ra1 26. h6 Rg1 27. Re2 Rg5 28. Kh8 Rg6 29. h7 Rg5 30. Re4 Rg3 31. Re1 Rg5 32. Re2 Rg4 33. Re3 Rg5 34. Re1 Rg4 35. Rb1 Kxe6 36. Rf1 Ke7 37. Ra1 Rg6 38. Ra7+ Kf8 39. Ra2 Kf7 40. Rf2+ Ke7 41. Rc2 Kf7 42. Rc7+ Kf8 43. Rc4 Rf6 44. Rg4 Rf1 45. Rg5 Kf7 46. Rg7+ Kf8 47. Ra7 Rc1 48. Rd7 Ra1 49. Rc7 Rg1 50. Rc5 Rf1 51. Rc8+ Kf7 52. Rc7+ Kf8 53. Rg7 Rd1 54. Rb7 Rc1 55. Ra7 Rd1 56. Ra8+ Kf7 57. Rg8 Rd2 58. Rg7+ Kf6 59. Rg1 Rd8+ 60. Rg8 Rd7 61. Ra8 Kg6 62. Ra6+ Kf7 63. Ra7 Rxa7 1/2-1/2
+

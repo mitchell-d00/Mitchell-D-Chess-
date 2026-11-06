@@ -1,0 +1,24 @@
+{
+  "startedUtc": "2026-11-06T11:02:25.869Z",
+  "htmlPath": "/workspace/mitchell-performance/clock-aware-baseline.html",
+  "htmlSha256": "929648b77023a78111cdd2fa46d4f9fe2dbd4b2fb16aeff3c13b620c50febdd9",
+  "runnerRevision": "d8de6b97afae6a3193b9d4d4468f95f99c393df3",
+  "runnerSha256": "4430ae1a545d3e714e54826d3f197da77c7b3b717d38d5d0009dfc78efa2afe8",
+  "node": "v24.22.1",
+  "host": {
+    "platform": "linux",
+    "arch": "x64",
+    "cpus": 5
+  },
+  "control": "60+0",
+  "rules": "casual",
+  "speed": "fast",
+  "book": true,
+  "concurrency": 2,
+  "notes": [
+    "UI integration experiment, not an Elo estimate.",
+    "Both actual browser clocks run; flag falls count. No move-limit or score adjudication.",
+    "Two pages share the same host; no browser CPU throttling is requested."
+  ],
+  "browser": "155.0.8059.79"
+}
