@@ -72,6 +72,11 @@ strictly ordered or Elo-rated ladder. [Results and repeat commands](validation/l
   Short landscape screens place the control at the top of the side panel so the
   board still fits. Official games show why pause is unavailable; a loaded saved
   game starts paused and can be resumed once before normal official play continues.
+- **Time-trouble handling.** Below ten seconds, a completed computer move plays
+  without the viewing-speed delay. Elapsed turn time is charged before each AI
+  search allowance is calculated. This reduces avoidable overhead; it cannot
+  guarantee avoiding flag falls in a long game with no increment.
+  [Clock checks and repeat method](validation/clock-management/README.md).
 - **Chess clocks.** Bullet (1+0, 1+1, 2+1), blitz (3+0, 3+2, 5+0, 5+3),
   rapid (10+0, 10+5, 15+10, 25+10) and classical (30+0, 30+20, 60+30, 90+30),
   a per-move timer (10, 30 or 60 seconds a move), or a custom control with

@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: Charge render/dispatch time before budgeting
+    at /workspace/Mitchell-D-Chess-ui/scripts/browser-level-clocks-test.cjs:38:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}

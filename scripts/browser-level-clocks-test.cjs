@@ -21,12 +21,29 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   });
   assert(budgets.every(r=>r.time>0&&r.text.includes('Clocked thinking allowance')));assert(budgets[1].time>budgets[0].time);assert(budgets[3].time>2*budgets[2].time);
   assert(await page.locator('.clock-budget').count()===0);
+  const trouble=await page.evaluate(async()=>{
+   setup.mode='pvp';setup.tc='none';newGame();
+   const savedThink=think,savedTimeout=window.setTimeout,timers=[],requests=[];
+   try{
+    think=(fen,moves,level,extra)=>{requests.push({remaining:G.clock.w,time:extra.time});return Promise.resolve({move:'e2e4',depth:1,score:0});};
+    window.setTimeout=(fn,ms)=>{timers.push(ms);return 0;};
+    G.mode='cvc';G.players={w:{type:'ai',level:65},b:{type:'human'}};
+    G.clock={w:500,b:60000,start:{w:60000,b:60000},running:'w',last:performance.now()-200,inc:0,delay:0,delayLeft:0,per:0};
+    maybeAI();await Promise.resolve();
+    const charged=requests[0],delay=timers[0];
+    G.thinking=false;G.clock.w=5;G.clock.last=performance.now()-20;maybeAI();
+    return {charged,delay,requests:requests.length,flagged:!!G.over};
+   }finally{think=savedThink;window.setTimeout=savedTimeout;newGame();}
+  });
+  assert(trouble.charged.remaining<=300&&trouble.charged.remaining>0,'Charge render/dispatch time before budgeting');
+  assert.equal(trouble.delay,0,'Do not hold an already chosen move in time trouble');
+  assert.equal(trouble.requests,1,'Do not start a search after time has already expired');assert(trouble.flagged);
   for(const backend of ['wasm','js-fallback']){
    await page.evaluate(backend=>{window.savedLevelThink=think;think=()=>Promise.resolve({move:'e2e4',score:0,depth:4,backend,book:false});setup.mode='pvp';setup.tc='none';setup.speed='fast';newGame();G.mode='cvc';G.players={w:{type:'ai',level:65},b:{type:'human'}};maybeAI();},backend);
    await page.waitForFunction(()=>G.moves.length===1);assert.match(await page.textContent('#engineSource'),backend==='wasm'?/WASM/:/JavaScript fallback/);
    await page.evaluate(()=>{think=window.savedLevelThink;newGame();});
   }
   assert.deepEqual(errors,[]);
-  console.log('PASS: real worker level-50/65 budget separation; shared UI clock allowance; visible thinking cap, backend/fallback source labels and cleanup');
+  console.log('PASS: real worker level-50/65 budget separation; fresh clock allocation, no viewing delay in time trouble, expired-turn guard; visible cap, backend/fallback labels and cleanup');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

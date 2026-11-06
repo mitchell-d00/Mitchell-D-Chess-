@@ -93,6 +93,10 @@ function maybeAI() {
   if (!G || G.review || G.over || G.view != null || G.paused || G.thinking) return;
   const side = sideToMove(), p = G.players[side];
   if (p.type !== 'ai') return;
+  // Rendering and move processing have already used some of this turn.
+  // Charge that time before allocating another search, rather than waiting
+  // for the next 100 ms clock tick.
+  if (G.clock) { tickClock(); if (G.over) return; }
   if (G.official) {
     const claim = G.chess.claimable();
     if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
@@ -103,11 +107,12 @@ function maybeAI() {
   let minDelay = G.mode === 'cvc' ? { slow: 1400, normal: 600, fast: 120 }[setup.speed || 'normal'] : 350;
   let extra;
   if (G.clock) {
-    const c = G.clock, rem = c[side], L = L18[p.level - 1];
+    const c = G.clock, rem = c[side];
     const allocation = allocateThinkTime(c, side, 120000, ply);
     const budget = allocation.time, reserve = allocation.reserve;
     extra = { time: budget };
-    minDelay = Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
+    // Viewing speed must not spend the last seconds on an already chosen move.
+    minDelay = rem < 10000 ? 0 : Math.min(minDelay, 150, Math.max(0, rem - budget - reserve));
     G.thinkBudget=E.levelThinkTime(p.level-1,extra);renderStatus();
   }
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
