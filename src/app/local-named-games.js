@@ -14,8 +14,8 @@ function restoreGame(saved, record) {
   if (G.clock) G.clock.last = performance.now();
   if (!state.review) {
     setup.mode=state.mode;setup.rules=state.official?'official':'casual';
-    if(state.mode==='pvc'){setup.color=state.players.w.type==='human'?'w':'b';setup.level=state.players[setup.color==='w'?'b':'w'].level;}
-    if(state.mode==='cvc'){setup.lvlW=state.players.w.level;setup.lvlB=state.players.b.level;}
+    if(state.mode==='pvc'){setup.color=state.players.w.type==='human'?'w':'b';setup.level=state.players[setup.color==='w'?'b':'w'].level;setup.persona=E.normalizePersona(state.players[setup.color==='w'?'b':'w'].persona);}
+    if(state.mode==='cvc'){setup.lvlW=state.players.w.level;setup.lvlB=state.players.b.level;setup.personaW=E.normalizePersona(state.players.w.persona);setup.personaB=E.normalizePersona(state.players.b.persona);}
     if(!state.clock)setup.tc='none';else if(state.clock.per&&[10000,30000,60000].includes(state.clock.per))setup.tc='m'+state.clock.per/1000;else{setup.tc='custom';setup.cw=Math.min(600,state.clock.start.w/60000);setup.cb=Math.min(600,state.clock.start.b/60000);setup.bonus=(state.clock.inc||state.clock.delay)/1000;setup.btype=state.clock.inc?'inc':'delay';}
     saveSetup();syncPlay();
   }

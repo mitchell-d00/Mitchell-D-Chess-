@@ -74,3 +74,19 @@ forfeits. It measured 1.399× same-tree browser throughput and 1.540× Node
 throughput on the recorded host. See [the complete evolution report](../../validation/wasm-port/evolution/README.md)
 for raw samples, all PGNs, qualifications and repeat commands. This tested core
 is now the release default on neural levels; its absolute strength remains unrated.
+
+## Optional personality extension — November 6, 2026
+
+The current core adds `set_style(-100..100)` and a generated `personality.inc`.
+The JS bridge always sets the style before a search, including resetting it to
+zero for Standard. A changed style clears native TT scores; JS includes it in
+its TT context too. Zero bypasses the extra board scan. Actual terminal/draw
+scores retain the normal search treatment. Nonzero preferences add at most
+60 cp at a static leaf and fade out with low material phase; they can change
+playing strength and throughput. The network and ordinary evaluation remain
+unchanged.
+
+This extension has a new binary identity; historical match results above belong
+to the previous binary. `release.json` pins both identities and separate Standard
+fixed-depth parity evidence. It does not certify a new Elo or persona strength.
+See [personality validation](../../validation/personas/README.md).

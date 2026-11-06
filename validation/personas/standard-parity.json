@@ -1,0 +1,238 @@
+{
+  "createdUtc": "2026-11-06T13:37:51.845Z",
+  "node": "v24.22.1",
+  "platform": "linux",
+  "arch": "x64",
+  "cpu": "AMD EPYC 9V74 80-Core Processor",
+  "logicalCpus": 5,
+  "depth": 9,
+  "repeats": 3,
+  "ttBits": 19,
+  "memoryMiB": 32,
+  "fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "r1bq1rk1/ppp2ppp/2np1n2/2b1p3/2B1P3/2NP1N2/PPP2PPP/R1BQ1RK1 w - - 6 7",
+    "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1",
+    "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1"
+  ],
+  "hashes": {
+    "baseline": "4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0",
+    "candidate": "ff43dc6346de73a1e21271d145ef03139a5edd6edfebd51b5299c6173fc6ffa0"
+  },
+  "modelSha256": "794f2d101e3974eab1a5d37b60b78898ff8bc93c2813831973a9c4dccd51a704",
+  "runs": [
+    {
+      "name": "baseline",
+      "repeat": 0,
+      "cases": [
+        {
+          "score": 94,
+          "move": 1055252,
+          "nodes": 20321,
+          "ms": 12.891827000000035
+        },
+        {
+          "score": 77,
+          "move": 6178,
+          "nodes": 36330,
+          "ms": 22.897678999999982
+        },
+        {
+          "score": -480,
+          "move": 141332,
+          "nodes": 25633,
+          "ms": 21.52657499999998
+        },
+        {
+          "score": 447,
+          "move": 137905,
+          "nodes": 5762,
+          "ms": 4.04543000000001
+        }
+      ],
+      "nodes": 88046,
+      "ms": 61.36151100000001,
+      "nps": 1434873.401341111
+    },
+    {
+      "name": "candidate",
+      "repeat": 0,
+      "cases": [
+        {
+          "score": 94,
+          "move": 1055252,
+          "nodes": 20321,
+          "ms": 12.876023000000032
+        },
+        {
+          "score": 77,
+          "move": 6178,
+          "nodes": 36330,
+          "ms": 26.196343999999954
+        },
+        {
+          "score": -480,
+          "move": 141332,
+          "nodes": 25633,
+          "ms": 21.383669999999995
+        },
+        {
+          "score": 447,
+          "move": 137905,
+          "nodes": 5762,
+          "ms": 2.6299889999999664
+        }
+      ],
+      "nodes": 88046,
+      "ms": 63.08602599999995,
+      "nps": 1395649.8068209286
+    },
+    {
+      "name": "candidate",
+      "repeat": 1,
+      "cases": [
+        {
+          "score": 94,
+          "move": 1055252,
+          "nodes": 20321,
+          "ms": 13.017086000000063
+        },
+        {
+          "score": 77,
+          "move": 6178,
+          "nodes": 36330,
+          "ms": 27.53027300000008
+        },
+        {
+          "score": -480,
+          "move": 141332,
+          "nodes": 25633,
+          "ms": 21.552494000000024
+        },
+        {
+          "score": 447,
+          "move": 137905,
+          "nodes": 5762,
+          "ms": 2.8045419999999694
+        }
+      ],
+      "nodes": 88046,
+      "ms": 64.90439500000014,
+      "nps": 1356549.1212112803
+    },
+    {
+      "name": "baseline",
+      "repeat": 1,
+      "cases": [
+        {
+          "score": 94,
+          "move": 1055252,
+          "nodes": 20321,
+          "ms": 11.586221000000023
+        },
+        {
+          "score": 77,
+          "move": 6178,
+          "nodes": 36330,
+          "ms": 24.04723899999999
+        },
+        {
+          "score": -480,
+          "move": 141332,
+          "nodes": 25633,
+          "ms": 23.716020999999955
+        },
+        {
+          "score": 447,
+          "move": 137905,
+          "nodes": 5762,
+          "ms": 2.7838409999999385
+        }
+      ],
+      "nodes": 88046,
+      "ms": 62.13332199999991,
+      "nps": 1417049.6146978932
+    },
+    {
+      "name": "baseline",
+      "repeat": 2,
+      "cases": [
+        {
+          "score": 94,
+          "move": 1055252,
+          "nodes": 20321,
+          "ms": 11.787513999999987
+        },
+        {
+          "score": 77,
+          "move": 6178,
+          "nodes": 36330,
+          "ms": 21.177018999999973
+        },
+        {
+          "score": -480,
+          "move": 141332,
+          "nodes": 25633,
+          "ms": 22.433209000000033
+        },
+        {
+          "score": 447,
+          "move": 137905,
+          "nodes": 5762,
+          "ms": 2.4209950000000617
+        }
+      ],
+      "nodes": 88046,
+      "ms": 57.818737000000056,
+      "nps": 1522793.5539304484
+    },
+    {
+      "name": "candidate",
+      "repeat": 2,
+      "cases": [
+        {
+          "score": 94,
+          "move": 1055252,
+          "nodes": 20321,
+          "ms": 10.601197999999954
+        },
+        {
+          "score": 77,
+          "move": 6178,
+          "nodes": 36330,
+          "ms": 22.96981799999992
+        },
+        {
+          "score": -480,
+          "move": 141332,
+          "nodes": 25633,
+          "ms": 22.774562999999944
+        },
+        {
+          "score": 447,
+          "move": 137905,
+          "nodes": 5762,
+          "ms": 2.4030779999999368
+        }
+      ],
+      "nodes": 88046,
+      "ms": 58.74865699999975,
+      "nps": 1498689.578554968
+    }
+  ],
+  "notes": [
+    "Fixed-depth, cold TT per position, warm WASM JIT, alternating order.",
+    "Equal nodes/scores/moves required; timing includes search reset, excludes TT clearing and FEN load.",
+    "Local throughput evidence, not an Elo or strength estimate."
+  ],
+  "medianNps": {
+    "baseline": 1434873.401341111,
+    "candidate": 1395649.8068209286
+  },
+  "speedup": 0.9726640730230821,
+  "pairedSpeedups": [
+    0.9726640730230821,
+    0.9573053103722757,
+    0.9841712126287465
+  ]
+}

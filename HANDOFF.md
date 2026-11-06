@@ -819,3 +819,50 @@ validation/user-reports/2026-11-06-rook-draw-claim/README.md.
 Next: publish after CI and verify the live artifact. The earlier knight-game
 forfeit's cause remains unconfirmed; this later game's draw-claim fault is a
 separate confirmed issue. No absolute Elo or strength gain is claimed.
+
+## Optional opponent personas — November 6, 2026
+
+Branch feat/opponent-personas from main8a4a55e. New collapsed Game setup panel
+has -100..100 slider, Defender(-80)/Positional(-35)/Attacker65/Gambit100 presets,
+name, save/load/delete up to12 local opponents including level. Independent
+White/Black profiles for cvc, one global Standard reset, hidden for pvp. All
+selections apply next game; G.players is a normalized copy. Existing levels,
+book/noise, clocks, offline one-file UI, lessons and MIT/Leorik notices remain.
+
+src/engine/personality.js is canonical: activity/advance/shelter/piece-balance
+bias <=60cp per leaf scaled by material, zero phase<=4. Zero bypasses scan.
+Presets are slider positions, not separate models, forced gambits or Elo tiers.
+JS Searcher/rootScores and native Searcher eval use it. Generated native include
+is built by generate-wasm-evaluation.cjs. Native set_style clears TT when changed;
+bridge resets style0 on every Standard search. JS TT context includes aggression.
+Analysis/lessons remain Standard unless a caller explicitly passes extra.persona.
+Neither checkmate/draw score nor legal/clock policy is replaced.
+
+Native extension has new hash ff43dc6346de73a1e21271d145ef03139a5edd6edfebd51b5299c6173fc6ffa0.
+Do not label it the exact historical match-tested binary: release.json links
+baseline4b399f6260d3aec814b1cb279920eb5e7f99046b4766b7d6a8461a3a3b26e5f0
+and Standard parity evidence. Four cold-TT depth9 positions x3 alternating
+measured repeats after warmups: identical nodes/moves/scores, local medianNPS
+0.973x old. Not an equal-time match/strength gain. All old archives unchanged.
+12 seeded depth4 style probes have1 move-choice difference. No persona ratings.
+
+PGN White/BlackPersona, Aggression and StylePolicy(style-v1) retained with saved
+G.tags; saved G.players includes validated optional persona. Old saves default
+Standard, restore sets setup too. PGN import reviews headers without activating
+an AI. Local opponent list storage errors preserve prior list and report failure.
+Profile load also keeps saved selector selected so Delete works after rendering.
+Text escaped; name input16px and controls44px on touch; all updates next game.
+
+45-command core/browser suite passes on final HTML (680218raw/258437gzip), full
+WASM suite passes (5476 parity/524 accumulator/13 sparse fixtures). New1044-case
+persona suite covers exact active-style native/JS trees, bounds/sparse phase,
+TT reset and timed legal replies at all65 levels. Browser uses actual offline
+JS/WASM requests, clocked cvc per-side personas, PGN/save/restore/reload,
+Standard clean request, escaped names, phone/landscape/tablet; focused rerun
+adds simulated profile storage quota failure. Results/hashes/repeat commands:
+validation/personas/README.md. No absolute Elo/strength guarantee added.
+
+Next: publish after CI, verify deployed HTML and actual offline persona worker.
+Standing user publication authorization applies. Native compile here uses
+LD_LIBRARY_PATH=/tmp/mitchell-llvm/usr/lib/x86_64-linux-gnu and compiler/linker
+from /tmp/mitchell-llvm/usr/bin as documented in earlier handoff.

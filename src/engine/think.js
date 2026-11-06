@@ -1,5 +1,7 @@
   // Choose a move. moves: UCI list from the start position (startFen optional).
   function think(startFen, moves, levelIdx, extra) {
+    var persona = normalizePersona(extra && extra.persona);
+    var aggression = persona ? persona.aggression : 0;
     var L = LEVELS[levelIdx];
     if (!L) throw new Error('Invalid engine level');
     var pos = new Chess(startFen);
@@ -20,7 +22,7 @@
     if (legal.length === 1) { res.move = pos.uci(legal[0]); return res; }
     if (L.noise || L.bl) {
       var limited=levelThinkTime(levelIdx,extra);
-      var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q, time:limited });
+      var sc = rootScores(pos, { depth: L.d, eval: L.ev, q: L.q, time:limited, aggression: aggression });
       res.depth=sc.completedDepth;res.nodes=sc.nodes;res.timeBudget=limited;
       if (sc[0].s >= MATE - 2 && levelIdx >= 2) { res.move = pos.uci(sc[0].m); res.score = sc[0].s; return res; }
       var noisy = sc.map(function (x) { return { m: x.m, s: x.s + gauss() * (L.noise || 0) }; });
@@ -34,7 +36,7 @@
     var time = levelThinkTime(levelIdx,extra);
     var basePly = pos.uMove.length, lastBest = 0, stability = 0;
     var searchStart = Date.now();
-    var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, exactEndgames: !!(extra && extra.exactEndgames), adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
+    var s = new Searcher(pos, { eval: L.ev, q: L.q, time: time, contempt: 20, aggression: aggression, exactEndgames: !!(extra && extra.exactEndgames), adv: extra && extra.adv !== undefined ? extra.adv : L.adv });
     s.deadline = searchStart + time;
     var best = legal[0], bestScore = 0, depthDone = 0, t0 = Date.now(), prev = 0;
     for (var d = 1; d <= L.d; d++) {
@@ -76,7 +78,7 @@
   function whiteScore(fen, score) { return / b /.test(fen) ? -score : score; }
 
   return {
-    NNUE_CONFIG: NNUE_CONFIG, NeuralAccumulator: NeuralAccumulator, neuralEvaluate: neuralEvaluate, NNUE_MODEL: NNUE_MODEL, probeKPK: probeKPK, Searcher: Searcher, EVAL_WEIGHTS: EVAL_WEIGHTS, bookLines: BOOK, Chess: Chess, LEVELS: LEVELS, think: think, evaluate: evaluate, sqName: sqName, sqParse: sqParse, MATE: MATE,
+    normalizePersona: normalizePersona, personaBias: personaBias, NNUE_CONFIG: NNUE_CONFIG, NeuralAccumulator: NeuralAccumulator, neuralEvaluate: neuralEvaluate, NNUE_MODEL: NNUE_MODEL, probeKPK: probeKPK, Searcher: Searcher, EVAL_WEIGHTS: EVAL_WEIGHTS, bookLines: BOOK, Chess: Chess, LEVELS: LEVELS, think: think, evaluate: evaluate, sqName: sqName, sqParse: sqParse, MATE: MATE,
     mFrom: mFrom, mTo: mTo, mPromo: mPromo, mFlags: mFlags, whiteScore: whiteScore, CHARS: CHARS, levelThinkTime:levelThinkTime
   };
 })();

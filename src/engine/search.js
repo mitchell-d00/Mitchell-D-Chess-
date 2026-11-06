@@ -25,9 +25,10 @@
     this.counter = new Int32Array(16 * 128);
     this.evalStack = new Int32Array(MAXPLY + 2);
     this.mode = opt.eval || 'full';
+    this.aggression = Number.isInteger(opt.aggression) ? Math.max(-100, Math.min(100, opt.aggression)) : 0;
     if (this.mode === 'nnue') { if (!pos.nnue) pos.nnue = new NeuralAccumulator(pos); }
     else pos.nnue = null;
-    var ttContext = this.mode + ':' + (opt.q !== false) + ':' + pos.side + ':' + (opt.contempt || 0) + ':' + !!opt.exactEndgames;
+    var ttContext = this.mode + ':' + (opt.q !== false) + ':' + pos.side + ':' + (opt.contempt || 0) + ':' + !!opt.exactEndgames + ':' + this.aggression;
     if (ttContext !== TT_CONTEXT) { ttDepth.fill(-1); ttFlag.fill(-1); TT_CONTEXT = ttContext; }
     this.exactEndgames = !!opt.exactEndgames;
     this.q = opt.q !== false;
@@ -41,7 +42,7 @@
     var p = this.pos, h = p.lo & 32767;
     // full-move number matters for the early queen development term.
     if (this.ecFull[h] === p.full && this.ecLo[h] === p.lo && this.ecHi[h] === p.hi) return this.ecValue[h];
-    var v = evaluate(p, this.mode);
+    var v = evaluate(p, this.mode) + (this.aggression ? personaBias(p, this.aggression) : 0);
     this.ecLo[h] = p.lo; this.ecHi[h] = p.hi; this.ecFull[h] = p.full; this.ecValue[h] = v;
     return v;
   };
@@ -288,12 +289,12 @@
 
   // Score every root move (weaker levels pick among these with noise)
   function rootScores(pos, opt) {
-    var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: opt.time || 0 });
+    var s = new Searcher(pos, { eval: opt.eval, q: opt.q, nullMove: false, time: opt.time || 0, aggression: opt.aggression });
     var ms = pos.legalMoves(), out = [], basePly=pos.uMove.length, completedDepth=0;
     // A complete cheap fallback prevents partial root iterations favouring
     // whichever moves happened to be generated first when the clock expires.
     if(opt.time)for(var f=0;f<ms.length;f++){
-      pos.make(ms[f]);var value=-evaluate(pos,s.mode);
+      pos.make(ms[f]);var value=-s.evaluate();
       if(pos.inCheck()&&!pos.legalMoves().length)value=MATE-1;
       pos.unmake();out.push({m:ms[f],s:value});
     }
@@ -303,7 +304,7 @@
         for (var i = 0; i < ms.length; i++) {
           if(opt.time&&Date.now()>=s.deadline)throw STOP;
           pos.make(ms[i]);
-          var sc = depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : evaluate(pos, s.mode)) : -s.negamax(depth - 1, -INF, INF, 1, false, 0);
+          var sc = depth <= 1 ? -(s.q ? s.qs(-INF, INF, 1, 0) : s.evaluate()) : -s.negamax(depth - 1, -INF, INF, 1, false, 0);
           if (pos.inCheck() && !pos.legalMoves().length) sc = MATE - 1;
           pos.unmake();pass.push({ m: ms[i], s: sc });
         }

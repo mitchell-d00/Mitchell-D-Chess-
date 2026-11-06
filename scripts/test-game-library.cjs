@@ -2,6 +2,10 @@ const assert=require('node:assert/strict'),E=require('./engine.cjs')(),T=require
 const map=new Map(),storage={getItem:k=>map.get(k)||null,setItem:(k,v)=>map.set(k,v)},library=L.create(storage);
 const game={version:1,startFen:T.START,moves:['e2e4'],mode:'pvp',players:{w:{type:'human'},b:{type:'human'}},official:false,review:false,tags:{Event:'A "game"'},over:null,clock:{w:59000,b:60000,inc:1000,delay:0,per:0,start:{w:60000,b:60000},running:'b',delayLeft:0,pgn:'60+1'},clockHist:[{w:59000,b:60000}],view:null,flipped:false};
 const id=library.save('Game 1',game);assert.equal(library.list().length,1);assert.deepEqual(library.load(id).game,L.validate(game));
+const aiGame={...game,mode:'pvc',players:{w:{type:'ai',level:52,persona:{name:'My defender',aggression:-75}},b:{type:'human'}}};
+assert.deepEqual(L.validate(aiGame).players.w.persona,aiGame.players.w.persona);
+assert.equal(L.validate({...aiGame,players:{...aiGame.players,w:{type:'ai',level:52}}}).players.w.persona,undefined,'Older saves default to Standard');
+for(const persona of [{name:'bad\nname',aggression:0},{name:'x',aggression:101},{name:'x',aggression:'50'},{name:'',aggression:0}])assert.throws(()=>L.validate({...aiGame,players:{...aiGame.players,w:{type:'ai',level:52,persona}}}),/persona/);
 library.save('Renamed',game,id);assert.equal(library.list()[0].name,'Renamed');assert.equal(library.list().length,1);
 const prior=map.get(L.KEY),failed=L.create({getItem:storage.getItem,setItem(){throw Error('Quota');}});assert.throws(()=>failed.save('No space',game),/Existing saves were kept/);assert.equal(map.get(L.KEY),prior);
 for(const bad of [{...game,startFen:'bad'},{...game,moves:['e2e9']},{...game,clock:{...game.clock,w:NaN}},{...game,clockHist:[]},{...game,mode:'cvc'},{...game,players:{w:{type:'ai',level:999},b:{type:'human'}}}])assert.throws(()=>L.validate(bad));

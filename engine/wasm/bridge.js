@@ -38,6 +38,8 @@
       var core=prepareWasmCore();if(!core)throw new Error('Candidate unavailable');
       coreLoad(core,initial);for(var j=0;j<encoded.length;j++)if(!core.play(encoded[j]))throw new Error('Candidate history mismatch');
       var time=levelThinkTime(levelIdx,extra);
+      var persona=normalizePersona(extra&&extra.persona);
+      core.set_style(persona?persona.aggression:0);
       core.set_endgames(extra&&extra.exactEndgames!==undefined?+extra.exactEndgames:+WASM_CORE_CONFIG.exactEndgames);
       var move=core.iterate(L.d,time,3,extra&&extra.adv!==undefined?+extra.adv:+L.adv,1,20);
       if(!core.result_valid()||legal.indexOf(move)<0||coreFen(core)!==p.fen())throw new Error('Candidate failed root validation');

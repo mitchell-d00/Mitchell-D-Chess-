@@ -1,0 +1,28 @@
+{
+  "createdUtc": "2026-11-06T14:09:18.015181+00:00",
+  "baselineRevision": "8a4a55e55efa86b3bf7c1f1a983dfe40f87a2d26",
+  "files": {
+    "index.html": "97b0f0454cf7a3be8e4f2f81440e9de661f6098ede1da72fcebb85860f54bcc2",
+    "engine/wasm/mitchell.wasm": "ff43dc6346de73a1e21271d145ef03139a5edd6edfebd51b5299c6173fc6ffa0",
+    "engine/wasm/release.json": "218d3e9a0ee9e1577a4790788194e4c481692b70207742872b0cb7b1321f82c7",
+    "validation/personas/standard-parity.json": "c0322cc3d7bf9c6483d201360a2ebdbd416345b296ee0f1e30fc007c791ef5ed",
+    "validation/personas/style-probes.json": "147f37a33abe9706a5d3cda55798b976113dc1fac76f636906869aa83cbf9d82",
+    "validation/personas/checks.json": "c5e7e1b12e8c9460baac8abb14decb24351345bf21e2948f4b7c257c1bf4a79c",
+    "validation/personas/profile-storage-check.txt": "35c5731742eeee846f33f99642d02ea73ee279692275c0ed242b961e7cca9c3c"
+  },
+  "checks": {
+    "all": 45,
+    "core": 32,
+    "browser": 13,
+    "personaUnitCases": 1044,
+    "wasmDifferentialCases": 5476,
+    "wasmAccumulatorCases": 524,
+    "sparseEndgameFixtures": 13
+  },
+  "notes": [
+    "Full 45-command regression suite passed on the release HTML.",
+    "Focused browser follow-up adds explicit opponent-storage quota failure with unchanged profile list.",
+    "Separate npm run test:wasm passed; historical match archives unchanged.",
+    "Standard fixed-depth parity and style probes are correctness demonstrations, not Elo or equal-time strength evidence."
+  ]
+}

@@ -136,3 +136,20 @@ opponent's displayed evaluation. Run `scripts/test-ai-draw-claims.cjs` and
 `scripts/browser-ai-draw-claims-test.cjs`; `scripts/reproduce-draw-claim.cjs`
 provides the one-turn historical comparison. The supplied rook-game evidence
 explains why a legal optional claim was missed without changing its actual result.
+
+## Playing styles
+
+`src/engine/personality.js` defines bounded optional preferences. The WASM
+`personality.inc` is generated from that canonical JS function; rebuild the core
+with LLVM 19 when changing it, then regenerate `index.html`. Test active styles
+and switching back to zero: native and JavaScript TTs must never reuse scores
+from a different style. `scripts/test-personas.cjs` checks cross-backend values,
+searches and all 65 timed presets; `scripts/browser-personas-test.cjs` checks the
+offline UI, workers, clocks, saves and PGN. `scripts/probe-personas.cjs` emits a
+repeatable fixed-depth illustration, not rating evidence.
+
+Keep historical match artifacts immutable. `engine/wasm/release.json` records the
+new binary and its link to the previous match-tested binary; Standard parity is
+recorded separately in `validation/personas/`. New personalities need their own
+matches before any strength comparisons. See that folder's README for repeating
+the before/after comparison and its limits.

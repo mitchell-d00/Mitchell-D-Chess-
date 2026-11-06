@@ -1,0 +1,1 @@
+PASS: offline persona UI, real JS/WASM workers, independent sides, clean Standard reset, PGN/save/reload, named profiles, escaped names and mobile layouts

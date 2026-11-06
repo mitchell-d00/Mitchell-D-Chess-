@@ -13,3 +13,8 @@ body=body.replace('int kz = [kW, kB];','int kz[2]={kW,kB};').replace('int atkUni
 body=body.replace('int mob = 0, safeMob = 0, hits = 0, dirs = ty == N ? N_D : ty == B ? B_D : ty == R ? R_D : K_D, slide = ty != N;','int mob=0,safeMob=0,hits=0,slide=ty!=N;const int*dirs=ty==N?ND:ty==B?BD:ty==R?RD:KD;int dirLength=ty==N||ty==Q?8:4;').replaceAll('dirs.length','dirLength').replaceAll('K_D','KD');
 body=body.replace('int pa = white ? PAW : PAB, step = white ? 16 : -16;', 'int*pa=white?PAW.data:PAB.data;int step=white?16:-16;');
 fs.writeFileSync('engine/wasm/evaluation.inc','// Generated mechanical port of src/engine/evaluation.js; original MIT.\n'+body);
+
+// The style preference uses the same arithmetic and truncation in both backends.
+let style=fs.readFileSync('src/engine/personality.js','utf8');
+style=style.slice(style.indexOf('  function personaBias(')).replace('function personaBias(pos, aggression)', 'static int personaBias(Position& pos, int aggression)').replaceAll('var ', 'int ').replace('int b = pos.b, activity = 0, shelter = 0, retained = 0, phase = 0;', 'i8* b=pos.b; int activity=0,shelter=0,retained=0,phase=0;').replaceAll('===','==').replaceAll('Math.max','imax').replaceAll('Math.min','imin').replaceAll('Math.abs','iabs');
+fs.writeFileSync('engine/wasm/personality.inc','// Generated from src/engine/personality.js; original MIT.\n'+style);

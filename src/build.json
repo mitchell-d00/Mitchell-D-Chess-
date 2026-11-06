@@ -11,6 +11,7 @@
       "wasmCore": true
     },
     "src/engine/evaluation.js",
+    "src/engine/personality.js",
     "src/engine/search.js",
     "src/engine/book.js",
     "src/engine/levels.js",
@@ -26,6 +27,7 @@
     "src/app/time-management.js",
     "src/app/game-diagnostics.js",
     "src/app/ai-draw-claims.js",
+    "src/app/opponent-personas.js",
     "src/app/play-mode.js",
     "src/app/clocks.js",
     "src/app/draw-offers-and-claims.js",

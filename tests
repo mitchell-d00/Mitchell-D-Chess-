@@ -1,3 +1,15 @@
+# Optional opponent personalities (November 6, 2026)
+
+Standard defaults to zero style adjustment; independent per-side profiles are
+opt-in. JS/WASM style arithmetic and fixed-depth trees agree. Saved profiles,
+PGN settings, clocked worker requests, Standard reset and mobile layouts are
+covered by automated checks. Historical strength results are not new persona
+ratings. See validation/personas/README.md for inputs, hashes and limits.
+
+    node scripts/test-personas.cjs
+    node scripts/browser-personas-test.cjs
+    node scripts/probe-personas.cjs
+
 # Official AI draw claims (November 6, 2026)
 
 The supplied 128-move checkmate had a legal fifty-move draw claim at move106.

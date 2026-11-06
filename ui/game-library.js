@@ -11,7 +11,13 @@
     if (!value || !['human','ai'].includes(value.type)) error('Invalid saved player.');
     if (value.type === 'human') return {type:'human'};
     if (!Number.isInteger(value.level) || value.level < 1 || value.level > 65) error('Invalid saved computer level.');
-    return {type:'ai',level:value.level};
+    let persona;
+    if(value.persona!=null){
+      const p=value.persona;
+      if(typeof p.name!=='string'||!p.name.trim()||p.name.trim().length>40||/[\x00-\x1f\x7f]/.test(p.name)||!Number.isInteger(p.aggression)||p.aggression < -100||p.aggression > 100)error('Invalid saved opponent persona.');
+      persona={name:p.name.trim(),aggression:p.aggression};
+    }
+    return {type:'ai',level:value.level,...(persona?{persona}:{})};
   }
   function validate(game) {
     if (!game || game.version !== 1 || JSON.stringify(game).length > MAX_GAME) error('Unsupported or oversized saved game.');
