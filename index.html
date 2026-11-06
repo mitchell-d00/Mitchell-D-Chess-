@@ -2517,9 +2517,14 @@ if (typeof module !== 'undefined') module.exports = LESSONS;
     let out = Object.keys(tags).filter(k => /^[A-Za-z][A-Za-z0-9_]*$/.test(k)).map(k => '[' + k + ' "' + quote(tags[k]) + '"]').join('\n') + '\n\n';
     const fields = record.startFen.split(' '); let black = fields[1] === 'b', number = +fields[5];
     const times=record.clockTimes;
+    const recoveries=record.moveRecoveries;
     if(times!==undefined&&(!Array.isArray(times)||times.length!==record.sans.length))fail('Clock readings must match the move list.');
+    if(recoveries!==undefined&&(!Array.isArray(recoveries)||recoveries.length!==record.sans.length))fail('Recovery markers must match the move list.');
     record.sans.forEach((san, i) => { if (!black) out += number + '. '; else if (i === 0) out += number + '... '; out += san;
-      if(times&&times[i]!=null){const ms=times[i];if(!Number.isFinite(ms)||ms<0||ms>1e9)fail('Invalid PGN clock reading.');const t=Math.floor(ms/100),h=Math.floor(t/36000),m=Math.floor(t%36000/600),s=Math.floor(t%600/10);out+=' {[%clk '+h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+t%10+']}';}
+      const notes=[];
+      if(times&&times[i]!=null){const ms=times[i];if(!Number.isFinite(ms)||ms<0||ms>1e9)fail('Invalid PGN clock reading.');const t=Math.floor(ms/100),h=Math.floor(t/36000),m=Math.floor(t%36000/600),s=Math.floor(t%600/10);notes.push('[%clk '+h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')+'.'+t%10+']');}
+      if(recoveries&&recoveries[i]!=null){if(!['timeout','worker-error'].includes(recoveries[i]))fail('Invalid engine recovery marker.');notes.push('Engine recovery: '+recoveries[i]);}
+      if(notes.length)out+=' {'+notes.join(' ')+'}';
       out+=' ';if (black) number++; black = !black; });
     return out + result + '\n';
   }
@@ -3058,7 +3063,7 @@ function updateClockOverhead(previous, roundTripMs, searchBudgetMs) {
 }
 if (typeof module !== 'undefined') { module.exports = allocateThinkTime; module.exports.updateClockOverhead = updateClockOverhead; }
 // Local timing observations only; these never pause, refund or adjust a clock.
-const CLOCK_POLICY_VERSION='bank-latency-v1/recovery-v1';
+const CLOCK_POLICY_VERSION='bank-latency-v1/recovery-v1/draw-claim-v1';
 function gameInactiveMs(now=Date.now()) {
   const a=G&&G.activity;if(!a)return 0;
   return a.hiddenMs+(a.hiddenSince==null?0:Math.max(0,now-a.hiddenSince));
@@ -3072,7 +3077,7 @@ function trackGameVisibility() {
 document.addEventListener('visibilitychange',trackGameVisibility);
 function currentThinkDiagnostic() {
   const r=G&&G.activeThink;
-  if(!r||r.token!==G.token||r.ply!==G.moves.length)return G&&G.lastThink;
+  if(!r||G.over||r.token!==G.token||r.ply!==G.moves.length)return G&&G.lastThink;
   return {ply:r.ply,side:r.side,level:r.level,budgetMs:r.budgetMs,wallMs:Math.max(0,Date.now()-r.startedAt),hiddenMs:Math.max(0,gameInactiveMs()-r.inactiveAtStart),phase:r.phase,recovery:r.recovery||'',backend:r.backend||'pending',depth:r.depth??'pending'};
 }
 function captureThinkDiagnostic(reason) {
@@ -3086,6 +3091,23 @@ function pgnClock(ms) {
   const t=Math.floor(Math.max(0,ms)/100),h=Math.floor(t/36000),m=Math.floor(t%36000/600),s=Math.floor(t%600/10);
   return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${t%10}`;
 }
+// Original MIT. A legal draw is an option, not a stale opponent evaluation.
+function computerDrawClaim(pos, result) {
+  if(!result||!result.move)return null;
+  // Keep a positively evaluated continuation; under recovery/uncertainty,
+  // prefer a known legal point. Always allow an actual immediate checkmate.
+  if(!result.recovery&&Number.isFinite(result.score)&&result.score>0)return null;
+  const move=pos.findUci(result.move);if(!move)return null;
+  const existing=pos.claimable();let intended,mate;
+  pos.make(move);
+  try{mate=pos.inCheck()&&!pos.legalMoves().length;intended=pos.claimable();}
+  finally{pos.unmake();}
+  if(mate)return null;
+  if(existing)return {reason:existing,type:'current'};
+  if(intended)return {reason:intended,type:'intended',move:result.move,san:pos.san(move)};
+  return null;
+}
+if(typeof module!=='undefined')module.exports=computerDrawClaim;
 // ================= Play mode =================
 const L18 = E.LEVELS; // all 65 levels
 let G = null;
@@ -3188,10 +3210,6 @@ function maybeAI() {
   // Charge that time before allocating another search, rather than waiting
   // for the next 100 ms clock tick.
   if (G.clock) { tickClock(); if (G.over) return; }
-  if (G.official) {
-    const claim = G.chess.claimable();
-    if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
-  }
   G.thinking = true;G.engineFault=null;G.thinkBudget=null;G.clockMode=null; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
@@ -3217,6 +3235,12 @@ function maybeAI() {
     request.backend=r&&r.backend||'javascript';request.depth=r&&r.depth;
     if(r&&r.recovery){G.engineRecoveries=(G.engineRecoveries||0)+1;G.evalW=null;G.depth=0;}
     captureThinkDiagnostic('reply');
+    const draw=G.official?computerDrawClaim(G.chess,r):null;
+    if(draw){
+      if(G.clock){tickClock();if(G.over)return;}
+      G.drawClaim=draw;
+      endGame({result:'1/2-1/2',reason:`${draw.reason}, claimed by ${playerLabel(side).name}${draw.type==='intended'?' with intended '+draw.san:''}`});afterChange();return;
+    }
     if(G.clock)G.aiClockOverhead=updateClockOverhead(G.aiClockOverhead,Date.now()-t0,r&&r.timeBudget);
     const wait = Math.max(0, minDelay - (Date.now() - t0));
     setTimeout(() => {
@@ -3227,6 +3251,7 @@ function maybeAI() {
       G.engineSource={ply:ply+1,text:r.recovery?'Computer recovered with a fallback move · '+(r.recovery==='timeout'?'search timed out':'worker interrupted'):r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled')+backend:''};
       if (!r.book && r.depth) { G.evalW = E.whiteScore(fenBefore, r.score); G.depth = r.depth; }
       if (G.paused) { G.pendingAI = r.move; renderStatus(); renderButtons(); return; }
+      if(r.recovery){if(!G.moveRecoveries)G.moveRecoveries={};G.moveRecoveries[ply]=r.recovery;}
       captureThinkDiagnostic('move ready');playMove(r.move, true);
       if(G.activeThink===request)G.activeThink=null;
     }, wait);
@@ -3411,7 +3436,9 @@ function pgn() {
     Object.assign(timing,{CurrentClockPolicy:CLOCK_POLICY_VERSION,WhiteClock:pgnClock(c.w),BlackClock:pgnClock(c.b),SessionInactiveMs:Math.round(gameInactiveMs()),SessionEngineRecoveries:G.engineRecoveries||0});
     const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkReason:info.reason||'active',LastThinkRecovery:info.recovery||'none',LastThinkBackend:info.backend,LastThinkDepth:info.depth});
   }
-  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}) }, {
+  if(G.drawClaim)Object.assign(timing,{DrawClaim:G.drawClaim.reason,DrawClaimType:G.drawClaim.type,...(G.drawClaim.move?{DrawClaimMove:G.drawClaim.move,DrawClaimSAN:G.drawClaim.san}:{})});
+  const moveRecoveries=G.moveRecoveries?G.sans.map((_,i)=>G.moveRecoveries[i]||null):undefined;
+  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}),...(moveRecoveries?{moveRecoveries}:{}) }, {
     Event: tags.Event || 'Mitchell D Chess game' + (G.official ? ' (official rules)' : ''), Site: tags.Site || 'Mitchell D Chess', Date: tags.Date || date,
     White: tags.White || nm('w'), Black: tags.Black || nm('b'), TimeControl: G.clock ? G.clock.pgn : (tags.TimeControl || '-'), Termination: !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal',...timing
   });

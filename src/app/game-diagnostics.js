@@ -1,5 +1,5 @@
 // Local timing observations only; these never pause, refund or adjust a clock.
-const CLOCK_POLICY_VERSION='bank-latency-v1/recovery-v1';
+const CLOCK_POLICY_VERSION='bank-latency-v1/recovery-v1/draw-claim-v1';
 function gameInactiveMs(now=Date.now()) {
   const a=G&&G.activity;if(!a)return 0;
   return a.hiddenMs+(a.hiddenSince==null?0:Math.max(0,now-a.hiddenSince));
@@ -13,7 +13,7 @@ function trackGameVisibility() {
 document.addEventListener('visibilitychange',trackGameVisibility);
 function currentThinkDiagnostic() {
   const r=G&&G.activeThink;
-  if(!r||r.token!==G.token||r.ply!==G.moves.length)return G&&G.lastThink;
+  if(!r||G.over||r.token!==G.token||r.ply!==G.moves.length)return G&&G.lastThink;
   return {ply:r.ply,side:r.side,level:r.level,budgetMs:r.budgetMs,wallMs:Math.max(0,Date.now()-r.startedAt),hiddenMs:Math.max(0,gameInactiveMs()-r.inactiveAtStart),phase:r.phase,recovery:r.recovery||'',backend:r.backend||'pending',depth:r.depth??'pending'};
 }
 function captureThinkDiagnostic(reason) {

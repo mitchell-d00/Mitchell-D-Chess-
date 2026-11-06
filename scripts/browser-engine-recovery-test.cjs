@@ -30,7 +30,7 @@ const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('nod
    G.clock={w:2500,b:60000,start:{w:60000,b:60000},running:'w',last:performance.now(),inc:1000,delay:0,delayLeft:0,per:0,pgn:'60+1'};maybeAI();
   });await page.waitForFunction(()=>G.moves.length===1||!!G.over);
   const game=await page.evaluate(()=>({moves:G.moves.length,remaining:G.clock.w,over:G.over,recoveries:G.engineRecoveries,text:$('#engineSource').textContent,pgn:pgn()}));
-  assert.equal(game.moves,1);assert(game.remaining>0&&!game.over);assert.equal(game.recoveries,1);assert.match(game.text,/fallback move/);assert.match(game.pgn,/\[SessionEngineRecoveries "1"\]/);assert.match(game.pgn,/\[LastThinkRecovery "timeout"\]/);assert.match(game.pgn,/\[%clk /);
+  assert.equal(game.moves,1);assert(game.remaining>0&&!game.over);assert.equal(game.recoveries,1);assert.match(game.text,/fallback move/);assert.match(game.pgn,/\[SessionEngineRecoveries "1"\]/);assert.match(game.pgn,/\[LastThinkRecovery "timeout"\]/);assert.match(game.pgn,/\[%clk /);assert.match(game.pgn,/Engine recovery: timeout/);
   await page.evaluate(()=>{think=window.actualThink;setup.mode='pvp';setup.tc='1+1';newGame();G.clock.running=null;G.clock.w=58000;playMove('e2e4');G.clock.running=null;G.clock.b=57000;playMove('e7e5');G.paused=true;});
   const clocked=await page.evaluate(()=>pgn());assert.match(clocked,/e4 \{\[%clk 0:00:59\.0\]\}/);assert.match(clocked,/e5 \{\[%clk 0:00:58\.0\]\}/);
   assert(await page.evaluate(text=>PositionTools.parsePgn(text).moves.length===2,clocked));

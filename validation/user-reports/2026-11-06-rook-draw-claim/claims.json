@@ -1,0 +1,103 @@
+{
+  "first": {
+    "ply": 211,
+    "san": "Kc3",
+    "half": 100,
+    "claim": "fifty-move rule",
+    "fen": "8/1R6/4k3/8/8/2K5/6r1/8 b - - 100 106"
+  },
+  "last": {
+    "ply": 222,
+    "san": "Rb1+",
+    "half": 111,
+    "claim": "fifty-move rule",
+    "fen": "8/1R6/4k3/8/8/8/1K6/1r6 w - - 111 112"
+  },
+  "count": 12,
+  "claims": [
+    {
+      "ply": 211,
+      "san": "Kc3",
+      "half": 100,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/2K5/6r1/8 b - - 100 106"
+    },
+    {
+      "ply": 212,
+      "san": "Rg1",
+      "half": 101,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/2K5/8/6r1 w - - 101 107"
+    },
+    {
+      "ply": 213,
+      "san": "Kb2",
+      "half": 102,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/1K6/6r1 b - - 102 107"
+    },
+    {
+      "ply": 214,
+      "san": "Rf1",
+      "half": 103,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/1K6/5r2 w - - 103 108"
+    },
+    {
+      "ply": 215,
+      "san": "Ka2",
+      "half": 104,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/K7/5r2 b - - 104 108"
+    },
+    {
+      "ply": 216,
+      "san": "Re1",
+      "half": 105,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/K7/4r3 w - - 105 109"
+    },
+    {
+      "ply": 217,
+      "san": "Kb2",
+      "half": 106,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/1K6/4r3 b - - 106 109"
+    },
+    {
+      "ply": 218,
+      "san": "Rd1",
+      "half": 107,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/1K6/3r4 w - - 107 110"
+    },
+    {
+      "ply": 219,
+      "san": "Ka2",
+      "half": 108,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/K7/3r4 b - - 108 110"
+    },
+    {
+      "ply": 220,
+      "san": "Rc1",
+      "half": 109,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/K7/2r5 w - - 109 111"
+    },
+    {
+      "ply": 221,
+      "san": "Kb2",
+      "half": 110,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/1K6/2r5 b - - 110 111"
+    },
+    {
+      "ply": 222,
+      "san": "Rb1+",
+      "half": 111,
+      "claim": "fifty-move rule",
+      "fen": "8/1R6/4k3/8/8/8/1K6/1r6 w - - 111 112"
+    }
+  ]
+}

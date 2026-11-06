@@ -100,10 +100,6 @@ function maybeAI() {
   // Charge that time before allocating another search, rather than waiting
   // for the next 100 ms clock tick.
   if (G.clock) { tickClock(); if (G.over) return; }
-  if (G.official) {
-    const claim = G.chess.claimable();
-    if (claim && aiScore(side) <= 15) { endGame({ result: '1/2-1/2', reason: `${claim}, claimed by ${playerLabel(side).name}` }); afterChange(); return; }
-  }
   G.thinking = true;G.engineFault=null;G.thinkBudget=null;G.clockMode=null; renderBars(); renderStatus(); renderButtons();
   const tok = G.token, fenBefore = G.chess.fen(), ply = G.moves.length;
   const t0 = Date.now();
@@ -129,6 +125,12 @@ function maybeAI() {
     request.backend=r&&r.backend||'javascript';request.depth=r&&r.depth;
     if(r&&r.recovery){G.engineRecoveries=(G.engineRecoveries||0)+1;G.evalW=null;G.depth=0;}
     captureThinkDiagnostic('reply');
+    const draw=G.official?computerDrawClaim(G.chess,r):null;
+    if(draw){
+      if(G.clock){tickClock();if(G.over)return;}
+      G.drawClaim=draw;
+      endGame({result:'1/2-1/2',reason:`${draw.reason}, claimed by ${playerLabel(side).name}${draw.type==='intended'?' with intended '+draw.san:''}`});afterChange();return;
+    }
     if(G.clock)G.aiClockOverhead=updateClockOverhead(G.aiClockOverhead,Date.now()-t0,r&&r.timeBudget);
     const wait = Math.max(0, minDelay - (Date.now() - t0));
     setTimeout(() => {
@@ -139,6 +141,7 @@ function maybeAI() {
       G.engineSource={ply:ply+1,text:r.recovery?'Computer recovered with a fallback move · '+(r.recovery==='timeout'?'search timed out':'worker interrupted'):r.book?'Last computer move: opening book':r.depth?(G.startFen!==START?'Last computer move: engine search · custom position':L18[p.level-1].book?'Last computer move: engine search · out of book':'Last computer move: engine search · book disabled')+backend:''};
       if (!r.book && r.depth) { G.evalW = E.whiteScore(fenBefore, r.score); G.depth = r.depth; }
       if (G.paused) { G.pendingAI = r.move; renderStatus(); renderButtons(); return; }
+      if(r.recovery){if(!G.moveRecoveries)G.moveRecoveries={};G.moveRecoveries[ply]=r.recovery;}
       captureThinkDiagnostic('move ready');playMove(r.move, true);
       if(G.activeThink===request)G.activeThink=null;
     }, wait);
@@ -323,7 +326,9 @@ function pgn() {
     Object.assign(timing,{CurrentClockPolicy:CLOCK_POLICY_VERSION,WhiteClock:pgnClock(c.w),BlackClock:pgnClock(c.b),SessionInactiveMs:Math.round(gameInactiveMs()),SessionEngineRecoveries:G.engineRecoveries||0});
     const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkReason:info.reason||'active',LastThinkRecovery:info.recovery||'none',LastThinkBackend:info.backend,LastThinkDepth:info.depth});
   }
-  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}) }, {
+  if(G.drawClaim)Object.assign(timing,{DrawClaim:G.drawClaim.reason,DrawClaimType:G.drawClaim.type,...(G.drawClaim.move?{DrawClaimMove:G.drawClaim.move,DrawClaimSAN:G.drawClaim.san}:{})});
+  const moveRecoveries=G.moveRecoveries?G.sans.map((_,i)=>G.moveRecoveries[i]||null):undefined;
+  return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}),...(moveRecoveries?{moveRecoveries}:{}) }, {
     Event: tags.Event || 'Mitchell D Chess game' + (G.official ? ' (official rules)' : ''), Site: tags.Site || 'Mitchell D Chess', Date: tags.Date || date,
     White: tags.White || nm('w'), Black: tags.Black || nm('b'), TimeControl: G.clock ? G.clock.pgn : (tags.TimeControl || '-'), Termination: !G.over ? 'unterminated' : /time/.test(G.over.reason) ? 'time forfeit' : 'normal',...timing
   });
