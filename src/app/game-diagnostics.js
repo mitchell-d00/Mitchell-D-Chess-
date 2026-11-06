@@ -14,7 +14,7 @@ document.addEventListener('visibilitychange',trackGameVisibility);
 function currentThinkDiagnostic() {
   const r=G&&G.activeThink;
   if(!r||r.token!==G.token||r.ply!==G.moves.length)return G&&G.lastThink;
-  return {ply:r.ply,side:r.side,level:r.level,budgetMs:r.budgetMs,wallMs:Math.max(0,Date.now()-r.startedAt),hiddenMs:Math.max(0,gameInactiveMs()-r.inactiveAtStart),phase:r.phase,recovery:r.recovery||''};
+  return {ply:r.ply,side:r.side,level:r.level,budgetMs:r.budgetMs,wallMs:Math.max(0,Date.now()-r.startedAt),hiddenMs:Math.max(0,gameInactiveMs()-r.inactiveAtStart),phase:r.phase,recovery:r.recovery||'',backend:r.backend||'pending',depth:r.depth??'pending'};
 }
 function captureThinkDiagnostic(reason) {
   const d=currentThinkDiagnostic();if(d)G.lastThink={...d,reason};

@@ -3073,7 +3073,7 @@ document.addEventListener('visibilitychange',trackGameVisibility);
 function currentThinkDiagnostic() {
   const r=G&&G.activeThink;
   if(!r||r.token!==G.token||r.ply!==G.moves.length)return G&&G.lastThink;
-  return {ply:r.ply,side:r.side,level:r.level,budgetMs:r.budgetMs,wallMs:Math.max(0,Date.now()-r.startedAt),hiddenMs:Math.max(0,gameInactiveMs()-r.inactiveAtStart),phase:r.phase,recovery:r.recovery||''};
+  return {ply:r.ply,side:r.side,level:r.level,budgetMs:r.budgetMs,wallMs:Math.max(0,Date.now()-r.startedAt),hiddenMs:Math.max(0,gameInactiveMs()-r.inactiveAtStart),phase:r.phase,recovery:r.recovery||'',backend:r.backend||'pending',depth:r.depth??'pending'};
 }
 function captureThinkDiagnostic(reason) {
   const d=currentThinkDiagnostic();if(d)G.lastThink={...d,reason};
@@ -3213,6 +3213,7 @@ function maybeAI() {
   think(G.startFen === START ? null : G.startFen, G.moves.slice(), p.level - 1, extra).then(r => {
     if (!G || G.over || G.token !== tok || G.moves.length !== ply) return;
     request.phase='reply ready';request.recovery=r&&r.recovery;
+    request.backend=r&&r.backend||'javascript';request.depth=r&&r.depth;
     if(r&&r.recovery){G.engineRecoveries=(G.engineRecoveries||0)+1;G.evalW=null;G.depth=0;}
     captureThinkDiagnostic('reply');
     if(G.clock)G.aiClockOverhead=updateClockOverhead(G.aiClockOverhead,Date.now()-t0,r&&r.timeBudget);
@@ -3341,7 +3342,7 @@ function renderSessionControls() {
   $('#sessionControls').hidden=!visible;$('.game').classList.toggle('session-active',visible);if(!visible)return;
   $('#sessionControls').classList.toggle('is-paused',paused);
   const title=paused?(G.restored?'Saved game paused':'Game paused'):'Game in progress';
-  const detail=paused?(G.clock?'Clock and moves are stopped. Resume when ready.':'Moves are stopped. Resume when ready.'):G.official?'Pause is unavailable during official play.':G.clock?'Take a break: pause stops the clock and moves.':'Take a break: pause stops all moves.';
+  const detail=paused?(G.clock?'Clock and moves are stopped. Resume when ready.':'Moves are stopped. Resume when ready.'):G.official?'Pause is unavailable during official play.'+(G.mode==='cvc'?' Keep the game visible while computers play.':''):G.clock?'Take a break: pause stops the clock and moves.':'Take a break: pause stops all moves.';
   if($('#sessionTitle').textContent!==title)$('#sessionTitle').textContent=title;
   if($('#sessionDetail').textContent!==detail)$('#sessionDetail').textContent=detail;
   $('#pauseLabel').textContent=paused?'Resume game':'Pause game';$('#pauseIcon').innerHTML=paused?'<svg viewBox="0 0 20 20"><path fill="currentColor" d="M5 3L17 10L5 17Z"/></svg>':'<svg viewBox="0 0 20 20"><path fill="currentColor" d="M4 3H8V17H4ZM12 3H16V17H12Z"/></svg>';
@@ -3407,7 +3408,7 @@ function pgn() {
   if(G.clock){
     const c=G.clock;clockTimes=G.sans.map((_,i)=>{const h=G.clockHist[i];return !h?null:c.per||h[(i+Number(firstBlack))%2?'b':'w']+c.inc;});
     Object.assign(timing,{CurrentClockPolicy:CLOCK_POLICY_VERSION,WhiteClock:pgnClock(c.w),BlackClock:pgnClock(c.b),SessionInactiveMs:Math.round(gameInactiveMs()),SessionEngineRecoveries:G.engineRecoveries||0});
-    const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkRecovery:info.recovery||'none'});
+    const info=currentThinkDiagnostic();if(info)Object.assign(timing,{LastThinkSide:info.side,LastThinkLevel:info.level,LastThinkBudgetMs:info.budgetMs,LastThinkWallMs:Math.round(info.wallMs),LastThinkInactiveMs:Math.round(info.hiddenMs),LastThinkState:info.phase,LastThinkRecovery:info.recovery||'none',LastThinkBackend:info.backend,LastThinkDepth:info.depth});
   }
   return PositionTools.exportPgn({ startFen: G.startFen, sans: G.sans, result, tags,...(clockTimes?{clockTimes}:{}) }, {
     Event: tags.Event || 'Mitchell D Chess game' + (G.official ? ' (official rules)' : ''), Site: tags.Site || 'Mitchell D Chess', Date: tags.Date || date,
